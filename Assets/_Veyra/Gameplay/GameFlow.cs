@@ -35,6 +35,30 @@ namespace VeyraCity.Gameplay
         public State Current { get; private set; } = State.Boot;
         public SaveData Save => save;
         public VehicleController PlayerCar => player;
+        public VehicleDriver PlayerDriver => playerDriver;
+        public GameDatabase Database => db;
+        public WorldEnvironment WorldEnv => environment;
+
+        /// <summary>
+        /// Automated tests (VeyraAutoTest, card V0): free roam from home with no traffic, clear weather and a fixed time of
+        /// day, so runs are repeatable. Returns the player's driver so the test can bind its own intent source.
+        /// </summary>
+        public VehicleDriver BeginAutomatedFreeRoam(float timeOfDay)
+        {
+            automated = true;
+            Application.runInBackground = true;
+            EnterFreeRoam(false);
+            traffic.Active = false;
+            traffic.Clear();
+            if (environment != null)
+            {
+                environment.AutoWeather = false;
+                environment.AnimateTime = false;
+                environment.SetWeather(WorldEnvironment.WeatherKind.Clear);
+                environment.SetTime(timeOfDay);
+            }
+            return playerDriver;
+        }
 
         SaveData save;
         bool automated, keepDisplay;
@@ -95,7 +119,7 @@ namespace VeyraCity.Gameplay
             foreach (var arg in a)
             {
                 // Automated verification runs must keep ticking without focus and keep the window size they were given.
-                if (arg.StartsWith("-veyraTour") || arg.StartsWith("-veyraDemo") || arg.StartsWith("-veyraAutoQuit") || arg.StartsWith("-veyraShots")) { automated = true; Application.runInBackground = true; }
+                if (arg.StartsWith("-veyraTour") || arg.StartsWith("-veyraDemo") || arg.StartsWith("-veyraAutoQuit") || arg.StartsWith("-veyraShots") || arg == "-autotest") { automated = true; Application.runInBackground = true; }
                 if (arg.StartsWith("-screen-")) keepDisplay = true;
             }
             cam = chaseCamera != null ? chaseCamera.GetComponent<Camera>() : Camera.main;

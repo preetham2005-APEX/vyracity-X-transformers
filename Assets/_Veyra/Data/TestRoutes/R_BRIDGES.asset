@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de4f16ad9d16094293547b87fa1a2a2, type: 3}
+  m_Name: R_BRIDGES
+  m_EditorClassIdentifier: VeyraCity.Testing::VeyraCity.Testing.VeyraTestRoute
+  Description: Every structure with 150 m approaches, 90 km/h on MW/EX/HW and 60 km/h elsewhere (card V0).
+  DefaultTimeOfDay: 12
+  Segments:
+  - roadId: R1
+    sStart_m: 0
+    sEnd_m: 2900
+    targetSpeed_kmh: 90
+    note: Harbor Viaduct + Sable Mouth Span
+  - roadId: R1
+    sStart_m: 5400
+    sEnd_m: 6300
+    targetSpeed_kmh: 90
+    note: Kestrel Tunnel
+  - roadId: R1
+    sStart_m: 7130
+    sEnd_m: 7540
+    targetSpeed_kmh: 90
+    note: West Sable Bridge
+  - roadId: C1
+    sStart_m: 3600
+    sEnd_m: 7260
+    targetSpeed_kmh: 90
+    note: Lantern Strait Bridge + Gantry Expressway
+  - roadId: H2
+    sStart_m: 0
+    sEnd_m: 1500
+    targetSpeed_kmh: 90
+    note: Corvo Tunnel + Corvo Creek Viaduct
+  - roadId: H2
+    sStart_m: 1330
+    sEnd_m: 2860
+    targetSpeed_kmh: 90
+    note: Blackridge Tunnel
+  - roadId: H2
+    sStart_m: 3690
+    sEnd_m: 4300
+    targetSpeed_kmh: 90
+    note: Highline Viaduct
+  - roadId: A1
+    sStart_m: 1476
+    sEnd_m: 1889
+    targetSpeed_kmh: 60
+    note: Crown Bridge
+  - roadId: A2
+    sStart_m: 1483
+    sEnd_m: 1919
+    targetSpeed_kmh: 60
+    note: Meridian Bridge
+  - roadId: A4
+    sStart_m: 1337
+    sEnd_m: 1786
+    targetSpeed_kmh: 60
+    note: Sable Drawbridge
+  - roadId: A10
+    sStart_m: 1304
+    sEnd_m: 1744
+    targetSpeed_kmh: 60
+    note: Union Street Bridge
+  - roadId: A22
+    sStart_m: 1562
+    sEnd_m: 1880
+    targetSpeed_kmh: 60
+    note: Regent Street Bridge (to road end)
+  - roadId: H3
+    sStart_m: 584
+    sEnd_m: 957
+    targetSpeed_kmh: 90
+    note: Millbrook Bridge
+  - roadId: A15
+    sStart_m: 2020
+    sEnd_m: 2386
+    targetSpeed_kmh: 60
+    note: Outflow Bridge

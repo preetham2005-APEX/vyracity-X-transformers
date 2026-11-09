@@ -41,20 +41,28 @@ namespace VeyraCity.EditorTools
             bool development = args.Contains("-veyraDevelopment");
             string version = Arg(args, "-veyraVersion") ?? "0.1.0-foundation";
             string outDir = Arg(args, "-veyraOutput") ?? Path.GetFullPath($"Builds/Windows_{(il2cpp ? "IL2CPP" : "Mono")}{(development ? "_Dev" : "")}");
+            return BuildPlayer(il2cpp, development, outDir, version) == BuildResult.Succeeded;
+        }
 
+        /// <summary>
+        /// Builds the Windows x64 player (Script Debugging off) and writes <c>Logs/build_&lt;timestamp&gt;.log</c> with the
+        /// BuildReport summary. The scripting backend is restored afterwards so ProjectSettings stay unchanged (BUG-014).
+        /// </summary>
+        public static BuildResult BuildPlayer(bool il2cpp, bool development, string outDir, string version = "0.1.0-foundation")
+        {
             SceneTools.EnsureFoundationScene(force: false);
             string[] scenes = GetScenes();
-            if (scenes.Length == 0) { Debug.LogError("[Veyra] No scenes in build settings."); return false; }
+            if (scenes.Length == 0) { Debug.LogError("[Veyra] No scenes in build settings."); return BuildResult.Failed; }
 
             PlayerSettings.productName = ProductName;
             PlayerSettings.bundleVersion = version;
             var previousBackend = PlayerSettings.GetScriptingBackend(NamedBuildTarget.Standalone);
             PlayerSettings.SetScriptingBackend(NamedBuildTarget.Standalone, il2cpp ? ScriptingImplementation.IL2CPP : ScriptingImplementation.Mono2x);
-            try { return BuildWithBackend(il2cpp, development, version, outDir, scenes); }
+            try { return BuildWithBackend(il2cpp, development, version, Path.GetFullPath(outDir), scenes); }
             finally { PlayerSettings.SetScriptingBackend(NamedBuildTarget.Standalone, previousBackend); } // don't leave ProjectSettings changed
         }
 
-        static bool BuildWithBackend(bool il2cpp, bool development, string version, string outDir, string[] scenes)
+        static BuildResult BuildWithBackend(bool il2cpp, bool development, string version, string outDir, string[] scenes)
         {
 
             var info = new BuildInfo
@@ -79,13 +87,44 @@ namespace VeyraCity.EditorTools
             };
 
             Debug.Log($"[Veyra] Building {info} -> {options.locationPathName} with scenes: {string.Join(", ", scenes)}");
+            var started = DateTime.Now;
             BuildReport report = BuildPipeline.BuildPlayer(options);
             var s = report.summary;
             string summary = $"result={s.result} size={s.totalSize / (1024f * 1024f):0.0}MB time={s.totalTime.TotalSeconds:0}s errors={s.totalErrors} warnings={s.totalWarnings} output={s.outputPath}";
             Debug.Log($"[Veyra] BUILD {summary}");
             Directory.CreateDirectory(outDir);
             File.WriteAllText(Path.Combine(outDir, "build_report.txt"), $"{info}\n{summary}\n");
-            return s.result == BuildResult.Succeeded;
+            WriteBuildLog(report, info, scenes, started);
+            return s.result;
+        }
+
+        /// <summary>Logs/build_&lt;timestamp&gt;.log: result, size, duration, errors/warnings with their messages, scenes, version.</summary>
+        static void WriteBuildLog(BuildReport report, BuildInfo info, string[] scenes, DateTime started)
+        {
+            var s = report.summary;
+            var sb = new System.Text.StringBuilder();
+            sb.AppendLine($"VEYRA CITY build — {started:yyyy-MM-dd HH:mm:ss}");
+            sb.AppendLine($"result: {s.result}");
+            sb.AppendLine($"target: {s.platform} | backend: {info.scriptingBackend} | development: {info.development} | script debugging: off");
+            sb.AppendLine($"version: {info.version} | git: {info.gitCommit} | unity: {info.unityVersion}");
+            sb.AppendLine($"output: {s.outputPath}");
+            sb.AppendLine($"size_mb: {s.totalSize / (1024.0 * 1024.0):0.0}");
+            sb.AppendLine($"duration_s: {s.totalTime.TotalSeconds:0.0}");
+            sb.AppendLine($"errors: {s.totalErrors} | warnings: {s.totalWarnings}");
+            sb.AppendLine("shader variant count: not exposed by BuildReport in Unity 6000.6 (see the Editor log's shader compilation lines)");
+            sb.AppendLine("scenes: " + string.Join(", ", scenes));
+            int shown = 0;
+            foreach (var step in report.steps)
+                foreach (var m in step.messages)
+                    if ((m.type == LogType.Error || m.type == LogType.Exception || m.type == LogType.Warning) && shown++ < 40)
+                        sb.AppendLine($"[{m.type}] {step.name}: {m.content.Split('\n')[0]}");
+            sb.AppendLine("steps:");
+            foreach (var step in report.steps) sb.AppendLine($"  {step.duration.TotalSeconds,7:0.0}s  {step.name}");
+            string dir = Path.GetFullPath("Logs");
+            Directory.CreateDirectory(dir);
+            string path = Path.Combine(dir, $"build_{started:yyyyMMdd_HHmmss}.log");
+            File.WriteAllText(path, sb.ToString());
+            Debug.Log($"[Veyra] Build log: {path}");
         }
 
         static string Arg(string[] args, string name)

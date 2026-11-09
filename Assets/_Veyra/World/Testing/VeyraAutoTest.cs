@@ -1,0 +1,430 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using Unity.Profiling;
+using UnityEngine;
+using UnityEngine.Profiling;
+using VeyraCity.Core;
+using VeyraCity.Gameplay;
+using VeyraCity.VehiclePhysics;
+using VeyraCity.World;
+using VeyraCity.World.Data;
+
+namespace VeyraCity.Testing
+{
+    /// <summary>
+    /// Card V0 runtime test runner, active only with <c>-autotest</c>:
+    /// <code>VeyraCity.exe -autotest &lt;seconds, 0 = until the route is complete&gt; -route &lt;name&gt; -statsPath &lt;file&gt; [-timeOfDay &lt;h&gt;] [-quality &lt;name&gt;] [-reviewCapture]</code>
+    /// Enters free roam (no traffic), binds a <see cref="RouteAutopilot"/> to the Arden Kite, drives every segment of the route
+    /// (each starts with a teleport onto the drivable surface at target speed), collects frame, memory, log and vehicle metrics,
+    /// writes stats.json and quits. Frames in the 2 s after a teleport are reported separately (teleport_windows).
+    /// </summary>
+    [DefaultExecutionOrder(200)]
+    public sealed class VeyraAutoTest : MonoBehaviour
+    {
+        public sealed class Options
+        {
+            public bool Enabled, ReviewCapture;
+            public float Seconds;
+            public string Route = "R_SMOKE", StatsPath, Quality;
+            public float TimeOfDay = float.NaN;
+
+            public static Options Parse(string[] a)
+            {
+                var o = new Options();
+                for (int i = 0; i < a.Length; i++)
+                {
+                    string next = i + 1 < a.Length ? a[i + 1] : null;
+                    switch (a[i].ToLowerInvariant())
+                    {
+                        case "-autotest": o.Enabled = true; if (TryF(next, out var s)) { o.Seconds = Mathf.Max(0f, s); i++; } break;
+                        case "-route": if (next != null) { o.Route = next; i++; } break;
+                        case "-statspath": if (next != null) { o.StatsPath = next; i++; } break;
+                        case "-timeofday": if (TryF(next, out var h)) { o.TimeOfDay = Mathf.Repeat(h, 24f); i++; } break;
+                        case "-quality": if (next != null) { o.Quality = next; i++; } break;
+                        case "-reviewcapture": o.ReviewCapture = true; break;
+                    }
+                }
+                return o;
+            }
+
+            static bool TryF(string s, out float v) { v = 0f; return s != null && float.TryParse(s, NumberStyles.Float, CultureInfo.InvariantCulture, out v); }
+        }
+
+        public const float SettleSeconds = 1.0f;       // vehicle metrics ignore the first second after a teleport
+        public const float PerfWindowSeconds = 2.0f;   // frame stats ignore the first 2 s after a teleport (reported separately)
+        public const float WallDropKmh = 30f, WallWindowS = 0.2f;
+        const float MaxUnlimitedSeconds = 1800f;
+        /// <summary>JSON has no NaN: "no measurement" is written as -999.</summary>
+        public const float NoValue = -999f;
+
+        static Options opts;
+        static readonly object logLock = new object();
+        static int logExceptions, logErrors, logWarnings, logShaderNull;
+        static readonly List<string> firstErrors = new List<string>();
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        static void Boot()
+        {
+            opts = Options.Parse(Environment.GetCommandLineArgs());
+            if (!opts.Enabled) return;
+            Application.logMessageReceivedThreaded += OnLog;
+            Application.runInBackground = true;
+            var go = new GameObject("[VeyraAutoTest]");
+            DontDestroyOnLoad(go);
+            go.AddComponent<VeyraAutoTest>();
+        }
+
+        static void OnLog(string message, string stack, LogType type)
+        {
+            lock (logLock)
+            {
+                if (type == LogType.Exception) { logExceptions++; Keep(message); }
+                else if (type == LogType.Error || type == LogType.Assert) { logErrors++; Keep(message); }
+                else if (type == LogType.Warning) logWarnings++;
+                if (message != null && message.IndexOf("shader is null", StringComparison.OrdinalIgnoreCase) >= 0) logShaderNull++;
+            }
+        }
+
+        static void Keep(string m) { if (firstErrors.Count < 10) firstErrors.Add((m ?? "").Split('\n')[0]); }
+
+        // ------------------------------------------------------------------ run state
+        readonly AutoTestReport report = new AutoTestReport();
+        readonly FrameStats frames = new FrameStats();
+        VehicleController car;
+        RouteAutopilot autopilot;
+        AutoTestReport.SegmentReport cur;
+        VeyraTestRoute route;
+        bool driving;
+        float routeStartRealtime, settleUntil, perfSettleUntilRealtime, wallCooldownUntil;
+        float airTime, prevVy, minKmh;
+        bool airLatched, fallLatched;
+        readonly float[] ayWindow = new float[5];
+        int ayIndex;
+        readonly Queue<(float t, float v)> speedHistory = new Queue<(float, float)>();
+        readonly List<(float t, string name, bool visible)> recentHits = new List<(float, string, bool)>();
+        ProfilerRecorder gcRecorder, gfxRecorder;
+        double gcBytes;
+        int gcFrames;
+
+        IEnumerator Start()
+        {
+            report.date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+            report.route = opts.Route;
+            report.time_limit_s = opts.Seconds;
+            report.review_capture = opts.ReviewCapture ? "requested: not available until card S5 (review cameras)" : "not requested";
+            Debug.Log($"[AutoTest] start route={opts.Route} seconds={opts.Seconds} stats={opts.StatsPath} timeOfDay={(float.IsNaN(opts.TimeOfDay) ? "route default" : opts.TimeOfDay.ToString("0.0", CultureInfo.InvariantCulture))} quality={(string.IsNullOrEmpty(opts.Quality) ? "current" : opts.Quality)}");
+
+            float wait = Time.realtimeSinceStartup;
+            GameFlow gf;
+            while ((gf = GameFlow.Instance) == null || gf.Current == GameFlow.State.Boot)
+            {
+                if (Time.realtimeSinceStartup - wait > 60f) { yield return Abort("GameFlow did not start within 60 s"); yield break; }
+                yield return null;
+            }
+
+            var cfg = Resources.Load<VeyraAutoTestConfig>(VeyraAutoTestConfig.ResourcePath);
+            if (cfg == null || cfg.RoadNetworkJson == null) { yield return Abort($"Resources/{VeyraAutoTestConfig.ResourcePath} or its road JSON is missing (run Veyra/Test/Create Test Routes)"); yield break; }
+            route = cfg.Find(opts.Route);
+            if (route == null) { yield return Abort($"unknown route '{opts.Route}'"); yield break; }
+            RoadNetworkData net;
+            try { net = RoadNetwork.Parse(cfg.RoadNetworkJson.text); }
+            catch (Exception e) { net = null; Debug.LogException(e); }
+            if (net == null) { yield return Abort("road_network_geometry.json did not parse"); yield break; }
+
+            if (!string.IsNullOrEmpty(opts.Quality))
+            {
+                int qi = Array.FindIndex(QualitySettings.names, n => n.Equals(opts.Quality, StringComparison.OrdinalIgnoreCase));
+                if (qi >= 0) QualitySettings.SetQualityLevel(qi, true);
+                else Debug.LogWarning($"[AutoTest] unknown quality level '{opts.Quality}'; keeping {QualitySettings.names[QualitySettings.GetQualityLevel()]}");
+            }
+            report.time_of_day = float.IsNaN(opts.TimeOfDay) ? route.DefaultTimeOfDay : opts.TimeOfDay;
+            var driver = gf.BeginAutomatedFreeRoam(report.time_of_day);
+            yield return null;
+            yield return null;
+            car = gf.PlayerCar;
+            if (car == null || driver == null) { yield return Abort("no player car after entering free roam"); yield break; }
+            autopilot = new RouteAutopilot(car);
+            var preset = gf.Database != null && gf.Database.AIPreset != null ? gf.Database.AIPreset : driver.Preset;
+            driver.Bind(car, autopilot, preset);
+            car.Collided += OnCollided;
+            report.vehicle.car = car.Definition != null ? car.Definition.name : car.name;
+            gcRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "GC Allocated In Frame");
+            gfxRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "Gfx Used Memory");
+
+            report.vehicle.segments_total = route.Segments.Count;
+            routeStartRealtime = Time.realtimeSinceStartup;
+            string endReason = "route complete";
+            for (int i = 0; i < route.Segments.Count; i++)
+            {
+                var seg = route.Segments[i];
+                cur = new AutoTestReport.SegmentReport { index = i, road = seg.roadId, s_start = seg.sStart_m, s_end = seg.sEnd_m, target_kmh = seg.targetSpeed_kmh, note = seg.note, result = "not reached" };
+                report.per_segment.Add(cur);
+                if (TimeUp()) { endReason = "time limit"; continue; }
+                var road = net.Road(seg.roadId);
+                if (road == null) { cur.result = "unknown road"; Debug.LogError($"[AutoTest] route {route.name} segment {i}: unknown road {seg.roadId}"); continue; }
+
+                var lane = RouteAutopilot.BuildLanePath(road, seg.sStart_m, seg.sEnd_m, 60f, out float endU);
+                float target = seg.targetSpeed_kmh / 3.6f;
+                Teleport(lane, target);
+                autopilot.Begin(lane, endU, target);
+                cur.reached = true;
+                cur.result = "running";
+                minKmh = float.MaxValue;
+                float segStart = Time.time;
+                driving = true;
+                bool spawnChecked = false;
+                float stuck = 0f, limit = seg.LengthM / Mathf.Max(1f, target) * 2f + 20f;
+                while (true)
+                {
+                    yield return null;
+                    float el = Time.time - segStart;
+                    if (!spawnChecked && el >= SettleSeconds) { CheckSpawn(); spawnChecked = true; }
+                    if (autopilot.U >= endU - 3f) { cur.completed = true; cur.result = "completed"; break; }
+                    if (el > limit) { cur.result = "timeout"; break; }
+                    if (car.State.Speed < 1f && el > 4f) { stuck += Time.deltaTime; if (stuck > 6f) { cur.result = "stuck"; break; } }
+                    else stuck = 0f;
+                    if (TimeUp()) { cur.result = "time limit"; endReason = "time limit"; break; }
+                }
+                driving = false;
+                if (!spawnChecked) CheckSpawn();
+                cur.time_s = Time.time - segStart;
+                cur.avg_kmh = cur.time_s > 0f ? cur.distance_m / cur.time_s * 3.6f : 0f;
+                cur.min_kmh = minKmh == float.MaxValue ? 0f : minKmh;
+                if (cur.completed) report.vehicle.segments_completed++;
+                Debug.Log($"[AutoTest] segment {i} {seg} -> {cur.result} in {cur.time_s:0.0} s, avg {cur.avg_kmh:0} km/h, min {cur.min_kmh:0}, airborne {cur.airborne_events}, falls {cur.falls_below_surface}, walls {cur.invisible_wall_events}, spawn on road {cur.spawned_on_road} ({cur.spawn_surface}, {cur.spawn_height_above_surface_m:0.00} m)");
+            }
+            autopilot.Active = false;
+            report.route_complete = report.vehicle.segments_completed == report.vehicle.segments_total;
+            if (endReason == "route complete" && !report.route_complete)
+                endReason = $"all segments attempted, {report.vehicle.segments_completed}/{report.vehicle.segments_total} completed";
+            yield return Finish(endReason, 0);
+        }
+
+        bool TimeUp()
+        {
+            float limit = opts.Seconds > 0f ? opts.Seconds : MaxUnlimitedSeconds;
+            return Time.realtimeSinceStartup - routeStartRealtime >= limit;
+        }
+
+        void Teleport(PolylinePath lane, float speed)
+        {
+            var p = lane.PositionAt(0f);
+            var fwd = lane.PositionAt(4f) - p;
+            float surfaceY = p.y;
+            var normal = Vector3.up;
+            float best = 6f;
+            foreach (var h in Physics.RaycastAll(p + Vector3.up * 25f, Vector3.down, 60f, ~0, QueryTriggerInteraction.Ignore))
+            {
+                if (h.rigidbody != null && h.rigidbody == car.Body) continue;
+                float d = Mathf.Abs(h.point.y - p.y);
+                if (d < best) { best = d; surfaceY = h.point.y; normal = h.normal; }
+            }
+            var pos = new Vector3(p.x, surfaceY + 0.45f, p.z);
+            var dir = Vector3.ProjectOnPlane(fwd, normal);
+            car.ResetTo(pos, Quaternion.LookRotation(dir.sqrMagnitude > 1e-4f ? dir.normalized : Vector3.forward, normal));
+            car.ForceForwardSpeed(speed);
+            settleUntil = Time.time + SettleSeconds;
+            perfSettleUntilRealtime = Time.realtimeSinceStartup + PerfWindowSeconds;
+            report.teleport_windows.count++;
+            report.teleport_windows.excluded_s += PerfWindowSeconds;
+            speedHistory.Clear();
+            recentHits.Clear();
+            airTime = 0f; airLatched = false; fallLatched = false;
+            prevVy = 0f; Array.Clear(ayWindow, 0, ayWindow.Length);
+        }
+
+        void CheckSpawn()
+        {
+            var pos = car.transform.position;
+            string surface = "nothing below";
+            bool road = false;
+            float height = NoValue;
+            foreach (var h in SortedHits(pos + Vector3.up * 2f, 12f))
+            {
+                if (h.rigidbody != null && h.rigidbody == car.Body) continue;
+                var vs = h.collider.GetComponentInParent<VehicleSurface>();
+                bool terrain = h.collider is TerrainCollider;
+                surface = terrain ? "terrain" : vs != null && vs.Surface != null ? vs.Surface.Id : h.collider.name;
+                road = !terrain && vs != null && vs.Surface != null && vs.Surface.Id.IndexOf("grass", StringComparison.OrdinalIgnoreCase) < 0;
+                height = pos.y - h.point.y;
+                break;
+            }
+            cur.spawn_surface = surface;
+            cur.spawn_height_above_surface_m = height;
+            cur.spawned_on_road = road && car.State.GroundedWheels >= 3 && Mathf.Abs(autopilot.LateralError) < 3f && height != NoValue && Mathf.Abs(height) < 1f;
+            if (!cur.spawned_on_road) AddEvent("spawn_off_road", $"surface {surface}, height {height:0.00} m, grounded {car.State.GroundedWheels}, lateral {autopilot.LateralError:0.0} m");
+        }
+
+        static RaycastHit[] SortedHits(Vector3 from, float distance)
+        {
+            var hits = Physics.RaycastAll(from, Vector3.down, distance, ~0, QueryTriggerInteraction.Ignore);
+            Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+            return hits;
+        }
+
+        void OnCollided(VehicleController v, Collision c)
+        {
+            if (!driving || c.collider == null) return;
+            var col = c.collider;
+            bool drivable = col.GetComponentInParent<VehicleSurface>() != null || col is TerrainCollider;
+            bool visible = !drivable && (col.name.StartsWith("UBX_") || col.name.StartsWith("UCX_") || col.attachedRigidbody != null || col.GetComponentInParent<Renderer>() != null);
+            recentHits.Add((Time.time, col.name, visible));
+        }
+
+        void FixedUpdate()
+        {
+            if (!driving || car == null || cur == null) return;
+            float dt = Time.fixedDeltaTime, t = Time.time;
+            var st = car.State;
+            float v = st.Speed;
+            cur.distance_m += v * dt;
+            report.vehicle.distance_m += v * dt;
+            bool settled = t >= settleUntil;
+            float vy = car.Body.linearVelocity.y;
+            ayWindow[ayIndex++ % ayWindow.Length] = (vy - prevVy) / dt;
+            prevVy = vy;
+            speedHistory.Enqueue((t, v));
+            while (speedHistory.Count > 0 && speedHistory.Peek().t < t - WallWindowS) speedHistory.Dequeue();
+            recentHits.RemoveAll(h => h.t < t - 0.35f);
+            if (!settled) return;
+
+            minKmh = Mathf.Min(minKmh, v * 3.6f);
+            cur.max_lateral_error_m = Mathf.Max(cur.max_lateral_error_m, Mathf.Abs(autopilot.LateralError));
+            float ay = 0f; foreach (var a in ayWindow) ay += a; ay /= ayWindow.Length;
+            float g = Mathf.Abs(ay) / 9.81f;
+            cur.max_vertical_accel_g = Mathf.Max(cur.max_vertical_accel_g, g);
+            report.vehicle.max_vertical_accel_g = Mathf.Max(report.vehicle.max_vertical_accel_g, g);
+
+            if (st.GroundedWheels == 0) airTime += dt; else { airTime = 0f; airLatched = false; }
+            if (airTime >= 0.3f && !airLatched)
+            {
+                airLatched = true; cur.airborne_events++; report.vehicle.airborne_events++;
+                AddEvent("airborne", $"all wheels off the ground for 0.3 s at {v * 3.6f:0} km/h");
+            }
+
+            float pathY = autopilot.Path.PositionAt(autopilot.U).y;
+            bool below = car.transform.position.y < pathY - 3f;
+            if (below && !fallLatched)
+            {
+                fallLatched = true; cur.falls_below_surface++; report.vehicle.falls_below_surface++;
+                AddEvent("fall_below_surface", $"car y {car.transform.position.y:0.0} m, road profile y {pathY:0.0} m");
+            }
+            else if (!below) fallLatched = false;
+
+            if (t >= wallCooldownUntil)
+            {
+                float maxV = 0f; foreach (var s in speedHistory) maxV = Mathf.Max(maxV, s.v);
+                if ((maxV - v) * 3.6f > WallDropKmh)
+                {
+                    wallCooldownUntil = t + 1f;
+                    bool visible = recentHits.Exists(h => h.visible);
+                    string hits = recentHits.Count == 0 ? "no collision" : string.Join(", ", recentHits.ConvertAll(h => h.name + (h.visible ? "(visible)" : "")));
+                    string detail = $"{maxV * 3.6f:0} → {v * 3.6f:0} km/h within {WallWindowS} s; contacts: {hits}";
+                    if (visible) { cur.visible_impacts++; report.vehicle.visible_impacts++; AddEvent("visible_impact", detail); }
+                    else { cur.invisible_wall_events++; report.vehicle.invisible_wall_events++; AddEvent("invisible_wall", detail); }
+                }
+            }
+        }
+
+        void Update()
+        {
+            if (!driving) return;
+            float ms = Time.unscaledDeltaTime * 1000f;
+            if (Time.realtimeSinceStartup < perfSettleUntilRealtime)
+            {
+                var w = report.teleport_windows;
+                w.frames++; w.max_ms = Mathf.Max(w.max_ms, ms);
+                if (ms > FrameStats.HitchThresholdMs) w.hitches_over_50ms++;
+            }
+            else frames.Add(ms);
+            if (gcRecorder.Valid) { gcBytes += gcRecorder.LastValue; gcFrames++; }
+        }
+
+        void AddEvent(string type, string detail)
+        {
+            var p = car.transform.position;
+            report.events.Add(new AutoTestReport.EventRecord
+            {
+                type = type, segment = cur != null ? cur.index : -1, road = cur?.road, s = autopilot != null ? autopilot.U : 0f, t = Time.time,
+                x = p.x, y = p.y, z = p.z, detail = detail,
+            });
+            if (report.events.Count <= 200) Debug.Log($"[AutoTest] EVENT {type} seg {cur?.index} {cur?.road} u={autopilot?.U:0} at {p}: {detail}");
+        }
+
+        IEnumerator Abort(string reason)
+        {
+            Debug.LogError("[AutoTest] ABORT: " + reason);
+            yield return Finish("aborted: " + reason, 2);
+        }
+
+        IEnumerator Finish(string endReason, int exitCode)
+        {
+            driving = false;
+            report.end_reason = endReason;
+            report.duration_s = routeStartRealtime > 0f ? Time.realtimeSinceStartup - routeStartRealtime : 0f;
+            var s = frames.Summarize();
+            report.frames = s.frames;
+            report.avg_fps = s.avgFps;
+            report.fps_1pct_low = s.onePercentLowFps;
+            report.frametime_ms.p50 = s.p50Ms; report.frametime_ms.p95 = s.p95Ms; report.frametime_ms.p99 = s.p99Ms; report.frametime_ms.max = s.maxMs;
+            report.hitches_over_50ms = s.hitchesOver50Ms;
+            report.gc_alloc_kb_per_frame_avg = gcFrames > 0 ? (float)(gcBytes / gcFrames / 1024.0) : -1f;
+            const float MB = 1024f * 1024f;
+            report.memory_mb.managed = Profiler.GetMonoUsedSizeLong() / MB;
+            report.memory_mb.total_reserved = Profiler.GetTotalReservedMemoryLong() / MB;
+            long gfx = gfxRecorder.Valid && gfxRecorder.LastValue > 0 ? gfxRecorder.LastValue : Profiler.GetAllocatedMemoryForGraphicsDriver();
+            report.memory_mb.gfx = gfx > 0 ? gfx / MB : -1f;
+            if (gcRecorder.Valid) gcRecorder.Dispose();
+            if (gfxRecorder.Valid) gfxRecorder.Dispose();
+
+            var bi = BuildInfo.LoadOrDefault();
+            report.build.type = Debug.isDebugBuild ? "development" : "release";
+#if ENABLE_IL2CPP
+            report.build.backend = "IL2CPP";
+#else
+            report.build.backend = "Mono";
+#endif
+            report.build.version = Application.version;
+            report.build.git = bi.gitCommit;
+            report.build.unity = Application.unityVersion;
+            report.gpu = SystemInfo.graphicsDeviceName;
+            report.graphics_api = SystemInfo.graphicsDeviceType.ToString();
+            report.resolution = $"{Screen.width}x{Screen.height}";
+            report.quality = QualitySettings.names[QualitySettings.GetQualityLevel()];
+            report.vsync_count = QualitySettings.vSyncCount;
+
+            var segs = report.per_segment.FindAll(p => p.reached);
+            report.vehicle.spawned_on_road = segs.Count > 0 && segs.TrueForAll(p => p.spawned_on_road);
+            report.vehicle.spawn_height_above_surface_m = segs.Count > 0 ? segs[0].spawn_height_above_surface_m : NoValue;
+
+            yield return null; // let late log messages arrive
+            lock (logLock)
+            {
+                report.exceptions = logExceptions;
+                report.errors = logErrors;
+                report.warnings = logWarnings;
+                report.shader_is_null = logShaderNull;
+                report.first_errors = new List<string>(firstErrors);
+            }
+
+            string path = string.IsNullOrEmpty(opts.StatsPath) ? Path.Combine(Path.GetDirectoryName(Application.dataPath) ?? ".", "autotest_stats.json") : opts.StatsPath;
+            try
+            {
+                var dir = Path.GetDirectoryName(path);
+                if (!string.IsNullOrEmpty(dir)) Directory.CreateDirectory(dir);
+                File.WriteAllText(path, JsonUtility.ToJson(report, true));
+            }
+            catch (Exception e) { Debug.LogWarning($"[AutoTest] could not write {path}: {e.Message}"); }
+
+            Debug.Log($"[AutoTest] RESULT route={report.route} end={endReason} segments={report.vehicle.segments_completed}/{report.vehicle.segments_total} " +
+                      $"duration={report.duration_s:0.0}s frames={report.frames} avg={report.avg_fps:0.0}fps 1%low={report.fps_1pct_low:0.0} p99={report.frametime_ms.p99:0.00}ms max={report.frametime_ms.max:0.0}ms hitches={report.hitches_over_50ms} " +
+                      $"exceptions={report.exceptions} errors={report.errors} shaderNull={report.shader_is_null} spawnedOnRoad={report.vehicle.spawned_on_road} falls={report.vehicle.falls_below_surface} " +
+                      $"airborne={report.vehicle.airborne_events} invisibleWalls={report.vehicle.invisible_wall_events} maxVertG={report.vehicle.max_vertical_accel_g:0.00} distance={report.vehicle.distance_m:0}m stats={path}");
+            yield return new WaitForSecondsRealtime(0.5f);
+            Application.Quit(exitCode);
+        }
+    }
+}

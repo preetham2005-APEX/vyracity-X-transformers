@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de4f16ad9d16094293547b87fa1a2a2, type: 3}
+  m_Name: R_DOWNTOWN_NIGHT
+  m_EditorClassIdentifier: VeyraCity.Testing::VeyraCity.Testing.VeyraTestRoute
+  Description: 'RACE-16 Midnight Crown Circuit (A22, A2, A1, A4): one lap at 70 km/h at 23:00 (card V0).'
+  DefaultTimeOfDay: 23
+  Segments:
+  - roadId: A22
+    sStart_m: 510
+    sEnd_m: 860
+    targetSpeed_kmh: 70
+    note: "RACE-16 start \u2192 A2"
+  - roadId: A2
+    sStart_m: 451
+    sEnd_m: 851
+    targetSpeed_kmh: 70
+    note: "\u2192 A1"
+  - roadId: A1
+    sStart_m: 820
+    sEnd_m: 4
+    targetSpeed_kmh: 70
+    note: "\u2192 A4"
+  - roadId: A4
+    sStart_m: 697
+    sEnd_m: 294
+    targetSpeed_kmh: 70
+    note: "\u2192 A22"
+  - roadId: A22
+    sStart_m: 0
+    sEnd_m: 510
+    targetSpeed_kmh: 70
+    note: "\u2192 RACE-16 start/finish"

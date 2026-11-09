@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1166448287af32f449ff91c22d0d4349, type: 3}
+  m_Name: VeyraAutoTestConfig
+  m_EditorClassIdentifier: VeyraCity.Testing::VeyraCity.Testing.VeyraAutoTestConfig
+  RoadNetworkJson: {fileID: 4900000, guid: b09136688e5c42443be45df83570db53, type: 3}
+  Routes:
+  - {fileID: 11400000, guid: d61eed1bcc328b94a81daf36d7f8af90, type: 2}
+  - {fileID: 11400000, guid: 99ce1cdd5abe5bb499204d1f943e4480, type: 2}
+  - {fileID: 11400000, guid: b2f9b86be60e1fc45bc9b2833bf114bc, type: 2}

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de4f16ad9d16094293547b87fa1a2a2, type: 3}
+  m_Name: R_SMOKE
+  m_EditorClassIdentifier: VeyraCity.Testing::VeyraCity.Testing.VeyraTestRoute
+  Description: "\u2248 60 s smoke drive: Crown Avenue over Crown Bridge, then Meridian Boulevard over Meridian Bridge (card V0)."
+  DefaultTimeOfDay: 12
+  Segments:
+  - roadId: A1
+    sStart_m: 1350
+    sEnd_m: 2075
+    targetSpeed_kmh: 60
+    note: Crown Avenue across Crown Bridge
+  - roadId: A2
+    sStart_m: 1580
+    sEnd_m: 1820
+    targetSpeed_kmh: 60
+    note: Meridian Boulevard across Meridian Bridge
