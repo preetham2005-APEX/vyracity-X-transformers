@@ -50,3 +50,6 @@ Desktop.ini
 
 # Editor-run save profiles
 /Saves/
+
+# Review screenshots: evidence stays on disk and is referenced by path in Docs (playbook S2)
+/[Ss]creenshots/
