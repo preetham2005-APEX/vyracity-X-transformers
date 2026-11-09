@@ -15,6 +15,7 @@
         "VeyraCity.World",
         "VeyraCity.Testing",
         "VeyraCity.AI",
+        "Unity.ProBuilder",
         "UnityEngine.UI",
         "Unity.InputSystem"
     ],

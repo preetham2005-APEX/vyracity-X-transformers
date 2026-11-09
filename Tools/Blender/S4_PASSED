@@ -1,0 +1,6 @@
+S4 axis round-trip test passed on 2026-11-10 (Blender 5.2.3 LTS -> Unity 6000.6.8f1).
+Evidence: Logs/S4/axis_test.txt, Logs/S4/axis_test_export.txt, Screenshots/2026-11-10_S4/.
+VC_Unity_World: FBX axis_forward -Z, axis_up Y, apply_unit_scale, FBX_SCALE_UNITS, bake_space_transform; Unity Scale Factor 1,
+Convert Units on, Bake Axis Conversion on -> Blender (x, y, z) = Unity (x, z, y); marker (100, 200, 5) -> (100, 5, 200).
+VC_Unity_Prop: same plus a 180 deg turn about Blender Z at export -> front (Blender -Y) faces Unity +Z.
+This file unlocks world-positioned exports in process_city_map.py. Delete it if the export or import settings change, and re-run S4.

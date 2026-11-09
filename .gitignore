@@ -53,3 +53,6 @@ Desktop.ini
 
 # Review screenshots: evidence stays on disk and is referenced by path in Docs (playbook S2)
 /[Ss]creenshots/
+
+# Python bytecode (Blender imports Tools/Blender modules) and Blender's automatic .blend1 backups/
+*.blend1

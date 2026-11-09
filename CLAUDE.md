@@ -18,7 +18,13 @@
 - Shader keywords toggled at runtime (e.g. _EMISSION) must be covered by a material in the build or by Assets/_Veyra/Art/Shaders/VC_Variants.shadervariants.
 - URP Lit packing: Smoothness = 1 - roughness, stored in Metallic alpha (Smoothness Source = Metallic Alpha). Normal maps marked as Normal Map. Emission in HDR.
 ## Blender → Unity
-- Use Tools/Blender/vc_tools.py. Export presets VC_Unity_Prop (local pivot) and VC_Unity_World (world-positioned chunks) as confirmed by the S4 axis round-trip test (record the final axis settings here after S4). Never export world-positioned content before S4 passes.
+- Use Tools/Blender/vc_tools.py. Export presets VC_Unity_Prop (local pivot) and VC_Unity_World (world-positioned chunks) as confirmed by the S4 axis round-trip test. Never export world-positioned content before S4 passes.
+- Confirmed settings (S4 passed 2026-11-10, Logs/S4/axis_test.txt):
+  - Both presets: FBX, axis_forward -Z, axis_up Y, global_scale 1, apply_unit_scale, apply_scale_options FBX_SCALE_UNITS, bake_space_transform (Apply Transform). Unity imports with Scale Factor 1, Convert Units on, Bake Axis Conversion on, Read/Write off (VeyraModelImportDefaults, first import of Assets/_Veyra/Art/Models and Art/World/Chunks). Net mapping: Blender (x, y, z) → Unity (x, z, y). With Bake Axis Conversion on, axis_forward makes no difference (-Z and Z measured identical).
+  - VC_Unity_World: no extra turn; world positions kept (marker at Blender (100, 200, 5) → Unity (100, 5, 200); north +Y → +Z, east +X → +X).
+  - VC_Unity_Prop: the pivot object is moved to the origin and turned 180° about Blender Z for the export, so a model's front (Blender -Y) faces Unity +Z; the file's top objects show rotation (0, 180, 0), scale 1.
+  - LODs: Unity puts ONE LODGroup on the FBX root and puts every *_LOD<n> mesh of the file in level n; export one LOD set (one prop or one chunk) per file.
+  - Veyra package glTF/GLB (glTF +X east, -Z north) through glTFast arrives turned 180°: instantiate with root rotation (0, 180, 0) via VeyraGltf.InstantiatePackageGlb (D1 blockout: Veyra Spire at (170, 9.5, -670)).
 - Pivot: buildings and props at base centre; road modules at the start of the piece; chunks at the chunk's south-west corner at height 0.
 - LOD naming: <name>_LOD0/_LOD1/_LOD2. Collision naming: COL_<name> = non-convex MeshCollider (roads, terrain-like surfaces), UCX_<name> = convex MeshCollider, UBX_<name> = BoxCollider. Collision meshes never render.
 ## Physics
