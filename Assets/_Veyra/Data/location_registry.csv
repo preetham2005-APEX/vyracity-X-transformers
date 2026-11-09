@@ -1,0 +1,210 @@
+id,name,category,district_id,district,x_m,y_m,norm_x,norm_y,unity_x,unity_y,unity_z,elevation_m,grid_cell,road,crew,details,description
+LM-01,Veyra Spire,Landmark,D1,Crown Downtown,4170.0,2330.0,0.5212,0.3883,170.0,9.8,-670.0,9.8,E4,Crown Avenue,,,"342 m glass-and-bronze tower, tallest in Veyra; aircraft-warning crown lights at night."
+LM-02,Crown Plaza,Landmark,D1,Crown Downtown,4030.0,2530.0,0.5038,0.4217,30.0,11.7,-470.0,11.7,E4,Mint Street,,,Granite pedestrian plaza with fountains at Crown Ave & Meridian Blvd; heart of downtown.
+LM-03,Exchange Tower,Landmark,D1,Crown Downtown,4470.0,2170.0,0.5587,0.3617,470.0,8.2,-830.0,8.2,E4,Union Street,,,Stepped 1980s stone-and-glass office tower; Level B4 garage beneath.
+LM-04,Harbor Viaduct,Landmark,D1,Crown Downtown,4300.0,1700.0,0.5375,0.2833,300.0,4.1,-1300.0,4.1,E5,Veyra Ring,,,Double-deck elevated section of the Veyra Ring along the downtown waterfront.
+LM-05,Sable Drawbridge,Landmark,D1,Crown Downtown,4945.0,1622.0,0.6181,0.2703,945.0,0.8,-1378.0,0.8,E5,Harbor Front Drive,,,Steel bascule bridge carrying Harbor Front Drive over the river mouth.
+LM-06,Lantern Point Lighthouse,Landmark,D2,Azure Coast,3870.0,360.0,0.4838,0.06,-130.0,9.4,-2640.0,9.4,D6,Lantern Lane,,,White stone lighthouse on the headland guarding the Lantern Strait.
+LM-07,Lantern Strait Bridge,Landmark,D2,Azure Coast,4535.0,395.0,0.5669,0.0658,535.0,-12.5,-2605.0,-12.5,E6,Azure Coastal Expressway,,,"1.27 km cable-stayed bridge, two 140 m A-frame pylons; carries C1 across the bay mouth."
+LM-08,Azure Pier,Landmark,D2,Azure Coast,1650.0,1000.0,0.2062,0.1667,-2350.0,4.4,-2000.0,4.4,B5,Azure Coastal Expressway,,,Timber pleasure pier with a small Ferris wheel and food stalls.
+LM-09,Palm Promenade,Landmark,D2,Azure Coast,2150.0,990.0,0.2687,0.165,-1850.0,2.4,-2010.0,2.4,C6,Azure Coastal Expressway,,,"1.5 km seafront promenade of royal palms, cafes and beach clubs."
+LM-10,Azure Marina,Landmark,D2,Azure Coast,3560.0,1250.0,0.445,0.2083,-440.0,1.7,-1750.0,1.7,D5,Marina Drive,,,"Yacht marina on Crown Bay's west shore; clubhouse, berths, seafood restaurants."
+LM-11,Gantry Container Terminal,Landmark,D3,Ironport Industrial Zone,6300.0,420.0,0.7875,0.07,2300.0,3.2,-2580.0,3.2,G6,Berth Road,,,Six-berth container terminal with eight ship-to-shore gantry cranes.
+LM-12,Ironport Refinery,Landmark,D3,Ironport Industrial Zone,6450.0,1260.0,0.8063,0.21,2450.0,3.2,-1740.0,3.2,G5,Refinery Road,,,"Flare stacks, cracking towers and pipe racks; lit like a city at night."
+LM-13,Falcon Control Tower,Landmark,D7,Falcon Airfield,6450.0,3200.0,0.8063,0.5333,2450.0,8.0,200.0,8.0,G3,Hangar Road,,,"1960s concrete control tower, now race control for airfield events."
+LM-14,Blackridge Summit Masts,Landmark,D4,Blackridge Mountains,5040.0,5290.0,0.63,0.8817,1040.0,466.9,2290.0,466.9,F1,Corvo Ridge Road,,,"Red-and-white broadcast masts on the 812 m summit, visible citywide."
+LM-15,Kestrel Tunnel,Landmark,D1,Crown Downtown,4650.0,3642.0,0.5813,0.607,650.0,117.9,642.0,117.9,E3,Veyra Ring,,,600 m twin-bore ring tunnel under Kestrel Hill.
+LM-16,Blackridge Tunnel,Landmark,D4,Blackridge Mountains,5075.0,5704.0,0.6344,0.9507,1075.0,342.4,2704.0,342.4,F1,Ridgeline Highway,,,1.22 km Ridgeline Highway tunnel through the summit's north spur; the 820 m Corvo Tunnel lies further east beyond the Corvo Creek Viaduct.
+LM-17,Highline Viaduct,Landmark,D4,Blackridge Mountains,3200.0,5650.0,0.4,0.9417,-800.0,36.8,2650.0,36.8,D1,Ridgeline Highway,,,Curved concrete viaduct 70 m above Hollow Creek gorge.
+LM-18,Mirror Lake,Landmark,D8,Redwood Valley,1050.0,5390.0,0.1313,0.8983,-2950.0,153.8,2390.0,153.8,B1,Mirror Lake Loop,,,Glacial lake in Redwood Valley; mirror-still at dawn.
+LM-19,Hollow Pines Village,Landmark,D4,Blackridge Mountains,2850.0,5560.0,0.3563,0.9267,-1150.0,145.3,2560.0,145.3,C1,Ridgeline Highway,,,Mountain village of timber chalets along the Ridgeline Highway.
+LM-20,Starlight Theater,Landmark,D6,Neon Mile,5440.0,2700.0,0.68,0.45,1440.0,12.8,-300.0,12.8,F4,Reel Street,,,Art-deco movie palace with a 30 m vertical marquee sign.
+LM-21,Grand Lumen Hotel,Landmark,D6,Neon Mile,5700.0,2980.0,0.7125,0.4967,1700.0,15.5,-20.0,15.5,F4,Encore Street,,,28-storey hotel; rooftop pool bar overlooks the Mile.
+LM-22,Sorrel Cape,Landmark,D2,Azure Coast,330.0,1110.0,0.0413,0.185,-3670.0,43.4,-1890.0,43.4,A5,Azure Coastal Expressway,,,Wind-swept headland at the west end of the coast; 60 m cliffs.
+LM-23,Ironport Freight Yard,Landmark,D3,Ironport Industrial Zone,7100.0,1200.0,0.8875,0.2,3100.0,3.2,-1800.0,3.2,H5,Port Road,,,Rail marshalling yard with gantry container loaders.
+LM-24,Westhaven Plaza,Landmark,D5,Westhaven Suburbs,1800.0,2450.0,0.225,0.4083,-2200.0,15.5,-550.0,15.5,B4,Laurel Street,,,Open-air neighbourhood shopping centre with a supermarket and cafes.
+LM-25,Sable Falls,Landmark,D8,Redwood Valley,1420.0,4795.0,0.1775,0.7992,-2580.0,143.6,1795.0,143.6,B2,Mirror Lake Loop,,,12 m waterfall where the Sable River leaves Mirror Lake's basin.
+LM-26,Millbrook Clock Tower,Landmark,D8,Redwood Valley,1620.0,4475.0,0.2025,0.7458,-2380.0,125.3,1475.0,125.3,B2,Redwood Parkway,,,Brick clock tower at the centre of Millbrook town.
+LM-27,Kestrel Heights,Landmark,D1,Crown Downtown,4300.0,3520.0,0.5375,0.5867,300.0,29.2,520.0,29.2,E3,Kestrel Drive,,,"Hillside luxury apartments above the river, facing the skyline."
+LM-28,Falcon Grandstands,Landmark,D7,Falcon Airfield,6820.0,2420.0,0.8525,0.4033,2820.0,7.9,-580.0,7.9,G4,Taxiway link A1,,,"Steel-frame grandstands (4,000 seats) beside the dragway start line."
+GAR-01,Juniper Lane Garage,Garage,D5,Westhaven Suburbs,2000.0,2150.0,0.25,0.3583,-2000.0,16.5,-850.0,16.5,C4,Juniper Lane,,Small residential starter garage,Player's starter garage: single-bay brick lock-up behind a rented duplex. Spawn point.
+GAR-02,Foundry 9,Garage,D3,Ironport Industrial Zone,5720.0,1430.0,0.715,0.2383,1720.0,3.2,-1570.0,3.2,F5,Warehouse Row,Iron Wolves,Industrial tuning workshop,"Industrial tuning workshop in a former steel foundry; dyno cell, fabrication bay. Iron Wolves HQ."
+GAR-03,Crown Motor Gallery,Garage,D1,Crown Downtown,4250.0,2010.0,0.5312,0.335,250.0,6.8,-990.0,6.8,E4,Spire Street,,Luxury downtown showroom,Glass-fronted luxury showroom and exotic dealership; player storage for high-value cars.
+GAR-04,Level B4,Garage,D1,Crown Downtown,4480.0,2125.0,0.56,0.3542,480.0,7.8,-875.0,7.8,E4,Union Street,The Nightshift,Underground performance garage,Underground performance garage four levels beneath Exchange Tower. Nightshift HQ.
+GAR-05,The Apex Shed,Garage,D4,Blackridge Mountains,3990.0,3770.0,0.4988,0.6283,-10.0,42.6,770.0,42.6,D3,Halcyon Pass Road,Apex Collective,Specialized drift workshop,"Timber-and-concrete drift workshop at the foot of Halcyon Pass; alignment rack, tyre wall. Apex Collective HQ."
+GAR-06,Kestrel Heights Penthouse Garage,Garage,D1,Crown Downtown,4430.0,3520.0,0.5537,0.5867,430.0,42.6,520.0,42.6,E3,Kestrel Drive,,High-end personal garage,High-end personal garage with car lift to a penthouse; city-view display wall.
+GAR-07,Westhaven Community Garage,Garage,D5,Westhaven Suburbs,2250.0,2700.0,0.2812,0.45,-1750.0,18.9,-300.0,18.9,C4,Oakridge Drive,,Community garage,Shared DIY bays; restoration missions and parts swaps.
+GAR-08,Marina Concourse Club,Garage,D2,Azure Coast,3430.0,1560.0,0.4288,0.26,-570.0,7.1,-1440.0,7.1,D5,Marina Drive,Coastline Society,Club garage,Glass clubhouse garage by the marina. Coastline Society HQ.
+GAR-09,The Redline Vault,Garage,D1,Crown Downtown,4200.0,2240.0,0.525,0.3733,200.0,9.0,-760.0,9.0,E4,Tower Street,Redline Syndicate,Elite private garage,"Invitation-only garage beneath Veyra Spire; vaulted concrete, museum lighting. Redline Syndicate HQ."
+GAR-10,Falcon Hangar 3,Garage,D7,Falcon Airfield,6250.0,2860.0,0.7812,0.4767,2250.0,8.0,-140.0,8.0,G4,Hangar Road,,Event garage,Event garage and pit lane for airfield competitions.
+GAR-11,Hollow Pines Service,Garage,D4,Blackridge Mountains,2820.0,5580.0,0.3525,0.93,-1180.0,175.2,2580.0,175.2,C1,Ridgeline Highway,,Roadside workshop,Mountain mechanic and fuel stop; tyre and brake service between runs.
+DLR-01,Second Gear Motors,Dealership,D5,Westhaven Suburbs,2400.0,2440.0,0.3,0.4067,-1600.0,18.3,-560.0,18.3,C4,Westhaven Avenue,,,Used-car lot with bunting; the player's first car purchase.
+DLR-02,Meridian Auto House,Dealership,D1,Crown Downtown,3600.0,2480.0,0.45,0.4133,-400.0,11.9,-520.0,11.9,D4,Meridian Boulevard,,,New sports and performance cars; multi-brand glass showroom.
+DLR-03,Lumen Imports,Dealership,D6,Neon Mile,5250.0,2260.0,0.6562,0.3767,1250.0,8.8,-740.0,8.8,F4,Arcade Street,,,Tuner-friendly imports and modern turbo hatchbacks.
+DLR-04,Ironport Salvage & Classics,Dealership,D3,Ironport Industrial Zone,6250.0,1420.0,0.7812,0.2367,2250.0,3.2,-1580.0,3.2,G5,Refinery Road,,,Project cars and parts cars in a fenced yard; cheap restoration bases.
+DLR-05,Coastline Classics,Dealership,D2,Azure Coast,2600.0,1080.0,0.325,0.18,-1400.0,3.9,-1920.0,3.9,C5,Azure Coastal Expressway,,,Restored classic GTs and convertibles under a palm-shaded canopy.
+RACE-01,Crown Sprint,Race start,D1,Crown Downtown,3420.0,2450.0,0.4275,0.4083,-580.0,12.2,-550.0,12.2,D4,Meridian Boulevard,,,Downtown street sprint: Meridian -> Crown Ave -> Harbor Front -> Sable Drawbridge.
+RACE-02,Ring Run,Race start,D1,Crown Downtown,4500.0,1700.0,0.5625,0.2833,500.0,3.8,-1300.0,3.8,E5,Veyra Ring,,,One lap of the Veyra Ring circuit incl. viaduct and Kestrel Tunnel.
+RACE-03,Azure Coast Sprint,Race start,D2,Azure Coast,422.3,1211.5,0.0528,0.2019,-3577.7,33.7,-1788.5,33.7,A5,Azure Coastal Expressway,,,Sunset sprint along C1 from Sorrel Cape to Lantern Junction.
+RACE-04,Strait Dash,Race start,D2,Azure Coast,3464.1,1316.2,0.433,0.2194,-535.9,4.4,-1683.8,4.4,D5,Marina Drive,,,Marina -> Lantern Junction -> across the Lantern Strait Bridge -> Gantry Interchange.
+RACE-05,Lumen Circuit,Race start,D6,Neon Mile,5197.2,2241.8,0.6497,0.3736,1197.2,8.6,-758.2,8.6,F4,"Lumen Avenue (""the Mile"")",,,"Night street circuit around the Mile, Union St and Marquee St."
+RACE-06,Ironport Industrial Circuit,Race start,D3,Ironport Industrial Zone,5901.2,774.7,0.7376,0.1291,1901.2,3.1,-2225.3,3.1,F6,Port Road,,,Wide-open circuit on Port Road and Berth Road between container stacks.
+RACE-07,Halcyon Ascent,Race start,D4,Blackridge Mountains,3937.8,3720.8,0.4922,0.6201,-62.2,39.2,720.8,39.2,D3,Halcyon Pass Road,,,"Touge uphill: Foothill Interchange to Halcyon Pass Top, four hairpins."
+RACE-08,Corvo Descent,Race start,D4,Blackridge Mountains,5039.6,5248.7,0.63,0.8748,1039.6,461.1,2248.7,461.1,F1,Corvo Ridge Road,,,Touge downhill from the summit along the ridge and down the Corvo switchbacks.
+RACE-09,Blackridge Traverse,Race start,D4,Blackridge Mountains,7078.6,5476.2,0.8848,0.9127,3078.6,171.2,2476.2,171.2,H1,Ridgeline Highway,,,Highway point-to-point through the Blackridge Tunnel to Redwood Junction.
+RACE-10,Redwood Rally Stage,Race start,D8,Redwood Valley,1520.0,4294.8,0.19,0.7158,-2480.0,115.8,1294.8,115.8,B2,Old Farm Road,,,Gravel rally stage on Old Farm Road to Mirror Lake.
+RACE-11,Westhaven Sprint,Race start,D5,Westhaven Suburbs,3100.0,2450.0,0.3875,0.4083,-900.0,14.5,-550.0,14.5,D4,Westhaven Avenue,,,"First AI race: Westhaven Ave west, then Redwood Parkway to the coast."
+RACE-12,Grand Loop,Race start,D2,Azure Coast,1298.8,1160.5,0.1623,0.1934,-2701.2,5.9,-1839.5,5.9,B5,Azure Coastal Expressway,,,"Endurance loop of the whole outer road network (C1, H2, H3)."
+RACE-13,Riverside Sprint,Race start,D5,Westhaven Suburbs,3148.8,3357.8,0.3936,0.5596,-851.2,24.0,357.8,24.0,D3,Sable Valley Link,,,Sable Valley Link from the ring to Millbrook along the river.
+RACE-14,Sorrel Ridge Run,Race start,D2,Azure Coast,580.3,1364.3,0.0725,0.2274,-3419.7,37.7,-1635.7,37.7,A5,Sorrel Ridge Road,,,Narrow hill road up the Sorrel Hills to Old Farm Road.
+RACE-15,Cliffside Run,Race start,D7,Falcon Airfield,7538.8,2254.5,0.9424,0.3758,3538.8,7.8,-745.5,7.8,H4,Azure Coastal Expressway,,,C1 north along the airfield coast and up the sea-cliff bends to Corvo Junction.
+RACE-16,Midnight Crown Circuit,Race start,D1,Crown Downtown,3700.0,2100.0,0.4625,0.35,-300.0,8.3,-900.0,8.3,D4,Regent Street,,,"Tight downtown night circuit: Regent, Meridian, Crown, Harbor Front."
+DFT-01,Corvo Switchbacks,Drift zone,D4,Blackridge Mountains,6390.0,4400.0,0.7987,0.7333,2390.0,192.6,1400.0,192.6,G2,,,radius 420 m,Eight hairpins on the Corvo descent; scored drift zone.
+DFT-02,Halcyon Hairpins,Drift zone,D4,Blackridge Mountains,4180.0,4580.0,0.5225,0.7633,180.0,259.1,1580.0,259.1,E2,,,radius 330 m,Hairpins 3-4 of Halcyon Pass Road; Apex Collective proving ground.
+DFT-03,Warehouse Row Drift Yard,Drift zone,D3,Ironport Industrial Zone,5720.0,1220.0,0.715,0.2033,1720.0,3.1,-1780.0,3.1,F5,,,radius 170 m,Floodlit yard between warehouses; cones and container walls.
+DFT-04,Falcon Apron Drift Pad,Drift zone,D7,Falcon Airfield,6420.0,2600.0,0.8025,0.4333,2420.0,8.0,-400.0,8.0,G4,,,radius 180 m,Legal drift competitions on the old apron; judges' tower.
+DFT-05,Hollow Pines Logging Yard,Drift zone,D4,Blackridge Mountains,2690.0,5440.0,0.3362,0.9067,-1310.0,132.8,2440.0,132.8,C1,,,radius 150 m,Loose-surface drift yard among log stacks.
+DRG-01,Falcon Dragway,Drag strip,D7,Falcon Airfield,6900.0,2300.0,0.8625,0.3833,2900.0,7.9,-700.0,7.9,G4,Falcon Runway 18/36,,"end=(6900,2702); length 402 m","Legal 402 m (quarter-mile) strip on the runway's south end; staging tree, timing."
+DRG-02,Berth Road Straight,Drag strip,D3,Ironport Industrial Zone,5700.0,318.6,0.7125,0.0531,1700.0,3.2,-2681.4,3.2,F6,Berth Road,,"end=(6500,307); length 800 m",Illegal 800 m roll-race along the container quay. Iron Wolves territory.
+DRG-03,Blackridge Tunnel Roll,Drag strip,D4,Blackridge Mountains,5600.0,5700.0,0.7,0.95,1600.0,232.4,2700.0,232.4,F1,Ridgeline Highway,,"end=(4600,5705); length 1000 m",Midnight roll race through the 1.2 km tunnel.
+STP-01,Viaduct Camera,Speed trap,D1,Crown Downtown,4700.0,1702.2,0.5875,0.2837,700.0,3.8,-1297.8,3.8,E5,Veyra Ring,,,Speed trap on the Harbor Viaduct.
+STP-02,Strait Camera,Speed trap,D2,Azure Coast,4199.9,418.7,0.525,0.0698,199.9,-8.2,-2581.3,-8.2,E6,Azure Coastal Expressway,,,Speed trap on the Lantern Strait Bridge.
+STP-03,Palm Promenade Camera,Speed trap,D2,Azure Coast,2450.1,1025.7,0.3063,0.171,-1549.9,3.6,-1974.3,3.6,C5,Azure Coastal Expressway,,,Speed trap on the C1 beach straight.
+STP-04,Kestrel Tunnel Camera,Speed trap,D1,Crown Downtown,4500.0,3641.3,0.5625,0.6069,500.0,98.5,641.3,98.5,E3,Veyra Ring,,,Speed trap inside the Kestrel Tunnel.
+STP-05,Falcon Coast Camera,Speed trap,D7,Falcon Airfield,7575.7,2800.0,0.947,0.4667,3575.7,7.3,-200.0,7.3,H4,Azure Coastal Expressway,,,Speed trap on C1 beside the airfield fence.
+STP-06,Blackridge Tunnel Camera,Speed trap,D4,Blackridge Mountains,5000.0,5700.0,0.625,0.95,1000.0,340.3,2700.0,340.3,F1,Ridgeline Highway,,,Speed trap inside the Blackridge Tunnel.
+STP-07,Parkway Camera,Speed trap,D5,Westhaven Suburbs,1440.0,3600.0,0.18,0.6,-2560.0,62.4,600.0,62.4,B3,Redwood Parkway,,,Speed trap on the Redwood Parkway straight.
+STP-08,Riverside Camera,Speed trap,D8,Redwood Valley,2300.0,3930.0,0.2875,0.655,-1700.0,91.3,930.0,91.3,C3,Sable Valley Link,,,Speed trap on the Sable Valley Link.
+STP-09,Meridian Camera,Speed trap,D1,Crown Downtown,3850.0,2450.0,0.4813,0.4083,-150.0,11.1,-550.0,11.1,D4,Meridian Boulevard,,,Speed trap on Meridian Boulevard.
+STP-10,Mile Camera,Speed trap,D6,Neon Mile,5600.8,2849.5,0.7001,0.4749,1600.8,14.2,-150.5,14.2,F4,"Lumen Avenue (""the Mile"")",,,Speed trap on Lumen Avenue.
+SPZ-01,Ring North Zone,Speed zone,D4,Blackridge Mountains,3699.9,3606.7,0.4625,0.6011,-300.1,29.9,606.7,29.9,D3,Veyra Ring,,"end=(5795,3509); length 2112 m",Average-speed zone: Foothill Interchange through Kestrel Tunnel to Northgate.
+SPZ-02,Azure Mile Zone,Speed zone,D2,Azure Coast,1350.0,1150.0,0.1688,0.1917,-2650.0,5.9,-1850.0,5.9,B5,Azure Coastal Expressway,,"end=(2899,930); length 1569 m",Average-speed zone along the beaches.
+SPZ-03,Airfield Coast Zone,Speed zone,D7,Falcon Airfield,7549.1,2302.3,0.9436,0.3837,3549.1,7.8,-697.7,7.8,H4,Azure Coastal Expressway,,"end=(7546,3699); length 1400 m",Average-speed zone on the east-coast straight.
+SPZ-04,Highline Zone,Speed zone,D4,Blackridge Mountains,2700.0,5470.0,0.3375,0.9117,-1300.0,133.3,2470.0,133.3,C1,Ridgeline Highway,,"end=(3700,5726); length 1043 m",Average-speed zone over the Highline Viaduct to Pinecrest.
+SPZ-05,Parkway Zone,Speed zone,D8,Redwood Valley,1500.6,4099.9,0.1876,0.6833,-2499.4,103.6,1099.9,103.6,B2,Redwood Parkway,,"end=(1375,3001); length 1107 m",Average-speed zone Millbrook to Westhaven.
+TT-01,Halcyon Time Trial,Time trial / test,D4,Blackridge Mountains,3972.7,3783.8,0.4966,0.6306,-27.3,43.5,783.8,43.5,D3,Halcyon Pass Road,,,"Solo uphill time trial, same route as Halcyon Ascent."
+TT-02,Falcon Handling Course,Time trial / test,D7,Falcon Airfield,6567.1,2480.5,0.8209,0.4134,2567.1,7.9,-519.5,7.9,G4,Falcon Perimeter Road,,,Cone slalom and braking boxes on the apron and Taxiway Alpha.
+TT-03,Falcon Top Speed Run,Time trial / test,D7,Falcon Airfield,6900.0,2200.0,0.8625,0.3667,2900.0,7.9,-800.0,7.9,G4,Falcon Runway 18/36,,,Full 1.9 km runway; measured top speed at the 1.5 km gate.
+TT-04,Falcon Acceleration Test,Time trial / test,D7,Falcon Airfield,6720.0,2350.0,0.84,0.3917,2720.0,7.9,-650.0,7.9,G4,Taxiway Alpha,,,0-100 / 0-200 km/h and 100-0 braking on Taxiway Alpha.
+TT-05,Ring Time Attack,Time trial / test,D5,Westhaven Suburbs,3250.0,2000.0,0.4062,0.3333,-750.0,8.2,-1000.0,8.2,D4,Veyra Ring,,,Flying-lap time attack on the Veyra Ring.
+TT-06,Redwood Gravel Trial,Time trial / test,D8,Redwood Valley,1151.1,4236.0,0.1439,0.706,-2848.9,108.2,1236.0,108.2,B2,Old Farm Road,,,Solo gravel time trial on Old Farm Road.
+MEET-01,The Undercroft,Car meet,D3,Ironport Industrial Zone,5880.0,1660.0,0.735,0.2767,1880.0,4.5,-1340.0,4.5,F5,Foundry Lane,Iron Wolves,,"Meet beneath the Dockside Interchange flyovers; sodium light, concrete pillars. Iron Wolves + Nightshift."
+MEET-02,Warehouse Row Meet,Car meet,D3,Ironport Industrial Zone,5450.0,1600.0,0.6813,0.2667,1450.0,3.2,-1400.0,3.2,F5,Foundry Lane,Iron Wolves,,"Open roller doors, work lights, engine bays on show."
+MEET-03,Crown Underground P3,Car meet,D1,Crown Downtown,3900.0,2040.0,0.4875,0.34,-100.0,7.5,-960.0,7.5,D4,Bishop Street,The Nightshift,,Underground car park meet beneath a downtown office block.
+MEET-04,Vantage Rooftop,Car meet,D6,Neon Mile,5760.0,2400.0,0.72,0.4,1760.0,11.6,-600.0,11.6,F4,Lantern Alley,The Nightshift,,Rooftop of a 9-level parking structure over the Mile; skyline backdrop.
+MEET-05,Marina Concourse,Car meet,D2,Azure Coast,3520.0,1340.0,0.44,0.2233,-480.0,3.2,-1660.0,3.2,D5,Marina Drive,Coastline Society,,Sunday-evening luxury concours by the yachts.
+MEET-06,Halcyon Summit Lot,Car meet,D4,Blackridge Mountains,4390.0,5075.0,0.5487,0.8458,390.0,325.3,2075.0,325.3,E1,Summit Road,Apex Collective,,Gravel lot at the pass top; midnight Apex Collective gathering.
+MEET-07,Falcon Field Meet,Car meet,D7,Falcon Airfield,6400.0,2260.0,0.8,0.3767,2400.0,8.0,-740.0,8.0,G4,Terminal Road,,,"Old terminal car park; monthly community meet, multiplayer hub (20 players)."
+MEET-08,Sunset Beach Lot,Car meet,D2,Azure Coast,1150.0,1150.0,0.1437,0.1917,-2850.0,6.5,-1850.0,6.5,B5,Azure Coastal Expressway,,,Beachfront lot for casual multiplayer meets at golden hour.
+MEET-09,Westgate Retail Park,Car meet,D5,Westhaven Suburbs,3000.0,2560.0,0.375,0.4267,-1000.0,17.7,-440.0,17.7,D4,Oakridge Drive,,,Big-box retail car park by the ring; default 10-20 player online meet.
+MEET-10,Lumen Cross Meet,Car meet,D6,Neon Mile,5380.0,2470.0,0.6725,0.4117,1380.0,10.9,-530.0,10.9,F4,Reel Street,The Nightshift,,Street meet in the closed-off plaza at Lumen Cross on Friday nights.
+MEET-11,Millbrook Diner,Car meet,D8,Redwood Valley,1680.0,4390.0,0.21,0.7317,-2320.0,122.4,1390.0,122.4,B2,Sable Valley Link,,,Chrome-trimmed roadside diner; countryside cruise stop.
+MEET-12,Redline Invitationals,Car meet,D1,Crown Downtown,4170.0,2280.0,0.5212,0.38,170.0,9.3,-720.0,9.3,E4,Tower Street,Redline Syndicate,,Invite-only showcase inside the Redline Vault.
+VP-01,Skyline Overlook,Scenic viewpoint,D4,Blackridge Mountains,4560.0,4490.0,0.57,0.7483,560.0,208.7,1490.0,208.7,E2,Halcyon Pass Road,,,"Signature view: downtown skyline, Crown Bay, Lantern Strait Bridge and the Calder Sea."
+VP-02,Blackridge Summit Overlook,Scenic viewpoint,D4,Blackridge Mountains,4980.0,5230.0,0.6225,0.8717,980.0,456.5,2230.0,456.5,E1,Summit Road,,,360-degree view from 812 m; whole map visible on clear days.
+VP-03,Lighthouse Lookout,Scenic viewpoint,D2,Azure Coast,3810.0,430.0,0.4763,0.0717,-190.0,22.3,-2570.0,22.3,D6,Lantern Lane,,,Bridge and skyline across the strait from the lighthouse car park.
+VP-04,Sorrel Cape Overlook,Scenic viewpoint,D2,Azure Coast,380.0,1170.0,0.0475,0.195,-3620.0,36.9,-1830.0,36.9,A5,Azure Coastal Expressway,,,Western cliffs; sun sets over the open sea.
+VP-05,Corvo Saddle Lookout,Scenic viewpoint,D4,Blackridge Mountains,6320.0,4990.0,0.79,0.8317,2320.0,322.3,1990.0,322.3,G2,Corvo Ridge Road,,,View east over the airfield and the sea cliffs.
+VP-06,Kestrel Hill Park,Scenic viewpoint,D4,Blackridge Mountains,4650.0,3770.0,0.5813,0.6283,650.0,100.0,770.0,100.0,E3,Kestrel Hill Road,,,Small park on Kestrel Hill above the tunnel; downtown rooftops.
+VP-07,Sorrel Hills Lookout,Scenic viewpoint,D8,Redwood Valley,330.0,2600.0,0.0413,0.4333,-3670.0,251.3,-400.0,251.3,A4,Sorrel Ridge Road,,,Hilltop over Westhaven and the coast.
+VP-08,Mirror Lake Jetty,Scenic viewpoint,D8,Redwood Valley,1050.0,4800.0,0.1313,0.8,-2950.0,143.9,1800.0,143.9,B2,Mirror Lake Loop,,,"Wooden jetty; lake, forest and Blackridge reflections."
+VP-09,Highline Vista,Scenic viewpoint,D4,Blackridge Mountains,3110.0,5610.0,0.3887,0.935,-890.0,81.9,2610.0,81.9,D1,Ridgeline Highway,,,Pull-off at the viaduct's west end over Hollow Creek gorge.
+VP-10,Cliffside Bend,Scenic viewpoint,D4,Blackridge Mountains,7650.0,5130.0,0.9563,0.855,3650.0,87.2,2130.0,87.2,H1,Azure Coastal Expressway,,,C1 pull-off 200 m above the sea.
+VP-11,Crown Bay Promenade,Scenic viewpoint,D1,Crown Downtown,4500.0,1610.0,0.5625,0.2683,500.0,0.9,-1390.0,0.9,E5,Harbor Front Drive,,,Waterfront walk; Lantern Strait Bridge framed by the bay.
+COL-01,Downtown Rooftop Badges,Collectible area,D1,Crown Downtown,4300.0,2650.0,0.5375,0.4417,300.0,12.6,-350.0,12.6,E4,,,radius 480 m,12 crew badges on rooftops and parking decks.
+COL-02,Ironport Container Tags,Collectible area,D3,Ironport Industrial Zone,6350.0,700.0,0.7937,0.1167,2350.0,3.2,-2300.0,3.2,G6,,,radius 520 m,10 graffiti tags hidden among container stacks.
+COL-03,Blackridge Trail Markers,Collectible area,D4,Blackridge Mountains,4050.0,4950.0,0.5062,0.825,50.0,342.4,1950.0,342.4,E2,,,radius 520 m,8 old trail markers in the forest above Halcyon Pass.
+COL-04,Redwood Barn Signs,Collectible area,D8,Redwood Valley,900.0,4300.0,0.1125,0.7167,-3100.0,112.5,1300.0,112.5,A2,,,radius 560 m,10 vintage enamel signs on barns and silos.
+COL-05,Azure Beach Shells,Collectible area,D2,Azure Coast,1750.0,1050.0,0.2188,0.175,-2250.0,4.9,-1950.0,4.9,B5,,,radius 650 m,10 brass shell plaques along the promenade.
+COL-06,Neon Mile Signs,Collectible area,D6,Neon Mile,5450.0,2650.0,0.6813,0.4417,1450.0,12.3,-350.0,12.3,F4,,,radius 430 m,15 neon signs to switch on for the Mile's restoration.
+COL-07,Falcon Hangar Plates,Collectible area,D7,Falcon Airfield,6450.0,3000.0,0.8063,0.5,2450.0,8.0,0.0,8.0,G3,,,radius 420 m,8 aircraft data plates in hangars.
+COL-08,Westhaven Yard Gnomes,Collectible area,D5,Westhaven Suburbs,1900.0,2750.0,0.2375,0.4583,-2100.0,19.1,-250.0,19.1,B4,,,radius 600 m,12 garden gnomes in front yards.
+COL-09,Corvo Ridge Relics,Collectible area,D4,Blackridge Mountains,6000.0,4900.0,0.75,0.8167,2000.0,327.9,1900.0,327.9,G2,,,radius 480 m,6 WWII-era lookout relics along the ridge.
+COL-10,Sorrel Hills Cairns,Collectible area,D8,Redwood Valley,350.0,3000.0,0.0437,0.5,-3650.0,236.1,0.0,236.1,A3,,,radius 420 m,6 stone cairns on the hill road.
+JMP-01,Container Ramp,Stunt jump,D3,Ironport Industrial Zone,6650.3,655.0,0.8313,0.1092,2650.3,3.1,-2345.0,3.1,G6,Port Road,,,Container flat-rack ramp over a stack row.
+JMP-02,Crown Ramp,Stunt jump,D1,Crown Downtown,4100.0,1760.0,0.5125,0.2933,100.0,4.6,-1240.0,4.6,E5,Crown Avenue,,,Unfinished viaduct slip ramp launching over Bastion Street.
+JMP-03,Kestrel Crest,Stunt jump,D1,Crown Downtown,3800.0,3450.5,0.475,0.5751,-200.0,19.0,450.5,19.0,D3,Kestrel Drive,,,Blind crest on Kestrel Drive; airtime over the river view.
+JMP-04,Halcyon Cutback,Stunt jump,D4,Blackridge Mountains,3880.3,4170.7,0.485,0.6951,-119.7,136.1,1170.7,136.1,D2,Halcyon Pass Road,,,Jump off hairpin 2 onto the lower switchback.
+JMP-05,Sable River Leap,Stunt jump,D8,Redwood Valley,2100.0,4080.0,0.2625,0.68,-1900.0,98.6,1080.0,98.6,C2,Sable Valley Link,,,Earth ramp off the Sable Valley Link across a meander.
+JMP-06,Hangar Roof,Stunt jump,D7,Falcon Airfield,6720.0,3500.0,0.84,0.5833,2720.0,9.7,500.0,9.7,G3,Taxiway Alpha,,,Stair-truck ramp on Taxiway Alpha.
+JMP-07,Dune Kicker,Stunt jump,D2,Azure Coast,760.0,1297.0,0.095,0.2162,-3240.0,13.9,-1703.0,13.9,A5,Azure Coastal Expressway,,,Sand dune lip beside C1 near Sorrel Cape.
+JMP-08,Hayloft Hop,Stunt jump,D8,Redwood Valley,851.9,4160.3,0.1065,0.6934,-3148.1,102.4,1160.3,102.4,A2,Old Farm Road,,,Hay-bale ramp on Old Farm Road.
+JMP-09,Rooftop Gap,Stunt jump,D6,Neon Mile,5805.6,2631.1,0.7257,0.4385,1805.6,13.4,-368.9,13.4,F4,Meridian Boulevard,,,Parking-structure ramp gap to the next rooftop.
+DEL-01,Westhaven Depot,Delivery hub,D5,Westhaven Suburbs,2850.0,2050.0,0.3563,0.3417,-1150.0,11.4,-950.0,11.4,C4,Dune Road,,,Parcel depot; starter delivery runs around Westhaven.
+DEL-02,Ironport Freight Office,Delivery hub,D3,Ironport Industrial Zone,6820.0,1420.0,0.8525,0.2367,2820.0,3.2,-1580.0,3.2,G5,Refinery Road,,,Time-critical parts deliveries across the city.
+DEL-03,Falcon Logistics Park,Delivery hub,D7,Falcon Airfield,6300.0,1950.0,0.7875,0.325,2300.0,9.0,-1050.0,9.0,G5,Terminal Road,,,Air-freight style cargo runs to the mountains and valley.
+DEL-04,Millbrook Farm Co-op,Delivery hub,D8,Redwood Valley,1520.0,4370.0,0.19,0.7283,-2480.0,121.7,1370.0,121.7,B2,Mill Street,,,Produce deliveries on rural roads; fragile cargo.
+DEL-05,Downtown Courier Hub,Delivery hub,D1,Crown Downtown,3700.0,1900.0,0.4625,0.3167,-300.0,6.6,-1100.0,6.6,D5,Regent Street,,,Urban courier jobs through traffic.
+PHO-01,Spire Reflection,Photo challenge,D1,Crown Downtown,4060.0,2560.0,0.5075,0.4267,60.0,11.9,-440.0,11.9,E4,Crown Avenue,,,Car reflected in Crown Plaza's fountain with Veyra Spire behind.
+PHO-02,Bridge at Sunset,Photo challenge,D2,Azure Coast,3780.0,600.0,0.4725,0.1,-220.0,15.0,-2400.0,15.0,D6,Azure Coastal Expressway,,,Car on Lantern Point with the bridge at golden hour.
+PHO-03,Neon Rain,Photo challenge,D6,Neon Mile,5400.0,2600.0,0.675,0.4333,1400.0,11.8,-400.0,11.8,F4,Reel Street,,,Wet-night shot on the Mile under the Starlight marquee.
+PHO-04,Gantry Silhouettes,Photo challenge,D3,Ironport Industrial Zone,6100.0,330.0,0.7625,0.055,2100.0,3.2,-2670.0,3.2,G6,Berth Road,,,Car silhouetted against gantry cranes at dusk.
+PHO-05,Mirror Lake Dawn,Photo challenge,D8,Redwood Valley,640.0,5000.0,0.08,0.8333,-3360.0,146.1,2000.0,146.1,A1,Old Farm Road,,,Dawn reflection on the lake's west shore.
+PHO-06,Runway Horizon,Photo challenge,D7,Falcon Airfield,6900.0,3900.0,0.8625,0.65,2900.0,8.2,900.0,8.2,G3,Falcon Runway 18/36,,,Long-lens runway shot with heat haze.
+PHO-07,Golden Promenade,Photo challenge,D2,Azure Coast,2400.0,1010.0,0.3,0.1683,-1600.0,3.6,-1990.0,3.6,C5,Azure Coastal Expressway,,,Car under the palms at golden hour.
+PHO-08,Millbrook Bridge,Photo challenge,D8,Redwood Valley,1700.0,4580.0,0.2125,0.7633,-2300.0,125.8,1580.0,125.8,B2,Redwood Parkway,,,Stone arch bridge with the clock tower behind.
+PHO-09,Tunnel Lights,Photo challenge,D1,Crown Downtown,4300.0,3625.0,0.5375,0.6042,300.0,30.7,625.0,30.7,E3,Veyra Ring,,,Light trails at the Kestrel Tunnel west portal.
+PHO-10,Cliffside Coast,Photo challenge,D4,Blackridge Mountains,7620.0,4700.0,0.9525,0.7833,3620.0,39.7,1700.0,39.7,H2,Azure Coastal Expressway,,,C1 sea-cliff bend from above.
+RST-01,Hartley Barn,Hidden garage / barn find,D8,Redwood Valley,700.0,4320.0,0.0875,0.72,-3300.0,110.7,1320.0,110.7,A2,Old Farm Road,,,Hidden barn; a dust-covered 1970s coupe under a tarp.
+RST-02,Old Timber Mill,Hidden garage / barn find,D8,Redwood Valley,1300.0,5600.0,0.1625,0.9333,-2700.0,155.8,2600.0,155.8,B1,Timber Road,,,Abandoned sawmill; a rally car left in the drying shed.
+RST-03,Pinecrest Service Station,Hidden garage / barn find,D4,Blackridge Mountains,3580.0,5750.0,0.4475,0.9583,-420.0,107.8,2750.0,107.8,D1,Ridgeline Highway,,,Abandoned 1960s gas station; a classic in the service bay.
+RST-04,Falcon Hangar 6,Hidden garage / barn find,D7,Falcon Airfield,6280.0,3330.0,0.785,0.555,2280.0,15.3,330.0,15.3,G3,Hangar Road,,,Sealed hangar holding a forgotten endurance racer.
+RST-05,Lantern Boathouse,Hidden garage / barn find,D2,Azure Coast,3640.0,650.0,0.455,0.1083,-360.0,22.1,-2350.0,22.1,D6,Azure Coastal Expressway,,,Boathouse with a seized roadster on blocks.
+RST-06,Container 7731,Hidden garage / barn find,D3,Ironport Industrial Zone,6750.0,400.0,0.8438,0.0667,2750.0,3.2,-2600.0,3.2,G6,Berth Road,,,Unclaimed container with a crated import.
+DST-01,Crown Downtown,District anchor,D1,Crown Downtown,4050.0,2780.0,0.5062,0.4633,50.0,13.9,-220.0,13.9,E4,,,,District label anchor.
+DST-02,Azure Coast,District anchor,D2,Azure Coast,1700.0,1235.0,0.2125,0.2058,-2300.0,5.8,-1765.0,5.8,B5,,,,District label anchor.
+DST-03,Ironport Industrial Zone,District anchor,D3,Ironport Industrial Zone,6450.0,1000.0,0.8063,0.1667,2450.0,3.2,-2000.0,3.2,G5,,,,District label anchor.
+DST-04,Blackridge Mountains,District anchor,D4,Blackridge Mountains,5450.0,4500.0,0.6813,0.75,1450.0,197.6,1500.0,197.6,F2,,,,District label anchor.
+DST-05,Westhaven Suburbs,District anchor,D5,Westhaven Suburbs,1950.0,3080.0,0.2437,0.5133,-2050.0,25.9,80.0,25.9,B3,,,,District label anchor.
+DST-06,Neon Mile,District anchor,D6,Neon Mile,5500.0,3120.0,0.6875,0.52,1500.0,16.1,120.0,16.1,F3,,,,District label anchor.
+DST-07,Falcon Airfield,District anchor,D7,Falcon Airfield,7180.0,3350.0,0.8975,0.5583,3180.0,8.0,350.0,8.0,H3,,,,District label anchor.
+DST-08,Redwood Valley,District anchor,D8,Redwood Valley,1250.0,3950.0,0.1562,0.6583,-2750.0,91.0,950.0,91.0,B3,,,,District label anchor.
+IC-01,Harbor Interchange,Interchange,D1,Crown Downtown,3298.7,1766.0,0.4123,0.2943,-701.3,7.9,-1234.0,7.9,D5,R1 / A8,,,Trumpet interchange; ring to Marina Drive & Azure Coast
+IC-02,Westgate Interchange,Interchange,D1,Crown Downtown,3250.0,2450.0,0.4062,0.4083,-750.0,13.2,-550.0,13.2,D4,R1 / A2 / A3,,,Diamond interchange; Westhaven Ave passes under the ring and becomes Meridian Blvd
+IC-03,Sable Interchange,Interchange,D1,Crown Downtown,3250.0,3300.0,0.4062,0.55,-750.0,22.3,300.0,22.3,D3,R1 / H4,,,Half-cloverleaf; ring to the Sable Valley Link
+IC-04,Foothill Interchange,Interchange,D1,Crown Downtown,3900.0,3620.0,0.4875,0.6033,-100.0,29.9,620.0,29.9,D3,R1 / A1 / A18,,,Diamond; Crown Ave north becomes Halcyon Pass Road
+IC-05,Northgate Interchange,Interchange,D6,Neon Mile,6015.4,3376.3,0.7519,0.5627,2015.4,22.4,376.3,22.4,G3,R1 / A7 / A20,,,Three-level junction at the ring's NE corner; Lumen Ave and Corvo Ridge Road
+IC-06,Falcon Interchange,Interchange,D7,Falcon Airfield,6040.0,2700.0,0.755,0.45,2040.0,21.1,-300.0,21.1,G4,R1 / A2 / A6,,,Diamond; Meridian Blvd to Airfield Road
+IC-07,Dockside Interchange,Interchange,D6,Neon Mile,5945.8,1803.4,0.7432,0.3006,1945.8,10.1,-1196.6,10.1,F5,R1 / C1,,,Four-level stack; ring meets the coastal expressway. The Undercroft meet sits beneath it
+IC-08,Crown Interchange,Interchange,D1,Crown Downtown,4100.0,1700.0,0.5125,0.2833,100.0,3.8,-1300.0,3.8,E5,R1 / A1 / A4,,,Viaduct slip ramps down to Crown Ave & Harbor Front Drive
+IC-09,Gantry Interchange,Interchange,D3,Ironport Industrial Zone,5797.5,801.7,0.7247,0.1336,1797.5,3.1,-2198.3,3.1,F6,C1 / A9 / A5 / A12,,,Cloverleaf serving the port gates
+JN-01,Lantern Junction,Junction,D2,Azure Coast,3449.6,719.3,0.4312,0.1199,-550.4,9.7,-2280.7,9.7,D6,C1 / A8,,,Signalised T-junction at the base of Lantern Point
+JN-02,Sunset Junction,Junction,D2,Azure Coast,1250.0,1175.0,0.1562,0.1958,-2750.0,6.0,-1825.0,6.0,B5,C1 / H3,,,Large roundabout with palm-planted island
+JN-03,Corvo Junction,Junction,D4,Blackridge Mountains,7150.0,5450.0,0.8938,0.9083,3150.0,164.3,2450.0,164.3,H1,C1 / H2,,,Mountain T-junction above the sea cliffs
+JN-04,Redwood Junction,Junction,D8,Redwood Valley,2150.0,5150.0,0.2687,0.8583,-1850.0,117.9,2150.0,117.9,C1,H2 / H3 / A17,,,Rural roundabout with timber-frame gas station
+JN-05,Millbrook Cross,Junction,D8,Redwood Valley,1600.7,4449.7,0.2001,0.7416,-2399.3,125.5,1449.7,125.5,B2,H3 / H4 / A16 / A26,,,Town-centre junction with clock tower
+JN-06,Lumen Cross,Junction,D6,Neon Mile,5373.7,2507.6,0.6717,0.4179,1373.7,11.1,-492.4,11.1,F4,A7 / A2,,,Signalised plaza where the Mile crosses Meridian Blvd
+JN-07,Halcyon North Junction,Junction,D4,Blackridge Mountains,4300.0,5700.0,0.5375,0.95,300.0,166.4,2700.0,166.4,E1,A18 / H2,,,"T-junction, west portal side of the Blackridge Tunnel"
+JN-08,Halcyon Pass Top,Junction,D4,Blackridge Mountains,4349.6,5049.7,0.5437,0.8416,349.6,286.7,2049.7,286.7,E1,A18 / A19,,,Saddle junction with gravel summit lot
+JN-09,Palm Street Junction,Junction,D2,Azure Coast,2121.0,1053.1,0.2651,0.1755,-1879.0,3.3,-1946.9,3.3,C5,C1 / A23,,,"Signalised junction, beach access"
+JN-10,Coral Street Junction,Junction,D2,Azure Coast,1070.3,1228.9,0.1338,0.2048,-2929.7,5.1,-1771.1,5.1,B5,C1 / A24,,,"Signalised junction, beach access"
+JN-11,Dune Road Junction,Junction,D2,Azure Coast,2841.5,947.5,0.3552,0.1579,-1158.5,3.4,-2052.5,3.4,C6,C1 / A25,,,"Signalised junction, beach access"
+JN-12,Sorrel Junction,Junction,D2,Azure Coast,599.9,1271.4,0.075,0.2119,-3400.1,23.0,-1728.6,23.0,A5,C1 / A13,,,T-junction at the foot of the Sorrel Hills
+JN-13,Perimeter Junction,Junction,D7,Falcon Airfield,7516.6,2150.7,0.9396,0.3585,3516.6,7.8,-849.3,7.8,H4,C1 / A11,,,Airfield south gate junction
+JN-14,Port Road North Junction,Junction,D7,Falcon Airfield,7099.7,1851.2,0.8875,0.3085,3099.7,11.3,-1148.8,11.3,H5,C1 / A5,,,Signalised truck junction by the freight yard
+JN-15,Lighthouse Turn,Junction,D2,Azure Coast,3700.0,560.0,0.4625,0.0933,-300.0,23.9,-2440.0,23.9,D6,C1 / A27,,,Right-in/right-out turn to Lantern Lane and the lighthouse
+EL-01,Harbor Viaduct,Elevated road,D1,Crown Downtown,4565.9,1700.0,0.5707,0.2833,565.9,4.1,-1300.0,4.1,E5,R1,,length 2655 m (centre point listed),Elevated road on Veyra Ring
+TN-02,Kestrel Tunnel,Tunnel,D1,Crown Downtown,4650.0,3642.5,0.5813,0.6071,650.0,117.9,642.5,117.9,E3,R1,,length 600 m (centre point listed),Tunnel on Veyra Ring
+BR-03,Lantern Strait Bridge,Bridge,D2,Azure Coast,4534.9,395.0,0.5669,0.0658,534.9,-12.5,-2605.0,-12.5,E6,C1,,length 1272 m (centre point listed),Bridge on Azure Coastal Expressway
+EL-04,Gantry Expressway (elevated),Elevated road,D3,Ironport Industrial Zone,5899.7,1032.7,0.7375,0.1721,1899.7,3.2,-1967.3,3.2,F5,C1,,length 2076 m (centre point listed),Elevated road on Azure Coastal Expressway
+TN-05,Blackridge Tunnel,Tunnel,D4,Blackridge Mountains,5089.9,5700.0,0.6362,0.95,1089.9,345.2,2700.0,345.2,F1,H2,,length 1220 m (centre point listed),Tunnel on Ridgeline Highway
+TN-06,Corvo Tunnel,Tunnel,D4,Blackridge Mountains,6589.8,5625.0,0.8237,0.9375,2589.8,340.1,2625.0,340.1,G1,H2,,length 832 m (centre point listed),Tunnel on Ridgeline Highway
+VD-07,Corvo Creek Viaduct,Viaduct,D4,Blackridge Mountains,5994.9,5700.0,0.7494,0.95,1994.9,151.1,2700.0,151.1,F1,H2,,length 310 m (centre point listed),Viaduct on Ridgeline Highway
+VD-08,Highline Viaduct,Viaduct,D4,Blackridge Mountains,3200.0,5650.0,0.4,0.9417,-800.0,36.8,2650.0,36.8,D1,H2,,length 306 m (centre point listed),Viaduct on Ridgeline Highway
+BR-09,West Sable Bridge,Bridge,D1,Crown Downtown,3250.0,3476.3,0.4062,0.5794,-750.0,40.4,476.3,40.4,D3,R1,,length 105 m (centre point listed),Bridge on Veyra Ring
+BR-10,Sable Mouth Span (Harbor Viaduct),Bridge,D1,Crown Downtown,4956.9,1707.9,0.6196,0.2847,956.9,0.8,-1292.1,0.8,E5,R1,,length 146 m (centre point listed),Bridge on Veyra Ring
+BR-11,Millbrook Bridge,Bridge,D8,Redwood Valley,1656.5,4563.0,0.2071,0.7605,-2343.5,122.2,1563.0,122.2,B2,H3,,length 73 m (centre point listed),Bridge on Redwood Parkway
+BR-12,Crown Bridge,Bridge,D1,Crown Downtown,4099.2,3312.0,0.5124,0.552,99.2,16.0,312.0,16.0,E3,A1,,length 113 m (centre point listed),Bridge on Crown Avenue
+BR-13,Meridian Bridge,Bridge,D1,Crown Downtown,4951.0,2450.6,0.6189,0.4084,951.0,2.4,-549.4,2.4,E4,A2,,length 136 m (centre point listed),Bridge on Meridian Boulevard
+BR-14,Sable Drawbridge,Bridge,D1,Crown Downtown,4964.4,1623.6,0.6205,0.2706,964.4,0.8,-1376.4,0.8,E5,A4,,length 149 m (centre point listed),Bridge on Harbor Front Drive
+BR-15,Union Street Bridge,Bridge,D1,Crown Downtown,4944.0,2100.0,0.618,0.35,944.0,0.8,-900.0,0.8,E4,A10,,length 140 m (centre point listed),Bridge on Union Street
+BR-16,Regent Street Bridge,Bridge,D1,Crown Downtown,3700.0,3356.4,0.4625,0.5594,-300.0,26.8,356.4,26.8,D3,A22,,length 109 m (centre point listed),Bridge on Regent Street
+BR-17,Outflow Bridge,Bridge,D8,Redwood Valley,1363.0,4855.9,0.1704,0.8093,-2637.0,145.3,1855.9,145.3,B2,A15,,length 65 m (centre point listed),Bridge on Mirror Lake Loop
+SC-01,Rail Spur Cut,Hidden shortcut,D3,Ironport Industrial Zone,6987.5,1257.5,0.8734,0.2096,2987.5,3.2,-1742.5,3.2,G5,,,"polyline (6800,1480) → (6950,1350) → (7000,1150) → (7200,1050); 628 m","Drive the freight-rail service track through the yard, skipping Port Road's bends."
+SC-02,Spire Construction Ramp,Hidden shortcut,D1,Crown Downtown,3923.3,2823.3,0.4904,0.4706,-76.7,14.4,-176.7,14.4,D4,,,"polyline (3850,2750) → (3920,2820) → (4000,2900); 212 m",Ramps and cleared lot of the unfinished Atlas Tower; diagonal cut between Bishop St and Mint St.
+SC-03,Kestrel Service Tunnel,Hidden shortcut,D1,Crown Downtown,4533.3,3551.7,0.5667,0.5919,533.3,66.5,551.7,66.5,E3,,,"polyline (4450,3480) → (4530,3550) → (4620,3625); 223 m","Maintenance adit beside the Kestrel Tunnel, linking Kestrel Drive to the ring's service lane."
+SC-04,Orchard Track,Hidden shortcut,D8,Redwood Valley,1350.0,4176.7,0.1688,0.6961,-2650.0,106.7,1176.7,106.7,B2,,,"polyline (1500,4100) → (1350,4180) → (1200,4250); 336 m","Dirt track between apple rows, linking Redwood Parkway to Old Farm Road."
+SC-05,Halcyon Firebreak,Hidden shortcut,D4,Blackridge Mountains,4286.7,4250.0,0.5358,0.7083,286.7,144.2,1250.0,144.2,E2,,,"polyline (4330,4410) → (4300,4250) → (4230,4090); 337 m",Steep firebreak that skips hairpin 2 on Halcyon Pass Road. Rough surface.
+SC-06,Marina Boardwalk,Hidden shortcut,D2,Azure Coast,3512.5,1127.5,0.4391,0.1879,-487.5,3.1,-1872.5,3.1,D5,,,"polyline (3470,1000) → (3540,1080) → (3560,1180) → (3480,1250); 315 m","Timber boardwalk along the marina berths; narrow, cafe furniture to dodge."
+SC-07,Hangar Run,Hidden shortcut,D7,Falcon Airfield,6476.7,3053.3,0.8096,0.5089,2476.7,8.0,53.3,8.0,G3,,,"polyline (6260,3000) → (6450,3060) → (6720,3100); 472 m",Through open hangar doors H4-H5 from the apron to Taxiway Alpha.
+SC-08,Lumen Arcade Alley,Hidden shortcut,D6,Neon Mile,5176.7,2326.7,0.6471,0.3878,1176.7,9.3,-673.3,9.3,F4,,,"polyline (5100,2250) → (5180,2330) → (5250,2400); 212 m",Covered service alley behind the Starlight Theater.

@@ -181,15 +181,13 @@ namespace VeyraCity.EditorTools
             return res;
         }
 
+        /// <summary>Chunk of a Unity position; positions outside the world are clamped onto its edge chunks.</summary>
         public static string ChunkOf(float unityX, float unityZ)
         {
-            float x = unityX + 4000f, y = unityZ + 3000f;
-            int col = Mathf.Clamp(Mathf.FloorToInt(x / 1000f), 0, 7);
-            int rowFromSouth = Mathf.Clamp(Mathf.FloorToInt(y / 1000f), 0, 5);
-            int row = 6 - rowFromSouth;
-            int i = Mathf.Clamp(Mathf.FloorToInt((x - col * 1000f) / 250f), 0, 3);
-            int j = Mathf.Clamp(Mathf.FloorToInt((y - rowFromSouth * 1000f) / 250f), 0, 3);
-            return $"Chunk_{"ABCDEFGH"[col]}{row}_{i}{j}";
+            var w = VeyraCity.Core.WorldCoordinates.FromUnity(new Vector3(unityX, 0f, unityZ));
+            return VeyraCity.Core.WorldCoordinates.ChunkOf(
+                Mathf.Clamp(w.x, 0f, VeyraCity.Core.WorldCoordinates.WorldWidthM - 0.01f),
+                Mathf.Clamp(w.y, 0f, VeyraCity.Core.WorldCoordinates.WorldHeightM - 0.01f));
         }
 
         // ------------------------------------------------------------------ style kits

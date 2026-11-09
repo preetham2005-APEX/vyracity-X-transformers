@@ -1,0 +1,1258 @@
+{
+ "format": "16-bit unsigned little-endian RAW, 513x513, rows ordered south->north (row 0 = southern edge, Unity local z=0)",
+ "height_mapping": "metres = -60.0 + value/65535 * 560.0",
+ "unity_terrain_height": 560.0,
+ "tile_world_size_m": 1000,
+ "sea_level_m": 0.0,
+ "mirror_lake_level_m": 150,
+ "tiles": [
+  {
+   "tile": "A6",
+   "file": "tiles_raw16/terrain_A6.raw",
+   "resolution": 513,
+   "world_x_m": [
+    0,
+    1000
+   ],
+   "world_y_m": [
+    0,
+    1000
+   ],
+   "unity_position": [
+    -4000,
+    -60.0,
+    -3000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -18.39,
+   "max_height_m": 5.33,
+   "land_fraction": 0.015
+  },
+  {
+   "tile": "A5",
+   "file": "tiles_raw16/terrain_A5.raw",
+   "resolution": 513,
+   "world_x_m": [
+    0,
+    1000
+   ],
+   "world_y_m": [
+    1000,
+    2000
+   ],
+   "unity_position": [
+    -4000,
+    -60.0,
+    -2000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -7.04,
+   "max_height_m": 212.43,
+   "land_fraction": 0.8
+  },
+  {
+   "tile": "A4",
+   "file": "tiles_raw16/terrain_A4.raw",
+   "resolution": 513,
+   "world_x_m": [
+    0,
+    1000
+   ],
+   "world_y_m": [
+    2000,
+    3000
+   ],
+   "unity_position": [
+    -4000,
+    -60.0,
+    -1000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 11.2,
+   "max_height_m": 271.09,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "A3",
+   "file": "tiles_raw16/terrain_A3.raw",
+   "resolution": 513,
+   "world_x_m": [
+    0,
+    1000
+   ],
+   "world_y_m": [
+    3000,
+    4000
+   ],
+   "unity_position": [
+    -4000,
+    -60.0,
+    0
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 15.51,
+   "max_height_m": 250.49,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "A2",
+   "file": "tiles_raw16/terrain_A2.raw",
+   "resolution": 513,
+   "world_x_m": [
+    0,
+    1000
+   ],
+   "world_y_m": [
+    4000,
+    5000
+   ],
+   "unity_position": [
+    -4000,
+    -60.0,
+    1000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 86.35,
+   "max_height_m": 272.7,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "A1",
+   "file": "tiles_raw16/terrain_A1.raw",
+   "resolution": 513,
+   "world_x_m": [
+    0,
+    1000
+   ],
+   "world_y_m": [
+    5000,
+    6000
+   ],
+   "unity_position": [
+    -4000,
+    -60.0,
+    2000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 129.94,
+   "max_height_m": 289.26,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "B6",
+   "file": "tiles_raw16/terrain_B6.raw",
+   "resolution": 513,
+   "world_x_m": [
+    1000,
+    2000
+   ],
+   "world_y_m": [
+    0,
+    1000
+   ],
+   "unity_position": [
+    -3000,
+    -60.0,
+    -3000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -17.31,
+   "max_height_m": 6.01,
+   "land_fraction": 0.033
+  },
+  {
+   "tile": "B5",
+   "file": "tiles_raw16/terrain_B5.raw",
+   "resolution": 513,
+   "world_x_m": [
+    1000,
+    2000
+   ],
+   "world_y_m": [
+    1000,
+    2000
+   ],
+   "unity_position": [
+    -3000,
+    -60.0,
+    -2000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -4.73,
+   "max_height_m": 16.3,
+   "land_fraction": 0.971
+  },
+  {
+   "tile": "B4",
+   "file": "tiles_raw16/terrain_B4.raw",
+   "resolution": 513,
+   "world_x_m": [
+    1000,
+    2000
+   ],
+   "world_y_m": [
+    2000,
+    3000
+   ],
+   "unity_position": [
+    -3000,
+    -60.0,
+    -1000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 10.17,
+   "max_height_m": 24.42,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "B3",
+   "file": "tiles_raw16/terrain_B3.raw",
+   "resolution": 513,
+   "world_x_m": [
+    1000,
+    2000
+   ],
+   "world_y_m": [
+    3000,
+    4000
+   ],
+   "unity_position": [
+    -3000,
+    -60.0,
+    0
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 15.51,
+   "max_height_m": 98.44,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "B2",
+   "file": "tiles_raw16/terrain_B2.raw",
+   "resolution": 513,
+   "world_x_m": [
+    1000,
+    2000
+   ],
+   "world_y_m": [
+    4000,
+    5000
+   ],
+   "unity_position": [
+    -3000,
+    -60.0,
+    1000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 85.3,
+   "max_height_m": 151.09,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "B1",
+   "file": "tiles_raw16/terrain_B1.raw",
+   "resolution": 513,
+   "world_x_m": [
+    1000,
+    2000
+   ],
+   "world_y_m": [
+    5000,
+    6000
+   ],
+   "unity_position": [
+    -3000,
+    -60.0,
+    2000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 129.94,
+   "max_height_m": 284.39,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "C6",
+   "file": "tiles_raw16/terrain_C6.raw",
+   "resolution": 513,
+   "world_x_m": [
+    2000,
+    3000
+   ],
+   "world_y_m": [
+    0,
+    1000
+   ],
+   "unity_position": [
+    -2000,
+    -60.0,
+    -3000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -14.54,
+   "max_height_m": 6.17,
+   "land_fraction": 0.148
+  },
+  {
+   "tile": "C5",
+   "file": "tiles_raw16/terrain_C5.raw",
+   "resolution": 513,
+   "world_x_m": [
+    2000,
+    3000
+   ],
+   "world_y_m": [
+    1000,
+    2000
+   ],
+   "unity_position": [
+    -2000,
+    -60.0,
+    -2000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 1.93,
+   "max_height_m": 16.14,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "C4",
+   "file": "tiles_raw16/terrain_C4.raw",
+   "resolution": 513,
+   "world_x_m": [
+    2000,
+    3000
+   ],
+   "world_y_m": [
+    2000,
+    3000
+   ],
+   "unity_position": [
+    -2000,
+    -60.0,
+    -1000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 9.17,
+   "max_height_m": 24.85,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "C3",
+   "file": "tiles_raw16/terrain_C3.raw",
+   "resolution": 513,
+   "world_x_m": [
+    2000,
+    3000
+   ],
+   "world_y_m": [
+    3000,
+    4000
+   ],
+   "unity_position": [
+    -2000,
+    -60.0,
+    0
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 20.13,
+   "max_height_m": 96.55,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "C2",
+   "file": "tiles_raw16/terrain_C2.raw",
+   "resolution": 513,
+   "world_x_m": [
+    2000,
+    3000
+   ],
+   "world_y_m": [
+    4000,
+    5000
+   ],
+   "unity_position": [
+    -2000,
+    -60.0,
+    1000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 82.78,
+   "max_height_m": 329.84,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "C1",
+   "file": "tiles_raw16/terrain_C1.raw",
+   "resolution": 513,
+   "world_x_m": [
+    2000,
+    3000
+   ],
+   "world_y_m": [
+    5000,
+    6000
+   ],
+   "unity_position": [
+    -2000,
+    -60.0,
+    2000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 98.48,
+   "max_height_m": 318.53,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "D6",
+   "file": "tiles_raw16/terrain_D6.raw",
+   "resolution": 513,
+   "world_x_m": [
+    3000,
+    4000
+   ],
+   "world_y_m": [
+    0,
+    1000
+   ],
+   "unity_position": [
+    -1000,
+    -60.0,
+    -3000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -11.98,
+   "max_height_m": 29.86,
+   "land_fraction": 0.37
+  },
+  {
+   "tile": "D5",
+   "file": "tiles_raw16/terrain_D5.raw",
+   "resolution": 513,
+   "world_x_m": [
+    3000,
+    4000
+   ],
+   "world_y_m": [
+    1000,
+    2000
+   ],
+   "unity_position": [
+    -1000,
+    -60.0,
+    -2000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -13.53,
+   "max_height_m": 10.92,
+   "land_fraction": 0.806
+  },
+  {
+   "tile": "D4",
+   "file": "tiles_raw16/terrain_D4.raw",
+   "resolution": 513,
+   "world_x_m": [
+    3000,
+    4000
+   ],
+   "world_y_m": [
+    2000,
+    3000
+   ],
+   "unity_position": [
+    -1000,
+    -60.0,
+    -1000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 6.88,
+   "max_height_m": 20.53,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "D3",
+   "file": "tiles_raw16/terrain_D3.raw",
+   "resolution": 513,
+   "world_x_m": [
+    3000,
+    4000
+   ],
+   "world_y_m": [
+    3000,
+    4000
+   ],
+   "unity_position": [
+    -1000,
+    -60.0,
+    0
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 15.56,
+   "max_height_m": 115.61,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "D2",
+   "file": "tiles_raw16/terrain_D2.raw",
+   "resolution": 513,
+   "world_x_m": [
+    3000,
+    4000
+   ],
+   "world_y_m": [
+    4000,
+    5000
+   ],
+   "unity_position": [
+    -1000,
+    -60.0,
+    1000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 82.81,
+   "max_height_m": 413.25,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "D1",
+   "file": "tiles_raw16/terrain_D1.raw",
+   "resolution": 513,
+   "world_x_m": [
+    3000,
+    4000
+   ],
+   "world_y_m": [
+    5000,
+    6000
+   ],
+   "unity_position": [
+    -1000,
+    -60.0,
+    2000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 4.06,
+   "max_height_m": 413.43,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "E6",
+   "file": "tiles_raw16/terrain_E6.raw",
+   "resolution": 513,
+   "world_x_m": [
+    4000,
+    5000
+   ],
+   "world_y_m": [
+    0,
+    1000
+   ],
+   "unity_position": [
+    0,
+    -60.0,
+    -3000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -16.25,
+   "max_height_m": 5.35,
+   "land_fraction": 0.008
+  },
+  {
+   "tile": "E5",
+   "file": "tiles_raw16/terrain_E5.raw",
+   "resolution": 513,
+   "world_x_m": [
+    4000,
+    5000
+   ],
+   "world_y_m": [
+    1000,
+    2000
+   ],
+   "unity_position": [
+    0,
+    -60.0,
+    -2000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -16.35,
+   "max_height_m": 6.99,
+   "land_fraction": 0.42
+  },
+  {
+   "tile": "E4",
+   "file": "tiles_raw16/terrain_E4.raw",
+   "resolution": 513,
+   "world_x_m": [
+    4000,
+    5000
+   ],
+   "world_y_m": [
+    2000,
+    3000
+   ],
+   "unity_position": [
+    0,
+    -60.0,
+    -1000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 0.45,
+   "max_height_m": 15.91,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "E3",
+   "file": "tiles_raw16/terrain_E3.raw",
+   "resolution": 513,
+   "world_x_m": [
+    4000,
+    5000
+   ],
+   "world_y_m": [
+    3000,
+    4000
+   ],
+   "unity_position": [
+    0,
+    -60.0,
+    0
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 4.78,
+   "max_height_m": 130.32,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "E2",
+   "file": "tiles_raw16/terrain_E2.raw",
+   "resolution": 513,
+   "world_x_m": [
+    4000,
+    5000
+   ],
+   "world_y_m": [
+    4000,
+    5000
+   ],
+   "unity_position": [
+    0,
+    -60.0,
+    1000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 49.41,
+   "max_height_m": 403.01,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "E1",
+   "file": "tiles_raw16/terrain_E1.raw",
+   "resolution": 513,
+   "world_x_m": [
+    4000,
+    5000
+   ],
+   "world_y_m": [
+    5000,
+    6000
+   ],
+   "unity_position": [
+    0,
+    -60.0,
+    2000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 101.25,
+   "max_height_m": 461.64,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "F6",
+   "file": "tiles_raw16/terrain_F6.raw",
+   "resolution": 513,
+   "world_x_m": [
+    5000,
+    6000
+   ],
+   "world_y_m": [
+    0,
+    1000
+   ],
+   "unity_position": [
+    1000,
+    -60.0,
+    -3000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -15.19,
+   "max_height_m": 5.93,
+   "land_fraction": 0.542
+  },
+  {
+   "tile": "F5",
+   "file": "tiles_raw16/terrain_F5.raw",
+   "resolution": 513,
+   "world_x_m": [
+    5000,
+    6000
+   ],
+   "world_y_m": [
+    1000,
+    2000
+   ],
+   "unity_position": [
+    1000,
+    -60.0,
+    -2000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -14.95,
+   "max_height_m": 13.26,
+   "land_fraction": 0.813
+  },
+  {
+   "tile": "F4",
+   "file": "tiles_raw16/terrain_F4.raw",
+   "resolution": 513,
+   "world_x_m": [
+    5000,
+    6000
+   ],
+   "world_y_m": [
+    2000,
+    3000
+   ],
+   "unity_position": [
+    1000,
+    -60.0,
+    -1000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 0.86,
+   "max_height_m": 22.5,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "F3",
+   "file": "tiles_raw16/terrain_F3.raw",
+   "resolution": 513,
+   "world_x_m": [
+    5000,
+    6000
+   ],
+   "world_y_m": [
+    3000,
+    4000
+   ],
+   "unity_position": [
+    1000,
+    -60.0,
+    0
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 7.4,
+   "max_height_m": 77.5,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "F2",
+   "file": "tiles_raw16/terrain_F2.raw",
+   "resolution": 513,
+   "world_x_m": [
+    5000,
+    6000
+   ],
+   "world_y_m": [
+    4000,
+    5000
+   ],
+   "unity_position": [
+    1000,
+    -60.0,
+    1000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 45.12,
+   "max_height_m": 409.38,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "F1",
+   "file": "tiles_raw16/terrain_F1.raw",
+   "resolution": 513,
+   "world_x_m": [
+    5000,
+    6000
+   ],
+   "world_y_m": [
+    5000,
+    6000
+   ],
+   "unity_position": [
+    1000,
+    -60.0,
+    2000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 116.11,
+   "max_height_m": 478.35,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "G6",
+   "file": "tiles_raw16/terrain_G6.raw",
+   "resolution": 513,
+   "world_x_m": [
+    6000,
+    7000
+   ],
+   "world_y_m": [
+    0,
+    1000
+   ],
+   "unity_position": [
+    2000,
+    -60.0,
+    -3000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -4.56,
+   "max_height_m": 3.84,
+   "land_fraction": 0.797
+  },
+  {
+   "tile": "G5",
+   "file": "tiles_raw16/terrain_G5.raw",
+   "resolution": 513,
+   "world_x_m": [
+    6000,
+    7000
+   ],
+   "world_y_m": [
+    1000,
+    2000
+   ],
+   "unity_position": [
+    2000,
+    -60.0,
+    -2000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 3.08,
+   "max_height_m": 15.91,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "G4",
+   "file": "tiles_raw16/terrain_G4.raw",
+   "resolution": 513,
+   "world_x_m": [
+    6000,
+    7000
+   ],
+   "world_y_m": [
+    2000,
+    3000
+   ],
+   "unity_position": [
+    2000,
+    -60.0,
+    -1000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 7.88,
+   "max_height_m": 24.74,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "G3",
+   "file": "tiles_raw16/terrain_G3.raw",
+   "resolution": 513,
+   "world_x_m": [
+    6000,
+    7000
+   ],
+   "world_y_m": [
+    3000,
+    4000
+   ],
+   "unity_position": [
+    2000,
+    -60.0,
+    0
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 7.79,
+   "max_height_m": 85.29,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "G2",
+   "file": "tiles_raw16/terrain_G2.raw",
+   "resolution": 513,
+   "world_x_m": [
+    6000,
+    7000
+   ],
+   "world_y_m": [
+    4000,
+    5000
+   ],
+   "unity_position": [
+    2000,
+    -60.0,
+    1000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 7.55,
+   "max_height_m": 343.72,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "G1",
+   "file": "tiles_raw16/terrain_G1.raw",
+   "resolution": 513,
+   "world_x_m": [
+    6000,
+    7000
+   ],
+   "world_y_m": [
+    5000,
+    6000
+   ],
+   "unity_position": [
+    2000,
+    -60.0,
+    2000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": 105.95,
+   "max_height_m": 439.79,
+   "land_fraction": 1.0
+  },
+  {
+   "tile": "H6",
+   "file": "tiles_raw16/terrain_H6.raw",
+   "resolution": 513,
+   "world_x_m": [
+    7000,
+    8000
+   ],
+   "world_y_m": [
+    0,
+    1000
+   ],
+   "unity_position": [
+    3000,
+    -60.0,
+    -3000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -9.52,
+   "max_height_m": 6.02,
+   "land_fraction": 0.433
+  },
+  {
+   "tile": "H5",
+   "file": "tiles_raw16/terrain_H5.raw",
+   "resolution": 513,
+   "world_x_m": [
+    7000,
+    8000
+   ],
+   "world_y_m": [
+    1000,
+    2000
+   ],
+   "unity_position": [
+    3000,
+    -60.0,
+    -2000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -4.85,
+   "max_height_m": 12.5,
+   "land_fraction": 0.779
+  },
+  {
+   "tile": "H4",
+   "file": "tiles_raw16/terrain_H4.raw",
+   "resolution": 513,
+   "world_x_m": [
+    7000,
+    8000
+   ],
+   "world_y_m": [
+    2000,
+    3000
+   ],
+   "unity_position": [
+    3000,
+    -60.0,
+    -1000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -5.17,
+   "max_height_m": 10.12,
+   "land_fraction": 0.778
+  },
+  {
+   "tile": "H3",
+   "file": "tiles_raw16/terrain_H3.raw",
+   "resolution": 513,
+   "world_x_m": [
+    7000,
+    8000
+   ],
+   "world_y_m": [
+    3000,
+    4000
+   ],
+   "unity_position": [
+    3000,
+    -60.0,
+    0
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -5.24,
+   "max_height_m": 19.13,
+   "land_fraction": 0.774
+  },
+  {
+   "tile": "H2",
+   "file": "tiles_raw16/terrain_H2.raw",
+   "resolution": 513,
+   "world_x_m": [
+    7000,
+    8000
+   ],
+   "world_y_m": [
+    4000,
+    5000
+   ],
+   "unity_position": [
+    3000,
+    -60.0,
+    1000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -7.01,
+   "max_height_m": 246.47,
+   "land_fraction": 0.76
+  },
+  {
+   "tile": "H1",
+   "file": "tiles_raw16/terrain_H1.raw",
+   "resolution": 513,
+   "world_x_m": [
+    7000,
+    8000
+   ],
+   "world_y_m": [
+    5000,
+    6000
+   ],
+   "unity_position": [
+    3000,
+    -60.0,
+    2000
+   ],
+   "unity_size": [
+    1000,
+    560.0,
+    1000
+   ],
+   "min_height_m": -8.76,
+   "max_height_m": 259.23,
+   "land_fraction": 0.945
+  }
+ ]
+}

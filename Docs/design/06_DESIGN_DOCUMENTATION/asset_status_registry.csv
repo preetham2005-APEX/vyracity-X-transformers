@@ -1,0 +1,219 @@
+asset,file,type,stage,notes
+Master world map,01_MASTER_MAP/master_world_map.png,image (map),APPROVED DESIGN v1.0,Cartography generated from validated data
+Satellite-style terrain map,01_MASTER_MAP/satellite_map.png,image (map),APPROVED DESIGN v1.0,"Rendered from terrain, land cover, roads and buildings"
+Map legend,01_MASTER_MAP/map_legend.png,image (map),APPROVED DESIGN v1.0,
+Concept image downtown.png,02_DISTRICT_CONCEPTS/downtown.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image azure_coast.png,02_DISTRICT_CONCEPTS/azure_coast.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image ironport.png,02_DISTRICT_CONCEPTS/ironport.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image blackridge.png,02_DISTRICT_CONCEPTS/blackridge.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image westhaven.png,02_DISTRICT_CONCEPTS/westhaven.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image neon_mile.png,02_DISTRICT_CONCEPTS/neon_mile.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image falcon_airfield.png,02_DISTRICT_CONCEPTS/falcon_airfield.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image redwood_valley.png,02_DISTRICT_CONCEPTS/redwood_valley.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image drag_racing.png,03_RACING_LOCATIONS/drag_racing.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image drift_zone.png,03_RACING_LOCATIONS/drift_zone.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image street_racing.png,03_RACING_LOCATIONS/street_racing.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image mountain_racing.png,03_RACING_LOCATIONS/mountain_racing.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image car_meet.png,03_RACING_LOCATIONS/car_meet.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image coastal_highway.png,04_WORLD_EXPLORATION/coastal_highway.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image downtown_driving.png,04_WORLD_EXPLORATION/downtown_driving.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image mountain_overlook.png,04_WORLD_EXPLORATION/mountain_overlook.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image industrial_roads.png,04_WORLD_EXPLORATION/industrial_roads.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image countryside.png,04_WORLD_EXPLORATION/countryside.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image starter_garage.png,05_GARAGES_AND_CARS/starter_garage.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image performance_garage.png,05_GARAGES_AND_CARS/performance_garage.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image luxury_showroom.png,05_GARAGES_AND_CARS/luxury_showroom.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Concept image car_customization.png,05_GARAGES_AND_CARS/car_customization.png,concept image,NOT GENERATED,No image-generation tool in this session; prompt provided
+Terrain heightmap tiles (48),08_3D_ASSETS/terrain/tiles_raw16/*.raw,Unity terrain RAW,GREYBOX,Roads cut/filled in; needs sculpt/erosion pass for FINAL
+Splat & land-cover masks,08_3D_ASSETS/terrain/*.png,texture masks,GREYBOX,8 layers in 2 RGBA maps
+Road network geometry,08_3D_ASSETS/roads/road_network_geometry.json,spline data,GREYBOX,Validated centrelines + 3D profiles; import into spline road tool
+Crown Downtown blockout,08_3D_ASSETS/district_blockouts/blockout_D1_crown_downtown.glb,GLB,BLOCKOUT (district art pass: see D1/D4 rows),"446,504 tris; 282 buildings"
+Azure Coast blockout,08_3D_ASSETS/district_blockouts/blockout_D2_azure_coast.glb,GLB,BLOCKOUT,"169,324 tris; 82 buildings"
+Ironport Industrial Zone blockout,08_3D_ASSETS/district_blockouts/blockout_D3_ironport.glb,GLB,BLOCKOUT,"328,368 tris; 122 buildings"
+Blackridge Mountains blockout,08_3D_ASSETS/district_blockouts/blockout_D4_blackridge.glb,GLB,BLOCKOUT (district art pass: see D1/D4 rows),"306,616 tris; 28 buildings"
+Westhaven Suburbs blockout,08_3D_ASSETS/district_blockouts/blockout_D5_westhaven.glb,GLB,BLOCKOUT,"366,984 tris; 1973 buildings"
+Neon Mile blockout,08_3D_ASSETS/district_blockouts/blockout_D6_neon_mile.glb,GLB,BLOCKOUT,"281,740 tris; 119 buildings"
+Falcon Airfield blockout,08_3D_ASSETS/district_blockouts/blockout_D7_falcon_airfield.glb,GLB,BLOCKOUT,"229,640 tris; 11 buildings"
+Redwood Valley blockout,08_3D_ASSETS/district_blockouts/blockout_D8_redwood_valley.glb,GLB,BLOCKOUT,"175,884 tris; 91 buildings"
+World overview blockout,08_3D_ASSETS/district_blockouts/world_overview_blockout.glb,GLB,BLOCKOUT,"614,810 tris"
+Road kit: road_MW_straight_10m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"straight, 32.0 m wide"
+Road kit: road_MW_straight_20m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"straight, 32.0 m wide"
+Road kit: road_EX_straight_10m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"straight, 24.0 m wide"
+Road kit: road_EX_straight_20m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"straight, 24.0 m wide"
+Road kit: road_HW_straight_10m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"straight, 18.0 m wide"
+Road kit: road_HW_straight_20m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"straight, 18.0 m wide"
+Road kit: road_AR_straight_10m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"straight, 20.0 m wide"
+Road kit: road_AR_straight_20m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"straight, 20.0 m wide"
+Road kit: road_CO_straight_10m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"straight, 11.0 m wide"
+Road kit: road_CO_straight_20m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"straight, 11.0 m wide"
+Road kit: road_MT_straight_10m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"straight, 7.5 m wide"
+Road kit: road_MT_straight_20m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"straight, 7.5 m wide"
+Road kit: road_RU_straight_10m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"straight, 7.0 m wide"
+Road kit: road_RU_straight_20m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"straight, 7.0 m wide"
+Road kit: road_GR_straight_10m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"straight, 5.5 m wide"
+Road kit: road_GR_straight_20m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"straight, 5.5 m wide"
+Road kit: road_MW_curve_R400_15deg,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"curve, 32.0 m wide"
+Road kit: road_EX_curve_R250_15deg,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"curve, 24.0 m wide"
+Road kit: road_HW_curve_R200_15deg,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"curve, 18.0 m wide"
+Road kit: road_HW_curve_R120_30deg,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"curve, 18.0 m wide"
+Road kit: road_AR_curve_R60_45deg,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"curve, 20.0 m wide"
+Road kit: road_AR_curve_R60_90deg,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"curve, 20.0 m wide"
+Road kit: road_CO_curve_R25_90deg,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"curve, 11.0 m wide"
+Road kit: road_MT_curve_R30_90deg,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"curve, 7.5 m wide"
+Road kit: road_MT_curve_R60_45deg,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"curve, 7.5 m wide"
+Road kit: road_MT_hairpin_R14,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"curve, 7.5 m wide"
+Road kit: road_RU_curve_R50_45deg,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"curve, 7.0 m wide"
+Road kit: road_RU_curve_R40_90deg,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"curve, 7.0 m wide"
+Road kit: road_GR_curve_R30_90deg,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"curve, 5.5 m wide"
+Road kit: road_GR_curve_R60_45deg,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"curve, 5.5 m wide"
+Road kit: junction_CO_4way,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"4-way intersection, 23.0 m wide"
+Road kit: junction_CO_T,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"3-way intersection, 23.0 m wide"
+Road kit: junction_AR_4way,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"4-way intersection, 32.0 m wide"
+Road kit: roundabout_R24,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"roundabout, 57 m wide"
+Road kit: sidewalk_straight_10m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"sidewalk 3 m + kerb, 3 m wide"
+Road kit: bridge_deck_AR_20m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"bridge deck + parapets, 22 m wide"
+Road kit: bridge_pier_10m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"twin-column pier, 10 m, 14 m wide"
+Road kit: viaduct_MW_30m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"Harbor Viaduct span + hammerhead pier, 33 m wide"
+Road kit: tunnel_section_HW_20m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"cut-and-cover tunnel section with light strips, 13 m wide"
+Road kit: tunnel_portal_HW,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"tunnel portal frame, 22 m wide"
+Road kit: guardrail_4m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"W-beam guardrail, 0.3 m wide"
+Road kit: jersey_barrier_4m,08_3D_ASSETS/modular_kits/road_kit.glb|obj,GLB/OBJ node,GREYBOX,"concrete barrier 0.81 m, 0.6 m wide"
+Building kit: office_wall_window_3x3.6,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: office_wall_glass_curtain_3x3.6,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: residential_wall_window_3x3,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: office_wall_solid_3x3.6,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: corner_column_3.6,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: storefront_ground_6x4.8,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: roof_parapet_3m,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: roof_slab_6x6,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: rooftop_hvac_unit,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: balcony_3x1.5,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: warehouse_bay_8x10,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: warehouse_rollerdoor_6x6,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: house_1storey_10x8,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: house_2storey_12x9,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: garage_lockup_single_4x7,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: villa_flat_roof_20x15,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: chalet_12x10,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: barn_26x14,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: neon_sign_vertical_10m,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Building kit: neon_sign_horizontal_6m,08_3D_ASSETS/modular_kits/building_kit.glb|obj,GLB/OBJ node,GREYBOX,"modular module, untextured"
+Props kit: streetlamp_urban_led_10m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: streetlamp_sodium_highmast_25m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: streetlamp_coastal_6m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: streetlamp_tunnel_strip_4m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: traffic_signal_pole,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: sign_gantry_motorway_34m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: bollard,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: bench_2m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: bus_shelter,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: palm_tree_12m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: pine_tree_14m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: deciduous_tree_10m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: bush_2m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: container_20ft_ISO,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: container_40ft_ISO,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: container_stack_40ft_x4,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: fuel_tank_36m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: refinery_column_60m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: traffic_cone,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: tyre_stack,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: water_barrier_2m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: hay_bale_round,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: power_pole_10m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: drag_staging_tree,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: grandstand_section_10m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: timing_board,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: fence_chainlink_3m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Props kit: human_scale_1.75m,08_3D_ASSETS/modular_kits/props_kit.glb|obj,GLB/OBJ node,GREYBOX,
+Landmark: veyra_spire_342m,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,52.599998474121094×52.599998474121094×342.0 m
+Landmark: exchange_tower_165m,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,58.20000076293945×46.0×165.0 m
+Landmark: grand_lumen_hotel_95m,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,52.0×38.0×95.0 m
+Landmark: starlight_theater,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,62.0×44.5×40.0 m
+Landmark: vantage_car_park_9lvl,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,72.0×46.20000076293945×27.399999618530273 m
+Landmark: lantern_point_lighthouse,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,14.5×9.0×28.0 m
+Landmark: sts_gantry_crane_78m,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,20.0×120.0×77.5 m
+Landmark: falcon_control_tower_34m,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,15.0×15.0×34.099998474121094 m
+Landmark: falcon_hangar_62x74,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,62.0×74.19999694824219×16.899999618530273 m
+Landmark: blackridge_broadcast_mast_120m,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,3.0×3.0×120.0 m
+Landmark: millbrook_clock_tower_24m,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,9.600000381469727×10.0×24.5 m
+Landmark: kestrel_tunnel_portal_twinbore,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,38.0×4.199999809265137×11.5 m
+Landmark: apex_shed_workshop,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,42.0×42.79999923706055×9.0 m
+Landmark: pinecrest_service_station,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,26.0×26.0×5.800000190734863 m
+Landmark: juniper_lane_starter_garage,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,4.300000190734863×12.199999809265137×3.200000047683716 m
+Landmark: foundry9_tuning_workshop,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,125.80000305175781×50.79999923706055×16.5 m
+Landmark: azure_pier_ferris_wheel,08_3D_ASSETS/landmarks/landmark_blockouts.glb|obj,GLB/OBJ node,BLOCKOUT,10.0×190.0×46.79999923706055 m
+Vehicle proxy: arden_kite_stock_scale_proxy,08_3D_ASSETS/vehicles/vehicle_scale_proxies.glb|obj,GLB/OBJ node,BLOCKOUT,superseded by greybox vehicles in 09
+Vehicle proxy: arden_kite_streetbuild_scale_proxy,08_3D_ASSETS/vehicles/vehicle_scale_proxies.glb|obj,GLB/OBJ node,BLOCKOUT,superseded by greybox vehicles in 09
+Vehicle proxy: human_scale_1.75m,08_3D_ASSETS/vehicles/vehicle_scale_proxies.glb|obj,GLB/OBJ node,BLOCKOUT,superseded by greybox vehicles in 09
+"Placement data (vegetation, street furniture)",08_3D_ASSETS/placement_data/*.csv,CSV,GREYBOX,Positions + Unity coords + headings
+Blockout render,07_DISTRICT_3D_REFERENCE/1_crown_downtown/aerial_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/1_crown_downtown/street_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/1_crown_downtown/wide_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/2_azure_coast/aerial_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/2_azure_coast/street_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/2_azure_coast/wide_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/3_ironport/aerial_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/3_ironport/street_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/3_ironport/wide_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/4_blackridge/aerial_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/4_blackridge/street_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/4_blackridge/wide_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/5_westhaven/aerial_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/5_westhaven/street_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/5_westhaven/wide_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/6_neon_mile/aerial_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/6_neon_mile/street_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/6_neon_mile/wide_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/7_falcon_airfield/aerial_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/7_falcon_airfield/street_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/7_falcon_airfield/wide_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/8_redwood_valley/aerial_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/8_redwood_valley/street_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Blockout render,07_DISTRICT_3D_REFERENCE/8_redwood_valley/wide_blockout_render.jpg,image (render),BLOCKOUT RENDER,Real 3D blockout geometry; layout & scale reference
+Landmark reference sheet,07_DISTRICT_3D_REFERENCE/1_crown_downtown/landmark_references.jpg,image (render),BLOCKOUT RENDER,
+Landmark reference sheet,07_DISTRICT_3D_REFERENCE/2_azure_coast/landmark_references.jpg,image (render),BLOCKOUT RENDER,
+Landmark reference sheet,07_DISTRICT_3D_REFERENCE/3_ironport/landmark_references.jpg,image (render),BLOCKOUT RENDER,
+Landmark reference sheet,07_DISTRICT_3D_REFERENCE/4_blackridge/landmark_references.jpg,image (render),BLOCKOUT RENDER,
+Landmark reference sheet,07_DISTRICT_3D_REFERENCE/5_westhaven/landmark_references.jpg,image (render),BLOCKOUT RENDER,
+Landmark reference sheet,07_DISTRICT_3D_REFERENCE/6_neon_mile/landmark_references.jpg,image (render),BLOCKOUT RENDER,
+Landmark reference sheet,07_DISTRICT_3D_REFERENCE/7_falcon_airfield/landmark_references.jpg,image (render),BLOCKOUT RENDER,
+Landmark reference sheet,07_DISTRICT_3D_REFERENCE/8_redwood_valley/landmark_references.jpg,image (render),BLOCKOUT RENDER,
+Road-layout reference,07_DISTRICT_3D_REFERENCE/1_crown_downtown/road_layout_reference.png,image (map),APPROVED DESIGN v1.0,
+Road-layout reference,07_DISTRICT_3D_REFERENCE/2_azure_coast/road_layout_reference.png,image (map),APPROVED DESIGN v1.0,
+Road-layout reference,07_DISTRICT_3D_REFERENCE/3_ironport/road_layout_reference.png,image (map),APPROVED DESIGN v1.0,
+Road-layout reference,07_DISTRICT_3D_REFERENCE/4_blackridge/road_layout_reference.png,image (map),APPROVED DESIGN v1.0,
+Road-layout reference,07_DISTRICT_3D_REFERENCE/5_westhaven/road_layout_reference.png,image (map),APPROVED DESIGN v1.0,
+Road-layout reference,07_DISTRICT_3D_REFERENCE/6_neon_mile/road_layout_reference.png,image (map),APPROVED DESIGN v1.0,
+Road-layout reference,07_DISTRICT_3D_REFERENCE/7_falcon_airfield/road_layout_reference.png,image (map),APPROVED DESIGN v1.0,
+Road-layout reference,07_DISTRICT_3D_REFERENCE/8_redwood_valley/road_layout_reference.png,image (map),APPROVED DESIGN v1.0,
+Crown Downtown district,09_ART_PASS_BENCHMARK,district,ART PASS (prototype benchmark),"Typology architecture, street dressing, traffic, day/night; not FINAL"
+Blackridge district,09_ART_PASS_BENCHMARK,district,ART PASS (prototype),"Vegetation, rocks, guardrails, atmosphere; not FINAL"
+Art-pass render,09_ART_PASS_BENCHMARK/renders/br_halcyon_drive_day.jpg,image (render),ART PASS PROTOTYPE RENDER,"Lookdev renderer (WebGL2), not in-engine"
+Art-pass render,09_ART_PASS_BENCHMARK/renders/br_highline_drive_gold.jpg,image (render),ART PASS PROTOTYPE RENDER,"Lookdev renderer (WebGL2), not in-engine"
+Art-pass render,09_ART_PASS_BENCHMARK/renders/br_overlook_golden.jpg,image (render),ART PASS PROTOTYPE RENDER,"Lookdev renderer (WebGL2), not in-engine"
+Art-pass render,09_ART_PASS_BENCHMARK/renders/br_switchbacks_aerial.jpg,image (render),ART PASS PROTOTYPE RENDER,"Lookdev renderer (WebGL2), not in-engine"
+Art-pass render,09_ART_PASS_BENCHMARK/renders/compare_downtown_aerial_blockout_vs_artpass.jpg,image (render),ART PASS PROTOTYPE RENDER,"Lookdev renderer (WebGL2), not in-engine"
+Art-pass render,09_ART_PASS_BENCHMARK/renders/compare_halcyon_driving_blockout_vs_artpass.jpg,image (render),ART PASS PROTOTYPE RENDER,"Lookdev renderer (WebGL2), not in-engine"
+Art-pass render,09_ART_PASS_BENCHMARK/renders/dt_aerial_day.jpg,image (render),ART PASS PROTOTYPE RENDER,"Lookdev renderer (WebGL2), not in-engine"
+Art-pass render,09_ART_PASS_BENCHMARK/renders/dt_aerial_night.jpg,image (render),ART PASS PROTOTYPE RENDER,"Lookdev renderer (WebGL2), not in-engine"
+Art-pass render,09_ART_PASS_BENCHMARK/renders/dt_drive_crown_day.jpg,image (render),ART PASS PROTOTYPE RENDER,"Lookdev renderer (WebGL2), not in-engine"
+Art-pass render,09_ART_PASS_BENCHMARK/renders/dt_drive_meridian_night.jpg,image (render),ART PASS PROTOTYPE RENDER,"Lookdev renderer (WebGL2), not in-engine"
+Art-pass render,09_ART_PASS_BENCHMARK/renders/dt_plaza_closeup_day.jpg,image (render),ART PASS PROTOTYPE RENDER,"Lookdev renderer (WebGL2), not in-engine"
+Art-pass render,09_ART_PASS_BENCHMARK/renders/dt_skyline_golden.jpg,image (render),ART PASS PROTOTYPE RENDER,"Lookdev renderer (WebGL2), not in-engine"
+Art-pass render,09_ART_PASS_BENCHMARK/renders/dt_skyline_night.jpg,image (render),ART PASS PROTOTYPE RENDER,"Lookdev renderer (WebGL2), not in-engine"
+Art-pass render,09_ART_PASS_BENCHMARK/renders/dt_viaduct_night.jpg,image (render),ART PASS PROTOTYPE RENDER,"Lookdev renderer (WebGL2), not in-engine"
+Downtown typology kit (T1–T7 + 2 landmarks),09_ART_PASS_BENCHMARK/assets/crown_downtown_typology_kit_artpass.glb|obj,GLB/OBJ,GREYBOX (art-pass shapes),Facade look needs the lookdev facade shader or trim sheets
+Crown Plaza hero block,09_ART_PASS_BENCHMARK/assets/crown_downtown_hero_block_artpass.glb,GLB,ART PASS (prototype geometry),World-aligned; 317k tris incl. parked cars
+Vegetation & rock kit,09_ART_PASS_BENCHMARK/assets/vegetation_rock_kit_artpass.glb|obj,GLB/OBJ,GREYBOX,Geometric trees; FINAL needs alpha-card foliage + wind + impostors
+Vehicles (Arden Kite stock/street build + 8 traffic types),09_ART_PASS_BENCHMARK/assets/vehicles_traffic_and_hero_greybox.glb|obj,GLB/OBJ,GREYBOX,"Lofted bodies, arches, lights; no interiors/LODs/textures"
+Downtown building placements,09_ART_PASS_BENCHMARK/assets/crown_downtown_building_placements.csv,CSV,APPROVED DESIGN v1.0,Typology per footprint for procedural rebuild
+Look-dev facade shader reference,09_ART_PASS_BENCHMARK/assets/lookdev_facade_shader_reference.glsl,shader source,ART PASS (prototype),Port to URP Shader Graph/HLSL
+Document world_design_document.md,06_DESIGN_DOCUMENTATION/world_design_document.md,document,v1.0,
+Document district_specifications.md,06_DESIGN_DOCUMENTATION/district_specifications.md,document,v1.0,
+Document road_network.md,06_DESIGN_DOCUMENTATION/road_network.md,document,v1.0,
+Document location_registry.csv,06_DESIGN_DOCUMENTATION/location_registry.csv,document,v1.0,
+Document art_direction_guide.md,06_DESIGN_DOCUMENTATION/art_direction_guide.md,document,v1.0,
+Document image_generation_prompts.md,06_DESIGN_DOCUMENTATION/image_generation_prompts.md,document,v1.0,
+Document visual_quality_roadmap.md,06_DESIGN_DOCUMENTATION/visual_quality_roadmap.md,document,v1.0,
+Document asset_status_registry.csv,06_DESIGN_DOCUMENTATION/asset_status_registry.csv,document,v1.0,

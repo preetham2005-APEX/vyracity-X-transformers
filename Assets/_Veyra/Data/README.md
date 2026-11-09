@@ -17,3 +17,13 @@ These files complete the data in `VEYRA_CITY_WORLD_DESIGN` for the playbook card
 - Style kits: GlassModern/ArtDeco, ResidentialMidrise, ModernLowrise, BrickIndustrial, CoastalStucco, Suburban, SuburbanRetail, Industrial, IndustrialTank, IndustrialRefinery, Alpine, Rural, MarketTownBrick, Aviation, Roadside, Landmark (see the playbook, card A2).
 
 Put these in `E:\VeyraCity\Assets\_Veyra\Data\` next to the other CSVs (card S3).
+
+## Provenance check (card S3, 2026-11-09)
+- The three supplement files are **not part of the design package**. They entered git in commit `afd9978` (pre-playbook full-game checkpoint, 2026-11-09 21:15), written by the earlier Claude Code session; this README is the only description of how they were made.
+- **D1 (282 rows) is identical to the package**: every row is within 0.1 m of a `crown_downtown_building_placements.csv` placement with the same height, footprint and typology, and every package placement has its counterpart.
+- 12 of 18 `landmark_id` rows sit at their `location_registry.csv` point (< 0.5 m). The other 6 are buildings set back 20–35 m from a road-side registry point: LM-28 Falcon Grandstands 20.6 m, GAR-05 30 m, GAR-08 25 m, RST-03 20 m, RST-02 20 m, GAR-01 35 m.
+- D2–D8 (2,426 rows) have no CSV in the package; the README says they come from the same world model. They are **not yet verified against the district blockout GLBs** (follow-up for card A3, before buildings are rebuilt).
+- `Veyra/Data/Validate Data` checks every row's Unity formula and `cell`/`chunk` columns (all 2,708 + 6,050 + 8 rows pass).
+
+## Design-package files (card S3)
+Copied unchanged (SHA-256 verified) from `E:\PROJECT BANGERRR\VEYRA_CITY_WORLD_DESIGN` by `Tools/World/import_veyra_data.py`: `location_registry.csv`, `road_network_geometry.json`, the 16 `vegetation_*`/`street_furniture_*` CSVs, `crown_downtown_building_placements.csv` and `terrain_tiles_manifest.json`. Readers: `Assets/_Veyra/World/Data` (namespace `VeyraCity.World.Data`); coordinates: `VeyraCity.Core.WorldCoordinates` (the playbook's "VeyraCoords").

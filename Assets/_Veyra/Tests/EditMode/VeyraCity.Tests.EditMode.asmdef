@@ -9,6 +9,7 @@
         "VeyraCity.VehiclePhysics",
         "VeyraCity.Assists",
         "VeyraCity.Input",
+        "VeyraCity.World",
         "Unity.InputSystem"
     ],
     "includePlatforms": [
