@@ -212,5 +212,68 @@ namespace VeyraCity.EditorTools
                 return Color.Lerp(c, new Color(0.35f, 0.18f, 0.08f), rust * 0.5f);
             });
         }
+
+        /// <summary>
+        /// URP Lit metallic/smoothness map (Smoothness Source = Metallic Alpha): R = metallic, A = relative smoothness
+        /// (0.7–1.0, multiplied by the material's _Smoothness so wetness can raise it to mirror-like).
+        /// </summary>
+        public static Texture2D MetalGloss(string name, int seed, float metallic, float variation, int freq)
+        {
+            return Save(name, 512, (x, y) =>
+            {
+                float u = x / 512f, v = y / 512f;
+                float n = Fbm(u, v, freq, 4, seed);
+                float a = Mathf.Clamp01(1f - variation + variation * n);
+                return new Color(metallic, 0f, 0f, a);
+            }, false, true);
+        }
+
+        public static (Texture2D albedo, Texture2D normal) Granite(string name, Color tint, int seed)
+        {
+            Func<float, float, float> h = (u, v) => Fbm(u, v, 32, 3, seed) * 0.5f + (Hash((int)(u * 512), (int)(v * 512), seed + 3) > 0.9f ? 0.3f : 0f);
+            var a = Save(name + "_A", 512, (x, y) =>
+            {
+                float u = x / 512f, v = y / 512f;
+                float speck = Hash(x, y, seed + 1);
+                float g = 0.82f + Fbm(u, v, 16, 3, seed) * 0.2f;
+                var c = tint * g;
+                if (speck > 0.92f) c = Color.Lerp(c, Color.white * 0.9f, 0.5f);
+                else if (speck < 0.08f) c *= 0.55f;
+                c.a = 1f;
+                return c;
+            });
+            return (a, NormalFrom(name + "_N", 512, h, 2f));
+        }
+
+        /// <summary>Ground-floor shopfronts: 4 glazed bays per texture (12 m) and one storey (4.5 m), lit at night, sign band on top.</summary>
+        public static (Texture2D albedo, Texture2D emission) Storefront(string name, int seed)
+        {
+            const int S = 512;
+            Color[] signs = { new Color(0f, 1f, 1f), new Color(1f, 0f, 0.5f), new Color(1f, 0.67f, 0f), new Color(0.6f, 0.4f, 1f) };
+            var a = Save(name + "_A", S, (x, y) =>
+            {
+                float u = x / (float)S * 4f, v = y / (float)S;
+                int bay = Mathf.FloorToInt(u);
+                float fx = u - bay;
+                bool frame = fx < 0.06f || fx > 0.94f || v < 0.05f;
+                if (v > 0.82f) return new Color(0.06f, 0.06f, 0.07f); // sign band
+                if (frame) return new Color(0.12f, 0.12f, 0.13f);
+                if (v < 0.18f) return new Color(0.18f, 0.18f, 0.19f); // stall riser
+                return new Color(0.08f, 0.1f, 0.12f) * (0.8f + 0.4f * Fbm(u * 0.25f, v, 4, 2, seed));
+            });
+            var e = Save(name + "_E", S, (x, y) =>
+            {
+                float u = x / (float)S * 4f, v = y / (float)S;
+                int bay = Mathf.FloorToInt(u);
+                float fx = u - bay;
+                if (fx < 0.06f || fx > 0.94f || v < 0.18f) return Color.black;
+                if (v > 0.84f && v < 0.95f && fx > 0.15f && fx < 0.85f)
+                    return signs[Mathf.FloorToInt(Hash(bay, 7, seed) * 4f) % 4] * 1.4f;
+                if (v > 0.82f) return Color.black;
+                float lit = Hash(bay, 3, seed);
+                return lit < 0.75f ? new Color(1f, 0.82f, 0.6f) * (0.7f + 0.3f * (1f - v)) : Color.black;
+            });
+            return (a, e);
+        }
     }
 }

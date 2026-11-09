@@ -21,6 +21,7 @@ namespace VeyraCity.Gameplay
     /// Top-level game flow: main menu → free roam (event markers, traffic) ↔ races (AI field, results,
     /// rewards, story) ↔ garage (cars, upgrades, paint) with settings, pause and saving throughout.
     /// </summary>
+    [DefaultExecutionOrder(-1000)] // material templates must exist before any OnEnable/Start in the scene
     public sealed class GameFlow : MonoBehaviour
     {
         public enum State { Boot, MainMenu, FreeRoam, Garage, Race, Results }
@@ -82,6 +83,13 @@ namespace VeyraCity.Gameplay
         void Awake()
         {
             Instance = this;
+            if (db != null)
+            {
+                RuntimeMaterials.Lit = db.LitTemplate;
+                RuntimeMaterials.Unlit = db.UnlitAdditiveTemplate;
+                RuntimeMaterials.ParticleAlpha = db.ParticleAlphaTemplate;
+                RuntimeMaterials.ParticleAdditive = db.ParticleAdditiveTemplate;
+            }
             var a = Environment.GetCommandLineArgs();
             for (int i = 0; i + 1 < a.Length; i++) if (a[i] == "-veyraSaveDir") SaveSystem.OverrideFolder = a[i + 1];
             foreach (var arg in a)
@@ -159,7 +167,59 @@ namespace VeyraCity.Gameplay
             return s;
         }
 
-        string shotDir;
+        string shotDir, reviewDir;
+
+        /// <summary>
+        /// Review cameras (playbook S5 style): the chase camera on named roads at noon and at 23:00, then a 30 s autopilot race.
+        /// </summary>
+        System.Collections.IEnumerator ReviewShots()
+        {
+            System.IO.Directory.CreateDirectory(reviewDir);
+            yield return null;
+            EnterFreeRoam(false);
+            menu.Hide();
+            SetPaused(false);
+            traffic.Active = true;
+            environment.AutoWeather = false;
+            environment.SetWeather(WorldEnvironment.WeatherKind.Clear);
+            environment.AnimateTime = false;
+            var spots = new (string road, string label, float frac)[] { ("A1", "CrownAvenue", 0.42f), ("A2", "MeridianBoulevard", 0.55f), ("A7", "LumenAvenue_NeonMile", 0.5f) };
+            foreach (float hour in new[] { 12f, 23f })
+                foreach (var spot in spots)
+                {
+                    RoadPath road = null;
+                    foreach (var r in WorldData.Roads) if (r.Data.id == spot.road) road = r;
+                    if (road == null || player == null) continue;
+                    float s = road.Path.Length * spot.frac;
+                    var t = road.Path.TangentAt(s);
+                    var right = new Vector3(t.z, 0f, -t.x).normalized;
+                    var pos = road.Path.PositionAt(s) + right * 2.6f;
+                    pos.y = WorldData.GroundHeight(pos + Vector3.up * 3f, pos.y) + 0.45f;
+                    player.ResetTo(pos, Quaternion.LookRotation(new Vector3(t.x, 0f, t.z)));
+                    environment.SetTime(hour);
+                    if (chaseCamera != null) chaseCamera.SetTarget(player);
+                    yield return new WaitForSecondsRealtime(3.5f);
+                    string file = System.IO.Path.Combine(reviewDir, $"review_{spot.label}_{hour:00}00.png");
+                    ScreenCapture.CaptureScreenshot(file);
+                    Debug.Log("[Review] captured " + file);
+                    yield return new WaitForSecondsRealtime(0.6f);
+                }
+            // rain at night on the Mile
+            environment.SetWeather(WorldEnvironment.WeatherKind.Rain);
+            yield return new WaitForSecondsRealtime(22f);
+            ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(reviewDir, "review_LumenAvenue_NeonMile_2300_rain.png"));
+            yield return new WaitForSecondsRealtime(0.6f);
+            environment.SetWeather(WorldEnvironment.WeatherKind.Clear);
+            var def = Career.QuickRaces().Find(r => r.RouteId == "RACE-16");
+            StartRace(def, null, null, autopilot: true);
+            Debug.Log("[Review] 30 s autopilot race started");
+            for (int k = 0; k < 3; k++)
+            {
+                yield return new WaitForSecondsRealtime(10f);
+                ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(reviewDir, $"review_race_{k}.png"));
+            }
+            Debug.Log("[Review] done");
+        }
         float shotEvery = 6f;
         bool tour;
 
@@ -171,12 +231,14 @@ namespace VeyraCity.Gameplay
                 if (args[i] == "-veyraDemoRace" && i + 1 < args.Length) { demo = true; demoRaceId = args[i + 1]; }
                 if (args[i] == "-veyraDemoFreeRoam") { demo = true; demoRaceId = null; }
                 if (args[i] == "-veyraTour") tour = true;
+                if (args[i] == "-veyraReviewShots" && i + 1 < args.Length) reviewDir = args[i + 1];
                 if (args[i] == "-veyraTimeScale" && i + 1 < args.Length && float.TryParse(args[i + 1], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var ts)) { baseTimeScale = Mathf.Clamp(ts, 0.1f, 8f); Time.timeScale = baseTimeScale; Time.maximumDeltaTime = 0.1f * baseTimeScale; }
                 if (args[i] == "-veyraShots" && i + 1 < args.Length) shotDir = args[i + 1];
                 if (args[i] == "-veyraShotEvery" && i + 1 < args.Length) float.TryParse(args[i + 1], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out shotEvery);
             }
             if (!string.IsNullOrEmpty(shotDir)) StartCoroutine(Shots());
             if (tour) { demo = true; StartCoroutine(Tour()); }
+            if (!string.IsNullOrEmpty(reviewDir)) { demo = true; tour = true; StartCoroutine(ReviewShots()); }
         }
 
         System.Collections.IEnumerator Shots()
@@ -426,10 +488,11 @@ namespace VeyraCity.Gameplay
                 environment.AnimateTime = tod == 0;
                 environment.SetTime(tod == 1 ? 23f : tod == 2 ? 19.3f : tod == 3 ? 13f : save.FreeRoamTime);
                 environment.SetWeather(WorldEnvironment.WeatherKind.Clear);
+                environment.AutoWeather = true;
             }
             UpdateWallet();
             hud.SetStaticMarkers(MarkerList());
-            if (!save.SeenStory.Contains("WELCOME"))
+            if (!save.SeenStory.Contains("WELCOME") && !automated)
             {
                 save.SeenStory.Add("WELCOME");
                 menu.ShowDialog("Juno Reyes", "Welcome to Veyra. The glowing columns are events: drive into one and press Enter (or D-pad Up). Esc / Start opens the map of events and the garage.", null);
@@ -469,9 +532,12 @@ namespace VeyraCity.Gameplay
                     go.transform.position = p + Vector3.up * 30f;
                     go.transform.localScale = new Vector3(5f, 30f, 5f);
                     var r = go.GetComponent<Renderer>();
-                    var mi = new Material(mat);
-                    mi.SetColor("_BaseColor", new Color(1f, 0.25f, 0.62f, 0.22f));
-                    r.sharedMaterial = mi;
+                    if (mat != null)
+                    {
+                        var mi = new Material(mat);
+                        mi.SetColor("_BaseColor", new Color(1f, 0.25f, 0.62f, 0.22f));
+                        r.sharedMaterial = mi;
+                    }
                     r.shadowCastingMode = ShadowCastingMode.Off;
                     m.Visual = go;
                     markers.Add(m);
@@ -703,6 +769,7 @@ namespace VeyraCity.Gameplay
             if (environment != null)
             {
                 environment.AnimateTime = false;
+                environment.AutoWeather = false;
                 environment.SetTime(def.TimeOfDay);
                 environment.SetWeather(def.Rain ? WorldEnvironment.WeatherKind.Rain : WorldEnvironment.WeatherKind.Clear);
             }

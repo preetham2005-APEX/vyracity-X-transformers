@@ -84,18 +84,20 @@ namespace VeyraCity.EditorTools
             var env = BuildLighting(mats);
             var terrainRoot = BuildTerrain(worldRoot, db);
             var meshStats = BuildMeshes(worldRoot, mats, db);
+            meshStats += "; " + BuildingGenerator.Build(worldRoot, mats, db, Gen);
+            GrassBuilder.AddGrass(worldRoot, Gen);
             BuildWater(worldRoot, mats);
             var props = BuildProps(worldRoot, mats);
             var cam = BuildCamera();
             env.ScrollMaterials.Add(mats["water"]);
-            foreach (var key in new[] { "facade_light", "facade_mid", "facade_brick", "facade_stucco", "glass_blue", "glass_bronze" })
+            foreach (var key in new[] { "facade_light", "facade_mid", "facade_brick", "facade_stucco", "glass_blue", "glass_bronze", "stone_deco", "house_wall", "wood_wall", "storefront" })
                 env.Emissives.Add(new WorldEnvironment.EmissiveEntry { Material = mats[key], BaseEmission = mats[key].GetColor("_EmissionColor"), NightOnly = 1f });
             foreach (var key in new[] { "lamp_head", "lamp_sodium" })
                 env.Emissives.Add(new WorldEnvironment.EmissiveEntry { Material = mats[key], BaseEmission = mats[key].GetColor("_EmissionColor"), NightOnly = 1f });
-            foreach (var key in new[] { "neon_cyan", "neon_magenta", "light_warm", "sodium", "marker_red" })
+            foreach (var key in new[] { "neon_cyan", "neon_magenta", "neon_amber", "light_warm", "sodium", "marker_red" })
                 env.Emissives.Add(new WorldEnvironment.EmissiveEntry { Material = mats[key], BaseEmission = mats[key].GetColor("_EmissionColor"), NightOnly = 0.7f });
-            foreach (var key in new[] { "asphalt", "asphalt_worn", "concrete_dark", "sidewalk", "marking_white", "marking_yellow" })
-                env.WetSurfaces.Add(new WorldEnvironment.WetEntry { Material = mats[key], DrySmoothness = mats[key].GetFloat("_Smoothness"), WetSmoothness = 0.9f, DryColor = mats[key].GetColor("_BaseColor") });
+            foreach (var key in new[] { "asphalt", "asphalt_worn", "concrete_dark", "sidewalk", "kerb", "marking_white", "marking_yellow" })
+                env.WetSurfaces.Add(new WorldEnvironment.WetEntry { Material = mats[key], DrySmoothness = mats[key].GetFloat("_Smoothness"), WetSmoothness = 0.96f, DryColor = mats[key].GetColor("_BaseColor") });
 
             var game = new GameObject("Game");
             var flow = game.AddComponent<GameFlow>();
@@ -272,7 +274,7 @@ namespace VeyraCity.EditorTools
         }
 
         // ------------------------------------------------------------------------------- materials
-        static Material Mat(string name, Color color, float smooth, float metal = 0f, Texture2D albedo = null, Texture2D normal = null, Vector2? tiling = null, Texture2D emission = null, Color? emColor = null, bool instancing = false, bool transparent = false)
+        static Material Mat(string name, Color color, float smooth, float metal = 0f, Texture2D albedo = null, Texture2D normal = null, Vector2? tiling = null, Texture2D emission = null, Color? emColor = null, bool instancing = false, bool transparent = false, Texture2D gloss = null)
         {
             string path = $"{Gen}/Materials/{name}.mat";
             var m = AssetDatabase.LoadAssetAtPath<Material>(path);
@@ -286,6 +288,14 @@ namespace VeyraCity.EditorTools
             m.SetTextureScale("_BaseMap", t);
             if (normal != null) { m.SetTexture("_BumpMap", normal); m.SetTextureScale("_BumpMap", t); m.EnableKeyword("_NORMALMAP"); m.SetFloat("_BumpScale", 1f); }
             else { m.SetTexture("_BumpMap", null); m.DisableKeyword("_NORMALMAP"); }
+            if (gloss != null)
+            {
+                // URP Lit: smoothness = map alpha x _Smoothness, so wetness can raise _Smoothness toward a mirror finish.
+                m.SetTexture("_MetallicGlossMap", gloss);
+                m.SetFloat("_SmoothnessTextureChannel", 0f);
+                m.EnableKeyword("_METALLICSPECGLOSSMAP");
+            }
+            else { m.SetTexture("_MetallicGlossMap", null); m.DisableKeyword("_METALLICSPECGLOSSMAP"); }
             if (emission != null || emColor.HasValue)
             {
                 m.EnableKeyword("_EMISSION");
@@ -310,52 +320,77 @@ namespace VeyraCity.EditorTools
             return m;
         }
 
+        static Color Hex(string h) { ColorUtility.TryParseHtmlString(h, out var c); return c; }
+
         static Dictionary<string, Material> BuildMaterials()
         {
             var d = new Dictionary<string, Material>();
-            var asph = ProcTextures.Asphalt("Asphalt", new Color(0.24f, 0.24f, 0.25f), 11, 0.3f);
-            var worn = ProcTextures.Asphalt("AsphaltWorn", new Color(0.29f, 0.29f, 0.29f), 13, 0.8f);
+            // Roads and paving: albedo + normal + gloss (smoothness in metallic alpha). _Smoothness is the dry scale; rain raises it.
+            var asph = ProcTextures.Asphalt("Asphalt", new Color(0.22f, 0.22f, 0.23f), 11, 0.3f);
+            var worn = ProcTextures.Asphalt("AsphaltWorn", new Color(0.27f, 0.27f, 0.27f), 13, 0.8f);
             var conc = ProcTextures.Paving("ConcreteRoad", new Color(0.46f, 0.46f, 0.45f), 17, 2);
-            var side = ProcTextures.Paving("Sidewalk", new Color(0.36f, 0.355f, 0.345f), 19, 8);
-            d["asphalt"] = Mat("Road_Asphalt", Color.white, 0.32f, 0f, asph.albedo, asph.normal, new Vector2(1f / 8f, 1f / 8f));
-            d["asphalt_worn"] = Mat("Road_AsphaltWorn", Color.white, 0.28f, 0f, worn.albedo, worn.normal, new Vector2(1f / 8f, 1f / 8f));
-            d["concrete_dark"] = Mat("Road_Concrete", Color.white, 0.3f, 0f, conc.albedo, conc.normal, new Vector2(1f / 10f, 1f / 10f));
+            var side = ProcTextures.Paving("Sidewalk", new Color(0.3f, 0.298f, 0.292f), 19, 8);
+            var kerb = ProcTextures.Granite("KerbGranite", new Color(0.44f, 0.44f, 0.45f), 23);
+            var glossAsph = ProcTextures.MetalGloss("Asphalt_MS", 29, 0f, 0.35f, 6);
+            var glossPave = ProcTextures.MetalGloss("Paving_MS", 31, 0f, 0.25f, 12);
+            d["asphalt"] = Mat("Road_Asphalt", Color.white, 0.38f, 0f, asph.albedo, asph.normal, new Vector2(1f / 8f, 1f / 8f), gloss: glossAsph);
+            d["asphalt_worn"] = Mat("Road_AsphaltWorn", Color.white, 0.32f, 0f, worn.albedo, worn.normal, new Vector2(1f / 8f, 1f / 8f), gloss: glossAsph);
+            d["concrete_dark"] = Mat("Road_Concrete", Color.white, 0.34f, 0f, conc.albedo, conc.normal, new Vector2(1f / 10f, 1f / 10f), gloss: glossPave);
             d["gravel"] = Mat("Road_Gravel", Color.white, 0.12f, 0f, ProcTextures.Plain("Gravel", new Color(0.5f, 0.45f, 0.38f), 23, 32, 0.25f), null, new Vector2(1f / 4f, 1f / 4f));
-            d["sidewalk"] = Mat("Sidewalk", Color.white, 0.18f, 0f, side.albedo, side.normal, new Vector2(1f / 12f, 1f / 12f));
-            d["marking_white"] = Mat("Marking_White", new Color(0.88f, 0.88f, 0.86f), 0.45f, 0f, null, null, null, null, new Color(0.08f, 0.08f, 0.08f));
-            d["marking_yellow"] = Mat("Marking_Yellow", new Color(0.9f, 0.68f, 0.12f), 0.45f, 0f, null, null, null, null, new Color(0.08f, 0.05f, 0f));
+            d["sidewalk"] = Mat("Sidewalk", Color.white, 0.26f, 0f, side.albedo, side.normal, new Vector2(1f / 12f, 1f / 12f), gloss: glossPave);
+            d["kerb"] = Mat("Kerb_Granite", Color.white, 0.42f, 0f, kerb.albedo, kerb.normal, new Vector2(1f / 2f, 1f / 2f), gloss: glossPave);
+            d["marking_white"] = Mat("Marking_White", new Color(0.9f, 0.9f, 0.88f), 0.5f, 0f, null, null, null, null, new Color(0.1f, 0.1f, 0.1f));
+            d["marking_yellow"] = Mat("Marking_Yellow", new Color(0.92f, 0.7f, 0.12f), 0.5f, 0f, null, null, null, null, new Color(0.1f, 0.06f, 0f));
             var concrete = ProcTextures.Plain("Concrete", new Color(0.6f, 0.59f, 0.57f), 29, 16, 0.12f);
             d["concrete"] = Mat("Concrete", Color.white, 0.25f, 0f, concrete, null, new Vector2(1f / 6f, 1f / 6f));
             d["steel"] = Mat("Steel", new Color(0.42f, 0.44f, 0.46f), 0.55f, 0.85f);
             d["steel_painted_red"] = Mat("SteelRed", new Color(0.55f, 0.08f, 0.06f), 0.45f, 0.4f);
             d["wood"] = Mat("Wood", new Color(0.42f, 0.3f, 0.2f), 0.2f);
+            d["crane_paint"] = Mat("CranePaint", new Color(0.16f, 0.36f, 0.58f), 0.45f, 0.35f);
+            // Emissive lights and neon (HDR): cyan #00FFFF, magenta #FF007F, amber/sodium #FFAA00.
             d["marker_red"] = Mat("MarkerRed", new Color(0.4f, 0f, 0f), 0.5f, 0f, null, null, null, null, new Color(4f, 0.1f, 0.05f));
             d["light_warm"] = Mat("LightWarm", new Color(1f, 0.85f, 0.6f), 0.5f, 0f, null, null, null, null, new Color(3f, 2.2f, 1.2f));
-            d["sodium"] = Mat("Sodium", new Color(1f, 0.6f, 0.2f), 0.5f, 0f, null, null, null, null, new Color(4f, 1.8f, 0.3f));
-            d["neon_cyan"] = Mat("NeonCyan", new Color(0.2f, 0.9f, 1f), 0.5f, 0f, null, null, null, null, new Color(0.4f, 3.5f, 4.5f));
-            d["neon_magenta"] = Mat("NeonMagenta", new Color(1f, 0.2f, 0.7f), 0.5f, 0f, null, null, null, null, new Color(4.5f, 0.5f, 2.6f));
-            // facades: one texture covers 12 m x 14 m (UVs are computed in metres / module)
-            var fLight = ProcTextures.Facade("FacadeLight", new Color(0.72f, 0.71f, 0.68f), new Color(0.13f, 0.16f, 0.2f), 0.62f, 0.62f, 31, false, 0.33f);
-            var fMid = ProcTextures.Facade("FacadeMid", new Color(0.45f, 0.46f, 0.48f), new Color(0.1f, 0.13f, 0.17f), 0.7f, 0.66f, 37, false, 0.3f);
-            var fBrick = ProcTextures.Facade("FacadeBrick", new Color(0.45f, 0.24f, 0.17f), new Color(0.12f, 0.14f, 0.16f), 0.5f, 0.58f, 41, false, 0.4f);
-            var fStucco = ProcTextures.Facade("FacadeStucco", new Color(0.82f, 0.76f, 0.64f), new Color(0.15f, 0.17f, 0.19f), 0.45f, 0.52f, 43, false, 0.45f);
-            var gBlue = ProcTextures.Facade("GlassBlue", new Color(0.18f, 0.2f, 0.23f), new Color(0.12f, 0.22f, 0.32f), 0.9f, 0.85f, 47, true, 0.28f);
-            var gBronze = ProcTextures.Facade("GlassBronze", new Color(0.24f, 0.2f, 0.16f), new Color(0.3f, 0.22f, 0.14f), 0.9f, 0.85f, 53, true, 0.3f);
-            Color em = new Color(1.6f, 1.45f, 1.2f);
+            d["sodium"] = Mat("Sodium", Hex("#FFAA00"), 0.5f, 0f, null, null, null, null, Hex("#FFAA00") * 4f);
+            d["neon_cyan"] = Mat("NeonCyan", Hex("#00FFFF"), 0.5f, 0f, null, null, null, null, Hex("#00FFFF") * 5f);
+            d["neon_magenta"] = Mat("NeonMagenta", Hex("#FF007F"), 0.5f, 0f, null, null, null, null, Hex("#FF007F") * 5f);
+            d["neon_amber"] = Mat("NeonAmber", Hex("#FFAA00"), 0.5f, 0f, null, null, null, null, Hex("#FFAA00") * 5f);
+            // Facades: one texture = 12 m x 14 m (4 x 4 window modules); emission = lit windows at night.
+            Color em = new Color(1.7f, 1.5f, 1.25f);
+            (Texture2D albedo, Texture2D emission) F(string n, Color wall, Color glass, float ww, float wh, int seed, bool curtain, float lit) => ProcTextures.Facade(n, wall, glass, ww, wh, seed, curtain, lit);
+            var fLight = F("FacadeLight", new Color(0.72f, 0.71f, 0.68f), new Color(0.13f, 0.16f, 0.2f), 0.62f, 0.62f, 31, false, 0.33f);
+            var fMid = F("FacadeMid", new Color(0.45f, 0.46f, 0.48f), new Color(0.1f, 0.13f, 0.17f), 0.7f, 0.66f, 37, false, 0.3f);
+            var fBrick = F("FacadeBrick", new Color(0.45f, 0.24f, 0.17f), new Color(0.12f, 0.14f, 0.16f), 0.5f, 0.58f, 41, false, 0.4f);
+            var fStucco = F("FacadeStucco", new Color(0.86f, 0.8f, 0.68f), new Color(0.15f, 0.17f, 0.19f), 0.45f, 0.52f, 43, false, 0.45f);
+            var fStone = F("FacadeStone", new Color(0.66f, 0.6f, 0.5f), new Color(0.1f, 0.11f, 0.13f), 0.38f, 0.66f, 71, false, 0.36f);
+            var fHouse = F("HouseWall", new Color(0.82f, 0.78f, 0.7f), new Color(0.12f, 0.14f, 0.16f), 0.36f, 0.4f, 73, false, 0.5f);
+            var fWood = F("WoodWall", new Color(0.46f, 0.33f, 0.22f), new Color(0.12f, 0.13f, 0.14f), 0.3f, 0.4f, 79, false, 0.45f);
+            var gBlue = F("GlassBlue", new Color(0.18f, 0.2f, 0.23f), new Color(0.12f, 0.22f, 0.32f), 0.9f, 0.85f, 47, true, 0.28f);
+            var gBronze = F("GlassBronze", new Color(0.24f, 0.2f, 0.16f), new Color(0.3f, 0.22f, 0.14f), 0.9f, 0.85f, 53, true, 0.3f);
+            var shop = ProcTextures.Storefront("Storefront", 83);
             d["facade_light"] = Mat("Facade_Light", Color.white, 0.25f, 0f, fLight.albedo, null, null, fLight.emission, em);
             d["facade_mid"] = Mat("Facade_Mid", Color.white, 0.3f, 0f, fMid.albedo, null, null, fMid.emission, em);
             d["facade_brick"] = Mat("Facade_Brick", Color.white, 0.18f, 0f, fBrick.albedo, null, null, fBrick.emission, em);
             d["facade_stucco"] = Mat("Facade_Stucco", Color.white, 0.2f, 0f, fStucco.albedo, null, null, fStucco.emission, em);
-            d["glass_blue"] = Mat("Glass_Blue", Color.white, 0.88f, 0.6f, gBlue.albedo, null, null, gBlue.emission, em);
-            d["glass_bronze"] = Mat("Glass_Bronze", Color.white, 0.86f, 0.65f, gBronze.albedo, null, null, gBronze.emission, em);
+            d["stone_deco"] = Mat("Facade_StoneDeco", Color.white, 0.28f, 0f, fStone.albedo, null, null, fStone.emission, em);
+            d["house_wall"] = Mat("Facade_House", Color.white, 0.2f, 0f, fHouse.albedo, null, null, fHouse.emission, em);
+            d["wood_wall"] = Mat("Facade_Wood", Color.white, 0.2f, 0f, fWood.albedo, null, null, fWood.emission, em);
+            d["glass_blue"] = Mat("Glass_Blue", Color.white, 0.92f, 0.65f, gBlue.albedo, null, null, gBlue.emission, em);
+            d["glass_bronze"] = Mat("Glass_Bronze", Color.white, 0.9f, 0.7f, gBronze.albedo, null, null, gBronze.emission, em);
+            d["storefront"] = Mat("Storefront", Color.white, 0.85f, 0.2f, shop.albedo, null, null, shop.emission, new Color(0.8f, 0.75f, 0.7f));
+            d["metal_clad"] = Mat("Facade_MetalClad", Color.white, 0.4f, 0.55f, ProcTextures.Corrugated("MetalClad", new Color(0.58f, 0.6f, 0.62f), 89), null, null);
+            d["tank_white"] = Mat("Tank_White", Color.white, 0.45f, 0.4f, ProcTextures.Corrugated("TankWhite", new Color(0.82f, 0.82f, 0.8f), 97), null, null);
             var roof = ProcTextures.Plain("Roof", new Color(0.22f, 0.22f, 0.23f), 59, 16, 0.2f);
-            d["roof_dark"] = Mat("Roof_Dark", Color.white, 0.2f, 0f, roof, null, new Vector2(1f / 8f, 1f / 8f));
-            d["roof_tile"] = Mat("Roof_Tile", new Color(0.62f, 0.3f, 0.22f), 0.25f, 0f, ProcTextures.Plain("RoofTile", Color.white, 61, 32, 0.25f), null, new Vector2(1f / 4f, 1f / 4f));
-            d["roof_metal"] = Mat("Roof_Metal", Color.white, 0.45f, 0.6f, ProcTextures.Corrugated("RoofMetal", new Color(0.55f, 0.57f, 0.58f), 67), null, new Vector2(1f / 6f, 1f / 6f));
-            foreach (var (k, c) in new[] { ("container_orange", new Color(0.85f, 0.38f, 0.1f)), ("container_teal", new Color(0.1f, 0.45f, 0.45f)), ("container_red", new Color(0.55f, 0.1f, 0.08f)), ("container_blue", new Color(0.1f, 0.22f, 0.5f)), ("container_grey", new Color(0.5f, 0.52f, 0.54f)) })
-                d[k] = Mat("Container_" + k.Substring(10), Color.white, 0.35f, 0.3f, ProcTextures.Corrugated("Corr_" + k, c, k.Length * 7), null, new Vector2(1f / 6f, 1f / 6f));
+            d["roof_dark"] = Mat("Roof_Dark", Color.white, 0.2f, 0f, roof, null, new Vector2(1f, 1f));
+            d["roof_tile"] = Mat("Roof_Tile", new Color(0.62f, 0.3f, 0.22f), 0.25f, 0f, ProcTextures.Plain("RoofTile", Color.white, 61, 32, 0.25f), null, new Vector2(1f, 1f));
+            d["roof_metal"] = Mat("Roof_Metal", Color.white, 0.45f, 0.6f, ProcTextures.Corrugated("RoofMetal", new Color(0.55f, 0.57f, 0.58f), 67), null, new Vector2(1f, 1f));
+            // Ironport containers: the eight colours of the placement data, plus grey fallback.
+            foreach (var hx in new[] { "2e5e9a", "8e3b6e", "c9b036", "d98b2b", "3c4650", "7a7f86", "b23a2e", "2f7f72" })
+                d["container_" + hx] = Mat("Container_" + hx, Color.white, 0.35f, 0.3f, ProcTextures.Corrugated("Corr_" + hx, Hex("#" + hx), hx.GetHashCode() & 1023), null, null);
+            d["container_grey"] = d["container_7a7f86"];
+            // GLB container colours still referenced by older names
+            d["container_orange"] = d["container_d98b2b"]; d["container_teal"] = d["container_2f7f72"]; d["container_red"] = d["container_b23a2e"]; d["container_blue"] = d["container_2e5e9a"];
             var wn = ProcTextures.WaterNormal("Water_N");
-            d["water"] = Mat("Water", new Color(0.02f, 0.06f, 0.09f), 0.94f, 0.2f, null, wn, new Vector2(1f / 40f, 1f / 40f));
+            d["water"] = Mat("Water", new Color(0.015f, 0.05f, 0.07f), 0.96f, 0.25f, null, wn, new Vector2(1f / 40f, 1f / 40f));
             // props
             d["bark"] = Mat("Bark", new Color(0.26f, 0.19f, 0.14f), 0.15f, 0f, null, null, null, null, null, true);
             d["pine"] = Mat("Foliage_Pine", new Color(0.08f, 0.18f, 0.1f), 0.12f, 0f, null, null, null, null, null, true);
@@ -364,7 +399,7 @@ namespace VeyraCity.EditorTools
             d["palm"].SetFloat("_Cull", 0f);
             d["lamp_pole"] = Mat("Lamp_Pole", new Color(0.18f, 0.19f, 0.2f), 0.45f, 0.7f, null, null, null, null, null, true);
             d["lamp_head"] = Mat("Lamp_Head", new Color(0.95f, 0.92f, 0.85f), 0.6f, 0f, null, null, null, null, new Color(6f, 5.4f, 4.2f), true);
-            d["lamp_sodium"] = Mat("Lamp_Sodium", new Color(1f, 0.65f, 0.25f), 0.6f, 0f, null, null, null, null, new Color(7f, 3.4f, 0.8f), true);
+            d["lamp_sodium"] = Mat("Lamp_Sodium", Hex("#FFAA00"), 0.6f, 0f, null, null, null, null, Hex("#FFAA00") * 6f, true);
             AssetDatabase.SaveAssets();
             return d;
         }
@@ -396,9 +431,9 @@ namespace VeyraCity.EditorTools
             var tone = profile.Add<Tonemapping>(true);
             tone.mode.value = TonemappingMode.ACES;
             var bloom = profile.Add<Bloom>(true);
-            bloom.threshold.value = 1.05f;
-            bloom.intensity.value = 0.9f;
-            bloom.scatter.value = 0.68f;
+            bloom.threshold.value = 0.9f;
+            bloom.intensity.value = 1.2f;
+            bloom.scatter.value = 0.7f;
             var ca = profile.Add<ColorAdjustments>(true);
             ca.contrast.value = 14f;
             ca.saturation.value = 10f;
@@ -515,8 +550,22 @@ namespace VeyraCity.EditorTools
                         float[] w = { a.r, a.g, a.b, a.a, b.r, b.g, b.b, b.a };
                         float sum = 0f;
                         foreach (var v in w) sum += v;
-                        if (sum < 1f) { w[0] = 1f; sum = 1f; }
-                        for (int l = 0; l < 8; l++) am[y, x, l] = w[l] / sum;
+                        // The source splat maps are almost empty, so land cover is derived from the terrain itself:
+                        // rock on steep slopes, sand at the shoreline, forest floor up the mountains, grass/lawn/dirt mixed by noise.
+                        float nu = (x + 0.5f) / amRes, nv = (y + 0.5f) / amRes;
+                        float steep = td.GetSteepness(nu, nv);
+                        float hgt = td.GetInterpolatedHeight(nu, nv) + meta.heightOffset;
+                        float n1 = Mathf.PerlinNoise(wx * 0.012f, wz * 0.012f), n2 = Mathf.PerlinNoise(wx * 0.05f + 31f, wz * 0.05f);
+                        var pw = new float[8];
+                        pw[2] = Mathf.SmoothStep(0f, 1f, Mathf.InverseLerp(26f, 40f, steep)) * 3f;              // rock
+                        pw[3] = hgt < 3f && hgt > -8f ? Mathf.InverseLerp(3f, 0.8f, hgt) * 3f : 0f;               // sand
+                        pw[1] = Mathf.InverseLerp(55f, 140f, hgt) * (0.6f + n1);                                  // forest floor
+                        pw[0] = 0.8f + n1 * 0.6f;                                                                 // grass
+                        pw[7] = Mathf.Clamp01(n2 - 0.45f) * 1.5f * Mathf.InverseLerp(120f, 20f, hgt);            // lawn (lower land)
+                        pw[5] = Mathf.Clamp01(0.55f - n2) * 0.9f + Mathf.InverseLerp(18f, 30f, steep) * 0.6f;    // dirt patches, slope edges
+                        float psum = 0f;
+                        for (int l = 0; l < 8; l++) { pw[l] += w[l] / 255f * 4f; psum += pw[l]; }
+                        for (int l = 0; l < 8; l++) am[y, x, l] = pw[l] / psum;
                     }
                 td.SetAlphamaps(0, 0, am);
                 EditorUtility.SetDirty(td);
@@ -564,6 +613,7 @@ namespace VeyraCity.EditorTools
                 layer.diffuseTexture = ProcTextures.Plain("Terrain_" + s.name, s.c, 100 + i * 7, s.freq, s.contrast);
                 layer.tileSize = new Vector2(s.tile, s.tile);
                 layer.smoothness = s.smooth;
+                layer.smoothnessSource = TerrainLayerSmoothnessSource.ConstantOnly; // never read smoothness from diffuse alpha (it is 1 = mirror)
                 layer.metallic = 0f;
                 EditorUtility.SetDirty(layer);
                 layers[i] = layer;
@@ -579,7 +629,7 @@ namespace VeyraCity.EditorTools
             switch (mat)
             {
                 case "asphalt": case "asphalt_worn": case "concrete_dark": case "gravel": return Group.Road;
-                case "sidewalk": return Group.Sidewalk;
+                case "sidewalk": case "kerb": return Group.Sidewalk;
                 case "marking_white": case "marking_yellow": return Group.Decal;
                 case "light_warm": case "sodium": case "neon_cyan": case "neon_magenta": case "marker_red": return Group.Light;
                 case "water": return Group.Water;
@@ -629,6 +679,7 @@ namespace VeyraCity.EditorTools
                         if (!mats.ContainsKey(mat)) mat = "concrete";
                         var group = GroupOf(mat);
                         if (group == Group.Water) continue; // water handled separately (sea plane + river)
+                        if (group == Group.Building) continue; // buildings come from world_building_placements.csv
                         float lift = group == Group.Decal ? 0.035f : group == Group.Road ? 0.012f : 0f;
                         string surf = group == Group.Road ? (mat == "gravel" ? "gravel" : mat == "concrete_dark" ? "concrete" : "asphalt") : group == Group.Sidewalk || group == Group.Structure || group == Group.Building ? "concrete" : null;
                         for (int t = 0; t + 2 < idx.Length; t += 3)
@@ -639,7 +690,9 @@ namespace VeyraCity.EditorTools
                             if (group == Group.Road && LosesJunction(centre)) { cutRoads++; continue; }
                             if (group == Group.Structure && StructureInLane(a, b, c, centre)) { cutStructs++; continue; }
                             int cx = Mathf.FloorToInt(centre.x / Cell), cz = Mathf.FloorToInt(centre.z / Cell);
-                            string key = $"{mat}|{cx}|{cz}";
+                            var faceN = Vector3.Cross(b - a, c - a);
+                            string visMat = group == Group.Sidewalk && faceN.sqrMagnitude > 1e-10f && Mathf.Abs(faceN.normalized.y) < 0.6f ? "kerb" : mat;
+                            string key = $"{visMat}|{cx}|{cz}";
                             if (!visual.TryGetValue(key, out var vb)) visual[key] = vb = new Builder();
                             var fn = Vector3.Cross(b - a, c - a);
                             fn = fn.sqrMagnitude > 1e-10f ? fn.normalized : Vector3.up;

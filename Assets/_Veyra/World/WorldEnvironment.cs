@@ -14,7 +14,7 @@ namespace VeyraCity.World
     [ExecuteAlways]
     public sealed class WorldEnvironment : MonoBehaviour
     {
-        public enum WeatherKind { Clear, Rain }
+        public enum WeatherKind { Clear, Overcast, Rain }
 
         [Serializable]
         public struct EmissiveEntry
@@ -40,6 +40,10 @@ namespace VeyraCity.World
         public bool AnimateTime;
         [Tooltip("Real minutes per 24 h game day")] public float DayLengthMinutes = 24f;
         public WeatherKind Weather = WeatherKind.Clear;
+        [Tooltip("Free roam: change weather every few minutes (clear, overcast, rain)")] public bool AutoWeather;
+        float weatherTimer = 240f;
+        /// <summary>0 = clear sky, 1 = full cloud (overcast or rain); ramps over ~25 s.</summary>
+        public float Cloudiness { get; private set; }
         public List<EmissiveEntry> Emissives = new List<EmissiveEntry>();
         public List<WetEntry> WetSurfaces = new List<WetEntry>();
         [Tooltip("Water materials whose normal map scrolls")] public List<Material> ScrollMaterials = new List<Material>();
@@ -75,6 +79,7 @@ namespace VeyraCity.World
                 PostVolume.sharedProfile.TryGet(out bloom);
             }
             Wetness = Weather == WeatherKind.Rain ? 1f : 0f;
+            Cloudiness = Weather == WeatherKind.Clear ? 0f : 1f;
             Apply(true);
         }
 
@@ -102,7 +107,18 @@ namespace VeyraCity.World
             {
                 if (AnimateTime) TimeOfDay = Mathf.Repeat(TimeOfDay + Time.deltaTime * 24f / (DayLengthMinutes * 60f), 24f);
                 float target = Weather == WeatherKind.Rain ? 1f : 0f;
-                Wetness = Mathf.MoveTowards(Wetness, target, Time.deltaTime / 20f);
+                Wetness = Mathf.MoveTowards(Wetness, target, Time.deltaTime / (target > Wetness ? 20f : 90f));
+                Cloudiness = Mathf.MoveTowards(Cloudiness, Weather == WeatherKind.Clear ? 0f : 1f, Time.deltaTime / 25f);
+                if (AutoWeather)
+                {
+                    weatherTimer -= Time.deltaTime;
+                    if (weatherTimer <= 0f)
+                    {
+                        float r = UnityEngine.Random.value;
+                        SetWeather(r < 0.55f ? WeatherKind.Clear : r < 0.8f ? WeatherKind.Overcast : WeatherKind.Rain);
+                        weatherTimer = UnityEngine.Random.Range(180f, 360f);
+                    }
+                }
             }
             Apply(false);
             float tt = Application.isPlaying ? Time.time : 0f;
@@ -131,7 +147,7 @@ namespace VeyraCity.World
                 {
                     Sun.transform.rotation = Quaternion.Euler(Mathf.Max(2f, elevation), azimuth, 0f);
                     Sun.color = Color.Lerp(new Color(1f, 0.97f, 0.92f), new Color(1f, 0.62f, 0.32f), golden);
-                    Sun.intensity = Mathf.Lerp(2.2f, 1.2f, golden) * (1f - NightFactor);
+                    Sun.intensity = Mathf.Lerp(1.9f, 1.15f, golden) * (1f - NightFactor) * Mathf.Lerp(1f, 0.38f, Cloudiness);
                 }
                 else
                 {
@@ -147,6 +163,7 @@ namespace VeyraCity.World
             Color eqDay = new Color(0.62f, 0.66f, 0.70f), eqGold = new Color(0.72f, 0.50f, 0.36f), eqNight = new Color(0.07f, 0.07f, 0.11f);
             Color grDay = new Color(0.30f, 0.29f, 0.27f), grNight = new Color(0.03f, 0.03f, 0.04f);
             Color sky = Color.Lerp(Color.Lerp(skyDay, skyGold, golden), skyNight, NightFactor);
+            sky = Color.Lerp(sky, new Color(0.42f, 0.45f, 0.5f) * Mathf.Lerp(1f, 0.15f, NightFactor), Cloudiness * 0.7f);
             Color eq = Color.Lerp(Color.Lerp(eqDay, eqGold, golden), eqNight, NightFactor);
             RenderSettings.ambientMode = AmbientMode.Trilight;
             RenderSettings.ambientSkyColor = sky;
@@ -154,7 +171,7 @@ namespace VeyraCity.World
             RenderSettings.ambientGroundColor = Color.Lerp(grDay, grNight, NightFactor);
             RenderSettings.fog = true;
             RenderSettings.fogMode = FogMode.ExponentialSquared;
-            float wetHaze = Wetness * 0.0006f;
+            float wetHaze = Wetness * 0.0006f + Cloudiness * 0.00035f;
             RenderSettings.fogDensity = Mathf.Lerp(0.00042f, 0.00085f, NightFactor) + wetHaze;
             RenderSettings.fogColor = Color.Lerp(Color.Lerp(new Color(0.66f, 0.72f, 0.80f), new Color(0.78f, 0.58f, 0.45f), golden),
                                                  new Color(0.035f, 0.045f, 0.075f), NightFactor);
@@ -165,8 +182,13 @@ namespace VeyraCity.World
                 if (SkyboxMaterial.HasProperty("_AtmosphereThickness")) SkyboxMaterial.SetFloat("_AtmosphereThickness", Mathf.Lerp(0.85f, 1.6f, golden));
                 if (SkyboxMaterial.HasProperty("_SkyTint")) SkyboxMaterial.SetColor("_SkyTint", Color.Lerp(new Color(0.5f, 0.55f, 0.62f), new Color(0.25f, 0.28f, 0.45f), NightFactor));
             }
-            if (colorAdj != null) colorAdj.postExposure.value = Mathf.Lerp(0.15f, 0.55f, NightFactor);
-            if (bloom != null) bloom.intensity.value = Mathf.Lerp(0.35f, 1.1f, NightFactor);
+            if (colorAdj != null) colorAdj.postExposure.value = Mathf.Lerp(0.05f, 0.3f, NightFactor);
+            if (bloom != null)
+            {
+                // Sunlit light paving reaches ~0.9 in HDR, so the low threshold is for night only (neon, lamps, windows).
+                bloom.intensity.value = Mathf.Lerp(0.55f, 1.2f, NightFactor);
+                bloom.threshold.value = Mathf.Lerp(1.25f, 0.9f, NightFactor);
+            }
 
             // Emissives (windows, neon, lamp heads).
             foreach (var e in Emissives)
@@ -290,7 +312,7 @@ namespace VeyraCity.World
             }
             rain.transform.position = cam.transform.position + Vector3.up * 14f + cam.transform.forward * 12f;
             var em = rain.emission;
-            em.rateOverTime = Weather == WeatherKind.Rain ? 4500f : 0f;
+            em.rateOverTime = Weather == WeatherKind.Rain ? 5500f : 0f;
         }
     }
 }
