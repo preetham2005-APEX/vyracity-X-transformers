@@ -101,6 +101,14 @@ namespace VeyraCity.World
             Apply(true);
         }
 
+        /// <summary>Sets road wetness directly (0 dry … 1 wet) without rain, e.g. for review cameras (card S5). In Play mode the
+        /// weather then drifts it back towards its own target (dry for Clear) at the normal slow rate.</summary>
+        public void SetWetness(float wetness)
+        {
+            Wetness = Mathf.Clamp01(wetness);
+            Apply(true);
+        }
+
         void Update()
         {
             if (Application.isPlaying)

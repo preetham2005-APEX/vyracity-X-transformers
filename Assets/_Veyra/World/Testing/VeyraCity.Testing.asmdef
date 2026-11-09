@@ -6,7 +6,9 @@
         "VeyraCity.VehiclePhysics",
         "VeyraCity.Assists",
         "VeyraCity.World",
-        "VeyraCity.Gameplay"
+        "VeyraCity.Gameplay",
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.RenderPipelines.Universal.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

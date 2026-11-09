@@ -1,0 +1,321 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 705e278bc0d85294797bae5b3917922b, type: 3}
+  m_Name: ReviewCameras
+  m_EditorClassIdentifier: VeyraCity.Testing::VeyraCity.Testing.ReviewCameraSet
+  Cameras:
+  - name: CAM_01_World_Overview
+    kind: 0
+    district: World
+    position: {x: -200, y: 3800, z: -6200}
+    heightAboveGround: 0
+    lookAt: {x: 0, y: 0, z: 300}
+    roadId: 
+    distanceAlongRoad_m: 0
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 30
+    fov: 55
+    time: 0
+    hour: 12
+    wet: 0
+    note: 
+  - name: CAM_02_DT_Aerial_Day
+    kind: 0
+    district: D1
+    position: {x: -1050, y: 1150, z: -2350}
+    heightAboveGround: 0
+    lookAt: {x: 250, y: 60, z: -500}
+    roadId: 
+    distanceAlongRoad_m: 0
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 30
+    fov: 40
+    time: 0
+    hour: 12
+    wet: 0
+    note: 
+  - name: CAM_03_DT_Skyline_Golden
+    kind: 0
+    district: D1
+    position: {x: 350, y: 22, z: -2180}
+    heightAboveGround: 0
+    lookAt: {x: 200, y: 130, z: -600}
+    roadId: 
+    distanceAlongRoad_m: 0
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 30
+    fov: 50
+    time: 1
+    hour: 18.8
+    wet: 0
+    note: over Crown Bay
+  - name: CAM_04_DT_Skyline_Night
+    kind: 0
+    district: D1
+    position: {x: 350, y: 22, z: -2180}
+    heightAboveGround: 0
+    lookAt: {x: 200, y: 130, z: -600}
+    roadId: 
+    distanceAlongRoad_m: 0
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 30
+    fov: 50
+    time: 3
+    hour: 23
+    wet: 0
+    note: as CAM_03
+  - name: CAM_05_DT_Plaza_Closeup
+    kind: 0
+    district: D1
+    position: {x: 38, y: 1.75, z: -508}
+    heightAboveGround: 1
+    lookAt: {x: 60, y: 33, z: -440}
+    roadId: 
+    distanceAlongRoad_m: 0
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 30
+    fov: 64
+    time: 0
+    hour: 12
+    wet: 0
+    note: 
+  - name: CAM_06_DT_Drive_Crown
+    kind: 1
+    district: D1
+    position: {x: 0, y: 0, z: 0}
+    heightAboveGround: 0
+    lookAt: {x: 0, y: 0, z: 0}
+    roadId: A1
+    distanceAlongRoad_m: 300
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 30
+    fov: 62
+    time: 0
+    hour: 12
+    wet: 0
+    note: "A1 Crown Avenue (AR), northbound \u2192 direction +1; profile tangent (0.00, 1.00)"
+  - name: CAM_07_DT_Drive_Meridian_Night
+    kind: 1
+    district: D1
+    position: {x: 0, y: 0, z: 0}
+    heightAboveGround: 0
+    lookAt: {x: 0, y: 0, z: 0}
+    roadId: A2
+    distanceAlongRoad_m: 760
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 30
+    fov: 62
+    time: 3
+    hour: 23
+    wet: 1
+    note: "A2 Meridian Boulevard (AR), eastbound \u2192 direction +1; profile tangent (1.00, 0.00)"
+  - name: CAM_08_R1_Viaduct_Night
+    kind: 1
+    district: D1
+    position: {x: 0, y: 0, z: 0}
+    heightAboveGround: 0
+    lookAt: {x: 0, y: 0, z: 0}
+    roadId: R1
+    distanceAlongRoad_m: 650
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 60
+    fov: 64
+    time: 3
+    hour: 23
+    wet: 0
+    note: "R1 Veyra Ring (MW), profile direction (Appendix E gives none) \u2192 direction +1; profile tangent (1.00, 0.00); Harbor Viaduct"
+  - name: CAM_09_BR_Overlook_Golden
+    kind: 0
+    district: D4
+    position: {x: 560, y: 6, z: 1490}
+    heightAboveGround: 1
+    lookAt: {x: 250, y: 60, z: -700}
+    roadId: 
+    distanceAlongRoad_m: 0
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 30
+    fov: 55
+    time: 1
+    hour: 18.8
+    wet: 0
+    note: at VP-01
+  - name: CAM_10_BR_Halcyon_Drive
+    kind: 1
+    district: D4
+    position: {x: 0, y: 0, z: 0}
+    heightAboveGround: 0
+    lookAt: {x: 0, y: 0, z: 0}
+    roadId: A18
+    distanceAlongRoad_m: 2380
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 35
+    fov: 62
+    time: 0
+    hour: 12
+    wet: 0
+    note: "A18 Halcyon Pass Road (MT), profile direction (Appendix E gives none) \u2192 direction +1; profile tangent (-0.98, 0.17)"
+  - name: CAM_11_BR_Switchbacks_Aerial
+    kind: 0
+    district: D4
+    position: {x: 1800, y: 560, z: 750}
+    heightAboveGround: 0
+    lookAt: {x: 2390, y: 200, z: 1400}
+    roadId: 
+    distanceAlongRoad_m: 0
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 30
+    fov: 42
+    time: 0
+    hour: 12
+    wet: 0
+    note: 
+  - name: CAM_12_H2_Highline_Golden
+    kind: 1
+    district: D4
+    position: {x: 0, y: 0, z: 0}
+    heightAboveGround: 0
+    lookAt: {x: 0, y: 0, z: 0}
+    roadId: H2
+    distanceAlongRoad_m: 3950
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 60
+    fov: 62
+    time: 1
+    hour: 18.8
+    wet: 0
+    note: "H2 Ridgeline Highway (HW), westbound \u2192 direction +1; profile tangent (-0.98, -0.20)"
+  - name: CAM_13_NM_Lumen_Night
+    kind: 1
+    district: D6
+    position: {x: 0, y: 0, z: 0}
+    heightAboveGround: 0
+    lookAt: {x: 0, y: 0, z: 0}
+    roadId: A7
+    distanceAlongRoad_m: 700
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 40
+    fov: 62
+    time: 3
+    hour: 23
+    wet: 1
+    note: "A7 Lumen Avenue (\"the Mile\") (AR), profile direction (Appendix E gives none) \u2192 direction +1; profile tangent (0.55, 0.83)"
+  - name: CAM_14_AC_Lighthouse_Golden
+    kind: 0
+    district: D2
+    position: {x: -190, y: 2, z: -2570}
+    heightAboveGround: 1
+    lookAt: {x: 535, y: 40, z: -2605}
+    roadId: 
+    distanceAlongRoad_m: 0
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 30
+    fov: 55
+    time: 1
+    hour: 18.8
+    wet: 0
+    note: at VP-03, looking at the bridge
+  - name: CAM_15_IP_Berth_Dusk
+    kind: 0
+    district: D3
+    position: {x: 1600, y: 2, z: -2700}
+    heightAboveGround: 1
+    lookAt: {x: 2300, y: 40, z: -2580}
+    roadId: 
+    distanceAlongRoad_m: 0
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 30
+    fov: 60
+    time: 2
+    hour: 19.75
+    wet: 0
+    note: on Berth Road, looking at the cranes
+  - name: CAM_16_WH_Street_Day
+    kind: 0
+    district: D5
+    position: {x: -2260, y: 1.7, z: -610}
+    heightAboveGround: 1
+    lookAt: {x: -2200, y: 8, z: -550}
+    roadId: 
+    distanceAlongRoad_m: 0
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 30
+    fov: 64
+    time: 0
+    hour: 12
+    wet: 0
+    note: Westhaven Plaza
+  - name: CAM_17_FA_Dragway_Aerial
+    kind: 0
+    district: D7
+    position: {x: 2500, y: 120, z: -1100}
+    heightAboveGround: 0
+    lookAt: {x: 2900, y: 8, z: -600}
+    roadId: 
+    distanceAlongRoad_m: 0
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 30
+    fov: 45
+    time: 0
+    hour: 12
+    wet: 0
+    note: 
+  - name: CAM_18_RV_MirrorLake_Morning
+    kind: 0
+    district: D8
+    position: {x: -2950, y: 3, z: 1800}
+    heightAboveGround: 1
+    lookAt: {x: -2950, y: 160, z: 2600}
+    roadId: 
+    distanceAlongRoad_m: 0
+    direction: 1
+    back: 7.5
+    up: 2.1
+    lookAhead: 30
+    fov: 55
+    time: 4
+    hour: 7.5
+    wet: 0
+    note: at VP-08

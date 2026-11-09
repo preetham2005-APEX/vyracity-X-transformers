@@ -14,6 +14,7 @@ namespace VeyraCity.Testing
 
         [Tooltip("Assets/_Veyra/Data/road_network_geometry.json")] public TextAsset RoadNetworkJson;
         public List<VeyraTestRoute> Routes = new List<VeyraTestRoute>();
+        [Tooltip("Assets/_Veyra/Data/ReviewCameras.asset (card S5)")] public ReviewCameraSet ReviewCameras;
 
         public VeyraTestRoute Find(string routeName)
         {

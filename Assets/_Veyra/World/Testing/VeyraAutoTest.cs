@@ -28,7 +28,7 @@ namespace VeyraCity.Testing
         {
             public bool Enabled, ReviewCapture;
             public float Seconds;
-            public string Route = "R_SMOKE", StatsPath, Quality;
+            public string Route = "R_SMOKE", StatsPath, Quality, ReviewDir, ReviewFilter;
             public float TimeOfDay = float.NaN;
 
             public static Options Parse(string[] a)
@@ -45,6 +45,8 @@ namespace VeyraCity.Testing
                         case "-timeofday": if (TryF(next, out var h)) { o.TimeOfDay = Mathf.Repeat(h, 24f); i++; } break;
                         case "-quality": if (next != null) { o.Quality = next; i++; } break;
                         case "-reviewcapture": o.ReviewCapture = true; break;
+                        case "-reviewdir": if (next != null) { o.ReviewDir = next; i++; } break;
+                        case "-reviewfilter": if (next != null) { o.ReviewFilter = next; i++; } break;
                     }
                 }
                 return o;
@@ -114,7 +116,7 @@ namespace VeyraCity.Testing
             report.date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
             report.route = opts.Route;
             report.time_limit_s = opts.Seconds;
-            report.review_capture = opts.ReviewCapture ? "requested: not available until card S5 (review cameras)" : "not requested";
+            report.review_capture = opts.ReviewCapture ? "requested" : "not requested";
             Debug.Log($"[AutoTest] start route={opts.Route} seconds={opts.Seconds} stats={opts.StatsPath} timeOfDay={(float.IsNaN(opts.TimeOfDay) ? "route default" : opts.TimeOfDay.ToString("0.0", CultureInfo.InvariantCulture))} quality={(string.IsNullOrEmpty(opts.Quality) ? "current" : opts.Quality)}");
 
             float wait = Time.realtimeSinceStartup;
@@ -200,6 +202,17 @@ namespace VeyraCity.Testing
             report.route_complete = report.vehicle.segments_completed == report.vehicle.segments_total;
             if (endReason == "route complete" && !report.route_complete)
                 endReason = $"all segments attempted, {report.vehicle.segments_completed}/{report.vehicle.segments_total} completed";
+            if (opts.ReviewCapture)
+            {
+                if (cfg.ReviewCameras != null)
+                {
+                    // Card S5: the review cameras after the route (not part of the frame statistics, which stopped with the route).
+                    string dir = !string.IsNullOrEmpty(opts.ReviewDir) ? opts.ReviewDir : ReviewCameraRig.OutputDir(Path.GetDirectoryName(Application.dataPath) ?? ".", "review", "player");
+                    yield return VeyraReviewCapture.CaptureAll(gf, cfg.ReviewCameras, net, dir, opts.ReviewFilter, $"review after {route.name}");
+                    report.review_capture = $"{cfg.ReviewCameras.Filter(opts.ReviewFilter).Count} cameras -> {dir}";
+                }
+                else report.review_capture = "requested, but Resources/Testing/VeyraAutoTestConfig has no ReviewCameras";
+            }
             yield return Finish(endReason, 0);
         }
 
