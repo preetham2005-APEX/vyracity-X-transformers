@@ -5,7 +5,10 @@ import time
 import urllib.request
 import urllib.error
 
-TOKEN = "43a37c72070946648110abd6795ba410"
+import os
+TOKEN = os.environ.get("SKETCHFAB_API_TOKEN", "")
+if not TOKEN:
+    raise SystemExit("Set the SKETCHFAB_API_TOKEN environment variable; never hard-code the token.")
 TARGET_DIR = r"E:\VeyraCity\ArtSource\Downloads\FullMapModels"
 os.makedirs(TARGET_DIR, exist_ok=True)
 

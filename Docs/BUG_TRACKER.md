@@ -11,3 +11,4 @@ Bugs before 2026-11-09 evening are in the design repo, `E:\PROJECT BANGERRR\Docs
 | BUG-031 | High | Fixed | Daylight paving washed out to white: bloom threshold 0.9 is below sunlit light-surface luminance | Threshold 1.25 by day → 0.9 at night; lower night exposure; darker paving |
 | BUG-032 | Low | Fixed | The welcome dialog covered automated review screenshots | Not shown in automated runs |
 | BUG-033 | Low | Open | `process_city_map.py` splits buildings that cross chunk lines into several UBX boxes | Merge per original part |
+| SEC-002 | High | Mitigated (user action pending) | A Sketchfab API token was hard-coded in 7 git-tracked `Tools/*.py` scripts (committed in `e65856d`; no git remote, never pushed) | Scripts now read `SKETCHFAB_API_TOKEN` from the environment and exit if it is missing. **User:** regenerate the token at sketchfab.com → Settings → Password & API; the old value stays in local history only |

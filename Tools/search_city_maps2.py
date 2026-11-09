@@ -2,7 +2,10 @@ import urllib.request
 import urllib.parse
 import json
 
-TOKEN = "43a37c72070946648110abd6795ba410"
+import os
+TOKEN = os.environ.get("SKETCHFAB_API_TOKEN", "")
+if not TOKEN:
+    raise SystemExit("Set the SKETCHFAB_API_TOKEN environment variable; never hard-code the token.")
 headers = {"Authorization": f"Token {TOKEN}", "User-Agent": "Mozilla/5.0"}
 
 queries = [
