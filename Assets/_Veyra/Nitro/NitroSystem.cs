@@ -249,6 +249,8 @@ namespace VeyraCity.Nitro
             if (activationDelay > 0f) { activationDelay -= dt; active = false; }
             BoostScalar = active ? Mathf.MoveTowards(BoostScalar, 1f, dt / 0.15f) : Mathf.MoveTowards(BoostScalar, 0f, dt / 0.20f);
             if (BoostScalar <= 0f) { ExtraThrust = 0f; return; }
+            // BUG-044: braking or reversing always wins over nitro (no forced throttle, no thrust).
+            if (c.WantsReverse || c.Brake > 0.2f) { ExtraThrust = 0f; return; }
 
             int m = (int)(Mode == NitroMode.Off ? lastMode : Mode);
             float mul = 1f + (TorqueMul[m] - 1f) * PowerMultiplier;

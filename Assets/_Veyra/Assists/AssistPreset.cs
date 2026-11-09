@@ -28,6 +28,8 @@ namespace VeyraCity.Assists
         [Tooltip("Target drift band, degrees")] public Vector2 DriftBandDeg = new Vector2(25f, 45f);
         [Tooltip("While drift assist holds a slide: driven-wheel slip limit as a multiple of peak slip (0 = unlimited)")] public float DriftTcsPeakSlipFactor = 3f;
 
+        [Tooltip("A quick brake tap while steering at speed starts an arcade drift (player presets; off for AI)")] public bool DriftTap;
+
         [Header("Accessibility")]
         public bool AutoAccelerate;
     }

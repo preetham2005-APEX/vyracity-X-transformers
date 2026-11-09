@@ -14,10 +14,14 @@ namespace VeyraCity.Assists
         /// <summary>… with the brake held this long (INPUT_AND_ACCESSIBILITY_SPEC §2).</summary>
         public const float ReverseHoldSeconds = 0.35f;
 
+        /// <summary>A brake press shorter than this, released while steering at speed, is a drift tap (Asphalt-style).</summary>
+        public const float DriftTapSeconds = 0.3f;
+
         public bool ReverseMode { get; private set; }
         public bool Drifting { get; private set; }
         float brakeHold;
         float prevSlip;
+        float brakeDown = -1f; // seconds the current brake press has lasted (-1 = not pressed)
 
         public void Reset()
         {
@@ -25,6 +29,7 @@ namespace VeyraCity.Assists
             Drifting = false;
             brakeHold = 0f;
             prevSlip = 0f;
+            brakeDown = -1f;
         }
 
         /// <summary>Available fraction of full steering lock at a speed. No preset = no assist = full lock.</summary>
@@ -80,6 +85,29 @@ namespace VeyraCity.Assists
             // ---- Steering: speed-sensitive lock + counter-steer ----
             float speed = Mathf.Abs(forward);
             float playerSteer = Mathf.Clamp(intent.Steer, -1f, 1f);
+            c.SteerIntent = playerSteer;
+
+            // ---- Drift tap: a short brake press released while steering at speed starts an arcade drift ----
+            if (brake > 0.3f) brakeDown = brakeDown < 0f ? 0f : brakeDown + dt;
+            else
+            {
+                if (brakeDown >= 0f && brakeDown < DriftTapSeconds && preset != null && preset.DriftTap
+                    && Mathf.Abs(playerSteer) > 0.3f && forward > 12f && !ReverseMode)
+                    c.DriftRequest = true;
+                brakeDown = -1f;
+            }
+
+            if (state.ArcadeDrift)
+            {
+                // The handling-feel layer holds the drift; the assists only pass the steering through.
+                Drifting = true;
+                prevSlip = state.SlipAngleDeg;
+                c.Steer = Mathf.Clamp(playerSteer * SpeedSteerFraction(speed, preset), -1f, 1f);
+                c.TcsPeakSlipFactor = preset != null ? preset.DriftTcsPeakSlipFactor : 0f;
+                c.AbsEnabled = preset == null || preset.Abs;
+                return c;
+            }
+
             float steer = playerSteer * SpeedSteerFraction(speed, preset);
             float slip = state.SlipAngleDeg;
             float maxSteerDeg = state.MaxSteerDeg > 1f ? state.MaxSteerDeg : 34f;

@@ -1,0 +1,96 @@
+{
+ "id": "generic_coupe",
+ "name": "Coupe",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Generic_Passenger_Car_Pack_20f9af9b.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Generic passenger car pack",
+  "author": "Comrade1280",
+  "author_url": "https://sketchfab.com/comrade1280",
+  "url": "https://sketchfab.com/3d-models/generic-passenger-car-pack-20f9af9b8a404d5cb022ac6fe87f21f5",
+  "file": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+  "credit": "\"Generic passenger car pack\" by Comrade1280 (https://sketchfab.com/3d-models/generic-passenger-car-pack-20f9af9b8a404d5cb022ac6fe87f21f5), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "Coupe Body",
+ "stripped": [],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 0,
+  "front_named": 0,
+  "rear_named": 0,
+  "flipped": true,
+  "mode": "1"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.663,
+    -1.1902,
+    0.3003
+   ],
+   "radius": 0.3003,
+   "width": 0.2789,
+   "tris": 485
+  },
+  "FR": {
+   "centre": [
+    -0.6627,
+    -1.1904,
+    0.3003
+   ],
+   "radius": 0.3003,
+   "width": 0.2789,
+   "tris": 485
+  },
+  "RL": {
+   "centre": [
+    0.6626,
+    1.2225,
+    0.3003
+   ],
+   "radius": 0.3003,
+   "width": 0.2789,
+   "tris": 485
+  },
+  "RR": {
+   "centre": [
+    -0.6631,
+    1.2223,
+    0.3003
+   ],
+   "radius": 0.3003,
+   "width": 0.2789,
+   "tris": 485
+  }
+ },
+ "dimensions": [
+  1.884,
+  1.278,
+  4.239
+ ],
+ "wheelbase": 2.4127,
+ "track_front": 1.3257,
+ "track_rear": 1.3257,
+ "radius_front": 0.3003,
+ "radius_rear": 0.3003,
+ "width_front": 0.2789,
+ "width_rear": 0.2789,
+ "tris": {
+  "Body_LOD0": 4082,
+  "Body_LOD1": 1835,
+  "Body_LOD2": 612,
+  "wheels": 1940,
+  "UCX_Body_faces": 190
+ },
+ "materials": {
+  "Body_0": "paint",
+  "Glass_0": "glass",
+  "Optics_0": "light",
+  "Wheel_0": "tyre"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/generic_coupe/generic_coupe.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/generic_coupe/generic_coupe_preview.png"
+}

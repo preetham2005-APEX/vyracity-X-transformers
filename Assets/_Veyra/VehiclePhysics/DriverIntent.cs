@@ -47,6 +47,10 @@ namespace VeyraCity.VehiclePhysics
         public float TorqueScale;
         /// <summary>Extra longitudinal thrust in newtons (nitro top-speed extension). 0 = none.</summary>
         public float ExtraThrust;
+        /// <summary>The driver's raw steering input −1…1 before speed-sensitive limiting (drift and air control use it).</summary>
+        public float SteerIntent;
+        /// <summary>One-step request to start an arcade drift (a brake tap while steering).</summary>
+        public bool DriftRequest;
 
         public static VehicleControls Neutral => new VehicleControls { TorqueScale = 1f };
     }

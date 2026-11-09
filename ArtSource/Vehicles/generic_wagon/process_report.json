@@ -1,0 +1,96 @@
+{
+ "id": "generic_wagon",
+ "name": "Wagon",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Generic_Passenger_Car_Pack_20f9af9b.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Generic passenger car pack",
+  "author": "Comrade1280",
+  "author_url": "https://sketchfab.com/comrade1280",
+  "url": "https://sketchfab.com/3d-models/generic-passenger-car-pack-20f9af9b8a404d5cb022ac6fe87f21f5",
+  "file": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+  "credit": "\"Generic passenger car pack\" by Comrade1280 (https://sketchfab.com/3d-models/generic-passenger-car-pack-20f9af9b8a404d5cb022ac6fe87f21f5), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "Wagon Body",
+ "stripped": [],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 0,
+  "front_named": 0,
+  "rear_named": 0,
+  "flipped": false,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.6994,
+    -1.3356,
+    0.3044
+   ],
+   "radius": 0.3044,
+   "width": 0.2331,
+   "tris": 592
+  },
+  "FR": {
+   "centre": [
+    -0.6996,
+    -1.3355,
+    0.3044
+   ],
+   "radius": 0.3044,
+   "width": 0.2331,
+   "tris": 592
+  },
+  "RL": {
+   "centre": [
+    0.6997,
+    1.2979,
+    0.3044
+   ],
+   "radius": 0.3044,
+   "width": 0.2331,
+   "tris": 592
+  },
+  "RR": {
+   "centre": [
+    -0.6993,
+    1.298,
+    0.3044
+   ],
+   "radius": 0.3044,
+   "width": 0.2331,
+   "tris": 592
+  }
+ },
+ "dimensions": [
+  1.95,
+  1.38,
+  4.383
+ ],
+ "wheelbase": 2.6335,
+ "track_front": 1.399,
+ "track_rear": 1.399,
+ "radius_front": 0.3044,
+ "radius_rear": 0.3044,
+ "width_front": 0.2331,
+ "width_rear": 0.2331,
+ "tris": {
+  "Body_LOD0": 4614,
+  "Body_LOD1": 2075,
+  "Body_LOD2": 692,
+  "wheels": 2368,
+  "UCX_Body_faces": 194
+ },
+ "materials": {
+  "Body_8": "paint",
+  "Glass_8": "glass",
+  "Optics_8": "light",
+  "Wheel_7": "tyre"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/generic_wagon/generic_wagon.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/generic_wagon/generic_wagon_preview.png"
+}

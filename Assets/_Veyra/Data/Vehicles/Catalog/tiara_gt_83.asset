@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3547c682de3891440803fdc997ce3398, type: 3}
+  m_Name: tiara_gt_83
+  m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
+  DisplayName: Tiara GT '83 Tuned
+  BuildId: DL_tiara_gt_83
+  TuningVersion: 4
+  Layout: 0
+  AwdFrontSplit: 0.4
+  Wheelbase: 2.3897
+  Chassis:
+    Mass: 1120
+    FrontWeightFraction: 0.52
+    CoMHeight: 0.428384
+    Dimensions: {x: 1.736, y: 1.217, z: 4.167}
+    InertiaScale: 0.85
+  Front:
+    TrackWidth: 1.2905
+    Suspension:
+      RestLength: 0.2
+      Travel: 0.12
+      SpringRate: 45984.297
+      BumpDamping: 2155.8472
+      ReboundDamping: 4311.6943
+      BumpStopRate: 155555.55
+      AntiRollRate: 26962.963
+      RollCentreHeight: 0.05
+    Tyre:
+      Radius: 0.2755
+      Width: 0.196
+      WheelInertia: 0.83610666
+      Mu: 1.17
+      LateralGripScale: 0.92
+      LongPeakSlip: 0.09
+      LatPeakSlipDeg: 7
+      LongShape: 1.8
+      LatShape: 1.55
+      LoadSensitivity: 0.12
+      NominalLoad: 3111.111
+      RollingResistance: 0.012
+    Differential:
+      Type: 0
+      Preload: 0
+      PowerLock: 0
+      CoastLock: 0
+  Rear:
+    TrackWidth: 1.2905
+    Suspension:
+      RestLength: 0.2
+      Travel: 0.12
+      SpringRate: 49052.887
+      BumpDamping: 2139.5537
+      ReboundDamping: 4279.1074
+      BumpStopRate: 155555.55
+      AntiRollRate: 15555.556
+      RollCentreHeight: 0.09
+    Tyre:
+      Radius: 0.2755
+      Width: 0.196
+      WheelInertia: 0.83610666
+      Mu: 1.17
+      LateralGripScale: 0.92
+      LongPeakSlip: 0.09
+      LatPeakSlipDeg: 7
+      LongShape: 1.8
+      LatShape: 1.55
+      LoadSensitivity: 0.12
+      NominalLoad: 3111.111
+      RollingResistance: 0.012
+    Differential:
+      Type: 1
+      Preload: 80
+      PowerLock: 0.35
+      CoastLock: 0.2
+  Engine:
+    TorqueCurve:
+    - {x: 1000, y: 93}
+    - {x: 2000, y: 148.8}
+    - {x: 3000, y: 204.6}
+    - {x: 3500, y: 220.1}
+    - {x: 4500, y: 223.2}
+    - {x: 5500, y: 213.90001}
+    - {x: 6500, y: 198.4}
+    - {x: 7000, y: 189.1}
+    - {x: 7500, y: 176.7}
+    - {x: 7800, y: 155}
+    IdleRpm: 950
+    LimiterRpm: 7800
+    Inertia: 0.15
+    EngineBrakeTorque: 55
+    LaunchRpm: 3800
+  Gearbox:
+    Ratios:
+    - 3.1
+    - 2.15
+    - 1.62
+    - 1.3
+    - 1.08
+    - 0.9
+    ReverseRatio: 3.2
+    FinalDrive: 3.9
+    Efficiency: 0.9
+    ShiftTime: 0.18
+    ShiftUpRpm: 7500
+    ShiftDownRpm: 3600
+    Automatic: 1
+  Brakes:
+    MaxTorque: 5600
+    FrontBias: 0.66
+    HandbrakeTorque: 2200
+  Steering:
+    MaxAngleDeg: 36
+    Ackermann: 0.4
+    RateDegPerSec: 400
+  Aero:
+    DragArea: 0.7
+    DownforceArea: 0.45
+    FrontDownforceShare: 0.42

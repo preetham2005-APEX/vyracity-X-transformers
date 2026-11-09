@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9613c7cbdbd0141449e603e17de6ed07, type: 3}
+  m_Name: HandlingFeel_Arcade
+  m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.HandlingFeel
+  StyleName: Arcade
+  TuningVersion: 1
+  SlideDamping: 2.2
+  SlideDampingMaxG: 0.55
+  YawTracking: 5
+  YawTrackingMaxAccel: 6
+  YawRateLimitG: 1.15
+  DownforceG: 0.45
+  DownforceRefKmh: 220
+  DriftEnabled: 1
+  DriftMinSpeedKmh: 45
+  DriftEntrySteer: 0.3
+  DriftAngleDeg: {x: 16, y: 36}
+  DriftTurnRate: {x: 0.32, y: 0.85}
+  DriftMaxLatG: 1.25
+  DriftAngleGain: 4
+  DriftYawGain: 9
+  DriftTyreLateral: 0.25
+  DriftSpeedLoss: 0.04
+  DriftExitDelay: 0.25
+  DriftBlendIn: 0.2
+  DriftBlendOut: 0.35
+  AirLevelGain: 9
+  AirDamping: 1.2
+  AirYawControl: 2.5
+  FlipRecoverSeconds: 1.6
+  WallGlanceMaxDeg: 38
+  WallSpeedLoss: 0.1
+  WallRestitution: 0.15

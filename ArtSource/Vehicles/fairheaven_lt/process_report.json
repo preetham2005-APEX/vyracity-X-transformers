@@ -1,0 +1,102 @@
+{
+ "id": "fairheaven_lt",
+ "name": "Fairheaven LT '80",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Fairheaven_LT_80_e2678da9.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Fairheaven LT '80 - Low poly model",
+  "author": "Daniel Zhabotinsky",
+  "author_url": "https://sketchfab.com/DanielZhabotinsky",
+  "url": "https://sketchfab.com/3d-models/fairheaven-lt-80-low-poly-model-e2678da920cc4be68dbc193727919ffb",
+  "file": "Fairheaven_LT_80_e2678da9.zip",
+  "credit": "\"Fairheaven LT '80 - Low poly model\" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/fairheaven-lt-80-low-poly-model-e2678da920cc4be68dbc193727919ffb), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "",
+ "stripped": [
+  "Fairheaven_LT80_trunk_door_Badges_Carbadges_misc_U_0 (36 faces)",
+  "Fairheaven_LT80_Front_Plate_Badges_Carbadges_misc_U_0 (28 faces)"
+ ],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 1,
+  "front_named": 9,
+  "rear_named": 9,
+  "flipped": true,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.73,
+    -1.4336,
+    0.3041
+   ],
+   "radius": 0.3031,
+   "width": 0.2157,
+   "tris": 862
+  },
+  "FR": {
+   "centre": [
+    -0.7319,
+    -1.4336,
+    0.3031
+   ],
+   "radius": 0.3031,
+   "width": 0.2157,
+   "tris": 862
+  },
+  "RL": {
+   "centre": [
+    0.73,
+    1.2181,
+    0.3041
+   ],
+   "radius": 0.3031,
+   "width": 0.2157,
+   "tris": 862
+  },
+  "RR": {
+   "centre": [
+    -0.7319,
+    1.2181,
+    0.3031
+   ],
+   "radius": 0.3031,
+   "width": 0.2157,
+   "tris": 862
+  }
+ },
+ "dimensions": [
+  1.832,
+  1.349,
+  5.001
+ ],
+ "wheelbase": 2.6517,
+ "track_front": 1.4619,
+ "track_rear": 1.4619,
+ "radius_front": 0.3031,
+ "radius_rear": 0.3031,
+ "width_front": 0.2157,
+ "width_rear": 0.2157,
+ "tris": {
+  "Body_LOD0": 16191,
+  "Body_LOD1": 7285,
+  "Body_LOD2": 2428,
+  "wheels": 3448,
+  "UCX_Body_faces": 142
+ },
+ "materials": {
+  "Fairheaven_LT80_Bodymat": "paint",
+  "Numberplates_Misk_U": "plate",
+  "RB1c_Tire_1k": "tyre",
+  "UCB_BOTTOM_GT": "trim",
+  "UCB_Interior_Trim": "interior",
+  "UCB_Lights_and_Glass": "glass",
+  "UCB_Lights_and_Glass_Transperent": "glass"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/fairheaven_lt/fairheaven_lt.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/fairheaven_lt/fairheaven_lt_preview.png"
+}

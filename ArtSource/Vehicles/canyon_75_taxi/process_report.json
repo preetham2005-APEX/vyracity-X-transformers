@@ -1,0 +1,101 @@
+{
+ "id": "canyon_75_taxi",
+ "name": "Canyon '75 Taxi",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Canyon_75_Taxi_9e8f92a2.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Canyon '75 Taxi - Low poly model",
+  "author": "Daniel Zhabotinsky",
+  "author_url": "https://sketchfab.com/DanielZhabotinsky",
+  "url": "https://sketchfab.com/3d-models/canyon-75-taxi-low-poly-model-9e8f92a215784f3d8aaaaeab1bef54c4",
+  "file": "Canyon_75_Taxi_9e8f92a2.zip",
+  "credit": "\"Canyon '75 Taxi - Low poly model\" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/canyon-75-taxi-low-poly-model-9e8f92a215784f3d8aaaaeab1bef54c4), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "",
+ "stripped": [
+  "Canyon75_Body_Badges_Carbadges_misc_U_0 (6 faces)"
+ ],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 1,
+  "front_named": 7,
+  "rear_named": 8,
+  "flipped": true,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.8051,
+    -1.7804,
+    0.363
+   ],
+   "radius": 0.3603,
+   "width": 0.254,
+   "tris": 862
+  },
+  "FR": {
+   "centre": [
+    -0.8007,
+    -1.7804,
+    0.3603
+   ],
+   "radius": 0.3603,
+   "width": 0.254,
+   "tris": 862
+  },
+  "RL": {
+   "centre": [
+    0.8051,
+    1.4132,
+    0.363
+   ],
+   "radius": 0.3603,
+   "width": 0.254,
+   "tris": 862
+  },
+  "RR": {
+   "centre": [
+    -0.8007,
+    1.4132,
+    0.3603
+   ],
+   "radius": 0.3603,
+   "width": 0.254,
+   "tris": 862
+  }
+ },
+ "dimensions": [
+  2.131,
+  1.827,
+  5.307
+ ],
+ "wheelbase": 3.1936,
+ "track_front": 1.6058,
+ "track_rear": 1.6058,
+ "radius_front": 0.3603,
+ "radius_rear": 0.3603,
+ "width_front": 0.254,
+ "width_rear": 0.254,
+ "tris": {
+  "Body_LOD0": 16572,
+  "Body_LOD1": 7457,
+  "Body_LOD2": 2485,
+  "wheels": 3448,
+  "UCX_Body_faces": 240
+ },
+ "materials": {
+  "Canyon75_Bodymat": "paint",
+  "Numberplates_Misk_U": "plate",
+  "RB1c_Tire_1k": "tyre",
+  "UCB_BOTTOM": "trim",
+  "UCB_Interiors_2": "interior",
+  "UCB_Lights_and_Glass": "glass",
+  "UCB_Lights_and_Glass_Transperent": "glass"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/canyon_75_taxi/canyon_75_taxi.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/canyon_75_taxi/canyon_75_taxi_preview.png"
+}

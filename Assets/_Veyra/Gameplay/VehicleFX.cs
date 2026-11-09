@@ -22,8 +22,35 @@ namespace VeyraCity.Gameplay
         Light[] headLights;
         Transform[] flames;
         Light flameLight;
-        static Material smokeMat, flameMat;
+        ParticleSystem sparks;
+        TrailRenderer[] trails;
+        Renderer[] lampRenderers;
+        int[] lampSlots;
+        float backfire, prevThrottle;
+        static Material smokeMat, flameMat, sparkMat, trailMat;
         static Texture2D puff;
+
+        void OnDestroy()
+        {
+            if (car != null) car.Scraped -= OnScraped;
+        }
+
+        /// <summary>Sparks where the body grinds along a wall (the controller reports glancing hits and scrapes).</summary>
+        void OnScraped(Vector3 point, Vector3 normal, float intensity)
+        {
+            if (sparks == null || intensity < 0.05f) return;
+            Vector3 along = Vector3.ProjectOnPlane(car.Body.linearVelocity, normal);
+            int count = Mathf.CeilToInt(intensity * 26f);
+            var ep = new ParticleSystem.EmitParams();
+            for (int i = 0; i < count; i++)
+            {
+                ep.position = point + Random.insideUnitSphere * 0.15f;
+                ep.velocity = along * Random.Range(0.25f, 0.7f) + normal * Random.Range(0.5f, 3f) + Vector3.up * Random.Range(1f, 4f) + Random.insideUnitSphere * 2f;
+                ep.startLifetime = Random.Range(0.2f, 0.55f);
+                ep.startSize = Random.Range(0.025f, 0.06f);
+                sparks.Emit(ep, 1);
+            }
+        }
 
         public void Bind(VehicleController v, NitroSystem n, bool headlights)
         {
@@ -95,6 +122,65 @@ namespace VeyraCity.Gameplay
             flameLight.type = LightType.Point;
             flameLight.range = 7f;
             flameLight.intensity = 0f;
+
+            // Nitro light trails (Asphalt-style streaks from the exhausts).
+            trails = new TrailRenderer[2];
+            for (int i = 0; i < 2; i++)
+            {
+                var go = new GameObject("NitroTrail" + i);
+                go.transform.SetParent(transform, false);
+                go.transform.localPosition = new Vector3(i == 0 ? -0.35f : 0.35f, 0.32f, -d.Chassis.Dimensions.z * 0.5f - 0.2f);
+                var tr = go.AddComponent<TrailRenderer>();
+                tr.time = 0.35f;
+                tr.minVertexDistance = 0.4f;
+                tr.widthCurve = AnimationCurve.Linear(0f, 0.22f, 1f, 0f);
+                tr.sharedMaterial = trailMat;
+                tr.shadowCastingMode = ShadowCastingMode.Off;
+                tr.emitting = false;
+                trails[i] = tr;
+            }
+
+            // Sparks for wall scrapes.
+            var sg = new GameObject("Sparks");
+            sg.transform.SetParent(transform, false);
+            sparks = sg.AddComponent<ParticleSystem>();
+            sparks.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            var sm = sparks.main;
+            sm.loop = false;
+            sm.playOnAwake = false;
+            sm.simulationSpace = ParticleSystemSimulationSpace.World;
+            sm.gravityModifier = 1.2f;
+            sm.maxParticles = 400;
+            sm.startColor = new Color(1f, 0.72f, 0.3f, 1f);
+            var sem = sparks.emission;
+            sem.rateOverTime = 0f;
+            var scol = sparks.colorOverLifetime;
+            scol.enabled = true;
+            var sgrad = new Gradient();
+            sgrad.SetKeys(new[] { new GradientColorKey(new Color(1f, 0.9f, 0.6f), 0f), new GradientColorKey(new Color(1f, 0.35f, 0.05f), 1f) },
+                          new[] { new GradientAlphaKey(1f, 0f), new GradientAlphaKey(0f, 1f) });
+            scol.color = sgrad;
+            var sr = sg.GetComponent<ParticleSystemRenderer>();
+            sr.renderMode = ParticleSystemRenderMode.Stretch;
+            sr.velocityScale = 0.04f;
+            sr.lengthScale = 1.5f;
+            sr.sharedMaterial = sparkMat;
+            sr.shadowCastingMode = ShadowCastingMode.Off;
+            sparks.Play();
+            v.Scraped -= OnScraped;
+            v.Scraped += OnScraped;
+
+            // Imported cars: lamp materials (M_Lamp_*) glow by slot at night and under braking.
+            var lr = new List<Renderer>();
+            var ls = new List<int>();
+            foreach (var r in GetComponentsInChildren<Renderer>())
+            {
+                var mats = r.sharedMaterials;
+                for (int i = 0; i < mats.Length; i++)
+                    if (mats[i] != null && mats[i].name.StartsWith("M_Lamp")) { lr.Add(r); ls.Add(i); }
+            }
+            lampRenderers = lr.ToArray();
+            lampSlots = ls.ToArray();
         }
 
         static void EnsureMaterials()
@@ -115,6 +201,10 @@ namespace VeyraCity.Gameplay
             smokeMat.SetColor("_BaseColor", new Color(0.85f, 0.86f, 0.88f, 0.55f));
             flameMat = RuntimeMaterials.NewParticle("NitroFlame", true);
             flameMat.SetColor("_BaseColor", new Color(1f, 0.55f, 0.15f, 0.8f));
+            sparkMat = RuntimeMaterials.NewParticle("Sparks", true);
+            sparkMat.SetColor("_BaseColor", new Color(1f, 0.8f, 0.45f, 1f));
+            trailMat = RuntimeMaterials.NewParticle("NitroTrail", true);
+            trailMat.SetColor("_BaseColor", new Color(1f, 1f, 1f, 0.7f));
         }
 
         static void MakeTransparent(Material m, bool additive)
@@ -211,18 +301,43 @@ namespace VeyraCity.Gameplay
             }
             if (headLights != null)
                 foreach (var l in headLights) { l.enabled = night > 0.3f; l.intensity = 14f * night; }
+            if (lampRenderers != null && lampRenderers.Length > 0)
+            {
+                var lampCol = Color.white * (0.15f + night * 1.4f + brake * 1.6f);
+                mpb.Clear();
+                mpb.SetColor("_EmissionColor", lampCol);
+                for (int i = 0; i < lampRenderers.Length; i++) lampRenderers[i].SetPropertyBlock(mpb, lampSlots[i]);
+                mpb.Clear();
+            }
+            // exhaust backfire: lifting off hard at high revs pops a short flame
+            float throttle = car.Controls.Throttle;
+            if (prevThrottle > 0.8f && throttle < 0.15f && st.Speed > 15f && car.Definition.Engine.LimiterRpm > 0f
+                && st.EngineRpm > 0.7f * car.Definition.Engine.LimiterRpm && Random.value < 0.7f)
+                backfire = 0.14f;
+            prevThrottle = throttle;
+            backfire = Mathf.Max(0f, backfire - Time.deltaTime);
+            float pop = backfire > 0f ? 0.35f + 0.35f * Mathf.PerlinNoise(Time.time * 40f, 1.7f) : 0f;
             // nitro flames
             float b = nitro != null ? nitro.BoostScalar : 0f;
             Color fc = nitro != null && nitro.Mode == NitroMode.Overdrive ? new Color(1f, 0.25f, 0.85f) : nitro != null && nitro.Mode == NitroMode.CleanBoost ? new Color(0.35f, 0.75f, 1f) : new Color(1f, 0.55f, 0.15f);
+            if (b < 0.01f && pop > 0f) fc = new Color(1f, 0.5f, 0.12f);
             float flick = 0.8f + 0.4f * Mathf.PerlinNoise(Time.time * 18f, 0.3f);
+            float f = Mathf.Max(b, pop);
             for (int i = 0; i < flames.Length; i++)
             {
-                flames[i].localScale = b > 0.01f ? new Vector3(0.16f * Mathf.Sqrt(b), 0.45f * b * flick, 0.16f * Mathf.Sqrt(b)) : Vector3.zero;
-                flames[i].localPosition = new Vector3(flames[i].localPosition.x, flames[i].localPosition.y, -car.Definition.Chassis.Dimensions.z * 0.5f - 0.25f - 0.4f * b * flick);
+                flames[i].localScale = f > 0.01f ? new Vector3(0.16f * Mathf.Sqrt(f), 0.45f * f * flick, 0.16f * Mathf.Sqrt(f)) : Vector3.zero;
+                flames[i].localPosition = new Vector3(flames[i].localPosition.x, flames[i].localPosition.y, -car.Definition.Chassis.Dimensions.z * 0.5f - 0.25f - 0.4f * f * flick);
             }
             flameMat.SetColor("_BaseColor", new Color(fc.r, fc.g, fc.b, 0.85f));
             flameLight.color = fc;
-            flameLight.intensity = b * 6f * flick;
+            flameLight.intensity = f * 6f * flick;
+            if (trails != null)
+                foreach (var tr in trails)
+                {
+                    tr.emitting = b > 0.2f && st.Speed > 8f;
+                    tr.startColor = new Color(fc.r, fc.g, fc.b, 0.75f * b);
+                    tr.endColor = new Color(fc.r, fc.g, fc.b, 0f);
+                }
         }
     }
 

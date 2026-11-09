@@ -56,6 +56,12 @@ namespace VeyraCity.VehiclePhysics
         public float SteerAngleDeg;
         public float TcsCut;
         public bool AbsActive;
+        /// <summary>Handling-feel drift mode is held (Asphalt-style drift).</summary>
+        public bool ArcadeDrift;
+        /// <summary>0..1 blend of the drift mode (effects, camera).</summary>
+        public float DriftBlend;
+        /// <summary>Seconds with no wheel on the ground.</summary>
+        public float AirTime;
         public float SimTime;
         public float SpeedKmh => Speed * 3.6f;
     }

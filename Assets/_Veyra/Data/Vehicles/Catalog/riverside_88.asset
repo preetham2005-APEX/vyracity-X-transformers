@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3547c682de3891440803fdc997ce3398, type: 3}
+  m_Name: riverside_88
+  m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
+  DisplayName: Riverside '88
+  BuildId: DL_riverside_88
+  TuningVersion: 4
+  Layout: 1
+  AwdFrontSplit: 0.4
+  Wheelbase: 2.6681
+  Chassis:
+    Mass: 1450
+    FrontWeightFraction: 0.62
+    CoMHeight: 0.48264787
+    Dimensions: {x: 1.907, y: 1.318, z: 4.909}
+    InertiaScale: 0.85
+  Front:
+    TrackWidth: 1.4592
+    Suspension:
+      RestLength: 0.24
+      Travel: 0.15
+      SpringRate: 45429.08
+      BumpDamping: 2517.026
+      ReboundDamping: 5035.129
+      BumpStopRate: 174000
+      AntiRollRate: 16240
+      RollCentreHeight: 0.06
+    Tyre:
+      Radius: 0.3032
+      Width: 0.2167
+      WheelInertia: 1.0126909
+      Mu: 1
+      LateralGripScale: 0.9
+      LongPeakSlip: 0.1
+      LatPeakSlipDeg: 8
+      LongShape: 1.75
+      LatShape: 1.5
+      LoadSensitivity: 0.12
+      NominalLoad: 3480
+      RollingResistance: 0.012
+    Differential:
+      Type: 0
+      Preload: 0
+      PowerLock: 0
+      CoastLock: 0
+  Rear:
+    TrackWidth: 1.4592
+    Suspension:
+      RestLength: 0.24
+      Travel: 0.15
+      SpringRate: 35239.64
+      BumpDamping: 1736.1771
+      ReboundDamping: 3471.277
+      BumpStopRate: 174000
+      AntiRollRate: 18560
+      RollCentreHeight: 0.1
+    Tyre:
+      Radius: 0.3032
+      Width: 0.2167
+      WheelInertia: 1.0126909
+      Mu: 1
+      LateralGripScale: 0.9
+      LongPeakSlip: 0.1
+      LatPeakSlipDeg: 8
+      LongShape: 1.75
+      LatShape: 1.5
+      LoadSensitivity: 0.12
+      NominalLoad: 3480
+      RollingResistance: 0.012
+    Differential:
+      Type: 0
+      Preload: 0
+      PowerLock: 0
+      CoastLock: 0
+  Engine:
+    TorqueCurve:
+    - {x: 1000, y: 117.600006}
+    - {x: 1800, y: 193.20001}
+    - {x: 2500, y: 218.40001}
+    - {x: 4000, y: 218.40001}
+    - {x: 5000, y: 210}
+    - {x: 6000, y: 189}
+    - {x: 6500, y: 172.20001}
+    - {x: 6800, y: 151.20001}
+    IdleRpm: 850
+    LimiterRpm: 6800
+    Inertia: 0.18
+    EngineBrakeTorque: 50
+    LaunchRpm: 3000
+  Gearbox:
+    Ratios:
+    - 3.45
+    - 2.05
+    - 1.45
+    - 1.12
+    - 0.92
+    - 0.78
+    ReverseRatio: 3.4
+    FinalDrive: 3.65
+    Efficiency: 0.9
+    ShiftTime: 0.2
+    ShiftUpRpm: 6500
+    ShiftDownRpm: 2600
+    Automatic: 1
+  Brakes:
+    MaxTorque: 5336
+    FrontBias: 0.7
+    HandbrakeTorque: 1600
+  Steering:
+    MaxAngleDeg: 35
+    Ackermann: 0.5
+    RateDegPerSec: 360
+  Aero:
+    DragArea: 0.748
+    DownforceArea: 0
+    FrontDownforceShare: 0.5

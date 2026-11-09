@@ -1,0 +1,96 @@
+{
+ "id": "generic_sport",
+ "name": "Sport",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Generic_Passenger_Car_Pack_20f9af9b.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Generic passenger car pack",
+  "author": "Comrade1280",
+  "author_url": "https://sketchfab.com/comrade1280",
+  "url": "https://sketchfab.com/3d-models/generic-passenger-car-pack-20f9af9b8a404d5cb022ac6fe87f21f5",
+  "file": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+  "credit": "\"Generic passenger car pack\" by Comrade1280 (https://sketchfab.com/3d-models/generic-passenger-car-pack-20f9af9b8a404d5cb022ac6fe87f21f5), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "Sport body",
+ "stripped": [],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 0,
+  "front_named": 0,
+  "rear_named": 0,
+  "flipped": false,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.6913,
+    -1.1056,
+    0.2996
+   ],
+   "radius": 0.3,
+   "width": 0.2668,
+   "tris": 603
+  },
+  "FR": {
+   "centre": [
+    -0.6971,
+    -1.1006,
+    0.2996
+   ],
+   "radius": 0.3,
+   "width": 0.2668,
+   "tris": 603
+  },
+  "RL": {
+   "centre": [
+    0.6831,
+    1.3463,
+    0.3186
+   ],
+   "radius": 0.317,
+   "width": 0.282,
+   "tris": 603
+  },
+  "RR": {
+   "centre": [
+    -0.671,
+    1.3512,
+    0.3186
+   ],
+   "radius": 0.317,
+   "width": 0.282,
+   "tris": 603
+  }
+ },
+ "dimensions": [
+  1.768,
+  1.04,
+  3.912
+ ],
+ "wheelbase": 2.4519,
+ "track_front": 1.3884,
+ "track_rear": 1.3541,
+ "radius_front": 0.3,
+ "radius_rear": 0.317,
+ "width_front": 0.2668,
+ "width_rear": 0.282,
+ "tris": {
+  "Body_LOD0": 3856,
+  "Body_LOD1": 1735,
+  "Body_LOD2": 578,
+  "wheels": 2412,
+  "UCX_Body_faces": 130
+ },
+ "materials": {
+  "Body_6": "paint",
+  "Glass_6": "glass",
+  "Optics_6": "light",
+  "Wheel_5": "tyre"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/generic_sport/generic_sport.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/generic_sport/generic_sport_preview.png"
+}

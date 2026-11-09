@@ -31,6 +31,8 @@ namespace VeyraCity.VehiclePhysics
         [SerializeField] SurfaceDefinition defaultSurface;
         [SerializeField, Range(1, 16)] int tyreSubsteps = 6;
         [SerializeField] bool manualStepping;
+        [Tooltip("Driving style layer (arcade drift, stability, air control, wall glancing). Null = pure simulation.")]
+        [SerializeField] HandlingFeel feel;
 
         Rigidbody rb;
         Powertrain powertrain;
@@ -58,6 +60,11 @@ namespace VeyraCity.VehiclePhysics
         Vector3 prevVelocity;
         float lateralG, longitudinalG;
         bool initialised;
+        // Handling-feel layer state
+        bool drifting;
+        int driftDir;
+        float driftBlend, driftExitTimer, driftSpeed, airTime, flipTimer;
+        Vector3 tyreForceSum;
 
         public VehicleDefinition Definition => definition;
         public Rigidbody Body => rb;
@@ -65,6 +72,11 @@ namespace VeyraCity.VehiclePhysics
         public VehicleControls Controls => controls;
         public bool IsInitialised => initialised;
         public SurfaceDefinition DefaultSurface { get => defaultSurface; set => defaultSurface = value; }
+        public HandlingFeel Feel { get => feel; set => feel = value; }
+        /// <summary>Raised when the body glances off or hits static world geometry: contact point, wall normal, 0..1 intensity.</summary>
+        public event Action<Vector3, Vector3, float> Scraped;
+        /// <summary>Raised when a flipped car was set back on its wheels.</summary>
+        public event Action<VehicleController> Recovered;
         public bool ManualStepping { get => manualStepping; set => manualStepping = value; }
         public int TyreSubsteps { get => tyreSubsteps; set => tyreSubsteps = Mathf.Clamp(value, 1, 16); }
         public WheelState GetWheel(int i) => wheels[i];
@@ -79,11 +91,82 @@ namespace VeyraCity.VehiclePhysics
         {
             TimeSinceCollision = 0f;
             Collided?.Invoke(this, c);
+            GlanceOffWall(c, true);
         }
 
         void OnCollisionStay(Collision c)
         {
             if (c.impulse.sqrMagnitude > 4f) TimeSinceCollision = 0f;
+            GlanceOffWall(c, false);
+        }
+
+        /// <summary>
+        /// Arcade wall response: on a shallow hit against static geometry the car keeps its speed along the wall
+        /// (minus a small loss) and bounces off a little, instead of the solver's dead stop. Steep hits stay physical.
+        /// </summary>
+        /// <summary>
+        /// Pure wall response (unit-tested): for a horizontal velocity into a wall with horizontal normal
+        /// <paramref name="n"/>, returns false for steep hits (left to the solver); otherwise the new velocity keeps
+        /// the component along the wall minus a loss (first contact: share scaled by the angle; grinding: ~20 %/s)
+        /// and bounces off with the restitution.
+        /// </summary>
+        public static bool WallGlance(Vector3 vFlat, Vector3 n, HandlingFeel feel, bool firstContact, float dt, out Vector3 vNew)
+        {
+            vNew = vFlat;
+            if (feel == null || feel.WallGlanceMaxDeg <= 0f) return false;
+            float vn = Vector3.Dot(vFlat, n);
+            float speed = vFlat.magnitude;
+            if (vn >= 0f || speed < 1e-3f) return false;
+            float angle = Mathf.Asin(Mathf.Clamp01(-vn / speed)) * Mathf.Rad2Deg;
+            if (angle > feel.WallGlanceMaxDeg) return false;
+            Vector3 vt = vFlat - n * vn;
+            float loss = firstContact ? feel.WallSpeedLoss * Mathf.Clamp01(angle / Mathf.Max(1f, feel.WallGlanceMaxDeg)) : 0.2f * dt;
+            vNew = vt * (1f - loss) - n * vn * feel.WallRestitution;
+            return true;
+        }
+
+        void GlanceOffWall(Collision c, bool firstContact)
+        {
+            if (feel == null || feel.WallGlanceMaxDeg <= 0f || c.rigidbody != null || rb == null) return;
+            Vector3 n = Vector3.zero, p = Vector3.zero;
+            int k = 0;
+            for (int i = 0; i < c.contactCount; i++)
+            {
+                var cp = c.GetContact(i);
+                if (Mathf.Abs(cp.normal.y) > 0.5f) continue;   // ground, ramps, kerb tops: not a wall
+                n += cp.normal;
+                p += cp.point;
+                k++;
+            }
+            if (k == 0) return;
+            n = Vector3.ProjectOnPlane(n, Vector3.up);
+            if (n.sqrMagnitude < 1e-6f) return;
+            n.Normalize();
+            p /= k;
+            Vector3 vPre = prevVelocity;                       // velocity before this step's contact solve
+            Vector3 vFlat = Vector3.ProjectOnPlane(vPre, Vector3.up);
+            float vn = Vector3.Dot(vFlat, n);
+            float speed = vFlat.magnitude;
+            if (vn > -0.5f || speed < 2f) return;              // not driving into the wall
+            float angle = Mathf.Asin(Mathf.Clamp01(-vn / speed)) * Mathf.Rad2Deg;
+            float intensity = Mathf.Clamp01(speed / 30f) * Mathf.Lerp(0.35f, 1f, angle / 90f);
+            Scraped?.Invoke(p, n, intensity);
+            if (!WallGlance(vFlat, n, feel, firstContact, Time.fixedDeltaTime, out Vector3 v)) return;   // a real crash: solver
+            Vector3 vt = vFlat - n * vn;
+            v.y = rb.linearVelocity.y;
+            rb.linearVelocity = v;
+            prevVelocity = v;
+            // Turn the car parallel to the wall (instead of the solver's spin back across the road).
+            Vector3 up = transform.up;
+            Vector3 w = rb.angularVelocity;
+            float yaw = Vector3.Dot(w, up);
+            float yawNew = yaw * 0.4f;
+            if (firstContact && vt.sqrMagnitude > 1f)
+            {
+                float toTangent = Vector3.SignedAngle(Vector3.ProjectOnPlane(transform.forward, up), vt, up) * Mathf.Deg2Rad;
+                if (Mathf.Abs(toTangent) < 1.2f) yawNew = Mathf.Clamp(toTangent * 2.5f, -2.5f, 2.5f);
+            }
+            rb.angularVelocity = w + up * (yawNew - yaw);
         }
 
         void Awake()
@@ -331,7 +414,8 @@ namespace VeyraCity.VehiclePhysics
 
             // ---- Brakes (ABS caps the service brake just below the tyre's peak torque) ----
             float brake = Mathf.Clamp01(controls.Brake);
-            float handbrake = Mathf.Clamp01(controls.Handbrake) * def.Brakes.HandbrakeTorque;
+            // In an arcade drift the handbrake only starts the slide; it must not lock the rear and kill the speed.
+            float handbrake = Mathf.Clamp01(controls.Handbrake) * def.Brakes.HandbrakeTorque * (1f - 0.85f * driftBlend);
             bool absActive = false;
             for (int i = 0; i < WheelCount; i++)
             {
@@ -426,6 +510,9 @@ namespace VeyraCity.VehiclePhysics
             }
 
             // ---- Apply tyre forces ----
+            // While an arcade drift is held, tyre side forces are scaled down: the feel layer carves the path instead.
+            float lateralScale = feel != null ? 1f - driftBlend * (1f - feel.DriftTyreLateral) : 1f;
+            tyreForceSum = Vector3.zero;
             for (int i = 0; i < WheelCount; i++)
             {
                 ref WheelState w = ref wheels[i];
@@ -436,9 +523,10 @@ namespace VeyraCity.VehiclePhysics
                 float rolling = -axle.Tyre.RollingResistance * rrMul * w.Load * Mathf.Clamp(vx[i] / 0.5f, -1f, 1f);
                 w.Fx = fxSum[i] / n;
                 w.Fy = fySum[i] / n;
-                Vector3 force = contactForward[i] * (w.Fx + rolling) + contactRight[i] * w.Fy;
+                Vector3 force = contactForward[i] * (w.Fx + rolling) + contactRight[i] * (w.Fy * lateralScale);
                 Vector3 point = w.ContactPoint + up * axle.Suspension.RollCentreHeight;
                 rb.AddForceAtPosition(force, point);
+                tyreForceSum += force;
             }
 
             // ---- Aero and extra thrust ----
@@ -458,7 +546,10 @@ namespace VeyraCity.VehiclePhysics
                     rb.AddForceAtPosition(-up * downforce * (1f - share), rearAxle);
                 }
             }
-            if (controls.ExtraThrust > 0f && grounded > 0) rb.AddForce(fwd * controls.ExtraThrust);
+            if (controls.ExtraThrust > 0f && grounded > 0 && driftBlend < 0.5f) rb.AddForce(fwd * controls.ExtraThrust);
+
+            // ---- Handling feel (arcade layer) ----
+            ApplyFeel(dt, grounded, v);
 
             // ---- State ----
             Vector3 accel = (v - prevVelocity) / dt;
@@ -488,9 +579,136 @@ namespace VeyraCity.VehiclePhysics
             state.SteerAngleDeg = steerAngle;
             state.TcsCut = tcsCut;
             state.AbsActive = absActive;
+            state.ArcadeDrift = drifting;
+            state.DriftBlend = driftBlend;
+            state.AirTime = airTime;
             state.SimTime += dt;
 
             Stepped?.Invoke(this);
+        }
+
+        /// <summary>
+        /// The <see cref="HandlingFeel"/> layer. All forces act at the centre of mass (no roll moment) and all torques
+        /// about the body's up axis or, in the air, pitch/roll toward level. Grip mode and drift mode blend by driftBlend.
+        /// </summary>
+        void ApplyFeel(float dt, int grounded, Vector3 v)
+        {
+            var f = feel;
+            if (f == null) { drifting = false; driftBlend = 0f; airTime = 0f; return; }
+            Transform t = transform;
+            Vector3 up = t.up, fwd = t.forward, right = t.right;
+            float g = Physics.gravity.magnitude;
+            float mass = rb.mass;
+            float speed = v.magnitude;
+            float fwdSpeed = Vector3.Dot(v, fwd);
+            float steerIn = Mathf.Clamp(controls.SteerIntent, -1f, 1f);
+            bool onGround = grounded >= 2;
+            airTime = grounded == 0 ? airTime + dt : 0f;
+
+            // ---- drift state machine ----
+            if (f.DriftEnabled && !drifting && onGround && !controls.WantsReverse && fwdSpeed * 3.6f > f.DriftMinSpeedKmh
+                && Mathf.Abs(steerIn) >= f.DriftEntrySteer && (controls.DriftRequest || controls.Handbrake > 0.5f))
+            {
+                drifting = true;
+                driftDir = steerIn > 0f ? 1 : -1;
+                driftExitTimer = 0f;
+                driftSpeed = Vector3.ProjectOnPlane(v, up).magnitude;
+            }
+            if (drifting)
+            {
+                float inward = steerIn * driftDir;   // 1 = full steering into the corner, -1 = full counter-steer
+                bool ending = inward < 0.12f || speed * 3.6f < f.DriftMinSpeedKmh * 0.6f || controls.Brake > 0.6f
+                              || controls.WantsReverse || airTime > 0.6f;
+                driftExitTimer = ending ? driftExitTimer + dt : 0f;
+                if (driftExitTimer >= f.DriftExitDelay || inward < -0.5f) drifting = false;
+            }
+            driftBlend = Mathf.MoveTowards(driftBlend, drifting ? 1f : 0f, dt / Mathf.Max(0.01f, drifting ? f.DriftBlendIn : f.DriftBlendOut));
+
+            if (onGround)
+            {
+                // ---- downforce: planted at speed ----
+                if (f.DownforceG > 0f)
+                {
+                    float x = speed * 3.6f / Mathf.Max(30f, f.DownforceRefKmh);
+                    rb.AddForce(-up * (mass * g * f.DownforceG * Mathf.Min(x * x, 1.5f)));
+                }
+
+                // ---- grip mode: slide damping and yaw tracking (GTA-like) ----
+                float wGrip = (1f - driftBlend) * (1f - 0.85f * Mathf.Clamp01(controls.Handbrake));
+                if (wGrip > 0.001f && speed > 1f)
+                {
+                    float vLat = Vector3.Dot(v, right);
+                    if (f.SlideDamping > 0f)
+                    {
+                        float a = Mathf.Clamp(-vLat * f.SlideDamping, -f.SlideDampingMaxG * g, f.SlideDampingMaxG * g);
+                        rb.AddForce(right * (a * mass * wGrip));
+                    }
+                    if (f.YawTracking > 0f && Mathf.Abs(fwdSpeed) > 1f)
+                    {
+                        float rRef = fwdSpeed * Mathf.Tan(steerAngle * Mathf.Deg2Rad) / Mathf.Max(0.5f, definition.Wheelbase);
+                        float rMax = f.YawRateLimitG * g / Mathf.Max(3f, Mathf.Abs(fwdSpeed));
+                        rRef = Mathf.Clamp(rRef, -rMax, rMax);
+                        float r = Vector3.Dot(rb.angularVelocity, up);
+                        float alpha = Mathf.Clamp((rRef - r) * f.YawTracking, -f.YawTrackingMaxAccel, f.YawTrackingMaxAccel);
+                        rb.AddTorque(up * (alpha * wGrip), ForceMode.Acceleration);
+                    }
+                }
+
+                // ---- drift mode: carve the path, hold the angle, keep the speed (Asphalt-like) ----
+                if (driftBlend > 0.001f)
+                {
+                    Vector3 vFlat = Vector3.ProjectOnPlane(v, up);
+                    float vmag = vFlat.magnitude;
+                    if (vmag > 2f)
+                    {
+                        Vector3 vDir = vFlat / vmag;
+                        Vector3 latDir = Vector3.Cross(up, vDir);      // right of the direction of travel
+                        float inward = Mathf.Clamp01(steerIn * driftDir);
+                        float omega = driftDir * Mathf.Lerp(f.DriftTurnRate.x, f.DriftTurnRate.y, inward);
+                        float omegaMax = f.DriftMaxLatG * g / Mathf.Max(3f, vmag);
+                        omega = Mathf.Clamp(omega, -omegaMax, omegaMax);
+                        // Total side force = exactly the centripetal force of the commanded turn (tops up or cancels the tyres).
+                        float latNeeded = mass * vmag * omega - Vector3.Dot(tyreForceSum, latDir);
+                        // Speed: decays slowly on throttle, faster off it; nitro can push it up.
+                        float loss = controls.Throttle > 0.3f ? f.DriftSpeedLoss : f.DriftSpeedLoss * 4f;
+                        driftSpeed = Mathf.Max(0f, driftSpeed - driftSpeed * loss * dt + controls.ExtraThrust / mass * dt);
+                        float alongNeeded = mass * (driftSpeed - vmag) * 3f - Vector3.Dot(tyreForceSum, vDir);
+                        rb.AddForce((latDir * latNeeded + vDir * alongNeeded) * driftBlend);
+                        // Heading: drift angle β (velocity relative to heading, + = right) toward the target set by the steering.
+                        float beta = Mathf.Atan2(Vector3.Dot(vFlat, right), Mathf.Max(0.1f, Vector3.Dot(vFlat, fwd)));
+                        float target = -driftDir * Mathf.Lerp(f.DriftAngleDeg.x, f.DriftAngleDeg.y, inward) * Mathf.Deg2Rad;
+                        float rDes = omega - f.DriftAngleGain * (target - beta);
+                        float r = Vector3.Dot(rb.angularVelocity, up);
+                        float alpha = Mathf.Clamp((rDes - r) * f.DriftYawGain, -15f, 15f);
+                        rb.AddTorque(up * (alpha * driftBlend), ForceMode.Acceleration);
+                    }
+                }
+            }
+            else if (grounded == 0 && airTime > 0.12f)
+            {
+                // ---- air: level out for the landing, let the player turn the nose ----
+                Vector3 axis = Vector3.Cross(up, Vector3.up);
+                Vector3 w = rb.angularVelocity;
+                Vector3 wTilt = Vector3.ProjectOnPlane(w, Vector3.up);
+                Vector3 acc = axis * f.AirLevelGain - wTilt * f.AirDamping + Vector3.up * (steerIn * f.AirYawControl);
+                rb.AddTorque(acc, ForceMode.Acceleration);
+            }
+
+            // ---- flipped and stopped: set back on the wheels ----
+            if (f.FlipRecoverSeconds > 0f && Vector3.Dot(up, Vector3.up) < 0.3f && speed < 3f)
+            {
+                flipTimer += dt;
+                if (flipTimer >= f.FlipRecoverSeconds)
+                {
+                    flipTimer = 0f;
+                    Vector3 heading = Vector3.ProjectOnPlane(fwd, Vector3.up);
+                    if (heading.sqrMagnitude < 1e-4f) heading = Vector3.ProjectOnPlane(-up, Vector3.up);
+                    if (heading.sqrMagnitude < 1e-4f) heading = Vector3.forward;
+                    ResetTo(rb.position + Vector3.up * 1.2f, Quaternion.LookRotation(heading.normalized, Vector3.up));
+                    Recovered?.Invoke(this);
+                }
+            }
+            else flipTimer = 0f;
         }
 
         /// <summary>Total drive torque (at the wheels) the driven tyres can transmit at their peak, through the differentials.</summary>
@@ -612,6 +830,8 @@ namespace VeyraCity.VehiclePhysics
             steerAngle = 0f;
             tcsCut = 0f;
             lateralG = longitudinalG = 0f;
+            drifting = false;
+            driftBlend = driftExitTimer = airTime = flipTimer = 0f;
             for (int i = 0; i < WheelCount; i++)
             {
                 wheels[i].AngularVelocity = 0f;

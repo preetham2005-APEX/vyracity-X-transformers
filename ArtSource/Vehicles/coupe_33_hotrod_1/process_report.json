@@ -1,0 +1,101 @@
+{
+ "id": "coupe_33_hotrod_1",
+ "name": "Coupe '33 Hot Rod",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Coupe_33_HotRod_1_1f00f875.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Coupe '33 Hotrod #1 - Low poly model",
+  "author": "Daniel Zhabotinsky",
+  "author_url": "https://sketchfab.com/DanielZhabotinsky",
+  "url": "https://sketchfab.com/3d-models/coupe-33-hotrod-1-low-poly-model-1f00f875bd594469ad41e377585dc0fc",
+  "file": "Coupe_33_HotRod_1_1f00f875.zip",
+  "credit": "\"Coupe '33 Hotrod #1 - Low poly model\" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/coupe-33-hotrod-1-low-poly-model-1f00f875bd594469ad41e377585dc0fc), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "",
+ "stripped": [
+  "HOTROD_33A_body_Badges_Carbadges_misc_U_0 (20 faces)"
+ ],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 1,
+  "front_named": 7,
+  "rear_named": 3,
+  "flipped": true,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.7837,
+    -1.6645,
+    0.35
+   ],
+   "radius": 0.35,
+   "width": 0.2181,
+   "tris": 765
+  },
+  "FR": {
+   "centre": [
+    -0.7839,
+    -1.6645,
+    0.35
+   ],
+   "radius": 0.35,
+   "width": 0.2181,
+   "tris": 765
+  },
+  "RL": {
+   "centre": [
+    0.8396,
+    1.3563,
+    0.3872
+   ],
+   "radius": 0.3872,
+   "width": 0.282,
+   "tris": 765
+  },
+  "RR": {
+   "centre": [
+    -0.8396,
+    1.3563,
+    0.3872
+   ],
+   "radius": 0.3872,
+   "width": 0.282,
+   "tris": 765
+  }
+ },
+ "dimensions": [
+  1.972,
+  1.581,
+  4.185
+ ],
+ "wheelbase": 3.0208,
+ "track_front": 1.5676,
+ "track_rear": 1.6792,
+ "radius_front": 0.35,
+ "radius_rear": 0.3872,
+ "width_front": 0.2181,
+ "width_rear": 0.282,
+ "tris": {
+  "Body_LOD0": 14471,
+  "Body_LOD1": 6510,
+  "Body_LOD2": 2170,
+  "wheels": 3060,
+  "UCX_Body_faces": 200
+ },
+ "materials": {
+  "HOTROD_33_bodymat": "paint",
+  "Numberplates_Misk_U": "plate",
+  "RB1c_Tire_1k": "tyre",
+  "UCB_BOTTOM": "trim",
+  "UCB_Interiors_2": "interior",
+  "UCB_Lights_and_Glass": "glass",
+  "UCB_Lights_and_Glass_Transperent": "glass"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/coupe_33_hotrod_1/coupe_33_hotrod_1.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/coupe_33_hotrod_1/coupe_33_hotrod_1_preview.png"
+}

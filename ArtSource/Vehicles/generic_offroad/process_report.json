@@ -1,0 +1,96 @@
+{
+ "id": "generic_offroad",
+ "name": "Offroad",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Generic_Passenger_Car_Pack_20f9af9b.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Generic passenger car pack",
+  "author": "Comrade1280",
+  "author_url": "https://sketchfab.com/comrade1280",
+  "url": "https://sketchfab.com/3d-models/generic-passenger-car-pack-20f9af9b8a404d5cb022ac6fe87f21f5",
+  "file": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+  "credit": "\"Generic passenger car pack\" by Comrade1280 (https://sketchfab.com/3d-models/generic-passenger-car-pack-20f9af9b8a404d5cb022ac6fe87f21f5), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "Offroad Body",
+ "stripped": [],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 0,
+  "front_named": 0,
+  "rear_named": 0,
+  "flipped": false,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.7404,
+    -1.2175,
+    0.3576
+   ],
+   "radius": 0.3582,
+   "width": 0.3049,
+   "tris": 542
+  },
+  "FR": {
+   "centre": [
+    -0.7295,
+    -1.2258,
+    0.3576
+   ],
+   "radius": 0.3582,
+   "width": 0.3049,
+   "tris": 542
+  },
+  "RL": {
+   "centre": [
+    0.7273,
+    1.1032,
+    0.3576
+   ],
+   "radius": 0.3582,
+   "width": 0.3049,
+   "tris": 542
+  },
+  "RR": {
+   "centre": [
+    -0.7426,
+    1.0949,
+    0.3576
+   ],
+   "radius": 0.3582,
+   "width": 0.3049,
+   "tris": 542
+  }
+ },
+ "dimensions": [
+  1.96,
+  1.57,
+  3.943
+ ],
+ "wheelbase": 2.3207,
+ "track_front": 1.4699,
+ "track_rear": 1.4699,
+ "radius_front": 0.3582,
+ "radius_rear": 0.3582,
+ "width_front": 0.3049,
+ "width_rear": 0.3049,
+ "tris": {
+  "Body_LOD0": 4334,
+  "Body_LOD1": 1950,
+  "Body_LOD2": 650,
+  "wheels": 2168,
+  "UCX_Body_faces": 138
+ },
+ "materials": {
+  "Body_3": "paint",
+  "Glass_3": "glass",
+  "Optics_3": "light",
+  "Wheel_2": "tyre"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/generic_offroad/generic_offroad.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/generic_offroad/generic_offroad_preview.png"
+}

@@ -1,0 +1,101 @@
+{
+ "id": "phoenix_455",
+ "name": "Phoenix 455 '71",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Phoenix_455_71_955edc73.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Phoenix 455 '71 - Low poly model",
+  "author": "Daniel Zhabotinsky",
+  "author_url": "https://sketchfab.com/DanielZhabotinsky",
+  "url": "https://sketchfab.com/3d-models/phoenix-455-71-low-poly-model-955edc733c6d44fabc0ad7c246a15896",
+  "file": "Phoenix_455_71_955edc73.zip",
+  "credit": "\"Phoenix 455 '71 - Low poly model\" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/phoenix-455-71-low-poly-model-955edc733c6d44fabc0ad7c246a15896), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "",
+ "stripped": [
+  "Phoenix445_Body_Badges_Carbadges_misc_U_0 (24 faces)"
+ ],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 1,
+  "front_named": 9,
+  "rear_named": 8,
+  "flipped": true,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.856,
+    -1.544,
+    0.3251
+   ],
+   "radius": 0.3221,
+   "width": 0.2863,
+   "tris": 1252
+  },
+  "FR": {
+   "centre": [
+    -0.8536,
+    -1.544,
+    0.3221
+   ],
+   "radius": 0.3221,
+   "width": 0.2863,
+   "tris": 1252
+  },
+  "RL": {
+   "centre": [
+    0.856,
+    1.1966,
+    0.3251
+   ],
+   "radius": 0.3221,
+   "width": 0.2863,
+   "tris": 1252
+  },
+  "RR": {
+   "centre": [
+    -0.8536,
+    1.1966,
+    0.3221
+   ],
+   "radius": 0.3221,
+   "width": 0.2863,
+   "tris": 1252
+  }
+ },
+ "dimensions": [
+  2.088,
+  1.329,
+  4.89
+ ],
+ "wheelbase": 2.7406,
+ "track_front": 1.7096,
+ "track_rear": 1.7096,
+ "radius_front": 0.3221,
+ "radius_rear": 0.3221,
+ "width_front": 0.2863,
+ "width_rear": 0.2863,
+ "tris": {
+  "Body_LOD0": 20911,
+  "Body_LOD1": 9409,
+  "Body_LOD2": 3136,
+  "wheels": 5008,
+  "UCX_Body_faces": 158
+ },
+ "materials": {
+  "Numberplates_Misk_U": "plate",
+  "Phoenix445_Bodymat": "paint",
+  "RB1c_Tire_1k": "tyre",
+  "UCB_BOTTOM": "trim",
+  "UCB_Interiors_2": "interior",
+  "UCB_Lights_and_Glass": "glass",
+  "UCB_Lights_and_Glass_Transperent": "glass"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/phoenix_455/phoenix_455.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/phoenix_455/phoenix_455_preview.png"
+}

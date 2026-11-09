@@ -1,0 +1,102 @@
+{
+ "id": "riverside_88",
+ "name": "Riverside '88",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Riverside_88_8509a7f8.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Riverside '88 - Low poly model",
+  "author": "Daniel Zhabotinsky",
+  "author_url": "https://sketchfab.com/DanielZhabotinsky",
+  "url": "https://sketchfab.com/3d-models/riverside-88-low-poly-model-8509a7f82665442592627940b7a1cfab",
+  "file": "Riverside_88_8509a7f8.zip",
+  "credit": "\"Riverside '88 - Low poly model\" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/riverside-88-low-poly-model-8509a7f82665442592627940b7a1cfab), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "",
+ "stripped": [
+  "Riverside88_Trunk_door_Badges_Carbadges_misc_U_0 (18 faces)",
+  "Riverside_bd002_Carbadges_misc_U_0 (54 faces)"
+ ],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 1,
+  "front_named": 9,
+  "rear_named": 8,
+  "flipped": true,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.7292,
+    -1.3278,
+    0.3063
+   ],
+   "radius": 0.3032,
+   "width": 0.2167,
+   "tris": 720
+  },
+  "FR": {
+   "centre": [
+    -0.73,
+    -1.3278,
+    0.3032
+   ],
+   "radius": 0.3032,
+   "width": 0.2167,
+   "tris": 720
+  },
+  "RL": {
+   "centre": [
+    0.7292,
+    1.3403,
+    0.3063
+   ],
+   "radius": 0.3032,
+   "width": 0.2167,
+   "tris": 720
+  },
+  "RR": {
+   "centre": [
+    -0.73,
+    1.3403,
+    0.3032
+   ],
+   "radius": 0.3032,
+   "width": 0.2167,
+   "tris": 720
+  }
+ },
+ "dimensions": [
+  1.907,
+  1.318,
+  4.909
+ ],
+ "wheelbase": 2.6681,
+ "track_front": 1.4592,
+ "track_rear": 1.4592,
+ "radius_front": 0.3032,
+ "radius_rear": 0.3032,
+ "width_front": 0.2167,
+ "width_rear": 0.2167,
+ "tris": {
+  "Body_LOD0": 16376,
+  "Body_LOD1": 7369,
+  "Body_LOD2": 2456,
+  "wheels": 2880,
+  "UCX_Body_faces": 160
+ },
+ "materials": {
+  "Numberplates_Misk_U": "plate",
+  "RB1c_Tire_1k": "tyre",
+  "Riverside88_Bodymat": "paint",
+  "UCB_BOTTOM": "trim",
+  "UCB_Interiors_2": "interior",
+  "UCB_Lights_and_Glass": "glass",
+  "UCB_Lights_and_Glass_Transperent": "glass"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/riverside_88/riverside_88.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/riverside_88/riverside_88_preview.png"
+}

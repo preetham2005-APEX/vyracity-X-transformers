@@ -1,0 +1,96 @@
+{
+ "id": "generic_minivan",
+ "name": "Minivan",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Generic_Passenger_Car_Pack_20f9af9b.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Generic passenger car pack",
+  "author": "Comrade1280",
+  "author_url": "https://sketchfab.com/comrade1280",
+  "url": "https://sketchfab.com/3d-models/generic-passenger-car-pack-20f9af9b8a404d5cb022ac6fe87f21f5",
+  "file": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+  "credit": "\"Generic passenger car pack\" by Comrade1280 (https://sketchfab.com/3d-models/generic-passenger-car-pack-20f9af9b8a404d5cb022ac6fe87f21f5), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "minivan body",
+ "stripped": [],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 0,
+  "front_named": 0,
+  "rear_named": 0,
+  "flipped": true,
+  "mode": "1"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.6989,
+    -1.4913,
+    0.318
+   ],
+   "radius": 0.3187,
+   "width": 0.2719,
+   "tris": 614
+  },
+  "FR": {
+   "centre": [
+    -0.7065,
+    -1.4814,
+    0.318
+   ],
+   "radius": 0.3187,
+   "width": 0.2719,
+   "tris": 614
+  },
+  "RL": {
+   "centre": [
+    0.7189,
+    1.3488,
+    0.318
+   ],
+   "radius": 0.3187,
+   "width": 0.2719,
+   "tris": 614
+  },
+  "RR": {
+   "centre": [
+    -0.6865,
+    1.3587,
+    0.318
+   ],
+   "radius": 0.3187,
+   "width": 0.2719,
+   "tris": 614
+  }
+ },
+ "dimensions": [
+  1.868,
+  1.763,
+  4.609
+ ],
+ "wheelbase": 2.8401,
+ "track_front": 1.4054,
+ "track_rear": 1.4054,
+ "radius_front": 0.3187,
+ "radius_rear": 0.3187,
+ "width_front": 0.2719,
+ "width_rear": 0.2719,
+ "tris": {
+  "Body_LOD0": 4994,
+  "Body_LOD1": 2247,
+  "Body_LOD2": 749,
+  "wheels": 2456,
+  "UCX_Body_faces": 200
+ },
+ "materials": {
+  "Body_2": "paint",
+  "Glass_2": "glass",
+  "Optics_2": "light",
+  "Wheel_1": "tyre"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/generic_minivan/generic_minivan.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/generic_minivan/generic_minivan_preview.png"
+}

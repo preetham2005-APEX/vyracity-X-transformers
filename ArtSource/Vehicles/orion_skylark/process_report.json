@@ -1,0 +1,100 @@
+{
+ "id": "orion_skylark",
+ "name": "Orion GT",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Orion_Skylark_GT_b1cc3110.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Orion Skylark GT",
+  "author": "dark_igorek",
+  "author_url": "https://sketchfab.com/dark_igorek",
+  "url": "https://sketchfab.com/3d-models/orion-skylark-gt-b1cc3110ed6e41248b0ccadb28e41e54",
+  "file": "Orion_Skylark_GT_b1cc3110.zip",
+  "credit": "\"Orion Skylark GT\" by dark_igorek (https://sketchfab.com/3d-models/orion-skylark-gt-b1cc3110ed6e41248b0ccadb28e41e54), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "",
+ "stripped": [],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 0,
+  "front_named": 0,
+  "rear_named": 0,
+  "flipped": true,
+  "mode": "1"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.8048,
+    -1.2502,
+    0.2995
+   ],
+   "radius": 0.2995,
+   "width": 0.2674,
+   "tris": 8993
+  },
+  "FR": {
+   "centre": [
+    -0.8048,
+    -1.2502,
+    0.2995
+   ],
+   "radius": 0.2995,
+   "width": 0.2674,
+   "tris": 8994
+  },
+  "RL": {
+   "centre": [
+    0.8048,
+    1.3255,
+    0.2995
+   ],
+   "radius": 0.2995,
+   "width": 0.2674,
+   "tris": 8974
+  },
+  "RR": {
+   "centre": [
+    -0.8048,
+    1.3255,
+    0.2995
+   ],
+   "radius": 0.2995,
+   "width": 0.2674,
+   "tris": 8975
+  }
+ },
+ "dimensions": [
+  1.951,
+  1.059,
+  4.576
+ ],
+ "wheelbase": 2.5757,
+ "track_front": 1.6096,
+ "track_rear": 1.6096,
+ "radius_front": 0.2995,
+ "radius_rear": 0.2995,
+ "width_front": 0.2674,
+ "width_rear": 0.2674,
+ "tris": {
+  "Body_LOD0": 119998,
+  "Body_LOD1": 40000,
+  "Body_LOD2": 10000,
+  "wheels": 35936,
+  "UCX_Body_faces": 220
+ },
+ "materials": {
+  "body_one_mat": "paint",
+  "body_two_mat": "trim",
+  "details_mat": "trim",
+  "glass_mat": "glass",
+  "interior_one_mat": "interior",
+  "interior_two_mat": "interior",
+  "panels_mat": "trim",
+  "wheels_mat": "tyre"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/orion_skylark/orion_skylark.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/orion_skylark/orion_skylark_preview.png"
+}

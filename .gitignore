@@ -44,9 +44,16 @@ Desktop.ini
 .claude.json
 *.env
 
-# Raw third-party downloads (processed copies live under Assets/)
+# Raw third-party downloads (processed copies live under Assets/); their licence sidecars are evidence and stay tracked
 /ArtSource/Downloads/*
 !/ArtSource/Downloads/DOWNLOAD_LIST.md
+!/ArtSource/Downloads/*.licence.json
+
+# Intermediate car exports (rebuilt from the downloads by Tools/Blender/process_all_cars.py; Unity copies live under
+# Assets/_Veyra/Art/Vehicles). Reports, material maps and previews stay tracked.
+/ArtSource/Vehicles/*/*.fbx
+/ArtSource/Vehicles/*/textures/
+!/ArtSource/Vehicles/ArdenKite/**
 
 # Editor-run save profiles
 /Saves/

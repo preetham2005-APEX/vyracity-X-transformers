@@ -1,0 +1,101 @@
+{
+ "id": "negotiator_80",
+ "name": "Negotiator '80",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Negotiator_80_892b2684.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Negotiator '80 - Low poly model",
+  "author": "Daniel Zhabotinsky",
+  "author_url": "https://sketchfab.com/DanielZhabotinsky",
+  "url": "https://sketchfab.com/3d-models/negotiator-80-low-poly-model-892b2684fb37442299bfad9222cf331c",
+  "file": "Negotiator_80_892b2684.zip",
+  "credit": "\"Negotiator '80 - Low poly model\" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/negotiator-80-low-poly-model-892b2684fb37442299bfad9222cf331c), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "",
+ "stripped": [
+  "Negotiator80_Trunk_door_Badges_Carbadges_misc_U_0 (32 faces)"
+ ],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 1,
+  "front_named": 7,
+  "rear_named": 9,
+  "flipped": true,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.751,
+    -1.419,
+    0.3132
+   ],
+   "radius": 0.3092,
+   "width": 0.2228,
+   "tris": 683
+  },
+  "FR": {
+   "centre": [
+    -0.7483,
+    -1.419,
+    0.3092
+   ],
+   "radius": 0.3092,
+   "width": 0.2228,
+   "tris": 683
+  },
+  "RL": {
+   "centre": [
+    0.751,
+    1.2306,
+    0.3132
+   ],
+   "radius": 0.3092,
+   "width": 0.2228,
+   "tris": 683
+  },
+  "RR": {
+   "centre": [
+    -0.7483,
+    1.2306,
+    0.3092
+   ],
+   "radius": 0.3092,
+   "width": 0.2228,
+   "tris": 683
+  }
+ },
+ "dimensions": [
+  1.875,
+  1.393,
+  4.94
+ ],
+ "wheelbase": 2.6496,
+ "track_front": 1.4993,
+ "track_rear": 1.4993,
+ "radius_front": 0.3092,
+ "radius_rear": 0.3092,
+ "width_front": 0.2228,
+ "width_rear": 0.2228,
+ "tris": {
+  "Body_LOD0": 17000,
+  "Body_LOD1": 7650,
+  "Body_LOD2": 2550,
+  "wheels": 2732,
+  "UCX_Body_faces": 166
+ },
+ "materials": {
+  "Negotiator80_Bodymat": "paint",
+  "Numberplates_Misk_U": "plate",
+  "RB1c_Tire_1k": "tyre",
+  "UCB_BOTTOM": "trim",
+  "UCB_Interiors_2": "interior",
+  "UCB_Lights_and_Glass": "glass",
+  "UCB_Lights_and_Glass_Transperent": "glass"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/negotiator_80/negotiator_80.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/negotiator_80/negotiator_80_preview.png"
+}

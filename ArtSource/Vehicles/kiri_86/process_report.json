@@ -1,0 +1,101 @@
+{
+ "id": "kiri_86",
+ "name": "Kiri '86",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Kiri_86_5c17c582.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Kiri '86 - Low poly model",
+  "author": "Daniel Zhabotinsky",
+  "author_url": "https://sketchfab.com/DanielZhabotinsky",
+  "url": "https://sketchfab.com/3d-models/kiri-86-low-poly-model-5c17c582ef9549798f694b660feea42a",
+  "file": "Kiri_86_5c17c582.zip",
+  "credit": "\"Kiri '86 - Low poly model\" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/kiri-86-low-poly-model-5c17c582ef9549798f694b660feea42a), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "",
+ "stripped": [
+  "kiri86_Body_Badges_Carbadges_misc_U_0 (52 faces)"
+ ],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 1,
+  "front_named": 9,
+  "rear_named": 10,
+  "flipped": true,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.7104,
+    -1.3232,
+    0.2872
+   ],
+   "radius": 0.2858,
+   "width": 0.1868,
+   "tris": 1168
+  },
+  "FR": {
+   "centre": [
+    -0.7092,
+    -1.3232,
+    0.2858
+   ],
+   "radius": 0.2858,
+   "width": 0.1868,
+   "tris": 1168
+  },
+  "RL": {
+   "centre": [
+    0.7104,
+    1.1357,
+    0.2872
+   ],
+   "radius": 0.2858,
+   "width": 0.1868,
+   "tris": 1168
+  },
+  "RR": {
+   "centre": [
+    -0.7092,
+    1.1357,
+    0.2858
+   ],
+   "radius": 0.2858,
+   "width": 0.1868,
+   "tris": 1168
+  }
+ },
+ "dimensions": [
+  1.761,
+  1.32,
+  4.314
+ ],
+ "wheelbase": 2.4589,
+ "track_front": 1.4196,
+ "track_rear": 1.4196,
+ "radius_front": 0.2858,
+ "radius_rear": 0.2858,
+ "width_front": 0.1868,
+ "width_rear": 0.1868,
+ "tris": {
+  "Body_LOD0": 15590,
+  "Body_LOD1": 7015,
+  "Body_LOD2": 2338,
+  "wheels": 4672,
+  "UCX_Body_faces": 172
+ },
+ "materials": {
+  "Numberplates_Misk_U": "plate",
+  "RB1c_Tire_1k": "tyre",
+  "UCB_BOTTOM_GT": "trim",
+  "UCB_Interior_Trim": "interior",
+  "UCB_Lights_and_Glass": "glass",
+  "UCB_Lights_and_Glass_Transperent": "glass",
+  "kiri86_Bodymat": "paint"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/kiri_86/kiri_86.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/kiri_86/kiri_86_preview.png"
+}

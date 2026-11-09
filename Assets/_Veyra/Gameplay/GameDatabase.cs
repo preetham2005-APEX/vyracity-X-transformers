@@ -16,6 +16,8 @@ namespace VeyraCity.Gameplay
         [Tooltip("Templates so runtime-created materials keep their shaders in player builds")]
         public Material LitTemplate, UnlitAdditiveTemplate, ParticleAlphaTemplate, ParticleAdditiveTemplate;
         public GameObject[] TrafficModels = Array.Empty<GameObject>();
+        [Tooltip("Driving style layer applied to every car the game spawns (Arcade by default; null = pure simulation)")]
+        public HandlingFeel Feel;
 
         public CarEntry Car(string id)
         {

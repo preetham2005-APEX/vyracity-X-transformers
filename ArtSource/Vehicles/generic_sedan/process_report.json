@@ -1,0 +1,96 @@
+{
+ "id": "generic_sedan",
+ "name": "Sedan",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Generic_Passenger_Car_Pack_20f9af9b.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Generic passenger car pack",
+  "author": "Comrade1280",
+  "author_url": "https://sketchfab.com/comrade1280",
+  "url": "https://sketchfab.com/3d-models/generic-passenger-car-pack-20f9af9b8a404d5cb022ac6fe87f21f5",
+  "file": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+  "credit": "\"Generic passenger car pack\" by Comrade1280 (https://sketchfab.com/3d-models/generic-passenger-car-pack-20f9af9b8a404d5cb022ac6fe87f21f5), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "Sedan Body",
+ "stripped": [],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 0,
+  "front_named": 0,
+  "rear_named": 0,
+  "flipped": false,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.6987,
+    -1.3142,
+    0.3058
+   ],
+   "radius": 0.3045,
+   "width": 0.226,
+   "tris": 592
+  },
+  "FR": {
+   "centre": [
+    -0.6969,
+    -1.3267,
+    0.3044
+   ],
+   "radius": 0.3045,
+   "width": 0.226,
+   "tris": 592
+  },
+  "RL": {
+   "centre": [
+    0.6979,
+    1.2939,
+    0.3044
+   ],
+   "radius": 0.3045,
+   "width": 0.226,
+   "tris": 592
+  },
+  "RR": {
+   "centre": [
+    -0.6942,
+    1.2954,
+    0.3044
+   ],
+   "radius": 0.3045,
+   "width": 0.226,
+   "tris": 592
+  }
+ },
+ "dimensions": [
+  1.942,
+  1.342,
+  4.359
+ ],
+ "wheelbase": 2.6081,
+ "track_front": 1.3956,
+ "track_rear": 1.3921,
+ "radius_front": 0.3045,
+ "radius_rear": 0.3045,
+ "width_front": 0.226,
+ "width_rear": 0.226,
+ "tris": {
+  "Body_LOD0": 4754,
+  "Body_LOD1": 2139,
+  "Body_LOD2": 713,
+  "wheels": 2368,
+  "UCX_Body_faces": 186
+ },
+ "materials": {
+  "Body_5": "paint",
+  "Glass_5": "glass",
+  "Optics_5": "light",
+  "Wheel_4": "tyre"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/generic_sedan/generic_sedan.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/generic_sedan/generic_sedan_preview.png"
+}

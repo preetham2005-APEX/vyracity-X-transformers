@@ -1,0 +1,98 @@
+{
+ "id": "v12_goblin",
+ "name": "V12 Goblin",
+ "source": "E:/VeyraCity/ArtSource/Downloads/V12_Goblin_Supercar_0a20e49a.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Fictional supercar - V12 Goblin",
+  "author": "ollitei",
+  "author_url": "https://sketchfab.com/ollitei",
+  "url": "https://sketchfab.com/3d-models/fictional-supercar-v12-goblin-0a20e49ad5774d778567cb5c3f345786",
+  "file": "V12_Goblin_Supercar_0a20e49a.zip",
+  "credit": "\"Fictional supercar - V12 Goblin\" by ollitei (https://sketchfab.com/3d-models/fictional-supercar-v12-goblin-0a20e49ad5774d778567cb5c3f345786), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "",
+ "stripped": [
+  "clearcoat_clearcoat_0 (20888 faces)",
+  "car_shadow_car_shadow_0"
+ ],
+ "scale_applied": 38.94580080288453,
+ "front": {
+  "auto_sign": 1,
+  "front_named": 6,
+  "rear_named": 6,
+  "flipped": true,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.8025,
+    -1.2172,
+    0.3526
+   ],
+   "radius": 0.3484,
+   "width": 0.3694,
+   "tris": 4958
+  },
+  "FR": {
+   "centre": [
+    -0.8025,
+    -1.2172,
+    0.3484
+   ],
+   "radius": 0.3484,
+   "width": 0.3694,
+   "tris": 4958
+  },
+  "RL": {
+   "centre": [
+    0.9097,
+    1.4153,
+    0.3683
+   ],
+   "radius": 0.3657,
+   "width": 0.3797,
+   "tris": 4980
+  },
+  "RR": {
+   "centre": [
+    -0.9097,
+    1.4153,
+    0.368
+   ],
+   "radius": 0.3657,
+   "width": 0.3797,
+   "tris": 4980
+  }
+ },
+ "dimensions": [
+  2.202,
+  1.172,
+  4.6
+ ],
+ "wheelbase": 2.6325,
+ "track_front": 1.605,
+ "track_rear": 1.8194,
+ "radius_front": 0.3484,
+ "radius_rear": 0.3657,
+ "width_front": 0.3694,
+ "width_rear": 0.3797,
+ "tris": {
+  "Body_LOD0": 43998,
+  "Body_LOD1": 19799,
+  "Body_LOD2": 6599,
+  "wheels": 21702,
+  "UCX_Body_faces": 230
+ },
+ "materials": {
+  "car_body": "paint",
+  "car_glass": "glass",
+  "car_tire": "tyre"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/v12_goblin/v12_goblin.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/v12_goblin/v12_goblin_preview.png"
+}

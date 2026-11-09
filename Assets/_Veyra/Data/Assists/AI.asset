@@ -24,4 +24,5 @@ MonoBehaviour:
   DriftAssist: 0
   DriftBandDeg: {x: 25, y: 45}
   DriftTcsPeakSlipFactor: 3
+  DriftTap: 0
   AutoAccelerate: 0

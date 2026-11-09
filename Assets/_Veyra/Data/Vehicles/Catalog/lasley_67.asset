@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3547c682de3891440803fdc997ce3398, type: 3}
+  m_Name: lasley_67
+  m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
+  DisplayName: Lasley '67
+  BuildId: DL_lasley_67
+  TuningVersion: 4
+  Layout: 1
+  AwdFrontSplit: 0.4
+  Wheelbase: 2.02
+  Chassis:
+    Mass: 720
+    FrontWeightFraction: 0.62
+    CoMHeight: 0.48484507
+    Dimensions: {x: 1.474, y: 1.324, z: 3.125}
+    InertiaScale: 0.85
+  Front:
+    TrackWidth: 1.2368
+    Suspension:
+      RestLength: 0.24
+      Travel: 0.15
+      SpringRate: 22557.887
+      BumpDamping: 1773.6582
+      ReboundDamping: 3548.0754
+      BumpStopRate: 86400
+      AntiRollRate: 8063.9995
+      RollCentreHeight: 0.06
+    Tyre:
+      Radius: 0.2359
+      Width: 0.1807
+      WheelInertia: 0.61301965
+      Mu: 1
+      LateralGripScale: 0.9
+      LongPeakSlip: 0.1
+      LatPeakSlipDeg: 8
+      LongShape: 1.75
+      LatShape: 1.5
+      LoadSensitivity: 0.12
+      NominalLoad: 1727.9999
+      RollingResistance: 0.012
+    Differential:
+      Type: 0
+      Preload: 0
+      PowerLock: 0
+      CoastLock: 0
+  Rear:
+    TrackWidth: 1.2368
+    Suspension:
+      RestLength: 0.24
+      Travel: 0.15
+      SpringRate: 17498.303
+      BumpDamping: 1223.4219
+      ReboundDamping: 2446.085
+      BumpStopRate: 86400
+      AntiRollRate: 9216
+      RollCentreHeight: 0.1
+    Tyre:
+      Radius: 0.2359
+      Width: 0.1807
+      WheelInertia: 0.61301965
+      Mu: 1
+      LateralGripScale: 0.9
+      LongPeakSlip: 0.1
+      LatPeakSlipDeg: 8
+      LongShape: 1.75
+      LatShape: 1.5
+      LoadSensitivity: 0.12
+      NominalLoad: 1727.9999
+      RollingResistance: 0.012
+    Differential:
+      Type: 0
+      Preload: 0
+      PowerLock: 0
+      CoastLock: 0
+  Engine:
+    TorqueCurve:
+    - {x: 1000, y: 65.856}
+    - {x: 1800, y: 108.192}
+    - {x: 2500, y: 122.304}
+    - {x: 4000, y: 122.304}
+    - {x: 5000, y: 117.6}
+    - {x: 6000, y: 105.84}
+    - {x: 6500, y: 96.432}
+    - {x: 6800, y: 84.672}
+    IdleRpm: 850
+    LimiterRpm: 6800
+    Inertia: 0.18
+    EngineBrakeTorque: 50
+    LaunchRpm: 3000
+  Gearbox:
+    Ratios:
+    - 3.45
+    - 2.05
+    - 1.45
+    - 1.12
+    - 0.92
+    - 0.78
+    ReverseRatio: 3.4
+    FinalDrive: 3.65
+    Efficiency: 0.9
+    ShiftTime: 0.2
+    ShiftUpRpm: 6500
+    ShiftDownRpm: 2600
+    Automatic: 1
+  Brakes:
+    MaxTorque: 2649.5999
+    FrontBias: 0.7
+    HandbrakeTorque: 1600
+  Steering:
+    MaxAngleDeg: 35
+    Ackermann: 0.5
+    RateDegPerSec: 360
+  Aero:
+    DragArea: 0.748
+    DownforceArea: 0
+    FrontDownforceShare: 0.5

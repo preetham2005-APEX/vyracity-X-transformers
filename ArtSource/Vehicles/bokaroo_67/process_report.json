@@ -1,0 +1,101 @@
+{
+ "id": "bokaroo_67",
+ "name": "Bokaroo '67",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Bokaroo_67_22015d18.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Bokaroo '67 - Low poly model",
+  "author": "Daniel Zhabotinsky",
+  "author_url": "https://sketchfab.com/DanielZhabotinsky",
+  "url": "https://sketchfab.com/3d-models/bokaroo-67-low-poly-model-22015d1863d6455aa31cfd738b972c50",
+  "file": "Bokaroo_67_22015d18.zip",
+  "credit": "\"Bokaroo '67 - Low poly model\" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/bokaroo-67-low-poly-model-22015d1863d6455aa31cfd738b972c50), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "",
+ "stripped": [
+  "Bokaroo67_Body_Badges_Carbadges_misc_U_0 (54 faces)"
+ ],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 1,
+  "front_named": 7,
+  "rear_named": 8,
+  "flipped": true,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.7892,
+    -1.4248,
+    0.4
+   ],
+   "radius": 0.3685,
+   "width": 0.3184,
+   "tris": 1129
+  },
+  "FR": {
+   "centre": [
+    -0.775,
+    -1.4248,
+    0.3894
+   ],
+   "radius": 0.3685,
+   "width": 0.3184,
+   "tris": 1129
+  },
+  "RL": {
+   "centre": [
+    0.7892,
+    1.1878,
+    0.4
+   ],
+   "radius": 0.3685,
+   "width": 0.3184,
+   "tris": 1129
+  },
+  "RR": {
+   "centre": [
+    -0.775,
+    1.1878,
+    0.3894
+   ],
+   "radius": 0.3685,
+   "width": 0.3184,
+   "tris": 1129
+  }
+ },
+ "dimensions": [
+  2.212,
+  1.956,
+  4.588
+ ],
+ "wheelbase": 2.6126,
+ "track_front": 1.5642,
+ "track_rear": 1.5642,
+ "radius_front": 0.3685,
+ "radius_rear": 0.3685,
+ "width_front": 0.3184,
+ "width_rear": 0.3184,
+ "tris": {
+  "Body_LOD0": 23723,
+  "Body_LOD1": 10675,
+  "Body_LOD2": 3558,
+  "wheels": 4516,
+  "UCX_Body_faces": 216
+ },
+ "materials": {
+  "BUCKAROO_67_Bodymat": "paint",
+  "Numberplates_Misk_U": "plate",
+  "RO1a_Tire": "tyre",
+  "UCB_BOTTOM": "trim",
+  "UCB_Interiors_2": "interior",
+  "UCB_Lights_and_Glass": "glass",
+  "UCB_Lights_and_Glass_Transperent": "glass"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/bokaroo_67/bokaroo_67.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/bokaroo_67/bokaroo_67_preview.png"
+}

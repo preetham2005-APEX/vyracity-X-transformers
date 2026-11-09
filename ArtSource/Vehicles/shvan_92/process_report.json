@@ -1,0 +1,101 @@
+{
+ "id": "shvan_92",
+ "name": "Shvan '92",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Shvan_92_09d718c9.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Shvan '92 - Low poly model",
+  "author": "Daniel Zhabotinsky",
+  "author_url": "https://sketchfab.com/DanielZhabotinsky",
+  "url": "https://sketchfab.com/3d-models/shvan-92-low-poly-model-09d718c9cf72401b8534d265a06a803f",
+  "file": "Shvan_92_09d718c9.zip",
+  "credit": "\"Shvan '92 - Low poly model\" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/shvan-92-low-poly-model-09d718c9cf72401b8534d265a06a803f), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "",
+ "stripped": [
+  "Shvan92_Body_Badges_Carbadges_misc_U_0 (44 faces)"
+ ],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 1,
+  "front_named": 7,
+  "rear_named": 5,
+  "flipped": true,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.8347,
+    -1.7758,
+    0.3627
+   ],
+   "radius": 0.3507,
+   "width": 0.2625,
+   "tris": 765
+  },
+  "FR": {
+   "centre": [
+    -0.8208,
+    -1.7758,
+    0.3507
+   ],
+   "radius": 0.3507,
+   "width": 0.2625,
+   "tris": 765
+  },
+  "RL": {
+   "centre": [
+    0.8347,
+    1.3595,
+    0.3627
+   ],
+   "radius": 0.3507,
+   "width": 0.2625,
+   "tris": 765
+  },
+  "RR": {
+   "centre": [
+    -0.8208,
+    1.3595,
+    0.3507
+   ],
+   "radius": 0.3507,
+   "width": 0.2625,
+   "tris": 765
+  }
+ },
+ "dimensions": [
+  2.349,
+  1.929,
+  4.899
+ ],
+ "wheelbase": 3.1353,
+ "track_front": 1.6555,
+ "track_rear": 1.6555,
+ "radius_front": 0.3507,
+ "radius_rear": 0.3507,
+ "width_front": 0.2625,
+ "width_rear": 0.2625,
+ "tris": {
+  "Body_LOD0": 19941,
+  "Body_LOD1": 8972,
+  "Body_LOD2": 2991,
+  "wheels": 3060,
+  "UCX_Body_faces": 194
+ },
+ "materials": {
+  "Numberplates_Misk_U": "plate",
+  "RB1c_Tire_1k": "tyre",
+  "Shvan92_bodymat": "paint",
+  "UCB_BOTTOM": "trim",
+  "UCB_Interiors_1": "interior",
+  "UCB_Lights_and_Glass": "glass",
+  "UCB_Lights_and_Glass_Transperent": "glass"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/shvan_92/shvan_92.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/shvan_92/shvan_92_preview.png"
+}

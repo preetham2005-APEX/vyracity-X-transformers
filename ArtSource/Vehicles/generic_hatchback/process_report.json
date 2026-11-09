@@ -1,0 +1,96 @@
+{
+ "id": "generic_hatchback",
+ "name": "Hatchback",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Generic_Passenger_Car_Pack_20f9af9b.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Generic passenger car pack",
+  "author": "Comrade1280",
+  "author_url": "https://sketchfab.com/comrade1280",
+  "url": "https://sketchfab.com/3d-models/generic-passenger-car-pack-20f9af9b8a404d5cb022ac6fe87f21f5",
+  "file": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+  "credit": "\"Generic passenger car pack\" by Comrade1280 (https://sketchfab.com/3d-models/generic-passenger-car-pack-20f9af9b8a404d5cb022ac6fe87f21f5), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "Hatchback Body",
+ "stripped": [],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 0,
+  "front_named": 0,
+  "rear_named": 0,
+  "flipped": true,
+  "mode": "1"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.6977,
+    -1.157,
+    0.2999
+   ],
+   "radius": 0.3006,
+   "width": 0.2042,
+   "tris": 567
+  },
+  "FR": {
+   "centre": [
+    -0.6839,
+    -1.1688,
+    0.2999
+   ],
+   "radius": 0.3006,
+   "width": 0.2042,
+   "tris": 567
+  },
+  "RL": {
+   "centre": [
+    0.6771,
+    1.2465,
+    0.2999
+   ],
+   "radius": 0.3006,
+   "width": 0.2042,
+   "tris": 567
+  },
+  "RR": {
+   "centre": [
+    -0.7046,
+    1.2347,
+    0.2999
+   ],
+   "radius": 0.3006,
+   "width": 0.2042,
+   "tris": 567
+  }
+ },
+ "dimensions": [
+  1.742,
+  1.352,
+  3.956
+ ],
+ "wheelbase": 2.4035,
+ "track_front": 1.3816,
+ "track_rear": 1.3817,
+ "radius_front": 0.3006,
+ "radius_rear": 0.3006,
+ "width_front": 0.2042,
+ "width_rear": 0.2042,
+ "tris": {
+  "Body_LOD0": 4540,
+  "Body_LOD1": 2043,
+  "Body_LOD2": 681,
+  "wheels": 2268,
+  "UCX_Body_faces": 230
+ },
+ "materials": {
+  "Body_1": "paint",
+  "Glass_1": "glass",
+  "Optics_1": "light",
+  "Wheek": "tyre"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/generic_hatchback/generic_hatchback.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/generic_hatchback/generic_hatchback_preview.png"
+}

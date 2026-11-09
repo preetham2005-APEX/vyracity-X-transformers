@@ -1,0 +1,102 @@
+{
+ "id": "tiara_gt_83",
+ "name": "Tiara GT '83 Tuned",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Tiara_GT_83_Tuned_59a0eaaa.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Tiara GT '83 Tuned - Low poly model",
+  "author": "Daniel Zhabotinsky",
+  "author_url": "https://sketchfab.com/DanielZhabotinsky",
+  "url": "https://sketchfab.com/3d-models/tiara-gt-83-tuned-low-poly-model-59a0eaaa2af144b2956957e7032d0221",
+  "file": "Tiara_GT_83_Tuned_59a0eaaa.zip",
+  "credit": "\"Tiara GT '83 Tuned - Low poly model\" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/tiara-gt-83-tuned-low-poly-model-59a0eaaa2af144b2956957e7032d0221), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "",
+ "stripped": [
+  "TiaraGT83_Bumper_Front_Badges_Carbadges_misc_U_0 (14 faces)",
+  "TiaraGT83_Body_Badges_Carbadges_misc_U_0 (82 faces)"
+ ],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 1,
+  "front_named": 10,
+  "rear_named": 7,
+  "flipped": true,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.6436,
+    -1.2825,
+    0.2755
+   ],
+   "radius": 0.2755,
+   "width": 0.196,
+   "tris": 1116
+  },
+  "FR": {
+   "centre": [
+    -0.6469,
+    -1.2825,
+    0.2755
+   ],
+   "radius": 0.2755,
+   "width": 0.196,
+   "tris": 1116
+  },
+  "RL": {
+   "centre": [
+    0.6436,
+    1.1072,
+    0.2755
+   ],
+   "radius": 0.2755,
+   "width": 0.196,
+   "tris": 1116
+  },
+  "RR": {
+   "centre": [
+    -0.6469,
+    1.1072,
+    0.2755
+   ],
+   "radius": 0.2755,
+   "width": 0.196,
+   "tris": 1116
+  }
+ },
+ "dimensions": [
+  1.736,
+  1.217,
+  4.167
+ ],
+ "wheelbase": 2.3897,
+ "track_front": 1.2905,
+ "track_rear": 1.2905,
+ "radius_front": 0.2755,
+ "radius_rear": 0.2755,
+ "width_front": 0.196,
+ "width_rear": 0.196,
+ "tris": {
+  "Body_LOD0": 13987,
+  "Body_LOD1": 6294,
+  "Body_LOD2": 2098,
+  "wheels": 4464,
+  "UCX_Body_faces": 230
+ },
+ "materials": {
+  "Numberplates_Misk_U": "plate",
+  "RB1c_Tire_1k": "tyre",
+  "TiaraGT83_Bodymat": "paint",
+  "UCB_BOTTOM": "trim",
+  "UCB_Interiors_2": "interior",
+  "UCB_Lights_and_Glass": "glass",
+  "UCB_Lights_and_Glass_Transperent": "glass"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/tiara_gt_83/tiara_gt_83.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/tiara_gt_83/tiara_gt_83_preview.png"
+}

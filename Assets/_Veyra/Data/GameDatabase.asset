@@ -97,6 +97,234 @@ MonoBehaviour:
     Model: {fileID: 0}
     DefaultPaint: {r: 0.38, g: 0.02, b: 0.05, a: 1}
     Credit: 
+  - Id: v12_goblin
+    Name: V12 Goblin
+    Maker: Supercar
+    Description: Mid-engine V12 with a wedge nose. The fastest thing in Veyra.
+    Price: 210000
+    UnlockLevel: 10
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 24774563f3611cb42a89364db781d5db, type: 2}
+    Model: {fileID: 4103237730717505984, guid: bd0c429cdcb553f499182b932a3d98a7, type: 3}
+    DefaultPaint: {r: 0.6, g: 0.62, b: 0.64, a: 1}
+    Credit: '"Fictional supercar - V12 Goblin" by ollitei (https://sketchfab.com/3d-models/fictional-supercar-v12-goblin-0a20e49ad5774d778567cb5c3f345786), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: iron_howl
+    Name: Iron Howl V8
+    Maker: Muscle
+    Description: Raw supercharged V8 muscle. Loud, wide and loose at the rear.
+    Price: 95000
+    UnlockLevel: 8
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: c2c564005e69d904f86c747134969833, type: 2}
+    Model: {fileID: 1689264161794911281, guid: caf4f45eb540fcd4eacaa6e2949fca16, type: 3}
+    DefaultPaint: {r: 0.6, g: 0.62, b: 0.64, a: 1}
+    Credit: '"IRON HOWL V8" by dark_igorek (https://sketchfab.com/3d-models/iron-howl-v8-47a361137a3749858d21b2ce8bcbe21e), licensed under CC-BY-4.0'
+  - Id: orion_skylark
+    Name: Orion GT
+    Maker: Grand tourer
+    Description: Long-tailed 60s-style grand tourer with twin fins. Fast and stable at speed.
+    Price: 120000
+    UnlockLevel: 9
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: ba8a8f3d832281344b82708758d30707, type: 2}
+    Model: {fileID: 8553583608712140094, guid: 3b50b191cf1f6ed4e8809fb89a7aef63, type: 3}
+    DefaultPaint: {r: 0.6, g: 0.62, b: 0.64, a: 1}
+    Credit: '"Orion Skylark GT" by dark_igorek (https://sketchfab.com/3d-models/orion-skylark-gt-b1cc3110ed6e41248b0ccadb28e41e54), licensed under CC-BY-4.0'
+  - Id: coupe_33_hotrod_1
+    Name: Coupe '33 Hot Rod
+    Maker: Hot rod
+    Description: Chopped 1930s coupe with a big-block heart. Light and lively.
+    Price: 52000
+    UnlockLevel: 6
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 47c49db77b4635244b1f717598525a48, type: 2}
+    Model: {fileID: 2533484219055325601, guid: 70e43ee9c4158734e90291b0dfaf0e61, type: 3}
+    DefaultPaint: {r: 0.31372544, g: 0.090196066, b: 0.1607843, a: 1}
+    Credit: '"Coupe ''33 Hotrod #1 - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/coupe-33-hotrod-1-low-poly-model-1f00f875bd594469ad41e377585dc0fc), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: coupe_33_hotrod_2
+    Name: Coupe '33 Hot Rod II
+    Maker: Hot rod
+    Description: 'The second build of the ''33: more motor, more attitude.'
+    Price: 55000
+    UnlockLevel: 7
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 61ad328993662ec448c127960ee75b39, type: 2}
+    Model: {fileID: 8445590160507623676, guid: ea2224704f5a9414884792093bae34df, type: 3}
+    DefaultPaint: {r: 0.5921568, g: 0.07450978, b: 0.058823504, a: 1}
+    Credit: '"Coupe ''33 Hot Rod #2 - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/coupe-33-hot-rod-2-low-poly-model-c880d700b7ec445ea9718e1b73f97e3e), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: phoenix_455
+    Name: Phoenix 455 '71
+    Maker: Muscle
+    Description: Early-70s muscle coupe with a 455 big block.
+    Price: 40000
+    UnlockLevel: 5
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 20b31b8230f8c944d9d317a8acae7217, type: 2}
+    Model: {fileID: 895303324266800666, guid: 5e6ae4434fb0aa145bd48b96c2894a93, type: 3}
+    DefaultPaint: {r: 0.055555634, g: 0.055555634, b: 0.055555634, a: 1}
+    Credit: '"Phoenix 455 ''71 - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/phoenix-455-71-low-poly-model-955edc733c6d44fabc0ad7c246a15896), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: tiara_gt_83
+    Name: Tiara GT '83 Tuned
+    Maker: Sports coupe
+    Description: Tuned 80s rear-drive coupe. Easy to drift.
+    Price: 28000
+    UnlockLevel: 4
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: f5f4a537522a6f947a0ff5bd874001be, type: 2}
+    Model: {fileID: 4602098799293494695, guid: 1bc2b8d94ea25b84292978c02f8d6088, type: 3}
+    DefaultPaint: {r: 0.9411764, g: 0.9411764, b: 0.9411764, a: 1}
+    Credit: '"Tiara GT ''83 Tuned - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/tiara-gt-83-tuned-low-poly-model-59a0eaaa2af144b2956957e7032d0221), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: lasley_67
+    Name: Lasley '67
+    Maker: City car
+    Description: Tiny 60s city car with rally lamps. Slow on paper, a menace in traffic.
+    Price: 9000
+    UnlockLevel: 1
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: d953416bbd519304fb0e6b2602447c0d, type: 2}
+    Model: {fileID: 2842526172250027557, guid: eef3aca516e59214ab6b0f5732da8803, type: 3}
+    DefaultPaint: {r: 0.16862744, g: 0.16862744, b: 0.15294114, a: 1}
+    Credit: '"Lasley ''67 - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/lasley-67-low-poly-model-1269720ec7b84c899eac77c1d325141e), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: bokaroo_67
+    Name: Bokaroo '67
+    Maker: Off-road
+    Description: Late-60s two-door off-roader on big tyres. Tall, tough and happy on dirt.
+    Price: 34000
+    UnlockLevel: 4
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: e558606ce572f2842b01524d056c2884, type: 2}
+    Model: {fileID: 7276302845041355888, guid: 9225f493996fce644964f391be9b7479, type: 3}
+    DefaultPaint: {r: 0.19607839, g: 0.52156854, b: 0.67843133, a: 1}
+    Credit: '"Bokaroo ''67 - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/bokaroo-67-low-poly-model-22015d1863d6455aa31cfd738b972c50), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: doutrive_78
+    Name: Doutrive '78
+    Maker: Coupe utility
+    Description: 'Late-70s coupe utility: a V8 car up front, a pickup bed at the back.'
+    Price: 22000
+    UnlockLevel: 3
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: dc85961868ec99b4fbc10970c7a65a64, type: 2}
+    Model: {fileID: 6168426792548954957, guid: 9b79a3bb433ee2d4fa528c53980a46e0, type: 3}
+    DefaultPaint: {r: 0.8392156, g: 0.18039212, b: 0.1607843, a: 1}
+    Credit: '"Doutrive ''78 - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/doutrive-78-low-poly-model-30700a84311c4bea9ef722f0773ce92a), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: kiri_86
+    Name: Kiri '86
+    Maker: Sedan
+    Description: Light 80s rear-drive sedan. Simple, honest and easy to slide.
+    Price: 12000
+    UnlockLevel: 1
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 86992410337598c47aa80c2f9a2e055c, type: 2}
+    Model: {fileID: 335646116511871759, guid: 5422313816be1b4448ea7f14213a4988, type: 3}
+    DefaultPaint: {r: 0.6392156, g: 0.06274508, b: 0.13725486, a: 1}
+    Credit: '"Kiri ''86 - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/kiri-86-low-poly-model-5c17c582ef9549798f694b660feea42a), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: riverside_88
+    Name: Riverside '88
+    Maker: Sedan
+    Description: Late-80s front-drive sedan. Comfortable and forgiving.
+    Price: 14000
+    UnlockLevel: 1
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 53747c8dc3361fc4fb8f99c12663666b, type: 2}
+    Model: {fileID: 8463552816452557645, guid: deb005e2b4389074ab27e1884027af21, type: 3}
+    DefaultPaint: {r: 0, g: 0.13333333, b: 0.14509803, a: 1}
+    Credit: '"Riverside ''88 - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/riverside-88-low-poly-model-8509a7f82665442592627940b7a1cfab), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: lct_3000_95
+    Name: LCT 3000 '95
+    Maker: Truck
+    Description: Mid-90s cab-over box truck. Slow, heavy, unstoppable.
+    Price: 20000
+    UnlockLevel: 2
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 26e383b1084b9ea45a7ed25f02f4cf63, type: 2}
+    Model: {fileID: 3943630322685687788, guid: cebd32c0240e85a4d942b5bec320736e, type: 3}
+    DefaultPaint: {r: 0.73015875, g: 0.73015875, b: 0.73015875, a: 1}
+    Credit: '"LCT 3000 ''95 - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/lct-3000-95-low-poly-model-663a0953c038434a918cb85725c88ffa), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: shvan_92
+    Name: Shvan '92
+    Maker: Van
+    Description: Early-90s V8 cargo van. Plenty of room, not much grip.
+    Price: 16000
+    UnlockLevel: 2
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: e868c835f788c614a953f2dd8ed1c4e8, type: 2}
+    Model: {fileID: 1878670190116870363, guid: 2bce0e320649e7f43aa345130071ec9b, type: 3}
+    DefaultPaint: {r: 0.09964735, g: 0.09964735, b: 0.09964735, a: 1}
+    Credit: '"Shvan ''92 - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/shvan-92-low-poly-model-09d718c9cf72401b8534d265a06a803f), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: illinois_90
+    Name: Illinois '90
+    Maker: Sedan
+    Description: Full-size 90s V8 sedan.
+    Price: 15000
+    UnlockLevel: 2
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: f7aa24c65eae3634888b4d53e1b5ac6a, type: 2}
+    Model: {fileID: 1882421834354037029, guid: d481bc3147e11b541808f02b76edd7c6, type: 3}
+    DefaultPaint: {r: 0.06878314, g: 0.06878314, b: 0.06878314, a: 1}
+    Credit: '"Illinois ''90 - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/illinois-90-low-poly-model-d604871eee5b4181bb298163b0b675b7), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: fairheaven_lt
+    Name: Fairheaven LT '80
+    Maker: Sedan
+    Description: Boxy full-size 80s sedan. Built like a tank.
+    Price: 12000
+    UnlockLevel: 1
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 43105dbbec12bfb4aa93701f87727a1f, type: 2}
+    Model: {fileID: 6066762403315827621, guid: 76b6775e5aaaf85478ae09482340349a, type: 3}
+    DefaultPaint: {r: 0.3921568, g: 0.113725476, b: 0.14901957, a: 1}
+    Credit: '"Fairheaven LT ''80 - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/fairheaven-lt-80-low-poly-model-e2678da920cc4be68dbc193727919ffb), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: negotiator_80
+    Name: Negotiator '80
+    Maker: Sedan
+    Description: Early-80s family sedan with a lazy V8.
+    Price: 13000
+    UnlockLevel: 1
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 2b6e4b3c719c3854389a92d868e69da4, type: 2}
+    Model: {fileID: 6662366720383861108, guid: c1e740300e5f4824787c19706664cbb1, type: 3}
+    DefaultPaint: {r: 0, g: 0.21568623, b: 0.14901957, a: 1}
+    Credit: '"Negotiator ''80 - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/negotiator-80-low-poly-model-892b2684fb37442299bfad9222cf331c), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: canyon_75_taxi
+    Name: Canyon '75 Taxi
+    Maker: Taxi
+    Description: A cab that has seen everything Veyra has to offer.
+    Price: 11000
+    UnlockLevel: 1
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: f5ab8547f5931984a97322f97327cf31, type: 2}
+    Model: {fileID: 1943512060636033223, guid: ca133699c1ef4f044ae2366ca64a074f, type: 3}
+    DefaultPaint: {r: 0.6, g: 0.62, b: 0.64, a: 1}
+    Credit: '"Canyon ''75 Taxi - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/canyon-75-taxi-low-poly-model-9e8f92a215784f3d8aaaaeab1bef54c4), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: fairheaven_cop
+    Name: Fairheaven Cruiser
+    Maker: Police
+    Description: Retired police interceptor with the heavy-duty package.
+    Price: 30000
+    UnlockLevel: 5
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: bd9c8c44431a4004f9d570cb1a703461, type: 2}
+    Model: {fileID: 3069012459976703521, guid: 351d7e1937ea4224e82a8915b0ba664a, type: 3}
+    DefaultPaint: {r: 0.6, g: 0.62, b: 0.64, a: 1}
+    Credit: '"Fairheaven LT ''80 Cop Cruiser - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/fairheaven-lt-80-cop-cruiser-low-poly-model-61766c1e6e1e4b2b803c174f33433a74), licensed under CC-BY-4.0 (modified: brand badges removed, livery edited)'
   Casual: {fileID: 11400000, guid: 0cbfe2966ec3c304cbce9a8f98d11b6c, type: 2}
   Advanced: {fileID: 11400000, guid: 3354b2b95d5c5b44db093fcef1f983b9, type: 2}
   AIPreset: {fileID: 11400000, guid: 5b3fca5049e01a94cbe6efed0749fd86, type: 2}
@@ -112,4 +340,24 @@ MonoBehaviour:
   UnlitAdditiveTemplate: {fileID: 2100000, guid: 8a72afab21d798f4d9cb938552c55d90, type: 2}
   ParticleAlphaTemplate: {fileID: 2100000, guid: d34ff781524a6b349adde1cbacf03241, type: 2}
   ParticleAdditiveTemplate: {fileID: 2100000, guid: 0baaf6bc68587e149b7c7b4cd5edd4fc, type: 2}
-  TrafficModels: []
+  TrafficModels:
+  - {fileID: 6168426792548954957, guid: 9b79a3bb433ee2d4fa528c53980a46e0, type: 3}
+  - {fileID: 8463552816452557645, guid: deb005e2b4389074ab27e1884027af21, type: 3}
+  - {fileID: 3943630322685687788, guid: cebd32c0240e85a4d942b5bec320736e, type: 3}
+  - {fileID: 1878670190116870363, guid: 2bce0e320649e7f43aa345130071ec9b, type: 3}
+  - {fileID: 1882421834354037029, guid: d481bc3147e11b541808f02b76edd7c6, type: 3}
+  - {fileID: 6066762403315827621, guid: 76b6775e5aaaf85478ae09482340349a, type: 3}
+  - {fileID: 6662366720383861108, guid: c1e740300e5f4824787c19706664cbb1, type: 3}
+  - {fileID: 1943512060636033223, guid: ca133699c1ef4f044ae2366ca64a074f, type: 3}
+  - {fileID: 3069012459976703521, guid: 351d7e1937ea4224e82a8915b0ba664a, type: 3}
+  - {fileID: 7007720573676089758, guid: 5b535e67f1e69f9459fd50bcacb32c5e, type: 3}
+  - {fileID: 4266561129422935637, guid: f2ce6a3103955cc4ba51ec96f312add0, type: 3}
+  - {fileID: 5881873014602551157, guid: c5a9133b8e19a0f4a9aab2a501d2eeae, type: 3}
+  - {fileID: 2643322674386738250, guid: d46fda3cfb710e54eb706e8bcf6c0238, type: 3}
+  - {fileID: 8184243437482553731, guid: 01de17e65426f514c9d89a16e5e01c44, type: 3}
+  - {fileID: 5543942792816173391, guid: c6b5245cfbe4d084595bd8a51eb688c0, type: 3}
+  - {fileID: 5543522728945151204, guid: 1ba6ccce0a4c8bb45b857198390f905c, type: 3}
+  - {fileID: 7998953729669111722, guid: 96a0c21bb7220d0408162b2c6193edba, type: 3}
+  - {fileID: 884141774432725239, guid: 2047cf0f0663ad94790897efbbee2173, type: 3}
+  - {fileID: 5846904493884793480, guid: f5066b626105c8d4899ad27cfcd374d1, type: 3}
+  Feel: {fileID: 11400000, guid: b7e29e17f700e3841b398f3adb78f7b2, type: 2}

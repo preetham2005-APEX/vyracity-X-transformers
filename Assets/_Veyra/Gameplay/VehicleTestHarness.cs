@@ -23,7 +23,7 @@ namespace VeyraCity.Gameplay
         readonly SimulationMode previousMode;
         bool disposed;
 
-        VehicleTestHarness(VehicleDefinition def, AssistPreset preset, SurfaceDefinition surface, float fixedHz)
+        VehicleTestHarness(VehicleDefinition def, AssistPreset preset, SurfaceDefinition surface, float fixedHz, HandlingFeel feel = null)
         {
             Dt = 1f / Mathf.Max(10f, fixedHz);
             previousMode = Physics.simulationMode;
@@ -37,14 +37,26 @@ namespace VeyraCity.Gameplay
 
             Vehicle = VehicleFactory.Create(def, null, surface, new Vector3(0f, 0.05f, 0f), Quaternion.identity, interpolate: false);
             Vehicle.ManualStepping = true;
+            Vehicle.Feel = feel;
             Script.Vehicle = Vehicle;
             Driver = Vehicle.gameObject.AddComponent<VehicleDriver>();
             Driver.Bind(Vehicle, Script, preset);
             Physics.SyncTransforms();
         }
 
-        public static VehicleTestHarness Create(VehicleDefinition def, AssistPreset preset, SurfaceDefinition surface, float fixedHz = 100f)
-            => new VehicleTestHarness(def, preset, surface, fixedHz);
+        public static VehicleTestHarness Create(VehicleDefinition def, AssistPreset preset, SurfaceDefinition surface, float fixedHz = 100f, HandlingFeel feel = null)
+            => new VehicleTestHarness(def, preset, surface, fixedHz, feel);
+
+        /// <summary>Adds a static wall (no Rigidbody) for collision tests: centre, size and yaw in degrees.</summary>
+        public GameObject AddWall(Vector3 centre, Vector3 size, float yawDeg)
+        {
+            var wall = new GameObject("TestWall");
+            wall.transform.SetPositionAndRotation(centre, Quaternion.Euler(0f, yawDeg, 0f));
+            wall.AddComponent<BoxCollider>().size = size;
+            wall.transform.SetParent(ground.transform, true);
+            Physics.SyncTransforms();
+            return wall;
+        }
 
         public void Step(int steps = 1)
         {

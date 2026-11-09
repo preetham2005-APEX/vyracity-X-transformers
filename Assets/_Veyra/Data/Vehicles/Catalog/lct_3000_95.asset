@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3547c682de3891440803fdc997ce3398, type: 3}
+  m_Name: lct_3000_95
+  m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
+  DisplayName: LCT 3000 '95
+  BuildId: DL_lct_3000_95
+  TuningVersion: 4
+  Layout: 0
+  AwdFrontSplit: 0.4
+  Wheelbase: 3.3449
+  Chassis:
+    Mass: 3600
+    FrontWeightFraction: 0.52
+    CoMHeight: 0.95
+    Dimensions: {x: 2.614, y: 2.854, z: 6.023}
+    InertiaScale: 0.85
+  Front:
+    TrackWidth: 1.8554
+    Suspension:
+      RestLength: 0.2
+      Travel: 0.12
+      SpringRate: 142137.36
+      BumpDamping: 3324.2651
+      ReboundDamping: 6648.5303
+      BumpStopRate: 369863
+      AntiRollRate: 64109.586
+      RollCentreHeight: 0.05
+    Tyre:
+      Radius: 0.3569
+      Width: 0.2214
+      WheelInertia: 1.4031743
+      Mu: 1.16
+      LateralGripScale: 0.92
+      LongPeakSlip: 0.09
+      LatPeakSlipDeg: 7
+      LongShape: 1.8
+      LatShape: 1.55
+      LoadSensitivity: 0.12
+      NominalLoad: 7397.26
+      RollingResistance: 0.012
+    Differential:
+      Type: 0
+      Preload: 0
+      PowerLock: 0
+      CoastLock: 0
+  Rear:
+    TrackWidth: 1.762
+    Suspension:
+      RestLength: 0.2
+      Travel: 0.12
+      SpringRate: 151622.38
+      BumpDamping: 3299.1409
+      ReboundDamping: 6598.2817
+      BumpStopRate: 369863
+      AntiRollRate: 36986.3
+      RollCentreHeight: 0.09
+    Tyre:
+      Radius: 0.3577
+      Width: 0.44
+      WheelInertia: 1.4094716
+      Mu: 1.18
+      LateralGripScale: 0.92
+      LongPeakSlip: 0.09
+      LatPeakSlipDeg: 7
+      LongShape: 1.8
+      LatShape: 1.55
+      LoadSensitivity: 0.12
+      NominalLoad: 7397.26
+      RollingResistance: 0.012
+    Differential:
+      Type: 1
+      Preload: 80
+      PowerLock: 0.35
+      CoastLock: 0.2
+  Engine:
+    TorqueCurve:
+    - {x: 1000, y: 128.7}
+    - {x: 2000, y: 205.92}
+    - {x: 3000, y: 283.13998}
+    - {x: 3500, y: 304.59}
+    - {x: 4500, y: 308.88}
+    - {x: 5500, y: 296.01}
+    - {x: 6500, y: 274.56}
+    - {x: 7000, y: 261.69}
+    - {x: 7500, y: 244.53}
+    - {x: 7800, y: 214.5}
+    IdleRpm: 950
+    LimiterRpm: 7800
+    Inertia: 0.15
+    EngineBrakeTorque: 55
+    LaunchRpm: 3800
+  Gearbox:
+    Ratios:
+    - 3.1
+    - 2.15
+    - 1.62
+    - 1.3
+    - 1.08
+    - 0.9
+    ReverseRatio: 3.2
+    FinalDrive: 3.9
+    Efficiency: 0.9
+    ShiftTime: 0.18
+    ShiftUpRpm: 7500
+    ShiftDownRpm: 3600
+    Automatic: 1
+  Brakes:
+    MaxTorque: 17309.588
+    FrontBias: 0.66
+    HandbrakeTorque: 2200
+  Steering:
+    MaxAngleDeg: 36
+    Ackermann: 0.4
+    RateDegPerSec: 400
+  Aero:
+    DragArea: 3.84
+    DownforceArea: 0.5
+    FrontDownforceShare: 0.42

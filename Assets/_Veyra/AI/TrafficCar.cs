@@ -18,6 +18,7 @@ namespace VeyraCity.AI
         float crashedTime;
         MaterialPropertyBlock mpb;
         Renderer[] paintRenderers;
+        int[] paintSlots;
 
         public bool Crashed { get; private set; }
         public bool Expired { get; private set; }
@@ -47,13 +48,22 @@ namespace VeyraCity.AI
             transform.SetPositionAndRotation(pos, rot);
             if (paintRenderers == null)
             {
+                // Tint only paint materials (M_Paint_*, Traffic_Body*), per material slot: glass, chrome, lights,
+                // tyres and textured liveries (taxi, police) keep their own colours.
                 var list = new List<Renderer>();
-                foreach (var rend in GetComponentsInChildren<Renderer>()) if (rend.name.Contains("Body")) list.Add(rend);
+                var slots = new List<int>();
+                foreach (var rend in GetComponentsInChildren<Renderer>())
+                {
+                    var mats = rend.sharedMaterials;
+                    for (int i = 0; i < mats.Length; i++)
+                        if (mats[i] != null && (mats[i].name.StartsWith("M_Paint") || mats[i].name.StartsWith("Traffic_Body"))) { list.Add(rend); slots.Add(i); }
+                }
                 paintRenderers = list.ToArray();
+                paintSlots = slots.ToArray();
                 mpb = new MaterialPropertyBlock();
             }
             mpb.SetColor("_BaseColor", paint);
-            foreach (var rend in paintRenderers) rend.SetPropertyBlock(mpb);
+            for (int i = 0; i < paintRenderers.Length; i++) paintRenderers[i].SetPropertyBlock(mpb, paintSlots[i]);
         }
 
         void Place(out Vector3 pos, out Quaternion rot)

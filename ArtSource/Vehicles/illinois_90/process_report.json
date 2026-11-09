@@ -1,0 +1,102 @@
+{
+ "id": "illinois_90",
+ "name": "Illinois '90",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Illinois_90_d604871e.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Illinois '90 - Low poly model",
+  "author": "Daniel Zhabotinsky",
+  "author_url": "https://sketchfab.com/DanielZhabotinsky",
+  "url": "https://sketchfab.com/3d-models/illinois-90-low-poly-model-d604871eee5b4181bb298163b0b675b7",
+  "file": "Illinois_90_d604871e.zip",
+  "credit": "\"Illinois '90 - Low poly model\" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/illinois-90-low-poly-model-d604871eee5b4181bb298163b0b675b7), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip"
+ },
+ "part": "",
+ "stripped": [
+  "Illinois90_Trunkdoor_Badges_Carbadges_misc_U_0 (26 faces)",
+  "Illinois90_Body_Badges_Carbadges_misc_U_0 (16 faces)"
+ ],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 1,
+  "front_named": 8,
+  "rear_named": 8,
+  "flipped": true,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.7744,
+    -1.5185,
+    0.322
+   ],
+   "radius": 0.322,
+   "width": 0.2378,
+   "tris": 811
+  },
+  "FR": {
+   "centre": [
+    -0.7742,
+    -1.5185,
+    0.322
+   ],
+   "radius": 0.322,
+   "width": 0.2378,
+   "tris": 811
+  },
+  "RL": {
+   "centre": [
+    0.7744,
+    1.3369,
+    0.322
+   ],
+   "radius": 0.322,
+   "width": 0.2378,
+   "tris": 811
+  },
+  "RR": {
+   "centre": [
+    -0.7742,
+    1.3369,
+    0.322
+   ],
+   "radius": 0.322,
+   "width": 0.2378,
+   "tris": 811
+  }
+ },
+ "dimensions": [
+  2.094,
+  1.426,
+  5.166
+ ],
+ "wheelbase": 2.8554,
+ "track_front": 1.5486,
+ "track_rear": 1.5486,
+ "radius_front": 0.322,
+ "radius_rear": 0.322,
+ "width_front": 0.2378,
+ "width_rear": 0.2378,
+ "tris": {
+  "Body_LOD0": 16042,
+  "Body_LOD1": 7218,
+  "Body_LOD2": 2405,
+  "wheels": 3244,
+  "UCX_Body_faces": 196
+ },
+ "materials": {
+  "Illinois90_Bodymat": "paint",
+  "Numberplates_Misk_U": "plate",
+  "RB1c_Tire_1k": "tyre",
+  "UCB_BOTTOM": "trim",
+  "UCB_Interiors_2": "interior",
+  "UCB_Lights_and_Glass": "glass",
+  "UCB_Lights_and_Glass_Transperent": "glass"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/illinois_90/illinois_90.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/illinois_90/illinois_90_preview.png"
+}

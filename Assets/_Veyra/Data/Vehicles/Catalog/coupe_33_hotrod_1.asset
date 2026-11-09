@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3547c682de3891440803fdc997ce3398, type: 3}
+  m_Name: coupe_33_hotrod_1
+  m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
+  DisplayName: Coupe '33 Hot Rod
+  BuildId: DL_coupe_33_hotrod_1
+  TuningVersion: 4
+  Layout: 0
+  AwdFrontSplit: 0.4
+  Wheelbase: 3.0208
+  Chassis:
+    Mass: 1080
+    FrontWeightFraction: 0.52
+    CoMHeight: 0.52699995
+    Dimensions: {x: 1.972, y: 1.581, z: 4.185}
+    InertiaScale: 0.85
+  Front:
+    TrackWidth: 1.5676
+    Suspension:
+      RestLength: 0.2
+      Travel: 0.12
+      SpringRate: 38871.234
+      BumpDamping: 1772.8516
+      ReboundDamping: 3545.7031
+      BumpStopRate: 105194.805
+      AntiRollRate: 18233.766
+      RollCentreHeight: 0.05
+    Tyre:
+      Radius: 0.35
+      Width: 0.2181
+      WheelInertia: 1.349443
+      Mu: 1.1
+      LateralGripScale: 0.92
+      LongPeakSlip: 0.09
+      LatPeakSlipDeg: 7
+      LongShape: 1.8
+      LatShape: 1.55
+      LoadSensitivity: 0.12
+      NominalLoad: 2103.8962
+      RollingResistance: 0.012
+    Differential:
+      Type: 0
+      Preload: 0
+      PowerLock: 0
+      CoastLock: 0
+  Rear:
+    TrackWidth: 1.6792
+    Suspension:
+      RestLength: 0.2
+      Travel: 0.12
+      SpringRate: 41465.164
+      BumpDamping: 1759.4526
+      ReboundDamping: 3518.9053
+      BumpStopRate: 105194.805
+      AntiRollRate: 10519.48
+      RollCentreHeight: 0.09
+    Tyre:
+      Radius: 0.3872
+      Width: 0.282
+      WheelInertia: 1.6515402
+      Mu: 1.12
+      LateralGripScale: 0.92
+      LongPeakSlip: 0.09
+      LatPeakSlipDeg: 7
+      LongShape: 1.8
+      LatShape: 1.55
+      LoadSensitivity: 0.12
+      NominalLoad: 2103.8962
+      RollingResistance: 0.012
+    Differential:
+      Type: 1
+      Preload: 80
+      PowerLock: 0.35
+      CoastLock: 0.2
+  Engine:
+    TorqueCurve:
+    - {x: 1000, y: 320.625}
+    - {x: 2000, y: 513}
+    - {x: 3000, y: 705.375}
+    - {x: 3500, y: 758.8125}
+    - {x: 4500, y: 769.5}
+    - {x: 5500, y: 737.4375}
+    - {x: 6500, y: 684}
+    - {x: 7000, y: 651.9375}
+    - {x: 7500, y: 609.1875}
+    - {x: 7800, y: 534.375}
+    IdleRpm: 950
+    LimiterRpm: 7800
+    Inertia: 0.15
+    EngineBrakeTorque: 55
+    LaunchRpm: 3800
+  Gearbox:
+    Ratios:
+    - 3.1
+    - 2.15
+    - 1.62
+    - 1.3
+    - 1.08
+    - 0.9
+    ReverseRatio: 3.2
+    FinalDrive: 3.9
+    Efficiency: 0.9
+    ShiftTime: 0.18
+    ShiftUpRpm: 7500
+    ShiftDownRpm: 3600
+    Automatic: 1
+  Brakes:
+    MaxTorque: 4733.766
+    FrontBias: 0.66
+    HandbrakeTorque: 2200
+  Steering:
+    MaxAngleDeg: 36
+    Ackermann: 0.4
+    RateDegPerSec: 400
+  Aero:
+    DragArea: 2.34
+    DownforceArea: 0.2
+    FrontDownforceShare: 0.42

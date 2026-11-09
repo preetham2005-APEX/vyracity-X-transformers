@@ -119,7 +119,7 @@ namespace VeyraCity.Gameplay
             foreach (var arg in a)
             {
                 // Automated verification runs must keep ticking without focus and keep the window size they were given.
-                if (arg.StartsWith("-veyraTour") || arg.StartsWith("-veyraDemo") || arg.StartsWith("-veyraAutoQuit") || arg.StartsWith("-veyraShots") || arg == "-autotest") { automated = true; Application.runInBackground = true; }
+                if (arg.StartsWith("-veyraTour") || arg.StartsWith("-veyraDemo") || arg.StartsWith("-veyraAutoQuit") || arg.StartsWith("-veyraShots") || arg.StartsWith("-veyraCarShots") || arg.StartsWith("-veyraReviewShots") || arg == "-autotest") { automated = true; Application.runInBackground = true; }
                 if (arg.StartsWith("-screen-")) keepDisplay = true;
             }
             cam = chaseCamera != null ? chaseCamera.GetComponent<Camera>() : Camera.main;
@@ -244,6 +244,104 @@ namespace VeyraCity.Gameplay
             }
             Debug.Log("[Review] done");
         }
+
+        string carShotDir;
+
+        /// <summary>
+        /// Cards A8/A9 evidence (-veyraCarShots &lt;dir&gt;): every drivable car with a model on Meridian Boulevard at noon
+        /// (chase camera + front three-quarter), then scripted handling runs on the Falcon Apron drift pad (DFT-04):
+        /// a brake-tap drift held for 3 s and a nitro run, logged as [Showcase] telemetry and captured.
+        /// </summary>
+        System.Collections.IEnumerator CarShowcase()
+        {
+            System.IO.Directory.CreateDirectory(carShotDir);
+            yield return null;
+            EnterFreeRoam(false);
+            menu.Hide();
+            SetPaused(false);
+            traffic.Active = false;
+            environment.AutoWeather = false;
+            environment.SetWeather(WorldEnvironment.WeatherKind.Clear);
+            environment.AnimateTime = false;
+            environment.SetTime(12f);
+            Pose RoadPose(string roadId, float frac, float side)
+            {
+                RoadPath road = null;
+                foreach (var r in WorldData.Roads) if (r.Data.id == roadId) road = r;
+                if (road == null) return new Pose(Vector3.zero, Quaternion.identity);
+                float s = road.Path.Length * frac;
+                var t = road.Path.TangentAt(s);
+                var right = new Vector3(t.z, 0f, -t.x).normalized;
+                var p = road.Path.PositionAt(s) + right * side;
+                p.y = WorldData.GroundHeight(p + Vector3.up * 3f, p.y) + 0.45f;
+                return new Pose(p, Quaternion.LookRotation(new Vector3(t.x, 0f, t.z)));
+            }
+            var cam = chaseCamera != null ? chaseCamera.GetComponent<Camera>() : Camera.main;
+            string previous = save.CurrentCar;
+            int shots = 0;
+            foreach (var entry in db.Cars)
+            {
+                if (entry.Model == null || entry.AIOnly) continue;
+                save.CurrentCar = entry.Id;
+                SpawnPlayer(RoadPose("A2", 0.55f, 2.6f));
+                yield return new WaitForSecondsRealtime(1.6f);
+                ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(carShotDir, $"car_{entry.Id}_chase.png"));
+                yield return null;
+                yield return null;
+                if (chaseCamera != null) chaseCamera.enabled = false;
+                var ct = player.transform;
+                cam.transform.position = ct.position + ct.forward * 4.9f + ct.right * -3.6f + Vector3.up * 1.35f;
+                cam.transform.LookAt(ct.position + Vector3.up * 0.65f);
+                cam.fieldOfView = 50f;
+                yield return null;
+                ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(carShotDir, $"car_{entry.Id}_front34.png"));
+                yield return null;
+                yield return null;
+                if (chaseCamera != null) chaseCamera.enabled = true;
+                shots += 2;
+                Debug.Log($"[Showcase] {entry.Id}: shots taken");
+            }
+
+            // Handling runs on the apron drift pad, heading east.
+            foreach (string id in new[] { "v12_goblin", "phoenix_455", "kiri_86" })
+            {
+                if (!Array.Exists(db.Cars, c => c.Id == id)) continue;
+                save.CurrentCar = id;
+                var start = new Vector3(2300f, 0f, -400f);
+                start.y = WorldData.GroundHeight(start + Vector3.up * 50f, 8f) + 0.45f;
+                SpawnPlayer(new Pose(start, Quaternion.LookRotation(Vector3.right)));
+                playerNitro.ResetState(NitroSystem.MeterMax);
+                var script = new ScriptedDriver { Vehicle = player };
+                playerDriver.Bind(player, script, db.Casual);
+                float t0 = Time.time;
+                script.Policy = v =>
+                {
+                    float t = Time.time - t0;
+                    if (t < 5f) return new DriverIntent { Throttle = 1f };                                   // launch
+                    if (t < 5.15f) return new DriverIntent { Steer = 0.8f, Brake = 1f };                      // brake tap
+                    if (t < 8.5f) return new DriverIntent { Steer = 0.8f, Throttle = 1f };                    // hold the drift
+                    if (t < 9.5f) return new DriverIntent { Throttle = 1f };                                  // straighten up
+                    return new DriverIntent { Throttle = 1f, Nitro = true };                                  // nitro
+                };
+                var sb = new System.Text.StringBuilder($"[Showcase] {id} run:");
+                for (float t = 0f; t < 12.5f; t += 0.5f)
+                {
+                    yield return new WaitForSeconds(0.5f);
+                    var st = player.State;
+                    sb.Append($" t{t + 0.5f:0.0}={st.SpeedKmh:0}km/h,slip{st.SlipAngleDeg:0}{(st.ArcadeDrift ? ",D" : "")}");
+                    if (Mathf.Approximately(t + 0.5f, 7f) || Mathf.Approximately(t + 0.5f, 8f) || Mathf.Approximately(t + 0.5f, 11.5f))
+                    {
+                        ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(carShotDir, $"run_{id}_{t + 0.5f:00.0}s.png"));
+                        shots++;
+                    }
+                }
+                Debug.Log(sb.ToString());
+            }
+            save.CurrentCar = previous;
+            Debug.Log($"[Showcase] done: {shots} screenshots in {carShotDir}");
+            yield return new WaitForSecondsRealtime(1f);
+            Application.Quit();
+        }
         float shotEvery = 6f;
         bool tour;
 
@@ -256,6 +354,7 @@ namespace VeyraCity.Gameplay
                 if (args[i] == "-veyraDemoFreeRoam") { demo = true; demoRaceId = null; }
                 if (args[i] == "-veyraTour") tour = true;
                 if (args[i] == "-veyraReviewShots" && i + 1 < args.Length) reviewDir = args[i + 1];
+                if (args[i] == "-veyraCarShots" && i + 1 < args.Length) carShotDir = args[i + 1];
                 if (args[i] == "-veyraTimeScale" && i + 1 < args.Length && float.TryParse(args[i + 1], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var ts)) { baseTimeScale = Mathf.Clamp(ts, 0.1f, 8f); Time.timeScale = baseTimeScale; Time.maximumDeltaTime = 0.1f * baseTimeScale; }
                 if (args[i] == "-veyraShots" && i + 1 < args.Length) shotDir = args[i + 1];
                 if (args[i] == "-veyraShotEvery" && i + 1 < args.Length) float.TryParse(args[i + 1], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out shotEvery);
@@ -263,6 +362,7 @@ namespace VeyraCity.Gameplay
             if (!string.IsNullOrEmpty(shotDir)) StartCoroutine(Shots());
             if (tour) { demo = true; StartCoroutine(Tour()); }
             if (!string.IsNullOrEmpty(reviewDir)) { demo = true; tour = true; StartCoroutine(ReviewShots()); }
+            if (!string.IsNullOrEmpty(carShotDir)) { demo = true; tour = true; StartCoroutine(CarShowcase()); }
         }
 
         System.Collections.IEnumerator Shots()
@@ -393,11 +493,19 @@ namespace VeyraCity.Gameplay
             if (model != null) model.gameObject.SetActive(true);
             if (temp != null) Destroy(temp);
             ApplyPaint(vc.gameObject, paint);
+            vc.Feel = db.Feel;                                            // arcade handling layer (drift, stability, air, walls)
+            vc.gameObject.AddComponent<VehicleBodyLean>().Bind(vc);      // visual body roll / pitch
             return vc;
         }
 
         static void ApplyPaint(GameObject car, Color paint)
         {
+            // Imported cars name their paint materials M_Paint_* (liveries are M_Livery_* and keep their artwork);
+            // only legacy models without such materials fall back to "every non-glass material on a Body renderer".
+            bool named = false;
+            foreach (var r in car.GetComponentsInChildren<Renderer>(true))
+                foreach (var m in r.sharedMaterials)
+                    if (m != null && (m.name.StartsWith("M_Paint") || m.name.StartsWith("M_Livery"))) named = true;
             foreach (var r in car.GetComponentsInChildren<Renderer>(true))
             {
                 var mats = r.sharedMaterials;
@@ -406,7 +514,8 @@ namespace VeyraCity.Gameplay
                 {
                     var m = mats[i];
                     if (m == null) continue;
-                    bool isPaint = m.name.StartsWith("M_Paint") || m.name.StartsWith("Traffic_Body") || m.name.Contains("Placeholder_CarBody") || (r.name.StartsWith("Body") && !m.name.Contains("Glass"));
+                    bool isPaint = m.name.StartsWith("M_Paint") || m.name.StartsWith("Traffic_Body") || m.name.Contains("Placeholder_CarBody")
+                                   || (!named && r.name.StartsWith("Body") && !m.name.Contains("Glass"));
                     if (!isPaint) continue;
                     var inst = new Material(m) { name = m.name + "_Paint" };
                     inst.SetColor("_BaseColor", paint);
@@ -419,7 +528,13 @@ namespace VeyraCity.Gameplay
 
         void DespawnPlayer()
         {
-            if (playerRoot != null) Destroy(playerRoot);
+            if (playerRoot != null)
+            {
+                // Deactivate now: Destroy is deferred to the end of the frame, and a replacement car spawned at the
+                // same pose this frame would be shoved out of the old car's colliders (it starts rolling at 10+ km/h).
+                playerRoot.SetActive(false);
+                Destroy(playerRoot);
+            }
             playerRoot = null;
             player = null;
             playerDriver = null;

@@ -1,0 +1,482 @@
+{
+ "_doc": "Downloaded cars -> VEYRA CITY. Read by Tools/Blender/process_all_cars.py (Blender step) and Assets/_Veyra/Editor/CarImportTools.cs (Unity step). roles: player = dealership/garage/free roam/AI racers, traffic = ambient traffic model. baseDef = handling template, scaled to the model's measured wheelbase, track, tyres and size.",
+ "cars": [
+  {
+   "id": "v12_goblin",
+   "src": "V12_Goblin_Supercar_0a20e49a.zip",
+   "name": "V12 Goblin",
+   "maker": "Supercar",
+   "length": 4.6,
+   "strip": "clearcoat",
+   "roles": [
+    "player"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Castellan_Vento_R.asset",
+   "price": 210000,
+   "level": 10,
+   "mass": 1420,
+   "torqueScale": 1.12,
+   "description": "Mid-engine V12 with a wedge nose. The fastest thing in Veyra."
+  },
+  {
+   "id": "iron_howl",
+   "src": "Iron_Howl_V8_47a36113.zip",
+   "name": "Iron Howl V8",
+   "maker": "Muscle",
+   "length": 4.8,
+   "roles": [
+    "player"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Rourke_Hammerhead.asset",
+   "price": 95000,
+   "level": 8,
+   "mass": 1560,
+   "torqueScale": 1.3,
+   "paint": "body_one",
+   "description": "Raw supercharged V8 muscle. Loud, wide and loose at the rear.",
+   "dragScale": 2.8
+  },
+  {
+   "id": "orion_skylark",
+   "src": "Orion_Skylark_GT_b1cc3110.zip",
+   "name": "Orion GT",
+   "maker": "Grand tourer",
+   "length": 4.7,
+   "roles": [
+    "player"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Marlowe_Sovereign.asset",
+   "price": 120000,
+   "level": 9,
+   "mass": 1480,
+   "torqueScale": 1.25,
+   "paint": "body_one",
+   "description": "Long-tailed 60s-style grand tourer with twin fins. Fast and stable at speed.",
+   "flip": "1",
+   "dragScale": 1.0
+  },
+  {
+   "id": "coupe_33_hotrod_1",
+   "src": "Coupe_33_HotRod_1_1f00f875.zip",
+   "name": "Coupe '33 Hot Rod",
+   "maker": "Hot rod",
+   "length": 4.1,
+   "strip": "Carbadges",
+   "roles": [
+    "player"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Rourke_Hammerhead.asset",
+   "price": 52000,
+   "level": 6,
+   "mass": 1080,
+   "torqueScale": 0.95,
+   "description": "Chopped 1930s coupe with a big-block heart. Light and lively.",
+   "dragScale": 3.0
+  },
+  {
+   "id": "coupe_33_hotrod_2",
+   "src": "Coupe_33_HotRod_2_c880d700.zip",
+   "name": "Coupe '33 Hot Rod II",
+   "maker": "Hot rod",
+   "length": 4.1,
+   "strip": "Carbadges",
+   "roles": [
+    "player"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Rourke_Hammerhead.asset",
+   "price": 55000,
+   "level": 7,
+   "mass": 1100,
+   "torqueScale": 1.0,
+   "description": "The second build of the '33: more motor, more attitude.",
+   "dragScale": 3.0
+  },
+  {
+   "id": "phoenix_455",
+   "src": "Phoenix_455_71_955edc73.zip",
+   "name": "Phoenix 455 '71",
+   "maker": "Muscle",
+   "length": 5.0,
+   "strip": "Carbadges",
+   "roles": [
+    "player"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Rourke_Hammerhead.asset",
+   "price": 40000,
+   "level": 5,
+   "mass": 1620,
+   "torqueScale": 0.92,
+   "description": "Early-70s muscle coupe with a 455 big block.",
+   "dragScale": 1.2
+  },
+  {
+   "id": "tiara_gt_83",
+   "src": "Tiara_GT_83_Tuned_59a0eaaa.zip",
+   "name": "Tiara GT '83 Tuned",
+   "maker": "Sports coupe",
+   "length": 4.4,
+   "strip": "Carbadges",
+   "roles": [
+    "player"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Kite_Street_RWD.asset",
+   "price": 28000,
+   "level": 4,
+   "mass": 1120,
+   "torqueScale": 0.62,
+   "description": "Tuned 80s rear-drive coupe. Easy to drift.",
+   "dragScale": 1.0
+  },
+  {
+   "id": "lasley_67",
+   "src": "Lasley_67_1269720e.zip",
+   "name": "Lasley '67",
+   "maker": "City car",
+   "length": 3.1,
+   "strip": "Carbadges",
+   "roles": [
+    "player"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Arden_Strata.asset",
+   "price": 9000,
+   "level": 1,
+   "mass": 720,
+   "torqueScale": 0.42,
+   "description": "Tiny 60s city car with rally lamps. Slow on paper, a menace in traffic.",
+   "dragScale": 1.1
+  },
+  {
+   "id": "bokaroo_67",
+   "src": "Bokaroo_67_22015d18.zip",
+   "name": "Bokaroo '67",
+   "maker": "Off-road",
+   "length": 4.9,
+   "strip": "Carbadges",
+   "roles": [
+    "player"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Volkhart_4S.asset",
+   "price": 34000,
+   "level": 4,
+   "mass": 1750,
+   "torqueScale": 0.56,
+   "description": "Late-60s two-door off-roader on big tyres. Tall, tough and happy on dirt.",
+   "dragScale": 1.6
+  },
+  {
+   "id": "doutrive_78",
+   "src": "Doutrive_78_30700a84.zip",
+   "name": "Doutrive '78",
+   "maker": "Coupe utility",
+   "length": 5.4,
+   "strip": "Carbadges",
+   "roles": [
+    "player",
+    "traffic"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Marlowe_Sovereign.asset",
+   "price": 22000,
+   "level": 3,
+   "mass": 1850,
+   "torqueScale": 0.47,
+   "description": "Late-70s coupe utility: a V8 car up front, a pickup bed at the back.",
+   "dragScale": 1.3
+  },
+  {
+   "id": "kiri_86",
+   "src": "Kiri_86_5c17c582.zip",
+   "name": "Kiri '86",
+   "maker": "Sedan",
+   "length": 4.2,
+   "strip": "Carbadges",
+   "roles": [
+    "player"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Kite_Stock_RWD.asset",
+   "price": 12000,
+   "level": 1,
+   "mass": 990,
+   "torqueScale": 0.95,
+   "description": "Light 80s rear-drive sedan. Simple, honest and easy to slide.",
+   "dragScale": 1.0
+  },
+  {
+   "id": "riverside_88",
+   "src": "Riverside_88_8509a7f8.zip",
+   "name": "Riverside '88",
+   "maker": "Sedan",
+   "length": 5.0,
+   "strip": "Carbadges",
+   "roles": [
+    "player",
+    "traffic"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Arden_Strata.asset",
+   "price": 14000,
+   "level": 1,
+   "mass": 1450,
+   "torqueScale": 0.75,
+   "description": "Late-80s front-drive sedan. Comfortable and forgiving.",
+   "dragScale": 1.1
+  },
+  {
+   "id": "lct_3000_95",
+   "src": "LCT_3000_95_663a0953.zip",
+   "name": "LCT 3000 '95",
+   "maker": "Truck",
+   "length": 6.0,
+   "strip": "Carbadges",
+   "roles": [
+    "player",
+    "traffic"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Marlowe_Sovereign.asset",
+   "price": 20000,
+   "level": 2,
+   "mass": 3600,
+   "torqueScale": 0.44,
+   "description": "Mid-90s cab-over box truck. Slow, heavy, unstoppable.",
+   "dragScale": 6.0
+  },
+  {
+   "id": "shvan_92",
+   "src": "Shvan_92_09d718c9.zip",
+   "name": "Shvan '92",
+   "maker": "Van",
+   "length": 5.2,
+   "strip": "Carbadges",
+   "roles": [
+    "player",
+    "traffic"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Marlowe_Sovereign.asset",
+   "price": 16000,
+   "level": 2,
+   "mass": 2200,
+   "torqueScale": 0.41,
+   "description": "Early-90s V8 cargo van. Plenty of room, not much grip.",
+   "dragScale": 2.0
+  },
+  {
+   "id": "illinois_90",
+   "src": "Illinois_90_d604871e.zip",
+   "name": "Illinois '90",
+   "maker": "Sedan",
+   "length": 5.0,
+   "strip": "Carbadges",
+   "roles": [
+    "player",
+    "traffic"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Marlowe_Sovereign.asset",
+   "price": 15000,
+   "level": 2,
+   "mass": 1780,
+   "torqueScale": 0.42,
+   "description": "Full-size 90s V8 sedan.",
+   "dragScale": 1.3
+  },
+  {
+   "id": "fairheaven_lt",
+   "src": "Fairheaven_LT_80_e2678da9.zip",
+   "name": "Fairheaven LT '80",
+   "maker": "Sedan",
+   "length": 5.4,
+   "strip": "Carbadges",
+   "roles": [
+    "player",
+    "traffic"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Marlowe_Sovereign.asset",
+   "price": 12000,
+   "level": 1,
+   "mass": 1830,
+   "torqueScale": 0.38,
+   "description": "Boxy full-size 80s sedan. Built like a tank.",
+   "dragScale": 1.4
+  },
+  {
+   "id": "negotiator_80",
+   "src": "Negotiator_80_892b2684.zip",
+   "name": "Negotiator '80",
+   "maker": "Sedan",
+   "length": 5.2,
+   "strip": "Carbadges",
+   "roles": [
+    "player",
+    "traffic"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Marlowe_Sovereign.asset",
+   "price": 13000,
+   "level": 1,
+   "mass": 1760,
+   "torqueScale": 0.39,
+   "description": "Early-80s family sedan with a lazy V8.",
+   "dragScale": 1.3
+  },
+  {
+   "id": "canyon_75_taxi",
+   "src": "Canyon_75_Taxi_9e8f92a2.zip",
+   "name": "Canyon '75 Taxi",
+   "maker": "Taxi",
+   "length": 5.4,
+   "strip": "Carbadges",
+   "roles": [
+    "player",
+    "traffic"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Marlowe_Sovereign.asset",
+   "price": 11000,
+   "level": 1,
+   "mass": 1850,
+   "torqueScale": 0.34,
+   "description": "A cab that has seen everything Veyra has to offer.",
+   "dragScale": 1.6
+  },
+  {
+   "id": "fairheaven_cop",
+   "src": "Fairheaven_Cop_Cruiser_61766c1e.zip",
+   "name": "Fairheaven Cruiser",
+   "maker": "Police",
+   "length": 5.4,
+   "strip": "Carbadges",
+   "fixLivery": "cop",
+   "roles": [
+    "player",
+    "traffic"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Marlowe_Sovereign.asset",
+   "price": 30000,
+   "level": 5,
+   "mass": 1850,
+   "torqueScale": 0.5,
+   "description": "Retired police interceptor with the heavy-duty package.",
+   "dragScale": 1.3
+  },
+  {
+   "id": "generic_compact",
+   "src": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+   "part": "Compact Body",
+   "name": "Compact",
+   "maker": "Traffic",
+   "length": 3.9,
+   "paint": "body",
+   "roles": [
+    "traffic"
+   ],
+   "flip": "1"
+  },
+  {
+   "id": "generic_coupe",
+   "src": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+   "part": "Coupe Body",
+   "name": "Coupe",
+   "maker": "Traffic",
+   "length": 4.3,
+   "paint": "body",
+   "roles": [
+    "traffic"
+   ],
+   "flip": "1"
+  },
+  {
+   "id": "generic_hatchback",
+   "src": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+   "part": "Hatchback Body",
+   "name": "Hatchback",
+   "maker": "Traffic",
+   "length": 4.1,
+   "paint": "body",
+   "roles": [
+    "traffic"
+   ],
+   "flip": "1"
+  },
+  {
+   "id": "generic_minivan",
+   "src": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+   "part": "minivan body",
+   "name": "Minivan",
+   "maker": "Traffic",
+   "length": 4.8,
+   "paint": "body",
+   "roles": [
+    "traffic"
+   ],
+   "flip": "1"
+  },
+  {
+   "id": "generic_pickup",
+   "src": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+   "part": "Pickup Body",
+   "name": "Pickup",
+   "maker": "Traffic",
+   "length": 5.2,
+   "paint": "body",
+   "roles": [
+    "traffic"
+   ],
+   "flip": "1"
+  },
+  {
+   "id": "generic_sedan",
+   "src": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+   "part": "Sedan Body",
+   "name": "Sedan",
+   "maker": "Traffic",
+   "length": 4.6,
+   "paint": "body",
+   "roles": [
+    "traffic"
+   ]
+  },
+  {
+   "id": "generic_sport",
+   "src": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+   "part": "Sport body",
+   "name": "Sport",
+   "maker": "Traffic",
+   "length": 4.4,
+   "paint": "body",
+   "roles": [
+    "traffic"
+   ]
+  },
+  {
+   "id": "generic_wagon",
+   "src": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+   "part": "Wagon Body",
+   "name": "Wagon",
+   "maker": "Traffic",
+   "length": 4.7,
+   "paint": "body",
+   "roles": [
+    "traffic"
+   ]
+  },
+  {
+   "id": "generic_offroad",
+   "src": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+   "part": "Offroad Body",
+   "name": "Offroad",
+   "maker": "Traffic",
+   "length": 4.6,
+   "paint": "body",
+   "roles": [
+    "traffic"
+   ]
+  },
+  {
+   "id": "generic_suv",
+   "src": "Generic_Passenger_Car_Pack_20f9af9b.zip",
+   "part": "SUV Body",
+   "name": "SUV",
+   "maker": "Traffic",
+   "length": 4.9,
+   "paint": "body",
+   "roles": [
+    "traffic"
+   ]
+  }
+ ]
+}
