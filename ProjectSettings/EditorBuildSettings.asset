@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Veyra/Scenes/PhysicsTestTrack.unity
+    guid: b525f36e708c7c94e97079a9e31124de
+  - enabled: 1
     path: Assets/_Veyra/Scenes/Foundation.unity
     guid: 4f6926d8980129e439a852819b76061b
   m_configObjects:

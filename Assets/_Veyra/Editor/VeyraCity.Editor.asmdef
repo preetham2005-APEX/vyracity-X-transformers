@@ -2,7 +2,14 @@
     "name": "VeyraCity.Editor",
     "rootNamespace": "VeyraCity.EditorTools",
     "references": [
-        "VeyraCity.Core"
+        "VeyraCity.Core",
+        "VeyraCity.VehiclePhysics",
+        "VeyraCity.Assists",
+        "VeyraCity.Input",
+        "VeyraCity.UI",
+        "VeyraCity.Gameplay",
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.RenderPipelines.Core.Runtime"
     ],
     "includePlatforms": [
         "Editor"

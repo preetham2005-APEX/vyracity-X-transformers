@@ -1,0 +1,828 @@
+{
+ "body_bbox_min": [
+  -0.891,
+  -2.1729,
+  0.146
+ ],
+ "body_bbox_max": [
+  0.891,
+  2.123,
+  1.2984
+ ],
+ "body_size": [
+  1.782,
+  4.2958,
+  1.1524
+ ],
+ "all_visible_size": [
+  1.854,
+  4.3729,
+  1.2984
+ ],
+ "all_visible_min": [
+  -0.927,
+  -2.1729,
+  0.0
+ ],
+ "tris": {
+  "Body_LOD0": 98088,
+  "Body_LOD1": 49033,
+  "Body_LOD2": 14709,
+  "Caliper_FL": 384,
+  "Caliper_FR": 384,
+  "Caliper_RL": 384,
+  "Caliper_RR": 384,
+  "Exhaust_Tip": 384,
+  "Glass": 8144,
+  "Indicator_L": 150,
+  "Indicator_R": 150,
+  "Interior": 2436,
+  "Lights_Brake": 252,
+  "Lights_Head": 6136,
+  "Lights_Reverse": 52,
+  "Lights_Tail": 364,
+  "Mirror_L": 1172,
+  "Mirror_R": 1172,
+  "UBX_Chassis": 12,
+  "UCX_Body_01": 1320,
+  "UCX_Body_02": 1202,
+  "UCX_Body_03": 868,
+  "Underbody": 684,
+  "Wheel_FL": 10808,
+  "Wheel_FR": 10808,
+  "Wheel_RL": 10808,
+  "Wheel_RR": 10808
+ },
+ "lod0_visible_total_tris": 163952,
+ "hubs": {
+  "Caliper_FL": [
+   0.75,
+   -1.275,
+   0.316
+  ],
+  "Caliper_FR": [
+   -0.75,
+   -1.275,
+   0.316
+  ],
+  "Caliper_RL": [
+   0.75,
+   1.275,
+   0.316
+  ],
+  "Caliper_RR": [
+   -0.75,
+   1.275,
+   0.316
+  ],
+  "Wheel_FL": [
+   0.75,
+   -1.275,
+   0.316
+  ],
+  "Wheel_FR": [
+   -0.75,
+   -1.275,
+   0.316
+  ],
+  "Wheel_RL": [
+   0.75,
+   1.275,
+   0.316
+  ],
+  "Wheel_RR": [
+   -0.75,
+   1.275,
+   0.316
+  ]
+ },
+ "blend": "E:/VeyraCity/ArtSource/Vehicles/ArdenKite\\ArdenKite_Stock.blend",
+ "renders": [
+  "E:/VeyraCity/Logs/evidence/vehicle\\arden_kite_stock_front34_v8.png",
+  "E:/VeyraCity/Logs/evidence/vehicle\\arden_kite_stock_rear34_v8.png",
+  "E:/VeyraCity/Logs/evidence/vehicle\\arden_kite_stock_side_v8.png",
+  "E:/VeyraCity/Logs/evidence/vehicle\\arden_kite_stock_front_v8.png",
+  "E:/VeyraCity/Logs/evidence/vehicle\\arden_kite_stock_top_v8.png",
+  "E:/VeyraCity/Logs/evidence/vehicle\\arden_kite_stock_wheel_v8.png"
+ ],
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/ArdenKite\\export\\ArdenKite_Stock.fbx",
+ "verify": {
+  "objects": {
+   "ArdenKite_Stock": {
+    "type": "EMPTY",
+    "parent": null,
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 0
+   },
+   "Body_LOD0": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 98086
+   },
+   "Body_LOD1": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 49033
+   },
+   "Body_LOD2": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 14707
+   },
+   "Caliper_FL": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.75,
+     -1.275,
+     0.316
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 384
+   },
+   "Caliper_FR": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     -0.75,
+     -1.275,
+     0.316
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 384
+   },
+   "Caliper_RL": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.75,
+     1.275,
+     0.316
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 384
+   },
+   "Caliper_RR": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     -0.75,
+     1.275,
+     0.316
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 384
+   },
+   "Exhaust_Tip": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     -0.46,
+     2.1,
+     0.255
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 384
+   },
+   "Glass": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 8144
+   },
+   "Indicator_L": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 150
+   },
+   "Indicator_R": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 150
+   },
+   "Interior": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 2436
+   },
+   "Lights_Brake": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 252
+   },
+   "Lights_Head": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 6136
+   },
+   "Lights_Reverse": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 52
+   },
+   "Lights_Tail": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 364
+   },
+   "Mirror_L": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.795,
+     -0.44,
+     0.955
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 1172
+   },
+   "Mirror_R": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     -0.795,
+     -0.44,
+     0.955
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 1172
+   },
+   "Socket_Exhaust": {
+    "type": "EMPTY",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     -0.46,
+     2.13,
+     0.255
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 0
+   },
+   "Socket_FrontBumper": {
+    "type": "EMPTY",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     -2.17,
+     0.33
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 0
+   },
+   "Socket_RearBumper": {
+    "type": "EMPTY",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     2.12,
+     0.42
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 0
+   },
+   "Socket_SideSkirt_L": {
+    "type": "EMPTY",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.86,
+     0.0,
+     0.2
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 0
+   },
+   "Socket_SideSkirt_R": {
+    "type": "EMPTY",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     -0.86,
+     0.0,
+     0.2
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 0
+   },
+   "Socket_Spoiler": {
+    "type": "EMPTY",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     1.98,
+     0.985
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 0
+   },
+   "UBX_Chassis": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 12
+   },
+   "UCX_Body_01": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 1320
+   },
+   "UCX_Body_02": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 1202
+   },
+   "UCX_Body_03": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 868
+   },
+   "Underbody": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 684
+   },
+   "Wheel_FL": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.75,
+     -1.275,
+     0.316
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 10808
+   },
+   "Wheel_FR": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     -0.75,
+     -1.275,
+     0.316
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 10808
+   },
+   "Wheel_RL": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     0.75,
+     1.275,
+     0.316
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 10808
+   },
+   "Wheel_RR": {
+    "type": "MESH",
+    "parent": "ArdenKite_Stock",
+    "world_loc": [
+     -0.75,
+     1.275,
+     0.316
+    ],
+    "rot": [
+     90.0,
+     -0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "tris": 10808
+   }
+  },
+  "materials": [
+   "M_Caliper",
+   "M_Chrome",
+   "M_Disc",
+   "M_Glass",
+   "M_Interior",
+   "M_LightHead",
+   "M_LightIndicator",
+   "M_LightReverse",
+   "M_LightTail",
+   "M_Paint",
+   "M_PlasticBlack",
+   "M_Rim",
+   "M_Rubber"
+  ],
+  "bbox_min": [
+   -0.927,
+   -2.1729,
+   -0.0
+  ],
+  "bbox_max": [
+   0.927,
+   2.2,
+   1.2984
+  ],
+  "size": [
+   1.854,
+   4.3729,
+   1.2984
+  ],
+  "body_size": [
+   1.782,
+   4.2958,
+   1.1524
+  ]
+ }
+}

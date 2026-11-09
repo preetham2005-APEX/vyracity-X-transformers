@@ -1,0 +1,24 @@
+{
+    "name": "VeyraCity.Tests.PlayMode",
+    "rootNamespace": "VeyraCity.Tests",
+    "references": [
+        "UnityEngine.TestRunner",
+        "VeyraCity.Core",
+        "VeyraCity.VehiclePhysics",
+        "VeyraCity.Assists",
+        "VeyraCity.Gameplay"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

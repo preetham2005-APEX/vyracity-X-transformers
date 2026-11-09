@@ -1,0 +1,17 @@
+{
+    "name": "VeyraCity.Assists",
+    "rootNamespace": "VeyraCity.Assists",
+    "references": [
+        "VeyraCity.Core",
+        "VeyraCity.VehiclePhysics"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,21 @@
+{
+    "name": "VeyraCity.Gameplay",
+    "rootNamespace": "VeyraCity.Gameplay",
+    "references": [
+        "VeyraCity.Core",
+        "VeyraCity.VehiclePhysics",
+        "VeyraCity.Assists",
+        "VeyraCity.Input",
+        "VeyraCity.UI",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

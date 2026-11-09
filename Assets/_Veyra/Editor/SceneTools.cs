@@ -40,7 +40,7 @@ namespace VeyraCity.EditorTools
                 cam.farClipPlane = 2000f;
             }
 
-            var sun = Object.FindFirstObjectByType<Light>();
+            var sun = Object.FindAnyObjectByType<Light>();
             if (sun != null) sun.transform.rotation = Quaternion.Euler(30f, 245f, 0f); // "hero day" sun from the art guide
 
             var ground = GameObject.CreatePrimitive(PrimitiveType.Plane);
@@ -67,9 +67,14 @@ namespace VeyraCity.EditorTools
             return saved;
         }
 
+        /// <summary>Adds the Foundation scene to the build list if missing. Never removes other scenes (BUG-015).</summary>
         static void RegisterInBuildSettings()
         {
-            EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(FoundationScenePath, true) };
+            var scenes = new System.Collections.Generic.List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
+            if (scenes.Exists(s => s.path == FoundationScenePath)) return;
+            scenes.Add(new EditorBuildSettingsScene(FoundationScenePath, true));
+            EditorBuildSettings.scenes = scenes.ToArray();
+            AssetDatabase.SaveAssets();
         }
     }
 }

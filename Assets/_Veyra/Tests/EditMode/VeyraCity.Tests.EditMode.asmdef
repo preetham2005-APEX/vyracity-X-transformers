@@ -5,7 +5,11 @@
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "VeyraCity.Core",
-        "VeyraCity.Editor"
+        "VeyraCity.Editor",
+        "VeyraCity.VehiclePhysics",
+        "VeyraCity.Assists",
+        "VeyraCity.Input",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [
         "Editor"

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2205fdf5e31994881adff77ecac1cc, type: 3}
+  m_Name: Casual
+  m_EditorClassIdentifier: VeyraCity.Assists::VeyraCity.Assists.AssistPreset
+  PresetName: Casual
+  SteeringSpeedRef: 22
+  MinSteerFraction: 0.12
+  CounterSteer: 0.7
+  TractionControl: 1
+  TcsPeakSlipFactor: 1.2
+  Abs: 1
+  StabilityControl: 0.6
+  StabilitySlipLimitDeg: 50
+  DriftAssist: 1
+  DriftBandDeg: {x: 25, y: 45}
+  DriftTcsPeakSlipFactor: 3
+  AutoAccelerate: 0
