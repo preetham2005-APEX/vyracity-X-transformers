@@ -1,0 +1,19 @@
+{
+    "name": "VeyraCity.Racing",
+    "rootNamespace": "VeyraCity.Racing",
+    "references": [
+        "VeyraCity.Core",
+        "VeyraCity.VehiclePhysics",
+        "VeyraCity.World",
+        "VeyraCity.Assists"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

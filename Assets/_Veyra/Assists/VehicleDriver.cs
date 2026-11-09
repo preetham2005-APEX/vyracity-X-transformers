@@ -21,6 +21,14 @@ namespace VeyraCity.Assists
         public VehicleController Vehicle => vehicle;
         public AssistProcessor Processor => processor;
         public DriverIntent LastIntent { get; private set; }
+        public VehicleControls LastControls { get; private set; }
+
+        /// <summary>Last-stage edit of the controls before they reach the vehicle (nitro, race locks, ghosting).</summary>
+        public delegate void ControlsFilter(ref VehicleControls controls, in DriverIntent intent, float dt);
+        public event ControlsFilter PostProcess;
+        /// <summary>Optional edit of the raw intent before the assists (countdown input lock).</summary>
+        public delegate void IntentFilter(ref DriverIntent intent);
+        public event IntentFilter PreProcess;
 
         public void Bind(VehicleController v, IDriverIntentSource s, AssistPreset p)
         {
@@ -45,8 +53,11 @@ namespace VeyraCity.Assists
         {
             if (vehicle == null) return;
             var intent = source != null ? source.ReadIntent() : default;
+            PreProcess?.Invoke(ref intent);
             LastIntent = intent;
             var controls = processor.Process(intent, vehicle.State, preset, dt);
+            PostProcess?.Invoke(ref controls, intent, dt);
+            LastControls = controls;
             vehicle.SetControls(controls);
         }
     }

@@ -4,7 +4,12 @@
     "references": [
         "VeyraCity.Core",
         "VeyraCity.VehiclePhysics",
-        "VeyraCity.Assists"
+        "VeyraCity.Assists",
+        "VeyraCity.Nitro",
+        "VeyraCity.Racing",
+        "VeyraCity.World",
+        "UnityEngine.UI",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -38,4 +38,8 @@
 *.otf   filter=lfs diff=lfs merge=lfs -text
 *.dll   filter=lfs diff=lfs merge=lfs -text
 *.bank  filter=lfs diff=lfs merge=lfs -text
+# World source data and generated city content (reproducible, large)
+*.vmesh filter=lfs diff=lfs merge=lfs -text
+WorldSource/terrain/*.bin filter=lfs diff=lfs merge=lfs -text
+Assets/_Veyra/World/Generated/** filter=lfs diff=lfs merge=lfs -text
 *.unity filter=lfs diff=lfs merge=lfs -text

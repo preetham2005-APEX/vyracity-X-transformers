@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47af100586027dd4b98f95d64833b621, type: 3}
+  m_Name: GameDatabase
+  m_EditorClassIdentifier: VeyraCity.Gameplay::VeyraCity.Gameplay.GameDatabase
+  Cars:
+  - Id: kite
+    Name: Arden Kite
+    Maker: Arden Motor Works  -  2004 coupe
+    Description: Light, rear-drive and honest. 140 hp, 1,150 kg. The car the story starts with.
+    Price: 9000
+    UnlockLevel: 1
+    Starter: 1
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 1334ecf0de7c2504d96f185d16d054fe, type: 2}
+    Model: {fileID: 4229566856741452932, guid: d671e61d6a55bf2438bd146f81f0d9d1, type: 3}
+    DefaultPaint: {r: 0.62, g: 0.64, b: 0.66, a: 1}
+    Credit: 
+  - Id: kite_r
+    Name: Arden Kite R
+    Maker: Arden Motor Works  -  street build
+    Description: 'The Kite built properly: lower, wider, stickier, 230 hp. A drift weapon.'
+    Price: 26000
+    UnlockLevel: 2
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 5f742108f32c5914fa4710f852722654, type: 2}
+    Model: {fileID: 4229566856741452932, guid: d671e61d6a55bf2438bd146f81f0d9d1, type: 3}
+    DefaultPaint: {r: 0.05, g: 0.25, b: 0.65, a: 1}
+    Credit: 
+  - Id: strata
+    Name: Arden Strata
+    Maker: Arden Motor Works  -  hot hatch
+    Description: Front-drive turbo hatch. Point it, squeeze it, it goes. Forgiving in the wet.
+    Price: 18000
+    UnlockLevel: 1
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: cf4105107a0652448a25ae57ccb9c9fb, type: 2}
+    Model: {fileID: 0}
+    DefaultPaint: {r: 0.85, g: 0.32, b: 0.04, a: 1}
+    Credit: 
+  - Id: volkhart
+    Name: Volkhart 4S
+    Maker: Volkhart  -  sleeper sedan
+    Description: All-wheel-drive four-door that embarrasses sports cars. The Nightshift's favourite.
+    Price: 42000
+    UnlockLevel: 3
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: fd22fd856ce262e49a907b74f130f090, type: 2}
+    Model: {fileID: 0}
+    DefaultPaint: {r: 0.2, g: 0.21, b: 0.23, a: 1}
+    Credit: 
+  - Id: hammerhead
+    Name: Rourke Hammerhead
+    Maker: Rourke  -  V8 muscle coupe
+    Description: Big V8, long hood, rear tyres that never last. Iron Wolves royalty.
+    Price: 58000
+    UnlockLevel: 5
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 7ce08750c5e8d2044ae9a82397a7eeea, type: 2}
+    Model: {fileID: 0}
+    DefaultPaint: {r: 0.6, g: 0.03, b: 0.03, a: 1}
+    Credit: 
+  - Id: sovereign
+    Name: Marlowe Sovereign
+    Maker: Marlowe  -  grand tourer
+    Description: Front-engine GT for long coastal nights. Fast, stable and beautiful.
+    Price: 85000
+    UnlockLevel: 7
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 3a8f57c632b4ee34db96c6ec27b5d017, type: 2}
+    Model: {fileID: 0}
+    DefaultPaint: {r: 0.92, g: 0.92, b: 0.9, a: 1}
+    Credit: 
+  - Id: vento
+    Name: Castellan Vento R
+    Maker: Castellan  -  supercar
+    Description: Mid-engine all-wheel-drive missile with real downforce. Redline Syndicate territory.
+    Price: 165000
+    UnlockLevel: 10
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 267cbd0bc2de726489328983d8d75d22, type: 2}
+    Model: {fileID: 0}
+    DefaultPaint: {r: 0.38, g: 0.02, b: 0.05, a: 1}
+    Credit: 
+  Casual: {fileID: 11400000, guid: 0cbfe2966ec3c304cbce9a8f98d11b6c, type: 2}
+  Advanced: {fileID: 11400000, guid: 3354b2b95d5c5b44db093fcef1f983b9, type: 2}
+  AIPreset: {fileID: 11400000, guid: 5b3fca5049e01a94cbe6efed0749fd86, type: 2}
+  DryAsphalt: {fileID: 11400000, guid: 19786780766246c4198ca7a4e3a6b2f4, type: 2}
+  WetAsphalt: {fileID: 11400000, guid: 8e80007123cdff948bd8253e9852abb9, type: 2}
+  Concrete: {fileID: 11400000, guid: a9c24c7824e08d94e8d54ca53e1f4db1, type: 2}
+  Gravel: {fileID: 11400000, guid: 5009d603204cefc4cbb71579032ff9cd, type: 2}
+  Grass: {fileID: 11400000, guid: 221a23555f5a7994ba2cedd2d3f7b5fc, type: 2}
+  Dirt: {fileID: 11400000, guid: 93fb28ce7d1cd954ab178802e0a64dd8, type: 2}
+  PlaceholderBody: {fileID: 2100000, guid: c18169339c4bd6544916d0dd21a128d1, type: 2}
+  PlaceholderWheel: {fileID: 2100000, guid: 99e3eb4682b217440b89c4ba045ea034, type: 2}
+  LitTemplate: {fileID: 2100000, guid: 68d28d03b064d764487894399aeaf303, type: 2}
+  UnlitAdditiveTemplate: {fileID: 2100000, guid: 8a72afab21d798f4d9cb938552c55d90, type: 2}
+  ParticleAlphaTemplate: {fileID: 2100000, guid: d34ff781524a6b349adde1cbacf03241, type: 2}
+  ParticleAdditiveTemplate: {fileID: 2100000, guid: 0baaf6bc68587e149b7c7b4cd5edd4fc, type: 2}
+  TrafficModels: []

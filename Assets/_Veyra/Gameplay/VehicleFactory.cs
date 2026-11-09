@@ -42,6 +42,10 @@ namespace VeyraCity.Gameplay
                 BuildPlaceholder(root.transform, def, wheels, bodyMaterial, wheelMaterial);
             }
 
+            // Wheels are raycasts: colliders on wheel visuals would drag on the ground.
+            foreach (var w in wheels)
+                if (w != null)
+                    foreach (var c in w.GetComponentsInChildren<Collider>(true)) Object.DestroyImmediate(c);
             if (root.GetComponentInChildren<Collider>() == null) AddBodyCollider(root, def);
             var bodyMat = new PhysicsMaterial("VehicleBody")
             {

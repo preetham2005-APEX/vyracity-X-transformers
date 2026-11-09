@@ -7,7 +7,14 @@
         "VeyraCity.Assists",
         "VeyraCity.Input",
         "VeyraCity.UI",
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "VeyraCity.Nitro",
+        "VeyraCity.Racing",
+        "VeyraCity.World",
+        "VeyraCity.AI",
+        "UnityEngine.UI",
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.RenderPipelines.Universal.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

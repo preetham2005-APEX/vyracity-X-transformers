@@ -70,6 +70,21 @@ namespace VeyraCity.VehiclePhysics
         public WheelState GetWheel(int i) => wheels[i];
         /// <summary>Raised after every simulation step (telemetry, effects).</summary>
         public event Action<VehicleController> Stepped;
+        /// <summary>Raised for every collision the body takes (walls, cars, props). Used by nitro, scoring and audio.</summary>
+        public event Action<VehicleController, Collision> Collided;
+        /// <summary>Seconds since the last collision of any strength.</summary>
+        public float TimeSinceCollision { get; private set; } = 999f;
+
+        void OnCollisionEnter(Collision c)
+        {
+            TimeSinceCollision = 0f;
+            Collided?.Invoke(this, c);
+        }
+
+        void OnCollisionStay(Collision c)
+        {
+            if (c.impulse.sqrMagnitude > 4f) TimeSinceCollision = 0f;
+        }
 
         void Awake()
         {
@@ -566,6 +581,7 @@ namespace VeyraCity.VehiclePhysics
 
         void LateUpdate()
         {
+            TimeSinceCollision += Time.deltaTime;
             if (!initialised) return;
             Transform t = transform;
             for (int i = 0; i < WheelCount; i++)

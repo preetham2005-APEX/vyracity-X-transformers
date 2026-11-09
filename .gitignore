@@ -43,3 +43,10 @@ Desktop.ini
 # Secrets: never commit
 .claude.json
 *.env
+
+# Raw third-party downloads (processed copies live under Assets/)
+/ArtSource/Downloads/*
+!/ArtSource/Downloads/DOWNLOAD_LIST.md
+
+# Editor-run save profiles
+/Saves/

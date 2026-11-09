@@ -9,7 +9,13 @@
         "VeyraCity.UI",
         "VeyraCity.Gameplay",
         "Unity.RenderPipelines.Universal.Runtime",
-        "Unity.RenderPipelines.Core.Runtime"
+        "Unity.RenderPipelines.Core.Runtime",
+        "VeyraCity.Nitro",
+        "VeyraCity.Racing",
+        "VeyraCity.World",
+        "VeyraCity.AI",
+        "UnityEngine.UI",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [
         "Editor"
