@@ -37,7 +37,8 @@ namespace VeyraCity.Gameplay
         Vector3 smoothedOffset;
         bool snapped;
         NitroSystem nitro;
-        float trauma, nitroKick, driftK, fov;
+        float trauma, nitroKick, driftK, fov, roll, camDistance = 99f;
+        readonly RaycastHit[] castHits = new RaycastHit[12];
         readonly float[] lastCompression = new float[4];
         float lastAirTime;
         Volume blurVolume;
@@ -134,8 +135,10 @@ namespace VeyraCity.Gameplay
             }
             if (LookBack) dir = -dir;
 
-            float distance = CurrentMode == Mode.Chase ? 6.2f : 4.6f;
-            float height = CurrentMode == Mode.Chase ? 1.95f : 1.45f;
+            // Lower and closer than before (iteration 1): the car fills more of the frame and the road rushes past,
+            // between GTA V's chase view and Asphalt's low racing camera.
+            float distance = CurrentMode == Mode.Chase ? 5.5f : 4.3f;
+            float height = CurrentMode == Mode.Chase ? 1.6f : 1.3f;
             distance += Mathf.Clamp01(speed / 80f) * 1.2f * SpeedEffectsIntensity;
             distance += nitroKick * 0.6f * SpeedEffectsIntensity;     // pulled back by the boost
             distance -= driftK * 0.5f;
@@ -153,8 +156,31 @@ namespace VeyraCity.Gameplay
 
             Vector3 camPos = pos + smoothedOffset;
             camPos.y = Mathf.Max(camPos.y, pos.y + 0.6f);
-            Vector3 lookAt = pos + Vector3.up * 0.95f + smoothedDir * 2.2f;
+            // Camera collision (G1): never inside a building, wall or terrain. Sphere-cast from above the car toward
+            // the desired position; pull in to the hit, ease back out when the view clears.
+            Vector3 pivot = pos + Vector3.up * 1.1f;
+            Vector3 toCam = camPos - pivot;
+            float want = toCam.magnitude;
+            float allowed = want;
+            if (want > 0.1f)
+            {
+                int hits = Physics.SphereCastNonAlloc(pivot, 0.3f, toCam / want, castHits, want, ~(1 << CarReflectionProbe.CarLayer), QueryTriggerInteraction.Ignore);
+                for (int i = 0; i < hits; i++)
+                {
+                    var h = castHits[i];
+                    if (h.rigidbody != null && h.rigidbody == rb) continue;            // own car
+                    if (h.rigidbody != null && !h.rigidbody.isKinematic) continue;      // other moving cars: don't jerk
+                    if (h.distance > 0f) allowed = Mathf.Min(allowed, Mathf.Max(1.2f, h.distance - 0.15f));
+                }
+            }
+            // pull in instantly, release slowly
+            camDistance = allowed < camDistance ? allowed : Mathf.Lerp(camDistance, allowed, 1f - Mathf.Exp(-2.5f * dt));
+            if (camDistance < want - 0.01f) camPos = pivot + toCam / want * camDistance;
+            Vector3 lookAt = pos + Vector3.up * 0.85f + smoothedDir * 3.0f;
             transform.SetPositionAndRotation(camPos, Quaternion.LookRotation(lookAt - camPos, Vector3.up));
+            // Asphalt-style bank: the camera rolls a little into the turn with lateral g.
+            roll = Mathf.Lerp(roll, Mathf.Clamp(-st.LateralG * 2.4f, -3.5f, 3.5f) * SpeedEffectsIntensity, 1f - Mathf.Exp(-4f * dt));
+            transform.rotation *= Quaternion.Euler(0f, 0f, roll);
             ApplyShake(dt, 1f);
             ApplyFov(speed, dt);
             UpdateSpeedEffects(speed, boost);
@@ -162,13 +188,14 @@ namespace VeyraCity.Gameplay
 
         void GatherTrauma(in VehicleState st, float speed, float dt)
         {
-            // kerbs and potholes: sudden suspension compression
+            // kerbs and potholes: fast suspension compression. Rate-based and integrated over time (BUG-083: the old
+            // per-frame threshold shook more at low frame rates).
             for (int i = 0; i < 4; i++)
             {
                 var w = target.GetWheel(i);
-                float dc = w.Compression - lastCompression[i];
+                float rate = (w.Compression - lastCompression[i]) / dt;
                 lastCompression[i] = w.Compression;
-                if (w.Grounded && dc > 0.035f) AddTrauma(Mathf.Clamp01((dc - 0.035f) * 6f) * 0.35f);
+                if (w.Grounded && rate > 2f) AddTrauma(Mathf.Clamp01((rate - 2f) / 4f) * 6f * dt);
             }
             // hard landings
             if (lastAirTime > 0.35f && st.AirTime <= 0f) AddTrauma(Mathf.Clamp01(lastAirTime * 0.5f));
@@ -207,8 +234,9 @@ namespace VeyraCity.Gameplay
             if (streaks != null)
             {
                 var em = streaks.emission;
-                float k = Mathf.Clamp01((kmh - 140f) / 140f) + boost * 0.8f;
-                em.rateOverTime = k * 160f * SpeedEffectsIntensity;
+                // Iteration 2: subtler (Asphalt keeps the streaks to the screen edges, the centre stays readable)
+                float k = Mathf.Clamp01((kmh - 160f) / 140f) + boost * 0.6f;
+                em.rateOverTime = k * 70f * SpeedEffectsIntensity;
                 var main = streaks.main;
                 main.startSpeed = new ParticleSystem.MinMaxCurve(speed * 0.9f + 20f, speed * 1.2f + 30f);
             }
@@ -224,7 +252,9 @@ namespace VeyraCity.Gameplay
                 blurVolume.priority = 50f;
                 var profile = ScriptableObject.CreateInstance<VolumeProfile>();
                 blur = profile.Add<MotionBlur>(true);
-                blur.mode.Override(MotionBlurMode.CameraOnly);
+                // Per-object motion vectors: the car moves with the camera, so it stays sharp while the road and
+                // buildings streak (Asphalt's look). Camera-only blur smeared the car too.
+                blur.mode.Override(MotionBlurMode.CameraAndObjects);
                 blur.quality.Override(MotionBlurQuality.Medium);
                 blur.clamp.Override(0.06f);
                 blur.intensity.Override(0f);
@@ -241,8 +271,8 @@ namespace VeyraCity.Gameplay
                 var main = streaks.main;
                 main.loop = true;
                 main.startLifetime = new ParticleSystem.MinMaxCurve(0.25f, 0.45f);
-                main.startSize = new ParticleSystem.MinMaxCurve(0.03f, 0.07f);
-                main.startColor = new Color(1f, 1f, 1f, 0.35f);
+                main.startSize = new ParticleSystem.MinMaxCurve(0.02f, 0.04f);
+                main.startColor = new Color(1f, 1f, 1f, 0.2f);
                 main.simulationSpace = ParticleSystemSimulationSpace.Local;
                 main.maxParticles = 300;
                 var em = streaks.emission;
@@ -250,12 +280,12 @@ namespace VeyraCity.Gameplay
                 var shape = streaks.shape;
                 shape.shapeType = ParticleSystemShapeType.Cone;   // emitted along the axis, toward the lens
                 shape.angle = 0f;
-                shape.radius = 7f;
-                shape.radiusThickness = 0.45f;            // a ring: keep the centre of the view clear
+                shape.radius = 8.5f;
+                shape.radiusThickness = 0.3f;             // an outer ring: keep the centre of the view clear
                 var r = go.GetComponent<ParticleSystemRenderer>();
                 r.renderMode = ParticleSystemRenderMode.Stretch;
-                r.velocityScale = 0.06f;
-                r.lengthScale = 2f;
+                r.velocityScale = 0.035f;
+                r.lengthScale = 1.2f;
                 r.sharedMaterial = VeyraCity.World.RuntimeMaterials.NewParticle("SpeedStreak", true);
                 r.shadowCastingMode = ShadowCastingMode.Off;
                 streaks.Play();

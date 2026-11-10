@@ -87,6 +87,28 @@
   "wheels": 4516,
   "UCX_Body_faces": 216
  },
+ "lamps": {
+  "FL": [
+   -0.6707,
+   1.0221,
+   2.0383
+  ],
+  "FR": [
+   0.6653,
+   1.013,
+   2.0383
+  ],
+  "RL": [
+   -0.6534,
+   1.0986,
+   -2.1543
+  ],
+  "RR": [
+   0.649,
+   1.0897,
+   -2.1543
+  ]
+ },
  "materials": {
   "BUCKAROO_67_Bodymat": "paint",
   "Numberplates_Misk_U": "plate",

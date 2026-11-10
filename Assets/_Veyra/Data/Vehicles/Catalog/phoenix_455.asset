@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
   DisplayName: Phoenix 455 '71
   BuildId: DL_phoenix_455
-  TuningVersion: 4
+  TuningVersion: 6
   Layout: 0
   AwdFrontSplit: 0.4
   Wheelbase: 2.7406
@@ -30,8 +30,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 58306.85
-      BumpDamping: 2171.291
-      ReboundDamping: 4342.582
+      BumpDamping: 2226.974
+      ReboundDamping: 4453.948
       BumpStopRate: 157792.2
       AntiRollRate: 27350.65
       RollCentreHeight: 0.05
@@ -39,7 +39,7 @@ MonoBehaviour:
       Radius: 0.3221
       Width: 0.2863
       WheelInertia: 1.1428782
-      Mu: 1.1
+      Mu: 0.98
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7
@@ -59,8 +59,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 62197.746
-      BumpDamping: 2154.8806
-      ReboundDamping: 4309.761
+      BumpDamping: 2210.1428
+      ReboundDamping: 4420.2856
       BumpStopRate: 157792.2
       AntiRollRate: 15779.221
       RollCentreHeight: 0.09
@@ -68,7 +68,7 @@ MonoBehaviour:
       Radius: 0.3221
       Width: 0.2863
       WheelInertia: 1.1428783
-      Mu: 1.12
+      Mu: 0.98
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7

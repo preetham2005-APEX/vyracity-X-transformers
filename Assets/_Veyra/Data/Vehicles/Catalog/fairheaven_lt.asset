@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
   DisplayName: Fairheaven LT '80
   BuildId: DL_fairheaven_lt
-  TuningVersion: 4
+  TuningVersion: 6
   Layout: 0
   AwdFrontSplit: 0.4
   Wheelbase: 2.6517
@@ -30,8 +30,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 72253.16
-      BumpDamping: 2370.1182
-      ReboundDamping: 4740.2363
+      BumpDamping: 2653.5
+      ReboundDamping: 5307
       BumpStopRate: 188013.7
       AntiRollRate: 32589.041
       RollCentreHeight: 0.05
@@ -39,7 +39,7 @@ MonoBehaviour:
       Radius: 0.3031
       Width: 0.2157
       WheelInertia: 1.0120229
-      Mu: 1.16
+      Mu: 0.94
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7
@@ -59,8 +59,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 77074.7
-      BumpDamping: 2352.205
-      ReboundDamping: 4704.41
+      BumpDamping: 2633.445
+      ReboundDamping: 5266.89
       BumpStopRate: 188013.7
       AntiRollRate: 18801.37
       RollCentreHeight: 0.09
@@ -68,7 +68,7 @@ MonoBehaviour:
       Radius: 0.3031
       Width: 0.2157
       WheelInertia: 1.0120229
-      Mu: 1.18
+      Mu: 0.94
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7

@@ -1,0 +1,195 @@
+{
+ "id": "ashcombe_tempest",
+ "name": "Ashcombe Tempest",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Aston_Martin_DB11_V12_Luxury_936854ba.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "2017 Aston Martin DB11 [5.2L Twin-Turbo V12]",
+  "author": "Hari",
+  "author_url": "https://sketchfab.com/Hari31",
+  "url": "https://sketchfab.com/3d-models/2017-aston-martin-db11-52l-twin-turbo-v12-936854ba7dde46f09a47d355d433808c",
+  "file": "Aston_Martin_DB11_V12_Luxury_936854ba.zip",
+  "credit": "\"2017 Aston Martin DB11 [5.2L Twin-Turbo V12]\" by Hari (https://sketchfab.com/3d-models/2017-aston-martin-db11-52l-twin-turbo-v12-936854ba7dde46f09a47d355d433808c), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip",
+  "real_brand": "aston martin",
+  "release_note": "Depicts a real Aston Martin design. Allowed only rebadged under a fictional name with all marks removed (user decision 2026-11-10); legal check of the body design before any release."
+ },
+ "part": "",
+ "stripped": [
+  "Chassis Bolts_Badge_0 (16 faces)",
+  "Rear Left Wheel_Badge_0 (84 faces)",
+  "Front Left Wheel_Badge_0 (84 faces)",
+  "Front Right Wheel_Badge_0 (84 faces)",
+  "Rear Right Wheel_Badge_0 (84 faces)",
+  "Engine Bay_Badge_0 (60 faces)",
+  "Engine Bay_Stickers_0 (336 faces)",
+  "Hood_Badge_0 (56 faces)",
+  "Front License Plate_License Plate_0 (492 faces)",
+  "Engine Bay Bolts_Badge_0 (44 faces)",
+  "5.2L Twin Turbo V12_Aston Martin DB11 Signature_0 (78 faces)",
+  "Engine Badges_Badge_0 (114 faces)",
+  "Engine Badges_Stickers_0 (225 faces)",
+  "Left Door Glass_Badge_0 (6 faces)",
+  "Interior Stitching_Badge_0 (20 faces)",
+  "Steering Wheel_Badge_0 (233 faces)",
+  "Steering Wheel_Stickers_0 (4 faces)",
+  "Right Door Glass_Badge_0 (6 faces)",
+  "boot_ok_Badge_0 (172 faces)",
+  "Rear License Plate_License Plate_0 (492 faces)",
+  "Trunk Bolts_Badge_0 (8 faces)"
+ ],
+ "scale_applied": 1.0,
+ "front": {
+  "auto_sign": 1,
+  "front_named": 31,
+  "rear_named": 37,
+  "flipped": true,
+  "mode": "auto"
+ },
+ "stripbox_removed": 67,
+ "stripfaces_removed": 2486,
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.8362,
+    -1.422,
+    0.3278
+   ],
+   "radius": 0.3278,
+   "width": 0.2458,
+   "tris": 7762
+  },
+  "FR": {
+   "centre": [
+    -0.8362,
+    -1.422,
+    0.3278
+   ],
+   "radius": 0.3278,
+   "width": 0.2458,
+   "tris": 7762
+  },
+  "RL": {
+   "centre": [
+    0.8489,
+    1.3788,
+    0.3278
+   ],
+   "radius": 0.3278,
+   "width": 0.2495,
+   "tris": 7762
+  },
+  "RR": {
+   "centre": [
+    -0.8489,
+    1.3788,
+    0.3278
+   ],
+   "radius": 0.3278,
+   "width": 0.2495,
+   "tris": 7762
+  }
+ },
+ "dimensions": [
+  2.155,
+  1.228,
+  4.757
+ ],
+ "wheelbase": 2.8008,
+ "track_front": 1.6724,
+ "track_rear": 1.6978,
+ "radius_front": 0.3278,
+ "radius_rear": 0.3278,
+ "width_front": 0.2458,
+ "width_rear": 0.2495,
+ "tris": {
+  "Body_LOD0": 119999,
+  "Body_LOD1": 40000,
+  "Body_LOD2": 10000,
+  "wheels": 44288,
+  "UCX_Body_faces": 176
+ },
+ "blanked": [
+  "Tire_Sidewall_baseColor.jpeg {'full': True}",
+  "Chassis_baseColor.jpeg {'rect': [0.36, 0.2, 0.64, 0.33]}"
+ ],
+ "lamps": {
+  "FL": [
+   -0.6411,
+   0.5905,
+   1.873
+  ],
+  "FR": [
+   0.6502,
+   0.5907,
+   1.878
+  ],
+  "RL": [
+   -0.6524,
+   0.7324,
+   -2.0798
+  ],
+  "RR": [
+   0.6524,
+   0.7323,
+   -2.0798
+  ]
+ },
+ "materials": {
+  "Alcantara": "trim",
+  "Aluminium": "trim",
+  "Black": "trim",
+  "Black_Metal": "trim",
+  "Body_Color": "paint",
+  "Brake_Disc": "trim",
+  "Brake_Lights": "light",
+  "Carpet": "trim",
+  "Chassis": "trim",
+  "Chrome": "trim",
+  "Dark_Metal": "trim",
+  "Dashboard_Put_any_color_you_want_even_leather": "trim",
+  "Day_Lights": "light",
+  "Engine_Bay_White": "trim",
+  "Engine_Yellow": "trim",
+  "Gauges": "trim",
+  "Glass": "glass",
+  "Gray": "trim",
+  "Grille": "trim",
+  "Headliner_any_color_you_want": "trim",
+  "High_Beams": "trim",
+  "Hose_Clamps": "light",
+  "Hoses": "trim",
+  "Interior_Letterings_Buttons": "interior",
+  "Interior_Trim": "interior",
+  "Leather": "trim",
+  "Left_Indicator__Blinker": "trim",
+  "Lights_Glass": "glass",
+  "Low_Beams": "trim",
+  "Mirror": "trim",
+  "Misc": "trim",
+  "Painted_Black": "trim",
+  "Rear_Lights_Housing": "light",
+  "Reverse_Lights": "light",
+  "Right_Indicator__Blinker": "trim",
+  "Rim_White": "trim",
+  "Screen": "trim",
+  "Speedo_actually_RPM_Needle": "trim",
+  "Splitter": "trim",
+  "Stitch": "trim",
+  "Stitch_2": "trim",
+  "Taillights": "light",
+  "Tire_Sidewall": "tyre",
+  "Tire_Treads": "tyre",
+  "Tire_Valve": "tyre",
+  "material": "trim"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/ashcombe_tempest/ashcombe_tempest.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/ashcombe_tempest/ashcombe_tempest_preview.png",
+ "check_views": [
+  "E:/VeyraCity/ArtSource/Vehicles/ashcombe_tempest/ashcombe_tempest_front.png",
+  "E:/VeyraCity/ArtSource/Vehicles/ashcombe_tempest/ashcombe_tempest_rear.png",
+  "E:/VeyraCity/ArtSource/Vehicles/ashcombe_tempest/ashcombe_tempest_wheel.png"
+ ]
+}

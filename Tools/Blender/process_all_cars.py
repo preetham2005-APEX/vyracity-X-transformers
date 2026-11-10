@@ -31,6 +31,16 @@ def run(car, blender):
             cmd += ["--" + k, str(car[k])]
     if car.get("fixLivery"):
         cmd += ["--fix", car["fixLivery"]]
+    if car.get("blank"):
+        cmd += ["--blank", json.dumps(car["blank"])]
+    if car.get("stripBox"):
+        cmd += ["--stripbox", json.dumps(car["stripBox"])]
+    if car.get("realBrand"):
+        cmd += ["--checkviews", "1"]
+    if car.get("forceLength"):
+        cmd += ["--forcelen", "1"]
+    if car.get("stripFaces"):
+        cmd += ["--stripfaces", json.dumps(car["stripFaces"])]
     env = dict(os.environ, TEMP="E:/Temp/VeyraCity", TMP="E:/Temp/VeyraCity")
     log = os.path.join(LOGS, "blender_%s.log" % car["id"])
     with open(log, "w", encoding="utf-8", errors="replace") as f:

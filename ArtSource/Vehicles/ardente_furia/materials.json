@@ -1,0 +1,1014 @@
+{
+ "Ferrari_SF90XXStradale_2024Base_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024Base_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.4712364837683315,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Ferrari_SF90XXStradale_2024Carbon2M_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024Carbon2M_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024Carbon2M_Material_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.4,
+  "smoothness": 0.52,
+  "normalTex": {
+   "file": "Ferrari_SF90XXStradale_2024Carbon2M_Material_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "clearcoat": 0.3459058160939157,
+  "clearcoatSmoothness": 0.96,
+  "role": "trim"
+ },
+ "Ferrari_SF90XXStradale_2024EngineA_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024EngineA_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024EngineA_Material_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.42514415282027523,
+  "smoothness": 0.8369518840438371,
+  "normalTex": {
+   "file": "Ferrari_SF90XXStradale_2024EngineA_Material_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Ferrari_SF90XXStradale_2024GrilleAlpha1A_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024GrilleAlpha1A_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024GrilleAlpha1A_Material_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.7177164730406796,
+  "smoothness": 0.22742621691799447,
+  "normalTex": {
+   "file": "Ferrari_SF90XXStradale_2024GrilleAlpha1A_Material_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Ferrari_SF90XXStradale_2024GrilleAlpha4A_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024GrilleAlpha4A_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024GrilleAlpha4A_Material_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.40685838280649994,
+  "smoothness": 0.6297131572210506,
+  "normalTex": {
+   "file": "Ferrari_SF90XXStradale_2024GrilleAlpha4A_Material_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Ferrari_SF90XXStradale_2024GrilleAlpha5A_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024GrilleAlpha5A_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024GrilleAlpha1A_Material_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.5165730028891516,
+  "smoothness": 0.38590289037071357,
+  "normalTex": {
+   "file": "Ferrari_SF90XXStradale_2024GrilleAlpha1A_Material_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Ferrari_SF90XXStradale_2024GrilleAlpha9A_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024GrilleAlpha9A_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024GrilleAlpha9A_Material_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.5287635162316685,
+  "smoothness": 0.4285696870695226,
+  "normalTex": {
+   "file": "Ferrari_SF90XXStradale_2024GrilleAlpha9A_Material_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Ferrari_SF90XXStradale_2024GrilleNoAlpha2A_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024GrilleNoAlpha2A_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024GrilleAlpha9A_Material_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.5836208262729943,
+  "smoothness": 0.4712364837683315,
+  "normalTex": {
+   "file": "Ferrari_SF90XXStradale_2024GrilleAlpha9A_Material_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Ferrari_SF90XXStradale_2024GrilleNoAlpha3A_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024GrilleNoAlpha3A_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024GrilleNoAlpha3A_Material_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.5165730028891516,
+  "smoothness": 0.4529507137545562,
+  "normalTex": {
+   "file": "Ferrari_SF90XXStradale_2024GrilleNoAlpha3A_Material_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Ferrari_SF90XXStradale_2024GrilleNoAlpha6A_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024GrilleNoAlpha6A_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024GrilleNoAlpha6A_Material_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.650668649656837,
+  "smoothness": 0.5321890504809158,
+  "normalTex": {
+   "file": "Ferrari_SF90XXStradale_2024GrilleNoAlpha6A_Material_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Ferrari_SF90XXStradale_2024GrilleNoAlpha7A_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024GrilleNoAlpha7A_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024GrilleNoAlpha7A_Material_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.4860967195328595,
+  "smoothness": 0.4529507137545562,
+  "normalTex": {
+   "file": "Ferrari_SF90XXStradale_2024GrilleNoAlpha7A_Material_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Ferrari_SF90XXStradale_2024GrilleNoAlpha8A_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024GrilleNoAlpha8A_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.8,
+   0.8,
+   0.8,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.04229485053762261,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Ferrari_SF90XXStradale_2024InteriorA_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024InteriorA_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024InteriorA_Material_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.4163791737270057,
+  "msTex": {
+   "file": "Ferrari_SF90XXStradale_2024InteriorA_Material_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "Ferrari_SF90XXStradale_2024InteriorA_Material_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "interior"
+ },
+ "Ferrari_SF90XXStradale_2024InteriorTillingA_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024InteriorTillingA_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024InteriorTillingA_Material_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.1569528592849045,
+  "smoothness": 0.349331350343163,
+  "normalTex": {
+   "file": "Ferrari_SF90XXStradale_2024InteriorTillingA_Material_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "interior"
+ },
+ "Ferrari_SF90XXStradale_2024LightA_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024LightA_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024LightA_Material_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.6236179005497922,
+  "msTex": {
+   "file": "Ferrari_SF90XXStradale_2024LightA_Material_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "light"
+ },
+ "Ferrari_SF90XXStradale_2024Paint_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024Paint_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.5540790912347202,
+   0.5540790912347202,
+   0.5540790912347202,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.49828723287537635,
+  "smoothness": 0.6845704672623765,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "paint"
+ },
+ "Ferrari_SF90XXStradale_2024SeatBelt_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024SeatBelt_Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024SeatBelt_Material_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.17523862929867975,
+  "smoothness": 0.7820945740025113,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "interior"
+ },
+ "Ferrari_SF90XXStradale_2024WindowInside_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024WindowInside_Material",
+  "alphaMode": "BLEND",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.398601,
+   0.398601,
+   0.398601,
+   0.38857261279272465
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.04229485053762261,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "glass"
+ },
+ "Ferrari_SF90XXStradale_2024Window_Material": {
+  "gltf": "Ferrari_SF90XXStradale_2024Window_Material",
+  "alphaMode": "BLEND",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.2672532944862308,
+   0.2672532944862308,
+   0.2672532944862308,
+   0.3520010727651741
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "glass"
+ },
+ "Ferrari_SF90XXStradale_2024_CallipersCalliperA_Zone_Material1": {
+  "gltf": "Ferrari_SF90XXStradale_2024_CallipersCalliperA_Zone_Material1",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024_CallipersCalliperA_Zone_Material1_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.4739062061903426,
+  "smoothness": 0.6540941839060843,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Ferrari_SF90XXStradale_2024_CallipersCalliperA_Zone_Material1.001": {
+  "gltf": "Ferrari_SF90XXStradale_2024_CallipersCalliperA_Zone_Material1",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024_CallipersCalliperA_Zone_Material1_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.4739062061903426,
+  "smoothness": 0.6540941839060843,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Ferrari_SF90XXStradale_2024_Wheel1A_3D_3DWheel1C_Material1": {
+  "gltf": "Ferrari_SF90XXStradale_2024_Wheel1A_3D_3DWheel1C_Material1",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024_Wheel1A_3D_3DWheel1C_Material1_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.43123940949153367,
+  "smoothness": 0.6540941839060843,
+  "normalTex": {
+   "file": "Ferrari_SF90XXStradale_2024_Wheel1A_3D_3DWheel1C_Material1_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "tyre"
+ },
+ "Ferrari_SF90XXStradale_2024_Wheel1A_3D_3DWheel1C_Material1.001": {
+  "gltf": "Ferrari_SF90XXStradale_2024_Wheel1A_3D_3DWheel1C_Material1",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Ferrari_SF90XXStradale_2024_Wheel1A_3D_3DWheel1C_Material1_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.43123940949153367,
+  "smoothness": 0.6540941839060843,
+  "normalTex": {
+   "file": "Ferrari_SF90XXStradale_2024_Wheel1A_3D_3DWheel1C_Material1_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "tyre"
+ },
+ "MIRROR": {
+  "gltf": "MIRROR",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.5,
+   0.5,
+   0.5,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.7542880130682302,
+  "smoothness": 0.9405712474552304,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "RED_GLASS": {
+  "gltf": "RED_GLASS",
+  "alphaMode": "BLEND",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.5,
+   0.0,
+   0.0,
+   0.25
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "glass"
+ },
+ "phong1": {
+  "gltf": "phong1",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.8103699510436352,
+   0.06857090858222738,
+   0.0,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.16914337262742132,
+  "smoothness": 0.9161902207701966,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ }
+}

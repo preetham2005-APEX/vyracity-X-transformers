@@ -1,0 +1,155 @@
+{
+ "id": "halcyon_regent",
+ "name": "Halcyon Regent",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Rolls_Royce_Ghost_Luxury_1f614e80.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Rolls Royce Ghost",
+  "author": "kurojishi",
+  "author_url": "https://sketchfab.com/kurojishi",
+  "url": "https://sketchfab.com/3d-models/rolls-royce-ghost-1f614e803fc24946b83bdc2dd9926d62",
+  "file": "Rolls_Royce_Ghost_Luxury_1f614e80.zip",
+  "credit": "\"Rolls Royce Ghost\" by kurojishi (https://sketchfab.com/3d-models/rolls-royce-ghost-1f614e803fc24946b83bdc2dd9926d62), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip",
+  "real_brand": "rolls royce",
+  "release_note": "Depicts a real Rolls Royce design. Allowed only rebadged under a fictional name with all marks removed (user decision 2026-11-10); legal check of the body design before any release."
+ },
+ "part": "",
+ "stripped": [],
+ "scale_applied": 2.775,
+ "front": {
+  "auto_sign": 0,
+  "front_named": 0,
+  "rear_named": 0,
+  "flipped": false,
+  "mode": "auto"
+ },
+ "stripbox_removed": 1,
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.8515,
+    -1.8337,
+    0.3824
+   ],
+   "radius": 0.3824,
+   "width": 0.2788,
+   "tris": 6124
+  },
+  "FR": {
+   "centre": [
+    -0.8515,
+    -1.8337,
+    0.4366
+   ],
+   "radius": 0.3824,
+   "width": 0.2788,
+   "tris": 6124
+  },
+  "RL": {
+   "centre": [
+    0.8515,
+    1.5426,
+    0.4366
+   ],
+   "radius": 0.3824,
+   "width": 0.2788,
+   "tris": 6124
+  },
+  "RR": {
+   "centre": [
+    -0.8515,
+    1.5426,
+    0.4366
+   ],
+   "radius": 0.3824,
+   "width": 0.2788,
+   "tris": 6124
+  }
+ },
+ "dimensions": [
+  2.24,
+  1.617,
+  5.55
+ ],
+ "wheelbase": 3.3763,
+ "track_front": 1.703,
+ "track_rear": 1.703,
+ "radius_front": 0.3824,
+ "radius_rear": 0.3824,
+ "width_front": 0.2788,
+ "width_rear": 0.2788,
+ "tris": {
+  "Body_LOD0": 119999,
+  "Body_LOD1": 40000,
+  "Body_LOD2": 10000,
+  "wheels": 24496,
+  "UCX_Body_faces": 162
+ },
+ "blanked": [
+  "rim_shad_baseColor.jpeg {'rect': [0.08, 0.66, 0.32, 0.9]}",
+  "rim_shad_metallicRoughness_MS.png {'rect': [0.08, 0.66, 0.32, 0.9]}",
+  "rim_shad_normal.jpeg {'rect': [0.08, 0.66, 0.32, 0.9]}",
+  "rim_shad_baseColor.jpeg {'rect': [0.08, 0.24, 0.32, 0.48]}",
+  "rim_shad_metallicRoughness_MS.png {'rect': [0.08, 0.24, 0.32, 0.48]}",
+  "rim_shad_normal.jpeg {'rect': [0.08, 0.24, 0.32, 0.48]}",
+  "brake_shad_baseColor.jpeg {'rect': [0.68, 0.08, 0.97, 0.36]}",
+  "brake_shad_metallicRoughness_MS.png {'rect': [0.68, 0.08, 0.97, 0.36]}",
+  "brake_shad_normal.jpeg {'rect': [0.68, 0.08, 0.97, 0.36]}"
+ ],
+ "lamps": {
+  "FL": [
+   -0.7052,
+   0.7685,
+   2.4275
+  ],
+  "FR": [
+   0.7052,
+   0.7685,
+   2.4276
+  ],
+  "RL": [
+   -0.7143,
+   0.9073,
+   -2.5418
+  ],
+  "RR": [
+   0.7143,
+   0.9073,
+   -2.5418
+  ]
+ },
+ "materials": {
+  "brake_light_glass_shad": "glass",
+  "brake_shad": "trim",
+  "ext_chrome_shad": "trim",
+  "ext_gloss_shad": "trim",
+  "ext_light_shad": "light",
+  "ext_matte_shad": "trim",
+  "extra_light_glass_shad": "glass",
+  "hdlight_inner_chrome_shad": "light",
+  "hdlight_inner_glass_shad": "glass",
+  "headlight_beam_shad": "light",
+  "int_blocking_shad": "trim",
+  "light_glass_shad": "glass",
+  "mirror_glass_shad": "glass",
+  "primary_paint_shad": "paint",
+  "rim_shad": "trim",
+  "secondary_paint_shad": "trim",
+  "small_light_shad": "light",
+  "tailight_int_chrome_shad": "light",
+  "tailight_red_strip_shad": "light",
+  "tailinght_inner_glass_shad": "glass",
+  "wheel_rubber_shad": "tyre",
+  "windshield_shad1": "trim"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/halcyon_regent/halcyon_regent.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/halcyon_regent/halcyon_regent_preview.png",
+ "check_views": [
+  "E:/VeyraCity/ArtSource/Vehicles/halcyon_regent/halcyon_regent_front.png",
+  "E:/VeyraCity/ArtSource/Vehicles/halcyon_regent/halcyon_regent_rear.png",
+  "E:/VeyraCity/ArtSource/Vehicles/halcyon_regent/halcyon_regent_wheel.png"
+ ]
+}

@@ -87,6 +87,28 @@
   "wheels": 2732,
   "UCX_Body_faces": 166
  },
+ "lamps": {
+  "FL": [
+   -0.57,
+   0.6441,
+   2.1924
+  ],
+  "FR": [
+   0.5683,
+   0.6411,
+   2.1924
+  ],
+  "RL": [
+   -0.5517,
+   0.6243,
+   -2.2252
+  ],
+  "RR": [
+   0.5499,
+   0.6213,
+   -2.2252
+  ]
+ },
  "materials": {
   "Negotiator80_Bodymat": "paint",
   "Numberplates_Misk_U": "plate",

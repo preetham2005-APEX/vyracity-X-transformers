@@ -26,5 +26,17 @@ All are **fictional designs** under **CC Attribution 4.0** (free to use in the g
 | 18 | Traffic and city | Canyon '75 Taxi - Low poly model | DanielZhabotinsky | 20,037 | 11.5 MB | https://sketchfab.com/3d-models/9e8f92a215784f3d8aaaaeab1bef54c4 |
 | 19 | Traffic and city | Fairheaven LT '80 Cop Cruiser - Low poly model | DanielZhabotinsky | 19,505 | 15.0 MB | https://sketchfab.com/3d-models/61766c1e6e1e4b2b803c174f33433a74 |
 | 20 | Traffic and city | Generic passenger car pack | comrade1280 | 69,312 | 24.6 MB | https://sketchfab.com/3d-models/20f9af9b8a404d5cb022ac6fe87f21f5 |
+| 21 | Hypercars & Concepts | Lamborghini Terzo Millennio Concept | Lambo_SC04 | 108,340 | 5.6 MB | https://sketchfab.com/3d-models/7ad3dffa9d344c3c978eafcc220cb709 |
+| 22 | Hypercars & Concepts | Bugatti Tourbillon 2026 | ddiaz-design | 368,061 | 7.9 MB | https://sketchfab.com/3d-models/4f63f5a74611477989cefd9861b9784a |
+| 23 | Hypercars & Concepts | McLaren P1 Hypercar | NodeStar | 203,428 | 7.1 MB | https://sketchfab.com/3d-models/747cedadc302451db61deafc85941395 |
+| 24 | Track & Racing | Ferrari SF90 XX Stradale | ddiaz-design | 262,654 | 7.3 MB | https://sketchfab.com/3d-models/2c80c667232544649328cf3589921bcd |
+| 25 | Track & Racing | Porsche 911 GT3 RS (992) | ddiaz-design | 253,890 | 7.5 MB | https://sketchfab.com/3d-models/f17a982d5d8a4d97baef4b00b51a4e9a |
+| 26 | Rich & Luxury | Rolls-Royce Ghost | kurojishi | 256,286 | 8.1 MB | https://sketchfab.com/3d-models/1f614e803fc24946b83bdc2dd9926d62 |
+| 27 | Hypercars & Concepts | Koenigsegg Gemera Mega-GT | ALIEEEN | 58,498 | 5.3 MB | https://sketchfab.com/3d-models/8bae74bd359940508717afb5c1f212a3 |
+| 28 | Track & Racing | BMW M6 GT3 Race Car | Alex.Ka. | 58,277 | 10.9 MB | https://sketchfab.com/3d-models/27956e4ebaaa468980bc48e50106d5c6 |
+| 29 | Rich & Luxury | Aston Martin DB11 V12 | Haris3D | 296,094 | 8.7 MB | https://sketchfab.com/3d-models/936854ba7dde46f09a47d355d433808c |
+| 30 | Hypercars & Concepts | Bugatti Bolide Track Hypercar | ddiaz-design | 222,039 | 5.1 MB | https://sketchfab.com/3d-models/658684653b154ffba72d5f9511312ca8 |
+| 31 | Vintage Supercars | Bugatti EB110 Super Sport | Alex.Ka. | 169,123 | 26.3 MB | https://sketchfab.com/3d-models/4af92c51ecdd4efa9b1c19a1163d9f46 |
+| 32 | Sports & Modern | Chevrolet Corvette C8 Stingray | Haris3D | 263,691 | 6.8 MB | https://sketchfab.com/3d-models/790c40ccff6843eab0b7b4bd18421ff8 |
 
 **CGTrader (your link):** "Sports Racing Car Low Poly Game Ready" by smileypixelstudio, https://www.cgtrader.com/items/7560461/download-page. Sign in, then download `Sports Car.blend` (1.9 MB) and `textures(1).zip` (10.3 MB) into this folder. Before release, check the licence shown on that page.

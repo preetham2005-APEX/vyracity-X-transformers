@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
   DisplayName: Orion GT
   BuildId: DL_orion_skylark
-  TuningVersion: 4
+  TuningVersion: 6
   Layout: 0
   AwdFrontSplit: 0.4
   Wheelbase: 2.5757
@@ -30,8 +30,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 58434.246
-      BumpDamping: 2131.4507
-      ReboundDamping: 4262.9014
+      BumpDamping: 2146
+      ReboundDamping: 4292
       BumpStopRate: 152054.78
       AntiRollRate: 26356.162
       RollCentreHeight: 0.05
@@ -39,7 +39,7 @@ MonoBehaviour:
       Radius: 0.2995
       Width: 0.2674
       WheelInertia: 0.9881255
-      Mu: 1.16
+      Mu: 1.06
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7
@@ -59,8 +59,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 62333.64
-      BumpDamping: 2115.3416
-      ReboundDamping: 4230.683
+      BumpDamping: 2129.7808
+      ReboundDamping: 4259.5615
       BumpStopRate: 152054.78
       AntiRollRate: 15205.479
       RollCentreHeight: 0.09
@@ -68,7 +68,7 @@ MonoBehaviour:
       Radius: 0.2995
       Width: 0.2674
       WheelInertia: 0.9881255
-      Mu: 1.18
+      Mu: 1.06
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7

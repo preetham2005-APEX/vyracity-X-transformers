@@ -49,7 +49,7 @@ REAR_TOKENS = {"bl", "br", "rl", "rr", "rear", "back", "tail", "taillight", "tai
 def args():
     a = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
     o = {"src": None, "id": None, "name": None, "length": "0", "flip": "auto", "lod0": "120000", "part": "", "strip": "",
-         "paint": "", "fix": "", "out": ART}
+         "paint": "", "fix": "", "blank": "", "stripbox": "", "checkviews": "0", "forcelen": "0", "stripfaces": "", "out": ART}
     i = 0
     while i < len(a):
         k = a[i].lstrip("-")
@@ -249,7 +249,7 @@ def detect_front_sign():
     return (1 if f > r else -1), len(fy), len(ry)
 
 
-def orient_and_scale(target_len, flip_opt):
+def orient_and_scale(target_len, flip_opt, force_len=False):
     objs = meshes()
     mn, mx = world_bbox(objs)
     size = mx - mn
@@ -268,7 +268,7 @@ def orient_and_scale(target_len, flip_opt):
     mn, mx = world_bbox(objs)
     length = mx.y - mn.y
     k = 1.0
-    if target_len > 0 and (length < 3.0 or length > 6.5 or abs(length - target_len) / target_len > 0.25):
+    if target_len > 0 and (force_len or length < 3.0 or length > 6.5 or abs(length - target_len) / target_len > 0.25):
         k = target_len / length
     centre = Vector(((mn.x + mx.x) / 2, (mn.y + mx.y) / 2, mn.z))
     for o in objs:
@@ -652,6 +652,52 @@ LIVERY_FIXES = {
 }
 
 
+def blank_marks(out_dir, specs):
+    """Paint out brand marks baked into textures (rebadged lookalikes). Each spec: {"tex": filename substring,
+    and one of "full": true | "rect": [x0, y0, x1, y1] | "ring": [cx, cy, r0, r1]} in 0..1 top-left texture
+    coordinates. The fill is the median colour around the region (whole texture for "full"). Normal maps of the
+    same material are flattened in the same region so embossed lettering disappears too."""
+    import numpy as np
+    done = []
+    tex_dir = os.path.join(out_dir, "textures")
+    for spec in specs:
+        for fn in sorted(os.listdir(tex_dir)):
+            if spec["tex"].lower() not in fn.lower():
+                continue
+            normal = "normal" in fn.lower()
+            img = bpy.data.images.load(os.path.join(tex_dir, fn), check_existing=False)
+            w, h = img.size
+            px = np.empty(w * h * 4, dtype=np.float32)
+            img.pixels.foreach_get(px)
+            px = px.reshape(h, w, 4)[::-1]            # top-left origin
+            yy, xx = np.mgrid[0:h, 0:w]
+            u, v = (xx + 0.5) / w, (yy + 0.5) / h
+            if spec.get("full"):
+                mask = np.ones((h, w), bool)
+                around = mask
+            elif "rect" in spec:
+                x0, y0, x1, y1 = spec["rect"]
+                mask = (u >= x0) & (u <= x1) & (v >= y0) & (v <= y1)
+                pad = 0.015
+                around = (u >= x0 - pad) & (u <= x1 + pad) & (v >= y0 - pad) & (v <= y1 + pad) & ~mask
+            else:
+                cx, cy, r0, r1 = spec["ring"]
+                d = np.sqrt((u - cx) ** 2 + (v - cy) ** 2)
+                mask = (d >= r0) & (d <= r1)
+                around = ((d >= r0 - 0.01) & (d < r0)) | ((d > r1) & (d <= r1 + 0.01))
+            if normal:
+                px[mask, 0:3] = (0.5, 0.5, 1.0)
+            else:
+                ref = px[around][:, 0:3] if around.any() else px.reshape(-1, 4)[:, 0:3]
+                px[mask, 0:3] = np.median(ref, axis=0)
+            img.pixels.foreach_set(px[::-1].reshape(-1))
+            img.file_format = "PNG" if fn.lower().endswith(".png") else "JPEG"
+            img.save()
+            bpy.data.images.remove(img)
+            done.append("%s %s" % (fn, {k: v for k, v in spec.items() if k != "tex"}))
+    return done
+
+
 def fix_livery(out_dir, kind):
     import numpy as np
     fx = LIVERY_FIXES[kind]
@@ -672,6 +718,41 @@ def fix_livery(out_dir, kind):
     img.save()
     bpy.data.images.remove(img)
     return fx["rects"]
+
+
+def lamp_anchors(mats, mn, mx):
+    """Head- and tail-lamp centres (area-weighted) per corner, from faces with lamp materials near the car's ends.
+    Returned in Unity model space (x = -X, y = Z, z = -Y: front is Unity +Z, left is Unity -X)."""
+    lamp = {n for n, e in mats.items()
+            if e.get("role") == "light" or (any(w in n.lower() for w in ("light", "lamp", "optic")) and e.get("alphaMode", "OPAQUE") != "BLEND")}
+    if not lamp:
+        return {}
+    L = mx.y - mn.y
+    acc = {k: [Vector((0, 0, 0)), 0.0] for k in ("FL", "FR", "RL", "RR")}
+    for ob in meshes():
+        if ob.name.startswith(("UBX_", "UCX_", "WheelMesh", "CaliperMesh", "Body_LOD1", "Body_LOD2")):
+            continue
+        idx = {i for i, s in enumerate(ob.material_slots) if s.material and s.material.name in lamp}
+        if not idx:
+            continue
+        mw = ob.matrix_world
+        for p in ob.data.polygons:
+            if p.material_index not in idx:
+                continue
+            c = mw @ p.center
+            front = c.y < mn.y + 0.22 * L
+            rear = c.y > mx.y - 0.22 * L
+            if not (front or rear) or abs(c.x) < 0.15:
+                continue
+            k = ("F" if front else "R") + ("L" if c.x > 0 else "R")
+            acc[k][0] += c * p.area
+            acc[k][1] += p.area
+    out = {}
+    for k, (s, a) in acc.items():
+        if a > 1e-5:
+            c = s / a
+            out[k] = [round(-c.x, 4), round(c.z, 4), round(-c.y, 4)]
+    return out
 
 
 # ------------------------------------------------------------------------------------------------ preview
@@ -708,6 +789,26 @@ def render_preview(path, mn, mx):
     scn.render.resolution_x, scn.render.resolution_y = 960, 540
     scn.render.filepath = path
     bpy.ops.render.render(write_still=True)
+    return cam
+
+
+def render_check_views(cam, base, mn, mx):
+    """Close views for the brand-mark check of rebadged cars: straight front, straight rear, front-left wheel."""
+    scn = bpy.context.scene
+    L, H = mx.y - mn.y, mx.z - mn.z
+    views = {
+        "front": (Vector((0, mn.y - L * 0.55, H * 0.75)), Vector((0, mn.y, H * 0.5))),
+        "rear": (Vector((0, mx.y + L * 0.55, H * 0.75)), Vector((0, mx.y, H * 0.5))),
+        "wheel": (Vector((mx.x + 1.3, mn.y + L * 0.2, 0.45)), Vector((mx.x - 0.1, mn.y + L * 0.2, 0.35))),
+    }
+    out = []
+    for name, (pos, target) in views.items():
+        cam.location = pos
+        cam.rotation_euler = (target - pos).to_track_quat("-Z", "Y").to_euler()
+        scn.render.filepath = base + "_" + name + ".png"
+        bpy.ops.render.render(write_still=True)
+        out.append(scn.render.filepath.replace("\\", "/"))
+    return out
 
 
 # ------------------------------------------------------------------------------------------------ main
@@ -728,9 +829,51 @@ def main():
     if o["part"]:
         keep_part(o["part"])
     report["stripped"] = strip_parts(o["strip"].split(",") if o["strip"] else [])
-    k, front = orient_and_scale(float(o["length"]), o["flip"])
+    k, front = orient_and_scale(float(o["length"]), o["flip"], o["forcelen"] == "1")
     report["scale_applied"] = k
     report["front"] = front
+    if o["stripbox"]:
+        # Remove small parts (mascots, emblems) by position: boxes in metres, car space after orientation
+        # (front = -Y, left = +X, z up from the ground). A part goes only if its whole bounding box is inside.
+        boxes = json.loads(o["stripbox"])
+        gone = []
+        for ob in split_loose(meshes()):
+            if ob.name not in bpy.context.scene.objects:
+                continue
+            a, b = world_bbox([ob])
+            for x0, y0, z0, x1, y1, z1 in boxes:
+                if a.x >= x0 and a.y >= y0 and a.z >= z0 and b.x <= x1 and b.y <= y1 and b.z <= z1:
+                    gone.append(ob.name)
+                    bpy.data.objects.remove(ob, do_unlink=True)
+                    break
+        report["stripbox_removed"] = len(gone)
+    if o["stripfaces"]:
+        # Face-level removal for emblems welded into a bigger mesh: faces whose centre is inside the box and whose
+        # material name contains one of the given words (so body panels around the emblem stay intact).
+        removed = 0
+        for spec in json.loads(o["stripfaces"]):
+            x0, y0, z0, x1, y1, z1 = spec["box"]
+            words = [w.lower() for w in spec.get("mats", [])]
+            for ob in meshes():
+                slots = [i for i, s in enumerate(ob.material_slots) if s.material and (not words or any(w in s.material.name.lower() for w in words))]
+                if not slots:
+                    continue
+                bm = bmesh.new()
+                bm.from_mesh(ob.data)
+                mw = ob.matrix_world
+                dead = []
+                for f in bm.faces:
+                    if f.material_index not in slots:
+                        continue
+                    c = mw @ f.calc_center_median()
+                    if x0 <= c.x <= x1 and y0 <= c.y <= y1 and z0 <= c.z <= z1:
+                        dead.append(f)
+                if dead:
+                    bmesh.ops.delete(bm, geom=dead, context="FACES")
+                    bm.to_mesh(ob.data)
+                    removed += len(dead)
+                bm.free()
+        report["stripfaces_removed"] = removed
     groups, calipers, hubs = find_wheels()
     ok = len(hubs) == 4 and all(groups[g_] for g_ in groups)
     report["wheels_ok"] = ok
@@ -816,6 +959,9 @@ def main():
     mats = export_materials(g, model_path, used, out, paint_words)
     if o["fix"]:
         report["livery_fix"] = {o["fix"]: fix_livery(out, o["fix"])}
+    if o["blank"]:
+        report["blanked"] = blank_marks(out, json.loads(o["blank"]))
+    report["lamps"] = lamp_anchors(mats, allmn, allmx)
     with open(os.path.join(out, "materials.json"), "w") as f:
         json.dump(mats, f, indent=1)
     report["materials"] = {k_: v.get("role") for k_, v in mats.items()}
@@ -828,10 +974,19 @@ def main():
         mesh_smooth_type="FACE", use_mesh_modifiers=True, add_leaf_bones=False,
         use_tspace=False, path_mode="STRIP", embed_textures=False, bake_anim=False)
     report["fbx"] = fbx.replace("\\", "/")
+    # Renders must show what ships: point Blender's images at the exported (blanked / converted) copies.
+    tex_out = os.path.join(out, "textures")
+    for im in bpy.data.images:
+        fn = os.path.basename(bpy.path.abspath(im.filepath)) if im.filepath else ""
+        if fn and os.path.exists(os.path.join(tex_out, fn)):
+            im.filepath = os.path.join(tex_out, fn)
+            im.reload()
     try:
         prev = os.path.join(out, cid + "_preview.png")
-        render_preview(prev, allmn, allmx)
+        cam = render_preview(prev, allmn, allmx)
         report["preview"] = prev.replace("\\", "/")
+        if o["checkviews"] == "1":
+            report["check_views"] = render_check_views(cam, os.path.join(out, cid), allmn, allmx)
     except Exception as ex:  # preview is optional
         report["preview_error"] = str(ex)
     with open(os.path.join(out, "process_report.json"), "w") as f:

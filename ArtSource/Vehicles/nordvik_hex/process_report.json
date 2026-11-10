@@ -1,0 +1,155 @@
+{
+ "id": "nordvik_hex",
+ "name": "Nordvik Hex",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Koenigsegg_Gemera_Hypercar_8bae74bd.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "Free Koenigsegg Gemera",
+  "author": "Desiccated_Lemon",
+  "author_url": "https://sketchfab.com/Desiccated_Lemon",
+  "url": "https://sketchfab.com/3d-models/free-koenigsegg-gemera-8bae74bd359940508717afb5c1f212a3",
+  "file": "Koenigsegg_Gemera_Hypercar_8bae74bd.zip",
+  "credit": "\"Free Koenigsegg Gemera\" by Desiccated_Lemon (https://sketchfab.com/3d-models/free-koenigsegg-gemera-8bae74bd359940508717afb5c1f212a3), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip",
+  "real_brand": "koenigsegg",
+  "release_note": "Depicts a real Koenigsegg design. Allowed only rebadged under a fictional name with all marks removed (user decision 2026-11-10); legal check of the body design before any release."
+ },
+ "part": "",
+ "stripped": [
+  "Object_22 (8 faces)",
+  "Object_37 (16 faces)",
+  "Object_84 (34 faces)",
+  "Object_93 (34 faces)",
+  "Object_95 (4 faces)",
+  "Object_97 (136 faces)"
+ ],
+ "scale_applied": 1.4669272217036557,
+ "front": {
+  "auto_sign": 0,
+  "front_named": 0,
+  "rear_named": 0,
+  "flipped": true,
+  "mode": "1"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.8793,
+    -1.4861,
+    0.3395
+   ],
+   "radius": 0.3395,
+   "width": 0.2704,
+   "tris": 520
+  },
+  "FR": {
+   "centre": [
+    -0.8793,
+    -1.4861,
+    0.3395
+   ],
+   "radius": 0.3395,
+   "width": 0.2704,
+   "tris": 520
+  },
+  "RL": {
+   "centre": [
+    0.8782,
+    1.5518,
+    0.351
+   ],
+   "radius": 0.3508,
+   "width": 0.2794,
+   "tris": 520
+  },
+  "RR": {
+   "centre": [
+    -0.8782,
+    1.5518,
+    0.351
+   ],
+   "radius": 0.3508,
+   "width": 0.2794,
+   "tris": 520
+  }
+ },
+ "dimensions": [
+  2.078,
+  1.242,
+  4.98
+ ],
+ "wheelbase": 3.0379,
+ "track_front": 1.7586,
+ "track_rear": 1.7564,
+ "radius_front": 0.3395,
+ "radius_rear": 0.3508,
+ "width_front": 0.2704,
+ "width_rear": 0.2794,
+ "tris": {
+  "Body_LOD0": 56186,
+  "Body_LOD1": 25282,
+  "Body_LOD2": 8427,
+  "wheels": 2080,
+  "UCX_Body_faces": 184
+ },
+ "blanked": [
+  "Tires_baseColor.png {'rect': [0.0, 0.72, 0.3, 0.95]}"
+ ],
+ "lamps": {
+  "FL": [
+   -0.6937,
+   0.5569,
+   2.0512
+  ],
+  "FR": [
+   0.6937,
+   0.5569,
+   2.0512
+  ],
+  "RL": [
+   -0.7588,
+   0.7921,
+   -1.9637
+  ],
+  "RR": [
+   0.7588,
+   0.7921,
+   -1.9637
+  ]
+ },
+ "materials": {
+  "Back": "trim",
+  "Black_Plastics_Interior_and_others": "interior",
+  "Carbon": "trim",
+  "Engine": "trim",
+  "Engine_Lines": "trim",
+  "Engine_sides": "trim",
+  "Exhaust": "trim",
+  "HeadlightTail_light_Plastic": "light",
+  "HeadlightTail_light_metal": "light",
+  "Main_Body": "paint",
+  "Main_Body_Line": "paint",
+  "Material": "trim",
+  "Material.001": "trim",
+  "Material.002": "trim",
+  "Material.003": "trim",
+  "Material.004": "trim",
+  "Tires": "tyre",
+  "Vents": "trim",
+  "Windows": "glass",
+  "Yellow_Plastics_Interior_and_others": "interior",
+  "disk": "trim",
+  "disk_circles": "trim",
+  "engine_Metals": "trim",
+  "engine_plastic": "trim"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/nordvik_hex/nordvik_hex.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/nordvik_hex/nordvik_hex_preview.png",
+ "check_views": [
+  "E:/VeyraCity/ArtSource/Vehicles/nordvik_hex/nordvik_hex_front.png",
+  "E:/VeyraCity/ArtSource/Vehicles/nordvik_hex/nordvik_hex_rear.png",
+  "E:/VeyraCity/ArtSource/Vehicles/nordvik_hex/nordvik_hex_wheel.png"
+ ]
+}

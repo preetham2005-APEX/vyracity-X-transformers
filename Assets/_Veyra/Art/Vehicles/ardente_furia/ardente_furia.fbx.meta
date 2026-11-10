@@ -1,0 +1,249 @@
+fileFormatVersion: 2
+guid: e96699570872e544a8f756cc23ffd175
+ModelImporter:
+  serializedVersion: 24600
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024Base_Material
+    second: {fileID: 2100000, guid: 092392416e86a5543b47aa13f6b457ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024Carbon2M_Material
+    second: {fileID: 2100000, guid: e83b31b79bf76ae4e9ea052917453f16, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024EngineA_Material
+    second: {fileID: 2100000, guid: 712fd6e408be42848aad910023170f01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024GrilleAlpha1A_Material
+    second: {fileID: 2100000, guid: c7fc5b692419c8c488cc78df683bf002, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024GrilleAlpha4A_Material
+    second: {fileID: 2100000, guid: 63bf0ead7e83b394488041fa4c708e3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024GrilleAlpha5A_Material
+    second: {fileID: 2100000, guid: 59338a7580966c74d9aa19a0319629f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024GrilleAlpha9A_Material
+    second: {fileID: 2100000, guid: c0265d53113b9534189a076b69d58fe2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024GrilleNoAlpha2A_Material
+    second: {fileID: 2100000, guid: 1e69e6f7d85526844afe0dd986f7b422, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024GrilleNoAlpha3A_Material
+    second: {fileID: 2100000, guid: d69c9a281eced4b4cb4b75be581cc36f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024GrilleNoAlpha6A_Material
+    second: {fileID: 2100000, guid: f3ff0bebbaf9d9c4584956fe24d7a73a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024GrilleNoAlpha7A_Material
+    second: {fileID: 2100000, guid: 9c9ba7fdce2655d438df1a3f231ae67a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024GrilleNoAlpha8A_Material
+    second: {fileID: 2100000, guid: b78890dab4c3abc47b436877df2e7659, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024InteriorA_Material
+    second: {fileID: 2100000, guid: d119a71066ea9104eabde1be36d41241, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024InteriorTillingA_Material
+    second: {fileID: 2100000, guid: bd1ecdd081bdded4ca4a1916050b1b9d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024LightA_Material
+    second: {fileID: 2100000, guid: ea9ecd1e6d7d6c14a936bd9454eee6d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024Paint_Material
+    second: {fileID: 2100000, guid: 60144c870976e60489ef35d61070f3c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024SeatBelt_Material
+    second: {fileID: 2100000, guid: 1418086a1d31790499c7703d3d1e97c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024WindowInside_Material
+    second: {fileID: 2100000, guid: 0fd6702548408f340a077497eacde840, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024Window_Material
+    second: {fileID: 2100000, guid: 5ae42b0c04392e046afeacc1a848436e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024_CallipersCalliperA_Zone_Material1
+    second: {fileID: 2100000, guid: 38b8dae684324334ba0261f3740d22c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024_CallipersCalliperA_Zone_Material1.001
+    second: {fileID: 2100000, guid: 2d43b299a32e90643a70e693455a313b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024_Wheel1A_3D_3DWheel1C_Material1
+    second: {fileID: 2100000, guid: 7c54fc0bff3cfbe45b41753334e18f16, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ferrari_SF90XXStradale_2024_Wheel1A_3D_3DWheel1C_Material1.001
+    second: {fileID: 2100000, guid: 8a6b82d3913607745817f0b6e0afc69d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MIRROR
+    second: {fileID: 2100000, guid: faee0cd0aa0aa0844aeabeff9e408cc5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RED_GLASS
+    second: {fileID: 2100000, guid: afae4ace22a9fde42a5e2c98da9ace05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong1
+    second: {fileID: 2100000, guid: d1696e921ef262848b4a59124ed513b5, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+    searchTexturesGlobally: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.01
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    preBakeConvexCollisionMesh: 0
+    preBakeTriangleCollisionMesh: 0
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
+    importUVs: -1
+    importVertexColors: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+    calculateBlendshapeNormalsDeltaFromImportedNormals: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 0
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

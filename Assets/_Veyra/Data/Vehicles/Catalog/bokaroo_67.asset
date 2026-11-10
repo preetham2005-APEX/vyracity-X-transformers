@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
   DisplayName: Bokaroo '67
   BuildId: DL_bokaroo_67
-  TuningVersion: 4
+  TuningVersion: 6
   Layout: 2
   AwdFrontSplit: 0.4
   Wheelbase: 2.6126
@@ -30,8 +30,8 @@ MonoBehaviour:
       RestLength: 0.22
       Travel: 0.13
       SpringRate: 60229.348
-      BumpDamping: 3065.1616
-      ReboundDamping: 6129.281
+      BumpDamping: 3195.652
+      ReboundDamping: 6390.2173
       BumpStopRate: 163043.47
       AntiRollRate: 23913.043
       RollCentreHeight: 0.06
@@ -39,7 +39,7 @@ MonoBehaviour:
       Radius: 0.3685
       Width: 0.3184
       WheelInertia: 1.4958686
-      Mu: 1.08
+      Mu: 0.9
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7.5
@@ -59,8 +59,8 @@ MonoBehaviour:
       RestLength: 0.22
       Travel: 0.13
       SpringRate: 53323.91
-      BumpDamping: 2504.258
-      ReboundDamping: 5009.5586
+      BumpDamping: 2610.8696
+      ReboundDamping: 5222.826
       BumpStopRate: 163043.47
       AntiRollRate: 19565.217
       RollCentreHeight: 0.09
@@ -68,7 +68,7 @@ MonoBehaviour:
       Radius: 0.3685
       Width: 0.3184
       WheelInertia: 1.4958686
-      Mu: 1.08
+      Mu: 0.9
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7.5

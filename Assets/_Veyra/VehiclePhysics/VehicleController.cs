@@ -160,7 +160,7 @@ namespace VeyraCity.VehiclePhysics
             Vector3 up = transform.up;
             Vector3 w = rb.angularVelocity;
             float yaw = Vector3.Dot(w, up);
-            float yawNew = yaw * 0.4f;
+            float yawNew = yaw * Mathf.Pow(0.4f, Time.fixedDeltaTime * 100f);   // BUG-082: same damping at 50–120 Hz
             if (firstContact && vt.sqrMagnitude > 1f)
             {
                 float toTangent = Vector3.SignedAngle(Vector3.ProjectOnPlane(transform.forward, up), vt, up) * Mathf.Deg2Rad;
@@ -555,8 +555,9 @@ namespace VeyraCity.VehiclePhysics
             Vector3 accel = (v - prevVelocity) / dt;
             prevVelocity = v;
             Vector3 localV = t.InverseTransformDirection(v);
-            longitudinalG = Mathf.Lerp(longitudinalG, Vector3.Dot(accel, fwd) / g, 0.3f);
-            lateralG = Mathf.Lerp(lateralG, Vector3.Dot(accel, t.right) / g, 0.3f);
+            float gFilter = 1f - Mathf.Exp(-dt / 0.028f);   // BUG-082: 28 ms filter, independent of the physics rate
+            longitudinalG = Mathf.Lerp(longitudinalG, Vector3.Dot(accel, fwd) / g, gFilter);
+            lateralG = Mathf.Lerp(lateralG, Vector3.Dot(accel, t.right) / g, gFilter);
             state.Speed = speed;
             state.ForwardSpeed = localV.z;
             state.LateralSpeed = localV.x;
@@ -646,10 +647,14 @@ namespace VeyraCity.VehiclePhysics
                     if (f.YawTracking > 0f && Mathf.Abs(fwdSpeed) > 1f)
                     {
                         float rRef = fwdSpeed * Mathf.Tan(steerAngle * Mathf.Deg2Rad) / Mathf.Max(0.5f, definition.Wheelbase);
-                        float rMax = f.YawRateLimitG * g / Mathf.Max(3f, Mathf.Abs(fwdSpeed));
+                        // per-car character: the cap follows the tyres' grip, the turn-in the car's mass (iteration 5)
+                        float tyreMu = 0.5f * (definition.Front.Tyre.Mu + definition.Rear.Tyre.Mu);
+                        float gripK = f.ReferenceMu > 0.01f ? Mathf.Clamp(tyreMu / f.ReferenceMu, 0.6f, 1.4f) : 1f;
+                        float agility = Mathf.Clamp(Mathf.Sqrt(f.ReferenceMass / Mathf.Max(300f, mass)), f.AgilityRange.x, f.AgilityRange.y);
+                        float rMax = f.YawRateLimitG * gripK * g / Mathf.Max(3f, Mathf.Abs(fwdSpeed));
                         rRef = Mathf.Clamp(rRef, -rMax, rMax);
                         float r = Vector3.Dot(rb.angularVelocity, up);
-                        float alpha = Mathf.Clamp((rRef - r) * f.YawTracking, -f.YawTrackingMaxAccel, f.YawTrackingMaxAccel);
+                        float alpha = Mathf.Clamp((rRef - r) * f.YawTracking * agility, -f.YawTrackingMaxAccel * agility, f.YawTrackingMaxAccel * agility);
                         rb.AddTorque(up * (alpha * wGrip), ForceMode.Acceleration);
                     }
                 }

@@ -24,7 +24,8 @@ namespace VeyraCity.Tests
             var preset = AssetDatabase.LoadAssetAtPath<AssistPreset>(CasualPreset);
             var surface = AssetDatabase.LoadAssetAtPath<SurfaceDefinition>(Asphalt);
             if (def == null || preset == null || surface == null) Assert.Ignore("vehicle data assets missing");
-            var feel = arcade ? ScriptableObject.CreateInstance<HandlingFeel>() : null;
+            // BUG-086: test the shipped Arcade asset (falls back to the code defaults only if it is missing)
+            var feel = arcade ? AssetDatabase.LoadAssetAtPath<HandlingFeel>("Assets/_Veyra/Data/Vehicles/HandlingFeel_Arcade.asset") ?? ScriptableObject.CreateInstance<HandlingFeel>() : null;
             var h = VehicleTestHarness.Create(def, preset, surface, 100f, feel);
             h.Settle();
             return h;

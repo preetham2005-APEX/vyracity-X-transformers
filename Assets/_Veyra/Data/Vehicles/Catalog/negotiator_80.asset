@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
   DisplayName: Negotiator '80
   BuildId: DL_negotiator_80
-  TuningVersion: 4
+  TuningVersion: 6
   Layout: 0
   AwdFrontSplit: 0.4
   Wheelbase: 2.6496
@@ -30,8 +30,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 69489.38
-      BumpDamping: 2324.346
-      ReboundDamping: 4648.692
+      BumpDamping: 2552
+      ReboundDamping: 5104
       BumpStopRate: 180821.92
       AntiRollRate: 31342.467
       RollCentreHeight: 0.05
@@ -39,7 +39,7 @@ MonoBehaviour:
       Radius: 0.3092
       Width: 0.2228
       WheelInertia: 1.0531673
-      Mu: 1.16
+      Mu: 0.94
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7
@@ -59,8 +59,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 74126.5
-      BumpDamping: 2306.7788
-      ReboundDamping: 4613.5576
+      BumpDamping: 2532.7124
+      ReboundDamping: 5065.425
       BumpStopRate: 180821.92
       AntiRollRate: 18082.193
       RollCentreHeight: 0.09
@@ -68,7 +68,7 @@ MonoBehaviour:
       Radius: 0.3092
       Width: 0.2228
       WheelInertia: 1.0531675
-      Mu: 1.18
+      Mu: 0.94
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7

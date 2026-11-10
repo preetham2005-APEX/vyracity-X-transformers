@@ -89,6 +89,18 @@
   "wheels": 3244,
   "UCX_Body_faces": 220
  },
+ "lamps": {
+  "RL": [
+   -0.6484,
+   0.6133,
+   -2.1954
+  ],
+  "RR": [
+   0.648,
+   0.6124,
+   -2.1954
+  ]
+ },
  "materials": {
   "DOUTRIVE78_bodymat": "paint",
   "Numberplates_Misk_U": "plate",

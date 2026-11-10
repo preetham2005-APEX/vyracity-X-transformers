@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
   DisplayName: Coupe '33 Hot Rod II
   BuildId: DL_coupe_33_hotrod_2
-  TuningVersion: 4
+  TuningVersion: 6
   Layout: 0
   AwdFrontSplit: 0.4
   Wheelbase: 3.0208
@@ -30,8 +30,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 39591.074
-      BumpDamping: 1789.1917
-      ReboundDamping: 3578.3833
+      BumpDamping: 1512.143
+      ReboundDamping: 3024.286
       BumpStopRate: 107142.86
       AntiRollRate: 18571.43
       RollCentreHeight: 0.05
@@ -39,7 +39,7 @@ MonoBehaviour:
       Radius: 0.3505
       Width: 0.2225
       WheelInertia: 1.3533014
-      Mu: 1.1
+      Mu: 0.9
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7
@@ -59,8 +59,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 42233.035
-      BumpDamping: 1775.6692
-      ReboundDamping: 3551.3384
+      BumpDamping: 1500.7144
+      ReboundDamping: 3001.4287
       BumpStopRate: 107142.86
       AntiRollRate: 10714.286
       RollCentreHeight: 0.09
@@ -68,7 +68,7 @@ MonoBehaviour:
       Radius: 0.388
       Width: 0.2887
       WheelInertia: 1.6583718
-      Mu: 1.12
+      Mu: 0.9
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7
@@ -108,7 +108,7 @@ MonoBehaviour:
     - 1.08
     - 0.9
     ReverseRatio: 3.2
-    FinalDrive: 3.9
+    FinalDrive: 6.0946903
     Efficiency: 0.9
     ShiftTime: 0.18
     ShiftUpRpm: 7500
@@ -123,6 +123,6 @@ MonoBehaviour:
     Ackermann: 0.4
     RateDegPerSec: 400
   Aero:
-    DragArea: 2.34
+    DragArea: 1.248
     DownforceArea: 0.2
     FrontDownforceShare: 0.42

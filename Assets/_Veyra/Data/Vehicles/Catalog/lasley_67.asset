@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
   DisplayName: Lasley '67
   BuildId: DL_lasley_67
-  TuningVersion: 4
+  TuningVersion: 6
   Layout: 1
   AwdFrontSplit: 0.4
   Wheelbase: 2.02
@@ -30,8 +30,8 @@ MonoBehaviour:
       RestLength: 0.24
       Travel: 0.15
       SpringRate: 22557.887
-      BumpDamping: 1773.6582
-      ReboundDamping: 3548.0754
+      BumpDamping: 1346.1119
+      ReboundDamping: 2692.7998
       BumpStopRate: 86400
       AntiRollRate: 8063.9995
       RollCentreHeight: 0.06
@@ -39,7 +39,7 @@ MonoBehaviour:
       Radius: 0.2359
       Width: 0.1807
       WheelInertia: 0.61301965
-      Mu: 1
+      Mu: 0.92
       LateralGripScale: 0.9
       LongPeakSlip: 0.1
       LatPeakSlipDeg: 8
@@ -59,8 +59,8 @@ MonoBehaviour:
       RestLength: 0.24
       Travel: 0.15
       SpringRate: 17498.303
-      BumpDamping: 1223.4219
-      ReboundDamping: 2446.085
+      BumpDamping: 928.51196
+      ReboundDamping: 1856.4479
       BumpStopRate: 86400
       AntiRollRate: 9216
       RollCentreHeight: 0.1
@@ -68,7 +68,7 @@ MonoBehaviour:
       Radius: 0.2359
       Width: 0.1807
       WheelInertia: 0.61301965
-      Mu: 1
+      Mu: 0.92
       LateralGripScale: 0.9
       LongPeakSlip: 0.1
       LatPeakSlipDeg: 8

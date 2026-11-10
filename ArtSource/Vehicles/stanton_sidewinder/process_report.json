@@ -1,0 +1,186 @@
+{
+ "id": "stanton_sidewinder",
+ "name": "Stanton Sidewinder",
+ "source": "E:/VeyraCity/ArtSource/Downloads/Chevrolet_Corvette_C8_Stingray_790c40cc.zip",
+ "licence": {
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "title": "2019 Chevrolet Corvette C8 Stingray",
+  "author": "Hari",
+  "author_url": "https://sketchfab.com/Hari31",
+  "url": "https://sketchfab.com/3d-models/2019-chevrolet-corvette-c8-stingray-790c40ccff6843eab0b7b4bd18421ff8",
+  "file": "Chevrolet_Corvette_C8_Stingray_790c40cc.zip",
+  "credit": "\"2019 Chevrolet Corvette C8 Stingray\" by Hari (https://sketchfab.com/3d-models/2019-chevrolet-corvette-c8-stingray-790c40ccff6843eab0b7b4bd18421ff8), licensed under CC-BY-4.0",
+  "evidence": "license.txt inside the downloaded zip",
+  "real_brand": "chevrolet",
+  "release_note": "Depicts a real Chevrolet design. Allowed only rebadged under a fictional name with all marks removed (user decision 2026-11-10); legal check of the body design before any release."
+ },
+ "part": "",
+ "stripped": [
+  "Corvette Badge_Badges_0 (251 faces)",
+  "License Plate Lights_License Plate Lights_0 (28 faces)",
+  "6.2L LT2 V8 Engine and Engine Bay_Engine Decals_0 (32714 faces)",
+  "Engine Bay Bolts_Engine Decals_0 (140 faces)",
+  "Interior_Engine Decals_0 (242 faces)",
+  "Interior Trim_Badges_0 (629 faces)",
+  "Right Door_Engine Decals_0 (157 faces)",
+  "Left Door_Engine Decals_0 (157 faces)",
+  "Trunk Glass_Badges_0 (143 faces)",
+  "Steering Wheel Decals_Interior Badge_0 (18 faces)",
+  "License Plate_License Plate Background_0 (48 faces)",
+  "License Plate_License Plate_0 (2 faces)"
+ ],
+ "scale_applied": 0.8820849035268129,
+ "front": {
+  "auto_sign": 1,
+  "front_named": 22,
+  "rear_named": 15,
+  "flipped": true,
+  "mode": "auto"
+ },
+ "wheels_ok": true,
+ "hubs": {
+  "FL": {
+   "centre": [
+    0.8176,
+    -1.2797,
+    0.3227
+   ],
+   "radius": 0.322,
+   "width": 0.2658,
+   "tris": 8986
+  },
+  "FR": {
+   "centre": [
+    -0.8176,
+    -1.2797,
+    0.3227
+   ],
+   "radius": 0.322,
+   "width": 0.2658,
+   "tris": 8985
+  },
+  "RL": {
+   "centre": [
+    0.815,
+    1.4373,
+    0.3381
+   ],
+   "radius": 0.3381,
+   "width": 0.2658,
+   "tris": 8986
+  },
+  "RR": {
+   "centre": [
+    -0.815,
+    1.4383,
+    0.339
+   ],
+   "radius": 0.3381,
+   "width": 0.2658,
+   "tris": 8986
+  }
+ },
+ "dimensions": [
+  2.143,
+  1.187,
+  4.63
+ ],
+ "wheelbase": 2.717,
+ "track_front": 1.6352,
+ "track_rear": 1.63,
+ "radius_front": 0.322,
+ "radius_rear": 0.3381,
+ "width_front": 0.2658,
+ "width_rear": 0.2658,
+ "tris": {
+  "Body_LOD0": 120000,
+  "Body_LOD1": 40000,
+  "Body_LOD2": 10000,
+  "wheels": 44639,
+  "UCX_Body_faces": 132
+ },
+ "blanked": [
+  "Tire_Sidewall_baseColor.png {'full': True}",
+  "Misc_baseColor.png {'rect': [0.43, 0.67, 0.65, 0.77]}",
+  "Misc_baseColor.png {'rect': [0.7, 0.8, 0.9, 0.98]}",
+  "material_baseColor.png {'rect': [0.0, 0.0, 0.26, 0.36]}",
+  "material_baseColor.png {'rect': [0.7, 0.02, 1.0, 0.4]}",
+  "material_baseColor.png {'ring': [0.5, 0.5, 0.33, 0.47]}"
+ ],
+ "lamps": {
+  "FL": [
+   -0.71,
+   0.6377,
+   1.766
+  ],
+  "FR": [
+   0.71,
+   0.6377,
+   1.766
+  ],
+  "RL": [
+   -0.6095,
+   0.7713,
+   -2.1138
+  ],
+  "RR": [
+   0.6095,
+   0.7713,
+   -2.1138
+  ]
+ },
+ "materials": {
+  "Aluminium": "trim",
+  "Black": "trim",
+  "Body_Color": "paint",
+  "Bolt_2_Interior": "interior",
+  "Brake_Disc": "trim",
+  "Brake_Lights": "light",
+  "Carbon_Fiber": "trim",
+  "Carpet": "trim",
+  "Chrome": "trim",
+  "Chrome_Engine_Pipes_Use_Grill_5_as_BW_to_Bump_to_Normal": "trim",
+  "Dark_Engine_View_Glass": "glass",
+  "Day_Lights": "light",
+  "Engine_Cover": "trim",
+  "Gauges": "trim",
+  "Grill_4_Speakers": "trim",
+  "Grille_1": "trim",
+  "Grille_3": "trim",
+  "Grille_6": "trim",
+  "Grille_7": "trim",
+  "Headlights": "light",
+  "Interior": "interior",
+  "Interior_Aluminium": "interior",
+  "Interior_Buttons": "interior",
+  "Interior_Display": "interior",
+  "Interior_Trim": "interior",
+  "Interior_Trim_2": "interior",
+  "Invisible_Unimportant_Black": "trim",
+  "Left_Indicator": "trim",
+  "Lights": "light",
+  "Mat_supergt.209": "trim",
+  "Mirror": "trim",
+  "Misc": "trim",
+  "Misc_2": "trim",
+  "Other_Glasses_than_Windshield": "glass",
+  "Painted_Black": "trim",
+  "Plastic": "trim",
+  "Reverse_Lights": "light",
+  "Right_Indicator": "trim",
+  "Seats_Adjust_the_leather_texture_using_Color_Ramp_or_using_HSV": "interior",
+  "Taillights": "light",
+  "Tire_Sidewall": "tyre",
+  "Tire_Treads": "tyre",
+  "Windshield": "trim",
+  "material": "trim"
+ },
+ "fbx": "E:/VeyraCity/ArtSource/Vehicles/stanton_sidewinder/stanton_sidewinder.fbx",
+ "preview": "E:/VeyraCity/ArtSource/Vehicles/stanton_sidewinder/stanton_sidewinder_preview.png",
+ "check_views": [
+  "E:/VeyraCity/ArtSource/Vehicles/stanton_sidewinder/stanton_sidewinder_front.png",
+  "E:/VeyraCity/ArtSource/Vehicles/stanton_sidewinder/stanton_sidewinder_rear.png",
+  "E:/VeyraCity/ArtSource/Vehicles/stanton_sidewinder/stanton_sidewinder_wheel.png"
+ ]
+}

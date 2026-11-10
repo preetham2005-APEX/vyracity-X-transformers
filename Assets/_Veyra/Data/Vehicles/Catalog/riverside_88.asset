@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
   DisplayName: Riverside '88
   BuildId: DL_riverside_88
-  TuningVersion: 4
+  TuningVersion: 6
   Layout: 1
   AwdFrontSplit: 0.4
   Wheelbase: 2.6681
@@ -30,8 +30,8 @@ MonoBehaviour:
       RestLength: 0.24
       Travel: 0.15
       SpringRate: 45429.08
-      BumpDamping: 2517.026
-      ReboundDamping: 5035.129
+      BumpDamping: 2710.92
+      ReboundDamping: 5423
       BumpStopRate: 174000
       AntiRollRate: 16240
       RollCentreHeight: 0.06
@@ -39,7 +39,7 @@ MonoBehaviour:
       Radius: 0.3032
       Width: 0.2167
       WheelInertia: 1.0126909
-      Mu: 1
+      Mu: 0.93
       LateralGripScale: 0.9
       LongPeakSlip: 0.1
       LatPeakSlipDeg: 8
@@ -59,8 +59,8 @@ MonoBehaviour:
       RestLength: 0.24
       Travel: 0.15
       SpringRate: 35239.64
-      BumpDamping: 1736.1771
-      ReboundDamping: 3471.277
+      BumpDamping: 1869.9199
+      ReboundDamping: 3738.68
       BumpStopRate: 174000
       AntiRollRate: 18560
       RollCentreHeight: 0.1
@@ -68,7 +68,7 @@ MonoBehaviour:
       Radius: 0.3032
       Width: 0.2167
       WheelInertia: 1.0126909
-      Mu: 1
+      Mu: 0.93
       LateralGripScale: 0.9
       LongPeakSlip: 0.1
       LatPeakSlipDeg: 8

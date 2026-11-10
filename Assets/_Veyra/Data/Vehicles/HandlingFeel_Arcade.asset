@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: HandlingFeel_Arcade
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.HandlingFeel
   StyleName: Arcade
-  TuningVersion: 1
+  TuningVersion: 2
   SlideDamping: 2.2
   SlideDampingMaxG: 0.55
   YawTracking: 5
   YawTrackingMaxAccel: 6
   YawRateLimitG: 1.15
+  ReferenceMu: 1.05
+  ReferenceMass: 1500
+  AgilityRange: {x: 0.6, y: 1.15}
   DownforceG: 0.45
   DownforceRefKmh: 220
   DriftEnabled: 1

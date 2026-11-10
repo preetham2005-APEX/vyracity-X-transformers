@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
   DisplayName: Kiri '86
   BuildId: DL_kiri_86
-  TuningVersion: 4
+  TuningVersion: 6
   Layout: 0
   AwdFrontSplit: 0.4
   Wheelbase: 2.4589
@@ -30,8 +30,8 @@ MonoBehaviour:
       RestLength: 0.24
       Travel: 0.15
       SpringRate: 24883.436
-      BumpDamping: 1652.4663
-      ReboundDamping: 3304.9326
+      BumpDamping: 1533.2087
+      ReboundDamping: 3066.4175
       BumpStopRate: 129130.44
       AntiRollRate: 13773.913
       RollCentreHeight: 0.06
@@ -39,7 +39,7 @@ MonoBehaviour:
       Radius: 0.2858
       Width: 0.1868
       WheelInertia: 0.8997938
-      Mu: 1.05
+      Mu: 0.98
       LateralGripScale: 0.9
       LongPeakSlip: 0.1
       LatPeakSlipDeg: 8
@@ -59,8 +59,8 @@ MonoBehaviour:
       RestLength: 0.24
       Travel: 0.15
       SpringRate: 26544.053
-      BumpDamping: 1607.0026
-      ReboundDamping: 3214.0051
+      BumpDamping: 1491.0261
+      ReboundDamping: 2982.0522
       BumpStopRate: 129130.44
       AntiRollRate: 7747.826
       RollCentreHeight: 0.1
@@ -68,7 +68,7 @@ MonoBehaviour:
       Radius: 0.2858
       Width: 0.1868
       WheelInertia: 0.8997938
-      Mu: 1.05
+      Mu: 0.98
       LateralGripScale: 0.9
       LongPeakSlip: 0.1
       LatPeakSlipDeg: 8

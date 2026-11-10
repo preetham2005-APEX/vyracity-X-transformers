@@ -24,7 +24,9 @@ namespace VeyraCity.EditorTools
             importer.animationType = ModelImporterAnimationType.None;
             importer.importBlendShapes = false;
             importer.meshCompression = ModelImporterMeshCompression.Off;
-            importer.isReadable = false;
+            // Read/Write is left to the importing tool: drivable cars keep readable meshes for runtime dents
+            // (CarImportTools / CarDamage); a fresh model defaults to not readable.
+            if (importer.importSettingsMissing) importer.isReadable = false;
             importer.importNormals = ModelImporterNormals.Import;
             importer.importTangents = ModelImporterTangents.CalculateMikk;
             importer.materialImportMode = ModelImporterMaterialImportMode.ImportStandard;

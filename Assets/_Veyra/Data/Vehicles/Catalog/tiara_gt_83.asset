@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
   DisplayName: Tiara GT '83 Tuned
   BuildId: DL_tiara_gt_83
-  TuningVersion: 4
+  TuningVersion: 6
   Layout: 0
   AwdFrontSplit: 0.4
   Wheelbase: 2.3897
@@ -30,8 +30,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 45984.297
-      BumpDamping: 2155.8472
-      ReboundDamping: 4311.6943
+      BumpDamping: 2195.4075
+      ReboundDamping: 4390.815
       BumpStopRate: 155555.55
       AntiRollRate: 26962.963
       RollCentreHeight: 0.05
@@ -39,7 +39,7 @@ MonoBehaviour:
       Radius: 0.2755
       Width: 0.196
       WheelInertia: 0.83610666
-      Mu: 1.17
+      Mu: 1.04
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7
@@ -59,8 +59,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 49052.887
-      BumpDamping: 2139.5537
-      ReboundDamping: 4279.1074
+      BumpDamping: 2178.8147
+      ReboundDamping: 4357.6294
       BumpStopRate: 155555.55
       AntiRollRate: 15555.556
       RollCentreHeight: 0.09
@@ -68,7 +68,7 @@ MonoBehaviour:
       Radius: 0.2755
       Width: 0.196
       WheelInertia: 0.83610666
-      Mu: 1.17
+      Mu: 1.04
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7

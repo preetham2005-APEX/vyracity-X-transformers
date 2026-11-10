@@ -25,6 +25,11 @@ namespace VeyraCity.VehiclePhysics
         [Tooltip("Yaw-rate tracking gain toward the steered (bicycle-model) yaw rate, 1/s (0 = off)")] public float YawTracking = 5f;
         [Tooltip("Cap on the yaw tracking angular acceleration, rad/s²")] public float YawTrackingMaxAccel = 6f;
         [Tooltip("Steered yaw rate is limited to this many g of lateral acceleration")] public float YawRateLimitG = 1.15f;
+        [Tooltip("Tyre peak mu at which the yaw-rate limit is exactly YawRateLimitG; grippier tyres corner harder, a truck's less (iteration 5: one global cap made every car corner at 1.1 g)")]
+        public float ReferenceMu = 1.05f;
+        [Tooltip("Mass at which yaw tracking runs at its full gain; heavier cars turn in more slowly (gain × √(ref/mass), clamped)")]
+        public float ReferenceMass = 1500f;
+        [Tooltip("Clamp of the mass-based turn-in factor")] public Vector2 AgilityRange = new Vector2(0.6f, 1.15f);
 
         [Header("Stability at speed")]
         [Tooltip("Extra downforce at the reference speed, in g (grounded only)")] public float DownforceG = 0.45f;

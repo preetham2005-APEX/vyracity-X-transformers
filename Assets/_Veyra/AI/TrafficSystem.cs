@@ -14,9 +14,10 @@ namespace VeyraCity.AI
     /// </summary>
     public sealed class TrafficSystem : MonoBehaviour
     {
-        public int MaxCars = 36;
+        public int MaxCars = 64;
         [Range(0f, 2f)] public float Density = 1f;
-        public float SpawnMin = 140f, SpawnMax = 360f, DespawnDistance = 460f;
+        [Tooltip("Spawns closer than 220 m are only allowed outside the camera view (see TrySpawn)")]
+        public float SpawnMin = 55f, SpawnMax = 300f, DespawnDistance = 380f;
         public GameObject[] CarPrefabs = Array.Empty<GameObject>();
         public VehicleController PlayerCar;
         public NitroSystem PlayerNitro;
@@ -60,12 +61,40 @@ namespace VeyraCity.AI
                     cars.RemoveAt(i);
                 }
             }
+            lightTimer -= Time.deltaTime;
+            if (lightTimer <= 0f) { lightTimer = 0.3f; BudgetLights(focus); }
             spawnTimer -= Time.deltaTime;
             int target = Mathf.RoundToInt(MaxCars * Density);
             if (spawnTimer <= 0f && cars.Count < target)
             {
                 spawnTimer = 0.12f;
                 TrySpawn(focus);
+            }
+        }
+
+        [Tooltip("At night the nearest few traffic cars get real headlight/tail lights (pools on the road, GTA-style); the rest keep glows")]
+        public int RealLightBudget = 6;
+        public float RealLightRadius = 130f;
+        float lightTimer;
+        readonly List<(float d, CarLampFX l)> lightCandidates = new List<(float, CarLampFX)>();
+
+        void BudgetLights(Vector3 focus)
+        {
+            float night = WorldEnvironment.Instance != null ? WorldEnvironment.Instance.NightFactor : 0f;
+            lightCandidates.Clear();
+            foreach (var c in cars)
+            {
+                if (c == null || !c.TryGetComponent<CarLampFX>(out var l) || !l.HasLamps) continue;
+                l.RealLightsOn = false;
+                float d = (c.transform.position - focus).sqrMagnitude;
+                if (night > 0.05f && d < RealLightRadius * RealLightRadius) lightCandidates.Add((d, l));
+            }
+            lightCandidates.Sort((a, b) => a.d.CompareTo(b.d));
+            for (int i = 0; i < lightCandidates.Count && i < RealLightBudget; i++)
+            {
+                var l = lightCandidates[i].l;
+                if (!l.HasRealLights) l.AddRealLights();
+                l.RealLightsOn = true;
             }
         }
 
@@ -107,11 +136,23 @@ namespace VeyraCity.AI
 
         void TrySpawn(Vector3 focus)
         {
+            // Iteration 2: half the attempts go onto the player's own road, ahead or behind, so the street you are
+            // driving on has traffic (GTA keeps the player's road populated; uniform spawning spread cars over side streets).
+            bool onOwnRoad = WorldData.NearestRoad(focus, 30f, out var own);
             for (int attempt = 0; attempt < 6; attempt++)
             {
-                float ang = UnityEngine.Random.value * Mathf.PI * 2f;
-                float r = UnityEngine.Random.Range(SpawnMin, SpawnMax);
-                var probe = focus + new Vector3(Mathf.Cos(ang) * r, 0f, Mathf.Sin(ang) * r);
+                Vector3 probe;
+                if (onOwnRoad && attempt % 2 == 0)
+                {
+                    float ds = UnityEngine.Random.Range(90f, 260f) * (UnityEngine.Random.value < 0.6f ? 1f : -1f);
+                    probe = own.RoadPath.Path.PositionAt(own.S + ds);
+                }
+                else
+                {
+                    float ang = UnityEngine.Random.value * Mathf.PI * 2f;
+                    float r = UnityEngine.Random.Range(SpawnMin, SpawnMax);
+                    probe = focus + new Vector3(Mathf.Cos(ang) * r, 0f, Mathf.Sin(ang) * r);
+                }
                 if (!WorldData.NearestRoad(probe, 60f, out var hit)) continue;
                 var road = hit.RoadPath;
                 if (!TrafficClasses.Contains(road.Data.cls)) continue;
@@ -121,11 +162,12 @@ namespace VeyraCity.AI
                 if (cam != null)
                 {
                     var vp = cam.WorldToViewportPoint(hit.Point);
-                    if (vp.z > 0f && vp.x > -0.1f && vp.x < 1.1f && vp.y > -0.1f && vp.y < 1.1f && vp.z < 220f) continue;
+                    // in view: only far enough away that the haze softens the pop-in
+                    if (vp.z > 0f && vp.x > -0.1f && vp.x < 1.1f && vp.y > -0.1f && vp.y < 1.1f && vp.z < 140f) continue;
                 }
                 bool crowded = false;
                 foreach (var c in cars)
-                    if ((c.transform.position - hit.Point).sqrMagnitude < 30f * 30f) { crowded = true; break; }
+                    if ((c.transform.position - hit.Point).sqrMagnitude < 22f * 22f) { crowded = true; break; }
                 if (crowded) continue;
 
                 int dir = UnityEngine.Random.value < 0.5f ? 1 : -1;
@@ -170,6 +212,14 @@ namespace VeyraCity.AI
             var tc = go.GetComponent<TrafficCar>();
             if (tc == null) tc = go.AddComponent<TrafficCar>();
             tc.Id = ++nextId;
+            // Head/tail lamp glow at night; stopped or crawling cars show brake lights (GTA-style freeway light streams).
+            var lamps = go.GetComponent<CarLampFX>();
+            if (lamps == null)
+            {
+                lamps = go.AddComponent<CarLampFX>();
+                var car = tc;
+                lamps.Bind(() => car.Speed, () => car.Speed < 3f ? 1f : 0f, false);
+            }
             return tc;
         }
 

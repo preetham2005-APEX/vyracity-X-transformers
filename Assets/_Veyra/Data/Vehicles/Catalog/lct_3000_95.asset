@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
   DisplayName: LCT 3000 '95
   BuildId: DL_lct_3000_95
-  TuningVersion: 4
+  TuningVersion: 6
   Layout: 0
   AwdFrontSplit: 0.4
   Wheelbase: 3.3449
@@ -30,8 +30,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 142137.36
-      BumpDamping: 3324.2651
-      ReboundDamping: 6648.5303
+      BumpDamping: 5220
+      ReboundDamping: 10440
       BumpStopRate: 369863
       AntiRollRate: 64109.586
       RollCentreHeight: 0.05
@@ -39,7 +39,7 @@ MonoBehaviour:
       Radius: 0.3569
       Width: 0.2214
       WheelInertia: 1.4031743
-      Mu: 1.16
+      Mu: 0.8
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7
@@ -59,8 +59,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 151622.38
-      BumpDamping: 3299.1409
-      ReboundDamping: 6598.2817
+      BumpDamping: 5180.548
+      ReboundDamping: 10361.096
       BumpStopRate: 369863
       AntiRollRate: 36986.3
       RollCentreHeight: 0.09
@@ -68,7 +68,7 @@ MonoBehaviour:
       Radius: 0.3577
       Width: 0.44
       WheelInertia: 1.4094716
-      Mu: 1.18
+      Mu: 0.8
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7

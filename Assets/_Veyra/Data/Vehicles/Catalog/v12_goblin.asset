@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
   DisplayName: V12 Goblin
   BuildId: DL_v12_goblin
-  TuningVersion: 4
+  TuningVersion: 6
   Layout: 2
   AwdFrontSplit: 0.4
   Wheelbase: 2.6325
@@ -30,8 +30,8 @@ MonoBehaviour:
       RestLength: 0.22
       Travel: 0.13
       SpringRate: 84910.38
-      BumpDamping: 2971.5571
-      ReboundDamping: 5942.1035
+      BumpDamping: 3003.4531
+      ReboundDamping: 6005.885
       BumpStopRate: 153237.4
       AntiRollRate: 31464.748
       RollCentreHeight: 0.06
@@ -39,7 +39,7 @@ MonoBehaviour:
       Radius: 0.3484
       Width: 0.3694
       WheelInertia: 1.3371335
-      Mu: 1.24
+      Mu: 1.14
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7.5
@@ -59,8 +59,8 @@ MonoBehaviour:
       RestLength: 0.22
       Travel: 0.13
       SpringRate: 75175.21
-      BumpDamping: 2427.7825
-      ReboundDamping: 4856.5757
+      BumpDamping: 2453.8418
+      ReboundDamping: 4908.705
       BumpStopRate: 153237.4
       AntiRollRate: 25743.885
       RollCentreHeight: 0.09
@@ -68,7 +68,7 @@ MonoBehaviour:
       Radius: 0.3657
       Width: 0.3797
       WheelInertia: 1.4732229
-      Mu: 1.26
+      Mu: 1.14
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7.5

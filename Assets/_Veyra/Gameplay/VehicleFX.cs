@@ -28,6 +28,7 @@ namespace VeyraCity.Gameplay
         int[] lampSlots;
         float backfire, prevThrottle;
         static Material smokeMat, flameMat, sparkMat, trailMat;
+        MaterialPropertyBlock flameBlock;
         static Texture2D puff;
 
         void OnDestroy()
@@ -261,11 +262,8 @@ namespace VeyraCity.Gameplay
                 bool soft = w.Surface != null && (w.Surface.name.Contains("gravel") || w.Surface.name.Contains("dirt") || w.Surface.name.Contains("grass"));
                 var em = smoke[i].emission;
                 em.rateOverTime = intensity * (soft ? 30f : 55f);
-                if (soft)
-                {
-                    var main = smoke[i].main;
-                    main.startColor = new Color(0.55f, 0.47f, 0.36f, 1f);
-                }
+                var main = smoke[i].main;   // BUG-080: dust on soft ground, white smoke again back on tarmac
+                main.startColor = soft ? new Color(0.55f, 0.47f, 0.36f, 1f) : Color.white;
                 if (intensity > 0.15f && w.Grounded) lastMark[i] = SkidMarks.Add(w.ContactPoint, w.ContactNormal, car.Body.GetPointVelocity(w.ContactPoint), 0.24f, Mathf.Clamp01(intensity * 1.3f), lastMark[i]);
                 else lastMark[i] = -1;
             }
@@ -321,7 +319,10 @@ namespace VeyraCity.Gameplay
                 flames[i].localScale = f > 0.01f ? new Vector3(0.16f * Mathf.Sqrt(f), 0.45f * f * flick, 0.16f * Mathf.Sqrt(f)) : Vector3.zero;
                 flames[i].localPosition = new Vector3(flames[i].localPosition.x, flames[i].localPosition.y, -car.Definition.Chassis.Dimensions.z * 0.5f - 0.25f - 0.4f * f * flick);
             }
-            flameMat.SetColor("_BaseColor", new Color(fc.r, fc.g, fc.b, 0.85f));
+            // BUG-081: per-renderer colour (the flame material is shared by every car)
+            flameBlock ??= new MaterialPropertyBlock();
+            flameBlock.SetColor("_BaseColor", new Color(fc.r, fc.g, fc.b, 0.85f));
+            foreach (var fl in flames) fl.GetComponent<Renderer>().SetPropertyBlock(flameBlock);
             flameLight.color = fc;
             flameLight.intensity = f * 6f * flick;
             if (trails != null)

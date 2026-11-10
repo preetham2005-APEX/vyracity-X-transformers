@@ -325,6 +325,66 @@ MonoBehaviour:
     Model: {fileID: 3069012459976703521, guid: 351d7e1937ea4224e82a8915b0ba664a, type: 3}
     DefaultPaint: {r: 0.6, g: 0.62, b: 0.64, a: 1}
     Credit: '"Fairheaven LT ''80 Cop Cruiser - Low poly model" by Daniel Zhabotinsky (https://sketchfab.com/3d-models/fairheaven-lt-80-cop-cruiser-low-poly-model-61766c1e6e1e4b2b803c174f33433a74), licensed under CC-BY-4.0 (modified: brand badges removed, livery edited)'
+  - Id: ardente_furia
+    Name: Ardente Furia
+    Maker: Hypercar
+    Description: 'Plug-in hybrid track hypercar: a twin-turbo V8 and three electric motors.'
+    Price: 260000
+    UnlockLevel: 10
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 2e53e198ec2e50f46a098aa356c59bb8, type: 2}
+    Model: {fileID: 8299103853364397895, guid: 14efc491ba6487845a10d785065aeb96, type: 3}
+    DefaultPaint: {r: 0.76991147, g: 0.76991147, b: 0.76991147, a: 1}
+    Credit: '"2023 Ferrari SF90 XX Stradale" by Ddiaz Design (https://sketchfab.com/3d-models/2023-ferrari-sf90-xx-stradale-2c80c667232544649328cf3589921bcd), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: halcyon_regent
+    Name: Halcyon Regent
+    Maker: Luxury
+    Description: A silent V12 limousine that floats over Veyra's worst roads.
+    Price: 180000
+    UnlockLevel: 8
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 4fd373befb6575c4db50bbdc14719dea, type: 2}
+    Model: {fileID: 972384307103738761, guid: b815243ad830f4946b2705a17418b64b, type: 3}
+    DefaultPaint: {r: 0.6, g: 0.62, b: 0.64, a: 1}
+    Credit: '"Rolls Royce Ghost" by kurojishi (https://sketchfab.com/3d-models/rolls-royce-ghost-1f614e803fc24946b83bdc2dd9926d62), licensed under CC-BY-4.0'
+  - Id: nordvik_hex
+    Name: Nordvik Hex
+    Maker: Hypercar
+    Description: A four-seat hybrid hypercar with absurd torque from a standstill.
+    Price: 240000
+    UnlockLevel: 10
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: b72329977bfb61644a607185bfbf4090, type: 2}
+    Model: {fileID: 5642974659425533587, guid: 0b86bcf8e4e1199469a24c54c5c4e1f6, type: 3}
+    DefaultPaint: {r: 0.6, g: 0.62, b: 0.64, a: 1}
+    Credit: '"Free Koenigsegg Gemera" by Desiccated_Lemon (https://sketchfab.com/3d-models/free-koenigsegg-gemera-8bae74bd359940508717afb5c1f212a3), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: ashcombe_tempest
+    Name: Ashcombe Tempest
+    Maker: Grand tourer
+    Description: 'Twin-turbo V12 grand tourer: long legs, soft voice, hard shove.'
+    Price: 150000
+    UnlockLevel: 9
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: 325bf0ea737abdd4babd6b925d11a8a8, type: 2}
+    Model: {fileID: 8186957678994888960, guid: 9ff84dfbed4f05c4395cc8ba09929d6e, type: 3}
+    DefaultPaint: {r: 0.21568635, g: 0.3647063, b: 0.5372546, a: 1}
+    Credit: '"2017 Aston Martin DB11 [5.2L Twin-Turbo V12]" by Hari (https://sketchfab.com/3d-models/2017-aston-martin-db11-52l-twin-turbo-v12-936854ba7dde46f09a47d355d433808c), licensed under CC-BY-4.0 (modified: brand badges removed)'
+  - Id: stanton_sidewinder
+    Name: Stanton Sidewinder
+    Maker: Supercar
+    Description: Mid-engine V8 sports car. Sharp, light on its feet, loud.
+    Price: 90000
+    UnlockLevel: 7
+    Starter: 0
+    AIOnly: 0
+    Definition: {fileID: 11400000, guid: d924ab7d100593a41be01c235b04eb15, type: 2}
+    Model: {fileID: 9087173412457770741, guid: 82fc87f85550e6c49af160dcbf19e89f, type: 3}
+    DefaultPaint: {r: 0.7607845, g: 0.12941167, b: 0.10196062, a: 1}
+    Credit: '"2019 Chevrolet Corvette C8 Stingray" by Hari (https://sketchfab.com/3d-models/2019-chevrolet-corvette-c8-stingray-790c40ccff6843eab0b7b4bd18421ff8), licensed under CC-BY-4.0 (modified: brand badges removed)'
   Casual: {fileID: 11400000, guid: 0cbfe2966ec3c304cbce9a8f98d11b6c, type: 2}
   Advanced: {fileID: 11400000, guid: 3354b2b95d5c5b44db093fcef1f983b9, type: 2}
   AIPreset: {fileID: 11400000, guid: 5b3fca5049e01a94cbe6efed0749fd86, type: 2}
@@ -336,10 +396,6 @@ MonoBehaviour:
   Dirt: {fileID: 11400000, guid: 93fb28ce7d1cd954ab178802e0a64dd8, type: 2}
   PlaceholderBody: {fileID: 2100000, guid: c18169339c4bd6544916d0dd21a128d1, type: 2}
   PlaceholderWheel: {fileID: 2100000, guid: 99e3eb4682b217440b89c4ba045ea034, type: 2}
-  LitTemplate: {fileID: 2100000, guid: 68d28d03b064d764487894399aeaf303, type: 2}
-  UnlitAdditiveTemplate: {fileID: 2100000, guid: 8a72afab21d798f4d9cb938552c55d90, type: 2}
-  ParticleAlphaTemplate: {fileID: 2100000, guid: d34ff781524a6b349adde1cbacf03241, type: 2}
-  ParticleAdditiveTemplate: {fileID: 2100000, guid: 0baaf6bc68587e149b7c7b4cd5edd4fc, type: 2}
   TrafficModels:
   - {fileID: 6168426792548954957, guid: 9b79a3bb433ee2d4fa528c53980a46e0, type: 3}
   - {fileID: 8463552816452557645, guid: deb005e2b4389074ab27e1884027af21, type: 3}

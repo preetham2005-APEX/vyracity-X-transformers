@@ -85,6 +85,7 @@
   "wheels": 35936,
   "UCX_Body_faces": 220
  },
+ "lamps": {},
  "materials": {
   "body_one_mat": "paint",
   "body_two_mat": "trim",

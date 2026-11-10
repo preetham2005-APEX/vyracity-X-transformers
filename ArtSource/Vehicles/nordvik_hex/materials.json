@@ -1,0 +1,1050 @@
+{
+ "Back": {
+  "gltf": "Back",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Back_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "Back_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Black_Plastics_Interior_and_others": {
+  "gltf": "Black_Plastics_Interior_and_others",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Black_Plastics_Interior_and_others_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "Black_Plastics_Interior_and_others_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "interior"
+ },
+ "Carbon": {
+  "gltf": "Carbon",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Carbon_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "Carbon_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "Carbon_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Engine": {
+  "gltf": "Engine",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Engine_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "Engine_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "Engine_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Engine_Lines": {
+  "gltf": "Engine_Lines",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Engine_Lines_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "Engine_Lines_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Engine_sides": {
+  "gltf": "Engine_sides",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Engine_sides_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "Engine_sides_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "Engine_sides_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Exhaust": {
+  "gltf": "Exhaust",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Exhaust_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "Exhaust_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "HeadlightTail_light_Plastic": {
+  "gltf": "HeadlightTail_light_Plastic",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "HeadlightTail_light_Plastic_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "HeadlightTail_light_Plastic_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "light"
+ },
+ "HeadlightTail_light_metal": {
+  "gltf": "HeadlightTail_light_metal",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "HeadlightTail_light_metal_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "HeadlightTail_light_metal_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "light"
+ },
+ "Main_Body": {
+  "gltf": "Main_Body",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Main_Body_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "Main_Body_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "clearcoat": 1.0,
+  "clearcoatSmoothness": 0.96,
+  "role": "paint"
+ },
+ "Main_Body_Line": {
+  "gltf": "Main_Body_Line",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Main_Body_Line_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "Main_Body_Line_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "paint"
+ },
+ "Material": {
+  "gltf": "Material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.5,
+  "emissiveFactor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Material.001": {
+  "gltf": "Material.001",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Material.002": {
+  "gltf": "Material.002",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.5,
+  "emissiveFactor": [
+   1.0,
+   0.11011230500289859,
+   0.0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Material.003": {
+  "gltf": "Material.003",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.8,
+   0.8,
+   0.8,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 1.0,
+  "smoothness": 0.781818,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Material.004": {
+  "gltf": "Material.004",
+  "alphaMode": "MASK",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.8,
+   0.7841299664861082,
+   0.1745276178436442,
+   1.0
+  ],
+  "baseColorTex": {
+   "file": "Material.004_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.22330099999999997,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Tires": {
+  "gltf": "Tires",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Tires_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "Tires_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "tyre"
+ },
+ "Vents": {
+  "gltf": "Vents",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Vents_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "Vents_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "Vents_normal.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Windows": {
+  "gltf": "Windows",
+  "alphaMode": "BLEND",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.010299700791112492,
+   0.010299700791112492,
+   0.010299700791112492,
+   0.7743101581747022
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "glass"
+ },
+ "Yellow_Plastics_Interior_and_others": {
+  "gltf": "Yellow_Plastics_Interior_and_others",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Yellow_Plastics_Interior_and_others_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "Yellow_Plastics_Interior_and_others_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "interior"
+ },
+ "disk": {
+  "gltf": "disk",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "disk_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "disk_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "disk_circles": {
+  "gltf": "disk_circles",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "disk_circles_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "disk_circles_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "engine_Metals": {
+  "gltf": "engine_Metals",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "engine_Metals_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "engine_Metals_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "engine_plastic": {
+  "gltf": "engine_plastic",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "engine_plastic_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "engine_plastic_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ }
+}

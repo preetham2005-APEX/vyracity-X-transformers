@@ -1,0 +1,1428 @@
+{
+ "Alcantara": {
+  "gltf": "Alcantara",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Alcantara_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.047385376499999965,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Aluminium": {
+  "gltf": "Aluminium",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.694118,
+   0.717647,
+   0.67451,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.5,
+  "smoothness": 0.12825282819999995,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Black": {
+  "gltf": "Black",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Black_Metal": {
+  "gltf": "Black_Metal",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.005,
+   0.005,
+   0.005,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.0014999999999999458,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Body_Color": {
+  "gltf": "Body_Color",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.0382044,
+   0.10946199999999986,
+   0.2501579999999997,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 1.0,
+  "smoothness": 0.8,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "clearcoat": 1.0,
+  "clearcoatSmoothness": 0.95,
+  "role": "paint"
+ },
+ "Brake_Disc": {
+  "gltf": "Brake_Disc",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Brake_Disc_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.09853048659999997,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Brake_Lights": {
+  "gltf": "Brake_Lights",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Rear_Lights_Housing_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.17888543820000002,
+  "emissiveFactor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "emissiveTex": {
+   "file": "Rear_Lights_Housing_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "role": "light"
+ },
+ "Carpet": {
+  "gltf": "Carpet",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Carpet_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.13609964289999998,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Chassis": {
+  "gltf": "Chassis",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Chassis_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.18075738060000002,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Chrome": {
+  "gltf": "Chrome",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": null,
+  "metallic": 1.0,
+  "smoothness": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Dark_Metal": {
+  "gltf": "Dark_Metal",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.06301,
+   0.06301,
+   0.06301,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.011389522600000035,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Dashboard_Put_any_color_you_want_even_leather": {
+  "gltf": "Dashboard_Put_any_color_you_want_even_leather",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.0508761,
+   0.0508761,
+   0.0508761,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.011376241799999964,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Day_Lights": {
+  "gltf": "Day_Lights",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.22360679770000003,
+  "emissiveFactor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "emissiveTex": null,
+  "role": "light"
+ },
+ "Engine_Bay_White": {
+  "gltf": "Engine_Bay_White",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.694118,
+   0.717647,
+   0.67451,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.12825282819999995,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Engine_Yellow": {
+  "gltf": "Engine_Yellow",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.839216,
+   0.545098,
+   0.003922,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.10277043649999995,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Gauges": {
+  "gltf": "Gauges",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Gauges_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.18075738060000002,
+  "emissiveFactor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "emissiveTex": {
+   "file": "Gauges_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "role": "trim"
+ },
+ "Glass": {
+  "gltf": "Glass",
+  "alphaMode": "BLEND",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1.0,
+   1.0,
+   1.0,
+   0.1
+  ],
+  "baseColorTex": null,
+  "metallic": 1.0,
+  "smoothness": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "glass"
+ },
+ "Gray": {
+  "gltf": "Gray",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.29832867780000005,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Grille": {
+  "gltf": "Grille",
+  "alphaMode": "MASK",
+  "alphaCutoff": 0.6,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Badge_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.18075738060000002,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Headliner_any_color_you_want": {
+  "gltf": "Headliner_any_color_you_want",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "High_Beams": {
+  "gltf": "High_Beams",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Rear_Lights_Housing_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.18075738060000002,
+  "emissiveFactor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "emissiveTex": {
+   "file": "Rear_Lights_Housing_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "role": "trim"
+ },
+ "Hose_Clamps": {
+  "gltf": "Hose_Clamps",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.8,
+   0.8,
+   0.8,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.2039607805,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "light"
+ },
+ "Hoses": {
+  "gltf": "Hoses",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.18075738060000002,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Interior_Letterings_Buttons": {
+  "gltf": "Interior_Letterings_Buttons",
+  "alphaMode": "MASK",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Interior_Letterings_Buttons_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.18075738060000002,
+  "emissiveFactor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "emissiveTex": {
+   "file": "Interior_Letterings_Buttons_emissive.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "role": "interior"
+ },
+ "Interior_Trim": {
+  "gltf": "Interior_Trim",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Interior_Trim_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.30000000000000004,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "clearcoat": 1.0,
+  "clearcoatSmoothness": 0.96,
+  "role": "interior"
+ },
+ "Leather": {
+  "gltf": "Leather",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Leather_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.047385376499999965,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Left_Indicator__Blinker": {
+  "gltf": "Left_Indicator__Blinker",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Rear_Lights_Housing_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.1568561489,
+  "emissiveFactor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "emissiveTex": {
+   "file": "Rear_Lights_Housing_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "role": "trim"
+ },
+ "Lights_Glass": {
+  "gltf": "Lights_Glass",
+  "alphaMode": "BLEND",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.8,
+   0.8,
+   0.8,
+   0.1
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.19595917939999996,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "glass"
+ },
+ "Low_Beams": {
+  "gltf": "Low_Beams",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Rear_Lights_Housing_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.13951351189999994,
+  "emissiveFactor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "emissiveTex": {
+   "file": "Rear_Lights_Housing_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "role": "trim"
+ },
+ "Mirror": {
+  "gltf": "Mirror",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": null,
+  "metallic": 1.0,
+  "smoothness": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Misc": {
+  "gltf": "Misc",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Misc_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.18075738060000002,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Painted_Black": {
+  "gltf": "Painted_Black",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.25,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Rear_Lights_Housing": {
+  "gltf": "Rear_Lights_Housing",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Rear_Lights_Housing_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.18075738060000002,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "light"
+ },
+ "Reverse_Lights": {
+  "gltf": "Reverse_Lights",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Rear_Lights_Housing_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.06834038340000004,
+  "emissiveFactor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "emissiveTex": {
+   "file": "Rear_Lights_Housing_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "role": "light"
+ },
+ "Right_Indicator__Blinker": {
+  "gltf": "Right_Indicator__Blinker",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Rear_Lights_Housing_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.1568561489,
+  "emissiveFactor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "emissiveTex": {
+   "file": "Rear_Lights_Housing_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "role": "trim"
+ },
+ "Rim_White": {
+  "gltf": "Rim_White",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.694118,
+   0.717647,
+   0.67451,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.75,
+  "smoothness": 0.5,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "clearcoat": 1.0,
+  "clearcoatSmoothness": 0.96,
+  "role": "trim"
+ },
+ "Screen": {
+  "gltf": "Screen",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.5,
+  "emissiveFactor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "emissiveTex": {
+   "file": "Screen_emissive.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "role": "trim"
+ },
+ "Speedo_actually_RPM_Needle": {
+  "gltf": "Speedo_actually_RPM_Needle",
+  "alphaMode": "MASK",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Speedo_actually_RPM_Needle_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.18075738060000002,
+  "emissiveFactor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "emissiveTex": {
+   "file": "Speedo_actually_RPM_Needle_emissive.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "role": "trim"
+ },
+ "Splitter": {
+  "gltf": "Splitter",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.04198775540971957,
+   0.04198775540971957,
+   0.04198775540971957,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.18075738060000002,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Stitch": {
+  "gltf": "Stitch",
+  "alphaMode": "MASK",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Stitch_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.047385376499999965,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Stitch_2": {
+  "gltf": "Stitch_2",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Stitch_2_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.047385376499999965,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "Taillights": {
+  "gltf": "Taillights",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Rear_Lights_Housing_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.1568561489,
+  "emissiveFactor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "emissiveTex": {
+   "file": "Rear_Lights_Housing_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "role": "light"
+ },
+ "Tire_Sidewall": {
+  "gltf": "Tire_Sidewall",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Tire_Sidewall_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.13609964289999998,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "tyre"
+ },
+ "Tire_Treads": {
+  "gltf": "Tire_Treads",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "Tire_Treads_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.13609964289999998,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "tyre"
+ },
+ "Tire_Valve": {
+  "gltf": "Tire_Valve",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "tyre"
+ },
+ "material": {
+  "gltf": "material",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1.0,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "baseColorTex": null,
+  "metallic": 0.0,
+  "smoothness": 0.058222907899999954,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ }
+}

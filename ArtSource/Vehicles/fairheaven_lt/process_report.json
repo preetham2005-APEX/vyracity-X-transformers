@@ -88,6 +88,28 @@
   "wheels": 3448,
   "UCX_Body_faces": 142
  },
+ "lamps": {
+  "FL": [
+   -0.5849,
+   0.6808,
+   2.2482
+  ],
+  "FR": [
+   0.5846,
+   0.68,
+   2.2482
+  ],
+  "RL": [
+   -0.66,
+   0.6526,
+   -2.3543
+  ],
+  "RR": [
+   0.6596,
+   0.6517,
+   -2.3543
+  ]
+ },
  "materials": {
   "Fairheaven_LT80_Bodymat": "paint",
   "Numberplates_Misk_U": "plate",

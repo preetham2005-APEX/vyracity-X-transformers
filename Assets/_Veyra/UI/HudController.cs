@@ -93,7 +93,7 @@ namespace VeyraCity.UI
             Place(promptText.rectTransform, new Vector2(0.2f, 0.18f), new Vector2(0.8f, 0.26f));
             districtText = UIKit.Text(root, "District", "", 40, TextAnchor.MiddleCenter, UIKit.Accent, FontStyle.Bold);
             Place(districtText.rectTransform, new Vector2(0.2f, 0.86f), new Vector2(0.8f, 0.94f));
-            toastLayer = UIKit.Rect(root, "Toasts", new Vector2(0.3f, 0.30f), new Vector2(0.7f, 0.66f));
+            toastLayer = UIKit.Rect(root, "Toasts", new Vector2(0.3f, 0.585f), new Vector2(0.7f, 0.70f));   // above the car, under the drift chain (iteration 4: they covered the car)
 
             BuildMinimap();
         }
@@ -252,7 +252,7 @@ namespace VeyraCity.UI
         public void ShowToast(string text, Color color, float seconds = 2.2f)
         {
             if (toastLayer == null) return;
-            var t = UIKit.Text(toastLayer, "Toast", text, 40, TextAnchor.MiddleCenter, color, FontStyle.Bold);
+            var t = UIKit.Text(toastLayer, "Toast", text, 34, TextAnchor.MiddleCenter, color, FontStyle.Bold);
             t.rectTransform.anchorMin = new Vector2(0f, 0f);
             t.rectTransform.anchorMax = new Vector2(1f, 0f);
             t.rectTransform.sizeDelta = new Vector2(0f, 54f);
@@ -284,7 +284,7 @@ namespace VeyraCity.UI
                 t.Life -= dt;
                 int idx = toasts.Count - 1 - i;
                 var rt = t.Text.rectTransform;
-                rt.anchoredPosition = Vector2.Lerp(rt.anchoredPosition, new Vector2(0f, 30f + idx * 56f), dt * 10f);
+                rt.anchoredPosition = Vector2.Lerp(rt.anchoredPosition, new Vector2(0f, 24f + idx * 44f), dt * 10f);
                 var c = t.Text.color;
                 c.a = Mathf.Clamp01(t.Life * 2f);
                 t.Text.color = c;

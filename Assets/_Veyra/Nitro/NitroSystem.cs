@@ -253,7 +253,7 @@ namespace VeyraCity.Nitro
             if (c.WantsReverse || c.Brake > 0.2f) { ExtraThrust = 0f; return; }
 
             int m = (int)(Mode == NitroMode.Off ? lastMode : Mode);
-            float mul = 1f + (TorqueMul[m] - 1f) * PowerMultiplier;
+            float mul = Mathf.Min(1f + (TorqueMul[m] - 1f) * PowerMultiplier, 2.5f);   // BUG-084: cap the boost torque
             c.Throttle = Mathf.Max(c.Throttle, BoostScalar);
             c.TorqueScale = (c.TorqueScale > 0f ? c.TorqueScale : 1f) * Mathf.Lerp(1f, mul, BoostScalar);
             float v = Mathf.Max(0f, vehicle.State.ForwardSpeed);

@@ -8,14 +8,23 @@ import sys
 import numpy as np
 
 a = sys.argv[sys.argv.index("--") + 1:]
-out, cols, div, files = a[0], int(a[1]), int(a[2]), a[3:]
+out, cols, div, files = a[0], int(a[1]), a[2], a[3:]
+# <scale_div> is an integer downscale, or "WxH" to resample every tile to a fixed size (mixed-size inputs)
+fixed = tuple(int(v) for v in div.split("x")) if "x" in div else None
 tiles = []
 for f in files:
     im = bpy.data.images.load(f)
     w, h = im.size
     px = np.empty(w * h * 4, dtype=np.float32)
     im.pixels.foreach_get(px)
-    px = px.reshape(h, w, 4)[::div, ::div]
+    px = px.reshape(h, w, 4)
+    if fixed:
+        ys = (np.arange(fixed[1]) * h / fixed[1]).astype(int)
+        xs = (np.arange(fixed[0]) * w / fixed[0]).astype(int)
+        px = px[ys][:, xs]
+        px[..., 3] = 1.0
+    else:
+        px = px[::int(div), ::int(div)]
     tiles.append(px)
     bpy.data.images.remove(im)
 th, tw = tiles[0].shape[:2]

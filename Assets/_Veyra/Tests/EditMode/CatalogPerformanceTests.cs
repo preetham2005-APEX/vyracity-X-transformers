@@ -55,5 +55,84 @@ namespace VeyraCity.Tests
             Debug.Log("[Catalog]\n" + sb);
             Assert.AreEqual(0, failures, "cars too slow (0-100 over 16 s) or braking over 60 m:\n" + sb);
         }
+
+        /// <summary>
+        /// Cornering of every car (Arcade feel, Casual assists, flat dry asphalt), compared against the arcade references:
+        /// skidpad lateral grip from a slow full-lock ramp at 80 km/h (GTA V sports cars hold roughly 1.1–1.3 g, Asphalt's
+        /// cars more; real road cars 0.85–1.05 g), turn-in time to 90 % of the steady yaw rate after a 30 % step at 100 km/h
+        /// (arcade target well under 0.5 s), and whether a full-lock ramp spins the car (it must not with Casual assists).
+        /// Writes Logs/A8/handling_benchmark.txt.
+        /// </summary>
+        [Test]
+        public void EveryCar_Corners_TurnsIn_AndStaysPointed()
+        {
+            var db = AssetDatabase.LoadAssetAtPath<GameDatabase>("Assets/_Veyra/Data/GameDatabase.asset");
+            var preset = AssetDatabase.LoadAssetAtPath<AssistPreset>("Assets/_Veyra/Data/Assists/Casual.asset");
+            var surface = AssetDatabase.LoadAssetAtPath<SurfaceDefinition>("Assets/_Veyra/Data/Surfaces/dry_asphalt.asset");
+            if (db == null || preset == null || surface == null) Assert.Ignore("data assets missing");
+            var sb = new StringBuilder("car | kg | skidpad g @80 | slip deg at peak | spun | turn-in 90% s @100 | steady yaw deg/s | lift-off g @180\n");
+            int failures = 0;
+            foreach (var c in db.Cars)
+            {
+                if (c.Definition == null) continue;
+                float peakG = 0f, slipAtPeak = 0f, maxSlip = 0f;
+                using (var h = VehicleTestHarness.Create(c.Definition, preset, surface, 100f, db.Feel))
+                {
+                    h.Settle();
+                    h.Vehicle.ForceForwardSpeed(80f / 3.6f);
+                    float t0 = h.Time;
+                    h.Script.Policy = v => new DriverIntent
+                    {
+                        Steer = Mathf.Clamp01((h.Time - t0) / 5f),
+                        Throttle = Mathf.Clamp01((80f - v.State.SpeedKmh) / 10f + 0.3f),
+                    };
+                    int n = h.StepsFor(6f);
+                    for (int i = 0; i < n; i++)
+                    {
+                        h.Step();
+                        var st = h.Vehicle.State;
+                        maxSlip = Mathf.Max(maxSlip, Mathf.Abs(st.SlipAngleDeg));
+                        if (Mathf.Abs(st.LateralG) > peakG) { peakG = Mathf.Abs(st.LateralG); slipAtPeak = st.SlipAngleDeg; }
+                    }
+                }
+                bool spun = maxSlip > 35f;
+                float turnIn = -1f, steadyYaw;
+                using (var h = VehicleTestHarness.Create(c.Definition, preset, surface, 100f, db.Feel))
+                {
+                    h.Settle();
+                    h.Vehicle.ForceForwardSpeed(100f / 3.6f);
+                    h.Script.Policy = v => new DriverIntent { Steer = 0.3f, Throttle = Mathf.Clamp01((100f - v.State.SpeedKmh) / 10f + 0.3f) };
+                    float t0 = h.Time;
+                    var yaw = new System.Collections.Generic.List<(float t, float y)>();
+                    int n = h.StepsFor(2.5f);
+                    for (int i = 0; i < n; i++) { h.Step(); yaw.Add((h.Time - t0, Mathf.Abs(h.Vehicle.State.YawRate))); }
+                    steadyYaw = 0f;
+                    int k0 = yaw.Count * 4 / 5;
+                    for (int i = k0; i < yaw.Count; i++) steadyYaw += yaw[i].y;
+                    steadyYaw /= Mathf.Max(1, yaw.Count - k0);
+                    foreach (var (t, y) in yaw) if (y >= 0.9f * steadyYaw) { turnIn = t; break; }
+                }
+                // Lift-off: coast from 180 km/h for one second (BUG-079: drag-limited cars braked at 0.4 g).
+                float liftG;
+                using (var h = VehicleTestHarness.Create(c.Definition, preset, surface, 100f, db.Feel))
+                {
+                    h.Settle();
+                    h.Vehicle.ForceForwardSpeed(180f / 3.6f);
+                    h.Script.Policy = v => new DriverIntent();
+                    h.Step(h.StepsFor(0.2f));
+                    float v0 = h.Vehicle.State.Speed;
+                    h.Step(h.StepsFor(1f));
+                    liftG = (v0 - h.Vehicle.State.Speed) / 9.81f;
+                }
+                bool truck = c.Definition.Chassis.Mass > 3000f;
+                bool bad = (!truck && liftG > 0.3f) || spun || (!truck && (peakG < 0.75f || peakG > 1.7f)) || turnIn < 0f || turnIn > 0.9f;
+                if (bad) failures++;
+                sb.AppendLine($"{c.Id} | {c.Definition.Chassis.Mass:0} | {peakG:0.00} | {slipAtPeak:0.0} | {(spun ? "SPUN" : "no")} | {turnIn:0.00} | {steadyYaw * Mathf.Rad2Deg:0.0} | {liftG:0.00}{(bad ? "  <-- out of band" : "")}");
+            }
+            Directory.CreateDirectory("Logs/A8");
+            File.WriteAllText("Logs/A8/handling_benchmark.txt", sb.ToString());
+            Debug.Log("[Handling]\n" + sb);
+            Assert.AreEqual(0, failures, "cars outside the arcade handling band:\n" + sb);
+        }
     }
 }

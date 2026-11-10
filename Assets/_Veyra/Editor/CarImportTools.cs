@@ -141,6 +141,9 @@ namespace VeyraCity.EditorTools
             var imp = (ModelImporter)AssetImporter.GetAtPath(fbxAsset);
             imp.materialImportMode = ModelImporterMaterialImportMode.ImportStandard;
             imp.materialLocation = ModelImporterMaterialLocation.InPrefab;
+            // Drivable cars keep CPU-readable meshes for CarDamage dents; traffic-only models do not need them.
+            var roleList = m["roles"]?.Select(x => (string)x).ToList() ?? new List<string> { "player" };
+            imp.isReadable = roleList.Contains("player");
             foreach (var kv in remap)
                 imp.AddRemap(new AssetImporter.SourceAssetIdentifier(typeof(Material), kv.Key), kv.Value);
             imp.SaveAndReimport();
@@ -155,6 +158,24 @@ namespace VeyraCity.EditorTools
             string prefabPath = $"{dst}/{id}.prefab";
             var inst = (GameObject)PrefabUtility.InstantiatePrefab(model);
             SetupLods(inst);
+            // Lamp anchors from the Blender step (real head/tail lamp centres), used by CarLampFX for glows and trails.
+            // Models without lamp materials get positions estimated from the body size.
+            var dims = (JArray)report["dimensions"];
+            float W = (float)dims[0], H = (float)dims[1], Lz = (float)dims[2];
+            var lampTable = report["lamps"] as JObject;
+            foreach (var key in new[] { "FL", "FR", "RL", "RR" })
+            {
+                Vector3 p;
+                if (lampTable != null && lampTable[key] is JArray a) p = new Vector3((float)a[0], (float)a[1], (float)a[2]);
+                else
+                {
+                    bool front = key[0] == 'F', left = key[1] == 'L';
+                    p = new Vector3((left ? -1f : 1f) * W * (front ? 0.33f : 0.35f), H * (front ? 0.48f : 0.58f), (front ? 1f : -1f) * (Lz * 0.5f - 0.15f));
+                }
+                var anchor = new GameObject("Lamp_" + key).transform;
+                anchor.SetParent(inst.transform, false);
+                anchor.localPosition = p;
+            }
             var prefab = PrefabUtility.SaveAsPrefabAsset(inst, prefabPath);
             UnityEngine.Object.DestroyImmediate(inst);
 
@@ -255,12 +276,14 @@ namespace VeyraCity.EditorTools
             {
                 // Car paint: a glossy base under a clear coat (Complex Lit), so the body reflects the city.
                 if (ms == null) mat.SetFloat("_Smoothness", Mathf.Max(0.55f, smooth));
+                mat.SetFloat("_ClearCoat", 1f);   // BUG-078: the toggle property must agree with the keyword
                 mat.EnableKeyword("_CLEARCOAT");
                 mat.SetFloat("_ClearCoatMask", Mathf.Clamp01((float?)e["clearcoat"] ?? 1f));
                 mat.SetFloat("_ClearCoatSmoothness", Mathf.Clamp((float?)e["clearcoatSmoothness"] ?? 0.92f, 0.85f, 0.98f));
             }
             else if (clearcoat)
             {
+                mat.SetFloat("_ClearCoat", 1f);
                 mat.EnableKeyword("_CLEARCOAT");
                 mat.SetFloat("_ClearCoatMask", Mathf.Clamp01((float)e["clearcoat"]));
                 mat.SetFloat("_ClearCoatSmoothness", Mathf.Clamp01((float?)e["clearcoatSmoothness"] ?? 0.9f));
@@ -355,11 +378,14 @@ namespace VeyraCity.EditorTools
         {
             float[] h = { 0.30f, 0.10f, 0.012f };
             var lods = new List<LOD>();
+            // BUG-088: wheels and calipers belong to every level, so they are culled with the body at the far end.
+            var parts = root.GetComponentsInChildren<Renderer>(true)
+                .Where(r => !r.name.StartsWith("Body_LOD") && !r.name.StartsWith("UCX_") && !r.name.StartsWith("UBX_")).ToList();
             for (int i = 0; i < 3; i++)
             {
                 var body = root.GetComponentsInChildren<Transform>(true).FirstOrDefault(t => t.name == "Body_LOD" + i);
                 if (body == null) continue;
-                lods.Add(new LOD(h[i], body.GetComponentsInChildren<Renderer>(true)));
+                lods.Add(new LOD(h[i], body.GetComponentsInChildren<Renderer>(true).Concat(parts).ToArray()));
             }
             if (lods.Count == 0) return;
             var g = root.GetComponent<LODGroup>();
@@ -403,9 +429,11 @@ namespace VeyraCity.EditorTools
             foreach (bool front in new[] { true, false })
             {
                 var axle = front ? def.Front : def.Rear;
+                // Spring ∝ mass keeps the ride frequency; critical damping 2√(k·m) is then ∝ mass too, so dampers
+                // scale linearly to keep the template's damping ratio (BUG-077: √ scaling left heavy cars bouncy).
                 axle.Suspension.SpringRate *= massRatio;
-                axle.Suspension.BumpDamping *= Mathf.Sqrt(massRatio);
-                axle.Suspension.ReboundDamping *= Mathf.Sqrt(massRatio);
+                axle.Suspension.BumpDamping *= massRatio;
+                axle.Suspension.ReboundDamping *= massRatio;
                 axle.Suspension.AntiRollRate *= massRatio;
                 axle.Suspension.BumpStopRate *= massRatio;
                 axle.Tyre.NominalLoad *= massRatio;
@@ -414,6 +442,14 @@ namespace VeyraCity.EditorTools
             def.Brakes.MaxTorque *= massRatio;
             // Body drag: boxy classics, vans and trucks push far more air than the template (top speed follows).
             def.Aero.DragArea *= (float?)m["dragScale"] ?? 1f;
+            // Tyre grip by car class (iteration 5, GTA V / Asphalt class spread): trucks ~0.8, old sedans ~0.93, muscle ~0.98,
+            // sports/GT ~1.05, supercars 1.14, hypercars 1.2. The arcade yaw-rate cap scales with it (HandlingFeel.ReferenceMu).
+            if (m["tyreMu"] != null)
+            {
+                float mu = (float)m["tyreMu"];
+                def.Front.Tyre.Mu = mu;
+                def.Rear.Tyre.Mu = mu;
+            }
             float ts = (float?)m["torqueScale"] ?? 1f;
             if (Mathf.Abs(ts - 1f) > 1e-3f)
             {
@@ -421,15 +457,27 @@ namespace VeyraCity.EditorTools
                 for (int i = 0; i < c.Length; i++) c[i].y *= ts;
                 def.Engine.TorqueCurve = c;
             }
+            // Top speed by gearing (BUG-079): the final drive is set so the limiter in top gear is reached at topSpeedKmh,
+            // instead of inflating the body drag (which braked the car at 0.4 g on lift-off at speed).
+            if (m["topSpeedKmh"] != null && def.Gearbox.Ratios != null && def.Gearbox.Ratios.Length > 0)
+            {
+                float vTop = (float)m["topSpeedKmh"] / 3.6f;
+                float top = def.Gearbox.Ratios[def.Gearbox.Ratios.Length - 1];
+                float r = def.Rear.Tyre.Radius;
+                def.Gearbox.FinalDrive = Mathf.Clamp(def.Engine.LimiterRpm * 2f * Mathf.PI * r / (60f * vTop * Mathf.Max(0.3f, top)), 2f, 6.5f);
+            }
             // Height of the centre of mass follows the body height (tall vans and trucks roll more).
             def.Chassis.CoMHeight = Mathf.Clamp(baseDef.Chassis.CoMHeight * def.Chassis.Dimensions.y / Mathf.Max(0.8f, baseDef.Chassis.Dimensions.y), 0.38f, 0.95f);
             var existing = AssetDatabase.LoadAssetAtPath<VehicleDefinition>(defPath);
             if (existing != null)
             {
+                // BUG-089: bump the tuning version only when the tuning actually changed.
                 int version = existing.TuningVersion;
+                def.TuningVersion = version;
+                string before = existing.TuningHash();
                 EditorUtility.CopySerialized(def, existing);
                 existing.name = id;
-                existing.TuningVersion = version + 1;
+                existing.TuningVersion = existing.TuningHash() == before ? version : version + 1;
                 UnityEngine.Object.DestroyImmediate(def);
                 EditorUtility.SetDirty(existing);
                 return existing;

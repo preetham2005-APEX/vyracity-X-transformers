@@ -1,0 +1,1368 @@
+{
+ "brake_light_glass_shad": {
+  "gltf": "brake_light_glass_shad",
+  "alphaMode": "BLEND",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1.0,
+   1.0,
+   1.0,
+   0.13385748713271423
+  ],
+  "baseColorTex": {
+   "file": "brake_light_glass_shad_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "brake_light_glass_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "light_glass_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "glass"
+ },
+ "brake_shad": {
+  "gltf": "brake_shad",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "brake_shad_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "brake_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "brake_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "ext_chrome_shad": {
+  "gltf": "ext_chrome_shad",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "ext_chrome_shad_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.8535638965150845,
+  "msTex": {
+   "file": "ext_chrome_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "ext_chrome_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "ext_gloss_shad": {
+  "gltf": "ext_gloss_shad",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "ext_gloss_shad_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "ext_gloss_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "ext_gloss_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "ext_light_shad": {
+  "gltf": "ext_light_shad",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "ext_light_shad_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "ext_light_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "ext_light_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "light"
+ },
+ "ext_matte_shad": {
+  "gltf": "ext_matte_shad",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "ext_matte_shad_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "ext_matte_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "ext_matte_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "extra_light_glass_shad": {
+  "gltf": "extra_light_glass_shad",
+  "alphaMode": "BLEND",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "extra_light_glass_shad_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "extra_light_glass_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "extra_light_glass_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "glass"
+ },
+ "hdlight_inner_chrome_shad": {
+  "gltf": "hdlight_inner_chrome_shad",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "hdlight_inner_chrome_shad_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.6837525757603675,
+  "msTex": {
+   "file": "hdlight_inner_chrome_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "hdlight_inner_chrome_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "light"
+ },
+ "hdlight_inner_glass_shad": {
+  "gltf": "hdlight_inner_glass_shad",
+  "alphaMode": "BLEND",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1.0,
+   1.0,
+   1.0,
+   0.5929769839880601
+  ],
+  "baseColorTex": {
+   "file": "hdlight_inner_glass_shad_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.8661425128672857,
+  "msTex": {
+   "file": "hdlight_inner_glass_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "hdlight_inner_glass_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "glass"
+ },
+ "headlight_beam_shad": {
+  "gltf": "headlight_beam_shad",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "headlight_beam_shad_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.5390984877100531,
+  "msTex": {
+   "file": "headlight_beam_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "headlight_beam_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0.0,
+   1.0,
+   1.0
+  ],
+  "emissiveTex": null,
+  "role": "light"
+ },
+ "int_blocking_shad": {
+  "gltf": "int_blocking_shad",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "int_blocking_shad_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "int_blocking_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "int_blocking_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "light_glass_shad": {
+  "gltf": "light_glass_shad",
+  "alphaMode": "BLEND",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "baseColorTex": {
+   "file": "light_glass_shad_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 1.0,
+  "msTex": {
+   "file": "light_glass_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "light_glass_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "glass"
+ },
+ "mirror_glass_shad": {
+  "gltf": "mirror_glass_shad",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "mirror_glass_shad_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 1.0,
+  "msTex": {
+   "file": "mirror_glass_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "mirror_glass_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "glass"
+ },
+ "primary_paint_shad": {
+  "gltf": "primary_paint_shad",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "primary_paint_shad_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "primary_paint_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "primary_paint_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "paint"
+ },
+ "rim_shad": {
+  "gltf": "rim_shad",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "rim_shad_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 1.0,
+  "msTex": {
+   "file": "rim_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "rim_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "secondary_paint_shad": {
+  "gltf": "secondary_paint_shad",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "secondary_paint_shad_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "secondary_paint_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "secondary_paint_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ },
+ "small_light_shad": {
+  "gltf": "small_light_shad",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "small_light_shad_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "small_light_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "small_light_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "emissiveTex": {
+   "file": "small_light_shad_emissive.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "role": "light"
+ },
+ "tailight_int_chrome_shad": {
+  "gltf": "tailight_int_chrome_shad",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "tailight_int_chrome_shad_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 1.0,
+  "msTex": {
+   "file": "tailight_int_chrome_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "tailight_int_chrome_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "light"
+ },
+ "tailight_red_strip_shad": {
+  "gltf": "tailight_red_strip_shad",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "tailight_red_strip_shad_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.0,
+  "smoothness": 0.9541928273326946,
+  "msTex": {
+   "file": "tailight_red_strip_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "tailight_red_strip_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "emissiveTex": {
+   "file": "tailight_red_strip_shad_emissive.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "role": "light"
+ },
+ "tailinght_inner_glass_shad": {
+  "gltf": "tailinght_inner_glass_shad",
+  "alphaMode": "BLEND",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "tailinght_inner_glass_shad_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "tailinght_inner_glass_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "tailinght_inner_glass_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "glass"
+ },
+ "wheel_rubber_shad": {
+  "gltf": "wheel_rubber_shad",
+  "alphaMode": "OPAQUE",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "wheel_rubber_shad_baseColor.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 0.30995811606353185,
+  "smoothness": 0.0,
+  "msTex": {
+   "file": "wheel_rubber_shad_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "wheel_rubber_shad_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "tyre"
+ },
+ "windshield_shad1": {
+  "gltf": "windshield_shad1",
+  "alphaMode": "BLEND",
+  "alphaCutoff": 0.5,
+  "doubleSided": true,
+  "baseColorFactor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "baseColorTex": {
+   "file": "windshield_shad1_baseColor.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "metallic": 1.0,
+  "smoothness": 1.0,
+  "msTex": {
+   "file": "windshield_shad1_metallicRoughness_MS.png",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalTex": {
+   "file": "windshield_shad1_normal.jpeg",
+   "tiling": [
+    1,
+    1
+   ],
+   "offset": [
+    0,
+    0
+   ],
+   "texCoord": 0,
+   "rotation": 0
+  },
+  "normalScale": 1.0,
+  "emissiveFactor": [
+   0,
+   0,
+   0
+  ],
+  "emissiveTex": null,
+  "role": "trim"
+ }
+}

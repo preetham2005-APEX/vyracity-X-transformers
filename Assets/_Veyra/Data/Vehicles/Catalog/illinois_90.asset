@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
   DisplayName: Illinois '90
   BuildId: DL_illinois_90
-  TuningVersion: 4
+  TuningVersion: 6
   Layout: 0
   AwdFrontSplit: 0.4
   Wheelbase: 2.8554
@@ -30,8 +30,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 70279.03
-      BumpDamping: 2337.5151
-      ReboundDamping: 4675.0303
+      BumpDamping: 2581
+      ReboundDamping: 5162
       BumpStopRate: 182876.72
       AntiRollRate: 31698.63
       RollCentreHeight: 0.05
@@ -39,7 +39,7 @@ MonoBehaviour:
       Radius: 0.322
       Width: 0.2378
       WheelInertia: 1.1421686
-      Mu: 1.16
+      Mu: 0.94
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7
@@ -59,8 +59,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 74968.84
-      BumpDamping: 2319.8486
-      ReboundDamping: 4639.6973
+      BumpDamping: 2561.4932
+      ReboundDamping: 5122.9863
       BumpStopRate: 182876.72
       AntiRollRate: 18287.672
       RollCentreHeight: 0.09
@@ -68,7 +68,7 @@ MonoBehaviour:
       Radius: 0.322
       Width: 0.2378
       WheelInertia: 1.1421686
-      Mu: 1.18
+      Mu: 0.94
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7

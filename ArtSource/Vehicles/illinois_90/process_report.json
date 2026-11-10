@@ -88,6 +88,28 @@
   "wheels": 3244,
   "UCX_Body_faces": 196
  },
+ "lamps": {
+  "FL": [
+   -0.6706,
+   0.657,
+   2.2605
+  ],
+  "FR": [
+   0.6706,
+   0.657,
+   2.2605
+  ],
+  "RL": [
+   -0.6847,
+   0.6643,
+   -2.3958
+  ],
+  "RR": [
+   0.6847,
+   0.6643,
+   -2.3958
+  ]
+ },
  "materials": {
   "Illinois90_Bodymat": "paint",
   "Numberplates_Misk_U": "plate",

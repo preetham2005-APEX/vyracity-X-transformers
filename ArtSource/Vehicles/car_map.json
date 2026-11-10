@@ -16,7 +16,8 @@
    "level": 10,
    "mass": 1420,
    "torqueScale": 1.12,
-   "description": "Mid-engine V12 with a wedge nose. The fastest thing in Veyra."
+   "description": "Mid-engine V12 with a wedge nose. The fastest thing in Veyra.",
+   "tyreMu": 1.14
   },
   {
    "id": "iron_howl",
@@ -34,7 +35,9 @@
    "torqueScale": 1.3,
    "paint": "body_one",
    "description": "Raw supercharged V8 muscle. Loud, wide and loose at the rear.",
-   "dragScale": 2.8
+   "dragScale": 1.3,
+   "tyreMu": 0.98,
+   "topSpeedKmh": 252
   },
   {
    "id": "orion_skylark",
@@ -53,7 +56,8 @@
    "paint": "body_one",
    "description": "Long-tailed 60s-style grand tourer with twin fins. Fast and stable at speed.",
    "flip": "1",
-   "dragScale": 1.0
+   "dragScale": 1.0,
+   "tyreMu": 1.06
   },
   {
    "id": "coupe_33_hotrod_1",
@@ -71,7 +75,9 @@
    "mass": 1080,
    "torqueScale": 0.95,
    "description": "Chopped 1930s coupe with a big-block heart. Light and lively.",
-   "dragScale": 3.0
+   "dragScale": 1.6,
+   "tyreMu": 0.9,
+   "topSpeedKmh": 208
   },
   {
    "id": "coupe_33_hotrod_2",
@@ -89,7 +95,9 @@
    "mass": 1100,
    "torqueScale": 1.0,
    "description": "The second build of the '33: more motor, more attitude.",
-   "dragScale": 3.0
+   "dragScale": 1.6,
+   "tyreMu": 0.9,
+   "topSpeedKmh": 208
   },
   {
    "id": "phoenix_455",
@@ -107,7 +115,8 @@
    "mass": 1620,
    "torqueScale": 0.92,
    "description": "Early-70s muscle coupe with a 455 big block.",
-   "dragScale": 1.2
+   "dragScale": 1.2,
+   "tyreMu": 0.98
   },
   {
    "id": "tiara_gt_83",
@@ -125,7 +134,8 @@
    "mass": 1120,
    "torqueScale": 0.62,
    "description": "Tuned 80s rear-drive coupe. Easy to drift.",
-   "dragScale": 1.0
+   "dragScale": 1.0,
+   "tyreMu": 1.04
   },
   {
    "id": "lasley_67",
@@ -143,7 +153,8 @@
    "mass": 720,
    "torqueScale": 0.42,
    "description": "Tiny 60s city car with rally lamps. Slow on paper, a menace in traffic.",
-   "dragScale": 1.1
+   "dragScale": 1.1,
+   "tyreMu": 0.92
   },
   {
    "id": "bokaroo_67",
@@ -161,7 +172,8 @@
    "mass": 1750,
    "torqueScale": 0.56,
    "description": "Late-60s two-door off-roader on big tyres. Tall, tough and happy on dirt.",
-   "dragScale": 1.6
+   "dragScale": 1.6,
+   "tyreMu": 0.9
   },
   {
    "id": "doutrive_78",
@@ -180,7 +192,8 @@
    "mass": 1850,
    "torqueScale": 0.47,
    "description": "Late-70s coupe utility: a V8 car up front, a pickup bed at the back.",
-   "dragScale": 1.3
+   "dragScale": 1.3,
+   "tyreMu": 0.93
   },
   {
    "id": "kiri_86",
@@ -198,7 +211,8 @@
    "mass": 990,
    "torqueScale": 0.95,
    "description": "Light 80s rear-drive sedan. Simple, honest and easy to slide.",
-   "dragScale": 1.0
+   "dragScale": 1.0,
+   "tyreMu": 0.98
   },
   {
    "id": "riverside_88",
@@ -217,7 +231,8 @@
    "mass": 1450,
    "torqueScale": 0.75,
    "description": "Late-80s front-drive sedan. Comfortable and forgiving.",
-   "dragScale": 1.1
+   "dragScale": 1.1,
+   "tyreMu": 0.93
   },
   {
    "id": "lct_3000_95",
@@ -236,7 +251,8 @@
    "mass": 3600,
    "torqueScale": 0.44,
    "description": "Mid-90s cab-over box truck. Slow, heavy, unstoppable.",
-   "dragScale": 6.0
+   "dragScale": 6.0,
+   "tyreMu": 0.8
   },
   {
    "id": "shvan_92",
@@ -255,7 +271,8 @@
    "mass": 2200,
    "torqueScale": 0.41,
    "description": "Early-90s V8 cargo van. Plenty of room, not much grip.",
-   "dragScale": 2.0
+   "dragScale": 2.0,
+   "tyreMu": 0.86
   },
   {
    "id": "illinois_90",
@@ -274,7 +291,8 @@
    "mass": 1780,
    "torqueScale": 0.42,
    "description": "Full-size 90s V8 sedan.",
-   "dragScale": 1.3
+   "dragScale": 1.3,
+   "tyreMu": 0.94
   },
   {
    "id": "fairheaven_lt",
@@ -293,7 +311,8 @@
    "mass": 1830,
    "torqueScale": 0.38,
    "description": "Boxy full-size 80s sedan. Built like a tank.",
-   "dragScale": 1.4
+   "dragScale": 1.4,
+   "tyreMu": 0.94
   },
   {
    "id": "negotiator_80",
@@ -312,7 +331,8 @@
    "mass": 1760,
    "torqueScale": 0.39,
    "description": "Early-80s family sedan with a lazy V8.",
-   "dragScale": 1.3
+   "dragScale": 1.3,
+   "tyreMu": 0.94
   },
   {
    "id": "canyon_75_taxi",
@@ -331,7 +351,8 @@
    "mass": 1850,
    "torqueScale": 0.34,
    "description": "A cab that has seen everything Veyra has to offer.",
-   "dragScale": 1.6
+   "dragScale": 1.6,
+   "tyreMu": 0.93
   },
   {
    "id": "fairheaven_cop",
@@ -351,7 +372,8 @@
    "mass": 1850,
    "torqueScale": 0.5,
    "description": "Retired police interceptor with the heavy-duty package.",
-   "dragScale": 1.3
+   "dragScale": 1.3,
+   "tyreMu": 0.98
   },
   {
    "id": "generic_compact",
@@ -477,6 +499,284 @@
    "roles": [
     "traffic"
    ]
+  },
+  {
+   "id": "ardente_furia",
+   "src": "Ferrari_SF90_XX_Stradale_2c80c667.zip",
+   "name": "Ardente Furia",
+   "maker": "Hypercar",
+   "length": 4.7,
+   "realBrand": "Ferrari",
+   "strip": "BadgeA,ManufacturerPlate,TexturedA",
+   "paint": "paint_material",
+   "blank": [
+    {
+     "tex": "Wheel1A",
+     "rect": [
+      0.0,
+      0.0,
+      0.24,
+      0.37
+     ]
+    },
+    {
+     "tex": "Wheel1A",
+     "ring": [
+      0.5,
+      0.5,
+      0.29,
+      0.43
+     ]
+    }
+   ],
+   "roles": [
+    "player"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Castellan_Vento_R.asset",
+   "price": 260000,
+   "level": 10,
+   "mass": 1560,
+   "torqueScale": 1.15,
+   "dragScale": 1.0,
+   "description": "Plug-in hybrid track hypercar: a twin-turbo V8 and three electric motors.",
+   "forceLength": true,
+   "tyreMu": 1.2
+  },
+  {
+   "id": "halcyon_regent",
+   "src": "Rolls_Royce_Ghost_Luxury_1f614e80.zip",
+   "name": "Halcyon Regent",
+   "maker": "Luxury",
+   "length": 5.55,
+   "realBrand": "Rolls-Royce",
+   "paint": "primary_paint",
+   "blank": [
+    {
+     "tex": "rim_shad",
+     "rect": [
+      0.08,
+      0.66,
+      0.32,
+      0.9
+     ]
+    },
+    {
+     "tex": "rim_shad",
+     "rect": [
+      0.08,
+      0.24,
+      0.32,
+      0.48
+     ]
+    },
+    {
+     "tex": "brake_shad",
+     "rect": [
+      0.68,
+      0.08,
+      0.97,
+      0.36
+     ]
+    }
+   ],
+   "roles": [
+    "player"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Volkhart_4S.asset",
+   "price": 180000,
+   "level": 8,
+   "mass": 2450,
+   "torqueScale": 1.45,
+   "dragScale": 1.25,
+   "description": "A silent V12 limousine that floats over Veyra's worst roads.",
+   "stripBox": [
+    [
+     -0.12,
+     -2.85,
+     0.88,
+     0.12,
+     -2.3,
+     1.35
+    ]
+   ],
+   "tyreMu": 1.0
+  },
+  {
+   "id": "nordvik_hex",
+   "src": "Koenigsegg_Gemera_Hypercar_8bae74bd.zip",
+   "name": "Nordvik Hex",
+   "maker": "Hypercar",
+   "length": 4.98,
+   "realBrand": "Koenigsegg",
+   "strip": "koenigsegg",
+   "paint": "main_body",
+   "roles": [
+    "player"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Castellan_Vento_R.asset",
+   "price": 240000,
+   "level": 10,
+   "mass": 1850,
+   "torqueScale": 1.35,
+   "dragScale": 1.05,
+   "description": "A four-seat hybrid hypercar with absurd torque from a standstill.",
+   "flip": "1",
+   "forceLength": true,
+   "blank": [
+    {
+     "tex": "Tires_baseColor",
+     "rect": [
+      0.0,
+      0.72,
+      0.3,
+      0.95
+     ]
+    }
+   ],
+   "tyreMu": 1.2
+  },
+  {
+   "id": "ashcombe_tempest",
+   "src": "Aston_Martin_DB11_V12_Luxury_936854ba.zip",
+   "name": "Ashcombe Tempest",
+   "maker": "Grand tourer",
+   "length": 4.74,
+   "realBrand": "Aston Martin",
+   "strip": "badge,signature,license_plate,stickers",
+   "paint": "body_color",
+   "blank": [
+    {
+     "tex": "Tire_Sidewall",
+     "full": true
+    },
+    {
+     "tex": "Chassis_baseColor",
+     "rect": [
+      0.36,
+      0.2,
+      0.64,
+      0.33
+     ]
+    }
+   ],
+   "roles": [
+    "player"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Marlowe_Sovereign.asset",
+   "price": 150000,
+   "level": 9,
+   "mass": 1770,
+   "torqueScale": 1.1,
+   "dragScale": 1.0,
+   "description": "Twin-turbo V12 grand tourer: long legs, soft voice, hard shove.",
+   "stripBox": [
+    [
+     -0.16,
+     -2.5,
+     0.5,
+     0.16,
+     -2.0,
+     0.95
+    ]
+   ],
+   "stripFaces": [
+    {
+     "box": [
+      -0.3,
+      1.7,
+      0.6,
+      0.3,
+      2.5,
+      1.2
+     ],
+     "mats": [
+      "light",
+      "lamp",
+      "brake",
+      "badge",
+      "chrome",
+      "black",
+      "metal",
+      "alumin",
+      "misc",
+      "gray"
+     ]
+    }
+   ],
+   "tyreMu": 1.06
+  },
+  {
+   "id": "stanton_sidewinder",
+   "src": "Chevrolet_Corvette_C8_Stingray_790c40cc.zip",
+   "name": "Stanton Sidewinder",
+   "maker": "Supercar",
+   "length": 4.63,
+   "realBrand": "Chevrolet",
+   "strip": "badges,interior_badge,engine_decals,license_plate",
+   "paint": "body_color",
+   "blank": [
+    {
+     "tex": "Tire_Sidewall",
+     "full": true
+    },
+    {
+     "tex": "Misc_baseColor",
+     "rect": [
+      0.43,
+      0.67,
+      0.65,
+      0.77
+     ]
+    },
+    {
+     "tex": "Misc_baseColor",
+     "rect": [
+      0.7,
+      0.8,
+      0.9,
+      0.98
+     ]
+    },
+    {
+     "tex": "material_baseColor",
+     "rect": [
+      0.0,
+      0.0,
+      0.26,
+      0.36
+     ]
+    },
+    {
+     "tex": "material_baseColor",
+     "rect": [
+      0.7,
+      0.02,
+      1.0,
+      0.4
+     ]
+    },
+    {
+     "tex": "material_baseColor",
+     "ring": [
+      0.5,
+      0.5,
+      0.33,
+      0.47
+     ]
+    }
+   ],
+   "roles": [
+    "player"
+   ],
+   "baseDef": "Assets/_Veyra/Data/Vehicles/Catalog/Marlowe_Sovereign.asset",
+   "price": 90000,
+   "level": 7,
+   "mass": 1530,
+   "torqueScale": 1.0,
+   "dragScale": 1.0,
+   "description": "Mid-engine V8 sports car. Sharp, light on its feet, loud.",
+   "forceLength": true,
+   "tyreMu": 1.14
   }
  ]
 }

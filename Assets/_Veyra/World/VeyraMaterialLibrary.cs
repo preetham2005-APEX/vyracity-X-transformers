@@ -94,6 +94,9 @@ namespace VeyraCity.World
         FxParticleAlpha = 1003,
         /// <summary>URP/Particles/Unlit additive (nitro flame and trails, sparks, speed streaks).</summary>
         FxParticleAdditive = 1004,
+        /// <summary>Veyra/SkyDome: clouds, haze, stars and moon over the skybox (visual iteration 5; keys 1050–1059 belong to the
+        /// vehicle/visual session; built by Veyra/Materials/Build Sky Dome, SkyDomeMaterial.cs).</summary>
+        SkyDome = 1050,
 
         // Debug (1100–1199)
         /// <summary>URP/Unlit opaque white, for runtime debug geometry.</summary>

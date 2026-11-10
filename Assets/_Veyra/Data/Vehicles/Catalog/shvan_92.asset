@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
   DisplayName: Shvan '92
   BuildId: DL_shvan_92
-  TuningVersion: 4
+  TuningVersion: 6
   Layout: 0
   AwdFrontSplit: 0.4
   Wheelbase: 3.1353
@@ -30,8 +30,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 86861.72
-      BumpDamping: 2598.6978
-      ReboundDamping: 5197.3955
+      BumpDamping: 3190
+      ReboundDamping: 6380
       BumpStopRate: 226027.39
       AntiRollRate: 39178.082
       RollCentreHeight: 0.05
@@ -39,7 +39,7 @@ MonoBehaviour:
       Radius: 0.3507
       Width: 0.2625
       WheelInertia: 1.3548464
-      Mu: 1.16
+      Mu: 0.86
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7
@@ -59,8 +59,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 92658.12
-      BumpDamping: 2579.0571
-      ReboundDamping: 5158.1143
+      BumpDamping: 3165.8904
+      ReboundDamping: 6331.781
       BumpStopRate: 226027.39
       AntiRollRate: 22602.74
       RollCentreHeight: 0.09
@@ -68,7 +68,7 @@ MonoBehaviour:
       Radius: 0.3507
       Width: 0.2625
       WheelInertia: 1.354846
-      Mu: 1.18
+      Mu: 0.86
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7

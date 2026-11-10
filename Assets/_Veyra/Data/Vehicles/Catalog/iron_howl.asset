@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.VehicleDefinition
   DisplayName: Iron Howl V8
   BuildId: DL_iron_howl
-  TuningVersion: 4
+  TuningVersion: 6
   Layout: 0
   AwdFrontSplit: 0.4
   Wheelbase: 3.1039
@@ -30,8 +30,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 56147.34
-      BumpDamping: 2130.7024
-      ReboundDamping: 4261.405
+      BumpDamping: 2144.4934
+      ReboundDamping: 4288.987
       BumpStopRate: 151948.05
       AntiRollRate: 26337.662
       RollCentreHeight: 0.05
@@ -39,7 +39,7 @@ MonoBehaviour:
       Radius: 0.3798
       Width: 0.3146
       WheelInertia: 1.5890164
-      Mu: 1.1
+      Mu: 0.98
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7
@@ -59,8 +59,8 @@ MonoBehaviour:
       RestLength: 0.2
       Travel: 0.12
       SpringRate: 59894.125
-      BumpDamping: 2114.5989
-      ReboundDamping: 4229.1978
+      BumpDamping: 2128.2856
+      ReboundDamping: 4256.5713
       BumpStopRate: 151948.05
       AntiRollRate: 15194.806
       RollCentreHeight: 0.09
@@ -68,7 +68,7 @@ MonoBehaviour:
       Radius: 0.3798
       Width: 0.3146
       WheelInertia: 1.5890164
-      Mu: 1.12
+      Mu: 0.98
       LateralGripScale: 0.92
       LongPeakSlip: 0.09
       LatPeakSlipDeg: 7
@@ -108,7 +108,7 @@ MonoBehaviour:
     - 1.08
     - 0.9
     ReverseRatio: 3.2
-    FinalDrive: 3.9
+    FinalDrive: 4.9242225
     Efficiency: 0.9
     ShiftTime: 0.18
     ShiftUpRpm: 7500
@@ -123,6 +123,6 @@ MonoBehaviour:
     Ackermann: 0.4
     RateDegPerSec: 400
   Aero:
-    DragArea: 2.1839998
+    DragArea: 1.0139999
     DownforceArea: 0.2
     FrontDownforceShare: 0.42

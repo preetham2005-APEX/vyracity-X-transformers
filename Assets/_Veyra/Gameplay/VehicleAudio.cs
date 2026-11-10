@@ -104,7 +104,14 @@ namespace VeyraCity.Gameplay
             boost.volume = pBoost * 0.5f * mv;
         }
 
-        float Noise() => (float)(rng.NextDouble() * 2.0 - 1.0);
+        // BUG-085: the PCM read callbacks run on audio threads; System.Random is not thread-safe, so each thread
+        // gets its own generator.
+        [System.ThreadStatic] static System.Random threadRng;
+        static float Noise()
+        {
+            threadRng ??= new System.Random(System.Threading.Thread.CurrentThread.ManagedThreadId * 7919 + 17);
+            return (float)(threadRng.NextDouble() * 2.0 - 1.0);
+        }
 
         void EngineRead(float[] data)
         {
