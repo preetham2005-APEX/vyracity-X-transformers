@@ -16,7 +16,7 @@ namespace VeyraCity.Testing
 {
     /// <summary>
     /// Card V0 runtime test runner, active only with <c>-autotest</c>:
-    /// <code>VeyraCity.exe -autotest &lt;seconds, 0 = until the route is complete&gt; -route &lt;name&gt; -statsPath &lt;file&gt; [-timeOfDay &lt;h&gt;] [-quality &lt;name&gt;] [-reviewCapture]</code>
+    /// <code>VeyraCity.exe -autotest &lt;seconds, 0 = until the route is complete&gt; -route &lt;name&gt; -statsPath &lt;file&gt; [-timeOfDay &lt;h&gt;] [-quality &lt;name&gt;] [-vsync 0|1] [-reviewCapture]</code>
     /// Enters free roam (no traffic), binds a <see cref="RouteAutopilot"/> to the Arden Kite, drives every segment of the route
     /// (each starts with a teleport onto the drivable surface at target speed), collects frame, memory, log and vehicle metrics,
     /// writes stats.json and quits. Frames in the 2 s after a teleport are reported separately (teleport_windows).
@@ -30,6 +30,8 @@ namespace VeyraCity.Testing
             public float Seconds;
             public string Route = "R_SMOKE", StatsPath, Quality, ReviewDir, ReviewFilter;
             public float TimeOfDay = float.NaN;
+            /// <summary>-vsync 0|1 (card L1/V1: perf numbers need a VSync-off run for headroom); -1 keeps the game setting.</summary>
+            public int VSync = -1;
 
             public static Options Parse(string[] a)
             {
@@ -44,6 +46,7 @@ namespace VeyraCity.Testing
                         case "-statspath": if (next != null) { o.StatsPath = next; i++; } break;
                         case "-timeofday": if (TryF(next, out var h)) { o.TimeOfDay = Mathf.Repeat(h, 24f); i++; } break;
                         case "-quality": if (next != null) { o.Quality = next; i++; } break;
+                        case "-vsync": if (TryF(next, out var vs)) { o.VSync = vs > 0.5f ? 1 : 0; i++; } break;
                         case "-reviewcapture": o.ReviewCapture = true; break;
                         case "-reviewdir": if (next != null) { o.ReviewDir = next; i++; } break;
                         case "-reviewfilter": if (next != null) { o.ReviewFilter = next; i++; } break;
@@ -141,6 +144,11 @@ namespace VeyraCity.Testing
                 int qi = Array.FindIndex(QualitySettings.names, n => n.Equals(opts.Quality, StringComparison.OrdinalIgnoreCase));
                 if (qi >= 0) QualitySettings.SetQualityLevel(qi, true);
                 else Debug.LogWarning($"[AutoTest] unknown quality level '{opts.Quality}'; keeping {QualitySettings.names[QualitySettings.GetQualityLevel()]}");
+            }
+            if (opts.VSync >= 0)
+            {
+                QualitySettings.vSyncCount = opts.VSync;
+                Application.targetFrameRate = -1;
             }
             report.time_of_day = float.IsNaN(opts.TimeOfDay) ? route.DefaultTimeOfDay : opts.TimeOfDay;
             var driver = gf.BeginAutomatedFreeRoam(report.time_of_day);

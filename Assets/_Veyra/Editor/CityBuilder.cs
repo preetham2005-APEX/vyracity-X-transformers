@@ -137,16 +137,9 @@ namespace VeyraCity.EditorTools
                 rd.renderingMode = RenderingMode.ForwardPlus;
                 EditorUtility.SetDirty(rd);
             }
-            foreach (var guid in AssetDatabase.FindAssets("t:UniversalRenderPipelineAsset"))
-            {
-                var a = AssetDatabase.LoadAssetAtPath<UniversalRenderPipelineAsset>(AssetDatabase.GUIDToAssetPath(guid));
-                if (a == null) continue;
-                a.supportsHDR = true;
-                a.shadowDistance = 160f;
-                a.shadowCascadeCount = 4;
-                a.msaaSampleCount = 4;
-                EditorUtility.SetDirty(a);
-            }
+            // Card L1 / BUG-045: the URP assets belong to the quality tiers (VeyraQualityTiers); the city build no longer
+            // overwrites every asset with one set of values.
+            Debug.Log(VeyraQualityTiers.Apply());
         }
 
         // ------------------------------------------------------------------------------- database

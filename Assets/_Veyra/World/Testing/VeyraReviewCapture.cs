@@ -37,6 +37,14 @@ namespace VeyraCity.Testing
             bool autotest = Array.Exists(a, x => x.Equals("-autotest", StringComparison.OrdinalIgnoreCase));
             if (!capture || autotest) return; // with -autotest the test runner calls CaptureAll after its route
             Application.runInBackground = true;
+            // Card L1: "-quality PC_Medium" captures the cameras on another quality tier.
+            string q = Arg(a, "-quality");
+            if (!string.IsNullOrEmpty(q))
+            {
+                int qi = Array.FindIndex(QualitySettings.names, n => n.Equals(q, StringComparison.OrdinalIgnoreCase));
+                if (qi >= 0) QualitySettings.SetQualityLevel(qi, true);
+                else Debug.LogWarning($"[ReviewCapture] unknown quality level '{q}'");
+            }
             var c = Begin(Arg(a, "-reviewDir"), Arg(a, "-reviewCard") ?? "review", Arg(a, "-reviewFilter"), quitWhenDone: true);
             c.times = ParseTimes(Arg(a, "-reviewTimes"));
         }
