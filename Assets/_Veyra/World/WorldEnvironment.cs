@@ -49,6 +49,9 @@ namespace VeyraCity.World
         public List<EmissiveEntry> Emissives = new List<EmissiveEntry>();
         public List<WetEntry> WetSurfaces = new List<WetEntry>();
         [Tooltip("Water materials whose normal map scrolls")] public List<Material> ScrollMaterials = new List<Material>();
+        [Tooltip("Global wind for the Veyra shaders (_VC_WindStrength 0–1, _VC_WindDirection); vegetation and rain lean with it")]
+        public float WindStrength = 0.3f;
+        public Vector3 WindDirection = new Vector3(-1f, 0f, 0.25f);
         public int StreetLightCount = 28;
         public float StreetLightRadius = 260f;
         public float StreetLightRange = 26f;
@@ -60,6 +63,8 @@ namespace VeyraCity.World
         public float NightFactor { get; private set; }
         /// <summary>0 = dry, 1 = soaked; ramps over ~20 s when the weather changes.</summary>
         public float Wetness { get; private set; }
+        /// <summary>0 = no rain, 1 = full rain; ramps over ~8 s (drives the rain ripples of the Veyra road shader).</summary>
+        public float RainIntensity { get; private set; }
         public event Action<WeatherKind> WeatherChanged;
 
         Light[] pool;
@@ -89,6 +94,8 @@ namespace VeyraCity.World
             }
             Wetness = Weather == WeatherKind.Rain ? 1f : 0f;
             Cloudiness = Weather == WeatherKind.Clear ? 0f : 1f;
+            RainIntensity = Weather == WeatherKind.Rain ? 1f : 0f;
+            VeyraGlobals.Invalidate();
             Apply(true);
         }
 
@@ -129,6 +136,7 @@ namespace VeyraCity.World
                 float target = Weather == WeatherKind.Rain ? 1f : 0f;
                 Wetness = Mathf.MoveTowards(Wetness, target, Time.deltaTime / (target > Wetness ? 20f : 90f));
                 Cloudiness = Mathf.MoveTowards(Cloudiness, Weather == WeatherKind.Clear ? 0f : 1f, Time.deltaTime / 25f);
+                RainIntensity = Mathf.MoveTowards(RainIntensity, Weather == WeatherKind.Rain ? 1f : 0f, Time.deltaTime / 8f);
                 if (AutoWeather)
                 {
                     weatherTimer -= Time.deltaTime;
@@ -143,7 +151,13 @@ namespace VeyraCity.World
             Apply(false);
             float tt = Application.isPlaying ? Time.time : 0f;
             foreach (var m in ScrollMaterials)
-                if (m != null) m.SetTextureOffset(BumpMapId, new Vector2(tt * 0.011f, tt * 0.007f));
+            {
+                if (m == null) continue;
+                m.SetTextureOffset(BumpMapId, new Vector2(tt * 0.011f, tt * 0.007f));
+#if UNITY_EDITOR
+                if (!Application.isPlaying) UnityEditor.EditorUtility.ClearDirty(m); // BUG-039: preview only
+#endif
+            }
         }
 
         /// <summary>
@@ -221,6 +235,8 @@ namespace VeyraCity.World
             }
 
             ApplyMaterials(NightFactor, golden, Wetness);
+            float rain = Application.isPlaying ? RainIntensity : (Weather == WeatherKind.Rain ? 1f : 0f);
+            VeyraGlobals.Apply(TimeOfDay, Wetness, rain, WindStrength, WindDirection, Sun != null ? -Sun.transform.forward : Vector3.up);
 
             if (Application.isPlaying)
             {
@@ -255,6 +271,17 @@ namespace VeyraCity.World
                 w.Material.SetFloat(SmoothId, Mathf.Lerp(w.DrySmoothness, w.WetSmoothness, wetness));
                 w.Material.SetColor(BaseColorId, Color.Lerp(w.DryColor, w.DryColor * 0.55f, wetness));
             }
+#if UNITY_EDITOR
+            // BUG-039: in Edit mode these writes are a preview only. Clearing the dirty flag keeps every save path (Editor saves,
+            // batch builds, quitting) from writing the preview into the .mat files; the assets on disk never change.
+            if (!Application.isPlaying)
+            {
+                if (SkyboxMaterial != null) UnityEditor.EditorUtility.ClearDirty(SkyboxMaterial);
+                foreach (var e in Emissives) if (e.Material != null) UnityEditor.EditorUtility.ClearDirty(e.Material);
+                foreach (var w in WetSurfaces) if (w.Material != null) UnityEditor.EditorUtility.ClearDirty(w.Material);
+                foreach (var m in ScrollMaterials) if (m != null) UnityEditor.EditorUtility.ClearDirty(m);
+            }
+#endif
         }
 
         void UpdateLightPool(bool force)

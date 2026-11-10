@@ -384,6 +384,7 @@ namespace VeyraCity.EditorTools
             d["lamp_pole"] = Mat("Lamp_Pole", new Color(0.18f, 0.19f, 0.2f), 0.45f, 0.7f, null, null, null, null, null, true);
             d["lamp_head"] = Mat("Lamp_Head", new Color(0.95f, 0.92f, 0.85f), 0.6f, 0f, null, null, null, null, new Color(6f, 5.4f, 4.2f), true);
             d["lamp_sodium"] = Mat("Lamp_Sodium", Hex("#FFAA00"), 0.6f, 0f, null, null, null, null, Hex("#FFAA00") * 6f, true);
+            VeyraPalette.OverrideCityMaterials(d); // card F2: palette materials replace the blockout ones they cover
             AssetDatabase.SaveAssets();
             return d;
         }

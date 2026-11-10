@@ -20,6 +20,21 @@ namespace VeyraCity.World
     {
         None = 0,
 
+        // Road (100–199): Veyra/Road shader (card F2a)
+        RoadAsphaltNew = 100,
+        RoadAsphaltWorn = 101,
+        RoadAsphaltPatched = 102,
+        RoadConcreteDeck = 103,
+        RoadCobblestone = 104,
+        RoadGravel = 105,
+        RoadDirt = 106,
+        RoadMarkingWhite = 110,
+        RoadMarkingYellow = 111,
+
+        // Sidewalk (200–299): Veyra/Road shader (card F2a)
+        SidewalkConcrete = 200,
+        SidewalkKerbGranite = 201,
+
         // Vehicle (900–999)
         VehiclePlaceholderBody = 900,
         VehiclePlaceholderWheel = 901,
