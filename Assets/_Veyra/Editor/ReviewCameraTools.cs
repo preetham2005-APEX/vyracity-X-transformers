@@ -69,7 +69,9 @@ namespace VeyraCity.EditorTools
                 // no building footprint within 3 m of the sight line (world_building_placements.csv).
                 Fixed("CAM_16_WH_Street_Day", "D5", new Vector3(-2146.5f, 1.7f, -650f), true, new Vector3(-2160f, 19f, -500f), 64f, D, "Laurel Street at Westhaven Plaza (BUG-056)"),
                 Fixed("CAM_17_FA_Dragway_Aerial", "D7", new Vector3(2500f, 120f, -1100f), false, new Vector3(2900f, 8f, -600f), 45f, D),
-                Fixed("CAM_18_RV_MirrorLake_Morning", "D8", new Vector3(-2950f, 3f, 1800f), true, new Vector3(-2950f, 160f, 2600f), 55f, ReviewCameraSet.TimeLabel.Morning, "at VP-08"),
+                // BUG-057: VP-08 (registry X, Z kept) lies 50 m behind a 147.1 m shore rim; at Appendix E's +3 m (eye 146.9 m) the rim hides
+                // the lake (surface 143.6 m, MirrorLake.cs). +8 m clears the rim from z ≈ 1900; aimed down over the lake to the far shore.
+                Fixed("CAM_18_RV_MirrorLake_Morning", "D8", new Vector3(-2950f, 8f, 1800f), true, new Vector3(-2950f, 146f, 2150f), 55f, ReviewCameraSet.TimeLabel.Morning, "at VP-08, raised over the shore rim (BUG-057)"),
             };
         }
 

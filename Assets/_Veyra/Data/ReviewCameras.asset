@@ -305,9 +305,9 @@ MonoBehaviour:
   - name: CAM_18_RV_MirrorLake_Morning
     kind: 0
     district: D8
-    position: {x: -2950, y: 3, z: 1800}
+    position: {x: -2950, y: 8, z: 1800}
     heightAboveGround: 1
-    lookAt: {x: -2950, y: 160, z: 2600}
+    lookAt: {x: -2950, y: 146, z: 2150}
     roadId: 
     distanceAlongRoad_m: 0
     direction: 1
@@ -318,4 +318,4 @@ MonoBehaviour:
     time: 4
     hour: 7.5
     wet: 0
-    note: at VP-08
+    note: at VP-08, raised over the shore rim (BUG-057)

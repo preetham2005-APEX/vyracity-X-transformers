@@ -18,6 +18,7 @@ namespace VeyraCity.EditorTools
         {
             var proto = GrassPrefab(gen);
             WorldData.EnsureLoaded();
+            var lake = MirrorLake.LoadOrNull(); // BUG-057: no grass on the submerged Mirror Lake bed
             int planted = 0;
             foreach (var t in worldRoot.GetComponentsInChildren<Terrain>())
             {
@@ -43,6 +44,7 @@ namespace VeyraCity.EditorTools
                         float nx = (x + 0.5f) / DetailRes, ny = (y + 0.5f) / DetailRes;
                         float hgt = td.GetInterpolatedHeight(nx, ny) + t.transform.position.y;
                         if (hgt < 0.6f || td.GetSteepness(nx, ny) > 32f) continue;
+                        if (MirrorLake.IsLakeBed(lake, t.transform.position.x + nx * td.size.x, t.transform.position.z + ny * td.size.z, hgt)) continue;
                         int ax = Mathf.Min(td.alphamapWidth - 1, (int)(nx * td.alphamapWidth)), ay = Mathf.Min(td.alphamapHeight - 1, (int)(ny * td.alphamapHeight));
                         float g = am[ay, ax, 0] + am[ay, ax, 7] * 0.9f + am[ay, ax, 1] * 0.35f + am[ay, ax, 6] * 0.3f;
                         int n = Mathf.RoundToInt(Mathf.Clamp01(g) * 9f);

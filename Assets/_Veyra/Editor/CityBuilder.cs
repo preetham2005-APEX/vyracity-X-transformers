@@ -877,6 +877,7 @@ namespace VeyraCity.EditorTools
             // River and lake surfaces from the district GLBs.
             var root = new GameObject("InlandWater").transform;
             root.SetParent(worldRoot, false);
+            var lake = MirrorLake.LoadOrNull(); // BUG-057: Mirror Lake from lake_polygon at the outflow's elevation
             foreach (var file in Directory.GetFiles(Path.Combine(SourceDir, "meshes"), "*.vmesh").OrderBy(f => f))
             {
                 using (var br = new BinaryReader(File.OpenRead(file)))
@@ -898,10 +899,14 @@ namespace VeyraCity.EditorTools
                         bool inland = false;
                         foreach (var v in pos) if (v.y > 0.6f) { inland = true; break; }
                         if (!inland) continue;
-                        var mesh = new Mesh { name = "Water_" + Path.GetFileNameWithoutExtension(file) + "_" + p, indexFormat = vc > 65000 ? IndexFormat.UInt32 : IndexFormat.UInt16 };
-                        mesh.SetVertices(pos.Select(v => v + Vector3.up * 0.05f).ToList());
-                        mesh.SetUVs(0, pos.Select(v => new Vector2(v.x, v.z)).ToList());
-                        mesh.SetTriangles(idx, 0);
+                        var verts = pos.Select(v => v + Vector3.up * MirrorLake.WaterLift).ToList();
+                        var uvs = pos.Select(v => new Vector2(v.x, v.z)).ToList();
+                        var tris = idx.ToList();
+                        MirrorLake.Patch(verts, uvs, tris, lake); // only the D8 primitive holds the package's lake rectangle
+                        var mesh = new Mesh { name = "Water_" + Path.GetFileNameWithoutExtension(file) + "_" + p, indexFormat = verts.Count > 65000 ? IndexFormat.UInt32 : IndexFormat.UInt16 };
+                        mesh.SetVertices(verts);
+                        mesh.SetUVs(0, uvs);
+                        mesh.SetTriangles(tris, 0);
                         mesh.RecalculateNormals();
                         mesh.RecalculateTangents();
                         AssetDatabase.CreateAsset(mesh, $"{Gen}/Meshes/{mesh.name}.asset");
