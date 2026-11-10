@@ -1,0 +1,272 @@
+{
+ "rubric": [
+  [
+   "B1",
+   "Buildings"
+  ],
+  [
+   "B2",
+   "Roads"
+  ],
+  [
+   "B3",
+   "Atmosphere and sky"
+  ],
+  [
+   "B4",
+   "Water"
+  ],
+  [
+   "B5",
+   "Map and GPS"
+  ],
+  [
+   "B6",
+   "Car detail: nitro, brakes, speed"
+  ],
+  [
+   "B7",
+   "Frame time"
+  ]
+ ],
+ "iterations": [
+  {
+   "n": 16,
+   "title": "World map v1: aerial base, roads, labels, icons, GPS route",
+   "scores": [
+    2,
+    2.5,
+    2.5,
+    1.5,
+    2.5,
+    2,
+    null
+   ],
+   "fps": null,
+   "p99": null,
+   "cruise_p99": null,
+   "hitches50": null
+  },
+  {
+   "n": 17,
+   "title": "Map v2, instrument cluster, brake discs, water shader, rooftops, sky (build only, GPU wedged)",
+   "scores": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "fps": null,
+   "p99": null,
+   "cruise_p99": null,
+   "hitches50": null
+  },
+  {
+   "n": 18,
+   "title": "First round-2 capture after the restart",
+   "scores": [
+    2.5,
+    2.5,
+    2.5,
+    3.5,
+    3,
+    2.5,
+    3.5
+   ],
+   "fps": 88.1,
+   "p99": 37.5,
+   "cruise_p99": 50.0,
+   "hitches50": null
+  },
+  {
+   "n": 19,
+   "title": "Cluster layout, map building layer, capture fixes",
+   "scores": [
+    2.5,
+    2.5,
+    2.5,
+    3.5,
+    4,
+    3.5,
+    3.5
+   ],
+   "fps": 87.5,
+   "p99": 37.5,
+   "cruise_p99": 41.7,
+   "hitches50": 55
+  },
+  {
+   "n": 20,
+   "title": "Facades at street level and distance, calm inland water",
+   "scores": [
+    3,
+    2.5,
+    2.5,
+    4,
+    4,
+    3.5,
+    3
+   ],
+   "fps": 82.2,
+   "p99": 54.1,
+   "cruise_p99": 62.5,
+   "hitches50": 87
+  },
+  {
+   "n": 21,
+   "title": "Automatic gearbox, speed lines, radar blocks, parapets, true golden hour",
+   "scores": [
+    3,
+    2.5,
+    3,
+    4,
+    4,
+    4,
+    3
+   ],
+   "fps": 79.7,
+   "p99": 54.2,
+   "cruise_p99": 54.2,
+   "hitches50": 91
+  },
+  {
+   "n": 22,
+   "title": "Shaders follow the sun, GPS turn-by-turn, aerial perspective, shorelines, map declutter",
+   "scores": [
+    3.5,
+    2.5,
+    3.5,
+    4,
+    4.5,
+    4,
+    2.5
+   ],
+   "fps": 80.2,
+   "p99": 66.7,
+   "cruise_p99": 66.7,
+   "hitches50": 127
+  },
+  {
+   "n": 23,
+   "title": "Capture fixes, mid-boost nitro shot, window light variety, rooftop A/B",
+   "scores": [
+    3.5,
+    2.5,
+    3.5,
+    4,
+    4.5,
+    4.5,
+    3
+   ],
+   "fps": 82.0,
+   "p99": 58.3,
+   "cruise_p99": 75.0,
+   "hitches50": 106
+  },
+  {
+   "n": 24,
+   "title": "Road wear, glass-tower lobbies, night occupancy",
+   "scores": [
+    4,
+    2.5,
+    3.5,
+    4,
+    4.5,
+    4.5,
+    3
+   ],
+   "fps": 74.3,
+   "p99": 58.3,
+   "cruise_p99": 75.0,
+   "hitches50": 99
+  },
+  {
+   "n": 25,
+   "title": "Atlas map view, speed-trap HUD, stronger road wear, sky reflection attempt",
+   "scores": [
+    4,
+    2.5,
+    3.5,
+    4,
+    5,
+    4.5,
+    3
+   ],
+   "fps": 75.1,
+   "p99": 70.8,
+   "cruise_p99": 70.8,
+   "hitches50": 136
+  },
+  {
+   "n": 26,
+   "title": "Speed traps working, roof finishes and solar rows, road instrumentation",
+   "scores": [
+    4,
+    2.5,
+    3.5,
+    4,
+    5,
+    5,
+    3
+   ],
+   "fps": 77.3,
+   "p99": 54.2,
+   "cruise_p99": 66.7,
+   "hitches50": 99
+  },
+  {
+   "n": 27,
+   "title": "Lens droplets in rain, damage-aware car icon, reflection attempt 2, top-down road check",
+   "scores": [
+    4,
+    2.5,
+    3.5,
+    4,
+    5,
+    5,
+    2.5
+   ],
+   "fps": 77.8,
+   "p99": 70.8,
+   "cruise_p99": 83.5,
+   "hitches50": 144
+  },
+  {
+   "n": 28,
+   "title": "Concrete deck in road wear, city-wide sky probe attempt, nitro gain pop-ups",
+   "scores": [
+    4,
+    2.5,
+    3.5,
+    4,
+    5,
+    5,
+    2.5
+   ],
+   "fps": 74.1,
+   "p99": 75.0,
+   "cruise_p99": 83.3,
+   "hitches50": 155
+  },
+  {
+   "n": 29,
+   "title": "HUD performance, night water glow, probe fixes, relative road detail (frame times invalid: shared machine)",
+   "scores": [
+    4,
+    2.5,
+    3.5,
+    3.5,
+    5,
+    5,
+    null
+   ],
+   "fps": null,
+   "p99": null,
+   "cruise_p99": null,
+   "hitches50": null
+  }
+ ]
+}

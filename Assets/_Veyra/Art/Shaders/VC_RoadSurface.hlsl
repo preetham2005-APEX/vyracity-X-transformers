@@ -4,10 +4,15 @@
 // Veyra/Road surface (card F2a): asphalt, concrete, kerbs, paving, cobbles, gravel, dirt, markings.
 //  - World-space macro variation (two noise scales, ± _MacroVariation albedo) against tiling.
 //  - Optional patch/crack overlay (_DetailMap) masked by world noise, and tyre-wear lanes from UV1.x (0–1 across the
-//    carriageway) when the road mesh carries it.
+//    carriageway) when the road mesh carries it. Iteration 29: the overlay darkens relative to the asphalt (a = coverage,
+//    r = tone: seams and cracks near 0, patch fill ~0.15) so it reads on any base albedo; it was an absolute albedo, which
+//    on the city's very dark asphalt was invisible.
 //  - Wetness = global _VC_Wetness x _WetnessResponse (+ _WetnessOverride for testing): albedo x 0.55, smoothness -> 0.90,
 //    normal strength x 0.3; a low-frequency puddle mask (grows with wetness) -> smoothness 0.98, flat normal; animated rain
 //    ripples while _VC_RainIntensity > 0.
+//  - Round 2 (visual iteration 24, GTA V streets): UV1 now comes from Gameplay/RoadWear at runtime (x across the
+//    carriageway, y = lane count, so the wheel paths follow the real lanes); with it, dirt and darker, rougher asphalt
+//    in the gutters along both kerbs (where water also pools first in the rain) and an oil-drip line down each lane.
 
 void VC_Surface(VC_FragInput f, inout SurfaceData s, inout half3 normalWS)
 {
@@ -32,33 +37,52 @@ void VC_Surface(VC_FragInput f, inout SurfaceData s, inout half3 normalWS)
         half pm = saturate((pn - (1.0 - _PatchAmount * 0.6)) * 10.0);
         half4 det = SAMPLE_TEXTURE2D(_DetailMap, sampler_DetailMap, f.uv * _DetailMap_ST.xy + _DetailMap_ST.zw);
         half k = pm * det.a;
-        albedo.rgb = lerp(albedo.rgb, det.rgb * macro, k);
+        albedo.rgb = lerp(albedo.rgb, albedo.rgb * lerp(0.22, 0.62, saturate(det.r * 4.0)), k);
         smooth = lerp(smooth, smooth * 0.8, k);
     }
+    half gutter = 0.0;
     if (_TyreWear > 0.001)
     {
-        // Two wheel paths per lane, at 0.3 and 0.7 of a lane; UV1.x spans the carriageway 0–1.
-        float lanes = 2.0;
+        // Two wheel paths per lane, at 0.3 and 0.7 of a lane; UV1.x spans the carriageway 0–1, UV1.y = lanes (iteration 24).
+        float lanes = max(1.0, round(f.uv1.y));
         float x = frac(f.uv1.x * lanes);
-        half paths = exp(-pow((x - 0.3) / 0.07, 2.0)) + exp(-pow((x - 0.7) / 0.07, 2.0));
-        half wear = saturate(paths) * _TyreWear * step(0.0001, f.uv1.x + f.uv1.y);
-        albedo.rgb *= 1.0 - 0.12 * wear;
-        smooth = lerp(smooth, saturate(smooth + 0.12), wear);
+        half hasUv1 = step(0.0001, f.uv1.x + f.uv1.y);
+        // iteration 25: stronger and broken up along the road (12 % read as nothing on dark asphalt)
+        half paths = exp(-pow((x - 0.3) / 0.085, 2.0)) + exp(-pow((x - 0.7) / 0.085, 2.0));
+        half wear = saturate(paths) * _TyreWear * hasUv1 * (0.7 + 0.3 * VC_ValueNoise(w * 0.35));
+        albedo.rgb *= 1.0 - 0.38 * wear;   // rubbered wheel paths
+        smooth = lerp(smooth, saturate(smooth + 0.18), wear);
+        // oil drips down the lane centre, broken up along the road
+        half oil = exp(-pow((x - 0.5) / 0.045, 2.0)) * smoothstep(0.35, 0.7, VC_ValueNoise(w * float2(0.9, 0.9) + 17.0)) * _TyreWear * hasUv1;
+        albedo.rgb *= 1.0 - 0.3 * oil;
+        smooth = lerp(smooth, saturate(smooth + 0.1), oil);
+        // gutters: grit and old water stains along both kerbs
+        float edge = min(f.uv1.x, 1.0 - f.uv1.x);
+        gutter = (1.0 - smoothstep(0.0, 0.07, edge)) * hasUv1 * (0.7 + 0.3 * VC_ValueNoise(w * 0.6));
+        albedo.rgb = lerp(albedo.rgb, albedo.rgb * half3(1.7, 1.6, 1.4) + half3(0.03, 0.027, 0.02), gutter * 0.85);   // pale dust and grit at the kerb
+        smooth *= 1.0 - 0.35 * gutter;
     }
 
     half wet = saturate(_VC_Wetness * _WetnessResponse + _WetnessOverride);
     if (wet > 0.001)
     {
+        // iteration 30: beyond ~10 m the rain ripples and the bump detail alias into specular glitter (the moon's mirror
+        // highlight on a 0.98-smooth surface scattered by ripple normals turned wet night streets snow-white), so they fade
+        // with distance and the wet gloss is capped below a perfect mirror
+        float dCam = distance(_WorldSpaceCameraPos.xyz, f.positionWS);
+        half nearRipple = saturate(1.0 - (dCam - 8.0) / 22.0);
+        half detailKeep = lerp(1.0, 0.15, saturate((dCam - 6.0) / 40.0));
         float pnoise = VC_Fbm(w / 7.0, 3);
         half puddle = saturate((pnoise - (1.02 - wet * _PuddleAmount * 0.75)) * 9.0);
+        puddle = max(puddle, gutter * wet * _PuddleAmount * 0.9);   // water runs to the kerbs first
         albedo.rgb *= lerp(1.0, 0.55, wet);
-        smooth = lerp(smooth, 0.90, wet);
-        nTS.xy *= lerp(1.0, 0.3, wet);
+        smooth = lerp(smooth, 0.86, wet);
+        nTS.xy *= lerp(1.0, 0.3 * detailKeep, wet);
         albedo.rgb *= lerp(1.0, 0.85, puddle);
-        smooth = lerp(smooth, 0.98, puddle);
+        smooth = lerp(smooth, 0.93, puddle);
         nTS = lerp(nTS, half3(0, 0, 1), puddle);
         if (_VC_RainIntensity > 0.001)
-            nTS.xy += VC_Ripples(w * 1.7, _Time.y) * _VC_RainIntensity * (0.25 + 0.75 * puddle) * wet;
+            nTS.xy += VC_Ripples(w * 1.7, _Time.y) * _VC_RainIntensity * (0.25 + 0.75 * puddle) * wet * nearRipple;
         nTS = normalize(nTS);
     }
 

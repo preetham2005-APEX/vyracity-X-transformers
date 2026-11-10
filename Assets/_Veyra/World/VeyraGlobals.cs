@@ -38,11 +38,14 @@ namespace VeyraCity.World
             return h >= 12f ? evening : morning;
         }
 
-        public static void Apply(float timeOfDay, float wetness, float rainIntensity, float windStrength, Vector3 windDirection, Vector3 sunDirection)
+        /// <param name="nightFactor">Visual iteration 21: the lighting's own night factor (WorldEnvironment, from the sun's
+        /// elevation) when given (0-1); the clock ramp <see cref="NightFactorAt"/> otherwise. The clock ramp (18:00-20:00)
+        /// ran ahead of the sun (up until 20:00): at 19:18 windows and sky were 72 % night with the sun still 10 deg up.</param>
+        public static void Apply(float timeOfDay, float wetness, float rainIntensity, float windStrength, Vector3 windDirection, Vector3 sunDirection, float nightFactor = -1f)
         {
             float t = Mathf.Repeat(timeOfDay, 24f);
             SetFloat(TimeOfDayId, t, TimeOfDay, v => TimeOfDay = v, 0.001f);
-            SetFloat(NightFactorId, NightFactorAt(t), NightFactor, v => NightFactor = v, 0.0005f);
+            SetFloat(NightFactorId, nightFactor >= 0f ? Mathf.Clamp01(nightFactor) : NightFactorAt(t), NightFactor, v => NightFactor = v, 0.0005f);
             SetFloat(WetnessId, Mathf.Clamp01(wetness), Wetness, v => Wetness = v, 0.0005f);
             SetFloat(RainIntensityId, Mathf.Clamp01(rainIntensity), RainIntensity, v => RainIntensity = v, 0.0005f);
             SetFloat(WindStrengthId, Mathf.Clamp01(windStrength), WindStrength, v => WindStrength = v, 0.0005f);

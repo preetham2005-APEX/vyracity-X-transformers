@@ -45,7 +45,7 @@ namespace VeyraCity.Gameplay
                 go.transform.SetParent(w, false);
                 // the disc sits inboard of the spokes: towards the car's centre line along the wheel's spin axis
                 Vector3 inward = w.InverseTransformDirection(-transform.right * Mathf.Sign(transform.InverseTransformPoint(w.position).x));
-                go.transform.localPosition = inward.normalized * Mathf.Max(0.05f, tyre.Width * 0.28f);
+                go.transform.localPosition = inward.normalized * (tyre.Width * 0.02f);   // iteration 24: at the wheel's centre plane, behind the spokes (deeper sat inside the rim barrel)
                 go.transform.localRotation = Quaternion.FromToRotation(Vector3.forward, inward.normalized);
                 float r = tyre.Radius * 0.6f;
                 go.transform.localScale = new Vector3(r, r, r) / Mathf.Max(1e-4f, w.lossyScale.x);
@@ -67,9 +67,10 @@ namespace VeyraCity.Gameplay
                 go.transform.SetParent(a, false);
                 go.transform.localPosition = new Vector3(0f, 0f, -0.06f);
                 var tr = go.AddComponent<TrailRenderer>();
-                tr.time = 0.55f;
-                tr.minVertexDistance = 0.5f;
-                tr.widthCurve = AnimationCurve.EaseInOut(0f, 0.11f, 1f, 0.0f);
+                // iteration 19: short and thin (0.55 s / 11 cm drew 30 m red ribbons along the road at 200 km/h)
+                tr.time = 0.14f;
+                tr.minVertexDistance = 0.3f;
+                tr.widthCurve = AnimationCurve.EaseInOut(0f, 0.06f, 1f, 0.0f);
                 tr.sharedMaterial = streakMat;
                 tr.shadowCastingMode = ShadowCastingMode.Off;
                 tr.receiveShadows = false;
@@ -134,11 +135,13 @@ namespace VeyraCity.Gameplay
                 ? (nitro.Mode == NitroMode.Overdrive ? new Color(1f, 0.25f, 0.85f) : nitro.Mode == NitroMode.CleanBoost ? new Color(0.35f, 1f, 0.6f) : new Color(0.3f, 0.7f, 1f))
                 : new Color(1f, 0.08f, 0.04f);
             float night = WorldEnvironment.Instance != null ? WorldEnvironment.Instance.NightFactor : 0f;
-            float k = boost > 0.2f ? 0.55f + 0.35f * night : 0.35f + 0.5f * night;
+            // light trails read at night and under nitro; a daytime brake trail is a faint hint only
+            float k = boost > 0.2f ? 0.4f + 0.4f * night : 0.12f + 0.5f * night;
+            bool brakeTrail = hardBrake && night > 0.15f;
             foreach (var tr in streaks)
             {
                 if (tr == null) continue;
-                tr.emitting = (boost > 0.2f || hardBrake) && v > 15f;
+                tr.emitting = (boost > 0.2f || brakeTrail) && v > 15f;
                 tr.startColor = new Color(sc.r, sc.g, sc.b, k);
                 tr.endColor = new Color(sc.r, sc.g, sc.b, 0f);
             }

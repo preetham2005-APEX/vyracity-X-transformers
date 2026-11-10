@@ -26,13 +26,36 @@ namespace VeyraCity.UI
         readonly Image[] nitroCells = new Image[3];
         readonly List<Text> tachNumbers = new List<Text>();
         RectTransform gDot;
-        Text gText;
+        Text gText, nitroHint, nitroGain;
+        // iteration 29: texts are only rebuilt when what they show changes (fewer strings, fewer canvas rebuilds)
+        int shownSpeed = int.MinValue, shownGear = int.MinValue, shownG = int.MinValue, shownNitroKey = int.MinValue, shownHintKey = int.MinValue;
+        int shownGpsKey = int.MinValue;
+        string shownGpsStreet;
+        float gainTimer, gainAmount;
+        ChargeSource gainSource;
+        Image throttleBar, brakeBar;
+        readonly Image[] wheelBlocks = new Image[4];
+        /// <summary>Brake disc temperature 0-1 per wheel (FL, FR, RL, RR), supplied by the car's detail FX.</summary>
+        public System.Func<int, float> BrakeHeat;
+        /// <summary>Body damage 0-1 (CarDamage), shown on the cluster's car icon (iteration 27).</summary>
+        public System.Func<float> Damage;
+        Image carBody;
+        Text carStatus;
         Vector2 gFiltered;
         float tachLimiterBuilt = -1f;
-        RectTransform tachRoot;
+        RectTransform tachRoot, clusterRoot;
         const float TachSweep = 0.75f;   // 270 degrees
         RectTransform racePanel, minimapRoot, mapRotator, playerArrow, markerLayer, toastLayer;
-        RawImage mapImage, routeImage;
+        RawImage mapImage, routeImage, buildingsImage, speedLines, lensDrops;
+        static Texture2D dropTex;
+        float dropScroll;
+        RectTransform gpsPanel, gpsArrow, trapPanel;
+        Text trapTitle, trapSpeed, trapSub;
+        Image cameraFlash;
+        float trapTimer, flashTimer;
+        Text gpsDist, gpsStreet, gpsEta;
+        float speedLineTimer;
+        static Texture2D speedLineTex;
         readonly List<Image> markerPool = new List<Image>();
         readonly List<(Vector3 pos, Color color, float size)> staticMarkers = new List<(Vector3, Color, float)>();
         readonly List<Toast> toasts = new List<Toast>();
@@ -60,6 +83,9 @@ namespace VeyraCity.UI
             canvas = UIKit.CreateCanvas("HUD", 10, transform);
             root = (RectTransform)canvas.transform;
 
+            BuildSpeedLines();
+            BuildLensDrops();
+            BuildSpeedTrap();
             BuildCluster();
 
             // --- Race panel (top left)
@@ -92,71 +118,90 @@ namespace VeyraCity.UI
             toastLayer = UIKit.Rect(root, "Toasts", new Vector2(0.3f, 0.585f), new Vector2(0.7f, 0.70f));   // above the car, under the drift chain (iteration 4: they covered the car)
 
             BuildMinimap();
+            // iteration 29: nested canvases so the moving minimap, the cluster's per-frame fills and the screen effects
+            // each re-batch on their own instead of rebuilding the whole HUD every frame
+            foreach (var t in new Transform[] { clusterRoot, minimapRoot, gpsPanel, speedLines != null ? speedLines.transform : null,
+                                                lensDrops != null ? lensDrops.transform : null, trapPanel })
+                if (t != null && t.GetComponent<Canvas>() == null) t.gameObject.AddComponent<Canvas>();
         }
 
         /// <summary>
-        /// Round 2 instrument cluster, bottom right (Asphalt / NFS dial with Forza-style telemetry): a 270 degree tachometer
-        /// arc with rpm numerals and a red zone, big speed digits with the gear in the arc's gap, seven shift lights,
-        /// a G-meter, BRAKE / ABS / TCS / NOS / DRIFT lamps, and a three-cell nitro gauge coloured by boost mode.
+        /// Round 2 instrument cluster, bottom right (Asphalt / NFS dial with GT / Forza-style telemetry): a 270 degree
+        /// tachometer with rpm numerals and a red zone, big speed digits with the gear in the arc's gap, throttle and brake
+        /// pedal bars, seven shift lights, a G-meter, per-wheel brake temperature (wheel lock / spin flashes), BRAKE / ABS /
+        /// TCS / NOS / DRIFT lamps and a three-cell nitro gauge coloured by boost mode with its own hint line.
+        /// Layout (iteration 19): every element is placed by its centre or top-left in panel pixels (y down).
         /// </summary>
         void BuildCluster()
         {
-            var cluster = UIKit.Box(root, "Cluster", new Vector2(1f, 0f), new Vector2(-30f, 26f), new Vector2(520f, 330f));
-            UIKit.Image(cluster, new Color(0.015f, 0.02f, 0.035f, 0.66f), UIKit.SoftRect);
+            var cluster = clusterRoot = UIKit.Box(root, "Cluster", new Vector2(1f, 0f), new Vector2(-28f, 24f), new Vector2(600f, 300f));
+            UIKit.Image(cluster, new Color(0.015f, 0.02f, 0.035f, 0.5f), UIKit.SoftRect);
             boostGlow = UIKit.Image(UIKit.Rect(cluster, "BoostGlow", Vector2.zero, Vector2.one, new Vector2(-10, -10), new Vector2(10, 10)), new Color(1f, 0.6f, 0.1f, 0f), UIKit.SoftRect);
             boostGlow.transform.SetAsFirstSibling();
 
-            // tachometer arc (centre 160 px from the left, 170 px from the top)
-            tachRoot = UIKit.Box(cluster, "Tach", new Vector2(0f, 1f), new Vector2(165f, -165f), new Vector2(270f, 270f));
-            tachRed = Arc(tachRoot, "Red", new Color(1f, 0.22f, 0.2f, 0.85f), TachSweep);
+            // tachometer arc, centred 160 px from the left and 150 px from the top
+            tachRoot = Centred(cluster, "Tach", new Vector2(160f, -150f), new Vector2(270f, 270f));
+            tachRed = Arc(tachRoot, "Red", new Color(1f, 0.22f, 0.2f, 0.7f), TachSweep);
             Arc(tachRoot, "Back", new Color(0.16f, 0.19f, 0.25f, 1f), TachSweep * 0.88f);
             rpmFill = Arc(tachRoot, "Rpm", UIKit.Accent, 0f);
             var inner = UIKit.Box(tachRoot, "Inner", new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(214f, 214f));
             UIKit.Image(inner, new Color(0.01f, 0.015f, 0.03f, 0.8f), UIKit.Circle);
             speedText = UIKit.Text(tachRoot, "Speed", "0", 84, TextAnchor.MiddleCenter, UIKit.TextMain, FontStyle.Bold);
-            PlaceBox(speedText.rectTransform, new Vector2(0f, 12f), new Vector2(220f, 100f));
+            PlaceBox(speedText.rectTransform, new Vector2(0f, 14f), new Vector2(220f, 100f));
             unitText = UIKit.Text(tachRoot, "Unit", "KM/H", 20, TextAnchor.MiddleCenter, UIKit.TextDim, FontStyle.Bold);
             PlaceBox(unitText.rectTransform, new Vector2(0f, -40f), new Vector2(120f, 26f));
             var gearBox = UIKit.Box(tachRoot, "GearBox", new Vector2(0.5f, 0.5f), new Vector2(0f, -100f), new Vector2(64f, 64f));
+            gearBox.pivot = new Vector2(0.5f, 0.5f);
             UIKit.Image(gearBox, new Color(0.02f, 0.03f, 0.06f, 0.95f), UIKit.Circle);
             // one Graphic per GameObject: the ring goes on a child (a second Image on gearBox is null in players)
             UIKit.Image(UIKit.Rect(gearBox, "Ring", Vector2.zero, Vector2.one), new Color(UIKit.Accent.r, UIKit.Accent.g, UIKit.Accent.b, 0.7f), UIKit.Ring);
             gearText = UIKit.Text(gearBox, "Gear", "N", 44, TextAnchor.MiddleCenter, UIKit.Accent, FontStyle.Bold);
             UIKit.Stretch(gearText.rectTransform);
 
-            // shift lights (top right)
+            // pedal bars (GT / Forza telemetry): throttle and brake, right of the dial
+            throttleBar = PedalBar(cluster, "Throttle", 310f, new Color(0.35f, 1f, 0.55f), "T");
+            brakeBar = PedalBar(cluster, "BrakePedal", 328f, UIKit.Bad, "B");
+
+            // shift lights across the top of the right column
             for (int i = 0; i < shiftLeds.Length; i++)
-            {
-                var led = UIKit.Box(cluster, "Led" + i, new Vector2(0f, 1f), new Vector2(318f + i * 26f, -26f), new Vector2(18f, 18f));
-                shiftLeds[i] = UIKit.Image(led, new Color(1f, 1f, 1f, 0.08f), UIKit.Circle);
-            }
+                shiftLeds[i] = UIKit.Image(Centred(cluster, "Led" + i, new Vector2(366f + i * 34f, -30f), new Vector2(20f, 20f)), new Color(1f, 1f, 1f, 0.08f), UIKit.Circle);
             // G-meter
-            var g = UIKit.Box(cluster, "GMeter", new Vector2(0f, 1f), new Vector2(372f, -110f), new Vector2(118f, 118f));
+            var g = Centred(cluster, "GMeter", new Vector2(410f, -118f), new Vector2(104f, 104f));
             UIKit.Image(g, new Color(1f, 1f, 1f, 0.05f), UIKit.Circle);
             UIKit.Image(UIKit.Rect(g, "Ring", Vector2.zero, Vector2.one), new Color(1f, 1f, 1f, 0.22f), UIKit.Ring);
-            var half = UIKit.Box(g, "Half", new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(60f, 60f));
-            UIKit.Image(half, new Color(1f, 1f, 1f, 0.12f), UIKit.Ring);
-            UIKit.Image(UIKit.Box(g, "H", new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(110f, 1.5f)), new Color(1f, 1f, 1f, 0.15f));
-            UIKit.Image(UIKit.Box(g, "V", new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(1.5f, 110f)), new Color(1f, 1f, 1f, 0.15f));
+            UIKit.Image(UIKit.Box(g, "Half", new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(52f, 52f)), new Color(1f, 1f, 1f, 0.12f), UIKit.Ring);
+            UIKit.Image(UIKit.Box(g, "H", new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(96f, 1.5f)), new Color(1f, 1f, 1f, 0.15f));
+            UIKit.Image(UIKit.Box(g, "V", new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(1.5f, 96f)), new Color(1f, 1f, 1f, 0.15f));
             gDot = UIKit.Box(g, "Dot", new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(14f, 14f));
             UIKit.Image(gDot, UIKit.Accent2, UIKit.Circle);
-            gText = UIKit.Text(cluster, "GText", "0.0 G", 16, TextAnchor.MiddleCenter, UIKit.TextDim, FontStyle.Bold);
-            PlaceTopLeft(gText.rectTransform, new Vector2(372f, -176f), new Vector2(120f, 20f));
-            // status lamps
+            gText = UIKit.Text(cluster, "GText", "0.0 G", 15, TextAnchor.MiddleCenter, UIKit.TextDim, FontStyle.Bold);
+            PlaceBox(gText.rectTransform, Vector2.zero, new Vector2(110f, 20f));
+            Recentre(gText.rectTransform, new Vector2(410f, -183f));
+            // per-wheel brake temperature: a car outline with a block at each corner
+            var carIcon = Centred(cluster, "BrakeTemps", new Vector2(522f, -118f), new Vector2(56f, 100f));
+            carBody = UIKit.Image(UIKit.Box(carIcon, "Body", new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(34f, 92f)), new Color(1f, 1f, 1f, 0.1f), UIKit.SoftRect);
+            for (int i = 0; i < 4; i++)
+            {
+                float x = (i % 2 == 0 ? -1f : 1f) * 21f, y = (i < 2 ? 1f : -1f) * 30f;
+                wheelBlocks[i] = UIKit.Image(UIKit.Box(carIcon, "W" + i, new Vector2(0.5f, 0.5f), new Vector2(x, y), new Vector2(13f, 26f)), new Color(0.3f, 0.36f, 0.45f, 0.9f));
+            }
+            var bt = carStatus = UIKit.Text(cluster, "BrakeTempText", "BRAKES", 13, TextAnchor.MiddleCenter, UIKit.TextDim, FontStyle.Bold);
+            PlaceBox(bt.rectTransform, Vector2.zero, new Vector2(90f, 18f));
+            Recentre(bt.rectTransform, new Vector2(522f, -183f));
+            // status lamps in one row
             string[] lamps = { "BRAKE", "ABS", "TCS", "NOS", "DRIFT" };
             for (int i = 0; i < lamps.Length; i++)
             {
-                var lb = UIKit.Box(cluster, "Lamp" + lamps[i], new Vector2(0f, 1f), new Vector2(330f + (i % 3) * 64f, -200f - (i / 3) * 30f), new Vector2(58f, 24f));
-                lb.pivot = new Vector2(0f, 1f);
+                var lb = UIKit.Box(cluster, "Lamp" + lamps[i], new Vector2(0f, 1f), new Vector2(350f + i * 46f, -200f), new Vector2(43f, 22f));
                 lampBacks[i] = UIKit.Image(lb, new Color(1f, 1f, 1f, 0.06f));
-                lampTexts[i] = UIKit.Text(lb, "T", lamps[i], 13, TextAnchor.MiddleCenter, new Color(1f, 1f, 1f, 0.25f), FontStyle.Bold);
+                lampTexts[i] = UIKit.Text(lb, "T", lamps[i], 12, TextAnchor.MiddleCenter, new Color(1f, 1f, 1f, 0.25f), FontStyle.Bold);
+                lampTexts[i].horizontalOverflow = HorizontalWrapMode.Overflow;   // "BRAKE" wrapped to two lines in iteration 19
                 UIKit.Stretch(lampTexts[i].rectTransform);
             }
-            // nitro gauge: three cells (one per bottle) along the bottom
-            nitroLabel = UIKit.Text(cluster, "NitroLabel", "NITRO", 16, TextAnchor.LowerLeft, UIKit.Amber, FontStyle.Bold);
-            PlaceTopLeft(nitroLabel.rectTransform, new Vector2(24f, -278f), new Vector2(470f, 20f));
-            var bar = UIKit.Box(cluster, "NitroCells", new Vector2(0f, 1f), new Vector2(24f, -302f), new Vector2(472f, 16f));
-            bar.pivot = new Vector2(0f, 1f);
+            // nitro gauge: label, three cells (one per bottle), hint line
+            nitroLabel = UIKit.Text(cluster, "NitroLabel", "NITRO", 17, TextAnchor.LowerLeft, UIKit.Amber, FontStyle.Bold);
+            PlaceTopLeft(nitroLabel.rectTransform, new Vector2(350f, -230f), new Vector2(230f, 22f));
+            var bar = UIKit.Box(cluster, "NitroCells", new Vector2(0f, 1f), new Vector2(350f, -256f), new Vector2(228f, 14f));
             for (int c = 0; c < nitroCells.Length; c++)
             {
                 var cell = UIKit.Rect(bar, "Cell" + c, new Vector2(c / 3f, 0f), new Vector2((c + 1) / 3f, 1f), new Vector2(c == 0 ? 0f : 3f, 0f), new Vector2(c == 2 ? 0f : -3f, 0f));
@@ -172,6 +217,47 @@ namespace VeyraCity.UI
             }
             nitroFill = nitroCells[2];
             nitroWindow = UIKit.Image(UIKit.Rect(bar, "CleanWindow", new Vector2(0f, -0.6f), new Vector2(1f, 1.6f)), new Color(0.3f, 1f, 0.6f, 0f));
+            // iteration 28 (Asphalt): what just filled the meter, e.g. "+12% DRIFT", rising and fading by the gauge
+            nitroGain = UIKit.Text(cluster, "NitroGain", "", 15, TextAnchor.LowerRight, UIKit.Good, FontStyle.Bold);
+            PlaceTopLeft(nitroGain.rectTransform, new Vector2(430f, -230f), new Vector2(150f, 22f));
+            nitroHint = UIKit.Text(cluster, "NitroHint", "", 12, TextAnchor.UpperLeft, UIKit.TextDim, FontStyle.Bold);
+            PlaceTopLeft(nitroHint.rectTransform, new Vector2(350f, -274f), new Vector2(240f, 18f));
+        }
+
+        /// <summary>A child box centred at <paramref name="centre"/> (panel pixels from its top-left corner, y down).</summary>
+        static RectTransform Centred(RectTransform parent, string name, Vector2 centre, Vector2 size)
+        {
+            var rt = UIKit.Rect(parent, name, new Vector2(0f, 1f), new Vector2(0f, 1f));
+            rt.pivot = new Vector2(0.5f, 0.5f);
+            rt.anchoredPosition = centre;
+            rt.sizeDelta = size;
+            return rt;
+        }
+
+        static void Recentre(RectTransform rt, Vector2 centre)
+        {
+            rt.anchorMin = rt.anchorMax = new Vector2(0f, 1f);
+            rt.pivot = new Vector2(0.5f, 0.5f);
+            rt.anchoredPosition = centre;
+        }
+
+        static Image PedalBar(RectTransform parent, string name, float x, Color c, string letter)
+        {
+            var back = Centred(parent, name, new Vector2(x, -150f), new Vector2(10f, 150f));
+            UIKit.Image(back, new Color(1f, 1f, 1f, 0.07f));
+            var f = UIKit.Rect(back, "Fill", Vector2.zero, Vector2.one);
+            var img = f.gameObject.AddComponent<Image>();
+            img.sprite = UIKit.Texture2DSprite();
+            img.type = Image.Type.Filled;
+            img.fillMethod = Image.FillMethod.Vertical;
+            img.fillOrigin = (int)Image.OriginVertical.Bottom;
+            img.color = c;
+            img.fillAmount = 0f;
+            img.raycastTarget = false;
+            var t = UIKit.Text(parent, name + "Letter", letter, 12, TextAnchor.MiddleCenter, UIKit.TextDim, FontStyle.Bold);
+            PlaceBox(t.rectTransform, Vector2.zero, new Vector2(16f, 16f));
+            Recentre(t.rectTransform, new Vector2(x, -236f));
+            return img;
         }
 
         /// <summary>An arc on the ring sprite: radial fill from 7:30 clockwise (270 degrees at fill 0.75).</summary>
@@ -231,6 +317,184 @@ namespace VeyraCity.UI
             rt.offsetMin = rt.offsetMax = Vector2.zero;
         }
 
+        /// <summary>
+        /// Iteration 21 (Asphalt / NFS speed feel): radial speed lines over the screen edges, faint above ~170 km/h and
+        /// strong under nitro, tinted by the boost mode; the centre (the car) stays clear. One full-screen RawImage with a
+        /// procedural streak texture, re-rotated every few frames so the streaks flicker past.
+        /// </summary>
+        void BuildSpeedLines()
+        {
+            speedLines = UIKit.Rect(root, "SpeedLines", Vector2.zero, Vector2.one).gameObject.AddComponent<RawImage>();
+            speedLines.raycastTarget = false;
+            speedLines.texture = SpeedLineTexture();
+            speedLines.color = new Color(1f, 1f, 1f, 0f);
+            var rt = speedLines.rectTransform;
+            rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.sizeDelta = new Vector2(2600f, 2600f);   // a square that covers the screen while it turns
+        }
+
+        static Texture2D SpeedLineTexture()
+        {
+            if (speedLineTex != null) return speedLineTex;
+            const int n = 512, lines = 220;
+            var px = new Color32[n * n];
+            for (int y = 0; y < n; y++)
+                for (int x = 0; x < n; x++)
+                {
+                    float dx = (x + 0.5f) / n * 2f - 1f, dy = (y + 0.5f) / n * 2f - 1f;
+                    float r = Mathf.Sqrt(dx * dx + dy * dy);
+                    float a01 = (Mathf.Atan2(dy, dx) / (2f * Mathf.PI) + 0.5f) * lines;
+                    int id = Mathf.FloorToInt(a01);
+                    float h = Mathf.Abs(Mathf.Sin(id * 12.9898f) * 43758.5453f) % 1f;
+                    if (h < 0.62f) continue;
+                    float start = 0.5f + 0.35f * (Mathf.Abs(Mathf.Sin(id * 78.233f) * 12345.678f) % 1f);
+                    float across = Mathf.Abs((a01 - id) - 0.5f) * 2f;               // 0 at the streak's middle
+                    float width = 0.18f + 0.3f * ((h - 0.62f) / 0.38f);
+                    float line = Mathf.Clamp01(1f - across / width);
+                    float along = Mathf.SmoothStep(0f, 1f, Mathf.InverseLerp(start, start + 0.22f, r)) * Mathf.Clamp01((1.42f - r) / 0.2f);
+                    byte a = (byte)(255f * line * line * along);
+                    px[y * n + x] = new Color32(255, 255, 255, a);
+                }
+            speedLineTex = new Texture2D(n, n, TextureFormat.RGBA32, true) { name = "SpeedLines", wrapMode = TextureWrapMode.Clamp, filterMode = FilterMode.Bilinear };
+            speedLineTex.SetPixels32(px);
+            speedLineTex.Apply(true, true);
+            return speedLineTex;
+        }
+
+        /// <summary>
+        /// Iteration 27 (Forza / NFS rain): droplets on the camera lens while it rains, bright-rimmed beads with a dark
+        /// core; they bead up slowly when stopped and run down the screen with speed. One RawImage, fades with the rain.
+        /// </summary>
+        void BuildLensDrops()
+        {
+            lensDrops = UIKit.Rect(root, "LensDrops", Vector2.zero, Vector2.one).gameObject.AddComponent<RawImage>();
+            lensDrops.raycastTarget = false;
+            lensDrops.texture = DropTexture();
+            lensDrops.color = new Color(1f, 1f, 1f, 0f);
+            lensDrops.enabled = false;
+        }
+
+        static Texture2D DropTexture()
+        {
+            if (dropTex != null) return dropTex;
+            const int n = 512;
+            var px = new Color32[n * n];
+            var rng = new System.Random(77);
+            for (int k = 0; k < 140; k++)
+            {
+                float cx = (float)rng.NextDouble() * n, cy = (float)rng.NextDouble() * n;
+                float r = 2.5f + (float)(rng.NextDouble() * rng.NextDouble()) * 11f;
+                float tail = rng.NextDouble() < 0.35 ? r * (2f + (float)rng.NextDouble() * 5f) : 0f;   // some drops have run
+                int x0 = Mathf.FloorToInt(cx - r - 2), x1 = Mathf.CeilToInt(cx + r + 2);
+                int y0 = Mathf.FloorToInt(cy - r - 2), y1 = Mathf.CeilToInt(cy + r + tail + 2);
+                for (int y = y0; y <= y1; y++)
+                    for (int x = x0; x <= x1; x++)
+                    {
+                        float dy = y - cy;
+                        float rr = dy > 0f && tail > 0f ? Mathf.Lerp(r, r * 0.35f, Mathf.Clamp01(dy / tail)) : r;
+                        float ey = dy > 0f && tail > 0f ? Mathf.Max(0f, dy - tail * Mathf.Clamp01(dy / tail)) : dy;
+                        float d = Mathf.Sqrt((x - cx) * (x - cx) + ey * ey) / Mathf.Max(0.5f, rr);
+                        if (d > 1f) continue;
+                        int ix = ((x % n) + n) % n, iy = ((y % n) + n) % n;
+                        // rim highlight (top-left brighter), darker refracting core
+                        float rim = Mathf.SmoothStep(0.6f, 1f, d) * (1f - Mathf.SmoothStep(0.92f, 1f, d));
+                        float hl = Mathf.Clamp01(1f - Mathf.Sqrt((x - (cx - rr * 0.35f)) * (x - (cx - rr * 0.35f)) + (y - (cy + rr * 0.35f)) * (y - (cy + rr * 0.35f))) / (rr * 0.3f));
+                        byte v = (byte)Mathf.Clamp(150f + 105f * Mathf.Max(rim, hl), 0f, 255f);
+                        byte a = (byte)Mathf.Clamp(255f * (0.22f + 0.5f * rim + 0.6f * hl), 0f, 255f);
+                        var c = px[iy * n + ix];
+                        if (a > c.a) px[iy * n + ix] = new Color32(v, v, (byte)Mathf.Min(255, v + 8), a);
+                    }
+            }
+            dropTex = new Texture2D(n, n, TextureFormat.RGBA32, true) { name = "LensDrops", wrapMode = TextureWrapMode.Repeat, filterMode = FilterMode.Trilinear };
+            dropTex.SetPixels32(px);
+            dropTex.Apply(true, true);
+            return dropTex;
+        }
+
+        void UpdateLensDrops(float dt)
+        {
+            if (lensDrops == null) return;
+            var env = WorldEnvironment.Instance;
+            float rain = env != null ? env.RainIntensity : 0f;
+            float kmh = vehicle != null && vehicle.IsInitialised ? vehicle.State.SpeedKmh : 0f;
+            float target = rain * 0.55f * (1f - 0.5f * Mathf.Clamp01(kmh / 160f));   // wind clears the lens at speed
+            var c = lensDrops.color;
+            c.a = Mathf.MoveTowards(c.a, target, dt * 0.4f);
+            lensDrops.color = c;
+            lensDrops.enabled = c.a > 0.01f;
+            if (!lensDrops.enabled) return;
+            dropScroll += dt * (0.01f + 0.12f * Mathf.Clamp01(kmh / 120f));   // run down faster with speed
+            lensDrops.uvRect = new Rect(0f, dropScroll, 2.2f, 2.2f * Screen.height / Mathf.Max(1f, Screen.width));
+        }
+
+        /// <summary>Iteration 26: speed-trap banner (top centre) and the camera's white flash.</summary>
+        void BuildSpeedTrap()
+        {
+            cameraFlash = UIKit.Image(UIKit.Rect(root, "CameraFlash", Vector2.zero, Vector2.one), new Color(1f, 1f, 1f, 0f));
+            cameraFlash.raycastTarget = false;
+            cameraFlash.enabled = false;
+            trapPanel = UIKit.Box(root, "SpeedTrap", new Vector2(0.5f, 1f), new Vector2(0f, -118f), new Vector2(600f, 134f));
+            trapPanel.pivot = new Vector2(0.5f, 1f);
+            UIKit.Image(trapPanel, new Color(0.03f, 0.04f, 0.07f, 0.86f));
+            UIKit.Image(UIKit.Rect(trapPanel, "Stripe", new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0f, -5f), Vector2.zero), UIKit.Amber);
+            trapTitle = UIKit.Text(trapPanel, "Title", "", 19, TextAnchor.MiddleCenter, UIKit.TextDim, FontStyle.Bold);
+            Place(trapTitle.rectTransform, new Vector2(0.02f, 0.72f), new Vector2(0.98f, 0.95f));
+            trapSpeed = UIKit.Text(trapPanel, "Speed", "", 54, TextAnchor.MiddleCenter, UIKit.Amber, FontStyle.Bold);
+            Place(trapSpeed.rectTransform, new Vector2(0.02f, 0.24f), new Vector2(0.98f, 0.76f));
+            trapSub = UIKit.Text(trapPanel, "Sub", "", 18, TextAnchor.MiddleCenter, UIKit.TextMain, FontStyle.Bold);
+            Place(trapSub.rectTransform, new Vector2(0.02f, 0.03f), new Vector2(0.98f, 0.25f));
+            trapPanel.gameObject.SetActive(false);
+        }
+
+        /// <summary>Shows a speed-trap result (SpeedTraps): camera flash, then the banner for ~2.8 s.</summary>
+        public void SpeedTrapFlash(string title, string speed, string sub, int stars)
+        {
+            if (trapPanel == null) return;
+            trapTitle.text = title;
+            trapSpeed.text = speed;
+            trapSpeed.color = stars >= 3 ? UIKit.Accent2 : stars == 2 ? UIKit.Amber : stars == 1 ? UIKit.Accent : UIKit.TextMain;
+            trapSub.text = sub;
+            trapSub.color = sub == "NEW BEST" ? UIKit.Good : UIKit.TextMain;
+            trapTimer = 2.8f;
+            flashTimer = 0.25f;
+            trapPanel.gameObject.SetActive(true);
+        }
+
+        void UpdateSpeedTrap(float dt)
+        {
+            if (trapPanel == null) return;
+            if (flashTimer > 0f) flashTimer -= dt;
+            cameraFlash.enabled = flashTimer > 0f;
+            if (cameraFlash.enabled) cameraFlash.color = new Color(1f, 1f, 1f, 0.55f * flashTimer / 0.25f);
+            if (trapTimer <= 0f) return;
+            trapTimer -= dt;
+            float pop = Mathf.Clamp01((trapTimer - 2.55f) / 0.25f);   // a short scale pop on arrival
+            trapPanel.localScale = Vector3.one * (1f + 0.18f * pop);
+            if (trapTimer <= 0f) trapPanel.gameObject.SetActive(false);
+        }
+
+        void UpdateSpeedLines(float dt)
+        {
+            if (speedLines == null) return;
+            float kmh = vehicle != null && vehicle.IsInitialised ? vehicle.State.SpeedKmh : 0f;
+            float boost = nitro != null ? nitro.BoostScalar : 0f;
+            float a = Mathf.SmoothStep(0f, 1f, Mathf.InverseLerp(150f, 280f, kmh)) * 0.3f + boost * Mathf.Clamp01(kmh / 120f) * 0.55f;
+            Color c = boost > 0.05f && nitro != null
+                ? (nitro.Mode == NitroMode.Overdrive ? new Color(1f, 0.45f, 0.9f) : nitro.Mode == NitroMode.CleanBoost ? new Color(0.55f, 1f, 0.75f) : new Color(0.6f, 0.85f, 1f))
+                : Color.white;
+            var cur = speedLines.color;
+            float alpha = Mathf.Lerp(cur.a, a, 1f - Mathf.Exp(-dt * 8f));
+            speedLines.color = new Color(c.r, c.g, c.b, alpha);
+            speedLines.enabled = alpha > 0.005f;
+            speedLineTimer -= dt;
+            if (speedLines.enabled && speedLineTimer <= 0f)
+            {
+                speedLineTimer = 0.045f;
+                speedLines.rectTransform.localRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
+                speedLines.rectTransform.localScale = Vector3.one * Random.Range(0.95f, 1.08f);
+            }
+        }
+
         void BuildMinimap()
         {
             minimapRoot = UIKit.Box(root, "Minimap", new Vector2(0f, 0f), new Vector2(36f, 36f), new Vector2(300f, 300f));
@@ -245,6 +509,11 @@ namespace VeyraCity.UI
             mapImage = imgRt.gameObject.AddComponent<RawImage>();
             mapImage.raycastTarget = false;
             mapImage.texture = MapTexture();
+            // iteration 21: building footprints from the world map's building layer (GTA-style radar blocks)
+            buildingsImage = UIKit.Rect(mapRotator, "Buildings", Vector2.zero, Vector2.one).gameObject.AddComponent<RawImage>();
+            buildingsImage.raycastTarget = false;
+            buildingsImage.texture = WorldMap.BuildingFillTexture();
+            buildingsImage.color = new Color(0.62f, 0.7f, 0.82f, 0.22f);
             routeImage = UIKit.Rect(mapRotator, "Route", Vector2.zero, Vector2.one).gameObject.AddComponent<RawImage>();   // GPS route (WorldMap)
             routeImage.raycastTarget = false;
             routeImage.enabled = false;
@@ -254,6 +523,48 @@ namespace VeyraCity.UI
             var arrow = UIKit.Text(playerArrow, "Glyph", "▲", 26, TextAnchor.MiddleCenter, Color.white, FontStyle.Bold);
             var north = UIKit.Text(UIKit.Box(minimapRoot, "N", new Vector2(0.5f, 1f), new Vector2(0, 4), new Vector2(30, 30)), "T", "N", 20, TextAnchor.MiddleCenter, UIKit.TextDim, FontStyle.Bold);
             north.transform.parent.name = "North";
+            BuildGpsPanel();
+        }
+
+        /// <summary>
+        /// Iteration 22: satnav panel over the minimap while a waypoint is set (GTA V only draws the line; Forza and real
+        /// satnavs also say what is next): turn arrow, distance to the turn, the street it leads into, distance left.
+        /// </summary>
+        void BuildGpsPanel()
+        {
+            gpsPanel = UIKit.Box(root, "Gps", new Vector2(0f, 0f), new Vector2(36f, 350f), new Vector2(300f, 74f));
+            UIKit.Image(gpsPanel, new Color(0.03f, 0.04f, 0.07f, 0.82f));
+            UIKit.Image(UIKit.Rect(gpsPanel, "Accent", new Vector2(0f, 0f), new Vector2(0f, 1f), Vector2.zero, new Vector2(5f, 0f)), new Color(1f, 0.3f, 0.85f));
+            gpsArrow = UIKit.Box(gpsPanel, "Arrow", new Vector2(0f, 0.5f), new Vector2(40f, 0f), new Vector2(44f, 44f));
+            gpsArrow.pivot = new Vector2(0.5f, 0.5f);
+            var glyph = UIKit.Text(gpsArrow, "G", "▲", 40, TextAnchor.MiddleCenter, new Color(1f, 0.45f, 0.9f), FontStyle.Bold);
+            UIKit.Stretch(glyph.rectTransform);
+            gpsDist = UIKit.Text(gpsPanel, "Dist", "", 26, TextAnchor.UpperLeft, UIKit.TextMain, FontStyle.Bold);
+            Place(gpsDist.rectTransform, new Vector2(0.27f, 0.44f), new Vector2(0.98f, 0.96f));
+            gpsStreet = UIKit.Text(gpsPanel, "Street", "", 16, TextAnchor.LowerLeft, UIKit.TextDim, FontStyle.Bold);
+            Place(gpsStreet.rectTransform, new Vector2(0.27f, 0.06f), new Vector2(0.98f, 0.46f));
+            gpsEta = UIKit.Text(gpsPanel, "Left", "", 16, TextAnchor.UpperRight, new Color(1f, 0.55f, 0.92f), FontStyle.Bold);
+            Place(gpsEta.rectTransform, new Vector2(0.55f, 0.5f), new Vector2(0.97f, 0.94f));
+            gpsPanel.gameObject.SetActive(false);
+        }
+
+        void UpdateGps()
+        {
+            if (gpsPanel == null) return;
+            bool on = WorldMap.HasInstruction && WorldMap.Waypoint.HasValue;
+            if (gpsPanel.gameObject.activeSelf != on) gpsPanel.gameObject.SetActive(on);
+            if (!on) return;
+            var g = WorldMap.Instruction;
+            int gkey = (g.Turn + 2) * 10000000 + (g.Arriving ? 5000000 : 0) + Mathf.Min(49999, Mathf.RoundToInt(g.Distance / 10f)) * 100 + Mathf.Min(99, Mathf.RoundToInt(g.Remaining / 1000f * 10f));
+            if (gkey == shownGpsKey && shownGpsStreet == g.Street) return;
+            shownGpsKey = gkey;
+            shownGpsStreet = g.Street;
+            string D(float m) => Metric ? (m >= 1000f ? $"{m / 1000f:0.0} km" : $"{Mathf.RoundToInt(m / 10f) * 10} m")
+                                        : (m >= 1609f ? $"{m / 1609.34f:0.0} mi" : $"{Mathf.RoundToInt(m * 1.0936f / 10f) * 10} yd");
+            gpsArrow.localRotation = Quaternion.Euler(0f, 0f, g.Turn < 0 ? 90f : g.Turn > 0 ? -90f : 0f);
+            gpsDist.text = g.Arriving ? $"ARRIVING  {D(g.Distance)}" : g.Turn == 0 ? $"AHEAD  {D(g.Distance)}" : $"{(g.Turn < 0 ? "LEFT" : "RIGHT")}  {D(g.Distance)}";
+            gpsStreet.text = g.Turn != 0 && !string.IsNullOrEmpty(g.Street) ? "onto " + g.Street : "";
+            gpsEta.text = g.Turn != 0 ? D(g.Remaining) : "";
         }
 
         /// <summary>
@@ -373,12 +684,35 @@ namespace VeyraCity.UI
         public void Bind(VehicleController v, NitroSystem n, DriftScorer d)
         {
             if (drift != null) { drift.ChainBanked -= OnDriftBanked; drift.ChainFailed -= OnDriftFailed; }
-            if (nitro != null) nitro.ModeStarted -= OnNitroMode;
+            if (nitro != null) { nitro.ModeStarted -= OnNitroMode; nitro.Charged -= OnNitroCharged; }
             vehicle = v;
             nitro = n;
             drift = d;
             if (drift != null) { drift.ChainBanked += OnDriftBanked; drift.ChainFailed += OnDriftFailed; }
-            if (nitro != null) nitro.ModeStarted += OnNitroMode;
+            if (nitro != null) { nitro.ModeStarted += OnNitroMode; nitro.Charged += OnNitroCharged; }
+        }
+
+        void OnNitroCharged(ChargeSource source, float amount)
+        {
+            if (source == ChargeSource.Passive) return;
+            if (gainTimer <= 0f || source != gainSource) gainAmount = 0f;
+            gainAmount += amount;
+            gainSource = source;
+            gainTimer = 1.3f;
+        }
+
+        void UpdateNitroGain(float dt)
+        {
+            if (nitroGain == null) return;
+            if (gainTimer <= 0f) { if (nitroGain.text.Length > 0) nitroGain.text = ""; return; }
+            gainTimer -= dt;
+            string what = gainSource == ChargeSource.Drift ? "DRIFT" : gainSource == ChargeSource.NearMiss ? "NEAR MISS"
+                        : gainSource == ChargeSource.Airtime ? "AIR" : gainSource == ChargeSource.CleanSection ? "CLEAN" : "PICKUP";
+            nitroGain.text = $"+{Mathf.Max(1, Mathf.RoundToInt(gainAmount / NitroSystem.MeterMax * 100f))}% {what}";
+            var c = UIKit.Good;
+            c.a = Mathf.Clamp01(gainTimer * 2.5f);
+            nitroGain.color = c;
+            nitroGain.rectTransform.anchoredPosition = new Vector2(430f, -230f + (1.3f - gainTimer) * 14f);
         }
 
         void OnNitroMode(NitroMode m)
@@ -436,9 +770,14 @@ namespace VeyraCity.UI
             if (canvas == null) return;
             float dt = Time.unscaledDeltaTime;
             UpdateCluster();
+            UpdateSpeedLines(dt);
+            UpdateNitroGain(dt);
+            UpdateLensDrops(dt);
+            UpdateSpeedTrap(dt);
             UpdateRace();
             UpdateDrift();
             UpdateMinimap();
+            UpdateGps();
             UpdateDistrict(dt);
 
             if (bigTimer > 0f)
@@ -468,9 +807,11 @@ namespace VeyraCity.UI
             if (vehicle == null || !vehicle.IsInitialised) return;
             var st = vehicle.State;
             float spd = Metric ? st.SpeedKmh : st.SpeedKmh * 0.621371f;
-            speedText.text = Mathf.RoundToInt(Mathf.Abs(spd)).ToString();
-            unitText.text = Metric ? "KM/H" : "MPH";
-            gearText.text = st.Gear < 0 ? "R" : st.Gear == 0 ? "N" : st.Gear.ToString();
+            int sp = Mathf.RoundToInt(Mathf.Abs(spd));
+            if (sp != shownSpeed) { shownSpeed = sp; speedText.text = sp.ToString(); }
+            string unit = Metric ? "KM/H" : "MPH";
+            if (!ReferenceEquals(unitText.text, unit)) unitText.text = unit;
+            if (st.Gear != shownGear) { shownGear = st.Gear; gearText.text = st.Gear < 0 ? "R" : st.Gear == 0 ? "N" : st.Gear.ToString(); }
             float lim = Mathf.Max(1000f, vehicle.Definition.Engine.LimiterRpm);
             if (!Mathf.Approximately(lim, tachLimiterBuilt)) BuildTachNumbers(lim);
             float r = Mathf.Clamp01(st.EngineRpm / lim);
@@ -490,9 +831,30 @@ namespace VeyraCity.UI
             var gd = gFiltered * 46f;
             if (gd.magnitude > 55f) gd = gd.normalized * 55f;
             gDot.anchoredPosition = gd;
-            gText.text = $"{gFiltered.magnitude:0.0} G";
+            int gq = Mathf.RoundToInt(gFiltered.magnitude * 10f);
+            if (gq != shownG) { shownG = gq; gText.text = (gq / 10f).ToString("0.0") + " G"; }
             // status lamps
             float b = Mathf.Max(st.AppliedBrake, vehicle.Controls.Brake);
+            // pedals and per-wheel brake temperature / lock-up
+            throttleBar.fillAmount = Mathf.Lerp(throttleBar.fillAmount, Mathf.Clamp01(st.AppliedThrottle), 1f - Mathf.Exp(-Time.unscaledDeltaTime * 20f));
+            throttleBar.color = st.TcsCut > 0.05f ? UIKit.Amber : new Color(0.35f, 1f, 0.55f);
+            brakeBar.fillAmount = Mathf.Lerp(brakeBar.fillAmount, Mathf.Clamp01(b), 1f - Mathf.Exp(-Time.unscaledDeltaTime * 20f));
+            brakeBar.color = st.AbsActive ? UIKit.Amber : UIKit.Bad;
+            for (int i = 0; i < 4; i++)
+            {
+                float h = BrakeHeat != null ? Mathf.Clamp01(BrakeHeat(i)) : 0f;
+                Color hc = h < 0.5f ? Color.Lerp(new Color(0.3f, 0.36f, 0.45f, 0.9f), new Color(1f, 0.42f, 0.08f, 1f), h * 2f)
+                                    : Color.Lerp(new Color(1f, 0.42f, 0.08f, 1f), new Color(1f, 0.92f, 0.6f, 1f), (h - 0.5f) * 2f);
+                float sr = vehicle.GetWheel(i).SlipRatio;
+                if (Mathf.Abs(sr) > 0.25f && st.Speed > 3f && Mathf.Repeat(Time.unscaledTime * 8f, 1f) < 0.5f)
+                    hc = sr < 0f ? new Color(1f, 0.25f, 0.25f) : new Color(0.35f, 0.65f, 1f);   // lock-up red, wheelspin blue
+                wheelBlocks[i].color = hc;
+            }
+            // car status: the body tints from white to red with damage (GT / Forza style car icon)
+            float dmg = Damage != null ? Mathf.Clamp01(Damage()) : 0f;
+            carBody.color = Color.Lerp(new Color(1f, 1f, 1f, 0.1f), new Color(1f, 0.28f, 0.22f, 0.75f), Mathf.Clamp01(dmg * 1.6f));
+            carStatus.text = dmg > 0.04f ? $"DAMAGE {Mathf.RoundToInt(dmg * 100f)}%" : "BRAKES";
+            carStatus.color = dmg > 0.04f ? Color.Lerp(UIKit.Amber, UIKit.Bad, dmg) : UIKit.TextDim;
             bool blink = Mathf.Repeat(Time.unscaledTime * 6f, 1f) < 0.5f;
             Lamp(0, b > 0.08f, UIKit.Bad);
             Lamp(1, st.AbsActive && blink, UIKit.Amber);
@@ -514,9 +876,24 @@ namespace VeyraCity.UI
                 wc.a = nitro.CleanWindowOpenNow ? 0.55f : 0f;
                 nitroWindow.color = wc;
                 nitroLabel.color = nc;
-                nitroLabel.text = nitro.Mode == NitroMode.Overdrive ? "OVERDRIVE" : nitro.Mode == NitroMode.CleanBoost ? "CLEAN BOOST" : nitro.CleanWindowOpenNow ? "TAP AGAIN!" : full ? "NITRO FULL  -  DOUBLE-TAP FOR OVERDRIVE" : $"NITRO  {Mathf.RoundToInt(amt * 100f)}%";
+                int pct = Mathf.RoundToInt(amt * 100f);
+                int nkey = (int)nitro.Mode * 10000 + (nitro.CleanWindowOpenNow ? 5000 : 0) + (full ? 2000 : 0) + pct;
+                if (nkey != shownNitroKey)
+                {
+                    shownNitroKey = nkey;
+                    nitroLabel.text = nitro.Mode == NitroMode.Overdrive ? "OVERDRIVE" : nitro.Mode == NitroMode.CleanBoost ? "CLEAN BOOST" : nitro.CleanWindowOpenNow ? "TAP AGAIN!" : full ? "NITRO  FULL" : "NITRO  " + pct + "%";
+                }
+                bool cleanHint = nitro.Mode == NitroMode.Standard && !nitro.CleanWindowOpenNow && nitro.SinceActivation < NitroSystem.CleanWindowOpen;
+                int cool = Mathf.CeilToInt(nitro.OverdriveCooldownLeft * 10f);
+                int hkey = cleanHint ? -1 : cool > 0 ? cool : full && nitro.Mode == NitroMode.Off ? -2 : -3;
+                if (hkey != shownHintKey)
+                {
+                    shownHintKey = hkey;
+                    nitroHint.text = hkey == -1 ? "TAP AGAIN IN THE GREEN = CLEAN BOOST" : hkey > 0 ? "OVERDRIVE COOLING  " + (cool / 10f).ToString("0.0") + "s"
+                                   : hkey == -2 ? "DOUBLE-TAP = OVERDRIVE" : "";
+                }
                 var g = boostGlow.color;
-                g.a = nitro.BoostScalar * 0.55f;
+                g.a = nitro.BoostScalar * 0.22f;   // iteration 24: a tint, not a filled blue panel
                 g.r = nitro.Mode == NitroMode.Overdrive ? 1f : nitro.Mode == NitroMode.CleanBoost ? 0.3f : 0.25f;
                 g.g = nitro.Mode == NitroMode.Overdrive ? 0.25f : nitro.Mode == NitroMode.CleanBoost ? 1f : 0.7f;
                 g.b = nitro.Mode == NitroMode.Overdrive ? 0.62f : nitro.Mode == NitroMode.CleanBoost ? 0.6f : 1f;
@@ -563,6 +940,7 @@ namespace VeyraCity.UI
             float range = MinimapRange * (1f + Mathf.Clamp01(vehicle.State.Speed / 60f) * 0.6f);
             float span = range * 1.5f;
             mapImage.uvRect = new Rect((pos.x - span * 0.5f - b.xMin) / b.width, (pos.z - span * 0.5f - b.yMin) / b.height, span / b.width, span / b.height);
+            if (buildingsImage != null) buildingsImage.uvRect = mapImage.uvRect;
             float heading = vehicle.transform.eulerAngles.y;
             mapRotator.localRotation = Quaternion.Euler(0f, 0f, heading);
             float scale = 288f / range;

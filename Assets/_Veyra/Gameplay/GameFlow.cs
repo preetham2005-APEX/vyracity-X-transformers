@@ -67,6 +67,8 @@ namespace VeyraCity.Gameplay
         bool automated, keepDisplay;
         PlayerDriverInput input;
         HudController hud;
+        RoadWear roadWear;
+        SpeedTraps speedTraps;
         WorldMap worldMap;
         MenuController menu;
         TrafficSystem traffic;
@@ -155,6 +157,11 @@ namespace VeyraCity.Gameplay
             hud = gameObject.AddComponent<HudController>();
             worldMap = gameObject.AddComponent<WorldMap>();   // full-screen map on M / gamepad View
             gameObject.AddComponent<WaterSurface>();          // round-2 water on the sea, river and reservoir
+            gameObject.AddComponent<GroundHeightField>();     // iteration 20: terrain height for street-level facade detail
+            gameObject.AddComponent<AtmosphereScatter>();     // iteration 22: view-dependent haze (sun scattering, city glow)
+            roadWear = gameObject.AddComponent<RoadWear>();   // iteration 24: wheel paths, oil, gutters, patches on the asphalt
+            gameObject.AddComponent<SkyReflection>();         // iteration 25: reflections follow the sky (wet night roads read as snow)
+            speedTraps = gameObject.AddComponent<SpeedTraps>(); // iteration 26: Forza-style speed cameras from the world data
             hud.Build();
             menu = gameObject.AddComponent<MenuController>();
             menu.Build();
@@ -301,6 +308,7 @@ namespace VeyraCity.Gameplay
             if (pedsSys != null && off.Contains("peds")) pedsSys.Active = false;
             var furnSys = GetComponentInChildren<StreetFurniture>();
             if (furnSys != null && off.Contains("furniture")) furnSys.gameObject.SetActive(false);
+            if (off.Contains("rooftops")) { var rt = GetComponentInChildren<RooftopDetails>(true); if (rt != null) rt.gameObject.SetActive(false); }
             // In-run A/B (thermal-neutral, iteration 7): -veyraIterAB <peds|trees|parked|furniture|sky|probe> switches the
             // feature on and off every 0.8 s inside every scene and splits the frame times.
             string abFeature = null;
@@ -316,6 +324,13 @@ namespace VeyraCity.Gameplay
                     case "parked": if (parkedSys != null) parkedSys.gameObject.SetActive(on); break;
                     case "furniture": if (furnSys != null) furnSys.gameObject.SetActive(on); break;
                     case "sky": { var sky = GetComponentInChildren<SkyDome>(true); if (sky != null) sky.gameObject.SetActive(on); break; }
+                    case "rooftops": { var rt = GetComponentInChildren<RooftopDetails>(true); if (rt != null) rt.gameObject.SetActive(on); break; }
+                    case "atmo": AtmosphereScatter.Enabled = on; break;
+                    // iteration 30: round-2 systems
+                    case "roadwear": if (roadWear != null) roadWear.enabled = on; break;
+                    case "skyrefl": { var sr = GetComponent<SkyReflection>(); if (sr != null) sr.enabled = on; var pr = sr != null ? sr.GetComponentInChildren<ReflectionProbe>(true) : null; if (pr != null) pr.enabled = on; break; }
+                    case "carprobe": { var pr = player != null ? player.GetComponentInChildren<ReflectionProbe>(true) : null; if (pr != null) pr.enabled = on; break; }
+                    case "hud": hud.Visible = on; break;
                     case "probe": { var pr = player != null ? player.GetComponentInChildren<ReflectionProbe>() : null; if (pr != null) pr.enabled = on; break; }
                 }
             }
@@ -412,7 +427,7 @@ namespace VeyraCity.Gameplay
                 }
                 ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, shot + ".png"));
                 var st = player.State;
-                log.Append($" {shot}:{st.SpeedKmh:0}km/h,slip{st.SlipAngleDeg:0}(max{maxSlip:0}){(st.ArcadeDrift ? ",drift" : "")}");
+                log.Append($" {shot}:{st.SpeedKmh:0}km/h,g{st.Gear}/{st.EngineRpm:0}rpm,slip{st.SlipAngleDeg:0}(max{maxSlip:0}){(st.ArcadeDrift ? ",drift" : "")}");
                 if (trace != null) log.Append(trace);
                 if (launch != null) log.Append(launch);
                 if (standing) log.Append($" 0-100:{(t100 < 0f ? "n/a" : t100.ToString("0.0") + "s")},surface:{(player.GetWheel(2).Surface != null ? player.GetWheel(2).Surface.Id : "default")}");
@@ -421,7 +436,74 @@ namespace VeyraCity.Gameplay
 
             var clear = WorldEnvironment.WeatherKind.Clear;
             yield return Drive("A2", 0.35f, 70f, 12f, clear, true, 5f, "it1_noon_city");
-            yield return Drive("A2", 0.35f, 70f, 18.6f, clear, true, 5f, "it2_golden_hour");
+            // it20 (iteration 25): the road surface from 1.5 m, beside the car (wheel paths, oil, gutters, patches)
+            if (chaseCamera != null) chaseCamera.enabled = false;
+            {
+                var rt0 = player.transform;
+                cam.transform.position = rt0.position + rt0.right * 2.8f + Vector3.up * 1.5f - rt0.forward * 1.5f;
+                cam.transform.LookAt(rt0.position + rt0.forward * 22f + rt0.right * 1.5f);
+                cam.fieldOfView = 55f;
+                yield return null;
+                yield return null;
+                ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it20_road.png"));
+                yield return null;
+                // iteration 27: straight down from 5 m (no grazing-angle sky reflection hiding the asphalt's albedo)
+                cam.transform.position = rt0.position + rt0.forward * 9f + rt0.right * 1.5f + Vector3.up * 5f;
+                cam.transform.rotation = Quaternion.LookRotation(Vector3.down, rt0.forward);
+                cam.fieldOfView = 70f;
+                yield return null;
+                yield return null;
+                // iteration 30 control test: a 10 m patch with hand-made UVs (UV0 in metres, UV1.x 0-1 across, 4 lanes) and the
+                // worn asphalt material, laid in the shot; if it shows wear and patches the shader works and the city meshes
+                // are the problem, if not the material/shader path is
+                GameObject testPatch = null;
+                Material wornMat = null;
+                foreach (var mr in FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None))
+                    if (mr.sharedMaterial != null && mr.sharedMaterial.name == "M_Asphalt_Worn") { wornMat = mr.sharedMaterial; break; }
+                if (wornMat != null)
+                {
+                    testPatch = new GameObject("RoadWearControl");
+                    var c0 = rt0.position + rt0.forward * 9f + rt0.right * 1.5f;
+                    c0.y = WorldData.GroundHeight(c0 + Vector3.up * 3f, c0.y) + 0.04f;
+                    testPatch.transform.position = c0;
+                    testPatch.transform.rotation = Quaternion.LookRotation(rt0.forward, Vector3.up);
+                    var tm = new Mesh { name = "RoadWearControl" };
+                    tm.vertices = new[] { new Vector3(-2.5f, 0, -5f), new Vector3(2.5f, 0, -5f), new Vector3(-2.5f, 0, 5f), new Vector3(2.5f, 0, 5f) };
+                    tm.uv = new[] { new Vector2(0, 0), new Vector2(5, 0), new Vector2(0, 10), new Vector2(5, 10) };
+                    tm.uv2 = new[] { new Vector2(0, 4), new Vector2(1, 4), new Vector2(0, 4), new Vector2(1, 4) };
+                    tm.triangles = new[] { 0, 2, 1, 1, 2, 3 };
+                    tm.RecalculateNormals();
+                    tm.RecalculateTangents();
+                    tm.RecalculateBounds();
+                    testPatch.AddComponent<MeshFilter>().sharedMesh = tm;
+                    testPatch.AddComponent<MeshRenderer>().sharedMaterial = wornMat;
+                    yield return null;
+                    yield return null;
+                }
+                ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it20b_road_top.png"));
+                yield return null;
+                if (testPatch != null) Destroy(testPatch);
+                // which renderers draw the road here, with which material, and do their meshes carry UV1 yet
+                var probePt = rt0.position + rt0.forward * 10f;
+                var sb = new System.Text.StringBuilder(" roadUnder:");
+                if (Physics.Raycast(probePt + Vector3.up * 5f, Vector3.down, out var gHit, 12f, ~(1 << CarReflectionProbe.CarLayer), QueryTriggerInteraction.Ignore))
+                    sb.Append($"(collider {gHit.collider.name})");
+                foreach (var mr in FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None))
+                {
+                    var bb = mr.bounds;
+                    if (probePt.x < bb.min.x || probePt.x > bb.max.x || probePt.z < bb.min.z || probePt.z > bb.max.z) continue;
+                    if (Mathf.Abs(probePt.y - bb.center.y) > bb.extents.y + 6f) continue;
+                    var mf = mr.GetComponent<MeshFilter>();
+                    var mm = mr.sharedMaterial;
+                    if (mm == null || mm.shader == null || !mm.shader.name.StartsWith("Veyra/Road")) continue;
+                    var mesh = mf != null ? mf.sharedMesh : null;
+                    sb.Append($"[{mr.name}|{mm.name}|tw{mm.GetFloat("_TyreWear"):0.0}|pa{mm.GetFloat("_PatchAmount"):0.0}|uv2:{(mesh != null && mesh.isReadable ? mesh.uv2.Length : -1)}/{(mesh != null ? mesh.vertexCount : 0)}]");
+                }
+                log.Append(sb);
+            }
+            if (chaseCamera != null) chaseCamera.enabled = true;
+            cam.fieldOfView = 60f;
+            yield return Drive("A2", 0.35f, 70f, 19.15f, clear, true, 5f, "it2_golden_hour");   // iteration 21: 19.15 h (18.6 h had the sun at 19 deg, before the golden light)
             yield return Drive("A7", 0.3f, 60f, 23f, clear, true, 5f, "it3_neon_night");
             environment.SetWetness(1f);
             yield return Drive("A7", 0.3f, 60f, 23f, WorldEnvironment.WeatherKind.Rain, true, 6f, "it4_rain_night");
@@ -471,24 +553,82 @@ namespace VeyraCity.Gameplay
             if (chaseCamera != null) chaseCamera.enabled = true;
             // it17 (round 2): a hard stop from 200 km/h: brake-light streaks, BRAKE/ABS lamps and the G-meter in the chase
             // view, then the glowing front disc up close
-            yield return Drive("C1", 0.25f, 200f, 13f, clear, false, 3.7f, "it17_brake",
+            yield return Drive("C1", 0.25f, 200f, 19.7f, clear, false, 3.7f, "it17_brake",   // iteration 24: at dusk, where glowing discs and light trails read
                                (t, i) => { if (t > 2.6f) { i.Throttle = 0f; i.Brake = 1f; i.Nitro = false; } return i; }, 1.4f);
             if (chaseCamera != null) chaseCamera.enabled = false;
             {
                 var bt = player.transform;
-                var wheelFL = bt.position + bt.forward * (player.Definition.Wheelbase * 0.5f) - bt.right * (player.Definition.Front.TrackWidth * 0.5f);
-                cam.transform.position = wheelFL - bt.right * 2.4f + bt.forward * 0.6f + Vector3.up * 0.55f;
-                cam.transform.LookAt(wheelFL + Vector3.up * 0.1f);
+                player.Body.linearVelocity = Vector3.zero;
+                player.Body.angularVelocity = Vector3.zero;
+                // iteration 20: re-park in the right-hand lane of the nearest road (iteration 19's stop ended against a
+                // wall, so both sides of the car were blocked); the disc heat is kept
+                if (WorldData.NearestRoad(bt.position, 80f, out var park))
+                {
+                    var tng = new Vector3(park.Tangent.x, 0f, park.Tangent.z).normalized;
+                    var rgt = new Vector3(tng.z, 0f, -tng.x);
+                    var spot = park.Point + rgt * (WorldData.Roads[park.Road].Data.width * 0.28f);
+                    float ride = bt.position.y - WorldData.GroundHeight(bt.position + Vector3.up * 3f, bt.position.y - 0.35f, ~(1 << CarReflectionProbe.CarLayer));
+                    spot.y = WorldData.GroundHeight(spot + Vector3.up * 3f, spot.y, ~(1 << CarReflectionProbe.CarLayer)) + Mathf.Clamp(ride, 0f, 1.2f);
+                    player.Body.isKinematic = true;
+                    player.transform.SetPositionAndRotation(spot, Quaternion.LookRotation(tng, Vector3.up));
+                    player.Body.position = spot;
+                    player.Body.rotation = player.transform.rotation;
+                    yield return null;
+                }
+                // iteration 19: the side with a clear view (iteration 18 put the camera behind the median barrier)
+                Vector3 wheelPos = bt.position, camPos = bt.position;
+                foreach (float side in new[] { -1f, 1f })
+                {
+                    wheelPos = bt.position + bt.forward * (player.Definition.Wheelbase * 0.5f) + bt.right * (side * player.Definition.Front.TrackWidth * 0.5f) + Vector3.up * 0.35f;
+                    camPos = wheelPos + bt.right * (side * 2.3f) + bt.forward * 0.7f + Vector3.up * 0.2f;
+                    if (!Physics.Linecast(wheelPos + bt.right * (side * 0.4f), camPos, ~(1 << CarReflectionProbe.CarLayer), QueryTriggerInteraction.Ignore)) break;
+                }
+                cam.transform.position = camPos;
+                cam.transform.LookAt(wheelPos - Vector3.up * 0.25f);
                 cam.fieldOfView = 40f;
                 yield return null;
                 yield return null;
                 ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it17_brake_disc.png"));
                 yield return null;
+                player.Body.isKinematic = false;
                 var dfx = player.GetComponent<CarDetailFX>();
                 log.Append($" brakeHeatFL:{(dfx != null ? dfx.Heat01(0) : -1f):0.00}");
             }
             if (chaseCamera != null) chaseCamera.enabled = true;
             cam.fieldOfView = 60f;
+            // it19 (iteration 23): the nitro effects while boosting (it5 is captured after the meter has run out)
+            yield return Drive("C1", 0.3f, 190f, 18.9f, clear, false, 2.2f, "it19_nitro_fx",
+                               (t, i) => { if (t > 1.2f) { i.Nitro = true; i.Throttle = 1f; i.Brake = 0f; } return i; }, 1.4f);
+            // it21 (iteration 26): through a speed camera at full chat (banner, flash, stars)
+            {
+                // the location's "road" is a street name, not an id: take the road nearest the camera (iteration 26)
+                LocationJson trap = null;
+                RoadPath tr = null;
+                float sT = 0f;
+                foreach (var l in WorldData.Locations)
+                    if (l.category == "Speed trap" && WorldData.NearestRoad(l.Position, 60f, out var th))
+                    {
+                        var cand = WorldData.Roads[th.Road];
+                        if (cand.Path.Closed || th.S < 260f) continue;
+                        trap = l; tr = cand; sT = th.S;
+                        break;
+                    }
+                if (trap != null)
+                {
+                    float s0 = Mathf.Max(0f, sT - 210f);
+                    int before = SpeedTraps.Triggers;
+                    yield return Drive(tr.Data.id, s0 / tr.Path.Length, 230f, 14f, clear, false, 2.5f, "it21_tmp",
+                                       (t, i) => { i.Throttle = 1f; i.Brake = 0f; i.Nitro = t > 0.5f; return i; }, 1.4f);
+                    float tw2 = Time.realtimeSinceStartup;
+                    while (SpeedTraps.Triggers == before && Time.realtimeSinceStartup - tw2 < 5f) yield return null;
+                    float tw3 = Time.realtimeSinceStartup;
+                    while (Time.realtimeSinceStartup - tw3 < 0.45f) yield return null;
+                    ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it21_speedtrap.png"));
+                    yield return null;
+                    System.IO.File.Delete(System.IO.Path.Combine(iterShotDir, "it21_tmp.png"));
+                    log.Append($" speedTrap:{(SpeedTraps.Triggers > before ? SpeedTraps.LastResult : "missed")}");
+                }
+            }
             var crashDamage = player.GetComponent<CarDamage>();
             float crashDamage01 = crashDamage != null ? crashDamage.Damage01 : -1f;
             // it11: a long cruise with traffic on the longest arterial/collector (streaming hitches: parked cars, furniture
@@ -517,9 +657,14 @@ namespace VeyraCity.Gameplay
                                (t, i) => { i.Throttle = 1f; i.Brake = 0f; return i; }, 2.6f, true);
             log.Append($" damage:{crashDamage01:0.00}");   // of the it9 crash car (later scenes respawn the player)
             // it14 - it16 (round 2): skyline at golden hour, the river front, the skyline at night (buildings, roofs, water, sky)
+            Vector3 groundPos = player != null ? player.transform.position : Vector3.zero;
+            Quaternion groundRot = player != null ? player.transform.rotation : Quaternion.identity;
+            // terrain height anywhere (WorldData.GroundHeight only probes 30 m above its point)
+            float Ground(Vector3 p) => Physics.Raycast(new Vector3(p.x, 900f, p.z), Vector3.down, out var gh, 1200f, ~(1 << CarReflectionProbe.CarLayer), QueryTriggerInteraction.Ignore) ? gh.point.y : 0f;
             if (player != null)
             {
                 if (chaseCamera != null) chaseCamera.enabled = false;
+                hud.Visible = false;   // iteration 20: clean beauty shots (the cluster showed a parked car's dial)
                 environment.SetWeather(clear);
                 Vector3 downtown = new Vector3(190f, 0f, -432f);
                 var dd = WorldData.DistrictAt(downtown);
@@ -531,9 +676,9 @@ namespace VeyraCity.Gameplay
                         downtown = new Vector3(sx / n, 0f, sz / n);
                     }
                 Vector3 eye = downtown + new Vector3(-520f, 0f, -380f);
-                eye.y = WorldData.GroundHeight(eye + Vector3.up * 300f, 0f) + 90f;
+                eye.y = Ground(eye) + 90f;
                 Vector3 look = downtown + Vector3.up * 40f;
-                foreach (var (hour, shot) in new[] { (18.3f, "it14_skyline_golden"), (22.5f, "it16_skyline_night") })
+                foreach (var (hour, shot) in new[] { (19.3f, "it14_skyline_golden"), (22.5f, "it16_skyline_night") })
                 {
                     environment.SetTime(hour);
                     player.transform.position = eye + Vector3.up * 400f;   // keep streaming centred near the view
@@ -556,22 +701,38 @@ namespace VeyraCity.Gameplay
                     var a1 = new Vector3(river[mid + 2], 0f, river[mid + 3]);
                     var along = (a1 - a0).normalized;
                     var side = new Vector3(along.z, 0f, -along.x);
-                    var bank = a0 + side * 34f;
-                    bank.y = WorldData.GroundHeight(bank + Vector3.up * 200f, 2f) + 3.5f;
-                    environment.SetTime(18.6f);
+                    // iteration 19: above the water near one bank, looking down the river (iteration 18 sat inside the
+                    // bank's grass at the 2 m fallback height and looked up through the clumps)
+                    var bank = a0 + side * 12f;
+                    float water = Mathf.Min(Ground(a0), Ground(a0 + along * 60f));
+                    bank.y = Mathf.Max(water, Ground(bank)) + 7f;
+                    environment.SetTime(19.0f);
                     player.transform.position = bank + Vector3.up * 400f;
                     player.Body.position = player.transform.position;
                     cam.transform.position = bank;
-                    cam.transform.LookAt(a0 + along * 140f + Vector3.up * 1.5f);
+                    cam.transform.LookAt(a0 + along * 160f + Vector3.up * (water - bank.y + 4f));
                     cam.fieldOfView = 60f;
                     float tw1 = Time.realtimeSinceStartup;
                     while (Time.realtimeSinceStartup - tw1 < 2f) yield return null;
                     ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it15_riverfront.png"));
                     yield return null;
+                    // iteration 29: the same view at night (city glow on the water)
+                    environment.SetTime(22.5f);
+                    float tw4 = Time.realtimeSinceStartup;
+                    while (Time.realtimeSinceStartup - tw4 < 1.5f) yield return null;
+                    ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it15b_river_night.png"));
+                    yield return null;
                 }
+                // back on the road where the car was (the map scenes route from the car's position)
+                player.transform.SetPositionAndRotation(groundPos, groundRot);
+                player.Body.position = groundPos;
+                player.Body.rotation = groundRot;
                 player.Body.isKinematic = false;
+                player.Body.linearVelocity = Vector3.zero;
+                hud.Visible = true;
                 if (chaseCamera != null) chaseCamera.enabled = true;
                 cam.fieldOfView = 60f;
+                for (int f = 0; f < 3; f++) yield return null;
             }
             // it12 / it13: the world map (aerial base, roads, labels, icons), then a waypoint with its GPS route
             if (worldMap != null && player != null)
@@ -586,14 +747,43 @@ namespace VeyraCity.Gameplay
                 for (int f = 0; f < 3; f++) yield return null;
                 ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it12_map.png"));
                 yield return null;
-                worldMap.PlaceWaypoint(pp + new Vector3(1100f, 0f, 900f));
-                worldMap.Frame(new Vector2(pp.x + 550f, pp.z + 450f), 1.25f);
+                // iteration 19: the waypoint on the road point nearest 1.4 km north-east (iteration 18 picked a hillside)
+                Vector3 target = pp + new Vector3(1100f, 0f, 900f), wp = target;
+                float bestD = float.MaxValue;
+                foreach (var r in WorldData.Roads)
+                    for (float s = 0f; s < r.Path.Length; s += 40f)
+                    {
+                        var q = r.Path.PositionAt(s);
+                        float d = (new Vector2(q.x, q.z) - new Vector2(target.x, target.z)).sqrMagnitude;
+                        if (d < bestD) { bestD = d; wp = q; }
+                    }
+                worldMap.PlaceWaypoint(wp);
+                worldMap.Frame(new Vector2((pp.x + wp.x) * 0.5f, (pp.z + wp.z) * 0.5f), 1.25f);
                 for (int f = 0; f < 3; f++) yield return null;
                 ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it13_map_route.png"));
                 yield return null;
-                log.Append($" mapAerial:{worldMap.AerialReady} route:{WorldMap.RouteLength:0}m roadNodes:{RoadGraph.NodeCount}");
+                // iteration 25: the atlas style of the same area, a little further out
+                worldMap.SetView(true);
+                worldMap.Frame(new Vector2((pp.x + wp.x) * 0.5f, (pp.z + wp.z) * 0.5f), 2.2f);
+                for (int f = 0; f < 3; f++) yield return null;
+                ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it13b_map_atlas.png"));
+                yield return null;
+                worldMap.SetView(false);
+                // frame time with the map open (iteration 18's overlay read 16-17 FPS right after the route solve)
+                float mapMs = 0f;
+                for (int f = 0; f < 60; f++) { yield return null; mapMs += Time.unscaledDeltaTime * 1000f / 60f; }
+                log.Append($" roadWear:{RoadWear.MeshesDone}meshes/{RoadWear.VerticesDone}v skyRefl:{SkyReflection.Renders} mapAerial:{worldMap.AerialReady} route:{WorldMap.RouteLength:0}m roadNodes:{RoadGraph.NodeCount} mapBuildings:{WorldMap.BuildingCount} mapFrame:{mapMs:0.0}ms");
                 worldMap.Close();
                 SetPaused(false);
+                // it18 (iteration 22): back in the car with the waypoint set: the GPS panel and the route on the minimap
+                // (iteration 23: the launch scene's full-throttle script was still bound and lit up the tyres)
+                playerDriver.Bind(player, new ScriptedDriver { Vehicle = player, Policy = v => new DriverIntent { Handbrake = 1f } }, db.Casual);   // iteration 24: a held brake engaged reverse
+                player.Body.linearVelocity = Vector3.zero;
+                float tg = Time.realtimeSinceStartup;
+                while (Time.realtimeSinceStartup - tg < 1.2f) yield return null;
+                ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it18_gps.png"));
+                yield return null;
+                log.Append($" gps:{(WorldMap.HasInstruction ? (WorldMap.Instruction.Turn < 0 ? "L" : WorldMap.Instruction.Turn > 0 ? "R" : "S") + WorldMap.Instruction.Distance.ToString("0") + "m/" + WorldMap.Instruction.Street : "none")}");
             }
             log.Append($" zebraCrossings:{Pedestrians.CrossingsStarted}");
             Debug.Log(log.ToString());
@@ -841,9 +1031,16 @@ namespace VeyraCity.Gameplay
             player.gameObject.AddComponent<VehicleFX>().Bind(player, playerNitro, true);
             player.gameObject.AddComponent<CarReflectionProbe>().Bind(player);   // paint reflects the real street
             player.gameObject.AddComponent<NitroBurstFX>().Bind(player, playerNitro, chaseCamera);   // perfect/overdrive nitro burst
-            player.gameObject.AddComponent<CarDetailFX>().Bind(player, playerNitro);   // glowing brake discs, nitro / brake light streaks
+            var detailFx = player.gameObject.AddComponent<CarDetailFX>();
+            detailFx.Bind(player, playerNitro);   // glowing brake discs, nitro / brake light streaks
             if (player.TryGetComponent<CarLampFX>(out var playerLamps)) playerLamps.AddRealLights();   // headlight pool on the road, tail/brake spill behind
             hud.Bind(player, playerNitro, playerDrift);
+            hud.BrakeHeat = detailFx.Heat01;   // per-wheel brake temperature on the cluster
+            var dmgSrc = player.GetComponent<CarDamage>();
+            hud.Damage = dmgSrc != null ? (System.Func<float>)(() => dmgSrc != null ? dmgSrc.Damage01 : 0f) : null;   // iteration 27
+            if (worldMap != null) worldMap.Track(player.transform);   // the GPS follows the new car
+            if (roadWear != null) roadWear.Player = player.transform;
+            if (speedTraps != null) { speedTraps.Player = player; speedTraps.Hud = hud; }
             traffic.PlayerCar = player;
             var parked = GetComponentInChildren<ParkedCars>();
             if (parked != null) parked.Player = player;

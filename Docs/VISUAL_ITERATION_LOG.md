@@ -295,3 +295,163 @@ double graphic in the UI files.
 **Build:** `Builds/IterMono` built with no shader or script errors (`Logs/A8/iter17_build.log`); material tests 13/13.
 **Not captured:** from ~14:27 the GPU driver is wedged (D3D12 "device removed" at the first frame of any player, both
 sessions); captures resume after a driver reset (Win+Ctrl+Shift+B) or a restart.
+
+### Iteration 18 (2026-11-10): first round-2 capture after the PC restart
+**Capture:** `Screenshots/2026-11-10_iter18/` (sheet, sheet_world, sheet_car, sheet_map). EditMode 93/93, 0 exceptions;
+brake disc heat 1.00 after the 200 km/h stop; launch 0–100 5.7 s; nitro run 204 km/h; drift −32° held. Whole run 88.1 FPS,
+p99 37.5 ms; cruise p99 50 ms.
+**Found:** water and rooftops good; the cluster's dial sat 135 px too low (a `UIKit.Box` pivot is its anchor, so the tach was
+placed by its corner) and the nitro hint ran across the speed digits; red brake streaks 30 m long in daylight; the brake-disc
+close-up looked at a wall; the riverfront camera sat inside the bank's grass (2 m fallback height); the map route came out
+0 m because the skyline scenes had left the car 400 m in the air; long district names overlapped the coordinates; the map
+overlay read 16–17 FPS.
+
+### Iteration 19 (2026-11-10): cluster layout, map buildings, capture fixes
+**Changes:** cluster rebuilt on centre-placed boxes (600 × 300 panel): dial, throttle/brake pedal bars (GT/Forza telemetry),
+shift lights, G-meter, per-wheel brake temperature on a car outline (GT7-style tyre icons: lock-up flashes red, wheelspin
+blue), one row of lamps, nitro label + three cells + a hint line (clean-boost window, overdrive cooldown). Brake streaks
+0.14 s / 6 cm, at night only (nitro streaks always). Map: building layer from the 2,708 UBX boxes (south-east drop shadows
+from height, same light as the hillshade, crisp outlines; faint when zoomed out), hover names for icons, legend counts,
+distance tag on the waypoint, a 0.22 s open animation, two-line district title, and the world camera draws nothing while the
+opaque map is open. Captures: the car is returned to the road after the skyline scenes; the waypoint snaps to the nearest
+road point; river camera over the water; map frame time logged.
+**Results:** route 2,170 m, map frame 8.7 ms (115 FPS, was ~60 ms), 0 exceptions, brake heat 0.99, 0–100 5.6 s, run avg
+87.5 FPS, cruise p99 41.7 ms.
+**Found:** distant towers read as noise: every window drew a high-contrast interior room at every distance and angle;
+building UVs are absolute world height (v = y / 14) while downtown stands 4–43 m up, so "ground floor" logic never met the
+pavement; the "golden hour" shots ran at 18.3–18.6 h with the sun still 19–23° up (golden light starts below ~22°, strongest
+under 10°); the river had the sea's chop; the brake close-up still faced a wall (the car stopped against one).
+
+### Iteration 20 (2026-11-10): facades at street level and at distance, calm inland water
+**Changes:** `Veyra/Facade` (`VC_FacadeSurface.hlsl`, no new properties or keywords): ground-floor shopfronts on ~60 % of
+the urban punched-window buildings (display glass 0.25–3.0 m above the pavement, a backlit fascia sign in a seeded colour,
+14 % behind roller shutters, lit from dusk, a cornice band; the two house facades keep plain ground floors); a slab line at
+every floor; TV flicker in ~9 % of lit flats; interiors fade with distance (40–240 m) and grazing angle into sky-reflecting
+glass; the window grid anti-aliases to its average coverage and average lit share (per 4 × 4-window block) once a cell is
+under ~2 px; panes vary slightly in tint. New `GroundHeightField` (Gameplay): the terrain height over the city baked once into
+a 768 × 576 float texture (global `_VC_GroundHeight` / `_VC_GroundHeightRect`), because building UVs are absolute world
+height and the shader needs the pavement level; street-level grime now counts floors from it too. Water: `_MacroVariation`
+scales the swell per renderer; `WaterSurface` gives the river and reservoir a quarter of the sea's swell and 60 % ripple
+strength through a property block (6 inland surfaces). Brake close-up re-parks the car in the nearest road's right-hand lane;
+skyline/river beauty shots hide the HUD.
+**Results:** build clean (no shader errors), 0 exceptions, route 2,171 m, map frame 8.3 ms, brake heat 0.99, 0–100 5.7 s.
+Visual scenes unchanged in cost (8.4–8.9 ms avg); cruise p99 62.5 ms vs 41.7 ms in iteration 19 (second half of the run,
+laptop GPU heat-soaked; re-checked next pass).
+**Found:** distant towers now read as clean glass instead of noise, but too dark and plain from the skyline; the night skyline
+still reads as a wall of lit windows; the river is calm; the tach sits in the red at city speeds because the automatic shifts
+at the same rpm whatever the throttle (1st gear at 73 km/h, 6,700 rpm).
+
+### Iteration 21 (2026-11-10): automatic gearbox, speed lines, radar blocks, parapets, true golden hour
+**Changes:** the automatic's shift points follow a smoothed pedal load (`Powertrain`: half the upshift rpm and 55 % of the
+downshift rpm at a light throttle, the full spec from ~90 % pedal, kickdown when floored; launches, nitro and racing are
+unchanged); Asphalt-style radial speed lines over the screen edges (from 170 km/h, strong under nitro, boost-mode colour);
+building footprints on the HUD minimap from the map's building layer (GTA-style radar blocks); roof parapets with a dark
+coping on the 566 dressed roofs; facade grid anti-aliasing later (cells under ~1.5 px) and two thirds of the lit-window
+share at night; golden-hour captures moved to 19.15–19.3 h; capture log now has gear and rpm per shot.
+**Results:** 73 km/h cruise now in 3rd at 3,640 rpm (was 1st at 6,700); 0–100 5.7 s with an identical launch trace; nitro
+204 km/h; drift −32° held; EditMode **93/93**; 0 exceptions.
+**Found:** at 19:18 windows and sky were already 72 % "night" while the sun was 10° up: the shader global `_VC_NightFactor`
+is a clock ramp (18:00–20:00) while the lighting follows the sun (sets 20:00); speed lines barely visible at 204 km/h
+without nitro (the it5 shot is taken after the meter runs out); the brake close-up car floated 0.4 m; cruise slower
+(avg 16.6 ms; whole-run hitches over 50 ms 91).
+
+### Iteration 22 (2026-11-10): shaders follow the sun, GPS turn-by-turn, aerial perspective, shorelines, map declutter
+**Changes:** `VeyraGlobals.Apply` takes the lighting's own night factor (WorldEnvironment, sun elevation); the clock ramp
+and its tests stay for callers without one. New `AtmosphereScatter`: per frame, after WorldEnvironment writes the fog,
+the haze takes the sun's colour when looking towards it (strongest at golden hour, damped by cloud), turns cooler away
+from it, and holds a sodium-orange light-pollution glow at night; runs before the sky dome so its horizon matches. GPS:
+the route follows the car, re-plans when it is more than 45 m off the line (at most every 2 s, one reused 12 MB buffer),
+and a satnav panel over the minimap shows the next turn (arrow, distance, "onto <street>", distance left; metric or
+imperial). Water: shallows turn lighter teal over the bed and broken drifting foam laps the banks where the depth is
+under ~1.2 m (depth from the ground-height field). Map: icons are decluttered in category priority (no overlaps), names
+likewise; faint dashed district borders. Facade: the room ray-cast and its atlas samples are skipped beyond 240 m (explicit
+mip from distance so it can sit in a dynamic branch). Rooftop cells are built 8 roofs a frame.
+**Results:** GPS "LEFT 1,162 m onto Velvet Row" after closing the map, route 2,171 m, 0 exceptions; launch, drift and
+nitro unchanged. The 19.3 h skyline now reads golden: sun-tinted haze, sunlit glass, windows not yet lit.
+**Found:** whole-run hitches over 50 ms 127 (55 in iteration 19), cruise p99 66.7 ms with Rooftops spiking to 43.5 ms
+(GC suspected: per-roof arrays); the GPS shot's car was still under the launch scene's full-throttle script (burnout
+smoke); district names drew under icons.
+
+### Iteration 23 (2026-11-10): capture fixes, mid-boost nitro shot, window light variety, rooftop A/B
+**Changes:** a nitro scene captured while boosting (`it19_nitro_fx`, 18.9 h); the brake close-up keeps the car's ride height
+when re-parking; speed lines from 150 km/h; the GPS shot binds an idle intent (the launch script's full throttle was still
+driving); district names above the icons; lit windows in three temperatures (warm, cool white, LED blue-white) with per-window
+brightness; rooftop props without per-roof array garbage; new A/B switches `rooftops` and `atmo`.
+**Results:** 0 exceptions; the boost shot shows the whole nitro package at once (orange exhaust flame trails, blue nitro light
+streaks, speed lines, the cluster tinted in the boost colour, NOS lamp, cells at 80 %); in-run A/B rooftops on 15.0 ms vs off
+15.9 ms (no measurable cost; Rooftops' worst frame 43.5 → 13.5 ms). The A/B run right after the main run averaged 59 FPS vs 82
+with identical content: late-run frame times on this laptop are dominated by heat, the short city scenes stay at 8.4–8.7 ms.
+**Found:** rain night: wet road and pavement away from the car read as snow-white (they reflect the skybox reflection baked in
+the editor, a daytime sky); the cluster's boost tint filled the whole panel; the brake disc glow sits inside the rim barrel;
+the night skyline is still an even wall of lit windows.
+
+### Iteration 24 (2026-11-10): road wear, glass-tower lobbies, night occupancy
+**Changes:** new `RoadWear` (Gameplay): fills UV1 of the asphalt render meshes around the player (x across the carriageway from
+the nearest road centre line, y = lane count) within a frame budget, generates a repair-patch/crack texture, and turns tyre
+wear and patches on for the two asphalt materials at runtime (assets untouched, restored in the editor). `Veyra/Road`: wheel
+paths follow the real lane count, oil drips down each lane, grit in the gutters where rain pools first. `Veyra/Facade`: a
+double-height lit lobby at the foot of every glass tower; lit-window occupancy varies per ~60 m block from nearly dark to busy
+(~25 % overall). Brake scene at dusk (19.7 h); boost tint 0.22; disc glow at the wheel's centre plane.
+**Results:** EditMode **93/93**, 0 exceptions; RoadWear processed 216 meshes (125,675 vertices), avg 0.24–0.32 ms/frame;
+night skyline now mixes dark and busy blocks.
+**Found:** the road wear is too subtle to see on the dark asphalt at 1440p (12 % darkening); RoadWear's worst frame 12.6 ms
+(the UV upload of a big mesh).
+
+### Iteration 25 (2026-11-10): sky reflection (attempt 1), atlas map view, speed traps, stronger road wear
+**Changes:** `SkyReflection` (a 128 px sky-only realtime probe set as the custom default reflection); world map **atlas view**
+(V / gamepad right bumper): the radar's district-tinted map with light building blocks under the same roads, labels, icons
+and route, as an alternative to the aerial; `SpeedTraps` + HUD banner (camera flash, name, speed, ★ rating at 150/200/250
+km/h, session best); road wear and patches made stronger; new capture of the road surface beside the car.
+**Results:** 0 exceptions; atlas view works; road wear still not visible; the rain-night road is still white exactly beyond
+the car probe's box (the probe-as-custom-reflection had no effect in URP Forward+: it renders one time only and the
+generated default texture stays in use); the speed-trap scene found no camera (the data's `road` field holds street names,
+not ids).
+
+### Iteration 26 (2026-11-10): speed traps working, roof finishes, road instrumentation
+**Changes:** speed-trap scene takes the road nearest the camera; sky probe renders in one frame (25 renders, still no effect on
+the reflection); roof finishes on the dressed roofs (pale gravel 32 %, white membrane 23 %, green roof 11 %, the dark membrane
+otherwise) and rows of tilted solar panels on 30 % of the big roofs; the road shot logs the renderers, materials, wear values
+and UV1 state under the car.
+**Results:** speed trap "Strait Camera 219 km/h ★★☆ NEW BEST" with the flash and banner; 0 exceptions; under the car:
+M_Asphalt_New (wear 0.6, patches 0.5, UV1 381/381) and M_Asphalt_Worn (wear 1.0, patches 0.85, UV1 882/882), so values and UVs
+arrive. The skyline roofs now vary in colour with solar rows and parapets.
+**Found:** the asphalt's albedo detail is hidden at grazing angles by the environment reflection (URP's grazing reflectance
+at smoothness 0.38 reaches ~0.4, of a stale daytime sky); the brake-disc glow still does not read through this car's rims.
+
+### Iteration 27 (2026-11-10): lens droplets, damage icon, reflection attempt 2, top-down road check
+**Changes:** rain beads on the camera lens (procedural droplets with bright rims and dark cores, some already run; fade in
+with the rain, thin out at speed as the wind clears them, run down faster the faster you go); the cluster's car icon is now a
+status icon: the body tints white → red with damage and the label reads "DAMAGE nn %"; `SkyReflection` regenerates the default
+reflection with `DynamicGI.UpdateEnvironment`; a straight-down road capture.
+**Results:** 0 exceptions; droplets read well in the rain-night shot; the top-down shot shows plain asphalt with no wear,
+gutters or patches at all, and the rain-night pavement is still white beyond the car's probe (the default environment is
+not what Forward+ samples there).
+**Found:** the street under the capture car is drawn by overlapping chunks including `M_Concrete_Deck`, the city's most used
+road surface (358 meshes), which RoadWear skipped (asphalt only).
+
+### Iteration 28 (2026-11-10): concrete road deck in RoadWear, city-wide sky probe, nitro gain pop-ups
+**Changes:** RoadWear also takes the concrete road deck (861 meshes, 3 materials); `SkyReflection` becomes one realtime
+sky-only probe whose box covers the whole city (low importance); Asphalt-style nitro gain pop-ups by the gauge ("+12 %
+DRIFT", "+5 % NEAR MISS", rising and fading; passive regeneration excluded); the road shot logs the collider under the car.
+**Results:** EditMode **93/93**, 0 exceptions; the surface under the capture car is `Collider_asphalt` with wear values and
+UV1 present, yet the top-down shot is still plain; the rain-night pavement is still white beyond the car probe.
+**Found:** the sky probe had a culling mask of 0, which URP evidently never renders (the car probe, same API, works); the
+road effects were written as small absolute colour shifts (patch fill 0.02 linear, wear −24 %) on an asphalt that is almost
+black and, in the capture street, in building shade, so they cannot read; RoadWear's worst frame 23 ms (fresh vertex and UV
+arrays per mesh).
+
+### Iteration 29 (2026-11-10): HUD performance, night water glow, probe fixes, relative road detail
+**Changes:** HUD texts are rebuilt only when what they show changes (speed, gear, G, nitro label and hint, GPS), and the
+cluster, minimap, GPS panel and the full-screen effects sit on nested canvases so each re-batches on its own; the water
+mirrors a warm city glow low on the horizon at night with broken light streaks; a night river capture; the sky probe renders
+an unused layer (a culling mask of 0 never rendered); the car probe's box grows to 360 m; road patches and cracks darken
+relative to the asphalt, wheel paths −38 %, paler gutter dust; RoadWear reuses one vertex and one UV list.
+**Results:** 0 exceptions; GPS, speed trap and road wear (273 meshes) fine. Frame times **not comparable**: the other session
+announced it was taking the machine for its V1 builds at the end of this run, and every system slowed together (TrafficPhysics
+avg 1.40 ms vs ~1.0, cruise p99 142.6 ms); no build or player of mine runs until it releases.
+**Found:** the wet-night white band did not move with a 360 m car probe, so it is not a reflection-probe problem: it is the
+moon's specular on near-mirror wet surfaces (0.98 smooth puddles) scattered by rain-ripple normals, which alias into a white
+glitter carpet beyond ~10 m; the night river shows the same blue-white glitter; the top-down road is still plain.
+**Prepared, compile-checked, not yet run:** ripple and bump detail on wet roads fade beyond ~10 m and wet gloss is capped
+(0.86, puddles 0.93); water normals flatten with distance; a 10 m control patch with hand-made UVs and the worn asphalt in the
+top-down shot (shader vs mesh); in-run A/B switches `roadwear`, `skyrefl`, `carprobe`, `hud`.

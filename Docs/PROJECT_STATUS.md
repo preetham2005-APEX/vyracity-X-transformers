@@ -85,3 +85,28 @@ The history before the playbook (Phases 0–2 and the full-game pass) is recorde
 - Decide BUG-066: the 5 CC-BY real-brand rebadges (amend CLAUDE.md or drop them). Approve the quarantine of the 7 non-commercial/Standard car downloads. Decide whether the arcade handling layer may add grip against VEHICLE_HANDLING_SPEC §3 (`Docs/AUDIT_AAA_COMPARISON.md` §5, Phase 0).
 - Approve or decline the Unity CLI update 1.0.0-beta.13 → beta.17.
 - Decide in B1: Sketchfab Standard and CC-BY-SA kits; delete the GTA Liberty City downloads (two in `ArtSource/Downloads`, plus the zip and extracted folder in the design repo root).
+
+## Round 2 visual iterations (vehicle/visual session, 2026-11-10)
+
+Full log: `Docs/VISUAL_ITERATION_LOG.md` (iterations 16 onwards); scores and frame times: `Docs/visual_iterations_round2.json`.
+The F/L-card session ended at the PC restart without its V1 commit, so the hand-over of the road/facade shaders and the fog
+did not happen formally. Changes made in that area, all additive, no new material properties, no keywords (BUG-106 kept):
+
+- `VC_FacadeSurface.hlsl` (Veyra/Facade): ground-floor shopfronts, glass-tower lobbies, slab lines, TV flicker; interiors fade
+  with distance and angle; window-grid anti-aliasing; lit-window share at night × 0.65; three light temperatures. Reads the new
+  global `_VC_GroundHeight` / `_VC_GroundHeightRect` (Gameplay/GroundHeightField) because building UVs are absolute world
+  height (CityBuilder `v = y / 14`). Assumes CityBuilder's 12 m × 14 m UV tile for metres-per-bay.
+- `VC_RoadSurface.hlsl` (Veyra/Road): wear lanes follow `UV1.y` = lane count; gutters and oil drips. UV1 and the wear/patch
+  values come from `Gameplay/RoadWear` at runtime; the M_Asphalt_* assets are not edited (restored on exit in the editor).
+- `VC_WaterSurface.hlsl`: per-renderer swell scale through `_MacroVariation`; shallows and shore foam from the ground field.
+- `World/VeyraGlobals.Apply` takes an optional night factor; `WorldEnvironment` passes its sun-based `NightFactor`, so
+  `_VC_NightFactor` follows the sun instead of the 18:00–20:00 clock ramp (`NightFactorAt` and its tests unchanged).
+- Fog: `Gameplay/AtmosphereScatter` tints `RenderSettings.fogColor` per frame after WorldEnvironment writes it (sun-side
+  warm, away cooler, sodium glow at night). Density, profiles and volumes are untouched.
+- `VehiclePhysics/Powertrain`: automatic shift points follow a smoothed pedal load (light throttle shifts early; floored is
+  unchanged). EditMode 93/93 after the change.
+- Reflections: `Gameplay/SkyReflection` renders a 128 px sky-only realtime cubemap as the hour and cloud cover change and sets
+  it as the custom default reflection (`RenderSettings.defaultReflectionMode = Custom`); the scene's baked skybox reflection
+  was a daytime sky, so wet night streets away from the car mirrored white.
+- New runtime systems (Gameplay): `GroundHeightField`, `AtmosphereScatter`, `RoadWear`, `SkyReflection`, `SpeedTraps`;
+  (UI): world map GPS/atlas view, HUD satnav, speed lines, speed-trap banner.

@@ -258,7 +258,7 @@ namespace VeyraCity.World
             float wet = Mathf.Max(Wetness, PostVolumeDirector.WetNight * WetNightLevel);
             ApplyMaterials(NightFactor, golden, wet);
             float rain = Application.isPlaying ? RainIntensity : Mathf.Max(RainIntensity, Weather == WeatherKind.Rain ? 1f : 0f);
-            VeyraGlobals.Apply(TimeOfDay, wet, rain, WindStrength, WindDirection, Sun != null ? -Sun.transform.forward : Vector3.up);
+            VeyraGlobals.Apply(TimeOfDay, wet, rain, WindStrength, WindDirection, Sun != null ? -Sun.transform.forward : Vector3.up, NightFactor);   // iteration 21: shaders follow the sun
 
             if (Application.isPlaying)
             {

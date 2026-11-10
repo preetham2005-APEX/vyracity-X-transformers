@@ -16,7 +16,9 @@ namespace VeyraCity.Gameplay
         /// <summary>Layer the player car's renderers use so the probe skips them (wheel raycasts ignore the car anyway).</summary>
         public const int CarLayer = 30;
         public int Resolution = 256;   // iteration 8: crisper street reflections in the paint (one face per frame)
-        public float Range = 70f;
+        // iteration 29: 360 m box (was 70): the street the camera sees reflects the real surroundings instead of the
+        // editor-baked daytime sky (wet night roads beyond 35 m read as snow)
+        public float Range = 360f;
         public float FarClip = 300f;
 
         ReflectionProbe probe;

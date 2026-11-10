@@ -20,6 +20,9 @@ namespace VeyraCity.VehiclePhysics
         public float EngineTorque { get; private set; }
 
         float shiftTimer;
+        // Smoothed pedal load for the automatic's shift points (iteration 21): rises in ~0.4 s (kickdown), falls in ~1.2 s
+        // (a brief lift does not upshift at once). Starts at 1, i.e. the full-throttle shift points.
+        float shiftLoad = 1f;
         int pendingGear;
         float limiterCut;
 
@@ -83,6 +86,7 @@ namespace VeyraCity.VehiclePhysics
         {
             reflectedInertia = 0f;
             throttle = Mathf.Clamp01(throttle);
+            shiftLoad = Mathf.MoveTowards(shiftLoad, throttle, dt * (throttle > shiftLoad ? 2.5f : 0.8f));
 
             // Gear selection.
             if (Shifting)
@@ -106,12 +110,19 @@ namespace VeyraCity.VehiclePhysics
                     float rpmNow = forwardWheelRpm * GearRatio(Gear) * gearbox.FinalDrive;
                     if (gearbox.Automatic)
                     {
+                        // Shift points follow the pedal like a road car's automatic (iteration 21: a 70 km/h cruise at
+                        // part throttle sat at 6,700 rpm in 1st): half the upshift rpm and 55 % of the downshift rpm at a
+                        // light throttle, the full spec from ~90 % pedal (launches, nitro and racing are unchanged), and
+                        // flooring it at low rpm kicks down because the downshift point rises with the load.
+                        float k = Mathf.SmoothStep(0f, 1f, Mathf.InverseLerp(0.3f, 0.9f, shiftLoad));
+                        float upRpm = Mathf.Lerp(gearbox.ShiftUpRpm * 0.5f, gearbox.ShiftUpRpm, k);
+                        float downRpm = Mathf.Lerp(gearbox.ShiftDownRpm * 0.55f, gearbox.ShiftDownRpm, k);
                         bool tractionKnown = drivenSlip >= 0f && drivenSlip < 0.3f;
-                        if (rpmNow > gearbox.ShiftUpRpm && Gear < GearCount && tractionKnown) RequestShift(Gear + 1);
-                        else if (Gear > 1 && rpmNow < gearbox.ShiftDownRpm)
+                        if (rpmNow > upRpm && Gear < GearCount && tractionKnown) RequestShift(Gear + 1);
+                        else if (Gear > 1 && rpmNow < downRpm)
                         {
                             float rpmAfter = forwardWheelRpm * GearRatio(Gear - 1) * gearbox.FinalDrive;
-                            if (rpmAfter < gearbox.ShiftUpRpm * 0.92f) RequestShift(Gear - 1);
+                            if (rpmAfter < upRpm * 0.92f) RequestShift(Gear - 1);
                         }
                     }
                     else if (manualRequest != 0)

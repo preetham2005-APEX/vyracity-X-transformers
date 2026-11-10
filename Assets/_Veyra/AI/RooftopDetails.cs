@@ -22,7 +22,7 @@ namespace VeyraCity.AI
 
         struct Roof { public Vector3 Top; public Quaternion Rot; public float HalfW, HalfL, Height; public int Seed; }
         const float Cell = 250f;
-        const int Concrete = 0, Metal = 1, MetalDark = 2, Wood = 3, Beacon = 4, Slots = 5;
+        const int Concrete = 0, Metal = 1, MetalDark = 2, Wood = 3, Beacon = 4, RoofGravel = 5, RoofWhite = 6, RoofGreen = 7, Solar = 8, Slots = 9;
         readonly Dictionary<long, List<Roof>> grid = new Dictionary<long, List<Roof>>();
         readonly Dictionary<long, GameObject> built = new Dictionary<long, GameObject>();
         static Material[] mats;
@@ -78,6 +78,20 @@ namespace VeyraCity.AI
                 float blink = Mathf.Repeat(Time.time * 0.75f, 1f) < 0.35f ? 1f : 0.15f;   // aviation red, ~45 flashes a minute
                 mats[Beacon].SetColor(EmissionId, new Color(1f, 0.06f, 0.04f) * (0.4f + 6f * night) * blink);
             }
+            // a cell under construction gets 8 roofs a frame (iteration 22: with parapets a whole downtown cell in one
+            // frame cost up to 28 ms)
+            if (pendingRoofs != null)
+            {
+                int end = Mathf.Min(pendingRoofs.Count, pendingIndex + 8);
+                for (; pendingIndex < end; pendingIndex++) Dress(pendingBuilder, pendingRoofs[pendingIndex]);
+                if (pendingIndex >= pendingRoofs.Count)
+                {
+                    built[pendingKey] = Finish(pendingKey, pendingBuilder);
+                    pendingRoofs = null;
+                    pendingBuilder = null;
+                }
+                return;
+            }
             timer -= Time.deltaTime;
             if (timer > 0f) return;
             timer = 0.1f;
@@ -112,14 +126,27 @@ namespace VeyraCity.AI
                     best = key;
                     bestD = d;
                 }
-            if (bestD < float.MaxValue) built[best] = grid.TryGetValue(best, out var roofs) ? BuildCell(best, roofs) : null;
+            if (bestD < float.MaxValue)
+            {
+                if (grid.TryGetValue(best, out var roofs))
+                {
+                    Ensure();
+                    pendingKey = best;
+                    pendingRoofs = roofs;
+                    pendingIndex = 0;
+                    pendingBuilder = new ProcMeshBuilder(Slots);
+                }
+                else built[best] = null;
+            }
         }
 
-        GameObject BuildCell(long key, List<Roof> roofs)
+        long pendingKey;
+        List<Roof> pendingRoofs;
+        int pendingIndex;
+        ProcMeshBuilder pendingBuilder;
+
+        GameObject Finish(long key, ProcMeshBuilder mb)
         {
-            Ensure();
-            var mb = new ProcMeshBuilder(Slots);
-            foreach (var r in roofs) Dress(mb, r);
             var go = new GameObject("Rooftops_" + key);
             go.transform.SetParent(transform, false);
             go.AddComponent<MeshFilter>().sharedMesh = mb.ToMesh("RooftopCell");
@@ -131,12 +158,45 @@ namespace VeyraCity.AI
             return go;
         }
 
+        static readonly float[] Sides = { -1f, 1f }, Legs = { -1.1f, 1.1f };   // no per-roof array garbage
+
         static void Dress(ProcMeshBuilder mb, Roof r)
         {
             var rng = new System.Random(r.Seed);
             var m = Matrix4x4.TRS(r.Top, r.Rot, Vector3.one);
             float ax = r.HalfW * 0.33f, az = r.HalfL * 0.33f;   // the safe middle third
             Vector3 P(double u, double v) => new Vector3((float)(u * 2 - 1) * ax, 0f, (float)(v * 2 - 1) * az);
+            // roof finish (iteration 26: every roof was the same dark membrane from the skyline and on the map's aerial):
+            // pale gravel, white reflective membrane, a green roof, or the dark membrane left showing; solar rows on some
+            double fin = rng.NextDouble();
+            int finish = fin < 0.32 ? RoofGravel : fin < 0.55 ? RoofWhite : fin < 0.66 ? RoofGreen : -1;
+            if (finish >= 0)
+                mb.Box(m, finish, new Vector3(0f, 0.03f, 0f), new Vector3(r.HalfW * 2f - 0.9f, 0.06f, r.HalfL * 2f - 0.9f));
+            if (finish != RoofGreen && r.HalfW * r.HalfL > 120f && rng.NextDouble() < 0.3)
+            {
+                // rows of tilted solar panels in the half away from the stair housing
+                int rows = Mathf.Clamp(Mathf.FloorToInt(r.HalfL * 0.5f / 2.2f), 1, 5);
+                for (int k = 0; k < rows; k++)
+                {
+                    var c = new Vector3(0f, 0.55f, -r.HalfL * 0.45f + k * 2.2f);
+                    var rot = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(-22f, 0f, 0f), Vector3.one);
+                    mb.Box(m * Matrix4x4.Translate(c) * rot, Solar, Vector3.zero, new Vector3(r.HalfW * 0.9f, 0.05f, 1.6f));
+                    mb.Box(m, MetalDark, c + new Vector3(0f, -0.3f, 0.4f), new Vector3(r.HalfW * 0.9f, 0.08f, 0.08f));
+                }
+            }
+            // parapet round the roof edge with a darker coping (iteration 21: the flat box tops read as unfinished from the
+            // skyline views; GTA V's roofs all have one)
+            float ph = 0.9f + (float)rng.NextDouble() * 0.6f, pt = 0.35f;
+            foreach (float sx in Sides)
+            {
+                mb.Box(m, Concrete, new Vector3(sx * (r.HalfW - pt * 0.5f), ph * 0.5f, 0f), new Vector3(pt, ph, r.HalfL * 2f));
+                mb.Box(m, MetalDark, new Vector3(sx * (r.HalfW - pt * 0.5f), ph + 0.04f, 0f), new Vector3(pt + 0.08f, 0.08f, r.HalfL * 2f + 0.08f));
+            }
+            foreach (float sz in Sides)
+            {
+                mb.Box(m, Concrete, new Vector3(0f, ph * 0.5f, sz * (r.HalfL - pt * 0.5f)), new Vector3(r.HalfW * 2f - pt * 2f, ph, pt));
+                mb.Box(m, MetalDark, new Vector3(0f, ph + 0.04f, sz * (r.HalfL - pt * 0.5f)), new Vector3(r.HalfW * 2f, 0.08f, pt + 0.08f));
+            }
             // stair / lift housing
             if (r.HalfW * r.HalfL > 60f)
             {
@@ -160,8 +220,8 @@ namespace VeyraCity.AI
             {
                 var p = P(0.3 + 0.4 * rng.NextDouble(), 0.3 + 0.4 * rng.NextDouble());
                 float legs = 2.2f;
-                foreach (var lx in new[] { -1.1f, 1.1f })
-                    foreach (var lz in new[] { -1.1f, 1.1f })
+                foreach (var lx in Legs)
+                    foreach (var lz in Legs)
                         mb.Box(m, MetalDark, p + new Vector3(lx, legs * 0.5f, lz), new Vector3(0.18f, legs, 0.18f));
                 mb.Box(m, MetalDark, p + new Vector3(0f, legs, 0f), new Vector3(3.2f, 0.15f, 3.2f));
                 mb.Cylinder(m, Wood, p + new Vector3(0f, legs + 1.45f, 0f), 1.55f, 2.8f, 12);
@@ -193,6 +253,10 @@ namespace VeyraCity.AI
             mats[MetalDark] = Lit("RoofMetalDark", new Color(0.1f, 0.1f, 0.11f), 0.35f, 0.5f);
             mats[Wood] = Lit("RoofTankWood", new Color(0.3f, 0.2f, 0.13f), 0.15f, 0f);
             mats[Beacon] = Lit("RoofBeacon", new Color(0.4f, 0.03f, 0.02f), 0.4f, 0f);
+            mats[RoofGravel] = Lit("RoofGravel", new Color(0.52f, 0.5f, 0.46f), 0.08f, 0f);
+            mats[RoofWhite] = Lit("RoofWhiteMembrane", new Color(0.78f, 0.79f, 0.8f), 0.35f, 0f);
+            mats[RoofGreen] = Lit("RoofGreen", new Color(0.2f, 0.3f, 0.14f), 0.05f, 0f);
+            mats[Solar] = Lit("RoofSolar", new Color(0.04f, 0.07f, 0.14f), 0.85f, 0.3f);
         }
 
         static Material Lit(string name, Color c, float smooth, float metal)

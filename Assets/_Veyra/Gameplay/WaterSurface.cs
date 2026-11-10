@@ -18,15 +18,27 @@ namespace VeyraCity.Gameplay
                 Debug.LogWarning("[WaterSurface] no water material in the library (Veyra/Materials/Build Water); keeping the old water");
                 return;
             }
-            int swapped = 0;
+            int swapped = 0, inland = 0;
+            MaterialPropertyBlock calm = null;
             foreach (var r in FindObjectsByType<MeshRenderer>(FindObjectsInactive.Include, FindObjectsSortMode.None))
             {
                 var m = r.sharedMaterial;
                 if (m == null || m.name != "Water") continue;
                 r.sharedMaterial = water;
                 swapped++;
+                // iteration 20: the river and the reservoir are calm (a quarter of the sea's swell, softer ripples)
+                var mf = r.GetComponent<MeshFilter>();
+                if (mf != null && mf.sharedMesh != null && mf.sharedMesh.name == "SeaPlane") continue;
+                if (calm == null)
+                {
+                    calm = new MaterialPropertyBlock();
+                    calm.SetFloat("_MacroVariation", 0.25f);
+                    calm.SetFloat("_BumpScale", water.GetFloat("_BumpScale") * 0.6f);
+                }
+                r.SetPropertyBlock(calm);
+                inland++;
             }
-            Debug.Log($"[WaterSurface] {swapped} water surfaces now use {water.name}");
+            Debug.Log($"[WaterSurface] {swapped} water surfaces now use {water.name} ({inland} calm inland)");
         }
     }
 }
