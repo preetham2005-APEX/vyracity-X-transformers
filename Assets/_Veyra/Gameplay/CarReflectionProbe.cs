@@ -15,7 +15,7 @@ namespace VeyraCity.Gameplay
     {
         /// <summary>Layer the player car's renderers use so the probe skips them (wheel raycasts ignore the car anyway).</summary>
         public const int CarLayer = 30;
-        public int Resolution = 128;
+        public int Resolution = 256;   // iteration 8: crisper street reflections in the paint (one face per frame)
         public float Range = 70f;
         public float FarClip = 300f;
 
@@ -49,6 +49,13 @@ namespace VeyraCity.Gameplay
         }
 
         void LateUpdate()
+        {
+            long fc0 = VeyraCity.Core.FrameCost.Start();
+            LateUpdateBody();
+            VeyraCity.Core.FrameCost.Stop("CarProbe", fc0);
+        }
+
+        void LateUpdateBody()
         {
             if (probe == null) return;
             // Start the next time-sliced refresh as soon as the previous one has finished (about every 9 frames).

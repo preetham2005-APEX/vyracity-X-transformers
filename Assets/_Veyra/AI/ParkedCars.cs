@@ -58,14 +58,19 @@ namespace VeyraCity.AI
                     var p = road.Path.PositionAt(s);
                     var t = road.Path.TangentAt(s);
                     var right = new Vector3(t.z, 0f, -t.x).normalized;
-                    int hint = 0;
-                    road.Path.Project(p, ref hint, 0);
+                    int hint = road.Path.SegmentAt(s);   // binary search (iteration 9: Project(window 0) scanned every segment)
                     if (road.StructureAt(hint) != StructureKind.None) continue;   // no parking on bridges or in tunnels
+                    // iteration 9 (autopilot stuck on parked cars, R_BRIDGES): none within 40 m of a bridge or tunnel
+                    // (raised approach ramps) and none on a grade steeper than 4 %
+                    if (NearStructure(road, s, 40f)) continue;
+                    float grade = Mathf.Abs(road.Path.PositionAt(Mathf.Min(len, s + 6f)).y - road.Path.PositionAt(Mathf.Max(0f, s - 6f)).y) / 12f;
+                    if (grade > 0.04f) continue;
                     for (int side = -1; side <= 1; side += 2)
                     {
                         var rng = new System.Random(r * 7919 + k * 31 + side * 3);
                         if (rng.NextDouble() > Occupancy) continue;
-                        var pos = p + right * side * (road.HalfWidth - 1.15f);
+                        // centre 0.95 m inside the kerb: a 1.9 m car then stays clear of an 11 m collector's 3.5 m lane
+                        var pos = p + right * side * (road.HalfWidth - 0.95f);
                         if (NearJunction(pos, right * side, t, r)) continue;
                         var dir = side > 0 ? t : -t;                        // right-hand traffic: parked with the flow
                         int idx = slots.Count;
@@ -79,6 +84,17 @@ namespace VeyraCity.AI
             Debug.Log($"[ParkedCars] {slots.Count} kerbside slots on {roads.Count} roads");
         }
 
+        static bool NearStructure(RoadPath road, float s, float reach)
+        {
+            for (float o = -reach; o <= reach; o += 10f)
+            {
+                float so = Mathf.Clamp(s + o, 0f, road.Path.Length);
+                int h = road.Path.SegmentAt(so);
+                if (road.StructureAt(h) != StructureKind.None) return true;
+            }
+            return false;
+        }
+
         /// <summary>Another road close to the slot (sideways or along the kerb) means a junction or a driveway: skip.</summary>
         static bool NearJunction(Vector3 pos, Vector3 outward, Vector3 along, int road)
         {
@@ -89,35 +105,61 @@ namespace VeyraCity.AI
 
         void Update()
         {
+            long fc0 = VeyraCity.Core.FrameCost.Start();
+            UpdateBody();
+            VeyraCity.Core.FrameCost.Stop("ParkedCars", fc0);
+        }
+
+        void UpdateBody()
+        {
+            // iteration 10: build the slot tables right after the scene loads (behind the menu), on staggered frames,
+            // instead of on the first frame of free roam
+            if (!built && Active && Time.frameCount > 3) BuildSlots();
             if (!Active || Player == null) { if (live.Count > 0) ClearAll(); return; }
             timer -= Time.deltaTime;
             if (timer > 0f) return;
-            timer = 0.4f;
+            timer = 0.12f;   // iteration 9: small batches often instead of everything every 0.4 s (streaming hitches)
             if (!built) BuildSlots();
             Vector3 focus = Player.transform.position;
             // recycle far cars
-            var gone = new List<int>();
+            gone.Clear();
             foreach (var kv in live)
                 if (kv.Value == null || (kv.Value.transform.position - focus).sqrMagnitude > DespawnRadius * DespawnRadius) gone.Add(kv.Key);
             foreach (int idx in gone) Recycle(idx);
-            // fill near slots
+            // candidate slots, nearest first
+            want.Clear();
             int cx = Mathf.FloorToInt(focus.x / Cell), cz = Mathf.FloorToInt(focus.z / Cell);
             int reach = Mathf.CeilToInt(SpawnRadius / Cell);
-            for (int x = cx - reach; x <= cx + reach && live.Count < MaxCars; x++)
-                for (int z = cz - reach; z <= cz + reach && live.Count < MaxCars; z++)
+            for (int x = cx - reach; x <= cx + reach; x++)
+                for (int z = cz - reach; z <= cz + reach; z++)
                 {
                     if (!grid.TryGetValue(Key(x, z), out var list)) continue;
                     foreach (int idx in list)
                     {
-                        if (live.Count >= MaxCars) break;
                         if (live.ContainsKey(idx)) continue;
                         var sl = slots[idx];
-                        if ((sl.Pos - focus).sqrMagnitude > SpawnRadius * SpawnRadius) continue;
+                        float d2 = (sl.Pos - focus).sqrMagnitude;
+                        if (d2 > SpawnRadius * SpawnRadius) continue;
                         if (Mathf.Abs(sl.Pos.y - focus.y) > 25f) continue;
-                        live[idx] = Spawn(sl);
+                        want.Add((d2, idx));
                     }
                 }
+            want.Sort((a, b) => a.d2.CompareTo(b.d2));
+            // budget: up to 4 pooled reuses and 1 fresh instantiation per tick
+            int reused = 0, created = 0;
+            foreach (var (_, idx) in want)
+            {
+                if (live.Count >= MaxCars || reused >= 4) break;
+                var sl = slots[idx];
+                bool pooled = pools.TryGetValue(sl.Model, out var pool) && pool.Count > 0;
+                if (!pooled && created >= 1) continue;
+                live[idx] = Spawn(sl);
+                if (pooled) reused++; else created++;
+            }
         }
+
+        readonly List<int> gone = new List<int>();
+        readonly List<(float d2, int idx)> want = new List<(float, int)>();
 
         GameObject Spawn(Slot sl)
         {

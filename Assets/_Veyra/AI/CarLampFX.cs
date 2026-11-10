@@ -21,6 +21,7 @@ namespace VeyraCity.AI
         readonly Renderer[] glowRenderers = new Renderer[4];
         readonly TrailRenderer[] trails = new TrailRenderer[2];
         readonly Renderer[] beams = new Renderer[2];
+        readonly Renderer[] streaks = new Renderer[2];
         static Mesh cone;
         MaterialPropertyBlock block;
         Func<float> speed, brake;
@@ -61,7 +62,7 @@ namespace VeyraCity.AI
             headLight.type = LightType.Spot;
             headLight.spotAngle = 78f;
             headLight.innerSpotAngle = 34f;
-            headLight.range = 55f;
+            headLight.range = 70f;
             headLight.color = new Color(1f, 0.92f, 0.8f);
             headLight.shadows = LightShadows.None;
             headLight.intensity = 0f;
@@ -105,6 +106,19 @@ namespace VeyraCity.AI
                 r.receiveShadows = false;
                 glows[i] = go.transform;
                 glowRenderers[i] = r;
+                if (i < 2)
+                {
+                    // Anamorphic streak through each headlight facing the camera (Cyberpunk's oncoming-traffic look).
+                    var sg = new GameObject("Streak");
+                    sg.transform.SetParent(go.transform, false);
+                    sg.transform.localScale = new Vector3(7f, 0.09f, 1f);
+                    sg.AddComponent<MeshFilter>().sharedMesh = quad;
+                    var sr = sg.AddComponent<MeshRenderer>();
+                    sr.sharedMaterial = glowMat;
+                    sr.shadowCastingMode = ShadowCastingMode.Off;
+                    sr.receiveShadows = false;
+                    streaks[i] = sr;
+                }
                 if (trailsOn && i < 2)
                 {
                     // Faint light cone ahead of each headlight at night (headlight beams in the night haze).
@@ -198,6 +212,13 @@ namespace VeyraCity.AI
 
         void LateUpdate()
         {
+            long fc0 = VeyraCity.Core.FrameCost.Start();
+            LateUpdateBody();
+            VeyraCity.Core.FrameCost.Stop("CarLampFX", fc0);
+        }
+
+        void LateUpdateBody()
+        {
             var cam = Camera.main;
             if (cam == null) return;
             float night = WorldEnvironment.Instance != null ? WorldEnvironment.Instance.NightFactor : 0f;
@@ -217,26 +238,39 @@ namespace VeyraCity.AI
                 float k = head ? night * 1.4f : (night * 1.0f + b * (0.8f + 0.8f * night));
                 k *= vis;
                 glowRenderers[i].enabled = k > 0.01f;
-                if (!glowRenderers[i].enabled) continue;
+                if (!glowRenderers[i].enabled) { if (head && streaks[i] != null) streaks[i].enabled = false; continue; }
                 float size = head ? 0.75f : 0.6f + b * 0.2f;
                 glows[i].localScale = Vector3.one * size;
                 glows[i].rotation = Quaternion.LookRotation(-toCam, cam.transform.up);
                 Color c = head ? new Color(1f, 0.93f, 0.8f) : new Color(1f, 0.08f, 0.04f);
                 block.SetColor("_BaseColor", c * k);
                 glowRenderers[i].SetPropertyBlock(block);
+                if (head && streaks[i] != null)
+                {
+                    // only when the lamp looks almost straight at the camera, and only at night
+                    float st = night * Mathf.Clamp01((facing - 0.75f) * 4f);
+                    streaks[i].enabled = st > 0.02f;
+                    if (streaks[i].enabled)
+                    {
+                        block.SetColor("_BaseColor", new Color(0.55f, 0.72f, 1f) * (0.32f * st));
+                        streaks[i].SetPropertyBlock(block);
+                    }
+                }
             }
             for (int j = 0; j < 2; j++)
             {
                 if (beams[j] == null) continue;
                 beams[j].enabled = night > 0.3f;
                 if (!beams[j].enabled) continue;
-                block.SetColor("_BaseColor", new Color(1f, 0.93f, 0.8f) * (0.09f * night));
+                // iteration 8: rain makes the beams visible (light caught by the drops, GTA V's wet nights)
+                float rain = WorldEnvironment.Instance != null ? WorldEnvironment.Instance.RainIntensity : 0f;
+                block.SetColor("_BaseColor", new Color(1f, 0.93f, 0.8f) * (0.09f * night * (1f + 2.2f * rain)));
                 beams[j].SetPropertyBlock(block);
             }
             if (headLight != null)
             {
                 headLight.enabled = RealLightsOn && night > 0.05f;
-                headLight.intensity = 90f * night;
+                headLight.intensity = 230f * night;   // iteration 6: 90 did not read on the road in the chase view
                 float tk = 0.9f * night + b * (1.2f + 2.4f * night);
                 tailLight.enabled = RealLightsOn && tk > 0.02f;
                 tailLight.intensity = tk;

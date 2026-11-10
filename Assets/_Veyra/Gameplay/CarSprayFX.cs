@@ -71,6 +71,10 @@ namespace VeyraCity.Gameplay
                 var r = go.GetComponent<ParticleSystemRenderer>();
                 r.sharedMaterial = mistMat;
                 r.shadowCastingMode = ShadowCastingMode.Off;
+                // iteration 7: streaky plumes, not round puffs (iteration 6's mist read as floating white balls at night)
+                r.renderMode = ParticleSystemRenderMode.Stretch;
+                r.velocityScale = 0.09f;
+                r.lengthScale = 1.6f;
                 ps.Play();
                 spray[i] = ps;
             }
@@ -90,6 +94,10 @@ namespace VeyraCity.Gameplay
                 em.rateOverTime = w.Grounded ? k * 90f : 0f;
                 var main = spray[i].main;
                 main.startSpeed = new ParticleSystem.MinMaxCurve(1.5f + v * 0.08f, 3f + v * 0.16f);
+                // the mist material is unlit: dim it with the light level so it does not glow at night
+                float night = WorldEnvironment.Instance != null ? WorldEnvironment.Instance.NightFactor : 0f;
+                float lum = Mathf.Lerp(0.8f, 0.16f, night);
+                main.startColor = new Color(lum, lum * 1.03f, lum * 1.08f, Mathf.Lerp(0.55f, 0.4f, night));
             }
         }
     }

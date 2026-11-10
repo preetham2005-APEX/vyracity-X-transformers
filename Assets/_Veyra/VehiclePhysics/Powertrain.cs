@@ -75,8 +75,11 @@ namespace VeyraCity.VehiclePhysics
         /// </summary>
         /// <param name="drivenWheelOmega">Mean angular velocity of the driven wheels, rad/s.</param>
         /// <param name="declutch">Open the clutch (e.g. hard braking with a closed throttle, as an automatic would).</param>
+        /// <param name="drivenSlip">Largest slip ratio of the grounded driven wheels; a negative value means none is on the
+        /// ground. Automatic upshifts wait while the wheels spin or are in the air (their speed says nothing about the road
+        /// speed then): a car dropped onto the road at full throttle no longer lands in 2nd gear with its wheels spinning.</param>
         public float Step(float dt, float throttle, float torqueScale, float drivenWheelOmega,
-                          bool wantsReverse, int manualRequest, out float reflectedInertia, bool declutch = false)
+                          bool wantsReverse, int manualRequest, out float reflectedInertia, bool declutch = false, float drivenSlip = 0f)
         {
             reflectedInertia = 0f;
             throttle = Mathf.Clamp01(throttle);
@@ -103,7 +106,8 @@ namespace VeyraCity.VehiclePhysics
                     float rpmNow = forwardWheelRpm * GearRatio(Gear) * gearbox.FinalDrive;
                     if (gearbox.Automatic)
                     {
-                        if (rpmNow > gearbox.ShiftUpRpm && Gear < GearCount) RequestShift(Gear + 1);
+                        bool tractionKnown = drivenSlip >= 0f && drivenSlip < 0.3f;
+                        if (rpmNow > gearbox.ShiftUpRpm && Gear < GearCount && tractionKnown) RequestShift(Gear + 1);
                         else if (Gear > 1 && rpmNow < gearbox.ShiftDownRpm)
                         {
                             float rpmAfter = forwardWheelRpm * GearRatio(Gear - 1) * gearbox.FinalDrive;

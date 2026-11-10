@@ -60,8 +60,7 @@ namespace VeyraCity.AI
                     var p = road.Path.PositionAt(s);
                     var t = road.Path.TangentAt(s);
                     var right = new Vector3(t.z, 0f, -t.x).normalized;
-                    int hint = 0;
-                    road.Path.Project(p, ref hint, 0);
+                    int hint = road.Path.SegmentAt(s);   // binary search (iteration 9: Project(window 0) scanned every segment)
                     if (road.StructureAt(hint) != StructureKind.None) continue;
                     for (int side = -1; side <= 1; side += 2)
                     {
@@ -105,6 +104,16 @@ namespace VeyraCity.AI
 
         void Update()
         {
+            long fc0 = VeyraCity.Core.FrameCost.Start();
+            UpdateBody();
+            VeyraCity.Core.FrameCost.Stop("StreetTrees", fc0);
+        }
+
+        void UpdateBody()
+        {
+            // iteration 10: build the slot tables right after the scene loads (behind the menu), on staggered frames,
+            // instead of on the first frame of free roam
+            if (!built && Active && Time.frameCount > 5) Build();
             if (!Active || Player == null) return;
             timer -= Time.deltaTime;
             if (timer <= 0f)

@@ -37,12 +37,13 @@ namespace VeyraCity.Gameplay
         Vector3 smoothedOffset;
         bool snapped;
         NitroSystem nitro;
-        float trauma, nitroKick, driftK, fov, roll, camDistance = 99f;
+        float trauma, nitroKick, driftK, fov, roll, camDistance = 99f, gLag;
         readonly RaycastHit[] castHits = new RaycastHit[12];
         readonly float[] lastCompression = new float[4];
         float lastAirTime;
         Volume blurVolume;
         MotionBlur blur;
+        Volume nitroVolume;
         ParticleSystem streaks;
 
         public VehicleController Target => target;
@@ -59,6 +60,7 @@ namespace VeyraCity.Gameplay
         {
             Unhook();
             if (blurVolume != null) Destroy(blurVolume.gameObject);
+            if (nitroVolume != null) Destroy(nitroVolume.gameObject);
         }
 
         public void SetTarget(VehicleController v)
@@ -143,6 +145,9 @@ namespace VeyraCity.Gameplay
             distance += nitroKick * 0.6f * SpeedEffectsIntensity;     // pulled back by the boost
             distance -= driftK * 0.5f;
             height -= driftK * 0.25f;
+            // iteration 8: the camera lags under acceleration and closes in under braking (Asphalt / GTA weight)
+            gLag = Mathf.Lerp(gLag, Mathf.Clamp(st.LongitudinalG * 0.7f, -0.45f, 0.6f) * SpeedEffectsIntensity, 1f - Mathf.Exp(-3f * dt));
+            distance += gLag;
 
             if (!snapped)
             {
@@ -231,14 +236,18 @@ namespace VeyraCity.Gameplay
             float kmh = speed * 3.6f;
             if (blur != null)
                 blur.intensity.value = Mathf.Clamp01((kmh - 90f) / 160f) * MaxMotionBlur * SpeedEffectsIntensity + 0.15f * boost * SpeedEffectsIntensity;
+            // Asphalt's nitro tunnel: a separate volume whose weight is the boost, so it changes nothing without nitro
+            if (nitroVolume != null) nitroVolume.weight = Mathf.Clamp01(boost) * SpeedEffectsIntensity;
             if (streaks != null)
             {
                 var em = streaks.emission;
                 // Iteration 2: subtler (Asphalt keeps the streaks to the screen edges, the centre stays readable)
-                float k = Mathf.Clamp01((kmh - 160f) / 140f) + boost * 0.6f;
-                em.rateOverTime = k * 70f * SpeedEffectsIntensity;
+                // Iteration 7: start at 130 km/h and brighten under nitro (at 1440p the iteration-2 streaks were invisible)
+                float k = Mathf.Clamp01((kmh - 130f) / 150f) + boost * 0.7f;
+                em.rateOverTime = k * 80f * SpeedEffectsIntensity;
                 var main = streaks.main;
                 main.startSpeed = new ParticleSystem.MinMaxCurve(speed * 0.9f + 20f, speed * 1.2f + 30f);
+                main.startColor = new Color(1f, 1f, 1f, 0.22f + 0.16f * boost);
             }
         }
 
@@ -259,6 +268,24 @@ namespace VeyraCity.Gameplay
                 blur.clamp.Override(0.06f);
                 blur.intensity.Override(0f);
                 blurVolume.sharedProfile = profile;
+            }
+            if (nitroVolume == null)
+            {
+                var go = new GameObject("NitroTunnelVolume");
+                nitroVolume = go.AddComponent<Volume>();
+                nitroVolume.isGlobal = true;
+                nitroVolume.priority = 60f;
+                nitroVolume.weight = 0f;
+                var profile = ScriptableObject.CreateInstance<VolumeProfile>();
+                var vig = profile.Add<Vignette>(true);
+                vig.intensity.Override(0.34f);
+                vig.smoothness.Override(0.5f);
+                vig.color.Override(new Color(0.02f, 0.05f, 0.12f));
+                var ca = profile.Add<ChromaticAberration>(true);
+                ca.intensity.Override(0.4f);
+                var lens = profile.Add<LensDistortion>(true);
+                lens.intensity.Override(-0.12f);
+                nitroVolume.sharedProfile = profile;
             }
             if (streaks == null)
             {

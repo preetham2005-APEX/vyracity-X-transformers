@@ -1,0 +1,211 @@
+{
+  "rubric": [
+    [
+      "R1",
+      "Car look"
+    ],
+    [
+      "R2",
+      "Speed sensation"
+    ],
+    [
+      "R3",
+      "Wet night"
+    ],
+    [
+      "R4",
+      "Night lighting"
+    ],
+    [
+      "R5",
+      "Atmosphere"
+    ],
+    [
+      "R6",
+      "Sky"
+    ],
+    [
+      "R7",
+      "Street life"
+    ],
+    [
+      "R8",
+      "Street detail"
+    ],
+    [
+      "R9",
+      "Drift & effects"
+    ],
+    [
+      "R10",
+      "Frame time"
+    ]
+  ],
+  "iterations": [
+    {
+      "n": 1,
+      "title": "Reflections, contact shadow, camera, traffic density",
+      "scores": [
+        3.5,
+        3,
+        1.5,
+        2,
+        1.5,
+        1,
+        1,
+        1,
+        3,
+        null
+      ],
+      "fps": null,
+      "p99": 37.5,
+      "note": "ParkedCars exception every frame (BUG-091) polluted the run"
+    },
+    {
+      "n": 2,
+      "title": "Parked cars, traffic near the player, lamp glows, signals",
+      "scores": [
+        3.5,
+        3.5,
+        1.5,
+        2,
+        1.5,
+        1,
+        2.5,
+        1.5,
+        3,
+        2
+      ],
+      "fps": 98.8,
+      "p99": 25.0
+    },
+    {
+      "n": 3,
+      "title": "Dents, spray, nitro bursts, camera collision, street trees",
+      "scores": [
+        3.5,
+        3.5,
+        2,
+        2.5,
+        1.5,
+        1,
+        3,
+        2.5,
+        3.5,
+        1.5
+      ],
+      "fps": 81.7,
+      "p99": 50.0
+    },
+    {
+      "n": 4,
+      "title": "Real headlights, tree LOD, measurement tooling",
+      "scores": [
+        3.5,
+        3.5,
+        2,
+        2.5,
+        1.5,
+        1,
+        3,
+        2.5,
+        3.5,
+        3
+      ],
+      "fps": 102.6,
+      "p99": 19.7
+    },
+    {
+      "n": 5,
+      "title": "Sky dome, class handling, crash debris, traffic lights",
+      "scores": [
+        3.5,
+        3.5,
+        2.5,
+        2.5,
+        2.5,
+        3,
+        3,
+        2.5,
+        3.5,
+        3
+      ],
+      "fps": 103.8,
+      "p99": 19.0
+    },
+    {
+      "n": 6,
+      "title": "Pedestrians, headlight pool, headlight streaks",
+      "scores": [
+        3.5,
+        3.5,
+        2.5,
+        3,
+        2.5,
+        3,
+        3.5,
+        2.5,
+        3.5,
+        2.5
+      ],
+      "fps": 86.8,
+      "p99": 29.2
+    },
+    {
+      "n": 7,
+      "title": "Street furniture, junction markings, signal-obeying traffic",
+      "scores": [
+        3.5,
+        3.5,
+        1.5,
+        3,
+        2.5,
+        3,
+        4,
+        3.5,
+        3.5,
+        3
+      ],
+      "fps": 94.9,
+      "p99": 25.0,
+      "note": "Rain shot broken by NaN bloom discs (umbrella mesh), fixed in iteration 8; CPU loaded by another session's Blender batch"
+    },
+    {
+      "n": 8,
+      "title": "Steam vents, bus-stop crowds, GTA-style radar, nitro tunnel, cost instrumentation",
+      "scores": [
+        3.5,
+        4,
+        3,
+        3.5,
+        3,
+        3,
+        4,
+        4,
+        3.5,
+        2
+      ],
+      "fps": 79.3,
+      "p99": 41.8,
+      "note": "From here the run includes a 28 s cruise and a launch; another session's Blender job loaded the CPU"
+    },
+    {
+      "n": 9,
+      "title": "Startup freeze 5 s to 0.8 s; launch wheelspin diagnosed",
+      "scores": [
+        3.5,
+        4,
+        3,
+        3.5,
+        3,
+        3,
+        4,
+        4,
+        3.5,
+        2.5
+      ],
+      "fps": 80.2,
+      "p99": 41.3
+    }
+  ]
+}

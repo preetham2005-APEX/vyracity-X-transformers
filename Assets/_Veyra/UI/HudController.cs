@@ -127,15 +127,21 @@ namespace VeyraCity.UI
             north.transform.parent.name = "North";
         }
 
-        /// <summary>Road map of the whole city rendered once from the road network (3.9 m per pixel).</summary>
+        /// <summary>
+        /// Map of the whole city rendered once (3.9 m per pixel). Iteration 9 restyle toward GTA V's radar: slate land with
+        /// faint district tints, the sea south of the coastline, the river and the reservoir in blue, and roads drawn near
+        /// their true width with a dark casing, graded by class (motorways amber, arterials bright, streets grey).
+        /// </summary>
         public static Texture2D MapTexture()
         {
             if (mapTexture != null) return mapTexture;
             const int W = 2048, H = 1536;
             var px = new Color32[W * H];
-            var bg = new Color32(10, 14, 24, 255);
+            var bg = new Color32(24, 29, 36, 255);
+            var seaCol = new Color32(18, 44, 66, 255);
             for (int i = 0; i < px.Length; i++) px[i] = bg;
             var b = WorldData.Bounds;
+            float mPerPx = b.width / W;
             // districts as faint tints
             var ds = WorldData.Districts;
             if (ds?.districts != null)
@@ -146,31 +152,67 @@ namespace VeyraCity.UI
                         foreach (var d in ds.districts)
                         {
                             if (!WorldData.PointInPolygon(d.polygon, wx, wz)) continue;
-                            var tint = Color32.Lerp(bg, (Color32)WorldData.ParseColor(d.color, Color.gray), 0.10f);
+                            var tint = Color32.Lerp(bg, (Color32)WorldData.ParseColor(d.color, Color.gray), 0.12f);
                             for (int yy = y; yy < y + 4 && yy < H; yy++)
                                 for (int xx = x; xx < x + 4 && xx < W; xx++) px[yy * W + xx] = tint;
                             break;
                         }
                     }
-            foreach (var road in WorldData.Roads)
+            // water: the sea lies south of the coastline polyline; the reservoir is a polygon; the river a wide line
+            if (ds?.coastline != null && ds.coastline.Length >= 4)
             {
-                var cls = road.Data.cls;
-                Color32 col = cls == "MW" || cls == "EX" ? new Color32(255, 176, 60, 255)
-                    : cls == "HW" || cls == "AR" ? new Color32(220, 226, 236, 255)
-                    : cls == "GR" ? new Color32(150, 120, 90, 255)
-                    : cls == "RW" ? new Color32(90, 100, 120, 255)
-                    : new Color32(150, 160, 175, 255);
-                float wpx = Mathf.Max(1.6f, road.Data.width / (b.width / W) * 0.55f);
-                var pts = road.Path.Points;
-                int n = road.Path.Closed ? pts.Length : pts.Length - 1;
-                for (int i = 0; i < n; i++)
+                var c = ds.coastline;
+                for (int x = 0; x < W; x++)
                 {
-                    var p0 = pts[i];
-                    var p1 = pts[(i + 1) % pts.Length];
-                    DrawLine(px, W, H, (p0.x - b.xMin) / b.width * W, (p0.z - b.yMin) / b.height * H,
-                             (p1.x - b.xMin) / b.width * W, (p1.z - b.yMin) / b.height * H, wpx, col);
+                    float wx = b.xMin + (x + 0.5f) / W * b.width;
+                    float coastZ = float.NaN;
+                    for (int i = 0; i + 3 < c.Length; i += 2)
+                        if ((c[i] <= wx && wx <= c[i + 2]) || (c[i + 2] <= wx && wx <= c[i]))
+                        {
+                            float t = Mathf.Abs(c[i + 2] - c[i]) > 1e-3f ? (wx - c[i]) / (c[i + 2] - c[i]) : 0f;
+                            coastZ = c[i + 1] + (c[i + 3] - c[i + 1]) * t;
+                            break;
+                        }
+                    if (float.IsNaN(coastZ)) continue;
+                    int yCoast = Mathf.Clamp(Mathf.FloorToInt((coastZ - b.yMin) / b.height * H), 0, H);
+                    for (int y = 0; y < yCoast; y++) px[y * W + x] = seaCol;
                 }
             }
+            if (ds?.lake != null && ds.lake.Length >= 6)
+                for (int y = 0; y < H; y += 2)
+                    for (int x = 0; x < W; x += 2)
+                    {
+                        float wx = b.xMin + (x + 1f) / W * b.width, wz = b.yMin + (y + 1f) / H * b.height;
+                        if (!WorldData.PointInPolygon(ds.lake, wx, wz)) continue;
+                        for (int yy = y; yy < y + 2 && yy < H; yy++)
+                            for (int xx = x; xx < x + 2 && xx < W; xx++) px[yy * W + xx] = seaCol;
+                    }
+            if (ds?.river != null && ds.river.Length >= 4)
+                for (int i = 0; i + 3 < ds.river.Length; i += 2)
+                    DrawLine(px, W, H, (ds.river[i] - b.xMin) / b.width * W, (ds.river[i + 1] - b.yMin) / b.height * H,
+                             (ds.river[i + 2] - b.xMin) / b.width * W, (ds.river[i + 3] - b.yMin) / b.height * H, 42f / mPerPx, seaCol);
+            // roads: casing pass, then fill pass (so junctions merge cleanly)
+            for (int pass = 0; pass < 2; pass++)
+                foreach (var road in WorldData.Roads)
+                {
+                    var cls = road.Data.cls;
+                    Color32 col = pass == 0 ? new Color32(8, 10, 14, 255)
+                        : cls == "MW" || cls == "EX" ? new Color32(236, 168, 64, 255)
+                        : cls == "HW" || cls == "AR" ? new Color32(214, 220, 228, 255)
+                        : cls == "GR" ? new Color32(140, 116, 90, 255)
+                        : cls == "RW" ? new Color32(84, 94, 112, 255)
+                        : new Color32(132, 142, 156, 255);
+                    float wpx = Mathf.Max(1.8f, road.Data.width / mPerPx * 0.85f) + (pass == 0 ? 1.6f : 0f);
+                    var pts = road.Path.Points;
+                    int n = road.Path.Closed ? pts.Length : pts.Length - 1;
+                    for (int i = 0; i < n; i++)
+                    {
+                        var p0 = pts[i];
+                        var p1 = pts[(i + 1) % pts.Length];
+                        DrawLine(px, W, H, (p0.x - b.xMin) / b.width * W, (p0.z - b.yMin) / b.height * H,
+                                 (p1.x - b.xMin) / b.width * W, (p1.z - b.yMin) / b.height * H, wpx, col);
+                    }
+                }
             mapTexture = new Texture2D(W, H, TextureFormat.RGBA32, true) { wrapMode = TextureWrapMode.Clamp, filterMode = FilterMode.Trilinear, anisoLevel = 4, name = "CityMap" };
             mapTexture.SetPixels32(px);
             mapTexture.Apply(true, true);

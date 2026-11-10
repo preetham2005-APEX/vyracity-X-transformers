@@ -27,7 +27,7 @@ namespace VeyraCity.Gameplay
 
         VehicleController car;
         readonly List<Body> bodies = new List<Body>();
-        ParticleSystem debris, dust;
+        ParticleSystem debris, dust, engineSmoke;
         Color paint = new Color(0.5f, 0.5f, 0.5f);
         static Material shardMat, dustMat;
         public float Damage01 { get; private set; }
@@ -43,6 +43,7 @@ namespace VeyraCity.Gameplay
                 foreach (var m in r.sharedMaterials)
                     if (m != null && m.name.Contains("Paint") && m.HasProperty("_BaseColor")) { paint = m.GetColor("_BaseColor"); break; }
             BuildDebris();
+            BuildEngineSmoke(v);
             v.Collided += OnHit;
         }
 
@@ -146,6 +147,61 @@ namespace VeyraCity.Gameplay
             r.renderMode = mode;
             r.shadowCastingMode = ShadowCastingMode.Off;
             return ps;
+        }
+
+        /// <summary>
+        /// Iteration 9: a wrecked engine smokes (GTA V): grey wisps from the bonnet above 55 % damage, a thick dark plume
+        /// near 90 %. The smoke is unlit, so it is dimmed with the light level.
+        /// </summary>
+        void BuildEngineSmoke(VehicleController v)
+        {
+            engineSmoke = MakeSystem("EngineSmoke", dustMat, 120, ParticleSystemRenderMode.Billboard);
+            var d = v.Definition;
+            float len = d != null ? d.Chassis.Dimensions.z : 4.4f;
+            float h = d != null ? d.Chassis.Dimensions.y : 1.3f;
+            // engine bay: the front third for most cars (mid-engined cars smoke from behind the cabin)
+            bool mid = d != null && d.Layout.ToString().Contains("AWD") && h < 1.25f;
+            engineSmoke.transform.localPosition = new Vector3(0f, h * 0.8f, (mid ? -0.3f : 0.32f) * len);
+            var main = engineSmoke.main;
+            main.loop = true;
+            main.startLifetime = new ParticleSystem.MinMaxCurve(1.2f, 2.4f);
+            main.startSpeed = new ParticleSystem.MinMaxCurve(0.6f, 1.4f);
+            main.startSize = new ParticleSystem.MinMaxCurve(0.35f, 0.7f);
+            main.gravityModifier = -0.08f;
+            var shape = engineSmoke.shape;
+            shape.enabled = true;
+            shape.shapeType = ParticleSystemShapeType.Box;
+            shape.scale = new Vector3(0.9f, 0.1f, 0.6f);
+            var size = engineSmoke.sizeOverLifetime;
+            size.enabled = true;
+            size.size = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Linear(0f, 0.6f, 1f, 3.2f));
+            var col = engineSmoke.colorOverLifetime;
+            col.enabled = true;
+            var g = new Gradient();
+            g.SetKeys(new[] { new GradientColorKey(Color.white, 0f), new GradientColorKey(Color.white, 1f) },
+                      new[] { new GradientAlphaKey(0f, 0f), new GradientAlphaKey(0.55f, 0.15f), new GradientAlphaKey(0f, 1f) });
+            col.color = g;
+            engineSmoke.Play();
+        }
+
+        void LateUpdate()
+        {
+            long fc0 = VeyraCity.Core.FrameCost.Start();
+            LateUpdateBody();
+            VeyraCity.Core.FrameCost.Stop("CarDamage", fc0);
+        }
+
+        void LateUpdateBody()
+        {
+            if (engineSmoke == null) return;
+            float k = Mathf.Clamp01((Damage01 - 0.55f) / 0.35f);
+            var em = engineSmoke.emission;
+            em.rateOverTime = k * 26f;
+            if (k <= 0f) return;
+            float night = WorldEnvironment.Instance != null ? WorldEnvironment.Instance.NightFactor : 0f;
+            float lum = Mathf.Lerp(Mathf.Lerp(0.62f, 0.12f, k), Mathf.Lerp(0.2f, 0.06f, k), night);   // grey to black, darker at night
+            var main = engineSmoke.main;
+            main.startColor = new Color(lum, lum, lum * 1.02f, Mathf.Lerp(0.45f, 0.8f, k));
         }
 
         void Burst(Vector3 point, Vector3 outward, float dv)

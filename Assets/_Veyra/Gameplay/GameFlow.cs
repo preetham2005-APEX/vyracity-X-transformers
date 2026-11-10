@@ -164,6 +164,8 @@ namespace VeyraCity.Gameplay
             new GameObject("TrafficLights").AddComponent<TrafficLights>().transform.SetParent(transform, false);   // junction signals
             new GameObject("StreetTrees").AddComponent<StreetTrees>().transform.SetParent(transform, false);       // tree-lined avenues
             new GameObject("SkyDome").AddComponent<SkyDome>().transform.SetParent(transform, false);              // clouds, haze, stars, moon
+            new GameObject("Pedestrians").AddComponent<Pedestrians>().transform.SetParent(transform, false);      // sidewalk walkers
+            new GameObject("StreetFurniture").AddComponent<StreetFurniture>().transform.SetParent(transform, false); // hydrants, bins, benches, shelters
             race = gameObject.AddComponent<RaceSession>();
             race.CountdownTick += OnCountdownTick;
             race.RaceStarted += () => { hud.BigMessage("GO!", UIKit.Good, 1.2f); Play(beepHigh, 1f); };
@@ -291,6 +293,28 @@ namespace VeyraCity.Gameplay
             if (parkedSys != null && off.Contains("parked")) parkedSys.Active = false;
             var signalsSys = GetComponentInChildren<TrafficLights>();
             if (signalsSys != null && off.Contains("signals")) signalsSys.gameObject.SetActive(false);
+            var pedsSys = GetComponentInChildren<Pedestrians>();
+            if (pedsSys != null && off.Contains("peds")) pedsSys.Active = false;
+            var furnSys = GetComponentInChildren<StreetFurniture>();
+            if (furnSys != null && off.Contains("furniture")) furnSys.gameObject.SetActive(false);
+            // In-run A/B (thermal-neutral, iteration 7): -veyraIterAB <peds|trees|parked|furniture|sky|probe> switches the
+            // feature on and off every 0.8 s inside every scene and splits the frame times.
+            string abFeature = null;
+            for (int a = 0; a + 1 < argv.Length; a++) if (argv[a] == "-veyraIterAB") abFeature = argv[a + 1].Trim().ToLowerInvariant();
+            var abOn = new List<float>(4096);
+            var abOff = new List<float>(4096);
+            void SetFeature(bool on)
+            {
+                switch (abFeature)
+                {
+                    case "peds": if (pedsSys != null) pedsSys.gameObject.SetActive(on); break;
+                    case "trees": if (treesSys != null) treesSys.enabled = on; break;
+                    case "parked": if (parkedSys != null) parkedSys.gameObject.SetActive(on); break;
+                    case "furniture": if (furnSys != null) furnSys.gameObject.SetActive(on); break;
+                    case "sky": { var sky = GetComponentInChildren<SkyDome>(true); if (sky != null) sky.gameObject.SetActive(on); break; }
+                    case "probe": { var pr = player != null ? player.GetComponentInChildren<ReflectionProbe>() : null; if (pr != null) pr.enabled = on; break; }
+                }
+            }
 
             RoadPath FindRoad(string id)
             {
@@ -299,7 +323,7 @@ namespace VeyraCity.Gameplay
             }
             // Spawns on the road and drives it: pure pursuit on the lane centre, speed held by throttle.
             System.Collections.IEnumerator Drive(string roadId, float frac, float kmh, float hour, WorldEnvironment.WeatherKind weather,
-                                                 bool traffic, float seconds, string shot, Func<float, DriverIntent, DriverIntent> extra = null)
+                                                 bool traffic, float seconds, string shot, Func<float, DriverIntent, DriverIntent> extra = null, float lane = 2.6f, bool standing = false)
             {
                 var road = FindRoad(roadId);
                 if (road == null) { log.Append($" {shot}:no-road"); yield break; }
@@ -310,13 +334,13 @@ namespace VeyraCity.Gameplay
                 float s0 = road.Path.Length * frac;
                 var t0 = road.Path.TangentAt(s0);
                 var right0 = new Vector3(t0.z, 0f, -t0.x).normalized;
-                var p0 = road.Path.PositionAt(s0) + right0 * 2.6f;
+                var p0 = road.Path.PositionAt(s0) + right0 * lane;
                 p0.y = WorldData.GroundHeight(p0 + Vector3.up * 3f, p0.y) + 0.45f;
                 SpawnPlayer(new Pose(p0, Quaternion.LookRotation(new Vector3(t0.x, 0f, t0.z))));
                 if (off.Contains("probe")) { var pr = player.GetComponentInChildren<ReflectionProbe>(); if (pr != null) Destroy(pr.gameObject); Destroy(player.GetComponent<CarReflectionProbe>()); }
                 if (off.Contains("lamps")) Destroy(player.GetComponent<CarLampFX>());
                 playerNitro.ResetState(NitroSystem.MeterMax);
-                player.ForceForwardSpeed(kmh / 3.6f * 0.8f);
+                if (!standing) player.ForceForwardSpeed(kmh / 3.6f * 0.8f);
                 var script = new ScriptedDriver { Vehicle = player };
                 playerDriver.Bind(player, script, db.Casual);
                 float start = Time.time;
@@ -329,7 +353,7 @@ namespace VeyraCity.Gameplay
                     sAlong = Mathf.Max(sAlong, road.Path.Project(pos, ref hint, 20));
                     float look = 12f + v.State.Speed * 0.7f;
                     var tgtT = road.Path.TangentAt(sAlong + look);
-                    var target = road.Path.PositionAt(sAlong + look) + new Vector3(tgtT.z, 0f, -tgtT.x).normalized * 2.6f;
+                    var target = road.Path.PositionAt(sAlong + look) + new Vector3(tgtT.z, 0f, -tgtT.x).normalized * lane;
                     var to = Vector3.ProjectOnPlane(target - pos, Vector3.up);
                     float ang = Vector3.SignedAngle(Vector3.ProjectOnPlane(v.transform.forward, Vector3.up), to, Vector3.up);
                     var i = new DriverIntent { Steer = Mathf.Clamp(ang / 25f, -1f, 1f) };
@@ -345,9 +369,34 @@ namespace VeyraCity.Gameplay
                 };
                 // frame times after a 1 s settle (spawn and streaming hitches excluded)
                 frameMs.Clear();
+                float maxSlip = 0f, t100 = -1f;
+                var trace = shot.Contains("drift") ? new System.Text.StringBuilder(" trace:") : null;
+                var launch = standing ? new System.Text.StringBuilder(" launch:") : null;
+                float nextLaunch = 0.5f;
+                float nextTrace = 2.4f;
                 while (Time.time - start < seconds)
                 {
-                    if (Time.time - start > 1f) frameMs.Add(Time.unscaledDeltaTime * 1000f);
+                    if (Time.time - start > 1f) { frameMs.Add(Time.unscaledDeltaTime * 1000f); maxSlip = Mathf.Max(maxSlip, Mathf.Abs(player.State.SlipAngleDeg)); }
+                    if (standing && t100 < 0f && player.State.SpeedKmh >= 100f) t100 = Time.time - start;
+                    if (trace != null && Time.time - start >= nextTrace)
+                    {
+                        nextTrace += 0.1f;
+                        trace.Append($"{player.State.SlipAngleDeg:0}{(player.State.ArcadeDrift ? "d" : "")},");
+                    }
+                    if (standing && Time.time - start >= nextLaunch)
+                    {
+                        // launch trace (iteration 9): speed, gear, rpm, applied throttle, rear wheel slip ratio
+                        nextLaunch += 0.5f;
+                        var ls = player.State;
+                        launch.Append($" {Time.time - start:0.0}s:{ls.SpeedKmh:0}/g{ls.Gear}/{ls.EngineRpm:0}rpm/th{ls.AppliedThrottle:0.00}/sr{player.GetWheel(2).SlipRatio:0.00}");
+                    }
+                    if (abFeature != null && Time.time - start > 1f)
+                    {
+                        float tt = Time.time - start - 1f;
+                        bool on = ((int)(tt / 0.8f) & 1) == 0;
+                        SetFeature(on);
+                        if (tt % 0.8f > 0.2f) (on ? abOn : abOff).Add(Time.unscaledDeltaTime * 1000f);
+                    }
                     yield return null;
                 }
                 if (frameMs.Count > 0)
@@ -359,7 +408,10 @@ namespace VeyraCity.Gameplay
                 }
                 ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, shot + ".png"));
                 var st = player.State;
-                log.Append($" {shot}:{st.SpeedKmh:0}km/h,slip{st.SlipAngleDeg:0}{(st.ArcadeDrift ? ",drift" : "")}");
+                log.Append($" {shot}:{st.SpeedKmh:0}km/h,slip{st.SlipAngleDeg:0}(max{maxSlip:0}){(st.ArcadeDrift ? ",drift" : "")}");
+                if (trace != null) log.Append(trace);
+                if (launch != null) log.Append(launch);
+                if (standing) log.Append($" 0-100:{(t100 < 0f ? "n/a" : t100.ToString("0.0") + "s")},surface:{(player.GetWheel(2).Surface != null ? player.GetWheel(2).Surface.Id : "default")}");
                 yield return null;
             }
 
@@ -372,9 +424,9 @@ namespace VeyraCity.Gameplay
             environment.SetWetness(0f);   // dry roads again for the daytime scenes
             yield return Drive("C1", 0.3f, 160f, 13f, clear, false, 6f, "it5_nitro_speed",
                                // double tap on a full meter = Overdrive (shockwave burst), then hold
-                               (t, i) => { if (t > 2.5f) { i.Nitro = !(t > 2.6f && t < 2.72f); i.Throttle = 1f; } return i; });
-            yield return Drive("C1", 0.5f, 105f, 16f, clear, false, 4.2f, "it6_drift",
-                               (t, i) => { if (t > 2.6f && t < 2.75f) { i.Brake = 1f; i.Steer = 0.8f; } else if (t >= 2.75f) { i.Steer = 0.8f; i.Throttle = 1f; } return i; });
+                               (t, i) => { if (t > 2.5f) { i.Nitro = !(t > 2.6f && t < 2.72f); i.Throttle = 1f; } return i; }, 1.4f);
+            yield return Drive("C1", 0.5f, 105f, 16f, clear, false, 3.8f, "it6_drift",   // iteration 11: middle of the carriageway, held drift before any barrier
+                               (t, i) => { if (t > 2.6f && t < 2.75f) { i.Brake = 1f; i.Steer = 0.8f; } else if (t >= 2.75f) { i.Steer = 0.8f; i.Throttle = 1f; } return i; }, 6f);
             yield return Drive("A1", 0.45f, 55f, 17.2f, clear, true, 6f, "it7_traffic_evening");
             // it8: close three-quarter of the parked car at dusk
             environment.SetTime(19.2f);
@@ -393,18 +445,67 @@ namespace VeyraCity.Gameplay
             yield return Drive("A2", 0.5f, 75f, 15.5f, clear, false, 3.4f, "it9_crash", (t, i) => { if (t > 1.5f) { i.Steer = 1f; i.Throttle = 1f; i.Brake = 0f; } return i; });
             if (chaseCamera != null) chaseCamera.enabled = false;
             var cr = player.transform;
-            // iteration 4: from the road side (iteration 3 put the camera inside the shop front the car hit)
-            cam.transform.position = cr.position + cr.forward * 3.6f - cr.right * 3.6f + Vector3.up * 1.4f;
-            cam.transform.LookAt(cr.position + cr.forward * 0.8f + Vector3.up * 0.5f);
+            // iteration 8: stop the car first (it was still sliding at 40 km/h and drove into the close-up camera)
+            player.Body.linearVelocity = Vector3.zero;
+            player.Body.angularVelocity = Vector3.zero;
+            // iteration 7: the first clear viewpoint on a 5.5 m circle around the car, front three-quarter first
+            // (iterations 3-6 put the camera inside the shop front or the car itself)
+            Vector3 aim = cr.position + Vector3.up * 0.6f;
+            Vector3 best = cr.position + cr.forward * 4f - cr.right * 4f + Vector3.up * 1.5f;
+            foreach (float yaw in new[] { -45f, 45f, -90f, 90f, -135f, 135f, 0f, 180f })
+            {
+                Vector3 dir = Quaternion.AngleAxis(yaw, Vector3.up) * cr.forward;
+                Vector3 c = cr.position + dir * 5.5f + Vector3.up * 1.5f;
+                if (!Physics.Linecast(aim, c, ~(1 << CarReflectionProbe.CarLayer), QueryTriggerInteraction.Ignore)) { best = c; break; }
+            }
+            cam.transform.position = best;
+            cam.transform.LookAt(aim);
             cam.fieldOfView = 45f;
             yield return new WaitForSeconds(0.4f);
             ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it9_crash_closeup.png"));
             yield return null;
             if (chaseCamera != null) chaseCamera.enabled = true;
+            // it11: a long cruise with traffic on the longest arterial/collector (streaming hitches: parked cars, furniture
+            // cells, walkers); per-system costs for the short scenes and for the cruise are logged separately ([IterCost])
+            Debug.Log(VeyraCity.Core.FrameCost.Report().Replace("[IterCost]", "[IterCost] scenes"));
+            VeyraCity.Core.FrameCost.Reset();
+            string longest = null;
+            float longestLen = 0f;
+            foreach (var r in WorldData.Roads)
+                if ((r.Data.cls == "AR" || r.Data.cls == "CO") && !r.Path.Closed && r.Path.Length > longestLen) { longestLen = r.Path.Length; longest = r.Data.id; }
+            if (longest != null)
+            {
+                var hitchMs = new List<float>(4096);
+                float c0 = Time.realtimeSinceStartup;
+                var cruise = Drive(longest, 0.03f, 100f, 13f, clear, true, 28f, "it11_cruise");
+                while (cruise.MoveNext()) { if (Time.realtimeSinceStartup - c0 > 1.5f) hitchMs.Add(Time.unscaledDeltaTime * 1000f); yield return cruise.Current; }
+                int h33 = 0, h50 = 0;
+                foreach (var ms in hitchMs) { if (ms > 33f) h33++; if (ms > 50f) h50++; }
+                hitchMs.Sort();
+                Debug.Log($"[IterCruise] road {longest} ({longestLen:0} m): frames {hitchMs.Count}, p99 {(hitchMs.Count > 0 ? hitchMs[(int)(hitchMs.Count * 0.99f)] : 0):0.0} ms, over33 {h33}, over50 {h50}");
+                Debug.Log(VeyraCity.Core.FrameCost.Report().Replace("[IterCost]", "[IterCost] cruise"));
+            }
+            // it10: standing start on a city arterial (in-game launch check against the EditMode harness numbers)
+            if (chaseCamera != null) chaseCamera.enabled = true;
+            yield return Drive("A2", 0.2f, 260f, 13f, clear, false, 7f, "it10_launch",
+                               (t, i) => { i.Throttle = 1f; i.Brake = 0f; return i; }, 2.6f, true);
             var dmg = player.GetComponent<CarDamage>();
             log.Append($" damage:{(dmg != null ? dmg.Damage01 : -1f):0.00}");
             Debug.Log(log.ToString());
             Debug.Log(perf.ToString());
+            if (abFeature != null)
+            {
+                SetFeature(true);
+                string Stat(List<float> l)
+                {
+                    if (l.Count == 0) return "n/a";
+                    l.Sort();
+                    float sum = 0f;
+                    foreach (var x in l) sum += x;
+                    return $"avg {sum / l.Count:0.00} ms, p95 {l[(int)(l.Count * 0.95f)]:0.0} ms ({l.Count} frames)";
+                }
+                Debug.Log($"[IterAB] {abFeature}: on {Stat(abOn)} | off {Stat(abOff)}");
+            }
             yield return new WaitForSecondsRealtime(1f);
             Application.Quit();
         }
@@ -505,7 +606,7 @@ namespace VeyraCity.Gameplay
             Application.Quit();
         }
         float shotEvery = 6f;
-        bool tour;
+        bool tour, noTraffic;
 
         void ParseArgs()
         {
@@ -522,6 +623,9 @@ namespace VeyraCity.Gameplay
                 if (args[i] == "-veyraTimeScale" && i + 1 < args.Length && float.TryParse(args[i + 1], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var ts)) { baseTimeScale = Mathf.Clamp(ts, 0.1f, 8f); Time.timeScale = baseTimeScale; Time.maximumDeltaTime = 0.1f * baseTimeScale; }
                 if (args[i] == "-veyraShots" && i + 1 < args.Length) shotDir = args[i + 1];
                 if (args[i] == "-veyraShotEvery" && i + 1 < args.Length) float.TryParse(args[i + 1], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out shotEvery);
+                // route validation without street life in the lanes (the autopilot does not avoid other cars)
+                if (args[i] == "-veyraNoParked") { var pc = GetComponentInChildren<ParkedCars>(); if (pc != null) pc.Active = false; }
+                if (args[i] == "-veyraNoTraffic") noTraffic = true;
             }
             if (!string.IsNullOrEmpty(shotDir)) StartCoroutine(Shots());
             if (tour) { demo = true; StartCoroutine(Tour()); }
@@ -641,6 +745,10 @@ namespace VeyraCity.Gameplay
             if (signals != null) signals.Player = player;
             var trees = GetComponentInChildren<StreetTrees>();
             if (trees != null) trees.Player = player;
+            var walkers = GetComponentInChildren<Pedestrians>();
+            if (walkers != null) walkers.Player = player;
+            var furniture = GetComponentInChildren<StreetFurniture>();
+            if (furniture != null) furniture.Player = player;
             traffic.PlayerNitro = playerNitro;
             traffic.NearMiss -= OnNearMiss;
             traffic.NearMiss += OnNearMiss;
@@ -874,6 +982,7 @@ namespace VeyraCity.Gameplay
 
         void Update()
         {
+            if (noTraffic && traffic != null && traffic.Active) traffic.Active = false;   // -veyraNoTraffic (route validation)
             float dt = Time.unscaledDeltaTime;
             SkidMarks.Flush();
             save.PlaySeconds += Time.deltaTime;

@@ -134,5 +134,48 @@ namespace VeyraCity.Tests
             Debug.Log("[Handling]\n" + sb);
             Assert.AreEqual(0, failures, "cars outside the arcade handling band:\n" + sb);
         }
+
+        /// <summary>
+        /// Regression (visual iteration 9): a car spawned 0.45 m above the road at full throttle (the game's spawn height)
+        /// spun its wheels in the drop, the automatic upshifted to 2nd on the free-spinning wheels, and traction control's
+        /// 25 % floor kept slip near 7 for ~2.5 s (in-game 0-100 km/h over 7 s for a 5 s car). The dropped launch must now
+        /// reach 100 km/h within 0.8 s of a settled launch.
+        /// </summary>
+        [Test]
+        public void DroppedLaunch_DoesNotBogDownInWheelspin()
+        {
+            var db = AssetDatabase.LoadAssetAtPath<GameDatabase>("Assets/_Veyra/Data/GameDatabase.asset");
+            var preset = AssetDatabase.LoadAssetAtPath<AssistPreset>("Assets/_Veyra/Data/Assists/Casual.asset");
+            var surface = AssetDatabase.LoadAssetAtPath<SurfaceDefinition>("Assets/_Veyra/Data/Surfaces/dry_asphalt.asset");
+            if (db == null || preset == null || surface == null) Assert.Ignore("data assets missing");
+            var sb = new StringBuilder();
+            int failures = 0;
+            foreach (var id in new[] { "stanton_sidewinder", "phoenix_455", "kiri_86", "v12_goblin", "coupe_33_hotrod_1" })
+            {
+                var c = System.Array.Find(db.Cars, x => x.Id == id);
+                if (c == null || c.Definition == null) continue;
+                float settled, dropped;
+                using (var h = VehicleTestHarness.Create(c.Definition, preset, surface, 100f, db.Feel))
+                {
+                    h.Settle();
+                    h.Script.Policy = v => new DriverIntent { Throttle = 1f };
+                    settled = h.RunUntil(v => v.State.SpeedKmh >= 100f, 30f);
+                }
+                using (var h = VehicleTestHarness.Create(c.Definition, preset, surface, 100f, db.Feel))
+                {
+                    var pos = new Vector3(0f, 0.45f, 0f);
+                    h.Vehicle.transform.position = pos;
+                    h.Vehicle.Body.position = pos;
+                    Physics.SyncTransforms();
+                    h.Script.Policy = v => new DriverIntent { Throttle = 1f };
+                    dropped = h.RunUntil(v => v.State.SpeedKmh >= 100f, 30f);
+                }
+                bool bad = settled < 0f || dropped < 0f || dropped > settled + 0.8f;
+                if (bad) failures++;
+                sb.AppendLine($"{id}: settled {settled:0.00} s, dropped {dropped:0.00} s{(bad ? "  <-- bogged down" : "")}");
+            }
+            Debug.Log("[Launch]\n" + sb);
+            Assert.AreEqual(0, failures, sb.ToString());
+        }
     }
 }

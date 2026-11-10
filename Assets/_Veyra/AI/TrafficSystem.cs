@@ -26,6 +26,8 @@ namespace VeyraCity.AI
 
         static readonly HashSet<string> TrafficClasses = new HashSet<string> { "MW", "EX", "HW", "AR", "CO", "SV", "RU", "MT" };
         readonly List<TrafficCar> cars = new List<TrafficCar>();
+        public IReadOnlyList<TrafficCar> Cars => cars;
+        TrafficSpray spray;
         readonly Stack<TrafficCar> pool = new Stack<TrafficCar>();
         float spawnTimer;
         static int nextId;
@@ -45,6 +47,13 @@ namespace VeyraCity.AI
 
         void Update()
         {
+            long fc0 = VeyraCity.Core.FrameCost.Start();
+            UpdateBody();
+            VeyraCity.Core.FrameCost.Stop("Traffic", fc0);
+        }
+
+        void UpdateBody()
+        {
             if (!Active || PlayerCar == null)
             {
                 if (cars.Count > 0) Clear();
@@ -61,6 +70,7 @@ namespace VeyraCity.AI
                     cars.RemoveAt(i);
                 }
             }
+            if (spray == null) { spray = gameObject.AddComponent<TrafficSpray>(); spray.Traffic = this; }   // rain spray behind traffic
             lightTimer -= Time.deltaTime;
             if (lightTimer <= 0f) { lightTimer = 0.3f; BudgetLights(focus); }
             spawnTimer -= Time.deltaTime;
@@ -99,6 +109,13 @@ namespace VeyraCity.AI
         }
 
         void FixedUpdate()
+        {
+            long fc0 = VeyraCity.Core.FrameCost.Start();
+            FixedUpdateBody();
+            VeyraCity.Core.FrameCost.Stop("TrafficPhysics", fc0);
+        }
+
+        void FixedUpdateBody()
         {
             if (!Active) return;
             float dt = Time.fixedDeltaTime;
@@ -218,7 +235,7 @@ namespace VeyraCity.AI
             {
                 lamps = go.AddComponent<CarLampFX>();
                 var car = tc;
-                lamps.Bind(() => car.Speed, () => car.Speed < 3f ? 1f : 0f, false);
+                lamps.Bind(() => car.Speed, () => car.Braking || car.Speed < 3f ? 1f : 0f, false);
             }
             return tc;
         }

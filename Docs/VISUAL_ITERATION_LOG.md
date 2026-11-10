@@ -97,3 +97,113 @@ the tail light (a point light 0.55 m behind the car) washed the whole rear bumpe
 night chase view; the nitro run slides at 12° (the arcade layer is not holding the car straight under Overdrive);
 handling benchmark (new, `Logs/A8/handling_benchmark.txt`): every car corners at 1.05–1.18 g with a 0.09–0.15 s turn-in, so
 the 3.6 t truck handles like the hypercars: one global yaw-rate cap (`YawRateLimitG` 1.15) flattens all the cars.
+
+### Iteration 5 (2026-11-10): sky, class handling, crash debris, traffic headlights
+**Changes:** a sky layer over the procedural skybox (`Veyra/SkyDome` shader + `SkyDome.cs`, library slot 1050, agreed with
+the F/L-card session): drifting fBm cloud decks lit by the sun (golden-hour tint, silver lining, grey overcast and rain decks),
+horizon haze in the fog colour, orange city light pollution at night, stars and a moon at the moonlight direction;
+handling by class: the arcade yaw-rate cap now scales with tyre grip (`HandlingFeel.ReferenceMu`) and the turn-in with mass,
+and every downloaded car got a class tyre grip (truck 0.80 … hypercar 1.20); top speed by gearing instead of drag (BUG-079);
+crash debris (paint chips in the car's colour, trim, glass glints, dust puff) on hard hits; real headlight/tail lights on the 6
+nearest traffic cars at night; the tail light is now a backwards spot (no more red bumper wash); captures clear the traffic
+between scenes and the scripted driver keeps a gap to cars ahead.
+**Capture:** `Screenshots/2026-11-10_iter05/sheet.png`. 0 exceptions; avg 103.8 FPS, p99 19.0 ms, 18 hitches. EditMode 87/87.
+**Handling benchmark** (`Logs/A8/handling_benchmark.txt`, skidpad g at 80 km/h): truck 0.83 (turn-in 0.18 s), van 0.91,
+old sedans/taxis 0.97–1.00, hot rods 0.96, muscle 1.02, GT/sports 1.09–1.17, hypercars 1.21–1.22, Vento 1.25; lift-off at
+180 km/h 0.09–0.19 g (hot rods were ~0.4 g). Nitro run slip 12° → 4°.
+**Scores:** R1 car 3.5 · R2 speed 3.5 · R3 wet night 2.5 · R4 night lights 2.5 · R5 atmosphere 2.5 · R6 sky 3 · R7 street life 3 ·
+R8 street detail 2.5 · R9 drift/effects 3.5 · R10 frame time 3.
+**Found:** the clouds are the biggest single jump of the loop (bridge and drift shots now read like GTA's skies); the night sky
+has dark cloud, faint stars and a brownish city glow; red tail-light spill now lands on the wet road. Still weak: the headlight
+pool does not read on the road ahead in the chase view; the scripted line on the C1 bridge hugs the barrier; pavements are empty
+(no pedestrians: GTA's strongest street-level cue).
+
+### Iteration 6 (2026-11-10): pedestrians, headlight pool, cleaner capture lines
+**Changes:** sidewalk pedestrians (`Pedestrians`: procedural low-poly walkers, no third-party models; 17,325 pavement
+anchors on collector/arterial/service roads, up to 70 around the player, walk cycle, varied height/build/clothes/skin, they
+dive clear of a fast car, Need for Speed style, and are never run over); player headlight spot 90 → 230, range 55 → 70 m;
+anamorphic streaks through headlights that face the camera at night (Cyberpunk's oncoming-traffic look); the C1 bridge scenes
+drive the centre lane; per-scene max slip in the `[Iter]` line.
+**Capture:** `Screenshots/2026-11-10_iter06/sheet.png`. 0 exceptions; avg 86.8 FPS, p99 29.2 ms, 25 hitches. Nitro run 172 km/h,
+max slip 5° (in lane, no barrier contact). EditMode 86/87: the one failure is the F/L session's new `DebugMissing` library key
+(card B3 in progress), not this work.
+**Scores:** R1 car 3.5 · R2 speed 3.5 · R3 wet night 2.5 · R4 night lights 3 · R5 atmosphere 2.5 · R6 sky 3 · R7 street life 3.5 ·
+R8 street detail 2.5 · R9 drift/effects 3.5 · R10 frame time 2.5.
+**Found:** walkers read as people at street distance (silhouette, stride, skin/hair); the player's headlights now light the car
+ahead and the road just in front at night. The sequential A/B runs (`ab_peds`, `ab_trees`) came out *slower* than the baseline
+again with nothing else running: back-to-back player runs heat the laptop GPU, so later runs are 15–30 % slower and sequential
+A/B deltas are meaningless. Iteration 7 switches to toggling the feature inside one run (`-veyraIterAB`). The drift scene peaked
+at 62° slip (Asphalt holds ~30–45°); pavements still have nothing on them but trees and lamps.
+
+### Iteration 7 (2026-11-10): street furniture, junction markings, traffic that obeys signals and turns
+**Changes:** `StreetFurniture` (procedural, merged per 100 m cell, streamed near the player; 9,147 props): fire hydrants, bins,
+parking meters and mailboxes on the kerb line, benches and newspaper boxes at the back of the pavement, bus shelters with a lit
+abstract ad panel on arterials, street-name sign posts at block ends, zebra crossings and stop lines at every at-grade junction
+mouth; traffic stops at red (and at amber when it can) at the painted stop line, shown by brake lamps that now light whenever a
+car slows, and drives on through junctions onto a connected road along a Bézier instead of vanishing at the road end; rain
+spray behind the 8 nearest traffic cars (`TrafficSpray`); spray darkened with the light level and stretched along its velocity;
+speed streaks from 130 km/h and brighter under nitro; pedestrians carry umbrellas in the rain; crash close-up searches for a
+clear viewpoint; in-run A/B switch `-veyraIterAB` (thermal-neutral). Code was compile-checked offline against Unity's own
+compiler response files while the shared editor lock was held by the F/L session.
+**Capture:** `Screenshots/2026-11-10_iter07/sheet.png` (PC_High tier now uses STP at 0.9 render scale: L1). 0 exceptions;
+avg 94.9 FPS, p99 25.0 ms with a Blender batch of the other session loading the CPU. In-run A/B: pedestrians +0.5 ms avg;
+furniture within noise (on 14.8 / off 15.7 ms). EditMode 89/89.
+**Drift trace** (slip every 0.1 s after the brake tap): 0 → −12 → −26 → −32 → −33° held, then −58° at the barrier contact; the
+controller holds the Asphalt-range angle, the 62° peak was the wall.
+**Scores:** R1 car 3.5 · R2 speed 3.5 · R3 wet night 1.5 (NaN discs, below) · R4 night lights 3 · R5 atmosphere 2.5 · R6 sky 3 ·
+R7 street life 4 · R8 street detail 3.5 · R9 drift/effects 3.5 · R10 frame time 3.
+**Found:** the pavements finally read like a lived-in city (hydrant, bins, bench, mailbox, walkers, parked cars in one view).
+Regression: the rain scene showed two screen-filling white discs: the umbrella canopy mesh was double-sided on shared vertices,
+its recalculated normals cancelled to zero, the lighting produced NaN pixels and bloom spread them. Fixed for iteration 8
+(separate vertices per side). The crash close-up still caught the car sliding toward the camera.
+
+### Iteration 8 (2026-11-10): atmosphere and detail batch, hitch instrumentation
+**Changes:** steam venting from manhole covers in the lanes (pooled emitters on the nearest vents, dimmed with the light level);
+people waiting at bus shelters; umbrella NaN fix (separate vertices per side); minimap restyled toward GTA's radar (slate land,
+district tints, sea/river/reservoir in blue, roads near true width with a casing, graded by class); engine smoke from badly
+damaged cars; chase camera lags under acceleration and closes in under braking; Asphalt "nitro tunnel" (vignette, chromatic
+aberration, slight lens squeeze) on a separate volume whose weight is the boost; car reflection probe 128 → 256 px; headlight
+beams brighten in rain; parked cars kept clear of the lane (0.95 m kerb offset), away from structures and steep grades (the
+other session's autopilot stuck on them on R_BRIDGES); `-veyraNoParked` / `-veyraNoTraffic` for route validation; parked cars,
+furniture cells and new walkers now spawn in small budgeted batches; per-system frame-cost recorder (`Core/FrameCost`,
+`[IterCost]`), a 28 s cruise with traffic on the longest arterial (`[IterCruise]`) and a standing-start launch scene.
+**Capture:** `Screenshots/2026-11-10_iter08/sheet.png`. 0 exceptions; EditMode 89/89. Whole run (now incl. cruise and launch,
+another session's Blender job on the CPU) avg 79.3 FPS, p99 41.8 ms.
+**Instrumentation:** a ~5 s freeze on entering free roam came from the one-time slot builders (parked cars 3.5 s, furniture
+0.66 s, trees 0.47 s, walkers 0.44 s): `Project(window 0)` scanned every road segment for every sample. In the cruise, the two
+worst frames (405 ms, 82 ms) had at most 2.6 ms from any of these systems: the remaining hitches are outside this code
+(most likely first-use shader/PSO compilation on D3D12; handed to the shader session). The launch scene reached only 82 km/h in 7 s.
+**Scores:** R1 car 3.5 · R2 speed 4 · R3 wet night 3 · R4 night lights 3.5 · R5 atmosphere 3 · R6 sky 3 · R7 street life 4 ·
+R8 street detail 4 · R9 drift/effects 3.5 · R10 frame time 2.
+
+### Iteration 9 (2026-11-10): startup freeze, launch diagnosis
+**Changes:** binary-search segment lookups in every slot builder (`SegmentAt` instead of `Project` over the whole road); a launch
+trace (speed, gear, rpm, applied throttle, rear slip ratio every 0.5 s).
+**Capture:** `Screenshots/2026-11-10_iter09/sheet.png`. 0 exceptions; avg 80.2 FPS, p99 41.3 ms (Blender load again).
+Startup builders: parked cars 3,488 → 203 ms, furniture 658 → 226 ms, trees 467 → 256 ms, walkers 438 → 120 ms.
+**Launch trace:** 0.5 s: 4 km/h, 2nd gear, 5,563 rpm, throttle 0; 1.0–3.0 s: rear slip ratio 6.9 → 2.3 with traction control
+holding throttle at 0.13–0.14; recovery only after 3.5 s. Cause: the car is spawned 0.45 m above the road at full throttle, the
+wheels spin up in the drop, the automatic upshifts on the free-spinning wheels, and traction control's 25 % floor cannot pull
+a spinning wheel back. GTA and Asphalt cars never bog down like this; this is part of the "physics feels wrong" report.
+**Scores:** as iteration 8, R10 2.5.
+
+### Iteration 10 (2026-11-10): launch fix, part 1
+**Changes:** the automatic gearbox no longer upshifts while the driven wheels spin or are off the ground; traction control may
+cut fully on gross wheelspin; new EditMode regression test `DroppedLaunch_DoesNotBogDownInWheelspin` (five cars launched at full
+throttle from the game's 0.45 m spawn height must reach 100 km/h within 0.8 s of a settled launch).
+**Capture:** `Screenshots/2026-11-10_iter10/sheet.png`. In-game launch 0–100 km/h 6.5 s (iteration 9: not reached in 7 s);
+wheelspin cleared by 1.5 s (was 3.5 s). EditMode 89/90: the new test fails as expected (dropped launch 1.1–1.4 s slower):
+the slip ratio reads 0 near standstill, so the guard did not see the spin. Avg 76.4 FPS, p99 43.7 ms (Blender load).
+**Scores:** as iteration 9.
+
+### Iteration 11 (2026-11-10): launch fix, part 2; drift scene; early slot builds
+**Changes:** wheelspin detected by rim speed against road speed (works at standstill) for the upshift guard and traction control;
+slot tables built right after the scene loads on staggered frames (behind the menu); drift scene in the middle of the carriageway.
+**Capture:** `Screenshots/2026-11-10_iter11/sheet.png`. Launch: the car now stays in 1st, but slip 7.3 → 1.9 still took 1.4 s
+at zero throttle: with the clutch locked, the engine's inertia (× gear ratio²) holds the wheels in the spin; 0–100 7.0 s.
+The drift is held at 31–44° in open road. The cruise showed traffic fixed-step spikes up to 96 ms: catch-up steps after long
+frames multiply the per-step traffic cost.
+**Follow-up (verified in EditMode before the next build):** airborne driven wheels get no drive (they land at road speed, as
+in GTA/Asphalt), and the automatic slips its clutch during low-speed wheelspin with traction control on; traffic cars cache
+their own positions for the 64 × 64 car-following loop.
+**Scores:** R1 3.5 · R2 4 · R3 3 · R4 3.5 · R5 3 · R6 3 · R7 4 · R8 4 · R9 4 · R10 2.5.

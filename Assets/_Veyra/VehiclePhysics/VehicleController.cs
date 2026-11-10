@@ -384,8 +384,28 @@ namespace VeyraCity.VehiclePhysics
             float throttle = Mathf.Clamp01(controls.Throttle);
             float torqueScale = controls.TorqueScale > 0f ? controls.TorqueScale : 1f;
             bool declutch = controls.Brake > 0.3f && throttle < 0.05f;
+            bool drivenGrounded = false;
+            for (int i = 0; i < WheelCount; i++) if (IsDriven(i) && wheels[i].Grounded) { drivenGrounded = true; break; }
+            // Wheelspin by rim speed against road speed (the slip ratio reads 0 near standstill, iteration 10 launch trace):
+            // the automatic must not upshift on wheels spinning far faster than the car moves.
+            float drivenRadius = def.Layout == DriveLayout.FWD ? def.Front.Tyre.Radius
+                               : def.Layout == DriveLayout.RWD ? def.Rear.Tyre.Radius : 0.5f * (def.Front.Tyre.Radius + def.Rear.Tyre.Radius);
+            float rimSpeed = Mathf.Abs(drivenOmega) * drivenRadius;
+            float roadSpeed = Mathf.Abs(Vector3.Dot(rb.linearVelocity, fwd));
+            bool spinning = rimSpeed > roadSpeed * 1.3f + 1.5f;
+            // launch guards apply below 15 m/s only (iteration 12: at 160+ km/h under Overdrive the rear slip passes 0.3
+            // legitimately; blocking upshifts and full cuts there threw the nitro run into the barrier)
+            bool launchSpeed = roadSpeed < 15f;
+            float drivenSlip = !drivenGrounded ? -1f : !launchSpeed ? 0f : spinning ? Mathf.Max(maxDrivenSlip, 1f) : maxDrivenSlip;
+            // Launch / landing wheelspin with traction control on: the automatic slips its clutch so the engine's reflected
+            // inertia stops holding the wheels in a spin (iteration 11 trace: slip 7 -> 2 took 1.5 s at zero throttle)
+            if (spinning && drivenGrounded && roadSpeed < 12f && !drifting && controls.TcsPeakSlipFactor > 0f) declutch = true;
+            // Airborne driven wheels get no drive (arcade landing): they keep their road speed through a spawn drop or a jump
+            // instead of spinning up to the limiter and landing in a wheelspin.
+            if (!drivenGrounded) declutch = true;
             float axleTorqueTotal = powertrain.Step(dt, throttle, torqueScale, drivenOmega, controls.WantsReverse,
-                                                    def.Gearbox.Automatic ? 0 : controls.GearRequest, out float reflectedInertia, declutch);
+                                                    def.Gearbox.Automatic ? 0 : controls.GearRequest, out float reflectedInertia, declutch,
+                                                    drivenSlip);
 
             // Traction control: feed-forward limit of drive torque to what the driven tyres can transmit
             // (peak friction plus the torque needed to spin up the wheels and engine), trimmed by measured slip.
@@ -393,7 +413,11 @@ namespace VeyraCity.VehiclePhysics
             {
                 var drivenTyre = def.Layout == DriveLayout.FWD ? def.Front.Tyre : def.Rear.Tyre;
                 float target = Mathf.Max(0.01f, drivenTyre.LongPeakSlip) * controls.TcsPeakSlipFactor;
-                tcsTrim = maxDrivenSlip > target ? Mathf.Max(0.25f, tcsTrim - 4f * dt) : Mathf.Min(1.25f, tcsTrim + 1.2f * dt);
+                // gross wheelspin (> 4x the target, e.g. landing at full throttle with the wheels spun up): allow a full cut so
+                // the tyres can grip again; ordinary slip keeps the 25 % floor (iteration 9 launch trace: slip 6.9 held for 2.5 s)
+                bool gross = launchSpeed && (maxDrivenSlip > target * 4f || spinning);
+                tcsTrim = maxDrivenSlip > target || (spinning && launchSpeed) ? Mathf.Max(gross ? 0f : 0.25f, tcsTrim - (gross ? 10f : 4f) * dt)
+                                                              : Mathf.Min(1.25f, tcsTrim + (tcsTrim < 0.25f ? 4f : 1.2f) * dt);
                 float cap = TractionCapacity(reflectedInertia, drivenCount, Mathf.Max(0f, longitudinalG) * g) * tcsTrim;
                 if (axleTorqueTotal > cap) { tcsCut = 1f - cap / axleTorqueTotal; axleTorqueTotal = cap; }
                 else tcsCut = 0f;

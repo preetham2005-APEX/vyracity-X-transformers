@@ -5,7 +5,10 @@
 #   Tools/visual_iteration.sh <NN> [--import] [--method Ns.Class.Method]... [--build] [--ab "trees;probe,parked"] [--tests]
 #
 # --method runs an editor method in batch mode before the build (e.g. VeyraCity.EditorTools.SkyDomeMaterial.Build).
-# --ab runs extra captures with -veyraIterOff <list> (one per ';' entry) for frame-time A/B tests.
+# --ab runs extra captures with -veyraIterOff <list> (one per ';' entry) for frame-time A/B tests. Sequential runs
+#   heat the laptop GPU (later runs are 15-30 % slower), so prefer --abin.
+# --abin runs extra captures with -veyraIterAB <feature> (one per ';' entry): the feature toggles every 0.8 s inside
+#   each scene and the [IterAB] line splits the frame times (thermal-neutral).
 # --tests runs the EditMode tests after the captures (never in parallel with a player run: it skews the frame times).
 # Waits until no Unity editor holds Temp/UnityLockfile (shared project). Everything stays on E:.
 set -u
@@ -14,12 +17,13 @@ export TEMP=E:/Temp/VeyraCity TMP=E:/Temp/VeyraCity
 U="/e/Unity/Editors/6000.6.8f1/Editor/Unity.exe"
 BLENDER="/d/New folder/blender.exe"
 N=$1; shift
-IMPORT=0; BUILD=0; AB=""; TESTS=0; METHODS=()
+IMPORT=0; BUILD=0; AB=""; ABIN=""; TESTS=0; METHODS=()
 while [ $# -gt 0 ]; do
   case "$1" in
     --import) IMPORT=1 ;;
     --build) BUILD=1 ;;
     --ab) AB=$2; shift ;;
+    --abin) ABIN=$2; shift ;;
     --method) METHODS+=("$2"); shift ;;
     --tests) TESTS=1 ;;
   esac
@@ -48,13 +52,15 @@ if [ $BUILD -eq 1 ]; then
   [ $rc -ne 0 ] && exit 4
 fi
 
-run() { # <outdir> <log> [off-list]
-  if [ -n "${3:-}" ]; then
+run() { # <outdir> <log> [off-list] [in-run A/B feature]
+  if [ -n "${4:-}" ]; then
+    Builds/DevMono/VeyraCity.exe -veyraIterShots "E:/VeyraCity/$1" -veyraIterAB "$4" -logFile "E:/VeyraCity/$2" >/dev/null 2>&1
+  elif [ -n "${3:-}" ]; then
     Builds/DevMono/VeyraCity.exe -veyraIterShots "E:/VeyraCity/$1" -veyraIterOff "$3" -logFile "E:/VeyraCity/$2" >/dev/null 2>&1
   else
     Builds/DevMono/VeyraCity.exe -veyraIterShots "E:/VeyraCity/$1" -logFile "E:/VeyraCity/$2" >/dev/null 2>&1
   fi
-  grep -E "^\[Iter|Frame stats|Exception" "$2" | head -12
+  grep -E "^\[Iter|Frame stats|Exception" "$2" | head -14
 }
 run "$DIR" "Logs/A8/iter${N}_player.log"
 S="E:/VeyraCity/$DIR"
@@ -70,6 +76,13 @@ if [ -n "$AB" ]; then
     tag=$(echo "$k" | tr ',' '+')
     echo "== A/B off=$k"
     run "$DIR/ab_$tag" "Logs/A8/iter${N}_ab_${tag}.log" "$k"
+  done
+fi
+if [ -n "$ABIN" ]; then
+  IFS=';' read -ra SETS <<< "$ABIN"
+  for k in "${SETS[@]}"; do
+    echo "== in-run A/B $k"
+    run "$DIR/abin_$k" "Logs/A8/iter${N}_abin_${k}.log" "" "$k"
   done
 fi
 if [ $TESTS -eq 1 ]; then

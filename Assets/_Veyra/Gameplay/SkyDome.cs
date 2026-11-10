@@ -44,6 +44,13 @@ namespace VeyraCity.Gameplay
 
         void LateUpdate()
         {
+            long fc0 = VeyraCity.Core.FrameCost.Start();
+            LateUpdateBody();
+            VeyraCity.Core.FrameCost.Stop("SkyDome", fc0);
+        }
+
+        void LateUpdateBody()
+        {
             if (material == null) return;
             var env = WorldEnvironment.Instance;
             float c = env != null ? env.Cloudiness : 0.3f;

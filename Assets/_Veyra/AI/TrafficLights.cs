@@ -45,6 +45,31 @@ namespace VeyraCity.AI
 
         static long Key(int x, int z) => ((long)x << 32) ^ (uint)z;
 
+        /// <summary>Distance from a road's end to its stop line: just outside the crossing road (shared by the signals,
+        /// the traffic and the painted stop line in <see cref="StreetFurniture"/>).</summary>
+        public static float StopLineDistance(float crossingHalfWidth) => Mathf.Clamp(crossingHalfWidth + 5.5f, 9f, 18f);
+
+        /// <summary>The signals in the scene (traffic asks it whether to stop; iteration 7).</summary>
+        public static TrafficLights Instance { get; private set; }
+        readonly Dictionary<int, int> siteByRoadEnd = new Dictionary<int, int>();   // road * 2 + end -> site
+        readonly List<float> stopBySite = new List<float>();
+
+        void OnEnable() => Instance = this;
+        void OnDisable() { if (Instance == this) Instance = null; }
+
+        /// <summary>Signal state for traffic arriving at <paramref name="end"/> (0 = start, 1 = far end) of a road:
+        /// -1 no signal, 0 red, 1 amber, 2 green. Same clock as the lamps.</summary>
+        public int StateFor(int road, int end) => StateFor(road, end, out _);
+
+        public int StateFor(int road, int end, out float stopDistance)
+        {
+            stopDistance = 10f;
+            if (!Active || !built || !siteByRoadEnd.TryGetValue(road * 2 + end, out int site)) return -1;
+            stopDistance = stopBySite[site];
+            float t = Mathf.Repeat(Time.time + sites[site].Offset, Cycle);
+            return t < Green ? 2 : t < Green + Amber ? 1 : 0;
+        }
+
         void BuildSites()
         {
             built = true;
@@ -69,6 +94,8 @@ namespace VeyraCity.AI
                     var right = new Vector3(d.z, 0f, -d.x);
                     var pos = p - d * 7f + right * (road.HalfWidth + 0.9f);
                     int idx = sites.Count;
+                    siteByRoadEnd[r * 2 + end] = idx;
+                    stopBySite.Add(StopLineDistance(roads[hit.Road].HalfWidth));
                     // approaches of the same junction alternate their phase by half a cycle
                     long jkey = Key(Mathf.RoundToInt(p.x / 25f), Mathf.RoundToInt(p.z / 25f));
                     float offset = (Mathf.Abs(Vector3.Dot(d, Vector3.right)) > 0.7f ? 0f : Cycle * 0.5f) + (jkey & 7) * 0.37f;
@@ -191,6 +218,13 @@ namespace VeyraCity.AI
         }
 
         void Update()
+        {
+            long fc0 = VeyraCity.Core.FrameCost.Start();
+            UpdateBody();
+            VeyraCity.Core.FrameCost.Stop("TrafficLights", fc0);
+        }
+
+        void UpdateBody()
         {
             if (!Active || Player == null)
             {
