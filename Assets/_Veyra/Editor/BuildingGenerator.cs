@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -20,6 +21,15 @@ namespace VeyraCity.EditorTools
     {
         const string DataDir = "Assets/_Veyra/Data";
 
+        /// <summary>
+        /// Phase C: building ids whose render shell is skipped because BuildingAssembler places a kit model there. Their
+        /// collider (from the data footprint) is still made, so physics does not change when the art does.
+        /// </summary>
+        public static Func<string, bool> SkipRender;
+
+        /// <summary>BUG-072: per-building facade u offset in metres (whole window columns), set by EmitBuilding.</summary>
+        static float uOffset;
+
         sealed class MB
         {
             public readonly List<Vector3> V = new List<Vector3>();
@@ -32,6 +42,13 @@ namespace VeyraCity.EditorTools
         {
             public readonly Dictionary<(string chunk, string mat), MB> Meshes = new Dictionary<(string, string), MB>();
             public readonly Dictionary<string, List<(Vector3 pos, Quaternion rot, Vector3 size, string name)>> Colliders = new Dictionary<string, List<(Vector3, Quaternion, Vector3, string)>>();
+            /// <summary>BUG-071: tanks and masts get capsules (centre, radius, height) instead of boxes.</summary>
+            public readonly Dictionary<string, List<(Vector3 pos, float r, float h, string name)>> Capsules = new Dictionary<string, List<(Vector3, float, float, string)>>();
+            public void Capsule(string chunk, Vector3 pos, float r, float h, string name)
+            {
+                if (!Capsules.TryGetValue(chunk, out var l)) Capsules[chunk] = l = new List<(Vector3, float, float, string)>();
+                l.Add((pos, r, h, name));
+            }
             public int Tris;
             public MB Get(string chunk, string mat)
             {
@@ -79,7 +96,7 @@ namespace VeyraCity.EditorTools
         {
             x0 -= outset; z0 -= outset; x1 += outset; z1 += outset;
             var c = new[] { new Vector2(x0, z0), new Vector2(x1, z0), new Vector2(x1, z1), new Vector2(x0, z1) };
-            float u = 0f;
+            float u = uOffset;   // BUG-072: neighbours start on different window columns (v stays absolute height: VC_Facade floors)
             for (int k = 0; k < 4; k++)
             {
                 var a = c[k];
@@ -266,6 +283,18 @@ namespace VeyraCity.EditorTools
             var f = new Frame { O = o, Q = Quaternion.Euler(0f, yaw, 0f) };
             float hx = w * 0.5f, hz = l * 0.5f;
             float below = -0.6f; // sink into the ground slightly; base is the lowest footprint corner
+            // BUG-072: the window texture repeats every 4 columns (12 m tile): start each building on one of 4 columns,
+            // decorrelated from the seed's other uses
+            uOffset = Mathf.Floor(Mathf.Repeat(seed * 7.31f, 1f) * 4f) * 3f;
+            // BUG-071: round buildings collide as round (capsule; the cap sits under the ground and in the domed roof)
+            if (shape == "cylinder" || shape == "mast")
+            {
+                float rc = shape == "mast" ? 0.9f : Mathf.Min(w, l) * 0.5f;
+                float bottom = below - rc, height = h - bottom;
+                ctx.Capsule(chunk, o + Vector3.up * (bottom + height * 0.5f), rc, height, "UCX_" + b["id"]);
+            }
+            else ctx.Collider(chunk, f.P(0f, (h + below) * 0.5f, 0f), f.Q, new Vector3(w, h - below, l), "UBX_" + b["id"]);
+            if (SkipRender != null && SkipRender(b["id"])) return;   // Phase C: a kit model stands here
             var wall = ctx.Get(chunk, facade);
             var roof = ctx.Get(chunk, roofMat);
             const float U = 12f, V = 14f;
@@ -337,7 +366,6 @@ namespace VeyraCity.EditorTools
                     break;
                 }
             }
-            ctx.Collider(chunk, f.P(0f, (h + below) * 0.5f, 0f), f.Q, new Vector3(w, h - below, l), "UBX_" + b["id"]);
         }
 
         /// <summary>Tower crown: a setback box, a mast and an aircraft-warning light.</summary>
@@ -449,6 +477,25 @@ namespace VeyraCity.EditorTools
                 tris += mb.T.Count / 3;
             }
             int cols = 0;
+            foreach (var kv in ctx.Capsules)
+            {
+                var holder = new GameObject("RoundColliders").transform;
+                holder.SetParent(ChunkRoot(kv.Key), false);
+                holder.gameObject.AddComponent<VehicleSurface>().Surface = db.Concrete;
+                holder.gameObject.isStatic = true;
+                foreach (var (pos, r, h, name) in kv.Value)
+                {
+                    var c = new GameObject(name);
+                    c.transform.SetParent(holder, false);
+                    c.transform.position = pos;
+                    var cap = c.AddComponent<CapsuleCollider>();
+                    cap.radius = r;
+                    cap.height = h;
+                    cap.direction = 1;
+                    c.isStatic = true;
+                    cols++;
+                }
+            }
             foreach (var kv in ctx.Colliders)
             {
                 var holder = new GameObject("Colliders").transform;
@@ -465,7 +512,7 @@ namespace VeyraCity.EditorTools
                     cols++;
                 }
             }
-            return $"{meshes} building meshes ({tris:N0} tris) in {chunkRoots.Count} chunks, {cols} box colliders";
+            return $"{meshes} building meshes ({tris:N0} tris) in {chunkRoots.Count} chunks, {cols} colliders ({ctx.Capsules.Values.Sum(l => l.Count)} capsules for round buildings, BUG-071)";
         }
     }
 }
