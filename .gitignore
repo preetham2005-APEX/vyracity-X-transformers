@@ -71,3 +71,6 @@ Desktop.ini
 
 # Python bytecode (Blender imports Tools/Blender modules) and Blender's automatic .blend1 backups/
 *.blend1
+
+# Card C2: TerrainData backups taken before embankments / corridor carving (the originals are also in git history)
+Assets/_Veyra/World/Generated/TerrainBackup~/

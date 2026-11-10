@@ -89,6 +89,7 @@ namespace VeyraCity.EditorTools
             BuildWater(worldRoot, mats);
             var props = BuildProps(worldRoot, mats);
             var cam = BuildCamera();
+            Debug.Log(RoadProfileApply.Apply(false)); // card C2 (BUG-001): eased bridge approaches, embankments
             env.ScrollMaterials.Add(mats["water"]);
             foreach (var key in new[] { "facade_light", "facade_mid", "facade_brick", "facade_stucco", "glass_blue", "glass_bronze", "stone_deco", "house_wall", "wood_wall", "storefront" })
                 env.Emissives.Add(new WorldEnvironment.EmissiveEntry { Material = mats[key], BaseEmission = mats[key].GetColor("_EmissionColor"), NightOnly = 1f });
@@ -631,6 +632,10 @@ namespace VeyraCity.EditorTools
             var root = new GameObject("CityMeshes").transform;
             root.SetParent(worldRoot, false);
             foreach (var old in Directory.GetFiles(Gen + "/Meshes", "*.asset")) AssetDatabase.DeleteAsset(old.Replace('\\', '/'));
+            // Card C2: the meshes are rebuilt from the blockout, so the eased-mesh marker of RoadProfileApply no longer applies;
+            // Build() eases the new meshes once the props exist.
+            if (File.Exists(RoadProfileApply.Marker)) File.Delete(RoadProfileApply.Marker);
+            RoadProfileEaser.Reset();
             int meshCount = 0, triCount = 0, colliderCount = 0, cutKerbs = 0, cutRoads = 0, cutStructs = 0;
             WorldData.EnsureLoaded();
             // key: material|cellX|cellZ
