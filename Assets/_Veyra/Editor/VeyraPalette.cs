@@ -24,6 +24,43 @@ namespace VeyraCity.EditorTools
         const string FacadeShader = "Veyra/Facade";
         const string NeonShader = "Veyra/Neon";
         const string InteriorAtlasName = "Pal_InteriorAtlas";
+        const string UrpLit = "Universal Render Pipeline/Lit";
+        const string UrpComplexLit = "Universal Render Pipeline/Complex Lit";
+        static Texture2D ledTexture, signTexture;
+
+        static Color Hex(string hex) => ColorUtility.TryParseHtmlString(hex, out var c) ? c : Color.magenta;
+
+        /// <summary>Neon set-up: colour (sRGB) x night intensity, day factor, tube falloff, flicker share, optional pattern and scroll.</summary>
+        static void Neon(Material m, Color color, float intensity, float dayFactor, float flicker, float falloff = 1.2f, Texture2D pattern = null, float scroll = 0f, float chase = 0f)
+        {
+            m.SetColor("_NeonColor", color);
+            m.SetFloat("_NeonIntensity", intensity);
+            m.SetFloat("_DayFactor", dayFactor);
+            m.SetFloat("_FlickerChance", flicker);
+            m.SetFloat("_TubeFalloff", falloff);
+            m.SetFloat("_ChaseCount", chase);
+            m.SetFloat("_ScrollSpeed", scroll);
+            m.SetFloat("_Smoothness", 0.85f);
+            m.SetTexture("_EmissionMap", pattern);
+        }
+
+        static void AlphaClip(Material m)
+        {
+            m.SetFloat("_AlphaClip", 1f);
+            m.SetFloat("_Cutoff", 0.5f);
+            m.EnableKeyword("_ALPHATEST_ON");
+            m.SetFloat("_Cull", 0f);
+            m.doubleSidedGI = true;
+            m.renderQueue = (int)UnityEngine.Rendering.RenderQueue.AlphaTest;
+        }
+
+        static void ClearCoat(Material m)
+        {
+            m.EnableKeyword("_CLEARCOAT");
+            m.SetFloat("_ClearCoat", 1f);
+            m.SetFloat("_ClearCoatMask", 1f);
+            m.SetFloat("_ClearCoatSmoothness", 0.95f);
+        }
 
         public sealed class Spec
         {
@@ -40,6 +77,7 @@ namespace VeyraCity.EditorTools
             public string[] CityKeys = Array.Empty<string>();   // CityBuilder material keys it serves
             public Action<Material> Configure;
             public string DetailSet;                    // optional overlay set (albedo + alpha)
+            public bool AlbedoAlpha;                    // keep the recipe's alpha in the albedo (alpha clip)
             public Func<float, float, Sample> DetailRecipe;
         }
 
@@ -145,6 +183,40 @@ namespace VeyraCity.EditorTools
                        MinAlbedo = 0.12f, MaxAlbedo = 0.30f, Configure = m => Road(m, 0.7f, 0.5f) },
             new Spec { Key = VeyraMat.RoofMembrane, Name = "M_Roof_Membrane", Shader = RoadShader, Part = "F2b", TexSet = "RoofMembrane", Recipe = PaletteRecipes.RoofMembrane, TileMeters = 4f, UvMeters = 8f, NormalStrength = 3f,
                        MinAlbedo = 0.05f, MaxAlbedo = 0.15f, Replaces = new[] { "Roof_Dark" }, CityKeys = new[] { "roof_dark" }, Configure = m => Road(m, 1f, 0.8f, 0.06f) },
+
+            // ---------------- F2c neon and emissive
+            new Spec { Key = VeyraMat.NeonCyan, Name = "M_Neon_Cyan", Shader = NeonShader, Part = "F2c", BaseColor = new Color(0.55f, 0.6f, 0.62f), MinAlbedo = 0.05f, MaxAlbedo = 0.8f,
+                       Replaces = new[] { "NeonCyan" }, CityKeys = new[] { "neon_cyan" }, Configure = m => Neon(m, Hex("#00FFFF"), 5f, 0.1f, 0.08f) },
+            new Spec { Key = VeyraMat.NeonMagenta, Name = "M_Neon_Magenta", Shader = NeonShader, Part = "F2c", BaseColor = new Color(0.6f, 0.55f, 0.58f), MinAlbedo = 0.05f, MaxAlbedo = 0.8f,
+                       Replaces = new[] { "NeonMagenta" }, CityKeys = new[] { "neon_magenta" }, Configure = m => Neon(m, Hex("#FF007F"), 5f, 0.1f, 0.08f) },
+            new Spec { Key = VeyraMat.NeonAmber, Name = "M_Neon_Amber", Shader = NeonShader, Part = "F2c", BaseColor = new Color(0.62f, 0.58f, 0.5f), MinAlbedo = 0.05f, MaxAlbedo = 0.8f,
+                       Replaces = new[] { "NeonAmber", "Lamp_Sodium", "Sodium" }, CityKeys = new[] { "neon_amber", "lamp_sodium", "sodium" }, Configure = m => Neon(m, Hex("#FFAA00"), 4.5f, 0.1f, 0.05f) },
+            new Spec { Key = VeyraMat.NeonWhite, Name = "M_Neon_White", Shader = NeonShader, Part = "F2c", BaseColor = new Color(0.7f, 0.7f, 0.7f), MinAlbedo = 0.05f, MaxAlbedo = 0.8f,
+                       Replaces = new[] { "Lamp_Head" }, CityKeys = new[] { "lamp_head" }, Configure = m => Neon(m, new Color(1f, 0.98f, 0.95f), 6f, 0.1f, 0f, 0.6f) },
+            new Spec { Key = VeyraMat.LedScreen, Name = "M_LED_Screen", Shader = NeonShader, Part = "F2c", BaseColor = new Color(0.2f, 0.2f, 0.21f), MinAlbedo = 0.02f, MaxAlbedo = 0.5f,
+                       Configure = m => Neon(m, Color.white, 3.5f, 0.35f, 0f, 0f, ledTexture, 0.03f) },
+            new Spec { Key = VeyraMat.SignBacklit, Name = "M_Sign_Backlit", Shader = NeonShader, Part = "F2c", BaseColor = new Color(0.7f, 0.7f, 0.68f), MinAlbedo = 0.05f, MaxAlbedo = 0.8f,
+                       Configure = m => Neon(m, Color.white, 1.8f, 0.25f, 0f, 0f, signTexture) },
+
+            // ---------------- F2c props, vegetation and car paint (URP Lit / Complex Lit)
+            new Spec { Key = VeyraMat.MetalPainted, Name = "M_Metal_Painted", Shader = UrpLit, Part = "F2c", TexSet = "PaintedMetal", Recipe = PaletteRecipes.PaintedMetal, TileMeters = 2f, NormalStrength = 3f,
+                       BaseColor = new Color(0.25f, 0.42f, 0.6f), MinAlbedo = 0.03f, MaxAlbedo = 0.5f, Replaces = new[] { "CranePaint" }, CityKeys = new[] { "crane_paint" } },
+            new Spec { Key = VeyraMat.MetalPaintedRed, Name = "M_Metal_Painted_Red", Shader = UrpLit, Part = "F2c", TexSet = "PaintedMetal", Recipe = PaletteRecipes.PaintedMetal, TileMeters = 2f, NormalStrength = 3f,
+                       BaseColor = new Color(0.62f, 0.1f, 0.08f), MinAlbedo = 0.03f, MaxAlbedo = 0.5f, Replaces = new[] { "SteelRed" }, CityKeys = new[] { "steel_painted_red" } },
+            new Spec { Key = VeyraMat.MetalGalvanized, Name = "M_Metal_Galvanized", Shader = UrpLit, Part = "F2c", TexSet = "Galvanized", Recipe = PaletteRecipes.Galvanized, TileMeters = 1f, NormalStrength = 1f,
+                       MinAlbedo = 0.4f, MaxAlbedo = 0.75f, Replaces = new[] { "Steel" }, CityKeys = new[] { "steel" } },
+            new Spec { Key = VeyraMat.PlasticDark, Name = "M_Plastic_Dark", Shader = UrpLit, Part = "F2c", TexSet = "PlasticDark", Recipe = PaletteRecipes.PlasticDark, TileMeters = 1f, NormalStrength = 1f,
+                       MinAlbedo = 0.02f, MaxAlbedo = 0.08f },
+            new Spec { Key = VeyraMat.Rubber, Name = "M_Rubber", Shader = UrpLit, Part = "F2c", TexSet = "Rubber", Recipe = PaletteRecipes.Rubber, TileMeters = 1f, NormalStrength = 1f,
+                       MinAlbedo = 0.02f, MaxAlbedo = 0.05f },
+            new Spec { Key = VeyraMat.WoodWeathered, Name = "M_Wood_Weathered", Shader = UrpLit, Part = "F2c", TexSet = "WoodWeathered", Recipe = PaletteRecipes.WoodWeathered, TileMeters = 2f, NormalStrength = 4f,
+                       MinAlbedo = 0.08f, MaxAlbedo = 0.30f, Replaces = new[] { "Wood" }, CityKeys = new[] { "wood" } },
+            new Spec { Key = VeyraMat.Leaves, Name = "M_Leaves", Shader = UrpLit, Part = "F2c", TexSet = "Leaves", Recipe = PaletteRecipes.Leaves, TileMeters = 1f, NormalStrength = 2f, AlbedoAlpha = true,
+                       MinAlbedo = 0.03f, MaxAlbedo = 0.20f, Configure = AlphaClip },
+            new Spec { Key = VeyraMat.Bark, Name = "M_Bark", Shader = UrpLit, Part = "F2c", TexSet = "Bark", Recipe = PaletteRecipes.Bark, TileMeters = 2f, NormalStrength = 8f,
+                       MinAlbedo = 0.05f, MaxAlbedo = 0.20f, Replaces = new[] { "Bark" }, CityKeys = new[] { "bark" } },
+            new Spec { Key = VeyraMat.CarPaint, Name = "M_CarPaint", Shader = UrpComplexLit, Part = "F2c", TexSet = "CarPaintFlakes", Recipe = PaletteRecipes.CarPaintFlakes, TileMeters = 0.25f, NormalStrength = 1.5f,
+                       BaseColor = new Color(0.62f, 0.07f, 0.06f), MinAlbedo = 0.03f, MaxAlbedo = 0.6f, Configure = ClearCoat },
         };
 
         public static IEnumerable<Spec> Part(string part) => Specs.Where(s => part == null || s.Part == part);
@@ -156,6 +228,9 @@ namespace VeyraCity.EditorTools
 
         [MenuItem("Veyra/Materials/Palette/Build F2b Facades")]
         static void BuildFacadesMenu() => Debug.Log("[VeyraPalette] " + Build("F2b"));
+
+        [MenuItem("Veyra/Materials/Palette/Build F2c Neon and Props")]
+        static void BuildNeonMenu() => Debug.Log("[VeyraPalette] " + Build("F2c"));
 
         [MenuItem("Veyra/Materials/Palette/Remap World (all built parts)")]
         static void RemapMenu() => Debug.Log("[VeyraPalette] " + RemapWorld(null));
@@ -174,12 +249,17 @@ namespace VeyraCity.EditorTools
             foreach (var spec in Part(part))
             {
                 if (spec.TexSet != null && !sets.ContainsKey(spec.TexSet))
-                    sets[spec.TexSet] = TextureSet(spec.TexSet, spec.Recipe, spec.NormalStrength, regenerateTextures, sb, false);
+                    sets[spec.TexSet] = TextureSet(spec.TexSet, spec.Recipe, spec.NormalStrength, regenerateTextures, sb, spec.AlbedoAlpha);
                 if (spec.DetailSet != null && !sets.ContainsKey(spec.DetailSet))
                     sets[spec.DetailSet] = TextureSet(spec.DetailSet, spec.DetailRecipe, spec.NormalStrength, regenerateTextures, sb, true);
             }
             var lib = AssetDatabase.LoadAssetAtPath<VeyraMaterialLibrary>(VeyraMaterialFactory.LibraryPath);
             if (lib == null) return "no VeyraMaterialLibrary: run Veyra/Materials/Build Material Library first";
+            if (Part(part).Any(x => x.Shader == NeonShader))
+            {
+                ledTexture = PatternTexture("Pal_LedScreen", 1024, PaletteRecipes.LedScreen, regenerateTextures, sb);
+                signTexture = PatternTexture("Pal_SignBacklit", 1024, PaletteRecipes.SignBacklit, regenerateTextures, sb);
+            }
             Texture2D atlas = null;
             if (Part(part).Any(x => x.Shader == FacadeShader))
             {
@@ -221,6 +301,16 @@ namespace VeyraCity.EditorTools
             return set;
         }
 
+        static Texture2D PatternTexture(string name, int size, Func<float, float, Color> fn, bool regenerate, StringBuilder sb)
+        {
+            string path = $"{PaletteTextures.Dir}/{name}.png";
+            if (!regenerate && File.Exists(path)) return AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+            var sw = System.Diagnostics.Stopwatch.StartNew();
+            var t = MakeColor(name, size, fn);
+            sb.AppendLine($"texture {name} {size}² in {sw.Elapsed.TotalSeconds:0.0} s");
+            return t;
+        }
+
         static Material EnsureMaterial(Spec spec, Set set, Set detail, out bool created)
         {
             Directory.CreateDirectory(MatDir);
@@ -231,11 +321,23 @@ namespace VeyraCity.EditorTools
             created = m == null;
             if (created) { m = new Material(shader) { name = spec.Name }; AssetDatabase.CreateAsset(m, path); }
             if (m.shader != shader) m.shader = shader;
+            bool urp = spec.Shader.StartsWith("Universal Render Pipeline/");
             if (set != null)
             {
                 m.SetTexture("_BaseMap", set.Albedo);
                 if (m.HasProperty("_BumpMap")) m.SetTexture("_BumpMap", set.Normal);
                 if (m.HasProperty("_MaskMap")) m.SetTexture("_MaskMap", set.Mask);
+                if (urp)
+                {
+                    // URP Lit packing (CLAUDE.md): R metallic, A smoothness (Smoothness Source = Metallic Alpha); occlusion from G.
+                    m.EnableKeyword("_NORMALMAP");
+                    m.SetTexture("_MetallicGlossMap", set.Mask);
+                    m.EnableKeyword("_METALLICSPECGLOSSMAP");
+                    m.SetTexture("_OcclusionMap", set.Mask);
+                    m.EnableKeyword("_OCCLUSIONMAP");
+                    m.SetFloat("_SmoothnessTextureChannel", 0f);
+                    if (m.HasProperty("_BaseColor")) m.SetColor("_Color", spec.BaseColor);
+                }
                 float t = spec.UvMeters / Mathf.Max(0.01f, spec.TileMeters);
                 m.SetTextureScale("_BaseMap", new Vector2(t, t));
                 m.SetTextureOffset("_BaseMap", Vector2.zero);

@@ -53,9 +53,31 @@ namespace VeyraCity.World
         GlassCurtainBronze = 401,
         StorefrontGlass = 402,
 
+        // Neon (500–599): Veyra/Neon (card F2c)
+        NeonCyan = 500,
+        NeonMagenta = 501,
+        NeonAmber = 502,
+        NeonWhite = 503,
+        LedScreen = 510,
+        SignBacklit = 511,
+
+        // Props (600–699): URP/Lit (card F2c)
+        MetalPainted = 600,
+        MetalPaintedRed = 601,
+        MetalGalvanized = 602,
+        PlasticDark = 603,
+        Rubber = 604,
+        WoodWeathered = 605,
+
+        // Vegetation (700–799): URP/Lit (card F2c)
+        Leaves = 700,
+        Bark = 701,
+
         // Vehicle (900–999)
         VehiclePlaceholderBody = 900,
         VehiclePlaceholderWheel = 901,
+        /// <summary>URP Complex Lit with clear coat and metallic flakes (card F2c).</summary>
+        CarPaint = 902,
 
         // Effects (1000–1099): templates cloned by RuntimeMaterials for materials made at runtime.
         /// <summary>URP/Lit opaque, _EMISSION on with black emission (garage, procedural traffic cars).</summary>

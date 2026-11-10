@@ -82,6 +82,15 @@ namespace VeyraCity.EditorTools
             return Build("FacadeWall", v, uv, t);
         }
 
+        /// <summary>Vertical panel facing +Z (towards the road) from x0 to x1, height h, UV 0–1.</summary>
+        static Mesh PanelPlusZ(float x0, float x1, float h)
+        {
+            var v = new List<Vector3>(); var uv = new List<Vector2>(); var t = new List<int>();
+            AddQuad(v, uv, t, new Vector3(x1, 0, 0), new Vector3(x0, 0, 0), new Vector3(x0, h, 0), new Vector3(x1, h, 0),
+                    new Vector2(0, 0), new Vector2(1, 0), new Vector2(1, 1), new Vector2(0, 1));
+            return Build("Panel", v, uv, t);
+        }
+
         /// <summary>UV sphere with UVs in metres of surface (u around, v pole to pole).</summary>
         static Mesh SphereMesh(float r, int lon = 48, int lat = 24)
         {
@@ -277,15 +286,30 @@ namespace VeyraCity.EditorTools
             {
                 var sign = new GameObject("NeonSign").transform;
                 sign.SetParent(root, false);
-                var tube = Tube(4f, 0.035f);
+                var tube = Tube(3.2f, 0.06f);
+                var vtube = Tube(1.2f, 0.06f);
+                var backing = Lib(lib, VeyraMat.PlasticDark) ?? deck;
+                Put(sign, "SignBacking", BoxMesh(new Vector3(-12.5f, 0f, -0.3f), new Vector3(0.5f, 6f, 0f)), backing, new Vector3(0f, 0.15f, -7.6f));
+                int tubes = 0, panels = 0;
                 for (int i = 0; i < neonKeys.Count; i++)
                 {
                     var k = neonKeys[i];
                     var m = Lib(lib, k);
                     if (k.ToString() == "LedScreen" || k.ToString() == "SignBacklit")
-                        Put(sign, k.ToString(), FacadeWall(0f, 3f, 1.6f, 0f), m, new Vector3(-9f + i * 3.4f, 2.6f, -7.2f), null, false);
+                    {
+                        Put(sign, k.ToString(), PanelPlusZ(0f, 3f, 1.7f), m, new Vector3(-3.6f + panels * 0f, 1.6f + panels * 2.1f, -7.5f), null, false);
+                        panels++;
+                    }
                     else
-                        Put(sign, k.ToString(), tube, m, new Vector3(-9f, 3.0f + i * 0.35f, -7.0f), null, false);
+                    {
+                        // A neon frame per colour: two horizontal tubes and two uprights, stacked.
+                        float x = -11.5f, y = 1.3f + tubes * 1.35f, z = -7.45f;
+                        Put(sign, k + "_Top", tube, m, new Vector3(x, y + 1.1f, z), null, false);
+                        Put(sign, k + "_Bottom", tube, m, new Vector3(x, y, z), null, false);
+                        Put(sign, k + "_Left", vtube, m, new Vector3(x, y - 0.05f, z), Quaternion.Euler(0f, 0f, 90f), false);
+                        Put(sign, k + "_Right", vtube, m, new Vector3(x + 3.2f, y - 0.05f, z), Quaternion.Euler(0f, 0f, 90f), false);
+                        tubes++;
+                    }
                 }
                 report.AppendLine($"neon sign: {neonKeys.Count} materials");
             }
@@ -345,7 +369,7 @@ namespace VeyraCity.EditorTools
             new Shot { Name = "FacadesC", Pos = new Vector3(0f, 7f, -14f), LookAt = new Vector3(0f, 7f, 18f), Fov = 52f },
             new Shot { Name = "FacadesR", Pos = new Vector3(50f, 7f, -14f), LookAt = new Vector3(50f, 7f, 18f), Fov = 52f },
             new Shot { Name = "FacadesAngle", Pos = new Vector3(-82f, 3f, 6f), LookAt = new Vector3(-58f, 7f, 18f), Fov = 60f },
-            new Shot { Name = "Neon", Pos = new Vector3(-5f, 2.2f, 2.5f), LookAt = new Vector3(-6f, 2.4f, -7f), Fov = 60f },
+            new Shot { Name = "Neon", Pos = new Vector3(-6f, 2.0f, 1.0f), LookAt = new Vector3(-6.5f, 3.4f, -7.5f), Fov = 62f },
         };
 
         public static readonly LightState[] States =

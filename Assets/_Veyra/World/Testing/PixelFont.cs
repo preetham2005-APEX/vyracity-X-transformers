@@ -38,6 +38,14 @@ namespace VeyraCity.Testing
             ['?'] = "01110100010000100010001000000000100",
         };
 
+        /// <summary>True when the 5 x 7 glyph of <paramref name="c"/> has its pixel at column <paramref name="col"/>, row <paramref name="row"/> (row 0 = top) set.</summary>
+        public static bool Pixel(char c, int col, int row)
+        {
+            if (col < 0 || col >= W || row < 0 || row >= H) return false;
+            if (!Glyphs.TryGetValue(char.ToUpperInvariant(c), out var g)) g = Glyphs['?'];
+            return g[row * W + col] == '1';
+        }
+
         /// <summary>Pixel width of a string at a scale (1 px gap between glyphs).</summary>
         public static int Measure(string text, int scale) => string.IsNullOrEmpty(text) ? 0 : (text.Length * (W + 1) - 1) * scale;
 

@@ -349,6 +349,147 @@ namespace VeyraCity.EditorTools
             return outc;
         }
 
+        // ------------------------------------------------------------------ F2c: props, vegetation, vehicle, neon
+
+        /// <summary>Painted steel [2 m], white base tinted by the material colour: paint with small chips to dark metal and rust. Mean ≈ 0.62 x tint.</summary>
+        public static Sample PaintedMetal(float u, float v)
+        {
+            float chips = S(0.74f, 0.8f, Fbm(u, v, 32, 4, 2201));
+            float rust = S(0.7f, 0.85f, Fbm(u, v, 8, 4, 2202)) * chips;
+            float grain = Fbm(u, v, 128, 2, 2203);
+            var paint = Grey(0.7f * (0.95f + 0.1f * grain));
+            var c = Color.Lerp(paint, Lin(0.08f, 0.08f, 0.085f), chips);
+            c = Color.Lerp(c, Lin(0.18f, 0.07f, 0.03f), rust);
+            c.a = 1f;
+            return new Sample { Albedo = c, Height = 0.6f - 0.4f * chips, Smooth = Mathf.Lerp(0.45f, 0.3f, chips), AO = 1f, Metal = 0.85f * chips * (1f - rust), Alpha = 1f };
+        }
+
+        /// <summary>Hot-dip galvanised steel [1 m]: spangle crystals. Mean ≈ 0.58, metallic.</summary>
+        public static Sample Galvanized(float u, float v)
+        {
+            Voronoi(u, v, 40, 2301, 1f, out float f1, out float f2, out float id);
+            float edge = S(0.03f, 0.0f, f2 - f1);
+            float lum = 0.58f * (0.9f + 0.2f * id) * (1f - 0.1f * edge);
+            return new Sample { Albedo = new Color(lum, lum * 1.01f, lum * 1.02f, 1f), Height = 0.5f + 0.05f * id, Smooth = 0.5f + 0.15f * id, AO = 1f, Metal = 0.92f, Alpha = 1f };
+        }
+
+        /// <summary>Dark moulded plastic [1 m]. Mean ≈ 0.04.</summary>
+        public static Sample PlasticDark(float u, float v)
+        {
+            float grain = Fbm(u, v, 256, 2, 2401);
+            float lum = 0.04f * (0.9f + 0.2f * grain);
+            return new Sample { Albedo = Grey(lum), Height = 0.5f + 0.05f * grain, Smooth = 0.55f, AO = 1f, Alpha = 1f };
+        }
+
+        /// <summary>Rubber [1 m]. Mean ≈ 0.026.</summary>
+        public static Sample Rubber(float u, float v)
+        {
+            float grain = Fbm(u, v, 128, 3, 2501);
+            float lum = 0.026f * (0.9f + 0.2f * grain);
+            return new Sample { Albedo = Grey(lum), Height = 0.5f + 0.1f * grain, Smooth = 0.22f, AO = 1f, Alpha = 1f };
+        }
+
+        /// <summary>Weathered timber planks [2 m]: silvered grain, gaps. Mean ≈ 0.16.</summary>
+        public static Sample WoodWeathered(float u, float v)
+        {
+            float px = u * 8f;
+            int plank = Mathf.FloorToInt(px);
+            float fx = px - plank;
+            float gap = S(0.04f, 0.0f, Mathf.Min(fx, 1f - fx));
+            float grain = NoiseXY(u, v, 128, 6, 2601 + plank);
+            float silver = 0.5f + 0.5f * Hash(plank, 0, 2602);
+            var c = Color.Lerp(Lin(0.17f, 0.12f, 0.08f), Lin(0.2f, 0.19f, 0.17f), silver) * (0.8f + 0.4f * grain);
+            c = Color.Lerp(c, Lin(0.02f, 0.02f, 0.02f), gap);
+            c.a = 1f;
+            return new Sample { Albedo = c, Height = 0.5f + 0.2f * grain - 0.5f * gap, Smooth = 0.14f, AO = 1f - 0.5f * gap, Alpha = 1f };
+        }
+
+        /// <summary>Leaf cluster card [1 m], alpha-clipped (alpha = leaf coverage). Mean ≈ 0.08.</summary>
+        public static Sample Leaves(float u, float v)
+        {
+            Voronoi(u, v, 14, 2701, 1f, out float f1, out float f2, out float id);
+            // An elongated leaf per cell: distance stretched along a random direction.
+            float a = id * Mathf.PI * 2f;
+            float lu = u * 14f, lv = v * 14f;
+            float cx = Mathf.Floor(lu) + 0.5f, cy = Mathf.Floor(lv) + 0.5f;
+            float dx = lu - cx, dy = lv - cy;
+            float rx = dx * Mathf.Cos(a) + dy * Mathf.Sin(a), ry = -dx * Mathf.Sin(a) + dy * Mathf.Cos(a);
+            float leaf = S(0.42f, 0.36f, Mathf.Sqrt(rx * rx * 1f + ry * ry * 4f));
+            float cover = Mathf.Max(leaf, S(0.3f, 0.2f, f1));
+            var c = Color.Lerp(Lin(0.04f, 0.09f, 0.025f), Lin(0.09f, 0.16f, 0.04f), id) * (0.85f + 0.3f * Fbm(u, v, 64, 2, 2702));
+            c.a = 1f;
+            return new Sample { Albedo = c, Height = 0.5f + 0.3f * cover, Smooth = 0.32f, AO = 0.7f + 0.3f * cover, Alpha = cover };
+        }
+
+        /// <summary>Tree bark [2 m]: vertical furrows. Mean ≈ 0.10.</summary>
+        public static Sample Bark(float u, float v)
+        {
+            float furrow = NoiseXY(u, v, 24, 3, 2801);
+            float detail = Fbm(u, v, 64, 3, 2802);
+            float h = S(0.3f, 0.75f, furrow) * 0.8f + 0.2f * detail;
+            var c = Lin(0.12f, 0.095f, 0.075f) * (0.6f + 0.6f * h);
+            c.a = 1f;
+            return new Sample { Albedo = c, Height = h, Smooth = 0.12f, AO = 0.5f + 0.5f * h, Alpha = 1f };
+        }
+
+        /// <summary>Car paint metallic flakes [0.25 m]: white base (the material colour is the paint), a high-frequency flake normal.</summary>
+        public static Sample CarPaintFlakes(float u, float v)
+        {
+            Voronoi(u, v, 256, 2901, 1f, out float f1, out _, out float id);
+            return new Sample { Albedo = Grey(0.8f), Height = 0.5f + 0.5f * id, Smooth = 0.6f, AO = 1f, Metal = 0.75f, Alpha = 1f };
+        }
+
+        /// <summary>LED screen content (rgb): a 128 x 64 grid of LED dots showing colour bands and fictional words; scrolled by the Neon shader.</summary>
+        public static Color LedScreen(float u, float v)
+        {
+            const int W = 128, H = 64;
+            int lx = Mathf.Min(W - 1, Mathf.FloorToInt(u * W)), ly = Mathf.Min(H - 1, Mathf.FloorToInt(v * H));
+            float fx = u * W - lx, fy = v * H - ly;
+            float dot = S(0.48f, 0.3f, Mathf.Sqrt((fx - 0.5f) * (fx - 0.5f) + (fy - 0.5f) * (fy - 0.5f)));
+            float band = Mathf.Repeat(lx / (float)W + ly / (float)H * 0.3f, 1f);
+            var bg = Color.HSVToRGB(band, 0.8f, 0.35f).linear;
+            bool text = LedText(lx, ly);
+            var c = text ? Lin(1f, 1f, 1f) : bg;
+            var o = c * dot;
+            o.a = 1f;
+            return o;
+        }
+
+        static readonly string[] LedWords = { "VEYRA 24H", "NEON MILE", "OPEN LATE" };
+
+        static bool LedText(int x, int y)
+        {
+            // 3 rows of 5 x 7 glyphs, scaled 1:1 onto the LED grid (each glyph 6 LEDs wide incl. spacing).
+            int row = (63 - y) / 20;
+            if (row > 2) return false;
+            int gy = (63 - y) - row * 20 - 6;
+            if (gy < 0 || gy >= 7) return false;
+            string word = LedWords[row];
+            int startX = 4 + row * 8;
+            int gx = x - startX;
+            if (gx < 0) return false;
+            int ci = gx / 6, cx = gx % 6;
+            if (ci >= word.Length || cx >= 5) return false;
+            return VeyraCity.Testing.PixelFont.Pixel(word[ci], cx, gy);
+        }
+
+        /// <summary>Backlit sign face (rgb): a two-colour gradient panel with a border and a fictional word.</summary>
+        public static Color SignBacklit(float u, float v)
+        {
+            var top = Lin(1f, 0.55f, 0.12f);
+            var bottom = Lin(0.95f, 0.18f, 0.35f);
+            var c = Color.Lerp(bottom, top, v);
+            float border = Mathf.Max(S(0.04f, 0.02f, Mathf.Min(u, 1f - u)), S(0.08f, 0.05f, Mathf.Min(v, 1f - v)));
+            c = Color.Lerp(c, Lin(1f, 1f, 1f), border);
+            int lx = Mathf.FloorToInt(u * 64f), ly = Mathf.FloorToInt((1f - v) * 32f);
+            const string word = "NOODLES";
+            int gx = lx - 11, gy = ly - 12;
+            if (gx >= 0 && gy >= 0 && gy < 7 && gx / 6 < word.Length && gx % 6 < 5 && VeyraCity.Testing.PixelFont.Pixel(word[gx / 6], gx % 6, gy))
+                c = Lin(1f, 1f, 0.95f);
+            c.a = 1f;
+            return c;
+        }
+
         /// <summary>Road paint [2 m], white (tinted yellow by the material colour): raised, slightly glossy, worn spots. Mean ≈ 0.62.</summary>
         public static Sample MarkingPaint(float u, float v)
         {
