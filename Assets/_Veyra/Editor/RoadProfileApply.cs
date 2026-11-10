@@ -71,7 +71,7 @@ namespace VeyraCity.EditorTools
                     if (b - a < 4f) continue;
                     string name = $"Ease_{road.Data.id}_{Mathf.RoundToInt(a)}";
                     // 2 cm above the old surface where they meet, so the ends never z-fight and the wheels see the ribbon first.
-                    BridgeDeckFiller.Build(fixes, name, r, a, b, asphalt, concrete, road.Data.cls == "GR" ? gravel : dry, concreteSurface, false, 0.6f, 0.032f);
+                    BridgeDeckFiller.Build(fixes, name, r, a, b, asphalt, concrete, road.Data.cls == "GR" ? gravel : dry, concreteSurface, false, 0.6f, 0.032f, EndMatch(r, a, b, 0.032f, null));
                     keep.Add(name);
                     ribbons++;
                     total += b - a;
@@ -167,7 +167,7 @@ namespace VeyraCity.EditorTools
                         return rise * t * t * (3f - 2f * t);
                     };
                     string name = $"Patch_{road.Data.id}_{Mathf.RoundToInt(a)}";
-                    BridgeDeckFiller.Build(fixes, name, r, a, b, asphalt, concrete, road.Data.cls == "GR" ? gravel : dry, concreteSurface, false, 0.6f, 0.032f, extra);
+                    BridgeDeckFiller.Build(fixes, name, r, a, b, asphalt, concrete, road.Data.cls == "GR" ? gravel : dry, concreteSurface, false, 0.6f, 0.032f, EndMatch(r, a, b, 0.032f, extra));
                     keep.Add(name);
                     patches++;
                     sb.AppendLine($"{name}: s {a:F0}..{b:F0}, hump {rise:F2} m");
@@ -175,6 +175,41 @@ namespace VeyraCity.EditorTools
             }
             sb.AppendLine($"artefact patches: {patches} (skipped {skippedHigh} with a rise above 1.5 m)");
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// BUG-108: a ribbon that ends at the eased profile (+3 cm) can meet an old surface a little higher or lower (blockout
+        /// crown, deck kerb): a lip. The old drivable surface is measured at both ends (left / centre / right; only hits within
+        /// ±0.3 m of the ribbon count, a bigger difference is another structure) and the ribbon end moves up or down by at most
+        /// 0.25 m to meet it, over a 12 m smoothstep. Returns the combined height offset on top of <paramref name="inner"/>.
+        /// </summary>
+        static System.Func<float, float> EndMatch(int r, float a, float b, float raise, System.Func<float, float> inner)
+        {
+            var road = WorldData.Roads[r];
+            float Ribbon(float s) => road.Path.PositionAt(s).y + RoadProfileEaser.Delta(r, s) + raise + (inner != null ? inner(s) : 0f);
+            float Rise(float s)
+            {
+                var c = road.Path.PositionAt(s);
+                var d = road.Path.PositionAt(Mathf.Min(road.Path.Length, s + 1f)) - road.Path.PositionAt(Mathf.Max(0f, s - 1f));
+                var right = new Vector3(d.z, 0f, -d.x).normalized;
+                float rib = Ribbon(s), top = float.MinValue;
+                foreach (float o in new[] { -road.HalfWidth * 0.6f, 0f, road.HalfWidth * 0.6f })
+                {
+                    var p = c + right * o;
+                    foreach (var h in Physics.RaycastAll(new Vector3(p.x, rib + 0.3f, p.z), Vector3.down, 0.6f, ~0, QueryTriggerInteraction.Ignore))
+                    {
+                        if (h.collider is TerrainCollider || h.collider.GetComponentInParent<VehicleSurface>() == null) continue;
+                        top = Mathf.Max(top, h.point.y);
+                    }
+                }
+                return top == float.MinValue ? 0f : Mathf.Clamp(top - rib, -0.25f, 0.25f);
+            }
+            float riseA = Rise(a + 0.5f), riseB = Rise(b - 0.5f);
+            return s =>
+            {
+                float tA = 1f - Mathf.Clamp01((s - a) / 12f), tB = 1f - Mathf.Clamp01((b - s) / 12f);
+                return riseA * tA * tA * (3f - 2f * tA) + riseB * tB * tB * (3f - 2f * tB) + (inner != null ? inner(s) : 0f);
+            };
         }
 
         static float MaxDelta(int r, float a, float b)
