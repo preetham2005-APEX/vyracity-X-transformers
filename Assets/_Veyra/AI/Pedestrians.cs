@@ -18,7 +18,9 @@ namespace VeyraCity.AI
     {
         public VehicleController Player;
         public bool Active = true;
-        public int MaxPeds = 85;   // iteration 8: in-run A/B put 70 walkers at ~0.5 ms
+        public int MaxPeds = 85;
+        /// <summary>Zebra crossings begun since start (capture telemetry).</summary>
+        public static int CrossingsStarted;   // iteration 8: in-run A/B put 70 walkers at ~0.5 ms
         public float SpawnMin = 30f, SpawnMax = 150f, DespawnRadius = 185f;
 
         static readonly HashSet<string> Classes = new HashSet<string> { "CO", "AR", "SV" };
@@ -51,6 +53,8 @@ namespace VeyraCity.AI
             public int Road;
             public float S, Lateral, Dir, Speed, Phase, Height, Ground, GroundTimer;
             public float DodgeTime, PendingDt;
+            public bool Crossing;          // on a zebra crossing while the road's traffic waits at red
+            public float CrossT, CrossCooldown;
             public int Slot;
             public Vector3 DodgeVel, DodgeOffset;
         }
@@ -225,6 +229,20 @@ namespace VeyraCity.AI
                 p.S = a.S + Random.Range(-5f, 5f);
                 p.Lateral = a.Lateral + Mathf.Sign(a.Lateral) * Random.Range(-0.5f, 2.2f);
                 p.Dir = Random.value < 0.5f ? 1f : -1f;
+                // iteration 15: a quarter of the walkers start a few metres short of a signalled crossing, heading to it
+                // (GTA's corners are where people gather; mid-block walkers rarely reach one in a short scene)
+                if (Random.value < 0.25f && TrafficLights.Instance != null)
+                {
+                    int end = Random.value < 0.5f ? 0 : 1;
+                    if (TrafficLights.Instance.StateFor(a.Road, end, out float stop) >= 0)
+                    {
+                        float len = road.Path.Length;
+                        float zebraS = end == 0 ? stop - 3f : len - (stop - 3f);
+                        float back = Random.Range(2f, 9f);
+                        p.S = end == 0 ? zebraS + back : zebraS - back;
+                        p.Dir = end == 0 ? -1f : 1f;
+                    }
+                }
                 p.Speed = Random.Range(1.05f, 1.6f);
                 p.Phase = Random.value * 10f;
                 p.Ground = gy;
@@ -233,6 +251,8 @@ namespace VeyraCity.AI
                 p.DodgeOffset = Vector3.zero;
                 p.PendingDt = 0f;
                 p.Slot = Random.Range(0, 3);
+                p.Crossing = false;
+                p.CrossCooldown = Random.Range(0f, 8f);
                 p.Go.SetActive(true);
                 live.Add(p);
                 Step(p, 0f);
@@ -252,15 +272,37 @@ namespace VeyraCity.AI
             if (p.Idle) { StepIdle(p, dt); return; }
             var road = WorldData.Roads[p.Road];
             float len = road.Path.Length;
-            if (p.DodgeTime <= 0f)
+            p.CrossCooldown -= dt;
+            if (p.Crossing)
+            {
+                // across the zebra at constant s, from this kerb to the other; then walk on along the far pavement
+                p.CrossT += dt * p.Speed / Mathf.Max(2f, 2f * Mathf.Abs(p.Lateral));
+                if (p.CrossT >= 1f) { p.Crossing = false; p.Lateral = -p.Lateral; p.CrossCooldown = 20f; p.GroundTimer = 0f; }
+            }
+            else if (p.CrossCooldown <= 0f && TrafficLights.Instance != null)
+            {
+                // iteration 14: cross at the zebra while the cars on this road are held at red (GTA's junctions)
+                for (int end = 0; end < 2; end++)
+                {
+                    int state = TrafficLights.Instance.StateFor(p.Road, end, out float stop);
+                    if (state < 0) continue;
+                    float zebraS = end == 0 ? stop - 3f : len - (stop - 3f);
+                    if (Mathf.Abs(p.S - zebraS) > 0.8f) continue;
+                    p.CrossCooldown = 6f;
+                    if (state == 0 && Random.value < 0.6f) { p.Crossing = true; p.CrossT = 0f; p.S = zebraS; p.GroundTimer = 0f; CrossingsStarted++; }
+                    break;
+                }
+            }
+            if (p.DodgeTime <= 0f && !p.Crossing)
             {
                 p.S += p.Dir * p.Speed * dt;
-                if (p.S < 12f || p.S > len - 12f) { p.Dir = -p.Dir; p.S = Mathf.Clamp(p.S, 12f, len - 12f); }
+                // turn back 6 m before the road end (the zebra crossings sit 6-15 m from it)
+                if (p.S < 6f || p.S > len - 6f) { p.Dir = -p.Dir; p.S = Mathf.Clamp(p.S, 6f, len - 6f); }
             }
-            var pos = Lateral(road, p.S, p.Lateral);
+            var pos = Lateral(road, p.S, p.Crossing ? Mathf.Lerp(p.Lateral, -p.Lateral, p.CrossT) : p.Lateral);
             var t = road.Path.TangentAt(p.S);
             p.GroundTimer -= dt;
-            if (p.GroundTimer <= 0f) { p.GroundTimer = 1.2f; if (Ground(pos, out float gy)) p.Ground = gy; }
+            if (p.GroundTimer <= 0f) { p.GroundTimer = p.Crossing ? 0.25f : 1.2f; if (Ground(pos, out float gy)) p.Ground = gy; }
             pos.y = p.Ground;
 
             // dive clear of a fast car heading this way
@@ -295,7 +337,8 @@ namespace VeyraCity.AI
             else p.DodgeOffset = Vector3.Lerp(p.DodgeOffset, Vector3.zero, dt * 0.5f);
             pos += new Vector3(p.DodgeOffset.x, 0f, p.DodgeOffset.z);
 
-            Vector3 face = p.DodgeTime > 0f && p.DodgeVel.sqrMagnitude > 0.5f ? p.DodgeVel : t * p.Dir;
+            Vector3 crossDir = new Vector3(t.z, 0f, -t.x) * -Mathf.Sign(p.Lateral);   // toward the far kerb
+            Vector3 face = p.DodgeTime > 0f && p.DodgeVel.sqrMagnitude > 0.5f ? p.DodgeVel : p.Crossing ? crossDir : t * p.Dir;
             face.y = 0f;
             if (face.sqrMagnitude > 1e-4f) p.Root.rotation = Quaternion.Slerp(p.Root.rotation, Quaternion.LookRotation(face), dt > 0f ? 1f - Mathf.Exp(-dt * 8f) : 1f);
             p.Root.position = pos;

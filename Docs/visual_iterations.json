@@ -206,6 +206,116 @@
       ],
       "fps": 80.2,
       "p99": 41.3
+    },
+    {
+      "n": 10,
+      "title": "Launch fix part 1: no upshift on spinning wheels, launch regression test",
+      "scores": [
+        3.5,
+        4,
+        3,
+        3.5,
+        3,
+        3,
+        4,
+        4,
+        3.5,
+        2.5
+      ],
+      "fps": 76.4,
+      "p99": 43.7
+    },
+    {
+      "n": 11,
+      "title": "Launch fix part 2, early slot builds, drift scene in open road",
+      "scores": [
+        3.5,
+        4,
+        3,
+        3.5,
+        3,
+        3,
+        4,
+        4,
+        4,
+        2.5
+      ],
+      "fps": 78.0,
+      "p99": 65.0,
+      "note": "Cruise exposed traffic fixed-step catch-up spikes (fixed in 12)"
+    },
+    {
+      "n": 12,
+      "title": "Launch fixed (no wheelspin), traffic step 2.2 to 0.64 ms",
+      "scores": [
+        3.5,
+        4,
+        3,
+        3.5,
+        3,
+        3,
+        4,
+        4,
+        4,
+        3
+      ],
+      "fps": 101.9,
+      "p99": 29.9
+    },
+    {
+      "n": 13,
+      "title": "Launch guards limited to low speed",
+      "scores": [
+        3.5,
+        4,
+        3,
+        3.5,
+        3,
+        3,
+        4,
+        4,
+        4,
+        3
+      ],
+      "fps": 99.6,
+      "p99": 33.3,
+      "note": "Nitro scene swerve traced to the capture script braking"
+    },
+    {
+      "n": 14,
+      "title": "Clean Overdrive run (204 km/h), zebra crossings",
+      "scores": [
+        3.5,
+        4,
+        3,
+        3.5,
+        3,
+        3,
+        4,
+        4,
+        4,
+        3
+      ],
+      "fps": 103.8,
+      "p99": 27.3
+    },
+    {
+      "n": 15,
+      "title": "Final pass: walkers at corners, clean held drift",
+      "scores": [
+        3.5,
+        4,
+        3,
+        4,
+        3,
+        3,
+        4.5,
+        4,
+        4,
+        3
+      ],
+      "fps": 97.0,
+      "p99": 33.9
     }
   ]
 }

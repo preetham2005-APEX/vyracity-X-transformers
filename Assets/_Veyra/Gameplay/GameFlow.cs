@@ -424,8 +424,8 @@ namespace VeyraCity.Gameplay
             environment.SetWetness(0f);   // dry roads again for the daytime scenes
             yield return Drive("C1", 0.3f, 160f, 13f, clear, false, 6f, "it5_nitro_speed",
                                // double tap on a full meter = Overdrive (shockwave burst), then hold
-                               (t, i) => { if (t > 2.5f) { i.Nitro = !(t > 2.6f && t < 2.72f); i.Throttle = 1f; } return i; }, 1.4f);
-            yield return Drive("C1", 0.5f, 105f, 16f, clear, false, 3.8f, "it6_drift",   // iteration 11: middle of the carriageway, held drift before any barrier
+                               (t, i) => { if (t > 2.5f) { i.Nitro = !(t > 2.6f && t < 2.72f); i.Throttle = 1f; i.Brake = 0f; } return i; }, 1.4f);   // iteration 13: never brake (a brake tap while steering starts a drift and cancels nitro)
+            yield return Drive("C1", 0.5f, 105f, 16f, clear, false, 3.45f, "it6_drift",   // iteration 11: middle of the carriageway, held drift before any barrier
                                (t, i) => { if (t > 2.6f && t < 2.75f) { i.Brake = 1f; i.Steer = 0.8f; } else if (t >= 2.75f) { i.Steer = 0.8f; i.Throttle = 1f; } return i; }, 6f);
             yield return Drive("A1", 0.45f, 55f, 17.2f, clear, true, 6f, "it7_traffic_evening");
             // it8: close three-quarter of the parked car at dusk
@@ -465,6 +465,8 @@ namespace VeyraCity.Gameplay
             ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it9_crash_closeup.png"));
             yield return null;
             if (chaseCamera != null) chaseCamera.enabled = true;
+            var crashDamage = player.GetComponent<CarDamage>();
+            float crashDamage01 = crashDamage != null ? crashDamage.Damage01 : -1f;
             // it11: a long cruise with traffic on the longest arterial/collector (streaming hitches: parked cars, furniture
             // cells, walkers); per-system costs for the short scenes and for the cruise are logged separately ([IterCost])
             Debug.Log(VeyraCity.Core.FrameCost.Report().Replace("[IterCost]", "[IterCost] scenes"));
@@ -489,8 +491,8 @@ namespace VeyraCity.Gameplay
             if (chaseCamera != null) chaseCamera.enabled = true;
             yield return Drive("A2", 0.2f, 260f, 13f, clear, false, 7f, "it10_launch",
                                (t, i) => { i.Throttle = 1f; i.Brake = 0f; return i; }, 2.6f, true);
-            var dmg = player.GetComponent<CarDamage>();
-            log.Append($" damage:{(dmg != null ? dmg.Damage01 : -1f):0.00}");
+            log.Append($" damage:{crashDamage01:0.00}");   // of the it9 crash car (later scenes respawn the player)
+            log.Append($" zebraCrossings:{Pedestrians.CrossingsStarted}");
             Debug.Log(log.ToString());
             Debug.Log(perf.ToString());
             if (abFeature != null)

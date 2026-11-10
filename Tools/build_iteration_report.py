@@ -215,7 +215,7 @@ svg text {{ font-family: var(--mono); }}
   <section>
     <header><h2>Frame time and handling</h2></header>
     <div class="charts">
-      <div class="chart"><h3>p99 frame time per pass (ms)</h3>{ft_chart}<p class="note">Dev Mono player, 2560×1440, RTX 4070 Laptop. Pass 3's spike was full-detail street trees in every shadow cascade; pass 4 split them into near/far LOD.</p></div>
+      <div class="chart"><h3>p99 frame time per pass (ms)</h3>{ft_chart}<p class="note">Dev Mono player, 2560×1440, RTX 4070 Laptop. Pass 3's spike was full-detail street trees in every shadow cascade (fixed in pass 4). From pass 8 each run also includes a 28 s traffic cruise and a standing start, which raise the whole-run p99; pass 11's spike was traffic catch-up steps, fixed in pass 12.</p></div>
       <div class="chart"><h3>Skidpad grip at 80 km/h</h3>{hand_chart}<p class="note">Before pass 5 every car cornered at 1.05–1.18 g because one global yaw cap flattened them. Grip now follows the car class.</p></div>
     </div>
   </section>
@@ -232,6 +232,7 @@ svg text {{ font-family: var(--mono); }}
     <ul class="open">
       <li><span class="who">You</span><span>Revoke the Sketchfab API token hard-coded in the untracked <code>Tools/download_fancy_cars.py</code> (SEC-003). It was never committed.</span></li>
       <li><span class="who">Legal</span><span>The five rebadged cars (Ardente Furia, Halcyon Regent, Nordvik Hex, Ashcombe Tempest, Stanton Sidewinder) are CC-BY with all badges removed, but their body shapes still resemble real cars. They need a design check before any public release (licence register L-051 to L-055).</span></li>
+      <li><span class="who">Shader cards</span><span>The traffic cruise still shows a few render-side hitches that no per-system timer in this work accounts for; the likely cause is first-use shader and pipeline-state compilation on D3D12, proposed to the shader session as a warm-up pass.</span></li>
       <li><span class="who">Lighting cards</span><span>Wet roads that read as frost, dark noon street canyons, street-lamp light pools and night fog belong to the lighting cards (L1–L5) of the other session; the sky layer from pass 5 is built for them to extend.</span></li>
     </ul>
   </section>
