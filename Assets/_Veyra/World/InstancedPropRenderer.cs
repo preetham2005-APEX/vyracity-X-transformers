@@ -49,10 +49,12 @@ namespace VeyraCity.World
         {
             Instance = this;
             Rebuild();
+            RenderPipelineManager.beginCameraRendering += OnBeginCameraRendering;
         }
 
         void OnDisable()
         {
+            RenderPipelineManager.beginCameraRendering -= OnBeginCameraRendering;
             if (Instance == this) Instance = null;
         }
 
@@ -72,14 +74,18 @@ namespace VeyraCity.World
             }
         }
 
-        void LateUpdate()
+        /// <summary>
+        /// Culls and submits the cells for each camera as it starts rendering, so every camera gets its own visible
+        /// set: the player camera, the on-demand review cameras, the Scene view and reflection probes (BUG-067; this
+        /// used to cull once per frame against Camera.main and draw that set into every camera, so review cameras
+        /// elsewhere showed no trees or lamps). Shadow casting is unchanged: only cells in view and within
+        /// ShadowDistance cast shadows (off-screen casters cost too much without a measurement; see BUG-067).
+        /// </summary>
+        void OnBeginCameraRendering(ScriptableRenderContext context, Camera cam)
         {
-            var cam = Camera.main;
-#if UNITY_EDITOR
-            if (!Application.isPlaying && UnityEditor.SceneView.lastActiveSceneView != null)
-                cam = UnityEditor.SceneView.lastActiveSceneView.camera;
-#endif
-            if (cam == null || Cells == null || Prototypes == null || !SystemInfo.supportsInstancing) return;
+            if (cam == null || cam.cameraType == CameraType.Preview) return;
+            if (Cells == null || Prototypes == null || !SystemInfo.supportsInstancing) return;
+            if ((cam.cullingMask & (1 << gameObject.layer)) == 0) return;
             GeometryUtility.CalculateFrustumPlanes(cam, planes);
             Vector3 eye = cam.transform.position;
             foreach (var c in Cells)
@@ -103,6 +109,7 @@ namespace VeyraCity.World
                         shadowCastingMode = shadows ? ShadowCastingMode.On : ShadowCastingMode.Off,
                         receiveShadows = true,
                         layer = gameObject.layer,
+                        camera = cam,
                     };
                     Graphics.RenderMeshInstanced(rp, mesh, sm, c.Matrices);
                 }
