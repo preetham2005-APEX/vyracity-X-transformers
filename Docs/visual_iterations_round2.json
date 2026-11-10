@@ -301,23 +301,91 @@
    "p99": null,
    "cruise_p99": null,
    "hitches50": null
+  },
+  {
+   "n": 32,
+   "title": "Night reflection dimming, road diagnostic (capture stopped after the road shots)",
+   "scores": [
+    4,
+    3,
+    null,
+    null,
+    5,
+    5,
+    null
+   ],
+   "fps": null,
+   "p99": null,
+   "cruise_p99": null,
+   "hitches50": null
+  },
+  {
+   "n": 33,
+   "title": "Night reflections fixed: dark wet streets, dark river with city glints",
+   "scores": [
+    4,
+    3.5,
+    4,
+    4.5,
+    5,
+    5,
+    5
+   ],
+   "fps": 113.5,
+   "p99": 16.7,
+   "cruise_p99": 16.7,
+   "hitches50": 41
+  },
+  {
+   "n": 34,
+   "title": "PSO warm-up re-traced: 451/451 states warm in 67 ms",
+   "scores": [
+    4,
+    3.5,
+    4,
+    4.5,
+    5,
+    5,
+    5
+   ],
+   "fps": 113.6,
+   "p99": 16.7,
+   "cruise_p99": 16.7,
+   "hitches50": 42
+  },
+  {
+   "n": 35,
+   "title": "Final verified pass: 115 FPS, 0 exceptions, EditMode 93/93",
+   "scores": [
+    4,
+    3.5,
+    4,
+    4.5,
+    5,
+    5,
+    5
+   ],
+   "fps": 115.1,
+   "p99": 16.8,
+   "cruise_p99": 16.8,
+   "hitches50": 39
   }
  ],
  "report": {
   "date": "2026-11-10",
-  "summary": "Sixteen capture-compare-fix passes on the city, the map, the car HUD, water and atmosphere, judged against GTA V, Asphalt, Forza and Cyberpunk. The M map now beats GTA V's on features (aerial and atlas views, building layer, GPS that re-plans with turn-by-turn), the car shows nitro, brake and speed telemetry, and the late passes run at 113 FPS at 1440p.",
+  "summary": "Twenty capture-compare-fix passes on the city, the map, the car HUD, water and atmosphere, judged against GTA V, Asphalt, Forza and Cyberpunk. The M map now beats GTA V's on features (aerial and atlas views, building layer, GPS that re-plans with turn-by-turn), the car shows nitro, brake and speed telemetry, and the late passes run at 115 FPS at 1440p with night reflections fixed.",
   "stats": [
    [
     "passes captured this round",
-    "16\u201331"
+    "16\u201335"
    ],
    [
-    "avg FPS, pass 30",
-    "113"
+    "avg FPS, pass 35",
+    "115.1"
    ],
    [
-    "p99 frame, pass 30",
-    "16.7 ms"
+    "p99 frame, pass 35",
+    "16.8 ms"
    ],
    [
     "EditMode tests",
@@ -378,7 +446,7 @@
     ],
     [
      "rain.jpg",
-     "<b>Rain.</b> Droplets on the lens. The white far pavement is still open (wet gloss).",
+     "<b>Rain night.</b> Lens droplets; the wet street now stays dark with light reflections.",
      "Rain night"
     ]
    ],
@@ -407,6 +475,11 @@
    ],
    "world": [
     [
+     "river_night.jpg",
+     "<b>Night river.</b> Dark water with warm city glints (it glowed blue before pass 33).",
+     "Night river"
+    ],
+    [
      "road_control.jpg",
      "<b>Road wear control test.</b> The 10 m patch with hand-made UVs shows cracks, wheel paths and gutters; the city's own asphalt meshes still don't (open).",
      "Road control patch"
@@ -426,16 +499,8 @@
     "Wheel paths, oil, gutters and patches render on a test patch but not on the city's asphalt meshes, which are what you see; their UV data is the remaining suspect."
    ],
    [
-    "Wet night glare",
-    "Wet roads and pavements beyond the car still turn near-white at night; pass 32's night reflection dimming was built but its capture did not complete."
-   ],
-   [
     "Brake disc glow",
     "The glowing disc sits behind this car's rims and doesn't read; the HUD brake temperatures do."
-   ],
-   [
-    "PSO re-trace",
-    "The shader warm-up collection still has to be re-traced after the round-2 shader changes (the other session's request)."
    ]
   ]
  }

@@ -490,3 +490,25 @@ are what the camera sees, yet they show none of the wear, patches or tone variat
 control patch: the city meshes' UV data is the remaining suspect (open). Re-enabling the hidden renderers hit one that streaming
 had destroyed (null reference), which stopped the capture script after the road shots; fixed with a null check. The night
 reflection change is built but not yet captured.
+
+### Iteration 33 (2026-11-10): night reflections fixed
+**Results:** with indirect light dimmed at night on roads, water and facade glass, the **rain-night street is dark and wet with
+proper light reflections** (no white sheet past the car) and the **night river is dark with warm city glints** (no blue glow).
+Run avg **113.5 FPS**, p99 16.7 ms, cruise **0** frames over 33 ms, 0 exceptions, EditMode **93/93**. The build includes the audit
+session's uncommitted InstancedPropRenderer change (BUG-067); no warnings from it. The road diagnostic ran cleanly (5 renderers
+hidden and restored).
+
+### Iteration 34 (2026-11-10): PSO warm-up re-traced
+**Changes:** a muted capture run of the iteration-33 build traced 233 graphics states / 225 variants
+(`Logs/PSO/trace_round2.graphicsstate`); `IterationBuild.RebuildPsoCollection` merged it with the four route traces into
+`Resources/PSO/VC_PSO_Direct3D12.graphicsstate`: **267 variants, 451 states**.
+**Results:** the player warmed **451/451** states in 67 ms at start; run avg 113.6 FPS, p99 16.7 ms, cruise 1 frame over 33 ms,
+0 over 50 ms, 0 exceptions.
+
+### Iteration 35 (2026-11-10): final verified pass
+**Results:** build clean; run avg **115.1 FPS**, p99 **16.8 ms**, cruise **0** frames over 33 ms, 39 hitches over 50 ms in the whole
+run (scene teleports and streaming only), **0 exceptions**, EditMode **93/93**; PSO warm-up 451/451 states in 58 ms; GPS
+"LEFT 1,158 m onto Velvet Row", route 2,168 m, speed trap fired, 0–100 5.7 s. Includes the audit session's uncommitted
+InstancedPropRenderer change (instanced trees/lamps now per camera).
+**Still open after round 2:** road wear does not show on the city's asphalt meshes (it does on a control patch with the same
+material); the brake-disc glow does not read through this car's rims.
