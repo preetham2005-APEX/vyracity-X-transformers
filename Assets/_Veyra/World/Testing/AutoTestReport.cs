@@ -30,6 +30,12 @@ namespace VeyraCity.Testing
         /// <summary>-1 when the "GC Allocated In Frame" counter is not available in this build.</summary>
         public float gc_alloc_kb_per_frame_avg = -1f;
         public MemoryBlock memory_mb = new MemoryBlock();
+        /// <summary>
+        /// BUG-090: GPU and CPU frame times (FrameTimingManager; release players need Player Settings > Frame Timing Stats)
+        /// and render counters (ProfilerRecorder), over the same driving frames as <see cref="frametime_ms"/>.
+        /// A distribution with samples = 0 (values -1) was not available in this build.
+        /// </summary>
+        public RenderStats render = new RenderStats();
         public int exceptions;
         public int errors;
         public int warnings;
@@ -47,6 +53,26 @@ namespace VeyraCity.Testing
         [Serializable] public sealed class TeleportWindow { public int count; public float excluded_s; public int frames; public float max_ms; public int hitches_over_50ms; }
         /// <summary>-1 = not available in this build type.</summary>
         [Serializable] public sealed class MemoryBlock { public float managed = -1f, total_reserved = -1f, gfx = -1f; }
+
+        /// <summary>Average, nearest-rank p95/p99 and maximum of one per-frame value; -1 when there were no samples.</summary>
+        [Serializable] public sealed class Distribution { public int samples; public float avg = -1f, p95 = -1f, p99 = -1f, max = -1f; }
+
+        /// <summary>
+        /// BUG-090. cpu_main_ms is the main thread's busy time (frame time minus the wait for Present/VSync);
+        /// triangles counts every rendered pass (shadow maps included), so it is an upper bound for visible triangles.
+        /// </summary>
+        [Serializable]
+        public sealed class RenderStats
+        {
+            public bool frame_timing_enabled;
+            public Distribution gpu_ms = new Distribution();
+            public Distribution cpu_main_ms = new Distribution();
+            public Distribution cpu_render_ms = new Distribution();
+            public Distribution setpass_calls = new Distribution();
+            public Distribution draw_calls = new Distribution();
+            public Distribution batches = new Distribution();
+            public Distribution triangles = new Distribution();
+        }
 
         /// <summary>
         /// Card F1. renderers/material_slots audited; null_materials = empty slots (draw pink or nothing); error_shader = the

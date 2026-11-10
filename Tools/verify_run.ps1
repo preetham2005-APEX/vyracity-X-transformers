@@ -50,6 +50,32 @@ if ($s.build.type -eq 'release') {
 } else {
     Info 'perf rules' ("SKIPPED (development build). Measured: avg {0:0.0} FPS, 1% low {1:0.0}, p99 {2:0.00} ms, max {3:0.0} ms, hitches {4}" -f $s.avg_fps, $s.fps_1pct_low, $s.frametime_ms.p99, $s.frametime_ms.max, $s.hitches_over_50ms)
 }
+# BUG-090: GPU/CPU frame time and render counters (Appendix C, PC High). Budgets are checked on p95 in release builds only;
+# a distribution with 0 samples was not available in that build (older stats.json, or Frame Timing Stats off).
+$inv = [Globalization.CultureInfo]::InvariantCulture
+function Dist($d, [string]$fmt) {
+    if ($null -eq $d -or $d.samples -le 0) { return 'not available' }
+    return ("avg {0} | p95 {1} | p99 {2} | max {3} ({4} frames)" -f ([double]$d.avg).ToString($fmt, $inv), ([double]$d.p95).ToString($fmt, $inv), ([double]$d.p99).ToString($fmt, $inv), ([double]$d.max).ToString($fmt, $inv), $d.samples)
+}
+$r = $s.render
+if ($null -eq $r) {
+    Info 'render stats' 'not in this stats.json (built before BUG-090)'
+} else {
+    $budgets = @(
+        @{ name = 'GPU frame time p95 <= 13 ms';   d = $r.gpu_ms;        limit = 13;      fmt = '0.00' },
+        @{ name = 'CPU main thread p95 <= 10 ms';  d = $r.cpu_main_ms;   limit = 10;      fmt = '0.00' },
+        @{ name = 'SetPass calls p95 <= 450';      d = $r.setpass_calls; limit = 450;     fmt = '0' },
+        @{ name = 'triangles p95 <= 8 M';          d = $r.triangles;     limit = 8000000; fmt = '0' }
+    )
+    foreach ($b in $budgets) {
+        if ($s.build.type -eq 'release' -and $b.d -and $b.d.samples -gt 0) { Rule $b.name ($b.d.p95 -le $b.limit) (Dist $b.d $b.fmt) }
+        else { Info $b.name (Dist $b.d $b.fmt) }
+    }
+    Info 'CPU render thread (ms)'      (Dist $r.cpu_render_ms '0.00')
+    Info 'draw calls'                  (Dist $r.draw_calls '0')
+    Info 'batches'                     (Dist $r.batches '0')
+    Info 'frame timing stats'          ("{0}" -f $r.frame_timing_enabled)
+}
 if ($stripped) { Info 'stripped shaders (player.log)' ("{0}: {1}" -f @($stripped).Count, ($stripped -join ', ')) } else { Info 'stripped shaders (player.log)' '0' }
 Info 'airborne_events'             ("{0}" -f $v.airborne_events)
 Info 'visible_impacts'             ("{0}" -f $v.visible_impacts)

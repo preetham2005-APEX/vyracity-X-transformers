@@ -113,6 +113,11 @@ namespace VeyraCity.Testing
         ProfilerRecorder gcRecorder, gfxRecorder;
         double gcBytes;
         int gcFrames;
+        // BUG-090: GPU/CPU frame times and render counters over the driving frames (same frames as `frames`).
+        ProfilerRecorder setPassRecorder, drawCallsRecorder, batchesRecorder, trianglesRecorder;
+        readonly FrameStats gpuMs = new FrameStats(), cpuMainMs = new FrameStats(), cpuRenderMs = new FrameStats();
+        readonly FrameStats setPassCalls = new FrameStats(), drawCalls = new FrameStats(), batchCounts = new FrameStats(), triangleCounts = new FrameStats();
+        readonly FrameTiming[] frameTiming = new FrameTiming[1];
 
         IEnumerator Start()
         {
@@ -163,6 +168,11 @@ namespace VeyraCity.Testing
             report.vehicle.car = car.Definition != null ? car.Definition.name : car.name;
             gcRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "GC Allocated In Frame");
             gfxRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "Gfx Used Memory");
+            setPassRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Render, "SetPass Calls Count");
+            drawCallsRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Draw Calls Count");
+            batchesRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Batches Count");
+            trianglesRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Triangles Count");
+            report.render.frame_timing_enabled = FrameTimingManager.IsFeatureEnabled();
 
             report.vehicle.segments_total = route.Segments.Count;
             routeStartRealtime = Time.realtimeSinceStartup;
@@ -371,8 +381,43 @@ namespace VeyraCity.Testing
                 w.frames++; w.max_ms = Mathf.Max(w.max_ms, ms);
                 if (ms > FrameStats.HitchThresholdMs) w.hitches_over_50ms++;
             }
-            else frames.Add(ms);
+            else
+            {
+                frames.Add(ms);
+                SampleRenderStats();
+            }
             if (gcRecorder.Valid) { gcBytes += gcRecorder.LastValue; gcFrames++; }
+        }
+
+        /// <summary>BUG-090: one sample per driving frame. FrameTimingManager reports a frame a few frames late; that is fine for distributions.</summary>
+        void SampleRenderStats()
+        {
+            FrameTimingManager.CaptureFrameTimings();
+            if (FrameTimingManager.GetLatestTimings(1, frameTiming) == 1)
+            {
+                var t = frameTiming[0];
+                gpuMs.Add((float)t.gpuFrameTime);
+                cpuMainMs.Add((float)(t.cpuMainThreadFrameTime - t.cpuMainThreadPresentWaitTime));
+                cpuRenderMs.Add((float)t.cpuRenderThreadFrameTime);
+            }
+            if (setPassRecorder.Valid) setPassCalls.Add(setPassRecorder.LastValue);
+            if (drawCallsRecorder.Valid) drawCalls.Add(drawCallsRecorder.LastValue);
+            if (batchesRecorder.Valid) batchCounts.Add(batchesRecorder.LastValue);
+            if (trianglesRecorder.Valid) triangleCounts.Add(trianglesRecorder.LastValue);
+        }
+
+        static AutoTestReport.Distribution ToDistribution(FrameStats f)
+        {
+            var s = f.Summarize();
+            var d = new AutoTestReport.Distribution { samples = s.frames };
+            if (s.frames == 0) return d;
+            d.avg = s.avgMs; d.p95 = s.p95Ms; d.p99 = s.p99Ms; d.max = s.maxMs;
+            return d;
+        }
+
+        static void DisposeRecorder(ref ProfilerRecorder r)
+        {
+            if (r.Valid) r.Dispose();
         }
 
         void AddEvent(string type, string detail)
@@ -411,6 +456,17 @@ namespace VeyraCity.Testing
             report.memory_mb.gfx = gfx > 0 ? gfx / MB : -1f;
             if (gcRecorder.Valid) gcRecorder.Dispose();
             if (gfxRecorder.Valid) gfxRecorder.Dispose();
+            report.render.gpu_ms = ToDistribution(gpuMs);
+            report.render.cpu_main_ms = ToDistribution(cpuMainMs);
+            report.render.cpu_render_ms = ToDistribution(cpuRenderMs);
+            report.render.setpass_calls = ToDistribution(setPassCalls);
+            report.render.draw_calls = ToDistribution(drawCalls);
+            report.render.batches = ToDistribution(batchCounts);
+            report.render.triangles = ToDistribution(triangleCounts);
+            DisposeRecorder(ref setPassRecorder);
+            DisposeRecorder(ref drawCallsRecorder);
+            DisposeRecorder(ref batchesRecorder);
+            DisposeRecorder(ref trianglesRecorder);
 
             var bi = BuildInfo.LoadOrDefault();
             report.build.type = Debug.isDebugBuild ? "development" : "release";
@@ -453,6 +509,7 @@ namespace VeyraCity.Testing
 
             Debug.Log($"[AutoTest] RESULT route={report.route} end={endReason} segments={report.vehicle.segments_completed}/{report.vehicle.segments_total} " +
                       $"duration={report.duration_s:0.0}s frames={report.frames} avg={report.avg_fps:0.0}fps 1%low={report.fps_1pct_low:0.0} p99={report.frametime_ms.p99:0.00}ms max={report.frametime_ms.max:0.0}ms hitches={report.hitches_over_50ms} " +
+                      $"gpuP95={report.render.gpu_ms.p95:0.00}ms cpuMainP95={report.render.cpu_main_ms.p95:0.00}ms setPassP95={report.render.setpass_calls.p95:0} trisP95={report.render.triangles.p95:0} " +
                       $"exceptions={report.exceptions} errors={report.errors} shaderNull={report.shader_is_null} spawnedOnRoad={report.vehicle.spawned_on_road} falls={report.vehicle.falls_below_surface} " +
                       $"airborne={report.vehicle.airborne_events} invisibleWalls={report.vehicle.invisible_wall_events} maxVertG={report.vehicle.max_vertical_accel_g:0.00} distance={report.vehicle.distance_m:0}m stats={path}");
             yield return new WaitForSecondsRealtime(0.5f);

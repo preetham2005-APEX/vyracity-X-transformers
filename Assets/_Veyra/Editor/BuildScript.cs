@@ -56,6 +56,9 @@ namespace VeyraCity.EditorTools
 
             PlayerSettings.productName = ProductName;
             PlayerSettings.bundleVersion = version;
+            // BUG-090: release players report GPU/CPU frame times to the autotest only with Frame Timing Stats on
+            // (development players always have it). Set here because an open Editor can re-save ProjectSettings.asset.
+            PlayerSettings.enableFrameTimingStats = true;
             var previousBackend = PlayerSettings.GetScriptingBackend(NamedBuildTarget.Standalone);
             PlayerSettings.SetScriptingBackend(NamedBuildTarget.Standalone, il2cpp ? ScriptingImplementation.IL2CPP : ScriptingImplementation.Mono2x);
             try { return BuildWithBackend(il2cpp, development, version, Path.GetFullPath(outDir), scenes); }
