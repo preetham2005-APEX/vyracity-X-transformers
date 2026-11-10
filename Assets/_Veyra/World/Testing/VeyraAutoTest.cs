@@ -238,12 +238,21 @@ namespace VeyraCity.Testing
             var fwd = lane.PositionAt(4f) - p;
             float surfaceY = p.y;
             var normal = Vector3.up;
-            float best = 6f;
+            // Spawn on the top drivable surface near the route height, like a wheel would land: card C2 lays eased approach
+            // ribbons up to 8.5 m above the data profile, and the old (buried) road below must not win. Fallback: the surface
+            // closest to the profile height (terrain, or no VehicleSurface).
+            float best = 6f, top = float.MinValue;
             foreach (var h in Physics.RaycastAll(p + Vector3.up * 25f, Vector3.down, 60f, ~0, QueryTriggerInteraction.Ignore))
             {
                 if (h.rigidbody != null && h.rigidbody == car.Body) continue;
+                bool drivable = !(h.collider is TerrainCollider) && h.collider.GetComponentInParent<VehicleSurface>() != null;
+                if (drivable && h.point.y >= p.y - 6f && h.point.y <= p.y + 9f && h.point.y > top)
+                {
+                    top = h.point.y; surfaceY = h.point.y; normal = h.normal;
+                    continue;
+                }
                 float d = Mathf.Abs(h.point.y - p.y);
-                if (d < best) { best = d; surfaceY = h.point.y; normal = h.normal; }
+                if (top == float.MinValue && d < best) { best = d; surfaceY = h.point.y; normal = h.normal; }
             }
             var pos = new Vector3(p.x, surfaceY + 0.45f, p.z);
             var dir = Vector3.ProjectOnPlane(fwd, normal);
