@@ -1,0 +1,9 @@
+File: Cyberpunk_City_3f24e5c5.zip
+Title: Cyberpunk City
+Source: https://sketchfab.com/3d-models/cyberpunk-city-3f24e5c5bf924f46b30d9a392afa9624
+Author: mortalityrexotable (https://sketchfab.com/mortalityrexotable)
+Licence: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Attribution: This work is based on "Cyberpunk City" (https://sketchfab.com/3d-models/cyberpunk-city-3f24e5c5bf924f46b30d9a392afa9624) by mortalityrexotable (https://sketchfab.com/mortalityrexotable) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Downloaded: 2026-11-09
+Evidence: license.txt inside Cyberpunk_City_3f24e5c5.zip
+Recorded by: Tools/Assets/licence_gate.py (card B1)

@@ -1,0 +1,9 @@
+File: City_Road_Layout_Mockup_3260e3fe.zip
+Title: [FREE] City Road Layout Mockup
+Source: https://sketchfab.com/3d-models/free-city-road-layout-mockup-3260e3fef3434939bc8df94a0a15ead3
+Author: 99.Miles (https://sketchfab.com/99.Miles)
+Licence: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Attribution: This work is based on "[FREE] City Road Layout Mockup" (https://sketchfab.com/3d-models/free-city-road-layout-mockup-3260e3fef3434939bc8df94a0a15ead3) by 99.Miles (https://sketchfab.com/99.Miles) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Downloaded: 2026-11-09
+Evidence: license.txt inside City_Road_Layout_Mockup_3260e3fe.zip
+Recorded by: Tools/Assets/licence_gate.py (card B1)

@@ -1,0 +1,9 @@
+File: Downtown_Buildings_Set_7378e7fb.zip
+Title: Downtown Buildings Set - Low Poly model
+Source: https://sketchfab.com/3d-models/downtown-buildings-set-low-poly-model-7378e7fb9c914c39880d9913a6f4e1d6
+Author: Daniel Zhabotinsky (https://sketchfab.com/DanielZhabotinsky)
+Licence: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Attribution: This work is based on "Downtown Buildings Set - Low Poly model" (https://sketchfab.com/3d-models/downtown-buildings-set-low-poly-model-7378e7fb9c914c39880d9913a6f4e1d6) by Daniel Zhabotinsky (https://sketchfab.com/DanielZhabotinsky) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Downloaded: 2026-11-09
+Evidence: license.txt inside Downtown_Buildings_Set_7378e7fb.zip
+Recorded by: Tools/Assets/licence_gate.py (card B1)

@@ -1,0 +1,9 @@
+File: Modular_City_Builder_Starter_Kit_784358d2.zip
+Title: modular kit city builder starter kit
+Source: https://sketchfab.com/3d-models/modular-kit-city-builder-starter-kit-784358d2b44a43398079770d316b6de7
+Author: Pieter Ferreira (https://sketchfab.com/Badboy17Aiden)
+Licence: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Attribution: This work is based on "modular kit city builder starter kit" (https://sketchfab.com/3d-models/modular-kit-city-builder-starter-kit-784358d2b44a43398079770d316b6de7) by Pieter Ferreira (https://sketchfab.com/Badboy17Aiden) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Downloaded: 2026-11-09
+Evidence: license.txt inside Modular_City_Builder_Starter_Kit_784358d2.zip
+Recorded by: Tools/Assets/licence_gate.py (card B1)

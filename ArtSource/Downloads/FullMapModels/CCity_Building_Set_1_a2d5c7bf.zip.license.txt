@@ -1,0 +1,9 @@
+File: CCity_Building_Set_1_a2d5c7bf.zip
+Title: CCity Building Set 1
+Source: https://sketchfab.com/3d-models/ccity-building-set-1-a2d5c7bfcc2148fb8994864c43dfcc97
+Author: Neberkenezer (https://sketchfab.com/neberkenezer)
+Licence: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Attribution: This work is based on "CCity Building Set 1" (https://sketchfab.com/3d-models/ccity-building-set-1-a2d5c7bfcc2148fb8994864c43dfcc97) by Neberkenezer (https://sketchfab.com/neberkenezer) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Downloaded: 2026-11-09
+Evidence: license.txt inside CCity_Building_Set_1_a2d5c7bf.zip
+Recorded by: Tools/Assets/licence_gate.py (card B1)

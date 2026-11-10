@@ -1,0 +1,9 @@
+File: Full_Gameready_City_Retexture_5fad2351.zip
+Title: Full Gameready City Buildings [retextured]
+Source: https://sketchfab.com/3d-models/full-gameready-city-buildings-retextured-5fad2351e34f4c069a2eec45cce0824c
+Author: mortalityrexotable (https://sketchfab.com/mortalityrexotable)
+Licence: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Attribution: This work is based on "Full Gameready City Buildings [retextured]" (https://sketchfab.com/3d-models/full-gameready-city-buildings-retextured-5fad2351e34f4c069a2eec45cce0824c) by mortalityrexotable (https://sketchfab.com/mortalityrexotable) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Downloaded: 2026-11-09
+Evidence: license.txt inside Full_Gameready_City_Retexture_5fad2351.zip
+Recorded by: Tools/Assets/licence_gate.py (card B1)

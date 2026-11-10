@@ -1,0 +1,9 @@
+File: Brownstone_Building_Set_b15e6344.zip
+Title: Brownstone Building Set - Low poly model
+Source: https://sketchfab.com/3d-models/brownstone-building-set-low-poly-model-b15e6344acd844eabc823e1cc8332574
+Author: Daniel Zhabotinsky (https://sketchfab.com/DanielZhabotinsky)
+Licence: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Attribution: This work is based on "Brownstone Building Set - Low poly model" (https://sketchfab.com/3d-models/brownstone-building-set-low-poly-model-b15e6344acd844eabc823e1cc8332574) by Daniel Zhabotinsky (https://sketchfab.com/DanielZhabotinsky) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Downloaded: 2026-11-09
+Evidence: license.txt inside Brownstone_Building_Set_b15e6344.zip
+Recorded by: Tools/Assets/licence_gate.py (card B1)

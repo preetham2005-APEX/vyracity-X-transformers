@@ -1,0 +1,9 @@
+File: Atlanta_Corporate_Office_d96380fb.zip
+Title: [FREE]  Atlanta, Corperate Office Building
+Source: https://sketchfab.com/3d-models/free-atlanta-corperate-office-building-d96380fb001345cca9a9be121f3e43d5
+Author: 99.Miles (https://sketchfab.com/99.Miles)
+Licence: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Attribution: This work is based on "[FREE]  Atlanta, Corperate Office Building" (https://sketchfab.com/3d-models/free-atlanta-corperate-office-building-d96380fb001345cca9a9be121f3e43d5) by 99.Miles (https://sketchfab.com/99.Miles) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Downloaded: 2026-11-09
+Evidence: license.txt inside Atlanta_Corporate_Office_d96380fb.zip
+Recorded by: Tools/Assets/licence_gate.py (card B1)

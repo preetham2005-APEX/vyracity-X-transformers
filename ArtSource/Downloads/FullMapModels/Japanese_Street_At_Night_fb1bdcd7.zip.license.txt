@@ -1,0 +1,9 @@
+File: Japanese_Street_At_Night_fb1bdcd7.zip
+Title: Japanese street at night
+Source: https://sketchfab.com/3d-models/japanese-street-at-night-fb1bdcd71a5544d699379d2d13dd1171
+Author: AFX/CGMotion 3DModel Maker (https://sketchfab.com/afx_cgmotion)
+Licence: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Attribution: This work is based on "Japanese street at night" (https://sketchfab.com/3d-models/japanese-street-at-night-fb1bdcd71a5544d699379d2d13dd1171) by AFX/CGMotion 3DModel Maker (https://sketchfab.com/afx_cgmotion) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Downloaded: 2026-11-09
+Evidence: license.txt inside Japanese_Street_At_Night_fb1bdcd7.zip
+Recorded by: Tools/Assets/licence_gate.py (card B1)

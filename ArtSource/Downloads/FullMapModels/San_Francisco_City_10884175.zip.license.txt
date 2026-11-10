@@ -1,0 +1,9 @@
+File: San_Francisco_City_10884175.zip
+Title: San Francisco City
+Source: https://sketchfab.com/3d-models/san-francisco-city-108841754fd3485886c1dde13301d341
+Author: Abimael Gonzalez (https://sketchfab.com/abimaelgonzalez)
+Licence: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Attribution: This work is based on "San Francisco City" (https://sketchfab.com/3d-models/san-francisco-city-108841754fd3485886c1dde13301d341) by Abimael Gonzalez (https://sketchfab.com/abimaelgonzalez) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Downloaded: 2026-11-09
+Evidence: license.txt inside San_Francisco_City_10884175.zip
+Recorded by: Tools/Assets/licence_gate.py (card B1)

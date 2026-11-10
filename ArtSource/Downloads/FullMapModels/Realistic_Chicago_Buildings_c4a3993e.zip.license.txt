@@ -1,0 +1,9 @@
+File: Realistic_Chicago_Buildings_c4a3993e.zip
+Title: Realistic chicago buildings
+Source: https://sketchfab.com/3d-models/realistic-chicago-buildings-c4a3993ef1e84e6d9d5a15c78da88aae
+Author: 99.Miles (https://sketchfab.com/Mazen220)
+Licence: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Attribution: This work is based on "Realistic chicago buildings" (https://sketchfab.com/3d-models/realistic-chicago-buildings-c4a3993ef1e84e6d9d5a15c78da88aae) by 99.Miles (https://sketchfab.com/Mazen220) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Downloaded: 2026-11-09
+Evidence: license.txt inside Realistic_Chicago_Buildings_c4a3993e.zip
+Recorded by: Tools/Assets/licence_gate.py (card B1)

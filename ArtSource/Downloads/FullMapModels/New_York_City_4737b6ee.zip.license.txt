@@ -1,0 +1,9 @@
+File: New_York_City_4737b6ee.zip
+Title: New York City
+Source: https://sketchfab.com/3d-models/new-york-city-4737b6ee73ed4634ad5b414558fdfa45
+Author: golukumar (https://sketchfab.com/mortalityrexotable)
+Licence: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Attribution: This work is based on "New York City" (https://sketchfab.com/3d-models/new-york-city-4737b6ee73ed4634ad5b414558fdfa45) by golukumar (https://sketchfab.com/mortalityrexotable) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Downloaded: 2026-11-09
+Evidence: license.txt inside New_York_City_4737b6ee.zip
+Recorded by: Tools/Assets/licence_gate.py (card B1)

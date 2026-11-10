@@ -48,6 +48,14 @@ Desktop.ini
 /ArtSource/Downloads/*
 !/ArtSource/Downloads/DOWNLOAD_LIST.md
 !/ArtSource/Downloads/*.licence.json
+# Card B1: licence records and the quarantine list are versioned (never the downloads themselves)
+!/ArtSource/Downloads/*.license.txt
+!/ArtSource/Downloads/FullMapModels/
+/ArtSource/Downloads/FullMapModels/*
+!/ArtSource/Downloads/FullMapModels/*.license.txt
+!/ArtSource/Downloads/_Quarantine/
+/ArtSource/Downloads/_Quarantine/*
+!/ArtSource/Downloads/_Quarantine/QUARANTINE.md
 
 # Intermediate car exports (rebuilt from the downloads by Tools/Blender/process_all_cars.py; Unity copies live under
 # Assets/_Veyra/Art/Vehicles). Reports, material maps and previews stay tracked.
