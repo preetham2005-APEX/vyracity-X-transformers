@@ -1,0 +1,3677 @@
+{
+ "source": "Full_Gameready_City_Retexture",
+ "licence": {
+  "licence": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "author": "mortalityrexotable (https://sketchfab.com/mortalityrexotable)",
+  "url": "https://sketchfab.com/3d-models/full-gameready-city-buildings-retextured-5fad2351e34f4c069a2eec45cce0824c",
+  "credit": "This work is based on \"Full Gameready City Buildings [retextured]\" (https://sketchfab.com/3d-models/full-gameready-city-buildings-retextured-5fad2351e34f4c069a2eec45cce0824c) by mortalityrexotable (https://sketchfab.com/mortalityrexotable) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "id": "ArtSource/Downloads/FullMapModels/Full_Gameready_City_Retexture_5fad2351.zip"
+ },
+ "pieces": [
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_000",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_000.fbx",
+   "footprint_m": [
+    25.43,
+    23.53
+   ],
+   "height_m": 19.0,
+   "triangles": [
+    11881,
+    4752,
+    1188
+   ],
+   "collision": [
+    "UCX_VC_KB_Full_Gameready_City_Retexture_Building_000_0"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_22",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_23",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_25",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_38",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_66",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_73",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_83",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_86",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_001",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_001.fbx",
+   "footprint_m": [
+    14.25,
+    15.78
+   ],
+   "height_m": 49.97,
+   "triangles": [
+    9012,
+    3604,
+    900
+   ],
+   "collision": [
+    "UCX_VC_KB_Full_Gameready_City_Retexture_Building_001_0"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_25",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_43",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_5",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_52",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_002",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_002.fbx",
+   "footprint_m": [
+    11.89,
+    11.89
+   ],
+   "height_m": 62.35,
+   "triangles": [
+    6098,
+    2439,
+    609
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_002"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_38",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_5",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_66",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_003",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_003.fbx",
+   "footprint_m": [
+    13.07,
+    12.57
+   ],
+   "height_m": 41.69,
+   "triangles": [
+    9372,
+    3747,
+    937
+   ],
+   "collision": [
+    "UCX_VC_KB_Full_Gameready_City_Retexture_Building_003_0"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_65",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_87",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_004",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_004.fbx",
+   "footprint_m": [
+    14.69,
+    13.69
+   ],
+   "height_m": 28.67,
+   "triangles": [
+    8123,
+    3249,
+    811
+   ],
+   "collision": [
+    "UCX_VC_KB_Full_Gameready_City_Retexture_Building_004_0"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_23",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_38",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_5",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_53",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_64",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_65",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_66",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_86",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_005",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_005.fbx",
+   "footprint_m": [
+    13.69,
+    14.69
+   ],
+   "height_m": 27.19,
+   "triangles": [
+    4629,
+    1851,
+    461
+   ],
+   "collision": [
+    "UCX_VC_KB_Full_Gameready_City_Retexture_Building_005_0"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_23",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_5",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_53",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_65",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_86",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_006",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_006.fbx",
+   "footprint_m": [
+    13.69,
+    14.69
+   ],
+   "height_m": 27.19,
+   "triangles": [
+    4629,
+    1851,
+    462
+   ],
+   "collision": [
+    "UCX_VC_KB_Full_Gameready_City_Retexture_Building_006_0"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_23",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_5",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_53",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_65",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_86",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_007",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_007.fbx",
+   "footprint_m": [
+    11.89,
+    11.89
+   ],
+   "height_m": 37.88,
+   "triangles": [
+    5978,
+    2390,
+    597
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_007"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_38",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_5",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_53",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_008",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_008.fbx",
+   "footprint_m": [
+    13.41,
+    13.41
+   ],
+   "height_m": 29.77,
+   "triangles": [
+    4728,
+    1890,
+    472
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_008"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_55",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_66",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_009",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_009.fbx",
+   "footprint_m": [
+    20.68,
+    11.89
+   ],
+   "height_m": 21.6,
+   "triangles": [
+    4314,
+    1725,
+    431
+   ],
+   "collision": [
+    "UCX_VC_KB_Full_Gameready_City_Retexture_Building_009_0"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_53",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_64",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_80",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_010",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_010.fbx",
+   "footprint_m": [
+    13.82,
+    12.98
+   ],
+   "height_m": 29.29,
+   "triangles": [
+    5788,
+    2315,
+    578
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_010"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_43",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_55",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_66",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_87",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_011",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_011.fbx",
+   "footprint_m": [
+    12.75,
+    12.75
+   ],
+   "height_m": 28.3,
+   "triangles": [
+    4728,
+    1891,
+    472
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_011"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_55",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_012",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_012.fbx",
+   "footprint_m": [
+    14.17,
+    24.47
+   ],
+   "height_m": 12.53,
+   "triangles": [
+    5520,
+    2207,
+    551
+   ],
+   "collision": [
+    "UCX_VC_KB_Full_Gameready_City_Retexture_Building_012_0"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_22",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_23",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_38",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_64",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_66",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_73",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_83",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_86",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_013",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_013.fbx",
+   "footprint_m": [
+    24.47,
+    14.17
+   ],
+   "height_m": 12.53,
+   "triangles": [
+    5520,
+    2207,
+    551
+   ],
+   "collision": [
+    "UCX_VC_KB_Full_Gameready_City_Retexture_Building_013_0"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_22",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_23",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_38",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_64",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_66",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_73",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_83",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_86",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_014",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_014.fbx",
+   "footprint_m": [
+    10.75,
+    23.59
+   ],
+   "height_m": 16.53,
+   "triangles": [
+    2400,
+    960,
+    239
+   ],
+   "collision": [
+    "UCX_VC_KB_Full_Gameready_City_Retexture_Building_014_0"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_38",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_43",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_52",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_85",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_87",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_015",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_015.fbx",
+   "footprint_m": [
+    9.18,
+    23.49
+   ],
+   "height_m": 13.51,
+   "triangles": [
+    2487,
+    994,
+    248
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_015"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_52",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_85",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_87",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_016",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_016.fbx",
+   "footprint_m": [
+    23.49,
+    9.18
+   ],
+   "height_m": 13.51,
+   "triangles": [
+    2467,
+    986,
+    246
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_016"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_52",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_85",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_87",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_017",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_017.fbx",
+   "footprint_m": [
+    6.93,
+    12.96
+   ],
+   "height_m": 29.83,
+   "triangles": [
+    21774,
+    8709,
+    2177
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_017"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_24",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_66",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_70",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_73",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_018",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_018.fbx",
+   "footprint_m": [
+    12.77,
+    21.61
+   ],
+   "height_m": 7.86,
+   "triangles": [
+    4260,
+    1703,
+    425
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_018"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_38",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_43",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_45",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_80",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_83",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_86",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_87",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_019",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_019.fbx",
+   "footprint_m": [
+    13.77,
+    9.0
+   ],
+   "height_m": 15.48,
+   "triangles": [
+    14588,
+    5835,
+    1458
+   ],
+   "collision": [
+    "UCX_VC_KB_Full_Gameready_City_Retexture_Building_019_0"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_13",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_14",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_15",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_18",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_23",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_26",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_28",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_29",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_30",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_31",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_36",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_43",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_56",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_61",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_66",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_70",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_73",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_75",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_82",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_83",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_86",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_87",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_020",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_020.fbx",
+   "footprint_m": [
+    24.03,
+    6.51
+   ],
+   "height_m": 12.22,
+   "triangles": [
+    533,
+    212,
+    53
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_020"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_85",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_021",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_021.fbx",
+   "footprint_m": [
+    7.6,
+    5.5
+   ],
+   "height_m": 45.45,
+   "triangles": [
+    1479,
+    591,
+    146
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_021"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_45",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_5",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_66",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_022",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_022.fbx",
+   "footprint_m": [
+    8.5,
+    14.8
+   ],
+   "height_m": 15.12,
+   "triangles": [
+    2098,
+    838,
+    209
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_022"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_22",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_25",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_73",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_023",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_023.fbx",
+   "footprint_m": [
+    24.03,
+    6.47
+   ],
+   "height_m": 12.22,
+   "triangles": [
+    489,
+    194,
+    48
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_023"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_43",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_85",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_024",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_024.fbx",
+   "footprint_m": [
+    21.42,
+    11.58
+   ],
+   "height_m": 7.65,
+   "triangles": [
+    4020,
+    1607,
+    401
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_024"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_38",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_43",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_45",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_80",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_83",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_86",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_025",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_025.fbx",
+   "footprint_m": [
+    11.99,
+    7.02
+   ],
+   "height_m": 21.77,
+   "triangles": [
+    18616,
+    7446,
+    1861
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_025"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_13",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_14",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_23",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_25",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_26",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_28",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_44",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_62",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_66",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_70",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_73",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_82",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_87",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_026",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_026.fbx",
+   "footprint_m": [
+    13.65,
+    7.49
+   ],
+   "height_m": 17.58,
+   "triangles": [
+    20490,
+    8195,
+    2048
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_026"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_11",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_13",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_18",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_20",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_23",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_29",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_4",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_43",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_46",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_47",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_51",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_70",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_73",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_77",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_83",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_86",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_87",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_9",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_027",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_027.fbx",
+   "footprint_m": [
+    12.3,
+    6.06
+   ],
+   "height_m": 20.11,
+   "triangles": [
+    9772,
+    3908,
+    977
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_027"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_48",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_58",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_61",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_62",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_87",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_91",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_94",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_028",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_028.fbx",
+   "footprint_m": [
+    4.93,
+    12.17
+   ],
+   "height_m": 21.97,
+   "triangles": [
+    22016,
+    8805,
+    2200
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_028"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_13",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_22",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_23",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_29",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_38",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_48",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_51",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_61",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_62",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_63",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_82",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_86",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_91",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_94",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_029",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_029.fbx",
+   "footprint_m": [
+    5.2,
+    12.15
+   ],
+   "height_m": 20.01,
+   "triangles": [
+    10016,
+    4006,
+    1001
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_029"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_18",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_42",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_48",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_58",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_61",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_62",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_87",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_91",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_94",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_030",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_030.fbx",
+   "footprint_m": [
+    4.93,
+    11.81
+   ],
+   "height_m": 20.01,
+   "triangles": [
+    9514,
+    3805,
+    951
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_030"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_13",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_29",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_38",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_45",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_48",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_51",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_61",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_62",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_63",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_91",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_94",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_031",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_031.fbx",
+   "footprint_m": [
+    11.81,
+    4.93
+   ],
+   "height_m": 20.01,
+   "triangles": [
+    9440,
+    3776,
+    944
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_031"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_38",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_48",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_61",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_62",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_91",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_94",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_032",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_032.fbx",
+   "footprint_m": [
+    4.14,
+    6.02
+   ],
+   "height_m": 45.45,
+   "triangles": [
+    1581,
+    632,
+    158
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_032"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_5",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_66",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_033",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_033.fbx",
+   "footprint_m": [
+    5.04,
+    12.46
+   ],
+   "height_m": 17.42,
+   "triangles": [
+    14078,
+    5630,
+    1406
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_033"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_11",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_18",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_26",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_28",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_43",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_61",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_74",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_75",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_78",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_82",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_83",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_86",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_9",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_034",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_034.fbx",
+   "footprint_m": [
+    7.05,
+    7.6
+   ],
+   "height_m": 20.04,
+   "triangles": [
+    1513,
+    604,
+    151
+   ],
+   "collision": [
+    "UCX_VC_KB_Full_Gameready_City_Retexture_Building_034_0"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_5",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_53",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_64",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_87",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_035",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_035.fbx",
+   "footprint_m": [
+    8.87,
+    6.07
+   ],
+   "height_m": 15.26,
+   "triangles": [
+    19172,
+    7668,
+    1917
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_035"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_14",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_18",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_19",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_23",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_24",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_27",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_29",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_43",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_60",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_66",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_74",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_75",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_78",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_8",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_82",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_036",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_036.fbx",
+   "footprint_m": [
+    11.66,
+    3.93
+   ],
+   "height_m": 16.86,
+   "triangles": [
+    10926,
+    4369,
+    1092
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_036"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_61",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_72",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_75",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_82",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_83",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_037",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_037.fbx",
+   "footprint_m": [
+    10.17,
+    7.02
+   ],
+   "height_m": 10.3,
+   "triangles": [
+    38961,
+    15584,
+    3896
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Building_037"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_21",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_31",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_33",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_43",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_58",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_62",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_69",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_81",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_82",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_038",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_038.fbx",
+   "footprint_m": [
+    5.24,
+    8.81
+   ],
+   "height_m": 15.79,
+   "triangles": [
+    7672,
+    3068,
+    767
+   ],
+   "collision": [
+    "UCX_VC_KB_Full_Gameready_City_Retexture_Building_038_0"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_13",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_15",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_26",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_36",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_48",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_58",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_82",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Building_039",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Building_039.fbx",
+   "footprint_m": [
+    5.08,
+    8.81
+   ],
+   "height_m": 15.79,
+   "triangles": [
+    7763,
+    3104,
+    776
+   ],
+   "collision": [
+    "UCX_VC_KB_Full_Gameready_City_Retexture_Building_039_0"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_14",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_26",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_36",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_40",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_58",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_71",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_75",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_79",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_84",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_89",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_92",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Concrete_u2SEBuild7_1_93",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Merged_materials",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_000",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_000.fbx",
+   "footprint_m": [
+    2.26,
+    0.88
+   ],
+   "height_m": 0.52,
+   "triangles": [
+    1488,
+    594,
+    147
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Prop_000"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_0",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_001",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_001.fbx",
+   "footprint_m": [
+    2.62,
+    1.1
+   ],
+   "height_m": 1.13,
+   "triangles": [
+    1216,
+    485,
+    120
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Prop_001"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_2",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_002",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_002.fbx",
+   "footprint_m": [
+    1.09,
+    2.62
+   ],
+   "height_m": 1.15,
+   "triangles": [
+    1216,
+    485,
+    120
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Prop_002"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_3",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_003",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_003.fbx",
+   "footprint_m": [
+    1.11,
+    1.21
+   ],
+   "height_m": 0.44,
+   "triangles": [
+    716,
+    286
+   ],
+   "collision": [
+    "UBX_VC_KB_Full_Gameready_City_Retexture_Prop_003"
+   ],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_83",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_004",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_004.fbx",
+   "footprint_m": [
+    122.49,
+    86.97
+   ],
+   "height_m": 1.65,
+   "triangles": [
+    710,
+    284,
+    71
+   ],
+   "collision": [
+    "UCX_VC_KB_Full_Gameready_City_Retexture_Prop_004_0"
+   ],
+   "materials": [
+    {
+     "source": "StreeLamp1_u2PropsMidA_1",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_005",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_005.fbx",
+   "footprint_m": [
+    0.33,
+    0.13
+   ],
+   "height_m": 0.33,
+   "triangles": [
+    700,
+    280
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_2",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_006",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_006.fbx",
+   "footprint_m": [
+    0.33,
+    0.13
+   ],
+   "height_m": 0.33,
+   "triangles": [
+    700,
+    280
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_2",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_007",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_007.fbx",
+   "footprint_m": [
+    0.33,
+    0.13
+   ],
+   "height_m": 0.33,
+   "triangles": [
+    700,
+    280
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_2",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_008",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_008.fbx",
+   "footprint_m": [
+    0.33,
+    0.13
+   ],
+   "height_m": 0.33,
+   "triangles": [
+    700,
+    280
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_2",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_009",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_009.fbx",
+   "footprint_m": [
+    0.13,
+    0.33
+   ],
+   "height_m": 0.33,
+   "triangles": [
+    700,
+    280
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_2",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_010",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_010.fbx",
+   "footprint_m": [
+    0.13,
+    0.33
+   ],
+   "height_m": 0.33,
+   "triangles": [
+    700,
+    280
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_2",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_011",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_011.fbx",
+   "footprint_m": [
+    0.13,
+    0.33
+   ],
+   "height_m": 0.33,
+   "triangles": [
+    700,
+    280
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_2",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_012",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_012.fbx",
+   "footprint_m": [
+    0.13,
+    0.33
+   ],
+   "height_m": 0.33,
+   "triangles": [
+    700,
+    280
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_2",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_013",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_013.fbx",
+   "footprint_m": [
+    0.23,
+    0.23
+   ],
+   "height_m": 0.32,
+   "triangles": [
+    572,
+    228
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_78",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_014",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_014.fbx",
+   "footprint_m": [
+    0.23,
+    0.24
+   ],
+   "height_m": 0.33,
+   "triangles": [
+    572,
+    228
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_78",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_015",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_015.fbx",
+   "footprint_m": [
+    0.24,
+    0.23
+   ],
+   "height_m": 0.33,
+   "triangles": [
+    572,
+    228
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_78",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_016",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_016.fbx",
+   "footprint_m": [
+    0.23,
+    0.24
+   ],
+   "height_m": 0.33,
+   "triangles": [
+    572,
+    228
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_78",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_017",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_017.fbx",
+   "footprint_m": [
+    0.2,
+    0.2
+   ],
+   "height_m": 0.01,
+   "triangles": [
+    560,
+    224
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_49",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_018",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_018.fbx",
+   "footprint_m": [
+    0.2,
+    0.2
+   ],
+   "height_m": 0.01,
+   "triangles": [
+    560,
+    224
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_49",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_019",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_019.fbx",
+   "footprint_m": [
+    0.23,
+    0.23
+   ],
+   "height_m": 0.3,
+   "triangles": [
+    557,
+    221
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_95",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_020",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_020.fbx",
+   "footprint_m": [
+    0.23,
+    0.23
+   ],
+   "height_m": 0.31,
+   "triangles": [
+    557,
+    221
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_95",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_021",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_021.fbx",
+   "footprint_m": [
+    0.23,
+    0.23
+   ],
+   "height_m": 0.31,
+   "triangles": [
+    557,
+    221
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_95",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_022",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_022.fbx",
+   "footprint_m": [
+    0.23,
+    0.23
+   ],
+   "height_m": 0.31,
+   "triangles": [
+    557,
+    221
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_95",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_023",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_023.fbx",
+   "footprint_m": [
+    0.23,
+    0.23
+   ],
+   "height_m": 0.3,
+   "triangles": [
+    557,
+    221
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_95",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_024",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_024.fbx",
+   "footprint_m": [
+    0.26,
+    0.26
+   ],
+   "height_m": 0.14,
+   "triangles": [
+    508,
+    202
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_46",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_025",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_025.fbx",
+   "footprint_m": [
+    0.26,
+    0.26
+   ],
+   "height_m": 0.14,
+   "triangles": [
+    508,
+    202
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_46",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_026",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_026.fbx",
+   "footprint_m": [
+    0.27,
+    0.26
+   ],
+   "height_m": 0.15,
+   "triangles": [
+    508,
+    202
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_46",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_027",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_027.fbx",
+   "footprint_m": [
+    0.26,
+    0.26
+   ],
+   "height_m": 0.14,
+   "triangles": [
+    508,
+    202
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_46",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_028",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_028.fbx",
+   "footprint_m": [
+    0.29,
+    0.1
+   ],
+   "height_m": 0.29,
+   "triangles": [
+    492,
+    196
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_0",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_029",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_029.fbx",
+   "footprint_m": [
+    0.3,
+    0.1
+   ],
+   "height_m": 0.3,
+   "triangles": [
+    492,
+    196
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_0",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_030",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_030.fbx",
+   "footprint_m": [
+    0.3,
+    0.1
+   ],
+   "height_m": 0.3,
+   "triangles": [
+    492,
+    196
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_0",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_031",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_031.fbx",
+   "footprint_m": [
+    0.29,
+    0.1
+   ],
+   "height_m": 0.29,
+   "triangles": [
+    492,
+    196
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_0",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_032",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_032.fbx",
+   "footprint_m": [
+    0.25,
+    0.24
+   ],
+   "height_m": 0.05,
+   "triangles": [
+    492,
+    195
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_78",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_033",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_033.fbx",
+   "footprint_m": [
+    0.25,
+    0.25
+   ],
+   "height_m": 0.05,
+   "triangles": [
+    492,
+    196
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_78",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_034",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_034.fbx",
+   "footprint_m": [
+    0.25,
+    0.24
+   ],
+   "height_m": 0.05,
+   "triangles": [
+    492,
+    195
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_78",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_035",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_035.fbx",
+   "footprint_m": [
+    0.25,
+    0.25
+   ],
+   "height_m": 0.05,
+   "triangles": [
+    492,
+    196
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_78",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_036",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_036.fbx",
+   "footprint_m": [
+    0.25,
+    0.25
+   ],
+   "height_m": 0.3,
+   "triangles": [
+    420,
+    167
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_46",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_037",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_037.fbx",
+   "footprint_m": [
+    0.25,
+    0.26
+   ],
+   "height_m": 0.31,
+   "triangles": [
+    420,
+    167
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_46",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_038",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_038.fbx",
+   "footprint_m": [
+    0.26,
+    0.27
+   ],
+   "height_m": 0.31,
+   "triangles": [
+    420,
+    167
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_46",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Full_Gameready_City_Retexture_Prop_039",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Full_Gameready_City_Retexture/VC_KB_Full_Gameready_City_Retexture_Prop_039.fbx",
+   "footprint_m": [
+    0.25,
+    0.26
+   ],
+   "height_m": 0.3,
+   "triangles": [
+    420,
+    168
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Concrete_u2SEBuild7_1_46",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  }
+ ],
+ "textures": {
+  "source_archive": "ArtSource/Downloads/FullMapModels/Full_Gameready_City_Retexture_5fad2351.zip",
+  "files": [
+   "Concrete_u2SEBuild7_1_0_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_11_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_13_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_14_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_15_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_18_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_19_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_1_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_20_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_21_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_22_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_23_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_24_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_25_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_26_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_27_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_28_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_29_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_2_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_30_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_31_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_33_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_36_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_38_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_3_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_40_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_42_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_43_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_44_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_45_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_46_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_47_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_48_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_49_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_4_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_51_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_52_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_53_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_55_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_56_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_58_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_5_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_60_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_61_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_62_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_63_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_64_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_65_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_66_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_69_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_70_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_71_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_72_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_73_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_74_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_75_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_77_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_78_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_79_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_80_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_81_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_82_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_83_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_84_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_85_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_86_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_87_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_89_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_8_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_91_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_92_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_93_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_94_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_95_baseColor.jpeg",
+   "Concrete_u2SEBuild7_1_9_baseColor.jpeg",
+   "StreeLamp1_u2PropsMidA_1_baseColor.png"
+  ],
+  "copied": 0,
+  "note": "not copied: materials are remapped to the VeyraMaterialLibrary palette (B3)"
+ }
+}
