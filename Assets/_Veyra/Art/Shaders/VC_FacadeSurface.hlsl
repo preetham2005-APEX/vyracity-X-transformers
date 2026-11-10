@@ -249,7 +249,10 @@ void VC_Surface(VC_FragInput f, inout SurfaceData s, inout half3 normalWS)
         albedo = lerp(albedo, _GlassColor.rgb * 0.12 * paneTint, glass);
         smooth = lerp(smooth, _GlassSmoothness, glass);
         metal = lerp(metal, 0.0, glass);
-        occlusion = lerp(occlusion, 1.0, glass);
+        // iteration 32: environment reflection at night: the scene's default reflection is the editor-baked daytime sky, which URP's
+    // Forward+ path keeps using outside the probe boxes (a runtime sky probe and a custom default reflection both had no
+    // effect in iterations 25-31); occlusion scales only indirect light, so lamps and the moon still reflect
+        occlusion = lerp(occlusion, lerp(1.0, 0.25, saturate(_VC_NightFactor)), glass);
         half2 tilt = (VC_Hash22(cellId + 3.3) - 0.5) * 0.02;
         wnTS = lerp(nTS, normalize(half3(tilt, 1.0)), glass);
     }

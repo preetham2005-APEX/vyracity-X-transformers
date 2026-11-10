@@ -17,6 +17,8 @@ namespace VeyraCity.Gameplay
     {
         ReflectionProbe probe;
         float lastHour = -99f, lastCloud = -1f, timer;
+        int framesSince = 99;
+        bool assigned;
         public static int Renders { get; private set; }
 
         void Start()
@@ -39,11 +41,28 @@ namespace VeyraCity.Gameplay
             probe.blendDistance = 0f;
         }
 
+        void OnDestroy()
+        {
+            if (assigned && probe != null && RenderSettings.customReflectionTexture == probe.realtimeTexture)
+            {
+                RenderSettings.customReflectionTexture = null;
+                RenderSettings.defaultReflectionMode = DefaultReflectionMode.Skybox;
+            }
+        }
+
         void Update()
         {
             var env = WorldEnvironment.Instance;
             if (probe == null || env == null) return;
             timer -= Time.unscaledDeltaTime;
+            // iteration 31: also the scene's default reflection (what URP falls back to outside every probe box, e.g. the
+            // river far from the car); iteration 25 tried this with a probe that never rendered (culling mask 0)
+            if (++framesSince == 3 && probe.realtimeTexture != null && !assigned)
+            {
+                RenderSettings.defaultReflectionMode = DefaultReflectionMode.Custom;
+                RenderSettings.customReflectionTexture = probe.realtimeTexture;
+                assigned = true;
+            }
             float hour = env.TimeOfDay, cloud = env.Cloudiness;
             float dh = Mathf.Abs(Mathf.DeltaAngle(hour * 15f, lastHour * 15f)) / 15f;
             if (timer > 0f || (dh <= 0.05f && Mathf.Abs(cloud - lastCloud) <= 0.05f)) return;
@@ -51,6 +70,7 @@ namespace VeyraCity.Gameplay
             lastCloud = cloud;
             timer = 1f;
             probe.RenderProbe();
+            framesSince = 0;
             Renders++;
         }
     }

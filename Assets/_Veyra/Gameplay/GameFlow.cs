@@ -483,11 +483,43 @@ namespace VeyraCity.Gameplay
                 ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it20b_road_top.png"));
                 yield return null;
                 if (testPatch != null) Destroy(testPatch);
+                // iteration 32 diagnostic: hide every renderer with an asphalt / concrete-deck slot near the spot; whatever
+                // still draws the street there is what the camera really sees
+                var hidden = new List<Renderer>();
+                var spot = rt0.position + rt0.forward * 9f;
+                foreach (var mr in FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None))
+                {
+                    if (!mr.enabled || !mr.bounds.Intersects(new Bounds(spot, new Vector3(60f, 40f, 60f)))) continue;
+                    foreach (var m in mr.sharedMaterials)
+                        if (m != null && (m.name.Contains("Asphalt") || m.name.Contains("Concrete_Deck"))) { mr.enabled = false; hidden.Add(mr); break; }
+                }
+                yield return null;
+                yield return null;
+                ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it20c_road_hidden.png"));
+                yield return null;
+                var hiddenNames = new System.Text.StringBuilder();
+                foreach (var r in hidden) { if (r == null) continue; r.enabled = true; if (hiddenNames.Length < 300) hiddenNames.Append(r.name).Append(','); }
+                log.Append($" roadHidden:{hidden.Count}[{hiddenNames}]");
                 // which renderers draw the road here, with which material, and do their meshes carry UV1 yet
                 var probePt = rt0.position + rt0.forward * 10f;
                 var sb = new System.Text.StringBuilder(" roadUnder:");
                 if (Physics.Raycast(probePt + Vector3.up * 5f, Vector3.down, out var gHit, 12f, ~(1 << CarReflectionProbe.CarLayer), QueryTriggerInteraction.Ignore))
-                    sb.Append($"(collider {gHit.collider.name})");
+                {
+                    sb.Append($"(collider {gHit.collider.name}");
+                    // the renderer that owns that collider (eased ribbons keep theirs on a child), with its slots and UV1 state
+                    var owner = gHit.collider.GetComponentInParent<MeshRenderer>();
+                    if (owner == null && gHit.collider.transform.parent != null) owner = gHit.collider.transform.parent.GetComponent<MeshRenderer>();
+                    if (owner != null)
+                    {
+                        var omf = owner.GetComponent<MeshFilter>();
+                        var om = omf != null ? omf.sharedMesh : null;
+                        sb.Append($" on {owner.name}: ");
+                        foreach (var m in owner.sharedMaterials) if (m != null) sb.Append($"{m.name}/tw{m.GetFloat("_TyreWear"):0.0} ");
+                        sb.Append($"uv2 {(om != null && om.isReadable ? om.uv2.Length : -1)}/{(om != null ? om.vertexCount : 0)}");
+                        if (om != null && om.isReadable && om.uv2.Length > 0) { var u2 = om.uv2; sb.Append($" e.g. {u2[0].x:0.00},{u2[0].y:0} {u2[1].x:0.00},{u2[1].y:0}"); }
+                    }
+                    sb.Append(")");
+                }
                 foreach (var mr in FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None))
                 {
                     var bb = mr.bounds;

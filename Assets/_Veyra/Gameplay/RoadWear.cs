@@ -25,7 +25,7 @@ namespace VeyraCity.Gameplay
         // iteration 29: one vertex list and one UV list reused for every mesh (fresh arrays per mesh fed the GC: 23 ms spikes)
         readonly List<Vector3> verts = new List<Vector3>(4096);
         readonly List<Vector2> uv1 = new List<Vector2>(4096);
-        sealed class Saved { public Material M; public float Wear, Patch, PatchScale; public Texture Detail; public Vector2 DetailScale; }
+        sealed class Saved { public Material M; public float Wear, Patch, PatchScale, Macro; public Texture Detail; public Vector2 DetailScale; }
 
         readonly List<MeshFilter> pending = new List<MeshFilter>();
         readonly List<Saved> saved = new List<Saved>();
@@ -40,19 +40,24 @@ namespace VeyraCity.Gameplay
             var mats = new HashSet<Material>();
             foreach (var mr in FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None))
             {
-                var m = mr.sharedMaterial;
-                // iteration 28: the concrete road deck too (the city's most used road surface; iterations 24-27 only touched
-                // the two asphalt materials, so most streets in the captures showed no wear at all)
-                if (m == null || m.shader == null || m.shader.name != "Veyra/Road" || !(m.name.Contains("Asphalt") || m.name.Contains("Concrete_Deck"))) continue;
+                // iteration 28: the concrete road deck too; iteration 31: every material slot (the eased road ribbons that lie
+                // 2-3 cm over the old surface on many streets carry [asphalt, concrete] and are what the camera sees there)
+                bool road = false;
+                foreach (var m in mr.sharedMaterials)
+                {
+                    if (m == null || m.shader == null || m.shader.name != "Veyra/Road" || !(m.name.Contains("Asphalt") || m.name.Contains("Concrete_Deck"))) continue;
+                    road = true;
+                    mats.Add(m);
+                }
+                if (!road) continue;
                 var mf = mr.GetComponent<MeshFilter>();
                 if (mf == null || mf.sharedMesh == null || !mf.sharedMesh.isReadable || !seen.Add(mf.sharedMesh)) continue;
                 pending.Add(mf);
-                mats.Add(m);
             }
             var tex = PatchTexture();
             foreach (var m in mats)
             {
-                saved.Add(new Saved { M = m, Wear = m.GetFloat("_TyreWear"), Patch = m.GetFloat("_PatchAmount"), PatchScale = m.GetFloat("_PatchScale"),
+                saved.Add(new Saved { M = m, Wear = m.GetFloat("_TyreWear"), Patch = m.GetFloat("_PatchAmount"), PatchScale = m.GetFloat("_PatchScale"), Macro = m.GetFloat("_MacroVariation"),
                                       Detail = m.GetTexture("_DetailMap"), DetailScale = m.GetTextureScale("_DetailMap") });
                 bool worn = m.name.Contains("Worn") || m.name.Contains("Concrete_Deck");
                 m.SetFloat("_TyreWear", worn ? 1f : 0.6f);
@@ -60,6 +65,9 @@ namespace VeyraCity.Gameplay
                 m.SetTextureScale("_DetailMap", new Vector2(1f / 14f, 1f / 14f));   // road UV0 is in metres
                 m.SetFloat("_PatchAmount", worn ? 0.85f : 0.45f);   // iteration 25: patches every few hundred metres
                 m.SetFloat("_PatchScale", 11f);
+                // iteration 30: stronger world-space tone variation (aged and repaired stretches); needs no UVs, so it also
+                // tells whether runtime material changes reach the road renderers at all
+                m.SetFloat("_MacroVariation", 0.3f);
             }
             Debug.Log($"[RoadWear] {pending.Count} asphalt meshes, {mats.Count} materials");
         }
@@ -73,6 +81,7 @@ namespace VeyraCity.Gameplay
                 s.M.SetFloat("_TyreWear", s.Wear);
                 s.M.SetFloat("_PatchAmount", s.Patch);
                 s.M.SetFloat("_PatchScale", s.PatchScale);
+                s.M.SetFloat("_MacroVariation", s.Macro);
                 s.M.SetTexture("_DetailMap", s.Detail);
                 s.M.SetTextureScale("_DetailMap", s.DetailScale);
             }

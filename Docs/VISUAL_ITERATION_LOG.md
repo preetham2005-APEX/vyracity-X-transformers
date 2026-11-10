@@ -455,3 +455,38 @@ glitter carpet beyond ~10 m; the night river shows the same blue-white glitter; 
 **Prepared, compile-checked, not yet run:** ripple and bump detail on wet roads fade beyond ~10 m and wet gloss is capped
 (0.86, puddles 0.93); water normals flatten with distance; a 10 m control patch with hand-made UVs and the worn asphalt in the
 top-down shot (shader vs mesh); in-run A/B switches `roadwear`, `skyrefl`, `carprobe`, `hud`.
+
+### Iteration 30 (2026-11-10, after the other session's V1): control test, A/B costs, fresh frame times
+**Changes:** compile-checked items from iteration 29 now built (wet ripples and bump detail fade beyond ~10 m, wet gloss capped,
+distant water normals flatten, road-wear control patch, A/B switches); RoadWear raises the asphalt's world-space tone variation.
+**Results:** run avg **113.3 FPS**, p99 **16.7 ms**, cruise p99 **16.7 ms** with **0** frames over 50 ms (38 hitches in the whole run,
+all at scene teleports/streaming); every system cheaper than in iterations 20-29 (TrafficPhysics avg 0.21 vs 1.0-1.4 ms), so
+the earlier slowdown was the machine (GPU driver state after the restart, heat), not round-2 content. In-run A/B:
+**RoadWear** on 8.72 / off 8.68 ms, **HUD** on 9.11 / off 9.17 ms (no measurable cost). The **control patch** (hand-made UVs,
+worn asphalt) shows cracks, wheel paths and gutters, so the shader and materials work; the city street at that spot is drawn by
+the other session's eased ribbons (`Ease_A2_*`, child collider `Collider_asphalt`, slots [asphalt, concrete], UV0 in 4 m units).
+**Found:** the wet-night white is lamp-pool specular (48 spot lights) off near-mirror wet gloss at grazing angles, not ripples;
+the night river reflects the editor-baked daytime sky where no probe box reaches (the car and its probe sit 400 m up in that
+capture).
+
+### Iteration 31 (2026-11-10): RoadWear on every material slot, sky probe as default reflection, softer wet gloss
+**Changes:** RoadWear takes renderers with an asphalt / concrete-deck material in any slot (eased ribbons carry
+[asphalt, concrete]); the city-wide sky probe is also set as the custom default reflection; wet gloss 0.72 (puddles 0.9);
+the road shot logs the renderer that owns the collider under the car.
+**Results:** 0 exceptions; RoadWear 861 meshes / 3 materials; the collider under the capture car (`Collider_asphalt`) has no
+renderer parent, so the spot is an old CityBuilder chunk, not a ribbon (the other session confirmed the ribbons use the same
+M_Asphalt_New / M_Concrete_Deck assets). The noon street still shows no wear, patches or the UV-free tone variation, and the
+night river is still lit blue with the custom default reflection set.
+**Next:** hide every asphalt/concrete-deck renderer near the spot for one capture to see what really draws the street; dim
+indirect light (occlusion) at night on roads, water and facade glass, which takes the stale daytime-sky reflection out without
+touching lamps or the moon. Both prepared; held while the other session has the machine for BUG-108.
+
+### Iteration 32 (2026-11-10): night reflection dimming, road diagnostic (capture incomplete)
+**Changes:** occlusion (indirect light only) scaled down at night on roads (×0.2), water (×0.12) and facade glass (×0.25),
+so the editor-baked daytime sky stops reflecting at night while lamps and the moon still do; a capture that hides every
+asphalt/concrete-deck renderer near the road spot.
+**Results:** build clean. With the asphalt renderers hidden a different grey-green surface shows, so the city's asphalt meshes
+are what the camera sees, yet they show none of the wear, patches or tone variation that the same material shows on the
+control patch: the city meshes' UV data is the remaining suspect (open). Re-enabling the hidden renderers hit one that streaming
+had destroyed (null reference), which stopped the capture script after the road shots; fixed with a null check. The night
+reflection change is built but not yet captured.

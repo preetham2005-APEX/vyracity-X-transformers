@@ -267,6 +267,176 @@
    "p99": null,
    "cruise_p99": null,
    "hitches50": null
+  },
+  {
+   "n": 30,
+   "title": "Control test proves the road shader; A/B: RoadWear and HUD cost nothing; clean machine",
+   "scores": [
+    4,
+    3,
+    3.5,
+    3.5,
+    5,
+    5,
+    4.5
+   ],
+   "fps": 113.3,
+   "p99": 16.7,
+   "cruise_p99": 16.7,
+   "hitches50": 38
+  },
+  {
+   "n": 31,
+   "title": "RoadWear on every slot, sky probe as default reflection, softer wet gloss",
+   "scores": [
+    4,
+    3,
+    3.5,
+    3.5,
+    5,
+    5,
+    null
+   ],
+   "fps": null,
+   "p99": null,
+   "cruise_p99": null,
+   "hitches50": null
   }
- ]
+ ],
+ "report": {
+  "date": "2026-11-10",
+  "summary": "Sixteen capture-compare-fix passes on the city, the map, the car HUD, water and atmosphere, judged against GTA V, Asphalt, Forza and Cyberpunk. The M map now beats GTA V's on features (aerial and atlas views, building layer, GPS that re-plans with turn-by-turn), the car shows nitro, brake and speed telemetry, and the late passes run at 113 FPS at 1440p.",
+  "stats": [
+   [
+    "passes captured this round",
+    "16\u201331"
+   ],
+   [
+    "avg FPS, pass 30",
+    "113"
+   ],
+   [
+    "p99 frame, pass 30",
+    "16.7 ms"
+   ],
+   [
+    "EditMode tests",
+    "93 / 93"
+   ],
+   [
+    "exceptions in captures",
+    "0"
+   ],
+   [
+    "map frame time",
+    "9 ms"
+   ]
+  ],
+  "figures": {
+   "map": [
+    [
+     "map_aerial.jpg",
+     "<b>Aerial view.</b> The real city from above with building shadows, roads by class, district borders and decluttered icons.",
+     "World map, aerial view"
+    ],
+    [
+     "map_route.jpg",
+     "<b>GPS route.</b> Right-click a waypoint: the route follows the road graph, with distance and ETA.",
+     "World map, route"
+    ],
+    [
+     "map_atlas.jpg",
+     "<b>Atlas view (V).</b> A clean road-map style with light building blocks.",
+     "World map, atlas view"
+    ],
+    [
+     "gps.jpg",
+     "<b>Satnav panel.</b> Next turn, distance and street over the minimap, with radar building blocks.",
+     "HUD GPS"
+    ]
+   ],
+   "car": [
+    [
+     "hud_before.jpg",
+     "<b>Pass 18 cluster.</b> The dial sat too low and the nitro hint ran over the speed.",
+     "Old cluster"
+    ],
+    [
+     "nitro.jpg",
+     "<b>Nitro.</b> Exhaust flames, light streaks, speed lines, boost-tinted cluster with cells, mode and gain pop-ups.",
+     "Nitro effects"
+    ],
+    [
+     "brake.jpg",
+     "<b>Brakes at dusk.</b> Light trails, BRAKE/ABS lamps, pedal bars and per-wheel brake temperature.",
+     "Hard braking"
+    ],
+    [
+     "trap.jpg",
+     "<b>Speed trap.</b> Camera flash, measured speed, star rating and session best.",
+     "Speed trap banner"
+    ],
+    [
+     "rain.jpg",
+     "<b>Rain.</b> Droplets on the lens. The white far pavement is still open (wet gloss).",
+     "Rain night"
+    ]
+   ],
+   "world_pairs": [
+    [
+     "golden_before.jpg",
+     "golden_after.jpg",
+     "<b>Pass 18.</b> Windows noise, flat light at 18.3 h.",
+     "<b>Pass 30.</b> True golden hour, sun haze, roof finishes, parapets, solar rows.",
+     "Golden skyline"
+    ],
+    [
+     "night_before.jpg",
+     "night_after.jpg",
+     "<b>Pass 18.</b> An even wall of lit windows.",
+     "<b>Pass 30.</b> Occupancy per block, three light temperatures, lobbies.",
+     "Night skyline"
+    ],
+    [
+     "river_before.jpg",
+     "river_after.jpg",
+     "<b>Pass 18.</b> Camera inside the bank grass.",
+     "<b>Pass 30.</b> Calm inland water, shallows and foam.",
+     "Riverfront"
+    ]
+   ],
+   "world": [
+    [
+     "road_control.jpg",
+     "<b>Road wear control test.</b> The 10 m patch with hand-made UVs shows cracks, wheel paths and gutters; the city's own asphalt meshes still don't (open).",
+     "Road control patch"
+    ]
+   ],
+   "street": [
+    [
+     "streets.jpg",
+     "<b>Pass 30 street scenes.</b> Noon, golden hour, neon night, rain night, nitro, drift, traffic, close-up.",
+     "Street scenes"
+    ]
+   ]
+  },
+  "open": [
+   [
+    "Road wear",
+    "Wheel paths, oil, gutters and patches render on a test patch but not on the city's asphalt meshes, which are what you see; their UV data is the remaining suspect."
+   ],
+   [
+    "Wet night glare",
+    "Wet roads and pavements beyond the car still turn near-white at night; pass 32's night reflection dimming was built but its capture did not complete."
+   ],
+   [
+    "Brake disc glow",
+    "The glowing disc sits behind this car's rims and doesn't read; the HUD brake temperatures do."
+   ],
+   [
+    "PSO re-trace",
+    "The shader warm-up collection still has to be re-traced after the round-2 shader changes (the other session's request)."
+   ]
+  ]
+ }
 }

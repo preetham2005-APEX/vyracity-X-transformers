@@ -57,11 +57,11 @@ fi
 
 run() { # <outdir> <log> [off-list] [in-run A/B feature]
   if [ -n "${4:-}" ]; then
-    "$BUILD_DIR/VeyraCity.exe" -veyraIterShots "E:/VeyraCity/$1" -veyraIterAB "$4" -logFile "E:/VeyraCity/$2" >/dev/null 2>&1
+    "$BUILD_DIR/VeyraCity.exe" -veyraMute -veyraIterShots "E:/VeyraCity/$1" -veyraIterAB "$4" -logFile "E:/VeyraCity/$2" >/dev/null 2>&1
   elif [ -n "${3:-}" ]; then
-    "$BUILD_DIR/VeyraCity.exe" -veyraIterShots "E:/VeyraCity/$1" -veyraIterOff "$3" -logFile "E:/VeyraCity/$2" >/dev/null 2>&1
+    "$BUILD_DIR/VeyraCity.exe" -veyraMute -veyraIterShots "E:/VeyraCity/$1" -veyraIterOff "$3" -logFile "E:/VeyraCity/$2" >/dev/null 2>&1
   else
-    "$BUILD_DIR/VeyraCity.exe" -veyraIterShots "E:/VeyraCity/$1" -logFile "E:/VeyraCity/$2" >/dev/null 2>&1
+    "$BUILD_DIR/VeyraCity.exe" -veyraMute -veyraIterShots "E:/VeyraCity/$1" -logFile "E:/VeyraCity/$2" >/dev/null 2>&1
   fi
   grep -E "^\[Iter|Frame stats|Exception" "$2" | head -14
 }
@@ -72,7 +72,7 @@ S="E:/VeyraCity/$DIR"
   "$S/it5_nitro_speed.png" "$S/it6_drift.png" "$S/it7_traffic_evening.png" "$S/it8_car_closeup.png" 2>&1 | grep SHEET
 "$BLENDER" -b --factory-startup -P E:/VeyraCity/Tools/Blender/contact_sheet.py -- "$S/sheet_crash.png" 2 1280x720 \
   "$S/it9_crash.png" "$S/it9_crash_closeup.png" 2>&1 | grep SHEET
-[ -f "$S/it14_skyline_golden.png" ] && "$BLENDER" -b --factory-startup -P E:/VeyraCity/Tools/Blender/contact_sheet.py -- "$S/sheet_world.png" 3 1280x720   "$S/it14_skyline_golden.png" "$S/it15_riverfront.png" "$S/it16_skyline_night.png" "$S/it20_road.png" "$S/it15b_river_night.png" "$S/it20b_road_top.png" 2>&1 | grep SHEET
+[ -f "$S/it14_skyline_golden.png" ] && "$BLENDER" -b --factory-startup -P E:/VeyraCity/Tools/Blender/contact_sheet.py -- "$S/sheet_world.png" 4 1280x720   "$S/it14_skyline_golden.png" "$S/it15_riverfront.png" "$S/it16_skyline_night.png" "$S/it20_road.png" "$S/it15b_river_night.png" "$S/it20b_road_top.png" "$S/it20c_road_hidden.png" 2>&1 | grep SHEET
 [ -f "$S/it17_brake.png" ] && "$BLENDER" -b --factory-startup -P E:/VeyraCity/Tools/Blender/contact_sheet.py -- "$S/sheet_car.png" 3 1280x720 "$S/it17_brake.png" "$S/it17_brake_disc.png" "$S/it18_gps.png" "$S/it19_nitro_fx.png" "$S/it21_speedtrap.png" 2>&1 | grep SHEET
 [ -f "$S/it12_map.png" ] && "$BLENDER" -b --factory-startup -P E:/VeyraCity/Tools/Blender/contact_sheet.py -- "$S/sheet_map.png" 3 1280x720   "$S/it12_map.png" "$S/it13_map_route.png" "$S/it13b_map_atlas.png" 2>&1 | grep SHEET
 

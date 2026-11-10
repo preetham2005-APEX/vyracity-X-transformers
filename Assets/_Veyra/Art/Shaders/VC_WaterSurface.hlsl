@@ -77,7 +77,10 @@ void VC_Surface(VC_FragInput f, inout SurfaceData s, inout half3 normalWS)
         s.smoothness = lerp(s.smoothness, 0.55, foam);
         normalWS = normalize(lerp(normalWS, half3(0, 1, 0), foam * 0.6));
     }
-    s.occlusion = 1.0;
+    // iteration 32: environment reflection at night: the scene's default reflection is the editor-baked daytime sky, which URP's
+    // Forward+ path keeps using outside the probe boxes (a runtime sky probe and a custom default reflection both had no
+    // effect in iterations 25-31); occlusion scales only indirect light, so lamps and the moon still reflect
+    s.occlusion = lerp(1.0, 0.12, night);
     // sun glitter: tiny HDR sparkles where a ripple facet mirrors the sun (bloom turns them into glints)
     Light sun = GetMainLight();
     half3 R = reflect(-V, n);

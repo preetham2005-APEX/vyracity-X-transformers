@@ -21,4 +21,15 @@ public static class IterationBuild
         else Debug.LogError($"[IterationBuild] {result}");
         if (Application.isBatchMode) EditorApplication.Exit(ok ? 0 : 1);
     }
+
+    /// <summary>
+    /// Rebuilds the PSO warm-up collection from every trace in Logs/PSO (the F/L-card session's route traces plus the
+    /// round-2 capture trace written by <c>VeyraCity.exe -veyraIterShots ... -veyraTracePSO Logs/PSO/trace_round2.graphicsstate</c>).
+    /// <c>-executeMethod IterationBuild.RebuildPsoCollection</c>
+    /// </summary>
+    public static void RebuildPsoCollection()
+    {
+        Debug.Log("[IterationBuild] " + PsoCollectionBuilder.Build());
+        if (Application.isBatchMode) EditorApplication.Exit(0);
+    }
 }

@@ -76,10 +76,12 @@ void VC_Surface(VC_FragInput f, inout SurfaceData s, inout half3 normalWS)
         half puddle = saturate((pnoise - (1.02 - wet * _PuddleAmount * 0.75)) * 9.0);
         puddle = max(puddle, gutter * wet * _PuddleAmount * 0.9);   // water runs to the kerbs first
         albedo.rgb *= lerp(1.0, 0.55, wet);
-        smooth = lerp(smooth, 0.86, wet);
+        // iteration 31: 0.72 (the lamp pool's 48 spot lights reflected off 0.86-0.98 gloss at grazing angles merged into
+        // one white sheet past ~15 m on wet nights; real wet asphalt and paving are glossy, not mirrors; puddles stay sharp)
+        smooth = lerp(smooth, 0.72, wet);
         nTS.xy *= lerp(1.0, 0.3 * detailKeep, wet);
         albedo.rgb *= lerp(1.0, 0.85, puddle);
-        smooth = lerp(smooth, 0.93, puddle);
+        smooth = lerp(smooth, 0.9, puddle);
         nTS = lerp(nTS, half3(0, 0, 1), puddle);
         if (_VC_RainIntensity > 0.001)
             nTS.xy += VC_Ripples(w * 1.7, _Time.y) * _VC_RainIntensity * (0.25 + 0.75 * puddle) * wet * nearRipple;
@@ -90,7 +92,10 @@ void VC_Surface(VC_FragInput f, inout SurfaceData s, inout half3 normalWS)
     s.albedo = saturate(albedo.rgb);
     s.metallic = metal;
     s.smoothness = smooth;
-    s.occlusion = occlusion;
+    // iteration 32: environment reflection at night: the scene's default reflection is the editor-baked daytime sky, which URP's
+    // Forward+ path keeps using outside the probe boxes (a runtime sky probe and a custom default reflection both had no
+    // effect in iterations 25-31); occlusion scales only indirect light, so lamps and the moon still reflect
+    s.occlusion = occlusion * lerp(1.0, 0.2, saturate(_VC_NightFactor));
     s.normalTS = nTS;
     s.emission = SAMPLE_TEXTURE2D(_EmissionMap, sampler_EmissionMap, uv).rgb * _EmissionColor.rgb;
     s.alpha = 1.0;
