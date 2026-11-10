@@ -58,9 +58,9 @@ The other sessions completed many cards after this audit was written in the morn
 | Status | IDs |
 |---|---|
 | Fixed in `e35e8ff` (vehicle session) | BUG-077, 078, 079, 080, 081, 082, 083, 084, 085, 086, 088, 089. The audit re-checked 077, 078, 081, 082, 084, 085 and 088 in code |
-| Fix uncommitted | BUG-067. Per-camera culling in `World/InstancedPropRenderer.cs`; the standalone compile passes; the Unity build and before/after capture are pending |
+| Fixed in Roadmap A1 (2026-11-10/11) | BUG-067 `bea9179`, BUG-090 `52e20a7`, BUG-056 `e4aa454`, BUG-057 `081d53c`, BUG-075 `214d6ef`, BUG-108 `bd134ae` (drive surface; V1 driving routes pass in Dev Mono). New: BUG-111 (render meshes still the blockout, for B1) |
 | Partly fixed | BUG-068 (car probe only; `realtimeReflectionProbes` still 0), BUG-073 (L4 fades), BUG-074 (L1: STP; cameras still request SMAA) |
-| Still open | SEC-003 token revocation (user), BUG-066 (CLAUDE.md conflict), BUG-069, 070, 071, 072, 075, 087, 090 |
+| Still open | SEC-003 token revocation (user), BUG-066 (CLAUDE.md conflict, user decision), BUG-069, 070, 071, 072, 087, 111 |
 
 ---
 
