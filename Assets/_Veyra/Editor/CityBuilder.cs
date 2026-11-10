@@ -115,6 +115,7 @@ namespace VeyraCity.EditorTools
             so.ApplyModifiedPropertiesWithoutUndo();
 
             EditorSceneManager.SaveScene(scene, ScenePath);
+            Debug.Log(VeyraPostVolumes.SetupScene(env)); // card L2: Day/Golden/Night + district and tunnel volumes
             RegisterScene();
             AssetDatabase.SaveAssets();
             Debug.Log($"[CityBuilder] Built {ScenePath} in {(DateTime.Now - t0).TotalSeconds:0.0} s. {meshStats}; props {props}");

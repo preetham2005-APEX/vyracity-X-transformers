@@ -61,6 +61,8 @@ namespace VeyraCity.World
         public static WorldEnvironment Instance { get; private set; }
         /// <summary>0 = full day, 1 = full night.</summary>
         public float NightFactor { get; private set; }
+        /// <summary>0..1 golden-hour factor (sun up and below ~22° elevation); drives the L2 Golden volume weight.</summary>
+        public float GoldenFactor { get; private set; }
         /// <summary>0 = dry, 1 = soaked; ramps over ~20 s when the weather changes.</summary>
         public float Wetness { get; private set; }
         /// <summary>0 = no rain, 1 = full rain; ramps over ~8 s (drives the rain ripples of the Veyra road shader).</summary>
@@ -197,6 +199,7 @@ namespace VeyraCity.World
             float azimuth = Mathf.Lerp(80f, 280f, dayPhase);
             NightFactor = Mathf.Clamp01(1f - Smooth(-6f, 10f, elevation));
             float golden = sunUp ? 1f - Smooth(4f, 22f, elevation) : 0f;
+            GoldenFactor = golden;
 
             if (Sun != null)
             {
@@ -233,8 +236,11 @@ namespace VeyraCity.World
             RenderSettings.fogColor = Color.Lerp(Color.Lerp(new Color(0.66f, 0.72f, 0.80f), new Color(0.78f, 0.58f, 0.45f), golden),
                                                  new Color(0.035f, 0.045f, 0.075f), NightFactor);
             if (SkyboxMaterial != null) RenderSettings.skybox = SkyboxMaterial;
-            if (colorAdj != null) colorAdj.postExposure.value = Mathf.Lerp(0.05f, 0.3f, NightFactor);
-            if (bloom != null)
+            // Card L2: with a PostVolumeDirector the Day / Golden / Night volumes carry these values (weights only, no profile
+            // writes, so no asset changes in Play mode); the legacy writes stay for scenes without one.
+            bool legacyPost = PostVolumeDirector.Active == null;
+            if (legacyPost && colorAdj != null) colorAdj.postExposure.value = Mathf.Lerp(0.05f, 0.3f, NightFactor);
+            if (legacyPost && bloom != null)
             {
                 // Sunlit light paving reaches ~0.9 in HDR, so the low threshold is for night only (neon, lamps, windows).
                 bloom.intensity.value = Mathf.Lerp(0.55f, 1.2f, NightFactor);
