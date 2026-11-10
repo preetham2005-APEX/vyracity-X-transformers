@@ -120,6 +120,13 @@ namespace VeyraCity.World
             Apply(true);
         }
 
+        /// <summary>Sets the rain intensity directly (0–1, drives the rain ripples); in Play mode it then ramps towards the weather's target.</summary>
+        public void SetRainIntensity(float intensity)
+        {
+            RainIntensity = Mathf.Clamp01(intensity);
+            Apply(true);
+        }
+
         /// <summary>Sets road wetness directly (0 dry … 1 wet) without rain, e.g. for review cameras (card S5). In Play mode the
         /// weather then drifts it back towards its own target (dry for Clear) at the normal slow rate.</summary>
         public void SetWetness(float wetness)
@@ -235,7 +242,7 @@ namespace VeyraCity.World
             }
 
             ApplyMaterials(NightFactor, golden, Wetness);
-            float rain = Application.isPlaying ? RainIntensity : (Weather == WeatherKind.Rain ? 1f : 0f);
+            float rain = Application.isPlaying ? RainIntensity : Mathf.Max(RainIntensity, Weather == WeatherKind.Rain ? 1f : 0f);
             VeyraGlobals.Apply(TimeOfDay, Wetness, rain, WindStrength, WindDirection, Sun != null ? -Sun.transform.forward : Vector3.up);
 
             if (Application.isPlaying)

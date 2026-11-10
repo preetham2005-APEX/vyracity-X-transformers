@@ -58,6 +58,10 @@ namespace VeyraCity.World
         NeonMagenta = 501,
         NeonAmber = 502,
         NeonWhite = 503,
+        /// <summary>Signal red #FF2A2A (aircraft warning lights on towers and masts), card F3.</summary>
+        NeonSignalRed = 504,
+        /// <summary>Warm 3000 K light fittings, card F3.</summary>
+        LightWarm = 505,
         LedScreen = 510,
         SignBacklit = 511,
 

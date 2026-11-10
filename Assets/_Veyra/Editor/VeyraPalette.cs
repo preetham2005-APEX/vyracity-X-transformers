@@ -198,6 +198,12 @@ namespace VeyraCity.EditorTools
             new Spec { Key = VeyraMat.SignBacklit, Name = "M_Sign_Backlit", Shader = NeonShader, Part = "F2c", BaseColor = new Color(0.7f, 0.7f, 0.68f), MinAlbedo = 0.05f, MaxAlbedo = 0.8f,
                        Configure = m => Neon(m, Color.white, 1.8f, 0.25f, 0f, 0f, signTexture) },
 
+            // ---------------- F3: the last per-material emissives move onto the globals
+            new Spec { Key = VeyraMat.NeonSignalRed, Name = "M_Neon_SignalRed", Shader = NeonShader, Part = "F3", BaseColor = new Color(0.5f, 0.12f, 0.1f), MinAlbedo = 0.03f, MaxAlbedo = 0.6f,
+                       Replaces = new[] { "MarkerRed" }, CityKeys = new[] { "marker_red" }, Configure = m => Neon(m, Hex("#FF2A2A"), 5f, 0.5f, 0f, 0.4f) },
+            new Spec { Key = VeyraMat.LightWarm, Name = "M_Light_Warm", Shader = NeonShader, Part = "F3", BaseColor = new Color(0.8f, 0.75f, 0.65f), MinAlbedo = 0.05f, MaxAlbedo = 0.8f,
+                       Replaces = new[] { "LightWarm" }, CityKeys = new[] { "light_warm" }, Configure = m => Neon(m, new Color(1f, 0.78f, 0.56f), 3f, 0.1f, 0f, 0.6f) },
+
             // ---------------- F2c props, vegetation and car paint (URP Lit / Complex Lit)
             new Spec { Key = VeyraMat.MetalPainted, Name = "M_Metal_Painted", Shader = UrpLit, Part = "F2c", TexSet = "PaintedMetal", Recipe = PaletteRecipes.PaintedMetal, TileMeters = 2f, NormalStrength = 3f,
                        BaseColor = new Color(0.25f, 0.42f, 0.6f), MinAlbedo = 0.03f, MaxAlbedo = 0.5f, Replaces = new[] { "CranePaint" }, CityKeys = new[] { "crane_paint" } },
@@ -232,6 +238,9 @@ namespace VeyraCity.EditorTools
         [MenuItem("Veyra/Materials/Palette/Build F2c Neon and Props")]
         static void BuildNeonMenu() => Debug.Log("[VeyraPalette] " + Build("F2c"));
 
+        [MenuItem("Veyra/Materials/Palette/Build F3 Signal and Warm Lights")]
+        static void BuildF3Menu() => Debug.Log("[VeyraPalette] " + Build("F3"));
+
         [MenuItem("Veyra/Materials/Palette/Remap World (all built parts)")]
         static void RemapMenu() => Debug.Log("[VeyraPalette] " + RemapWorld(null));
 
@@ -255,7 +264,7 @@ namespace VeyraCity.EditorTools
             }
             var lib = AssetDatabase.LoadAssetAtPath<VeyraMaterialLibrary>(VeyraMaterialFactory.LibraryPath);
             if (lib == null) return "no VeyraMaterialLibrary: run Veyra/Materials/Build Material Library first";
-            if (Part(part).Any(x => x.Shader == NeonShader))
+            if (Part(part).Any(x => x.Shader == NeonShader) && (ledTexture == null || signTexture == null || regenerateTextures))
             {
                 ledTexture = PatternTexture("Pal_LedScreen", 1024, PaletteRecipes.LedScreen, regenerateTextures, sb);
                 signTexture = PatternTexture("Pal_SignBacklit", 1024, PaletteRecipes.SignBacklit, regenerateTextures, sb);

@@ -78,6 +78,18 @@ namespace VeyraCity.Tests
         }
 
         [Test]
+        public void ReviewTimes_ParseHoursAndWetPasses()
+        {
+            var t = VeyraCity.Testing.VeyraReviewCapture.ParseTimes("12, 19,21.5,23w");
+            Assert.AreEqual(4, t.Count);
+            Assert.AreEqual((12f, false), t[0]);
+            Assert.AreEqual((21.5f, false), t[2]);
+            Assert.AreEqual((23f, true), t[3]);
+            Assert.IsNull(VeyraCity.Testing.VeyraReviewCapture.ParseTimes(""));
+            Assert.IsNull(VeyraCity.Testing.VeyraReviewCapture.ParseTimes(null));
+        }
+
+        [Test]
         public void Globals_AreOnlyWrittenWhenTheyChange()
         {
             VeyraGlobals.Invalidate();

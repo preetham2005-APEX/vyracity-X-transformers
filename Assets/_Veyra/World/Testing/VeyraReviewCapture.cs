@@ -37,7 +37,27 @@ namespace VeyraCity.Testing
             bool autotest = Array.Exists(a, x => x.Equals("-autotest", StringComparison.OrdinalIgnoreCase));
             if (!capture || autotest) return; // with -autotest the test runner calls CaptureAll after its route
             Application.runInBackground = true;
-            Begin(Arg(a, "-reviewDir"), Arg(a, "-reviewCard") ?? "review", Arg(a, "-reviewFilter"), quitWhenDone: true);
+            var c = Begin(Arg(a, "-reviewDir"), Arg(a, "-reviewCard") ?? "review", Arg(a, "-reviewFilter"), quitWhenDone: true);
+            c.times = ParseTimes(Arg(a, "-reviewTimes"));
+        }
+
+        /// <summary>
+        /// Card F3: "-reviewTimes 12,19,21,23,23w" captures every (filtered) camera at each listed hour instead of its own;
+        /// a trailing "w" makes that pass wet and rainy. Null when the option is absent or empty.
+        /// </summary>
+        public static List<(float hour, bool wet)> ParseTimes(string spec)
+        {
+            if (string.IsNullOrWhiteSpace(spec)) return null;
+            var list = new List<(float, bool)>();
+            foreach (var raw in spec.Split(','))
+            {
+                string t = raw.Trim();
+                bool wet = t.EndsWith("w", StringComparison.OrdinalIgnoreCase);
+                if (wet) t = t.Substring(0, t.Length - 1);
+                if (float.TryParse(t, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out float h))
+                    list.Add((Mathf.Repeat(h, 24f), wet));
+            }
+            return list.Count > 0 ? list : null;
         }
 
         /// <summary>Starts a capture run on a new GameObject (player flag or the Editor window in Play mode).</summary>
@@ -52,6 +72,7 @@ namespace VeyraCity.Testing
 
         string outDir, card, filter;
         bool quit;
+        List<(float hour, bool wet)> times;
 
         IEnumerator Start()
         {
@@ -69,7 +90,7 @@ namespace VeyraCity.Testing
             yield return null;
             yield return null;
             string dir = string.IsNullOrEmpty(outDir) ? ReviewCameraRig.OutputDir(Path.GetDirectoryName(Application.dataPath) ?? ".", card, "player") : outDir;
-            yield return CaptureAll(gf, cfg.ReviewCameras, net, dir, filter, card + " (player)");
+            yield return CaptureAll(gf, cfg.ReviewCameras, net, dir, filter, card + " (player)", times);
             Done(0);
         }
 
@@ -80,7 +101,8 @@ namespace VeyraCity.Testing
         }
 
         /// <summary>Captures every (filtered) camera into <paramref name="dir"/>; the report is in <see cref="LastReport"/>.</summary>
-        public static IEnumerator CaptureAll(GameFlow gf, ReviewCameraSet set, RoadNetworkData net, string dir, string filter, string title)
+        public static IEnumerator CaptureAll(GameFlow gf, ReviewCameraSet set, RoadNetworkData net, string dir, string filter, string title,
+                                             IList<(float hour, bool wet)> times = null)
         {
             Running = true;
             var log = new StringBuilder();
@@ -92,10 +114,15 @@ namespace VeyraCity.Testing
             bool wasKinematic = car != null && car.Body.isKinematic;
             float oldTime = env != null ? env.TimeOfDay : 12f;
             Directory.CreateDirectory(dir);
-            foreach (var e in set.Filter(filter))
+            // Each job: a camera at its own hour/wetness, or (card F3, -reviewTimes) at every listed hour.
+            var jobs = new List<(ReviewCameraSet.Entry e, float hour, bool wet, string label)>();
+            if (times == null) foreach (var e in set.Filter(filter)) jobs.Add((e, e.hour, e.wet, e.name));
+            else foreach (var t in times) foreach (var e in set.Filter(filter))
+                    jobs.Add((e, t.hour, t.wet, $"{e.name}_{t.hour:00.##}h{(t.wet ? "_wet" : "")}"));
+            foreach (var (e, hour, wet, label) in jobs)
             {
                 var pose = ReviewCameraRig.Pose(e, net);
-                if (!pose.ok) { log.AppendLine($"FAIL  {e.name}: {pose.error}"); shots.Add((e.name + " (FAILED)", null)); continue; }
+                if (!pose.ok) { log.AppendLine($"FAIL  {label}: {pose.error}"); shots.Add((label + " (FAILED)", null)); continue; }
                 if (car != null)
                 {
                     car.Body.isKinematic = false;
@@ -107,22 +134,23 @@ namespace VeyraCity.Testing
                 {
                     env.AnimateTime = false;
                     env.AutoWeather = false;
-                    env.SetWeather(WorldEnvironment.WeatherKind.Clear);
-                    env.SetTime(e.hour);
-                    env.SetWetness(e.wet ? 1f : 0f);
+                    env.SetWeather(wet && times != null ? WorldEnvironment.WeatherKind.Rain : WorldEnvironment.WeatherKind.Clear);
+                    env.SetTime(hour);
+                    env.SetWetness(wet ? 1f : 0f);
+                    env.SetRainIntensity(wet && times != null ? 1f : 0f);
                 }
                 ReviewCameraRig.Apply(cam, pose);
                 yield return new WaitForSecondsRealtime(0.8f); // lighting, LOD and streaming settle
-                if (env != null && e.wet) env.SetWetness(1f);
+                if (env != null && wet) env.SetWetness(1f);
                 // The review camera renders on demand only, so its motion history still holds the previous shot's pose and the
                 // jump reads as camera motion (S5: every player chase shot came out motion-blurred). Render it at this pose on
                 // two consecutive frames first so the history matches.
                 for (int warm = 0; warm < 2; warm++) { ReviewCameraRig.WarmUp(cam); yield return null; }
                 var tex = ReviewCameraRig.Render(cam);
-                string file = Path.Combine(dir, e.name + ".png");
+                string file = Path.Combine(dir, label + ".png");
                 ReviewCameraRig.SavePng(tex, file);
-                shots.Add((e.name, tex));
-                log.AppendLine($"OK    {e.name}: {(e.kind == ReviewCameraSet.Kind.Chase ? "CHASE" : "FIXED")} cam {pose.camPos.ToString("F1")} fov {pose.fov} {e.time} {e.hour:00.00} h{(e.wet ? " wet" : "")} | {pose.note} -> {file}");
+                shots.Add((label, tex));
+                log.AppendLine($"OK    {label}: {(e.kind == ReviewCameraSet.Kind.Chase ? "CHASE" : "FIXED")} cam {pose.camPos.ToString("F1")} fov {pose.fov} {hour:00.00} h{(wet ? " wet" : "")} | night factor {VeyraGlobals.NightFactor:0.00}, wetness {VeyraGlobals.Wetness:0.00}, rain {VeyraGlobals.RainIntensity:0.00} | {pose.note} -> {file}");
             }
             var sheet = ReviewCameraRig.ContactSheet(shots, title);
             string sheetPath = Path.Combine(dir, "contact_sheet.png");
@@ -133,7 +161,7 @@ namespace VeyraCity.Testing
             Destroy(sheet);
             Destroy(cam.gameObject);
             if (car != null) car.Body.isKinematic = wasKinematic;
-            if (env != null) { env.SetTime(oldTime); env.SetWetness(0f); }
+            if (env != null) { env.SetTime(oldTime); env.SetWetness(0f); env.SetRainIntensity(0f); env.SetWeather(WorldEnvironment.WeatherKind.Clear); }
             LastReport = log.ToString();
             File.WriteAllText(Path.Combine(dir, "review.txt"), LastReport, new UTF8Encoding(false));
             Debug.Log("[ReviewCapture] " + LastReport);
