@@ -112,7 +112,8 @@ void VC_Surface(VC_FragInput f, inout SurfaceData s, inout half3 normalWS)
         // Blinds on some windows (upper part).
         half blindCover = frac(wseed * 13.7) > 0.62 ? frac(wseed * 29.1) * 0.75 : 0.0;
         half blind = step(1.0 - blindCover, room.y);
-        roomColor = lerp(roomColor, half3(0.78, 0.72, 0.6), blind);
+        half slat = 0.82 + 0.18 * step(0.5, frac(room.y * 38.0));
+        roomColor = lerp(roomColor, half3(0.52, 0.48, 0.4) * slat, blind);
 
         float litFrac = lerp(_LitFractionMin, _LitFractionMax, bseed);
         float hour = _VC_TimeOfDay;
@@ -123,7 +124,10 @@ void VC_Surface(VC_FragInput f, inout SurfaceData s, inout half3 normalWS)
         half3 warm = half3(1.0, 0.71, 0.42), cool = half3(1.0, 0.88, 0.76);
         half3 lightColor = frac(wseed * 3.77) < 0.62 ? warm : cool;
         half3 day = roomColor * _InteriorDim * (1.0 - 0.85 * saturate(_VC_NightFactor));
-        half3 night = roomColor * lightColor * _WindowEmission * on * (blind > 0.5 ? 0.55 : 1.0);
+        // Lit rooms take the colour of their light: interior colours are desaturated towards their luminance.
+        half lumRoom = dot(roomColor, half3(0.2126, 0.7152, 0.0722));
+        half3 litRoom = lerp(lumRoom.xxx, roomColor, 0.35) * 1.6;
+        half3 night = litRoom * lightColor * _WindowEmission * on * (blind > 0.5 ? 0.55 : 1.0);
         emission = (day + night) * glass;
 
         albedo = lerp(albedo, _GlassColor.rgb * 0.12, glass);

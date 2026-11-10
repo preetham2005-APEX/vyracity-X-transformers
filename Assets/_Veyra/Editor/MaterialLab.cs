@@ -49,11 +49,12 @@ namespace VeyraCity.EditorTools
         }
 
         /// <summary>Horizontal rectangle [x0,x1] x [z0,z1] at height y, planar XZ UVs in metres (like the city's roads).</summary>
-        static Mesh Ground(float x0, float x1, float z0, float z1, float y)
+        static Mesh Ground(float x0, float x1, float z0, float z1, float y, float metresPerUv = 1f)
         {
             var v = new List<Vector3>(); var uv = new List<Vector2>(); var t = new List<int>();
+            float k = 1f / metresPerUv;
             AddQuad(v, uv, t, new Vector3(x0, y, z0), new Vector3(x1, y, z0), new Vector3(x1, y, z1), new Vector3(x0, y, z1),
-                    new Vector2(x0, z0), new Vector2(x1, z0), new Vector2(x1, z1), new Vector2(x0, z1));
+                    new Vector2(x0, z0) * k, new Vector2(x1, z0) * k, new Vector2(x1, z1) * k, new Vector2(x0, z1) * k);
             return Build("Ground", v, uv, t);
         }
 
@@ -63,10 +64,11 @@ namespace VeyraCity.EditorTools
             var v = new List<Vector3>(); var uv = new List<Vector2>(); var t = new List<int>();
             float x0 = min.x, y0 = min.y, z0 = min.z, x1 = max.x, y1 = max.y, z1 = max.z;
             AddQuad(v, uv, t, new Vector3(x0, y1, z0), new Vector3(x1, y1, z0), new Vector3(x1, y1, z1), new Vector3(x0, y1, z1), new Vector2(x0, z0), new Vector2(x1, z0), new Vector2(x1, z1), new Vector2(x0, z1)); // top
-            AddQuad(v, uv, t, new Vector3(x0, y0, z0), new Vector3(x0, y1, z0), new Vector3(x1, y1, z0), new Vector3(x1, y0, z0), new Vector2(x0, y0), new Vector2(x0, y1), new Vector2(x1, y1), new Vector2(x1, y0)); // -z
-            AddQuad(v, uv, t, new Vector3(x1, y0, z1), new Vector3(x1, y1, z1), new Vector3(x0, y1, z1), new Vector3(x0, y0, z1), new Vector2(x1, y0), new Vector2(x1, y1), new Vector2(x0, y1), new Vector2(x0, y0)); // +z
-            AddQuad(v, uv, t, new Vector3(x0, y0, z1), new Vector3(x0, y1, z1), new Vector3(x0, y1, z0), new Vector3(x0, y0, z0), new Vector2(z1, y0), new Vector2(z1, y1), new Vector2(z0, y1), new Vector2(z0, y0)); // -x
-            AddQuad(v, uv, t, new Vector3(x1, y0, z0), new Vector3(x1, y1, z0), new Vector3(x1, y1, z1), new Vector3(x1, y0, z1), new Vector2(z0, y0), new Vector2(z0, y1), new Vector2(z1, y1), new Vector2(z1, y0)); // +x
+            // Each face is listed counter-clockwise as seen from outside (bottom-left, bottom-right, top-right, top-left).
+            AddQuad(v, uv, t, new Vector3(x0, y0, z0), new Vector3(x1, y0, z0), new Vector3(x1, y1, z0), new Vector3(x0, y1, z0), new Vector2(x0, y0), new Vector2(x1, y0), new Vector2(x1, y1), new Vector2(x0, y1)); // -z
+            AddQuad(v, uv, t, new Vector3(x1, y0, z1), new Vector3(x0, y0, z1), new Vector3(x0, y1, z1), new Vector3(x1, y1, z1), new Vector2(-x1, y0), new Vector2(-x0, y0), new Vector2(-x0, y1), new Vector2(-x1, y1)); // +z
+            AddQuad(v, uv, t, new Vector3(x0, y0, z1), new Vector3(x0, y0, z0), new Vector3(x0, y1, z0), new Vector3(x0, y1, z1), new Vector2(-z1, y0), new Vector2(-z0, y0), new Vector2(-z0, y1), new Vector2(-z1, y1)); // -x
+            AddQuad(v, uv, t, new Vector3(x1, y0, z0), new Vector3(x1, y0, z1), new Vector3(x1, y1, z1), new Vector3(x1, y1, z0), new Vector2(z0, y0), new Vector2(z1, y0), new Vector2(z1, y1), new Vector2(z0, y1)); // +x
             return Build("Box", v, uv, t);
         }
 
@@ -75,8 +77,8 @@ namespace VeyraCity.EditorTools
         {
             var v = new List<Vector3>(); var uv = new List<Vector2>(); var t = new List<int>();
             const float U = 12f, V = 14f;
-            AddQuad(v, uv, t, new Vector3(x0, 0, z), new Vector3(x0, h, z), new Vector3(x1, h, z), new Vector3(x1, 0, z),
-                    new Vector2(0, 0), new Vector2(0, h / V), new Vector2((x1 - x0) / U, h / V), new Vector2((x1 - x0) / U, 0));
+            AddQuad(v, uv, t, new Vector3(x0, 0, z), new Vector3(x1, 0, z), new Vector3(x1, h, z), new Vector3(x0, h, z),
+                    new Vector2(0, 0), new Vector2((x1 - x0) / U, 0), new Vector2((x1 - x0) / U, h / V), new Vector2(0, h / V));
             return Build("FacadeWall", v, uv, t);
         }
 
@@ -200,7 +202,7 @@ namespace VeyraCity.EditorTools
             var white = Lib(lib, VeyraMat.RoadMarkingWhite);
             var yellow = Lib(lib, VeyraMat.RoadMarkingYellow);
             var deck = Lib(lib, VeyraMat.RoadConcreteDeck);
-            Put(root, "Ground", Ground(-40f, 40f, -30f, 40f, -0.02f), deck, Vector3.zero);
+            Put(root, "Ground", Ground(-95f, 95f, -30f, 40f, -0.02f), deck, Vector3.zero);
             if (asphalt != null)
             {
                 Put(road, "Asphalt", Ground(-10f, 10f, -3.5f, 3.5f, 0f), asphalt, Vector3.zero);
@@ -232,12 +234,13 @@ namespace VeyraCity.EditorTools
             var tiles = new GameObject("GroundTiles").transform;
             tiles.SetParent(root, false);
             var groundKeys = Enum.GetValues(typeof(VeyraMat)).Cast<VeyraMat>()
-                .Where(k => VeyraMaterialLibrary.CategoryOf(k) == VeyraMatCategory.Road || VeyraMaterialLibrary.CategoryOf(k) == VeyraMatCategory.Sidewalk)
-                .Where(k => lib.TryGet(k, out _)).ToList();
+                .Where(k => lib.TryGet(k, out var gm) && gm.shader.name == "Veyra/Road").ToList();
             for (int i = 0; i < groundKeys.Count; i++)
             {
                 float x = -24f + i * 4.4f;
-                Put(tiles, "Tile_" + groundKeys[i], Ground(x, x + 4f, -14f, -10f, 0.005f), Lib(lib, groundKeys[i]), Vector3.zero);
+                // Roof materials are tiled for building tops, whose UVs are in 8 m units.
+                float uvm = VeyraMaterialLibrary.CategoryOf(groundKeys[i]) == VeyraMatCategory.Building ? 8f : 1f;
+                Put(tiles, "Tile_" + groundKeys[i], Ground(x, x + 4f, -14f, -10f, 0.005f, uvm), Lib(lib, groundKeys[i]), Vector3.zero);
             }
             report.AppendLine($"ground tiles: {groundKeys.Count}");
 
@@ -259,11 +262,10 @@ namespace VeyraCity.EditorTools
             var walls = new GameObject("FacadeWalls").transform;
             walls.SetParent(root, false);
             var wallKeys = Enum.GetValues(typeof(VeyraMat)).Cast<VeyraMat>()
-                .Where(k => VeyraMaterialLibrary.CategoryOf(k) == VeyraMatCategory.Building || VeyraMaterialLibrary.CategoryOf(k) == VeyraMatCategory.Glass)
-                .Where(k => lib.TryGet(k, out _)).ToList();
+                .Where(k => lib.TryGet(k, out var wm) && wm.shader.name == "Veyra/Facade").ToList();
             for (int i = 0; i < wallKeys.Count; i++)
             {
-                float x = -36f + i * 12.5f;
+                float x = -75f + i * 12.5f;
                 Put(walls, "Wall_" + wallKeys[i], FacadeWall(x, x + 12f, 14f, 18f), Lib(lib, wallKeys[i]), Vector3.zero);
             }
             report.AppendLine($"facade walls: {wallKeys.Count}");
@@ -339,8 +341,10 @@ namespace VeyraCity.EditorTools
             new Shot { Name = "Road", Pos = new Vector3(-12f, 1.6f, -1.6f), LookAt = new Vector3(6f, 0.2f, 1.2f), Fov = 58f },
             new Shot { Name = "Tiles", Pos = new Vector3(-6f, 6.5f, -22f), LookAt = new Vector3(-6f, 0f, -12f), Fov = 62f },
             new Shot { Name = "Spheres", Pos = new Vector3(-1.2f, 2.0f, -1.5f), LookAt = new Vector3(-1.2f, 1.0f, 9.5f), Fov = 55f },
-            new Shot { Name = "Facades", Pos = new Vector3(-6f, 6f, -4f), LookAt = new Vector3(-4f, 7f, 18f), Fov = 75f },
-            new Shot { Name = "FacadesAngle", Pos = new Vector3(-30f, 3f, 6f), LookAt = new Vector3(-12f, 7f, 18f), Fov = 60f },
+            new Shot { Name = "FacadesL", Pos = new Vector3(-50f, 7f, -14f), LookAt = new Vector3(-50f, 7f, 18f), Fov = 52f },
+            new Shot { Name = "FacadesC", Pos = new Vector3(0f, 7f, -14f), LookAt = new Vector3(0f, 7f, 18f), Fov = 52f },
+            new Shot { Name = "FacadesR", Pos = new Vector3(50f, 7f, -14f), LookAt = new Vector3(50f, 7f, 18f), Fov = 52f },
+            new Shot { Name = "FacadesAngle", Pos = new Vector3(-82f, 3f, 6f), LookAt = new Vector3(-58f, 7f, 18f), Fov = 60f },
             new Shot { Name = "Neon", Pos = new Vector3(-5f, 2.2f, 2.5f), LookAt = new Vector3(-6f, 2.4f, -7f), Fov = 60f },
         };
 

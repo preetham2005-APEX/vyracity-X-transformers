@@ -21,6 +21,9 @@ namespace VeyraCity.EditorTools
         public const string MatDir = VeyraMaterialFactory.Dir;
         public const int TexSize = 2048;
         const string RoadShader = "Veyra/Road";
+        const string FacadeShader = "Veyra/Facade";
+        const string NeonShader = "Veyra/Neon";
+        const string InteriorAtlasName = "Pal_InteriorAtlas";
 
         public sealed class Spec
         {
@@ -29,6 +32,7 @@ namespace VeyraCity.EditorTools
             public string TexSet;                       // texture set name (Pal_<TexSet>_A/_N/_M)
             public Func<float, float, Sample> Recipe;
             public float TileMeters = 4f;
+            public float UvMeters = 1f;                 // metres per mesh UV unit (roads 1; building tops 8)
             public float NormalStrength = 6f;
             public Color BaseColor = Color.white;       // sRGB colour multiplied with the albedo
             public float MinAlbedo = 0.02f, MaxAlbedo = 0.9f;
@@ -47,6 +51,31 @@ namespace VeyraCity.EditorTools
             m.SetFloat("_MacroScale1", 23f);
             m.SetFloat("_MacroScale2", 4.5f);
         }
+
+        /// <summary>Facade set-up: window rect (x width, y sill, z height, w frame / mullion), glass, night lighting, wall tiling.</summary>
+        static void Facade(Material m, Vector4 window, bool curtain, Color glass, float litMin, float litMax, bool office, float grime, float seed,
+                           Vector2 wallTiling, float bays = 4f, float floors = 4f, float roomDepth = 1.1f, float emission = 2.2f, float interiorDim = 0.32f)
+        {
+            m.SetVector("_WindowRect", window);
+            m.SetFloat("_CurtainWall", curtain ? 1f : 0f);
+            m.SetColor("_GlassColor", glass);
+            m.SetFloat("_GlassSmoothness", curtain ? 0.95f : 0.92f);
+            m.SetFloat("_LitFractionMin", litMin);
+            m.SetFloat("_LitFractionMax", litMax);
+            m.SetFloat("_Office", office ? 1f : 0f);
+            m.SetFloat("_Grime", grime);
+            m.SetFloat("_Seed", seed);
+            m.SetVector("_WallTiling", new Vector4(wallTiling.x, wallTiling.y, 0f, 0f));
+            m.SetFloat("_BaysPerTile", bays);
+            m.SetFloat("_FloorsPerTile", floors);
+            m.SetFloat("_RoomDepth", roomDepth);
+            m.SetFloat("_WindowEmission", emission);
+            m.SetFloat("_InteriorDim", interiorDim);
+        }
+
+        // Wall textures cover ~3 m; a building UV tile is 12 m x 14 m (BuildingGenerator U, V).
+        static readonly Vector2 Wall3m = new Vector2(12f / 3f, 14f / 3f);
+        static readonly Vector2 WallBrick = new Vector2(12f / 2.925f, 14f / 3f);
 
         public static readonly Spec[] Specs =
         {
@@ -74,6 +103,48 @@ namespace VeyraCity.EditorTools
                        MinAlbedo = 0.45f, MaxAlbedo = 0.8f, Replaces = new[] { "Marking_White" }, CityKeys = new[] { "marking_white" }, Configure = m => Road(m, 0.9f, 0.2f, 0.03f) },
             new Spec { Key = VeyraMat.RoadMarkingYellow, Name = "M_Road_Marking_Yellow", Shader = RoadShader, Part = "F2a", TexSet = "MarkingPaint", Recipe = PaletteRecipes.MarkingPaint, TileMeters = 2f, NormalStrength = 2f,
                        BaseColor = new Color(0.95f, 0.74f, 0.2f), MinAlbedo = 0.25f, MaxAlbedo = 0.7f, Replaces = new[] { "Marking_Yellow" }, CityKeys = new[] { "marking_yellow" }, Configure = m => Road(m, 0.9f, 0.2f, 0.03f) },
+
+            // ---------------- F2b facades, glass and roofs
+            new Spec { Key = VeyraMat.FacadeConcrete, Name = "M_Facade_Concrete", Shader = FacadeShader, Part = "F2b", TexSet = "FacadeConcrete", Recipe = PaletteRecipes.FacadeConcrete, NormalStrength = 3f,
+                       MinAlbedo = 0.25f, MaxAlbedo = 0.40f, Replaces = new[] { "Facade_Mid" }, CityKeys = new[] { "facade_mid" },
+                       Configure = m => Facade(m, new Vector4(0.70f, 0.14f, 0.62f, 0.03f), false, new Color(0.3f, 0.36f, 0.42f), 0.35f, 0.75f, true, 0.5f, 1f, Wall3m) },
+            new Spec { Key = VeyraMat.FacadeConcreteLight, Name = "M_Facade_Concrete_Light", Shader = FacadeShader, Part = "F2b", TexSet = "FacadeConcreteLight", Recipe = PaletteRecipes.FacadeConcreteLight, NormalStrength = 3f,
+                       MinAlbedo = 0.25f, MaxAlbedo = 0.45f, Replaces = new[] { "Facade_Light" }, CityKeys = new[] { "facade_light" },
+                       Configure = m => Facade(m, new Vector4(0.62f, 0.14f, 0.60f, 0.03f), false, new Color(0.32f, 0.38f, 0.44f), 0.3f, 0.7f, true, 0.45f, 2f, Wall3m) },
+            new Spec { Key = VeyraMat.FacadeLimestoneDeco, Name = "M_Facade_Limestone_Deco", Shader = FacadeShader, Part = "F2b", TexSet = "FacadeLimestone", Recipe = PaletteRecipes.FacadeLimestone, NormalStrength = 5f,
+                       MinAlbedo = 0.30f, MaxAlbedo = 0.55f, Replaces = new[] { "Facade_StoneDeco" }, CityKeys = new[] { "stone_deco" },
+                       Configure = m => Facade(m, new Vector4(0.38f, 0.16f, 0.62f, 0.035f), false, new Color(0.3f, 0.33f, 0.36f), 0.3f, 0.65f, false, 0.6f, 3f, Wall3m) },
+            new Spec { Key = VeyraMat.FacadeBrickRed, Name = "M_Facade_Brick_Red", Shader = FacadeShader, Part = "F2b", TexSet = "FacadeBrickRed", Recipe = PaletteRecipes.FacadeBrickRed, NormalStrength = 6f,
+                       MinAlbedo = 0.15f, MaxAlbedo = 0.30f, Replaces = new[] { "Facade_Brick" }, CityKeys = new[] { "facade_brick" },
+                       Configure = m => Facade(m, new Vector4(0.50f, 0.16f, 0.56f, 0.035f), false, new Color(0.3f, 0.34f, 0.37f), 0.35f, 0.7f, false, 0.55f, 4f, WallBrick) },
+            new Spec { Key = VeyraMat.FacadeBrickDark, Name = "M_Facade_Brick_Dark", Shader = FacadeShader, Part = "F2b", TexSet = "FacadeBrickDark", Recipe = PaletteRecipes.FacadeBrickDark, NormalStrength = 6f,
+                       MinAlbedo = 0.15f, MaxAlbedo = 0.30f,
+                       Configure = m => Facade(m, new Vector4(0.48f, 0.16f, 0.56f, 0.035f), false, new Color(0.3f, 0.34f, 0.37f), 0.35f, 0.7f, false, 0.6f, 5f, WallBrick) },
+            new Spec { Key = VeyraMat.FacadeStuccoWhite, Name = "M_Facade_Stucco_White", Shader = FacadeShader, Part = "F2b", TexSet = "FacadeStucco", Recipe = PaletteRecipes.FacadeStucco, NormalStrength = 2f,
+                       MinAlbedo = 0.50f, MaxAlbedo = 0.80f, Replaces = new[] { "Facade_Stucco" }, CityKeys = new[] { "facade_stucco" },
+                       Configure = m => Facade(m, new Vector4(0.45f, 0.18f, 0.52f, 0.035f), false, new Color(0.3f, 0.36f, 0.4f), 0.35f, 0.7f, false, 0.4f, 6f, Wall3m) },
+            new Spec { Key = VeyraMat.FacadeMetalPanel, Name = "M_Facade_MetalPanel", Shader = FacadeShader, Part = "F2b", TexSet = "FacadeMetalPanel", Recipe = PaletteRecipes.FacadeMetalPanel, NormalStrength = 4f,
+                       MinAlbedo = 0.35f, MaxAlbedo = 0.70f, Replaces = new[] { "Facade_MetalClad" }, CityKeys = new[] { "metal_clad" },
+                       Configure = m => Facade(m, new Vector4(0.30f, 0.55f, 0.22f, 0.03f), false, new Color(0.3f, 0.34f, 0.38f), 0.1f, 0.4f, true, 0.35f, 7f, Wall3m) },
+            new Spec { Key = VeyraMat.FacadeHouseRender, Name = "M_Facade_House_Render", Shader = FacadeShader, Part = "F2b", TexSet = "FacadeHouse", Recipe = PaletteRecipes.FacadeHouse, NormalStrength = 2f,
+                       MinAlbedo = 0.35f, MaxAlbedo = 0.60f, Replaces = new[] { "Facade_House" }, CityKeys = new[] { "house_wall" },
+                       Configure = m => Facade(m, new Vector4(0.36f, 0.20f, 0.42f, 0.04f), false, new Color(0.3f, 0.34f, 0.36f), 0.35f, 0.75f, false, 0.45f, 8f, Wall3m, roomDepth: 1.0f) },
+            new Spec { Key = VeyraMat.FacadeWood, Name = "M_Facade_Wood", Shader = FacadeShader, Part = "F2b", TexSet = "FacadeWood", Recipe = PaletteRecipes.FacadeWood, NormalStrength = 5f,
+                       MinAlbedo = 0.10f, MaxAlbedo = 0.30f, Replaces = new[] { "Facade_Wood" }, CityKeys = new[] { "wood_wall" },
+                       Configure = m => Facade(m, new Vector4(0.30f, 0.20f, 0.42f, 0.04f), false, new Color(0.3f, 0.33f, 0.35f), 0.3f, 0.7f, false, 0.4f, 9f, Wall3m, roomDepth: 1.0f) },
+            new Spec { Key = VeyraMat.GlassCurtainBlueGrey, Name = "M_Glass_Curtain_BlueGrey", Shader = FacadeShader, Part = "F2b", TexSet = "Spandrel", Recipe = PaletteRecipes.Spandrel, NormalStrength = 1f,
+                       MinAlbedo = 0.03f, MaxAlbedo = 0.20f, Replaces = new[] { "Glass_Blue" }, CityKeys = new[] { "glass_blue" },
+                       Configure = m => Facade(m, new Vector4(0.9f, 0.14f, 0.86f, 0.02f), true, new Color(0.32f, 0.42f, 0.5f), 0.3f, 0.7f, true, 0.15f, 10f, Wall3m, roomDepth: 1.2f) },
+            new Spec { Key = VeyraMat.GlassCurtainBronze, Name = "M_Glass_Curtain_Bronze", Shader = FacadeShader, Part = "F2b", TexSet = "Spandrel", Recipe = PaletteRecipes.Spandrel, NormalStrength = 1f,
+                       MinAlbedo = 0.03f, MaxAlbedo = 0.20f, Replaces = new[] { "Glass_Bronze" }, CityKeys = new[] { "glass_bronze" },
+                       Configure = m => Facade(m, new Vector4(0.9f, 0.14f, 0.86f, 0.02f), true, new Color(0.5f, 0.38f, 0.25f), 0.3f, 0.7f, true, 0.15f, 11f, Wall3m, roomDepth: 1.2f) },
+            new Spec { Key = VeyraMat.StorefrontGlass, Name = "M_Storefront_Glass", Shader = FacadeShader, Part = "F2b", TexSet = "Spandrel", Recipe = PaletteRecipes.Spandrel, NormalStrength = 1f,
+                       MinAlbedo = 0.03f, MaxAlbedo = 0.20f, Replaces = new[] { "Storefront" }, CityKeys = new[] { "storefront" },
+                       Configure = m => Facade(m, new Vector4(0.9f, 0.14f, 0.86f, 0.025f), true, new Color(0.4f, 0.45f, 0.48f), 0.6f, 0.95f, false, 0.35f, 12f, new Vector2(4f, 1.5f), bays: 3f, floors: 1f, roomDepth: 0.8f, emission: 2.6f, interiorDim: 0.45f) },
+            new Spec { Key = VeyraMat.RoofGravel, Name = "M_Roof_Gravel", Shader = RoadShader, Part = "F2b", TexSet = "RoofGravel", Recipe = PaletteRecipes.RoofGravel, TileMeters = 2f, UvMeters = 8f, NormalStrength = 8f,
+                       MinAlbedo = 0.12f, MaxAlbedo = 0.30f, Configure = m => Road(m, 0.7f, 0.5f) },
+            new Spec { Key = VeyraMat.RoofMembrane, Name = "M_Roof_Membrane", Shader = RoadShader, Part = "F2b", TexSet = "RoofMembrane", Recipe = PaletteRecipes.RoofMembrane, TileMeters = 4f, UvMeters = 8f, NormalStrength = 3f,
+                       MinAlbedo = 0.05f, MaxAlbedo = 0.15f, Replaces = new[] { "Roof_Dark" }, CityKeys = new[] { "roof_dark" }, Configure = m => Road(m, 1f, 0.8f, 0.06f) },
         };
 
         public static IEnumerable<Spec> Part(string part) => Specs.Where(s => part == null || s.Part == part);
@@ -82,6 +153,9 @@ namespace VeyraCity.EditorTools
 
         [MenuItem("Veyra/Materials/Palette/Build F2a Roads")]
         static void BuildRoadsMenu() => Debug.Log("[VeyraPalette] " + Build("F2a"));
+
+        [MenuItem("Veyra/Materials/Palette/Build F2b Facades")]
+        static void BuildFacadesMenu() => Debug.Log("[VeyraPalette] " + Build("F2b"));
 
         [MenuItem("Veyra/Materials/Palette/Remap World (all built parts)")]
         static void RemapMenu() => Debug.Log("[VeyraPalette] " + RemapWorld(null));
@@ -106,9 +180,22 @@ namespace VeyraCity.EditorTools
             }
             var lib = AssetDatabase.LoadAssetAtPath<VeyraMaterialLibrary>(VeyraMaterialFactory.LibraryPath);
             if (lib == null) return "no VeyraMaterialLibrary: run Veyra/Materials/Build Material Library first";
+            Texture2D atlas = null;
+            if (Part(part).Any(x => x.Shader == FacadeShader))
+            {
+                string ap = $"{PaletteTextures.Dir}/{InteriorAtlasName}.png";
+                if (regenerateTextures || !File.Exists(ap))
+                {
+                    var asw = System.Diagnostics.Stopwatch.StartNew();
+                    atlas = MakeColor(InteriorAtlasName, TexSize, PaletteRecipes.InteriorAtlas);
+                    sb.AppendLine($"texture {InteriorAtlasName} {TexSize}² (4 x 4 rooms) in {asw.Elapsed.TotalSeconds:0.0} s");
+                }
+                else atlas = AssetDatabase.LoadAssetAtPath<Texture2D>(ap);
+            }
             foreach (var spec in Part(part))
             {
                 var m = EnsureMaterial(spec, spec.TexSet != null ? sets[spec.TexSet] : null, spec.DetailSet != null ? sets[spec.DetailSet] : null, out bool created);
+                if (atlas != null && m.HasProperty("_InteriorAtlas")) { m.SetTexture("_InteriorAtlas", atlas); EditorUtility.SetDirty(m); }
                 SetSlot(lib, spec.Key, m);
                 sb.AppendLine($"{(created ? "created" : "updated")} {spec.Key,-22} {AssetDatabase.GetAssetPath(m)} ({spec.Shader}, tile {spec.TileMeters} m{(spec.Replaces.Length > 0 ? ", replaces " + string.Join("/", spec.Replaces) : "")})");
             }
@@ -149,7 +236,7 @@ namespace VeyraCity.EditorTools
                 m.SetTexture("_BaseMap", set.Albedo);
                 if (m.HasProperty("_BumpMap")) m.SetTexture("_BumpMap", set.Normal);
                 if (m.HasProperty("_MaskMap")) m.SetTexture("_MaskMap", set.Mask);
-                float t = 1f / Mathf.Max(0.01f, spec.TileMeters);
+                float t = spec.UvMeters / Mathf.Max(0.01f, spec.TileMeters);
                 m.SetTextureScale("_BaseMap", new Vector2(t, t));
                 m.SetTextureOffset("_BaseMap", Vector2.zero);
             }

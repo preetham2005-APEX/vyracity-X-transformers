@@ -35,6 +35,24 @@ namespace VeyraCity.World
         SidewalkConcrete = 200,
         SidewalkKerbGranite = 201,
 
+        // Building (300–399): Veyra/Facade walls (card F2b); roofs use Veyra/Road (wetness)
+        FacadeConcrete = 300,
+        FacadeConcreteLight = 301,
+        FacadeLimestoneDeco = 302,
+        FacadeBrickRed = 303,
+        FacadeBrickDark = 304,
+        FacadeStuccoWhite = 305,
+        FacadeMetalPanel = 306,
+        FacadeHouseRender = 307,
+        FacadeWood = 308,
+        RoofGravel = 320,
+        RoofMembrane = 321,
+
+        // Glass (400–499): Veyra/Facade curtain walls and shop fronts with interior mapping (card F2b)
+        GlassCurtainBlueGrey = 400,
+        GlassCurtainBronze = 401,
+        StorefrontGlass = 402,
+
         // Vehicle (900–999)
         VehiclePlaceholderBody = 900,
         VehiclePlaceholderWheel = 901,
