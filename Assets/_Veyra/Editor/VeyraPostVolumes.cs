@@ -218,6 +218,13 @@ namespace VeyraCity.EditorTools
                 new PostVolumeDirector.Area { Id = "D4 Blackridge", Volume = GlobalVolume(root, "VP_Blackridge", prof["Blackridge"], 5f), Polygon = Poly("D4"), Gate = PostVolumeDirector.TimeGate.DayOnly, Blend = 120f },
             };
             foreach (var a in director.Areas) log.AppendLine($"area {a.Id}: {(a.Polygon?.Length ?? 0)} polygon points");
+            // Card L5: wet-night districts (streets wet from cleaning even without rain).
+            director.WetNightAreas = new[]
+            {
+                new PostVolumeDirector.Area { Id = "D1 Crown Downtown", Polygon = Poly("D1"), Gate = PostVolumeDirector.TimeGate.NightOnly, Blend = 80f },
+                new PostVolumeDirector.Area { Id = "D6 Neon Mile", Polygon = Poly("D6"), Gate = PostVolumeDirector.TimeGate.NightOnly, Blend = 80f },
+            };
+            log.AppendLine("wet-night districts: D1, D6");
 
             // Tunnels: oriented boxes every ~100 m along each tunnel's road profile.
             var tunnels = Child(root, "Tunnels").transform;

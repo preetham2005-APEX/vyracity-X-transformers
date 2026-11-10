@@ -34,6 +34,11 @@ namespace VeyraCity.World
         public WorldEnvironment Environment;
         public Volume Golden, Night;
         public Area[] Areas = Array.Empty<Area>();
+        /// <summary>Card L5: districts with wet streets at night (Downtown D1, Neon Mile D6); Volume unused.</summary>
+        public Area[] WetNightAreas = Array.Empty<Area>();
+
+        /// <summary>0..1: camera inside a wet-night district × night factor (read by WorldEnvironment).</summary>
+        public static float WetNight { get; private set; }
 
         void OnEnable() => Active = this;
         void OnDisable() { if (Active == this) Active = null; }
@@ -48,6 +53,10 @@ namespace VeyraCity.World
             var cam = Camera.main;
             if (cam == null || Areas == null) return;
             var p = new Vector2(cam.transform.position.x, cam.transform.position.z);
+            float wetNight = 0f;
+            if (WetNightAreas != null)
+                foreach (var a in WetNightAreas) if (a != null) wetNight = Mathf.Max(wetNight, Inside(a.Polygon, p, a.Blend));
+            WetNight = wetNight * night;
             foreach (var a in Areas)
             {
                 if (a?.Volume == null) continue;
