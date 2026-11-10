@@ -11,7 +11,7 @@ namespace VeyraCity.EditorTools
 {
     /// <summary>
     /// Card C1: "Veyra/Physics/Validate Drivable". For every road of road_network_geometry.json, every 2 m along the profile
-    /// (profile_xyz_every_4m, interpolated) and every 1 m across the carriageway, a ray goes down from 2.5 m above the profile
+    /// (profile_xyz_every_4m, interpolated, plus the C2 easing) and every 1 m across the carriageway, a ray goes down from 2.5 m above the profile
     /// height with the vehicle's mask (all layers, triggers ignored: VehicleController.CastWheel). Each sample is:
     /// <list type="bullet">
     /// <item>ok: first hit is a drivable collider (VehicleSurface in its parents) of the expected surface (gravel on GR roads,
@@ -51,6 +51,11 @@ namespace VeyraCity.EditorTools
             var img = new Color32[W * H];
             for (int i = 0; i < img.Length; i++) img[i] = new Color32(24, 24, 28, 255);
             var cache = new Dictionary<Collider, SurfaceDefinition>();
+            // BUG-108: measure against the eased profile (card C2), not the raw data: eased bridge approaches sit up to 8.5 m
+            // above the data, so rays from 2.5 m above the raw profile started under the road (false misses and grass hits)
+            RoadProfileEaser.Reset();
+            var eased = new Dictionary<string, int>();
+            for (int i = 0; i < VeyraCity.World.WorldData.Roads.Count; i++) eased[VeyraCity.World.WorldData.Roads[i].Data.id] = i;
             foreach (var road in net.Roads)
             {
                 if (road.Closed && road.Cls == "RW") continue;
@@ -60,6 +65,7 @@ namespace VeyraCity.EditorTools
                 var counts = new int[5];
                 var p = road.ProfileXYZ;
                 float length = (p.Length - 1) * 4f;
+                int hint = -1;
                 for (float sAlong = 0f; sAlong <= length; sAlong += Step)
                 {
                     float f = sAlong / 4f;
@@ -68,6 +74,23 @@ namespace VeyraCity.EditorTools
                     var a = new Vector3(p[i0][0], p[i0][1], p[i0][2]);
                     var b = new Vector3(p[i0 + 1][0], p[i0 + 1][1], p[i0 + 1][2]);
                     var c = Vector3.Lerp(a, b, t); // data frame: x east, y north, z up
+                    if (eased.TryGetValue(road.Id, out int wi))
+                    {
+                        // the eased delta lives on WorldData's path, whose station need not match this profile's (direction,
+                        // start): project the sample onto it, tracking a segment hint along the road
+                        var wpath = VeyraCity.World.WorldData.Roads[wi].Path;
+                        var u = new Vector3(c.x - 4000f, c.z, c.y - 3000f);
+                        if (hint < 0)
+                        {
+                            float bd = float.MaxValue;
+                            for (int k = 0; k < wpath.Count; k++)
+                            {
+                                float d2 = (new Vector2(wpath.Points[k].x - u.x, wpath.Points[k].z - u.z)).sqrMagnitude;
+                                if (d2 < bd) { bd = d2; hint = k; }
+                            }
+                        }
+                        c.z += RoadProfileEaser.Delta(wi, wpath.Project(u, ref hint, 40));
+                    }
                     var dir = new Vector2(b.x - a.x, b.y - a.y);
                     if (dir.sqrMagnitude < 1e-6f) continue;
                     dir.Normalize();
