@@ -1,0 +1,11 @@
+{
+  "_comment": "Card B2 step 3a: object/material name rules (regex, case-insensitive), checked in this order. Anything unmatched is classified by geometry (step 3b).",
+  "rules": [
+    ["Vegetation", "tree|bush|shrub|hedge|grass|leaf|leaves|foliage|plant|palm|pine|bark|trunk"],
+    ["Prop", "lamp|light.?pole|streetlight|sign|bench|pole|hydrant|bin|trash|fence|barrier|bollard|cone|mailbox|ac.?unit|air.?con|antenna|vent|pipe|railing"],
+    ["Sidewalk", "sidewalk|side.?walk|curb|kerb|pavement|footpath|walkway"],
+    ["Road_Surface", "road|asphalt|street|lane|highway|motorway|tarmac|crosswalk|marking|intersection|junction"],
+    ["Terrain", "ground|terrain|land|soil|dirt|plane"],
+    ["Building", "building|wall|facade|roof|window|house|tower|apartment|office|shop|store|storey|floor|balcony|door|bldg"]
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_comment": "Card B2 step 6: source material name (regex, case-insensitive) -> VeyraMat key of the VeyraMaterialLibrary, first match wins; 'category' limits a rule to one segment category. B3's VeyraModelPostprocessor remaps imported materials with this table; unmatched materials fall back to the category default.",
+  "rules": [
+    {"pattern": "yellow.*(line|mark)|(line|mark).*yellow", "key": "RoadMarkingYellow"},
+    {"pattern": "marking|line|stripe|crosswalk|zebra|paint", "key": "RoadMarkingWhite", "category": "Road_Surface"},
+    {"pattern": "asphalt.*(old|worn|crack)|(old|worn|crack).*asphalt", "key": "RoadAsphaltWorn"},
+    {"pattern": "asphalt|road|street|tarmac|lane|highway", "key": "RoadAsphaltNew"},
+    {"pattern": "cobble|sett", "key": "RoadCobblestone"},
+    {"pattern": "gravel", "key": "RoadGravel"},
+    {"pattern": "dirt|soil|mud|ground", "key": "RoadDirt"},
+    {"pattern": "kerb|curb", "key": "SidewalkKerbGranite"},
+    {"pattern": "sidewalk|pavement|paving|tile", "key": "SidewalkConcrete"},
+    {"pattern": "storefront|shop.?window|showcase", "key": "StorefrontGlass"},
+    {"pattern": "bronze|gold.*glass|glass.*gold", "key": "GlassCurtainBronze"},
+    {"pattern": "glass|window|curtain", "key": "GlassCurtainBlueGrey"},
+    {"pattern": "brick", "key": "FacadeBrickRed"},
+    {"pattern": "stucco|plaster|render|paint.*wall|wall.*white", "key": "FacadeStuccoWhite"},
+    {"pattern": "stone|granite|limestone|marble|sandstone", "key": "FacadeLimestoneDeco"},
+    {"pattern": "roof.*(gravel|pebble)", "key": "RoofGravel"},
+    {"pattern": "roof|tar|membrane|bitumen", "key": "RoofMembrane"},
+    {"pattern": "clad|panel|corrugat|sheet.?metal", "key": "FacadeMetalPanel", "category": "Building"},
+    {"pattern": "wood|timber|plank|siding", "key": "FacadeWood", "category": "Building"},
+    {"pattern": "wood|timber|plank", "key": "WoodWeathered"},
+    {"pattern": "concrete|cement", "key": "FacadeConcrete", "category": "Building"},
+    {"pattern": "concrete|cement", "key": "RoadConcreteDeck"},
+    {"pattern": "neon|emiss|glow|light", "key": "NeonWhite"},
+    {"pattern": "steel|metal|iron|alumin|chrome", "key": "MetalGalvanized"},
+    {"pattern": "plastic|rubber", "key": "PlasticDark"},
+    {"pattern": "leaf|leaves|foliage|grass|bush", "key": "Leaves"},
+    {"pattern": "bark|trunk", "key": "Bark"}
+  ],
+  "category_defaults": {
+    "Road_Surface": "RoadAsphaltNew",
+    "Sidewalk": "SidewalkConcrete",
+    "Building": "FacadeConcrete",
+    "Prop": "MetalPainted",
+    "Vegetation": "Leaves",
+    "Terrain": "RoadDirt"
+  }
+}

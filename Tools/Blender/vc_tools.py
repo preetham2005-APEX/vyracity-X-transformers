@@ -85,13 +85,15 @@ def _with_children(objects):
     return out
 
 
-def vc_export_fbx(objects, path, mode="prop", axis_forward=None, axis_up=None, pivot=None):
+def vc_export_fbx(objects, path, mode="prop", axis_forward=None, axis_up=None, pivot=None, path_mode=None):
     """Export objects (and their children) to an FBX file.
 
     mode "prop": the pivot object (default: the first object) is moved to the world origin and turned PROP_TURN_DEG about
     Z for the export, then every object gets its exact original transform back; the file has a local pivot and the model's
     front (Blender -Y) faces Unity +Z. mode "world": world locations and orientation are kept (Blender +Y -> Unity +Z).
-    axis_forward / axis_up override the preset (used only by the S4 round-trip test). Returns the export arguments used.
+    axis_forward / axis_up override the preset (used only by the S4 round-trip test). path_mode overrides the texture path
+    handling ("STRIP" for batch ingestion: no .fbm texture copy per file; card B3 remaps the materials to the
+    VeyraMaterialLibrary). Returns the export arguments used.
     """
     if mode not in PRESETS:
         raise ValueError("mode must be 'prop' or 'world'")
@@ -104,6 +106,8 @@ def vc_export_fbx(objects, path, mode="prop", axis_forward=None, axis_up=None, p
         args["axis_forward"] = axis_forward
     if axis_up:
         args["axis_up"] = axis_up
+    if path_mode:
+        args["path_mode"] = path_mode
 
     view_layer = bpy.context.view_layer
     prev_sel = [o for o in view_layer.objects if o.select_get()]
