@@ -177,19 +177,6 @@ namespace VeyraCity.EditorTools
             d.Engine.TorqueCurve = c;
         }
 
-        static Material Template(string name, string shader, bool transparent, bool additive, bool emission)
-        {
-            Directory.CreateDirectory(Gen + "/Materials");
-            string path = $"{Gen}/Materials/{name}.mat";
-            var m = AssetDatabase.LoadAssetAtPath<Material>(path);
-            if (m == null) { m = new Material(Shader.Find(shader)); AssetDatabase.CreateAsset(m, path); }
-            m.shader = Shader.Find(shader);
-            if (transparent) RuntimeMaterials.ConfigureTransparent(m, additive);
-            if (emission) { m.EnableKeyword("_EMISSION"); m.SetColor("_EmissionColor", Color.black); }
-            EditorUtility.SetDirty(m);
-            return m;
-        }
-
         static GameDatabase BuildDatabase()
         {
             const string dbPath = DbPath;
@@ -220,10 +207,7 @@ namespace VeyraCity.EditorTools
             db.Gravel = LoadAsset<SurfaceDefinition>("Assets/_Veyra/Data/Surfaces/gravel.asset");
             db.Grass = LoadAsset<SurfaceDefinition>("Assets/_Veyra/Data/Surfaces/grass.asset");
             db.Dirt = LoadAsset<SurfaceDefinition>("Assets/_Veyra/Data/Surfaces/dirt.asset");
-            db.LitTemplate = Template("T_Lit", "Universal Render Pipeline/Lit", false, false, true);
-            db.UnlitAdditiveTemplate = Template("T_UnlitAdditive", "Universal Render Pipeline/Unlit", true, true, false);
-            db.ParticleAlphaTemplate = Template("T_ParticleAlpha", "Universal Render Pipeline/Particles/Unlit", true, false, false);
-            db.ParticleAdditiveTemplate = Template("T_ParticleAdditive", "Universal Render Pipeline/Particles/Unlit", true, true, false);
+            VeyraMaterialFactory.BuildLibrary(); // runtime material templates (card F1)
             db.PlaceholderBody = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Veyra/Art/TestTrack/M_Placeholder_CarBody.mat");
             db.PlaceholderWheel = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Veyra/Art/TestTrack/M_Placeholder_Wheel.mat");
 

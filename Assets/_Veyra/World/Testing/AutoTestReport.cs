@@ -39,12 +39,26 @@ namespace VeyraCity.Testing
         public List<SegmentReport> per_segment = new List<SegmentReport>();
         public List<EventRecord> events = new List<EventRecord>();
         public string review_capture = "not requested";
+        /// <summary>Card F1: material audit of every enabled renderer at the end of the route (no pink, no missing material).</summary>
+        public MaterialAudit materials = new MaterialAudit();
 
         [Serializable] public sealed class BuildBlock { public string type, backend, version, git, unity; }
         [Serializable] public sealed class FrameTimes { public float p50, p95, p99, max; }
         [Serializable] public sealed class TeleportWindow { public int count; public float excluded_s; public int frames; public float max_ms; public int hitches_over_50ms; }
         /// <summary>-1 = not available in this build type.</summary>
         [Serializable] public sealed class MemoryBlock { public float managed = -1f, total_reserved = -1f, gfx = -1f; }
+
+        /// <summary>
+        /// Card F1. renderers/material_slots audited; null_materials = empty slots (draw pink or nothing); error_shader = the
+        /// error/fallback shader or no shader (pink); unsupported_shader = a shader this GPU/build cannot run.
+        /// </summary>
+        [Serializable]
+        public sealed class MaterialAudit
+        {
+            public bool audited;
+            public int renderers, material_slots, null_materials, error_shader, unsupported_shader;
+            public List<string> first_offenders = new List<string>();
+        }
 
         [Serializable]
         public sealed class VehicleBlock

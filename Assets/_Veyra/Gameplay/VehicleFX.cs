@@ -196,26 +196,19 @@ namespace VeyraCity.Gameplay
                     puff.SetPixel(x, y, new Color(1f, 1f, 1f, a));
                 }
             puff.Apply();
-            smokeMat = RuntimeMaterials.NewParticle("TyreSmoke", false);
-            smokeMat.SetTexture("_BaseMap", puff);
-            smokeMat.SetColor("_BaseColor", new Color(0.85f, 0.86f, 0.88f, 0.55f));
-            flameMat = RuntimeMaterials.NewParticle("NitroFlame", true);
-            flameMat.SetColor("_BaseColor", new Color(1f, 0.55f, 0.15f, 0.8f));
-            sparkMat = RuntimeMaterials.NewParticle("Sparks", true);
-            sparkMat.SetColor("_BaseColor", new Color(1f, 0.8f, 0.45f, 1f));
-            trailMat = RuntimeMaterials.NewParticle("NitroTrail", true);
-            trailMat.SetColor("_BaseColor", new Color(1f, 1f, 1f, 0.7f));
+            // Copies of the library's particle templates (card F1); null only when the library is missing (RuntimeMaterials logs it).
+            smokeMat = Particle("TyreSmoke", false, new Color(0.85f, 0.86f, 0.88f, 0.55f));
+            if (smokeMat != null) smokeMat.SetTexture("_BaseMap", puff);
+            flameMat = Particle("NitroFlame", true, new Color(1f, 0.55f, 0.15f, 0.8f));
+            sparkMat = Particle("Sparks", true, new Color(1f, 0.8f, 0.45f, 1f));
+            trailMat = Particle("NitroTrail", true, new Color(1f, 1f, 1f, 0.7f));
         }
 
-        static void MakeTransparent(Material m, bool additive)
+        static Material Particle(string name, bool additive, Color colour)
         {
-            m.SetFloat("_Surface", 1f);
-            m.SetOverrideTag("RenderType", "Transparent");
-            m.SetInt("_SrcBlend", (int)BlendMode.SrcAlpha);
-            m.SetInt("_DstBlend", additive ? (int)BlendMode.One : (int)BlendMode.OneMinusSrcAlpha);
-            m.SetInt("_ZWrite", 0);
-            m.renderQueue = 3000;
-            m.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
+            var m = RuntimeMaterials.NewParticle(name, additive);
+            if (m != null) m.SetColor("_BaseColor", colour);
+            return m;
         }
 
         ParticleSystem MakeSmoke(Vector3 local)
@@ -375,9 +368,12 @@ namespace VeyraCity.Gameplay
             mesh.bounds = new Bounds(Vector3.zero, Vector3.one * 20000f);
             go.AddComponent<MeshFilter>().sharedMesh = mesh;
             var r = go.AddComponent<MeshRenderer>();
-            var m = RuntimeMaterials.NewParticle("SkidMark", false);
-            m.SetColor("_BaseColor", new Color(0.02f, 0.02f, 0.02f, 0.8f));
-            m.renderQueue = 2990;
+            var m = RuntimeMaterials.NewParticle("SkidMark", false); // null only without the library (RuntimeMaterials logs it)
+            if (m != null)
+            {
+                m.SetColor("_BaseColor", new Color(0.02f, 0.02f, 0.02f, 0.8f));
+                m.renderQueue = 2990;
+            }
             r.sharedMaterial = m;
             r.shadowCastingMode = ShadowCastingMode.Off;
         }

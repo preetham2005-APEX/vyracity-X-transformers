@@ -21,12 +21,14 @@ namespace VeyraCity.Gameplay
     /// Top-level game flow: main menu → free roam (event markers, traffic) ↔ races (AI field, results,
     /// rewards, story) ↔ garage (cars, upgrades, paint) with settings, pause and saving throughout.
     /// </summary>
-    [DefaultExecutionOrder(-1000)] // material templates must exist before any OnEnable/Start in the scene
+    [DefaultExecutionOrder(-1000)] // the material library must be active before any OnEnable/Start in the scene
     public sealed class GameFlow : MonoBehaviour
     {
         public enum State { Boot, MainMenu, FreeRoam, Garage, Race, Results }
 
         [SerializeField] GameDatabase db;
+        [Tooltip("Assets/_Veyra/World/Generated/Materials/VeyraMaterialLibrary.asset: every material runtime code creates or uses (card F1)")]
+        [SerializeField] VeyraMaterialLibrary materials;
         [SerializeField] ChaseCamera chaseCamera;
         [SerializeField] WorldEnvironment environment;
         [SerializeField] Transform menuOrbitCentre;
@@ -37,6 +39,7 @@ namespace VeyraCity.Gameplay
         public VehicleController PlayerCar => player;
         public VehicleDriver PlayerDriver => playerDriver;
         public GameDatabase Database => db;
+        public VeyraMaterialLibrary Materials => materials;
         public WorldEnvironment WorldEnv => environment;
 
         /// <summary>
@@ -107,13 +110,7 @@ namespace VeyraCity.Gameplay
         void Awake()
         {
             Instance = this;
-            if (db != null)
-            {
-                RuntimeMaterials.Lit = db.LitTemplate;
-                RuntimeMaterials.Unlit = db.UnlitAdditiveTemplate;
-                RuntimeMaterials.ParticleAlpha = db.ParticleAlphaTemplate;
-                RuntimeMaterials.ParticleAdditive = db.ParticleAdditiveTemplate;
-            }
+            VeyraMaterialLibrary.Activate(materials, this);
             var a = Environment.GetCommandLineArgs();
             for (int i = 0; i + 1 < a.Length; i++) if (a[i] == "-veyraSaveDir") SaveSystem.OverrideFolder = a[i + 1];
             foreach (var arg in a)
@@ -125,15 +122,24 @@ namespace VeyraCity.Gameplay
             cam = chaseCamera != null ? chaseCamera.GetComponent<Camera>() : Camera.main;
         }
 
+        /// <summary>
+        /// Card F1: compiles the variants in VC_Variants.shadervariants while loading instead of on first use (fewer first-use
+        /// hitches, BUG-029). Graphics Settings also lists the collection under Preloaded Shaders, in which case Unity has
+        /// already warmed it at startup and this only logs that.
+        /// </summary>
+        void WarmUpShaders()
+        {
+            var variants = materials != null ? materials.Variants : null;
+            if (variants == null) { Debug.LogWarning("[Veyra] no shader variant collection in the material library; skipping warm-up", this); return; }
+            if (variants.isWarmedUp) { Debug.Log($"[Veyra] shader warm-up: {variants.variantCount} variants of {variants.shaderCount} shaders already warm (Preloaded Shaders)"); return; }
+            var sw = System.Diagnostics.Stopwatch.StartNew();
+            variants.WarmUp();
+            Debug.Log($"[Veyra] shader warm-up: {variants.variantCount} variants of {variants.shaderCount} shaders in {sw.Elapsed.TotalMilliseconds:0} ms");
+        }
+
         void Start()
         {
-            if (db != null)
-            {
-                RuntimeMaterials.Lit = db.LitTemplate;
-                RuntimeMaterials.Unlit = db.UnlitAdditiveTemplate;
-                RuntimeMaterials.ParticleAlpha = db.ParticleAlphaTemplate;
-                RuntimeMaterials.ParticleAdditive = db.ParticleAdditiveTemplate;
-            }
+            WarmUpShaders();
             save = SaveSystem.Load() ?? NewSave();
             if (FindAnyObjectByType<EventSystem>() == null)
             {
@@ -498,6 +504,22 @@ namespace VeyraCity.Gameplay
             return vc;
         }
 
+        static readonly Dictionary<(Material, Color32), Material> paintCache = new Dictionary<(Material, Color32), Material>();
+
+        /// <summary>
+        /// The paint copy of <paramref name="source"/> in <paramref name="paint"/>, created once per (material, colour) and reused
+        /// on every respawn (BUG-046: a new copy per renderer per spawn was never destroyed).
+        /// </summary>
+        static Material PaintedCopy(Material source, Color paint)
+        {
+            var key = (source, (Color32)paint);
+            if (paintCache.TryGetValue(key, out var copy) && copy != null) return copy;
+            copy = new Material(source) { name = source.name + "_Paint" };
+            copy.SetColor("_BaseColor", paint);
+            paintCache[key] = copy;
+            return copy;
+        }
+
         static void ApplyPaint(GameObject car, Color paint)
         {
             // Imported cars name their paint materials M_Paint_* (liveries are M_Livery_* and keep their artwork);
@@ -517,9 +539,7 @@ namespace VeyraCity.Gameplay
                     bool isPaint = m.name.StartsWith("M_Paint") || m.name.StartsWith("Traffic_Body") || m.name.Contains("Placeholder_CarBody")
                                    || (!named && r.name.StartsWith("Body") && !m.name.Contains("Glass"));
                     if (!isPaint) continue;
-                    var inst = new Material(m) { name = m.name + "_Paint" };
-                    inst.SetColor("_BaseColor", paint);
-                    mats[i] = inst;
+                    mats[i] = PaintedCopy(m, paint);
                     changed = true;
                 }
                 if (changed) r.sharedMaterials = mats;
@@ -654,7 +674,8 @@ namespace VeyraCity.Gameplay
             var root = new GameObject("EventMarkers").transform;
             root.SetParent(transform, false);
             var used = new HashSet<string>();
-            var mat = RuntimeMaterials.NewUnlitTransparent("EventMarker", true);
+            var mat = RuntimeMaterials.NewUnlitTransparent("EventMarker", true); // null: RuntimeMaterials logged why
+            if (mat != null) mat.SetColor("_BaseColor", new Color(1f, 0.25f, 0.62f, 0.22f));
             foreach (var ch in Career.Chapters)
                 foreach (var e in ch.Events)
                 {
@@ -671,12 +692,7 @@ namespace VeyraCity.Gameplay
                     go.transform.position = p + Vector3.up * 30f;
                     go.transform.localScale = new Vector3(5f, 30f, 5f);
                     var r = go.GetComponent<Renderer>();
-                    if (mat != null)
-                    {
-                        var mi = new Material(mat);
-                        mi.SetColor("_BaseColor", new Color(1f, 0.25f, 0.62f, 0.22f));
-                        r.sharedMaterial = mi;
-                    }
+                    if (mat != null) r.sharedMaterial = mat;
                     r.shadowCastingMode = ShadowCastingMode.Off;
                     m.Visual = go;
                     markers.Add(m);
@@ -1063,11 +1079,12 @@ namespace VeyraCity.Gameplay
             garageRoot.position = new Vector3(0f, 1500f, 0f);
             Material M(Color c, float smooth, float metal, Color? em = null)
             {
-                var m = RuntimeMaterials.NewLit("Garage");
+                var m = RuntimeMaterials.NewLit("Garage"); // FxLit: _EMISSION is on in the template (black), so no keyword change
+                if (m == null) return null;               // RuntimeMaterials logged why
                 m.SetColor("_BaseColor", c);
                 m.SetFloat("_Smoothness", smooth);
                 m.SetFloat("_Metallic", metal);
-                if (em.HasValue) { m.EnableKeyword("_EMISSION"); m.SetColor("_EmissionColor", em.Value); }
+                if (em.HasValue) m.SetColor("_EmissionColor", em.Value);
                 return m;
             }
             void Box(string name, Vector3 pos, Vector3 size, Material m)

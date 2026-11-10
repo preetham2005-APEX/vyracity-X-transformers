@@ -34,6 +34,14 @@ Rule 'spawned_on_road'             ($v.spawned_on_road -eq $true) ("spawn height
 Rule 'falls_below_surface = 0'     ($v.falls_below_surface -eq 0) ("{0}" -f $v.falls_below_surface)
 Rule 'invisible_wall_events = 0'   ($v.invisible_wall_events -eq 0) ("{0}" -f $v.invisible_wall_events)
 Rule 'segments all completed'      (($v.segments_total -gt 0) -and ($v.segments_completed -eq $v.segments_total)) ("{0}/{1}" -f $v.segments_completed, $v.segments_total)
+$m = $s.materials
+if ($m -and $m.audited) {
+    $firstBad = ''
+    if ($m.first_offenders -and $m.first_offenders.Count -gt 0) { $firstBad = " - first: " + $m.first_offenders[0] }
+    Rule 'no pink or missing materials' (($m.null_materials -eq 0) -and ($m.error_shader -eq 0) -and ($m.unsupported_shader -eq 0)) ("{0} renderers, {1} slots: {2} empty, {3} error shader, {4} unsupported{5}" -f $m.renderers, $m.material_slots, $m.null_materials, $m.error_shader, $m.unsupported_shader, $firstBad)
+} else {
+    Info 'material audit' 'not in this stats.json (built before card F1)'
+}
 
 if ($s.build.type -eq 'release') {
     Rule 'fps_1pct_low >= 60'      ($s.fps_1pct_low -ge 60) ("{0:0.0}" -f $s.fps_1pct_low)

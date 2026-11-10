@@ -33,6 +33,8 @@ namespace VeyraCity.World
             public Color DryColor;
         }
 
+        [Tooltip("Assets/_Veyra/World/Generated/Materials/VeyraMaterialLibrary.asset (rain material; activated for the scene)")]
+        [SerializeField] VeyraMaterialLibrary materials;
         public Light Sun;
         public Material SkyboxMaterial;
         public Volume PostVolume;
@@ -69,10 +71,17 @@ namespace VeyraCity.World
         static readonly int EmissionId = Shader.PropertyToID("_EmissionColor");
         static readonly int SmoothId = Shader.PropertyToID("_Smoothness");
         static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
+        static readonly int BumpMapId = Shader.PropertyToID("_BumpMap");
+        static readonly int ExposureId = Shader.PropertyToID("_Exposure");
+        static readonly int AtmosphereId = Shader.PropertyToID("_AtmosphereThickness");
+        static readonly int SkyTintId = Shader.PropertyToID("_SkyTint");
+
+        public VeyraMaterialLibrary Materials { get => materials; set => materials = value; }
 
         void OnEnable()
         {
             Instance = this;
+            if (materials != null || Application.isPlaying) VeyraMaterialLibrary.Activate(materials, this);
             if (PostVolume != null && PostVolume.sharedProfile != null)
             {
                 PostVolume.sharedProfile.TryGet(out colorAdj);
@@ -86,6 +95,9 @@ namespace VeyraCity.World
         void OnDisable()
         {
             if (Instance == this) Instance = null;
+            // Edit mode (scene closed, recompiled or built in batch mode): leave the shared .mat assets in their reference state
+            // so a later asset save never writes the preview (BUG-039; the editor save guard covers saves while the scene is open).
+            if (!Application.isPlaying) WriteReferenceMaterialState();
         }
 
         public void SetWeather(WeatherKind w)
@@ -131,8 +143,24 @@ namespace VeyraCity.World
             Apply(false);
             float tt = Application.isPlaying ? Time.time : 0f;
             foreach (var m in ScrollMaterials)
-                if (m != null) m.SetTextureOffset("_BumpMap", new Vector2(tt * 0.011f, tt * 0.007f));
+                if (m != null) m.SetTextureOffset(BumpMapId, new Vector2(tt * 0.011f, tt * 0.007f));
         }
+
+        /// <summary>
+        /// Writes the reference state into the shared materials this component animates (noon, clear, dry: daytime emission,
+        /// dry roads, day sky, water scroll at 0). The .mat assets are saved in this state, so previewing night or rain in the
+        /// Editor no longer changes them on disk (BUG-039); the editor save guard calls this before every asset save and then
+        /// re-applies the current time and weather. Scene-level settings (RenderSettings, light, post volume) are not touched.
+        /// </summary>
+        public void WriteReferenceMaterialState()
+        {
+            ApplyMaterials(0f, 0f, 0f);
+            foreach (var m in ScrollMaterials)
+                if (m != null) m.SetTextureOffset(BumpMapId, Vector2.zero);
+        }
+
+        /// <summary>Re-applies the current time of day and weather after <see cref="WriteReferenceMaterialState"/>.</summary>
+        public void ReapplyCurrentState() => Apply(true);
 
         static float Smooth(float a, float b, float x) => Mathf.SmoothStep(0f, 1f, Mathf.InverseLerp(a, b, x));
 
@@ -183,13 +211,7 @@ namespace VeyraCity.World
             RenderSettings.fogDensity = Mathf.Lerp(0.00042f, 0.00085f, NightFactor) + wetHaze;
             RenderSettings.fogColor = Color.Lerp(Color.Lerp(new Color(0.66f, 0.72f, 0.80f), new Color(0.78f, 0.58f, 0.45f), golden),
                                                  new Color(0.035f, 0.045f, 0.075f), NightFactor);
-            if (SkyboxMaterial != null)
-            {
-                RenderSettings.skybox = SkyboxMaterial;
-                if (SkyboxMaterial.HasProperty("_Exposure")) SkyboxMaterial.SetFloat("_Exposure", Mathf.Lerp(1.15f, 0.06f, NightFactor));
-                if (SkyboxMaterial.HasProperty("_AtmosphereThickness")) SkyboxMaterial.SetFloat("_AtmosphereThickness", Mathf.Lerp(0.85f, 1.6f, golden));
-                if (SkyboxMaterial.HasProperty("_SkyTint")) SkyboxMaterial.SetColor("_SkyTint", Color.Lerp(new Color(0.5f, 0.55f, 0.62f), new Color(0.25f, 0.28f, 0.45f), NightFactor));
-            }
+            if (SkyboxMaterial != null) RenderSettings.skybox = SkyboxMaterial;
             if (colorAdj != null) colorAdj.postExposure.value = Mathf.Lerp(0.05f, 0.3f, NightFactor);
             if (bloom != null)
             {
@@ -198,25 +220,40 @@ namespace VeyraCity.World
                 bloom.threshold.value = Mathf.Lerp(1.25f, 0.9f, NightFactor);
             }
 
-            // Emissives (windows, neon, lamp heads).
+            ApplyMaterials(NightFactor, golden, Wetness);
+
+            if (Application.isPlaying)
+            {
+                UpdateLightPool(force);
+                UpdateRain();
+            }
+        }
+
+        /// <summary>
+        /// Material response to light and weather: sky, emissives (windows, neon, lamp heads) and wet roads. Only property values
+        /// change; no shader keyword is toggled at runtime (card F1): emissive materials keep _EMISSION on in their assets and
+        /// night brightness is the _EmissionColor value.
+        /// </summary>
+        void ApplyMaterials(float night, float golden, float wetness)
+        {
+            if (SkyboxMaterial != null)
+            {
+                if (SkyboxMaterial.HasProperty(ExposureId)) SkyboxMaterial.SetFloat(ExposureId, Mathf.Lerp(1.15f, 0.06f, night));
+                if (SkyboxMaterial.HasProperty(AtmosphereId)) SkyboxMaterial.SetFloat(AtmosphereId, Mathf.Lerp(0.85f, 1.6f, golden));
+                if (SkyboxMaterial.HasProperty(SkyTintId)) SkyboxMaterial.SetColor(SkyTintId, Color.Lerp(new Color(0.5f, 0.55f, 0.62f), new Color(0.25f, 0.28f, 0.45f), night));
+            }
             foreach (var e in Emissives)
             {
                 if (e.Material == null) continue;
-                float k = Mathf.Lerp(1f, NightFactor, e.NightOnly);
+                float k = Mathf.Lerp(1f, night, e.NightOnly);
                 e.Material.SetColor(EmissionId, e.BaseEmission * k);
             }
             // Wet roads: darker and much glossier.
             foreach (var w in WetSurfaces)
             {
                 if (w.Material == null) continue;
-                w.Material.SetFloat(SmoothId, Mathf.Lerp(w.DrySmoothness, w.WetSmoothness, Wetness));
-                w.Material.SetColor(BaseColorId, Color.Lerp(w.DryColor, w.DryColor * 0.55f, Wetness));
-            }
-
-            if (Application.isPlaying)
-            {
-                UpdateLightPool(force);
-                UpdateRain();
+                w.Material.SetFloat(SmoothId, Mathf.Lerp(w.DrySmoothness, w.WetSmoothness, wetness));
+                w.Material.SetColor(BaseColorId, Color.Lerp(w.DryColor, w.DryColor * 0.55f, wetness));
             }
         }
 
@@ -282,9 +319,12 @@ namespace VeyraCity.World
         {
             var cam = Camera.main;
             if (cam == null) return;
-            if (rain == null && RuntimeMaterials.ParticleAlpha == null) return; // templates arrive with the game database
+            if (rain == null && Weather != WeatherKind.Rain) return; // built on first rain
             if (rain == null)
             {
+                var m = RuntimeMaterials.NewParticle("Rain", false);
+                if (m == null) return; // RuntimeMaterials logged why (no library or empty slot)
+                m.SetColor(BaseColorId, new Color(0.8f, 0.85f, 1f, 0.3f));
                 var go = new GameObject("Rain");
                 rain = go.AddComponent<ParticleSystem>();
                 var main = rain.main;
@@ -313,8 +353,6 @@ namespace VeyraCity.World
                 r.renderMode = ParticleSystemRenderMode.Stretch;
                 r.velocityScale = 0.04f;
                 r.lengthScale = 1f;
-                var m = RuntimeMaterials.NewParticle("Rain", false);
-                m.SetColor("_BaseColor", new Color(0.8f, 0.85f, 1f, 0.3f));
                 r.sharedMaterial = m;
                 rain.Play();
             }

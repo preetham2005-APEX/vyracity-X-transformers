@@ -13,8 +13,7 @@ namespace VeyraCity.Gameplay
         public AssistPreset Casual, Advanced, AIPreset;
         public SurfaceDefinition DryAsphalt, WetAsphalt, Concrete, Gravel, Grass, Dirt;
         public Material PlaceholderBody, PlaceholderWheel;
-        [Tooltip("Templates so runtime-created materials keep their shaders in player builds")]
-        public Material LitTemplate, UnlitAdditiveTemplate, ParticleAlphaTemplate, ParticleAdditiveTemplate;
+        // Runtime material templates moved to the VeyraMaterialLibrary in card F1 (Assets/_Veyra/World/Generated/Materials).
         public GameObject[] TrafficModels = Array.Empty<GameObject>();
         [Tooltip("Driving style layer applied to every car the game spawns (Arcade by default; null = pure simulation)")]
         public HandlingFeel Feel;

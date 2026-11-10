@@ -14,16 +14,13 @@ namespace VeyraCity.AI
 
         static Material Lit(string name, Color c, float smooth, float metal, Color? emission = null)
         {
-            var m = VeyraCity.World.RuntimeMaterials.NewLit(name);
+            var m = VeyraCity.World.RuntimeMaterials.NewLit(name); // FxLit template: _EMISSION already on (black)
+            if (m == null) return null;                             // RuntimeMaterials logged why
             m.enableInstancing = true;
             m.SetColor("_BaseColor", c);
             m.SetFloat("_Smoothness", smooth);
             m.SetFloat("_Metallic", metal);
-            if (emission.HasValue)
-            {
-                m.EnableKeyword("_EMISSION");
-                m.SetColor("_EmissionColor", emission.Value);
-            }
+            if (emission.HasValue) m.SetColor("_EmissionColor", emission.Value);
             return m;
         }
 

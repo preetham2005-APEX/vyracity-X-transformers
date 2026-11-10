@@ -202,6 +202,8 @@ namespace VeyraCity.Testing
             report.route_complete = report.vehicle.segments_completed == report.vehicle.segments_total;
             if (endReason == "route complete" && !report.route_complete)
                 endReason = $"all segments attempted, {report.vehicle.segments_completed}/{report.vehicle.segments_total} completed";
+            report.materials = MaterialAuditor.Run();
+            Debug.Log("[AutoTest] " + MaterialAuditor.Summary(report.materials));
             if (opts.ReviewCapture)
             {
                 if (cfg.ReviewCameras != null)

@@ -128,6 +128,7 @@ namespace VeyraCity.Testing
             string sheetPath = Path.Combine(dir, "contact_sheet.png");
             ReviewCameraRig.SavePng(sheet, sheetPath);
             log.AppendLine($"contact sheet: {sheetPath} ({shots.Count} cameras)");
+            log.AppendLine(MaterialAuditor.Summary(MaterialAuditor.Run())); // card F1: pink/missing materials in the loaded world
             foreach (var s in shots) if (s.image != null) Destroy(s.image);
             Destroy(sheet);
             Destroy(cam.gameObject);

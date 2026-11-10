@@ -1,89 +1,43 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace VeyraCity.World
 {
     /// <summary>
-    /// Material templates for runtime-created effects. Shaders looked up with Shader.Find are stripped from
-    /// player builds unless a material asset references them, so the game database supplies these templates
-    /// (set at startup); Shader.Find is only an editor-time fallback.
+    /// Per-instance materials for things built at runtime (effects, markers, garage, procedural traffic): each one is a copy of
+    /// a template from the active <see cref="VeyraMaterialLibrary"/>, so its shader and keywords come from a material asset in
+    /// the build (card F1, BUG-002). No shader lookups by name and no keyword changes happen here: the templates already carry
+    /// their keywords (FxLit has _EMISSION on with black emission; the transparent ones are set up as transparent).
+    /// Each method returns null and logs one precise error when the library or its slot is missing.
     /// </summary>
     public static class RuntimeMaterials
     {
-        public static Material Lit, Unlit, ParticleAlpha, ParticleAdditive;
+        /// <summary>A copy of the FxLit template (URP/Lit, _EMISSION on): set _BaseColor, _Smoothness, _Metallic, _EmissionColor.</summary>
+        public static Material NewLit(string name) => Copy(VeyraMat.FxLit, name);
 
-        public static Material NewLit(string name)
-        {
-            Material m = null;
-            if (Lit != null)
-            {
-                m = new Material(Lit);
-            }
-            else
-            {
-                var shader = Shader.Find("Universal Render Pipeline/Lit") 
-                          ?? Shader.Find("Hidden/Universal Render Pipeline/FallbackError");
-                if (shader != null) m = new Material(shader);
-            }
-            if (m != null) m.name = name;
-            return m;
-        }
+        /// <summary>A copy of a URP/Particles/Unlit template, alpha-blended or additive.</summary>
+        public static Material NewParticle(string name, bool additive) => Copy(additive ? VeyraMat.FxParticleAdditive : VeyraMat.FxParticleAlpha, name);
 
-        public static Material NewParticle(string name, bool additive)
+        /// <summary>A copy of a URP/Unlit transparent template, alpha-blended or additive.</summary>
+        public static Material NewUnlitTransparent(string name, bool additive) => Copy(additive ? VeyraMat.FxUnlitAdditive : VeyraMat.FxUnlitAlpha, name);
+
+        static bool reportedNoLibrary;
+
+        static Material Copy(VeyraMat key, string name)
         {
-            var src = additive ? ParticleAdditive : ParticleAlpha;
-            Material m = null;
-            if (src != null)
+            var lib = VeyraMaterialLibrary.Active;
+            if (lib == null)
             {
-                m = new Material(src);
-            }
-            else
-            {
-                var shader = Shader.Find("Universal Render Pipeline/Particles/Unlit") 
-                          ?? Shader.Find("Universal Render Pipeline/Unlit")
-                          ?? Shader.Find("Particles/Standard Unlit");
-                if (shader != null)
+                if (!reportedNoLibrary)
                 {
-                    m = new Material(shader);
-                    ConfigureTransparent(m, additive);
+                    reportedNoLibrary = true;
+                    Debug.LogError($"[RuntimeMaterials] no active VeyraMaterialLibrary while creating '{name}' ({key}): the scene needs GameFlow, " +
+                                   "WorldEnvironment or a VeyraMaterialsHolder with the library assigned (Veyra/Materials/Build Material Library).");
                 }
+                return null;
             }
-            if (m != null) m.name = name;
-            return m;
-        }
-
-        public static Material NewUnlitTransparent(string name, bool additive)
-        {
-            Material m = null;
-            if (Unlit != null)
-            {
-                m = new Material(Unlit);
-            }
-            else
-            {
-                var shader = Shader.Find("Universal Render Pipeline/Unlit") 
-                          ?? Shader.Find("Hidden/Universal Render Pipeline/FallbackError");
-                if (shader != null)
-                {
-                    m = new Material(shader);
-                    ConfigureTransparent(m, additive);
-                }
-            }
-            if (m != null) m.name = name;
-            return m;
-        }
-
-        public static void ConfigureTransparent(Material m, bool additive)
-        {
-            if (m == null) return;
-            m.SetFloat("_Surface", 1f);
-            m.SetFloat("_Blend", additive ? 2f : 0f);
-            m.SetOverrideTag("RenderType", "Transparent");
-            m.SetInt("_SrcBlend", (int)BlendMode.SrcAlpha);
-            m.SetInt("_DstBlend", additive ? (int)BlendMode.One : (int)BlendMode.OneMinusSrcAlpha);
-            m.SetInt("_ZWrite", 0);
-            m.renderQueue = 3000;
-            m.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
+            var template = lib.Get(key);
+            if (template == null) return null;
+            return new Material(template) { name = name };
         }
     }
 }
