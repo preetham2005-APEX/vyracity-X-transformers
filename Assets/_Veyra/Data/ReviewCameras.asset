@@ -271,9 +271,9 @@ MonoBehaviour:
   - name: CAM_16_WH_Street_Day
     kind: 0
     district: D5
-    position: {x: -2260, y: 1.7, z: -610}
+    position: {x: -2146.5, y: 1.7, z: -650}
     heightAboveGround: 1
-    lookAt: {x: -2200, y: 8, z: -550}
+    lookAt: {x: -2160, y: 19, z: -500}
     roadId: 
     distanceAlongRoad_m: 0
     direction: 1
@@ -284,7 +284,7 @@ MonoBehaviour:
     time: 0
     hour: 12
     wet: 0
-    note: Westhaven Plaza
+    note: Laurel Street at Westhaven Plaza (BUG-056)
   - name: CAM_17_FA_Dragway_Aerial
     kind: 0
     district: D7

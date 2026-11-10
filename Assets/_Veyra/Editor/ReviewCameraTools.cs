@@ -64,7 +64,10 @@ namespace VeyraCity.EditorTools
                 Chase("CAM_13_NM_Lumen_Night", "D6", "A7", 700f, null, 40f, 62f, N, true),
                 Fixed("CAM_14_AC_Lighthouse_Golden", "D2", new Vector3(-190f, 2f, -2570f), true, new Vector3(535f, 40f, -2605f), 55f, G, "at VP-03, looking at the bridge"),
                 Fixed("CAM_15_IP_Berth_Dusk", "D3", new Vector3(1600f, 2f, -2700f), true, new Vector3(2300f, 40f, -2580f), 60f, ReviewCameraSet.TimeLabel.Dusk, "on Berth Road, looking at the cranes"),
-                Fixed("CAM_16_WH_Street_Day", "D5", new Vector3(-2260f, 1.7f, -610f), true, new Vector3(-2200f, 8f, -550f), 64f, D, "Westhaven Plaza"),
+                // BUG-056: Appendix E's (-2260, +1.7, -610) is 2.5 m from house BLD-02353's wall. Moved onto Laurel Street (LM-24's road in
+                // location_registry.csv), s ≈ 1040 m, 2.4 m west of the centreline, looking north up the street past Westhaven Plaza;
+                // no building footprint within 3 m of the sight line (world_building_placements.csv).
+                Fixed("CAM_16_WH_Street_Day", "D5", new Vector3(-2146.5f, 1.7f, -650f), true, new Vector3(-2160f, 19f, -500f), 64f, D, "Laurel Street at Westhaven Plaza (BUG-056)"),
                 Fixed("CAM_17_FA_Dragway_Aerial", "D7", new Vector3(2500f, 120f, -1100f), false, new Vector3(2900f, 8f, -600f), 45f, D),
                 Fixed("CAM_18_RV_MirrorLake_Morning", "D8", new Vector3(-2950f, 3f, 1800f), true, new Vector3(-2950f, 160f, 2600f), 55f, ReviewCameraSet.TimeLabel.Morning, "at VP-08"),
             };
