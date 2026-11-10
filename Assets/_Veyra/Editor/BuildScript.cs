@@ -51,7 +51,25 @@ namespace VeyraCity.EditorTools
         public static BuildResult BuildPlayer(bool il2cpp, bool development, string outDir, string version = "0.1.0-foundation")
         {
             SceneTools.EnsureFoundationScene(force: false);
-            string[] scenes = GetScenes();
+            string[] scenes;
+            // Roadmap A2 / W7: the player streams 1 km cells generated from the authoring scene (Veyra/World/Distribute To Cells).
+            // "-veyraNoStream" on the command line, the environment variable VEYRA_NO_STREAM=1 or EditorPrefs "Veyra.NoStream"
+            // (set it from an open Editor) builds the single authoring scene instead (fallback).
+            if (Environment.GetCommandLineArgs().Contains("-veyraNoStream") || Environment.GetEnvironmentVariable("VEYRA_NO_STREAM") == "1"
+                || EditorPrefs.GetBool("Veyra.NoStream", false))
+            {
+                scenes = EditorBuildSettings.scenes.Where(s => File.Exists(s.path) && (s.path == CellDistributor.AuthoringScene ||
+                             (s.enabled && s.path != CellDistributor.BootScene && s.path != CellDistributor.MainScene && !s.path.StartsWith(CellDistributor.CellDir))))
+                         .Select(s => s.path).Distinct().ToArray();
+                Debug.Log("[Veyra] -veyraNoStream: building the authoring scene without streaming");
+            }
+            else
+            {
+                string dist = CellDistributor.Run();
+                Debug.Log("[Veyra] " + dist);
+                if (dist.StartsWith("FAIL")) { Debug.LogError("[Veyra] Distribute To Cells failed: " + dist); return BuildResult.Failed; }
+                scenes = GetScenes();
+            }
             if (scenes.Length == 0) { Debug.LogError("[Veyra] No scenes in build settings."); return BuildResult.Failed; }
 
             PlayerSettings.productName = ProductName;

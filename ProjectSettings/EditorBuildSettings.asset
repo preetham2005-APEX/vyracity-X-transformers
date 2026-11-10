@@ -6,6 +6,156 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Veyra/Scenes/VeyraCity_Boot.unity
+    guid: 9a8dd68f058d5dd4cac193311c3ccec8
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/VeyraCity_Main.unity
+    guid: e22ecb229368e2740a57876952538e30
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_A1.unity
+    guid: ff21b6a087f50fb448993033d938ced0
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_B1.unity
+    guid: 9eb0df8fd4ae13d418186e252308a2c4
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_C1.unity
+    guid: 94f21a8de736c7e4795814346a32e67e
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_D1.unity
+    guid: c3c7cce7d40b3af4dbba08ff8da7c07c
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_E1.unity
+    guid: f6e44c84c2eedf94788786a8fde4a57f
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_F1.unity
+    guid: c5332e16fad0e974eb9c2394d4fd3f9b
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_G1.unity
+    guid: eea04a9a5d265524ab1af8d8c2aba0e8
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_H1.unity
+    guid: 79ef57ffe300c234c80e114a83331771
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_A2.unity
+    guid: aa25b57cc192a104da4a4da1612e14ce
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_B2.unity
+    guid: ffa66cfda0f42fd4f934abcd7043ae6e
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_C2.unity
+    guid: 3fda360b7a4939d46893d6b1593c2a42
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_D2.unity
+    guid: ae584569429907c4ea93a8554e0ae005
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_E2.unity
+    guid: 3a9b69f451bf0c4429c6378776a45683
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_F2.unity
+    guid: a802df6253523194fbf09de8725a2eec
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_G2.unity
+    guid: 739bc72226011774a952e8ab3724d055
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_H2.unity
+    guid: af9daa9b76fa6f44abc2c2660dd610c5
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_A3.unity
+    guid: 27f9e25fa708eab41937271599f703cc
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_B3.unity
+    guid: a844ab7fac3bffd4f8115f9ccbe60f8d
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_C3.unity
+    guid: cdf39f489546e974294b9a133874ddfb
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_D3.unity
+    guid: 4b95a31049bc2874f9cd41caf9ac5fcb
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_E3.unity
+    guid: eaf22484f478c2f43a9528e79737af36
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_F3.unity
+    guid: 3e57b14a31afb9943b1a1cc59bb49b78
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_G3.unity
+    guid: 012fca05450f9674db9a726afcbaa0e7
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_H3.unity
+    guid: b3b72c767aaec194eb22efa150fa56a9
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_A4.unity
+    guid: 10b87ad0cc7c98d46abe2939407e68fc
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_B4.unity
+    guid: 40d90cf411d34044c87dc7360f256ecb
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_C4.unity
+    guid: 3958cf83248d99d42aab998d2f2633ac
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_D4.unity
+    guid: 70afced04c7d5224fb2af13dc5a51d19
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_E4.unity
+    guid: abf24dc4f0568244f8467e4cf1d68441
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_F4.unity
+    guid: aca9e2b043b6a1f4fa69962853feac07
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_G4.unity
+    guid: c2e428157e41c6c4882b46befd77d736
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_H4.unity
+    guid: d2befedc7736d3844bc3133ae4380e00
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_A5.unity
+    guid: 4677701f6ac04414988d0a527e964d7c
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_B5.unity
+    guid: a5b88cb1655971d4ba3c6c185754cde9
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_C5.unity
+    guid: 9ace93b5fbbc9e547949c147b3a30a68
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_D5.unity
+    guid: a16c2b23d0a511344aaa03469385c67e
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_E5.unity
+    guid: 9d19223c9862f5a4084114020db1476a
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_F5.unity
+    guid: bccc10e0b22de91428401b9f5a4d40fa
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_G5.unity
+    guid: a5c634912a75dc445b91c724a21cb9e7
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_H5.unity
+    guid: ba89a6c3e397a0e4e813469d4550c486
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_A6.unity
+    guid: cf1c73f861f5f864891e5bf6d04b05c8
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_B6.unity
+    guid: 09976776faac6ed43b4b01899977341a
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_C6.unity
+    guid: 42393897d84623c4fb1244887974ff9e
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_D6.unity
+    guid: 0b768f7facc47b3489da6a3afe70afbc
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_E6.unity
+    guid: 63e13f9d686d3d04583bbdd5833a5515
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_F6.unity
+    guid: 05d92e2b86f11654ebf477d212a76484
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_G6.unity
+    guid: c09ddd74d114a704cb6d2b3da9a2d08a
+  - enabled: 1
+    path: Assets/_Veyra/Scenes/Cells/Cell_H6.unity
+    guid: f0445007e3a293845a6956298de9f23f
+  - enabled: 0
     path: Assets/_Veyra/Scenes/VeyraCity.unity
     guid: b0f8775308ae703458e0bf07f4dbf00b
   - enabled: 1

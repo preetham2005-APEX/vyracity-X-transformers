@@ -81,6 +81,8 @@ Info 'airborne_events'             ("{0}" -f $v.airborne_events)
 Info 'visible_impacts'             ("{0}" -f $v.visible_impacts)
 Info 'max_vertical_accel_g'        ("{0:0.00}" -f $v.max_vertical_accel_g)
 Info 'distance'                    ("{0:0} m in {1:0.0} s" -f $v.distance_m, $s.duration_s)
+if ($s.streaming -and $s.streaming.enabled) { Info 'streaming hitches (A2)' ("{0} frames over 50 ms during cell operations" -f $s.streaming.streaming_hitches_over_50ms) }
+if ($s.streaming) { Info 'streaming (A2)' ("enabled {0}: {1} loads, {2} unloads, {3} cells loaded at end, {4} waits {5:0.0} s (max {6:0.0} s); gfx {7:0} -> {8:0} MB, reserved {9:0} -> {10:0} MB" -f $s.streaming.enabled, $s.streaming.loads, $s.streaming.unloads, $s.streaming.cells_loaded_end, $s.streaming.waits, $s.streaming.wait_s, $s.streaming.max_wait_s, $s.streaming.gfx_mb_start, $s.streaming.gfx_mb_end, $s.streaming.reserved_mb_start, $s.streaming.reserved_mb_end) }
 Info 'teleport windows'            ("{0} teleports, {1} frames excluded, max {2:0.0} ms, {3} hitches > 50 ms" -f $s.teleport_windows.count, $s.teleport_windows.frames, $s.teleport_windows.max_ms, $s.teleport_windows.hitches_over_50ms)
 Info 'memory (MB)'                 ("managed {0:0}, total reserved {1:0}, gfx {2:0}; GC {3:0.00} KB/frame" -f $s.memory_mb.managed, $s.memory_mb.total_reserved, $s.memory_mb.gfx, $s.gc_alloc_kb_per_frame_avg)
 foreach ($seg in $s.per_segment) {

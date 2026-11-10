@@ -196,6 +196,8 @@ namespace VeyraCity.Gameplay
                 // Road colliders share one runtime surface so rain can change grip without editing assets.
                 foreach (var s in FindObjectsByType<VehicleSurface>(FindObjectsInactive.Include))
                     if (s.Surface == db.DryAsphalt && roadSurfaceRuntime != null) s.Surface = roadSurfaceRuntime;
+                // Roadmap A2: a streamed cell that loads again carries the asset surface; swap it too.
+                VeyraCity.World.Streaming.CellStreamer.CellLoaded += OnCellLoaded;
             }
             if (environment != null) environment.WeatherChanged += _ => { };
             ApplySettings();
@@ -1043,6 +1045,14 @@ namespace VeyraCity.Gameplay
         }
 
         // ------------------------------------------------------------------ player car
+        void OnCellLoaded(string cell, UnityEngine.SceneManagement.Scene scene)
+        {
+            if (this == null || db == null || roadSurfaceRuntime == null || !scene.IsValid()) return;
+            foreach (var root in scene.GetRootGameObjects())
+                foreach (var s in root.GetComponentsInChildren<VehicleSurface>(true))
+                    if (s.Surface == db.DryAsphalt) s.Surface = roadSurfaceRuntime;
+        }
+
         void SpawnPlayer(Pose pose)
         {
             DespawnPlayer();
@@ -1051,6 +1061,7 @@ namespace VeyraCity.Gameplay
             var def = Upgrade.Build(entry, owned);
             player = SpawnCar(entry, def, owned.Paint, pose, true);
             playerRoot = player.gameObject;
+            VeyraCity.World.Streaming.CellStreamer.Track(player.Body);   // A2: cells stream around the car; ground guard on teleports
             playerDriver = player.gameObject.AddComponent<VehicleDriver>();
             playerDriver.Bind(player, input, save.Settings.AssistLevel == 0 ? db.Casual : db.Advanced);
             playerDrift = player.gameObject.AddComponent<DriftScorer>();

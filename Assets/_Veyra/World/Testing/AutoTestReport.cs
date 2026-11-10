@@ -36,6 +36,8 @@ namespace VeyraCity.Testing
         /// A distribution with samples = 0 (values -1) was not available in this build.
         /// </summary>
         public RenderStats render = new RenderStats();
+        /// <summary>Roadmap A2 (W7): cell streaming during the run.</summary>
+        public StreamingBlock streaming = new StreamingBlock();
         public int exceptions;
         public int errors;
         public int warnings;
@@ -50,6 +52,17 @@ namespace VeyraCity.Testing
 
         [Serializable] public sealed class BuildBlock { public string type, backend, version, git, unity; }
         [Serializable] public sealed class FrameTimes { public float p50, p95, p99, max; }
+        /// <summary>enabled = streamed scenes (false in the authoring scene); loads/unloads = cell operations during the route;
+        /// wait_s = time spent waiting for cells before teleports (not in the frame stats); memory at the first and last segment.</summary>
+        [Serializable] public sealed class StreamingBlock
+        {
+            public bool enabled;
+            public int loads, unloads, cells_loaded_end, waits;
+            /// <summary>frames over 50 ms during a cell operation (W7 rule: 0); the other hitches are not streaming's</summary>
+            public int streaming_hitches_over_50ms;
+            public float wait_s, max_wait_s, max_callback_ms;
+            public float gfx_mb_start = -1f, gfx_mb_end = -1f, reserved_mb_start = -1f, reserved_mb_end = -1f;
+        }
         [Serializable] public sealed class TeleportWindow { public int count; public float excluded_s; public int frames; public float max_ms; public int hitches_over_50ms; }
         /// <summary>-1 = not available in this build type.</summary>
         [Serializable] public sealed class MemoryBlock { public float managed = -1f, total_reserved = -1f, gfx = -1f; }

@@ -7,6 +7,7 @@ using UnityEngine;
 using VeyraCity.Gameplay;
 using VeyraCity.World;
 using VeyraCity.World.Data;
+using VeyraCity.World.Streaming;
 
 namespace VeyraCity.Testing
 {
@@ -129,6 +130,19 @@ namespace VeyraCity.Testing
                     jobs.Add((e, t.hour, t.wet, $"{e.name}_{t.hour:00.##}h{(t.wet ? "_wet" : "")}"));
             foreach (var (e, hour, wet, label) in jobs)
             {
+                // Roadmap A2: load the cells around the shot first (the pose snaps to colliders); the streamed world is what
+                // the player sees, HLOD proxies beyond the loaded window included.
+                if (CellStreamer.Active)
+                {
+                    Vector3 at = e.position;
+                    if (e.kind == ReviewCameraSet.Kind.Chase)
+                    {
+                        var road = net?.Road(e.roadId);
+                        if (road != null) at = RouteAutopilot.BuildLanePath(road, e.distanceAlongRoad_m, e.distanceAlongRoad_m + 20f, 20f, out _).PositionAt(0f);
+                    }
+                    yield return CellStreamer.WaitUntilReady(at, 900f);
+                    if (car != null) CellStreamer.Track(null);   // the review parks the car itself; no ground guard
+                }
                 var pose = ReviewCameraRig.Pose(e, net);
                 if (!pose.ok) { log.AppendLine($"FAIL  {label}: {pose.error}"); shots.Add((label + " (FAILED)", null)); continue; }
                 if (car != null)
@@ -169,6 +183,7 @@ namespace VeyraCity.Testing
             Destroy(sheet);
             Destroy(cam.gameObject);
             if (car != null) car.Body.isKinematic = wasKinematic;
+            if (CellStreamer.Active) { CellStreamer.Focus(null); if (car != null) CellStreamer.Track(car.Body); }
             if (env != null) { env.SetTime(oldTime); env.SetWetness(0f); env.SetRainIntensity(0f); env.SetWeather(WorldEnvironment.WeatherKind.Clear); }
             LastReport = log.ToString();
             File.WriteAllText(Path.Combine(dir, "review.txt"), LastReport, new UTF8Encoding(false));

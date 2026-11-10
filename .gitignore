@@ -74,3 +74,12 @@ Desktop.ini
 
 # Card C2: TerrainData backups taken before embankments / corridor carving (the originals are also in git history)
 Assets/_Veyra/World/Generated/TerrainBackup~/
+
+# Roadmap A2 (W7): streaming scenes and HLOD proxies are generated from VeyraCity.unity by
+# Veyra/World/Distribute To Cells before every player build (BuildScript); never edit or commit them.
+/Assets/_Veyra/Scenes/Cells/
+/Assets/_Veyra/Scenes/Cells.meta
+/Assets/_Veyra/Scenes/VeyraCity_Main.unity
+/Assets/_Veyra/Scenes/VeyraCity_Main.unity.meta
+/Assets/_Veyra/World/Generated/HLOD/
+/Assets/_Veyra/World/Generated/HLOD.meta

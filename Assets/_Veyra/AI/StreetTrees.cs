@@ -10,7 +10,8 @@ namespace VeyraCity.AI
     /// Street trees along city sidewalks (GTA's tree-lined avenues; our kerbs were bare). Uses the broadleaf tree
     /// prototypes the world builder already made for <see cref="InstancedPropRenderer"/>, places them every ~14 m on
     /// both sides of collector and arterial roads (skipping junctions, bridges and building footprints), and draws
-    /// the ones near the player with GPU instancing. No colliders, like the other instanced trees (BUG-043).
+    /// the ones near the player with GPU instancing. Trunk colliders (Phase B, D2 request): a pool of capsules
+    /// (r 0.25 m Ã— scale, 3.2 m high, layer Default) follows the trees within <see cref="ColliderRadius"/> of the player.
     /// </summary>
     public sealed class StreetTrees : MonoBehaviour
     {
@@ -19,6 +20,11 @@ namespace VeyraCity.AI
         [Tooltip("Trees nearer than this cast shadows and use the full mesh; farther ones use the low LOD without shadows")]
         public float NearRadius = 85f;
         public bool Active = true;
+        [Tooltip("Trees within this distance of the player get a trunk capsule from the pool")]
+        public float ColliderRadius = 70f;
+        const int MaxColliders = 160;
+        readonly List<CapsuleCollider> pool = new List<CapsuleCollider>(MaxColliders);
+        public int ActiveColliders { get; private set; }
 
         static readonly HashSet<string> TreeClasses = new HashSet<string> { "CO", "AR" };
         readonly Dictionary<long, List<Matrix4x4>> grid = new Dictionary<long, List<Matrix4x4>>();
@@ -138,6 +144,7 @@ namespace VeyraCity.AI
                                     if (d2 < n2) visible.Add(m);
                                     else if (d2 < r2) far.Add(m);
                                 }
+                    UpdateColliders(f);
                 }
             }
             if (proto == null) return;
@@ -147,6 +154,36 @@ namespace VeyraCity.AI
             Draw(proto.Mesh, proto.Materials, visible, ShadowCastingMode.On, bounds);
             bool low = proto.LowMesh != null && proto.LowMaterials != null && proto.LowMaterials.Length > 0;
             Draw(low ? proto.LowMesh : proto.Mesh, low ? proto.LowMaterials : proto.Materials, far, ShadowCastingMode.Off, bounds);
+        }
+
+        /// <summary>Moves pooled trunk capsules onto the trees nearest the player (visible holds every tree within NearRadius).</summary>
+        void UpdateColliders(Vector3 f)
+        {
+            float c2 = ColliderRadius * ColliderRadius;
+            int used = 0;
+            for (int i = 0; i < visible.Count && used < MaxColliders; i++)
+            {
+                var m = visible[i];
+                Vector3 p = m.GetColumn(3);
+                if ((p - f).sqrMagnitude > c2) continue;
+                float scale = ((Vector3)m.GetColumn(1)).magnitude;
+                if (used >= pool.Count)
+                {
+                    var go = new GameObject("TreeTrunk") { layer = 0 };
+                    go.transform.SetParent(transform, false);
+                    var cap = go.AddComponent<CapsuleCollider>();
+                    cap.direction = 1;
+                    pool.Add(cap);
+                }
+                var c = pool[used++];
+                c.transform.position = p;
+                c.radius = 0.25f * scale;
+                c.height = 3.2f * scale;
+                c.center = new Vector3(0f, c.height * 0.5f, 0f);
+                if (!c.enabled) c.enabled = true;
+            }
+            for (int i = used; i < pool.Count; i++) if (pool[i].enabled) pool[i].enabled = false;
+            ActiveColliders = used;
         }
 
         void Draw(Mesh mesh, Material[] mats, List<Matrix4x4> list, ShadowCastingMode shadows, Bounds bounds)

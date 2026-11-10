@@ -11,6 +11,7 @@ using VeyraCity.Gameplay;
 using VeyraCity.VehiclePhysics;
 using VeyraCity.World;
 using VeyraCity.World.Data;
+using VeyraCity.World.Streaming;
 
 namespace VeyraCity.Testing
 {
@@ -174,6 +175,15 @@ namespace VeyraCity.Testing
             trianglesRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Triangles Count");
             report.render.frame_timing_enabled = FrameTimingManager.IsFeatureEnabled();
 
+            // Roadmap A2: let the boot-time unload of far cells finish (the menu covers it in a real session)
+            if (CellStreamer.Active)
+            {
+                float s0 = Time.realtimeSinceStartup;
+                while (!CellStreamer.Settled && Time.realtimeSinceStartup - s0 < 90f) yield return null;
+                report.streaming.wait_s += Time.realtimeSinceStartup - s0;
+                Debug.Log($"[AutoTest] streaming settled after {Time.realtimeSinceStartup - s0:0.0} s ({CellStreamer.LoadedCount} cells loaded)");
+            }
+            FrameCost.Reset();
             report.vehicle.segments_total = route.Segments.Count;
             routeStartRealtime = Time.realtimeSinceStartup;
             string endReason = "route complete";
@@ -188,7 +198,19 @@ namespace VeyraCity.Testing
 
                 var lane = RouteAutopilot.BuildLanePath(road, seg.sStart_m, seg.sEnd_m, 60f, out float endU);
                 float target = seg.targetSpeed_kmh / 3.6f;
+                // Roadmap A2: the cells around the spawn must be loaded before the spawn raycasts (not counted in the frame stats)
+                if (CellStreamer.Active)
+                {
+                    float w0 = Time.realtimeSinceStartup;
+                    yield return CellStreamer.WaitUntilReady(lane.PositionAt(0f), 700f);
+                    float w = Time.realtimeSinceStartup - w0;
+                    report.streaming.waits++;
+                    report.streaming.wait_s += w;
+                    report.streaming.max_wait_s = Mathf.Max(report.streaming.max_wait_s, w);
+                }
                 Teleport(lane, target);
+                CellStreamer.Focus(null);   // follow the car again
+                if (i == 0) StreamingSnapshot(true);
                 autopilot.Begin(lane, endU, target);
                 cur.reached = true;
                 cur.result = "running";
@@ -437,9 +459,32 @@ namespace VeyraCity.Testing
             yield return Finish("aborted: " + reason, 2);
         }
 
+        int loadsAtStart, unloadsAtStart, hitchesAtStart;
+
+        void StreamingSnapshot(bool start)
+        {
+            const float MB = 1024f * 1024f;
+            var st = report.streaming;
+            st.enabled = CellStreamer.Active;
+            float gfx = (gfxRecorder.Valid && gfxRecorder.LastValue > 0 ? gfxRecorder.LastValue : Profiler.GetAllocatedMemoryForGraphicsDriver()) / MB;
+            float res = Profiler.GetTotalReservedMemoryLong() / MB;
+            if (start) { st.gfx_mb_start = gfx; st.reserved_mb_start = res; loadsAtStart = CellStreamer.LoadOps; unloadsAtStart = CellStreamer.UnloadOps; hitchesAtStart = CellStreamer.StreamingHitches; }
+            else
+            {
+                st.gfx_mb_end = gfx; st.reserved_mb_end = res;
+                st.loads = CellStreamer.LoadOps - loadsAtStart;
+                st.unloads = CellStreamer.UnloadOps - unloadsAtStart;
+                st.cells_loaded_end = CellStreamer.LoadedCount;
+                st.max_callback_ms = CellStreamer.MaxActivationMs;
+                st.streaming_hitches_over_50ms = CellStreamer.StreamingHitches - hitchesAtStart;
+            }
+        }
+
         IEnumerator Finish(string endReason, int exitCode)
         {
             driving = false;
+            StreamingSnapshot(false);
+            Debug.Log("[AutoTest] " + FrameCost.Report());   // A2: worst frames with their top system (hitch attribution)
             report.end_reason = endReason;
             report.duration_s = routeStartRealtime > 0f ? Time.realtimeSinceStartup - routeStartRealtime : 0f;
             var s = frames.Summarize();
