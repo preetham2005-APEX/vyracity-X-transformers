@@ -67,6 +67,7 @@ namespace VeyraCity.Gameplay
         bool automated, keepDisplay;
         PlayerDriverInput input;
         HudController hud;
+        WorldMap worldMap;
         MenuController menu;
         TrafficSystem traffic;
         RaceSession race;
@@ -152,6 +153,8 @@ namespace VeyraCity.Gameplay
             input.CameraCyclePressed += () => { if (chaseCamera != null && chaseCamera.enabled) chaseCamera.Cycle(); };
             input.ResetPressed += OnResetPressed;
             hud = gameObject.AddComponent<HudController>();
+            worldMap = gameObject.AddComponent<WorldMap>();   // full-screen map on M / gamepad View
+            gameObject.AddComponent<WaterSurface>();          // round-2 water on the sea, river and reservoir
             hud.Build();
             menu = gameObject.AddComponent<MenuController>();
             menu.Build();
@@ -166,6 +169,7 @@ namespace VeyraCity.Gameplay
             new GameObject("SkyDome").AddComponent<SkyDome>().transform.SetParent(transform, false);              // clouds, haze, stars, moon
             new GameObject("Pedestrians").AddComponent<Pedestrians>().transform.SetParent(transform, false);      // sidewalk walkers
             new GameObject("StreetFurniture").AddComponent<StreetFurniture>().transform.SetParent(transform, false); // hydrants, bins, benches, shelters
+            new GameObject("RooftopDetails").AddComponent<RooftopDetails>().transform.SetParent(transform, false); // roof clutter: AC, tanks, masts
             race = gameObject.AddComponent<RaceSession>();
             race.CountdownTick += OnCountdownTick;
             race.RaceStarted += () => { hud.BigMessage("GO!", UIKit.Good, 1.2f); Play(beepHigh, 1f); };
@@ -465,6 +469,26 @@ namespace VeyraCity.Gameplay
             ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it9_crash_closeup.png"));
             yield return null;
             if (chaseCamera != null) chaseCamera.enabled = true;
+            // it17 (round 2): a hard stop from 200 km/h: brake-light streaks, BRAKE/ABS lamps and the G-meter in the chase
+            // view, then the glowing front disc up close
+            yield return Drive("C1", 0.25f, 200f, 13f, clear, false, 3.7f, "it17_brake",
+                               (t, i) => { if (t > 2.6f) { i.Throttle = 0f; i.Brake = 1f; i.Nitro = false; } return i; }, 1.4f);
+            if (chaseCamera != null) chaseCamera.enabled = false;
+            {
+                var bt = player.transform;
+                var wheelFL = bt.position + bt.forward * (player.Definition.Wheelbase * 0.5f) - bt.right * (player.Definition.Front.TrackWidth * 0.5f);
+                cam.transform.position = wheelFL - bt.right * 2.4f + bt.forward * 0.6f + Vector3.up * 0.55f;
+                cam.transform.LookAt(wheelFL + Vector3.up * 0.1f);
+                cam.fieldOfView = 40f;
+                yield return null;
+                yield return null;
+                ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it17_brake_disc.png"));
+                yield return null;
+                var dfx = player.GetComponent<CarDetailFX>();
+                log.Append($" brakeHeatFL:{(dfx != null ? dfx.Heat01(0) : -1f):0.00}");
+            }
+            if (chaseCamera != null) chaseCamera.enabled = true;
+            cam.fieldOfView = 60f;
             var crashDamage = player.GetComponent<CarDamage>();
             float crashDamage01 = crashDamage != null ? crashDamage.Damage01 : -1f;
             // it11: a long cruise with traffic on the longest arterial/collector (streaming hitches: parked cars, furniture
@@ -492,6 +516,85 @@ namespace VeyraCity.Gameplay
             yield return Drive("A2", 0.2f, 260f, 13f, clear, false, 7f, "it10_launch",
                                (t, i) => { i.Throttle = 1f; i.Brake = 0f; return i; }, 2.6f, true);
             log.Append($" damage:{crashDamage01:0.00}");   // of the it9 crash car (later scenes respawn the player)
+            // it14 - it16 (round 2): skyline at golden hour, the river front, the skyline at night (buildings, roofs, water, sky)
+            if (player != null)
+            {
+                if (chaseCamera != null) chaseCamera.enabled = false;
+                environment.SetWeather(clear);
+                Vector3 downtown = new Vector3(190f, 0f, -432f);
+                var dd = WorldData.DistrictAt(downtown);
+                foreach (var d in WorldData.Districts?.districts ?? new DistrictJson[0])
+                    if (d.name.Contains("Downtown") && d.polygon != null && d.polygon.Length >= 6)
+                    {
+                        float sx = 0f, sz = 0f; int n = d.polygon.Length / 2;
+                        for (int k = 0; k < n; k++) { sx += d.polygon[k * 2]; sz += d.polygon[k * 2 + 1]; }
+                        downtown = new Vector3(sx / n, 0f, sz / n);
+                    }
+                Vector3 eye = downtown + new Vector3(-520f, 0f, -380f);
+                eye.y = WorldData.GroundHeight(eye + Vector3.up * 300f, 0f) + 90f;
+                Vector3 look = downtown + Vector3.up * 40f;
+                foreach (var (hour, shot) in new[] { (18.3f, "it14_skyline_golden"), (22.5f, "it16_skyline_night") })
+                {
+                    environment.SetTime(hour);
+                    player.transform.position = eye + Vector3.up * 400f;   // keep streaming centred near the view
+                    player.Body.position = player.transform.position;
+                    player.Body.isKinematic = true;
+                    cam.transform.position = eye;
+                    cam.transform.LookAt(look);
+                    cam.fieldOfView = 55f;
+                    float tw0 = Time.realtimeSinceStartup;
+                    while (Time.realtimeSinceStartup - tw0 < 2.5f) yield return null;   // rooftop and furniture cells build
+                    ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, shot + ".png"));
+                    yield return null;
+                }
+                // river front: a low view along the river's middle reach
+                var river = WorldData.Districts?.river;
+                if (river != null && river.Length >= 8)
+                {
+                    int mid = (river.Length / 4) * 2;
+                    var a0 = new Vector3(river[mid], 0f, river[mid + 1]);
+                    var a1 = new Vector3(river[mid + 2], 0f, river[mid + 3]);
+                    var along = (a1 - a0).normalized;
+                    var side = new Vector3(along.z, 0f, -along.x);
+                    var bank = a0 + side * 34f;
+                    bank.y = WorldData.GroundHeight(bank + Vector3.up * 200f, 2f) + 3.5f;
+                    environment.SetTime(18.6f);
+                    player.transform.position = bank + Vector3.up * 400f;
+                    player.Body.position = player.transform.position;
+                    cam.transform.position = bank;
+                    cam.transform.LookAt(a0 + along * 140f + Vector3.up * 1.5f);
+                    cam.fieldOfView = 60f;
+                    float tw1 = Time.realtimeSinceStartup;
+                    while (Time.realtimeSinceStartup - tw1 < 2f) yield return null;
+                    ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it15_riverfront.png"));
+                    yield return null;
+                }
+                player.Body.isKinematic = false;
+                if (chaseCamera != null) chaseCamera.enabled = true;
+                cam.fieldOfView = 60f;
+            }
+            // it12 / it13: the world map (aerial base, roads, labels, icons), then a waypoint with its GPS route
+            if (worldMap != null && player != null)
+            {
+                environment.SetTime(13f);
+                worldMap.Open(player.transform);
+                SetPaused(true);
+                float tw = Time.realtimeSinceStartup;
+                while (!worldMap.AerialReady && Time.realtimeSinceStartup - tw < 8f) yield return null;
+                var pp = player.transform.position;
+                worldMap.Frame(new Vector2(pp.x + 300f, pp.z), 3.6f);
+                for (int f = 0; f < 3; f++) yield return null;
+                ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it12_map.png"));
+                yield return null;
+                worldMap.PlaceWaypoint(pp + new Vector3(1100f, 0f, 900f));
+                worldMap.Frame(new Vector2(pp.x + 550f, pp.z + 450f), 1.25f);
+                for (int f = 0; f < 3; f++) yield return null;
+                ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it13_map_route.png"));
+                yield return null;
+                log.Append($" mapAerial:{worldMap.AerialReady} route:{WorldMap.RouteLength:0}m roadNodes:{RoadGraph.NodeCount}");
+                worldMap.Close();
+                SetPaused(false);
+            }
             log.Append($" zebraCrossings:{Pedestrians.CrossingsStarted}");
             Debug.Log(log.ToString());
             Debug.Log(perf.ToString());
@@ -738,6 +841,7 @@ namespace VeyraCity.Gameplay
             player.gameObject.AddComponent<VehicleFX>().Bind(player, playerNitro, true);
             player.gameObject.AddComponent<CarReflectionProbe>().Bind(player);   // paint reflects the real street
             player.gameObject.AddComponent<NitroBurstFX>().Bind(player, playerNitro, chaseCamera);   // perfect/overdrive nitro burst
+            player.gameObject.AddComponent<CarDetailFX>().Bind(player, playerNitro);   // glowing brake discs, nitro / brake light streaks
             if (player.TryGetComponent<CarLampFX>(out var playerLamps)) playerLamps.AddRealLights();   // headlight pool on the road, tail/brake spill behind
             hud.Bind(player, playerNitro, playerDrift);
             traffic.PlayerCar = player;
@@ -751,6 +855,8 @@ namespace VeyraCity.Gameplay
             if (walkers != null) walkers.Player = player;
             var furniture = GetComponentInChildren<StreetFurniture>();
             if (furniture != null) furniture.Player = player;
+            var rooftops = GetComponentInChildren<RooftopDetails>();
+            if (rooftops != null) rooftops.Player = player;
             traffic.PlayerNitro = playerNitro;
             traffic.NearMiss -= OnNearMiss;
             traffic.NearMiss += OnNearMiss;
@@ -985,6 +1091,7 @@ namespace VeyraCity.Gameplay
         void Update()
         {
             if (noTraffic && traffic != null && traffic.Active) traffic.Active = false;   // -veyraNoTraffic (route validation)
+            UpdateWorldMapInput();
             float dt = Time.unscaledDeltaTime;
             SkidMarks.Flush();
             save.PlaySeconds += Time.deltaTime;
@@ -1034,8 +1141,29 @@ namespace VeyraCity.Gameplay
         void UpdateWallet() => hud.SetWallet($"{UIKit.Money(save.Cash)}     LV {save.Level}");
 
         // ------------------------------------------------------------------ pause / reset
+        /// <summary>M (or the gamepad View button) opens the full-screen map in free roam and races and pauses the game;
+        /// M or Esc closes it.</summary>
+        void UpdateWorldMapInput()
+        {
+            if (worldMap == null) return;
+            var kb = Keyboard.current;
+            var gp = Gamepad.current;
+            bool toggle = (kb != null && kb.mKey.wasPressedThisFrame) || (gp != null && gp.selectButton.wasPressedThisFrame);
+            bool esc = kb != null && kb.escapeKey.wasPressedThisFrame;
+            if (worldMap.IsOpen)
+            {
+                if (toggle || esc || (gp != null && gp.buttonEast.wasPressedThisFrame)) { worldMap.Close(); SetPaused(false); }
+                return;
+            }
+            if (!toggle || paused || menu.DialogOpen || player == null) return;
+            if (Current != State.FreeRoam && Current != State.Race) return;
+            worldMap.Open(player.transform);
+            SetPaused(true);
+        }
+
         void OnPausePressed()
         {
+            if (worldMap != null && worldMap.IsOpen) return;   // Esc closes the map instead (UpdateWorldMapInput)
             if (menu.DialogOpen) return;
             switch (Current)
             {

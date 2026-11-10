@@ -77,6 +77,11 @@ namespace VeyraCity.World
         Leaves = 700,
         Bark = 701,
 
+        // Water (800–899)
+        /// <summary>Veyra/Water: rippled, swelling, glittering sea/river/reservoir (round 2, vehicle/visual session; built by
+        /// Veyra/Materials/Build Water, WaterMaterial.cs; applied at runtime by Gameplay/WaterSurface.cs).</summary>
+        WaterSurface = 800,
+
         // Vehicle (900–999)
         VehiclePlaceholderBody = 900,
         VehiclePlaceholderWheel = 901,

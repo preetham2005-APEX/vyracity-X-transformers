@@ -16,6 +16,9 @@ cd /e/VeyraCity || exit 1
 export TEMP=E:/Temp/VeyraCity TMP=E:/Temp/VeyraCity
 U="/e/Unity/Editors/6000.6.8f1/Editor/Unity.exe"
 BLENDER="/d/New folder/blender.exe"
+# iteration builds go to their own folder (another session's players run from Builds/DevMono)
+BUILD_DIR="Builds/IterMono"
+BUILD_METHOD="IterationBuild.BuildIterMono"
 N=$1; shift
 IMPORT=0; BUILD=0; AB=""; ABIN=""; TESTS=0; METHODS=()
 while [ $# -gt 0 ]; do
@@ -46,7 +49,7 @@ for meth in "${METHODS[@]}"; do
   echo "method $meth exit $?"; grep -E "error CS|\[SkyDome\]|Exception" "Logs/A8/iter${N}_method.log" | head -10
 done
 if [ $BUILD -eq 1 ]; then
-  "$U" -batchmode -nographics -projectPath "E:/VeyraCity" -executeMethod VeyraBuild.BuildDevMono -logFile "E:/VeyraCity/Logs/A8/iter${N}_build.log"
+  "$U" -batchmode -nographics -projectPath "E:/VeyraCity" -executeMethod "$BUILD_METHOD" -logFile "E:/VeyraCity/Logs/A8/iter${N}_build.log"
   rc=$?
   echo "build exit $rc"; grep -E "error CS|Build Finished" "Logs/A8/iter${N}_build.log" | head -20
   [ $rc -ne 0 ] && exit 4
@@ -54,11 +57,11 @@ fi
 
 run() { # <outdir> <log> [off-list] [in-run A/B feature]
   if [ -n "${4:-}" ]; then
-    Builds/DevMono/VeyraCity.exe -veyraIterShots "E:/VeyraCity/$1" -veyraIterAB "$4" -logFile "E:/VeyraCity/$2" >/dev/null 2>&1
+    "$BUILD_DIR/VeyraCity.exe" -veyraIterShots "E:/VeyraCity/$1" -veyraIterAB "$4" -logFile "E:/VeyraCity/$2" >/dev/null 2>&1
   elif [ -n "${3:-}" ]; then
-    Builds/DevMono/VeyraCity.exe -veyraIterShots "E:/VeyraCity/$1" -veyraIterOff "$3" -logFile "E:/VeyraCity/$2" >/dev/null 2>&1
+    "$BUILD_DIR/VeyraCity.exe" -veyraIterShots "E:/VeyraCity/$1" -veyraIterOff "$3" -logFile "E:/VeyraCity/$2" >/dev/null 2>&1
   else
-    Builds/DevMono/VeyraCity.exe -veyraIterShots "E:/VeyraCity/$1" -logFile "E:/VeyraCity/$2" >/dev/null 2>&1
+    "$BUILD_DIR/VeyraCity.exe" -veyraIterShots "E:/VeyraCity/$1" -logFile "E:/VeyraCity/$2" >/dev/null 2>&1
   fi
   grep -E "^\[Iter|Frame stats|Exception" "$2" | head -14
 }
@@ -69,6 +72,9 @@ S="E:/VeyraCity/$DIR"
   "$S/it5_nitro_speed.png" "$S/it6_drift.png" "$S/it7_traffic_evening.png" "$S/it8_car_closeup.png" 2>&1 | grep SHEET
 "$BLENDER" -b --factory-startup -P E:/VeyraCity/Tools/Blender/contact_sheet.py -- "$S/sheet_crash.png" 2 1280x720 \
   "$S/it9_crash.png" "$S/it9_crash_closeup.png" 2>&1 | grep SHEET
+[ -f "$S/it14_skyline_golden.png" ] && "$BLENDER" -b --factory-startup -P E:/VeyraCity/Tools/Blender/contact_sheet.py -- "$S/sheet_world.png" 3 1280x720   "$S/it14_skyline_golden.png" "$S/it15_riverfront.png" "$S/it16_skyline_night.png" 2>&1 | grep SHEET
+[ -f "$S/it17_brake.png" ] && "$BLENDER" -b --factory-startup -P E:/VeyraCity/Tools/Blender/contact_sheet.py -- "$S/sheet_car.png" 2 1280x720 "$S/it17_brake.png" "$S/it17_brake_disc.png" 2>&1 | grep SHEET
+[ -f "$S/it12_map.png" ] && "$BLENDER" -b --factory-startup -P E:/VeyraCity/Tools/Blender/contact_sheet.py -- "$S/sheet_map.png" 2 1280x720   "$S/it12_map.png" "$S/it13_map_route.png" 2>&1 | grep SHEET
 
 if [ -n "$AB" ]; then
   IFS=';' read -ra SETS <<< "$AB"

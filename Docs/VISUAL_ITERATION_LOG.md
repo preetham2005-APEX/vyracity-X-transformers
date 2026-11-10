@@ -258,3 +258,40 @@ crowds gather); crash damage read from the crash car; drift captured at full ang
 Overdrive 204 km/h, 6° max slip; launch 0–100 5.7 s; crash damage 0.24; one walker crossed at a red. Whole run avg 97.0 FPS,
 p99 33.9 ms (incl. the cruise and launch); every visual scene p95 10–15 ms; cruise p99 46 ms (render-side hitches, see 8).
 **Scores:** R1 3.5 · R2 4 · R3 3 · R4 4 · R5 3 · R6 3 · R7 4.5 · R8 4 · R9 4 · R10 3.
+
+## Round 2 (2026-11-10): buildings, roads, atmosphere, water, map, car detail
+New brief from the user: another 20+ passes, now on buildings, roads, building shaders, atmosphere, water, a full-screen
+map on M "better than GTA V's", and much more detail in the car's nitro, brake and speed effects. Work split agreed with the
+F/L-card session: map, minimap, car FX and HUD, SkyDome and water are this session's; road/facade shaders, fog/exposure and
+post profiles move over after that session's V1 commit (add-ons only until then).
+
+### Iteration 16 (2026-11-10): world map v1
+**Changes:** `UI/WorldMap.cs` (M / gamepad View, game paused): an aerial render of the real city made once by an
+orthographic camera (fog off for that camera only, the player's car excluded) as the base; a road overlay graded by class;
+district names zoomed out, street names and landmark names zoomed in; 7 filterable point-of-interest categories from the
+world data with colour/letter icons; heading arrow, metric scale bar, north mark; right-click waypoint with a GPS route solved
+by `UI/RoadGraph.cs` (426 junction nodes from road ends and centre-line crossings, bridges excluded, A*) and drawn on the map
+and on the HUD minimap with distance and ETA; iteration builds now go to `Builds/IterMono` (`Editor/IterationBuild.cs`) so they
+never collide with the other session's `Builds/DevMono` players.
+**Capture:** `Screenshots/2026-11-10_iter16/sheet_map.png`: aerial base, districts, icons, street names, a 2.15 km magenta
+route. Frame times invalid (the other session's player ran on the GPU at the same time).
+**Found:** river and sea read near-black from above; mountains flat; the minimap showed faintly through the legend.
+
+### Iteration 17 (2026-11-10): map v2, instrument cluster, brake discs, water, rooftops, sky (build only)
+**Changes:** map water layer (sea south of the coastline, river, reservoir) and hillshaded terrain relief from the real
+terrain heights, opaque background; new HUD instrument cluster (270° tachometer arc with rpm numerals and red zone, gear in
+the arc's gap, 7 shift lights flashing at the cut, G-meter, BRAKE / ABS / TCS / NOS / DRIFT lamps, three-cell nitro gauge in
+the mode colour); `CarDetailFX` (brake discs that heat up and glow red→orange→white behind the spokes; tail-lamp light streaks
+in the boost colour under nitro and red under hard braking); `Veyra/Water` shader (library slot 800, applied at runtime by
+`WaterSurface`): two cross-scrolling ripple layers plus a third chop layer, two swell wave trains, teal scattering at grazing
+angles, HDR sun glitter, on the shared Veyra forward pass (sky/probe reflection, Forward+ light reflections, fog);
+`RooftopDetails` (stair housings, AC units with fans, New York water tanks on legs, antenna masts with blinking red beacons,
+from the UBX building boxes, merged per 250 m cell); sky dome sunset band, high cirrus layer and pink-gold cloud rims;
+painted lane arrows before every stop line; capture scenes for the skyline (golden hour, night), the river front and a hard
+stop from 200 km/h.
+**Fix during the pass:** the new cluster put two `Image` components on one GameObject (gear box, G-meter); the editor tolerated
+it, the player got a null and `GameFlow.Start` aborted in the other session's build. Rings moved to child objects; no other
+double graphic in the UI files.
+**Build:** `Builds/IterMono` built with no shader or script errors (`Logs/A8/iter17_build.log`); material tests 13/13.
+**Not captured:** from ~14:27 the GPU driver is wedged (D3D12 "device removed" at the first frame of any player, both
+sessions); captures resume after a driver reset (Win+Ctrl+Shift+B) or a restart.

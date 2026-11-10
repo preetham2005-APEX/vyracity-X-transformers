@@ -109,6 +109,24 @@ Shader "Veyra/SkyDome"
                 col = col * (1.0 - ha) + hazeCol * ha;
                 float a = ha;
 
+                // ---- sunset band (round 2): a warm orange-to-pink gradient low in the sky around the sun at golden hour
+                float az = saturate(mu * 0.5 + 0.5);
+                float band = exp(-max(up, 0.0) * 9.0) * above * golden * (0.35 + 0.65 * pow(az, 2.0));
+                float3 bandCol = lerp(float3(0.95, 0.42, 0.55), float3(1.0, 0.55, 0.22), pow(az, 3.0));
+                col = col * (1.0 - band * 0.55) + bandCol * band * 0.55;
+                a = a * (1.0 - band * 0.55) + band * 0.55;
+
+                // ---- cirrus (round 2): a thin, high, wind-streaked layer above the cumulus deck
+                float2 cdrift = (float2(1.0, 0.35) + _VC_WindDirection.xz * (0.5 + 2.0 * _VC_WindStrength)) * (_Time.y * _CloudSpeed);
+                float2 cuv = v.xz / max(up, 0.06) * (_CloudScale * 0.33) + cdrift * 1.8;
+                cuv = float2(cuv.x * 0.35 + cuv.y * 0.2, cuv.y * 1.6);   // stretched along the wind
+                float cn = VC_Fbm(cuv * 2.3 + 11.7, 4);
+                float cir = smoothstep(0.52, 0.78, cn) * smoothstep(0.05, 0.35, up) * (1.0 - 0.7 * cloudy) * 0.45;
+                float3 cirCol = lerp(float3(0.97, 0.98, 1.0) * (0.35 + 0.65 * sunVis), float3(1.0, 0.62, 0.55), golden * (0.4 + 0.6 * az));
+                cirCol = lerp(cirCol, float3(0.06, 0.06, 0.09) + _CityGlowColor.rgb * 0.04, night);
+                col = col * (1.0 - cir) + cirCol * cir;
+                a = a * (1.0 - cir) + cir;
+
                 // ---- clouds: a deck projected on a plane, drifting with the wind
                 float2 wind = _VC_WindDirection.xz * (0.5 + 2.0 * _VC_WindStrength);
                 float2 drift = (float2(1.0, 0.35) + wind) * (_Time.y * _CloudSpeed);
@@ -127,6 +145,8 @@ Shader "Veyra/SkyDome"
                 cDay += sunCol * pow(saturate(mu), 20.0) * 0.55 * (1.0 - dens * 0.6) * sunVis;
                 float3 cNight = float3(0.03, 0.035, 0.05) * (0.7 + 0.6 * lit)
                               + _CityGlowColor.rgb * _CityGlow * 0.2 * exp(-max(up, 0.0) * 3.0);
+                // round 2: cloud edges toward the sun light up pink-gold at golden hour
+                cDay += float3(1.0, 0.5, 0.45) * golden * pow(az, 6.0) * (1.0 - dens) * 0.8;
                 float3 cloudCol = lerp(cDay, cNight, night);
                 col = col * (1.0 - ca) + cloudCol * ca;
                 a = a * (1.0 - ca) + ca;

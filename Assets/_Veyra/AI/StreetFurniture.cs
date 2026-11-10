@@ -23,7 +23,7 @@ namespace VeyraCity.AI
         public bool Active = true;
         public float BuildRadius = 260f, DropRadius = 400f;
 
-        enum Kind { Hydrant, Bin, Meter, Mailbox, Bench, NewsBox, Shelter, Sign, Crosswalk, StopLine, Manhole }
+        enum Kind { Hydrant, Bin, Meter, Mailbox, Bench, NewsBox, Shelter, Sign, Crosswalk, StopLine, Manhole, Arrow }
         struct Prop { public Kind Kind; public Vector3 Pos; public float Yaw; public int Variant; }
 
         // material slots (submesh index)
@@ -84,6 +84,14 @@ namespace VeyraCity.AI
                         Add(Kind.Crosswalk, road.Path.PositionAt(end == 0 ? zebra : len - zebra), yawE, wDm);
                         // stop line across the arriving (right-hand) lanes, where traffic waits at a red
                         Add(Kind.StopLine, road.Path.PositionAt(end == 0 ? stop : len - stop) + rightE * (road.HalfWidth * 0.5f), yawE, Mathf.RoundToInt(road.HalfWidth * 10f));
+                        // painted lane arrows 12 m before the stop line, one per approach lane (round 2)
+                        float arrowS = stop + 12f;
+                        if (arrowS < len * 0.45f)
+                        {
+                            int lanes = Mathf.Max(1, road.Data.lanes);
+                            for (int ln = 0; ln < lanes; ln++)
+                                Add(Kind.Arrow, road.Path.PositionAt(end == 0 ? arrowS : len - arrowS) + rightE * (1.75f + 3.5f * ln), yawE, 0);
+                        }
                     }
                 int k = 0;
                 for (float s = 16f; s < len - 16f; s += 9f, k++)
@@ -410,6 +418,15 @@ namespace VeyraCity.AI
                     float w = p.Variant * 0.1f - 1f;
                     for (float x = -w * 0.5f + 0.3f; x <= w * 0.5f - 0.3f; x += 1.1f)
                         mb.Box(m, Paint, new Vector3(x, 0.035f, 0f), new Vector3(0.55f, 0.02f, 3.2f));
+                    break;
+                }
+                case Kind.Arrow:
+                {
+                    // straight-ahead arrow: shaft and a chevron head pointing along +z (the travel direction)
+                    mb.Box(m, Paint, new Vector3(0f, 0.035f, -0.5f), new Vector3(0.2f, 0.02f, 2.8f));
+                    var head = Matrix4x4.TRS(new Vector3(0f, 0f, 0.95f), Quaternion.identity, Vector3.one);
+                    mb.Box(m * head * Matrix4x4.Rotate(Quaternion.Euler(0f, 38f, 0f)), Paint, new Vector3(0f, 0.035f, -0.45f), new Vector3(0.22f, 0.02f, 1.1f));
+                    mb.Box(m * head * Matrix4x4.Rotate(Quaternion.Euler(0f, -38f, 0f)), Paint, new Vector3(0f, 0.035f, -0.45f), new Vector3(0.22f, 0.02f, 1.1f));
                     break;
                 }
                 case Kind.StopLine:

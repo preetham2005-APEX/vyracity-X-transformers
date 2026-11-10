@@ -1,0 +1,290 @@
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Rendering;
+using VeyraCity.VehiclePhysics;
+using VeyraCity.World;
+
+namespace VeyraCity.AI
+{
+    /// <summary>
+    /// Rooftop clutter for the skyline (round 2; GTA V's and Cyberpunk's roofs are busy, ours were bare boxes): stair and lift
+    /// housings, AC units with fans, New York style wooden water tanks on steel legs (mid-rise), and antenna masts with
+    /// blinking red aircraft beacons (tall buildings). Buildings come from their UBX collision boxes (centre, yaw, size);
+    /// props stay in the middle third of the roof so they sit on top of every building shape (stepped towers included), and
+    /// only buildings 12 m and taller get them (pitched-roof houses are lower). Merged per 250 m cell, built one cell per
+    /// frame within 1.6 km of the player, no colliders, no shadows (small roof props, distant skyline).
+    /// </summary>
+    public sealed class RooftopDetails : MonoBehaviour
+    {
+        public VehicleController Player;
+        public bool Active = true;
+        public float BuildRadius = 1600f, DropRadius = 2000f;
+
+        struct Roof { public Vector3 Top; public Quaternion Rot; public float HalfW, HalfL, Height; public int Seed; }
+        const float Cell = 250f;
+        const int Concrete = 0, Metal = 1, MetalDark = 2, Wood = 3, Beacon = 4, Slots = 5;
+        readonly Dictionary<long, List<Roof>> grid = new Dictionary<long, List<Roof>>();
+        readonly Dictionary<long, GameObject> built = new Dictionary<long, GameObject>();
+        static Material[] mats;
+        static readonly int EmissionId = Shader.PropertyToID("_EmissionColor");
+        bool scanned;
+        float timer;
+        int roofCount;
+
+        static long Key(int x, int z) => ((long)x << 32) ^ (uint)z;
+
+        void Scan()
+        {
+            scanned = true;
+            foreach (var box in FindObjectsByType<BoxCollider>(FindObjectsSortMode.None))
+            {
+                var n = box.name;
+                if (!n.StartsWith("UBX_") || n.EndsWith("_Leg")) continue;
+                var t = box.transform;
+                Vector3 size = Vector3.Scale(box.size, t.lossyScale);
+                if (size.y < 12f || size.x < 9f || size.z < 9f) continue;
+                Vector3 c = t.TransformPoint(box.center);
+                var roof = new Roof
+                {
+                    Top = c + Vector3.up * (size.y * 0.5f),
+                    Rot = Quaternion.Euler(0f, t.eulerAngles.y, 0f),
+                    HalfW = size.x * 0.5f,
+                    HalfL = size.z * 0.5f,
+                    Height = size.y,
+                    Seed = n.GetHashCode() & 0x7fffffff,
+                };
+                long key = Key(Mathf.FloorToInt(c.x / Cell), Mathf.FloorToInt(c.z / Cell));
+                if (!grid.TryGetValue(key, out var list)) grid[key] = list = new List<Roof>();
+                list.Add(roof);
+                roofCount++;
+            }
+            Debug.Log($"[Rooftops] {roofCount} roofs dressed");
+        }
+
+        void Update()
+        {
+            long fc0 = VeyraCity.Core.FrameCost.Start();
+            UpdateBody();
+            VeyraCity.Core.FrameCost.Stop("Rooftops", fc0);
+        }
+
+        void UpdateBody()
+        {
+            if (!scanned && Active && Time.frameCount > 11) Scan();   // behind the menu, after the other slot builders
+            if (!Active || Player == null) return;
+            if (mats != null && mats[Beacon] != null)
+            {
+                float night = WorldEnvironment.Instance != null ? WorldEnvironment.Instance.NightFactor : 0f;
+                float blink = Mathf.Repeat(Time.time * 0.75f, 1f) < 0.35f ? 1f : 0.15f;   // aviation red, ~45 flashes a minute
+                mats[Beacon].SetColor(EmissionId, new Color(1f, 0.06f, 0.04f) * (0.4f + 6f * night) * blink);
+            }
+            timer -= Time.deltaTime;
+            if (timer > 0f) return;
+            timer = 0.1f;
+            Vector3 f = Player.transform.position;
+            List<long> drop = null;
+            foreach (var kv in built)
+            {
+                int cx = (int)(kv.Key >> 32), cz = (int)(uint)kv.Key;
+                var c = new Vector3((cx + 0.5f) * Cell, f.y, (cz + 0.5f) * Cell);
+                if ((c - f).sqrMagnitude > DropRadius * DropRadius) (drop ??= new List<long>()).Add(kv.Key);
+            }
+            if (drop != null)
+                foreach (var key in drop)
+                {
+                    var go = built[key];
+                    if (go != null) { Destroy(go.GetComponent<MeshFilter>().sharedMesh); Destroy(go); }
+                    built.Remove(key);
+                }
+            int fx = Mathf.FloorToInt(f.x / Cell), fz = Mathf.FloorToInt(f.z / Cell);
+            int reach = Mathf.CeilToInt(BuildRadius / Cell);
+            // nearest unbuilt cell first, one per tick
+            long best = 0;
+            float bestD = float.MaxValue;
+            for (int x = fx - reach; x <= fx + reach; x++)
+                for (int z = fz - reach; z <= fz + reach; z++)
+                {
+                    long key = Key(x, z);
+                    if (built.ContainsKey(key)) continue;
+                    var c = new Vector3((x + 0.5f) * Cell, f.y, (z + 0.5f) * Cell);
+                    float d = (c - f).sqrMagnitude;
+                    if (d > BuildRadius * BuildRadius || d >= bestD) continue;
+                    best = key;
+                    bestD = d;
+                }
+            if (bestD < float.MaxValue) built[best] = grid.TryGetValue(best, out var roofs) ? BuildCell(best, roofs) : null;
+        }
+
+        GameObject BuildCell(long key, List<Roof> roofs)
+        {
+            Ensure();
+            var mb = new ProcMeshBuilder(Slots);
+            foreach (var r in roofs) Dress(mb, r);
+            var go = new GameObject("Rooftops_" + key);
+            go.transform.SetParent(transform, false);
+            go.AddComponent<MeshFilter>().sharedMesh = mb.ToMesh("RooftopCell");
+            var mr = go.AddComponent<MeshRenderer>();
+            mr.sharedMaterials = mats;
+            mr.shadowCastingMode = ShadowCastingMode.Off;
+            mr.receiveShadows = true;
+            mr.lightProbeUsage = LightProbeUsage.Off;
+            return go;
+        }
+
+        static void Dress(ProcMeshBuilder mb, Roof r)
+        {
+            var rng = new System.Random(r.Seed);
+            var m = Matrix4x4.TRS(r.Top, r.Rot, Vector3.one);
+            float ax = r.HalfW * 0.33f, az = r.HalfL * 0.33f;   // the safe middle third
+            Vector3 P(double u, double v) => new Vector3((float)(u * 2 - 1) * ax, 0f, (float)(v * 2 - 1) * az);
+            // stair / lift housing
+            if (r.HalfW * r.HalfL > 60f)
+            {
+                var p = P(rng.NextDouble(), rng.NextDouble());
+                mb.Box(m, Concrete, p + new Vector3(0f, 1.5f, 0f), new Vector3(3.2f, 3f, 3.6f));
+                mb.Box(m, MetalDark, p + new Vector3(0f, 1.1f, 1.81f), new Vector3(1.1f, 2.1f, 0.05f));   // door
+            }
+            // AC units with fan tops
+            int ac = Mathf.Clamp(Mathf.RoundToInt(r.HalfW * r.HalfL / 90f), 1, 6);
+            for (int i = 0; i < ac; i++)
+            {
+                var p = P(rng.NextDouble(), rng.NextDouble());
+                bool big = rng.NextDouble() < 0.4;
+                var sz = big ? new Vector3(2.4f, 1.3f, 1.6f) : new Vector3(1.3f, 0.9f, 1.0f);
+                mb.Box(m, Metal, p + new Vector3(0f, sz.y * 0.5f, 0f), sz);
+                mb.Cylinder(m, MetalDark, p + new Vector3(0f, sz.y + 0.03f, 0f), Mathf.Min(sz.x, sz.z) * 0.35f, 0.06f, 10);
+                if (big) mb.Cylinder(m, MetalDark, p + new Vector3(sz.x * 0.25f, sz.y + 0.03f, 0f), sz.z * 0.3f, 0.06f, 10);
+            }
+            // water tank (mid-rise, the New York roofline)
+            if (r.Height > 22f && r.Height < 95f && rng.NextDouble() < 0.38)
+            {
+                var p = P(0.3 + 0.4 * rng.NextDouble(), 0.3 + 0.4 * rng.NextDouble());
+                float legs = 2.2f;
+                foreach (var lx in new[] { -1.1f, 1.1f })
+                    foreach (var lz in new[] { -1.1f, 1.1f })
+                        mb.Box(m, MetalDark, p + new Vector3(lx, legs * 0.5f, lz), new Vector3(0.18f, legs, 0.18f));
+                mb.Box(m, MetalDark, p + new Vector3(0f, legs, 0f), new Vector3(3.2f, 0.15f, 3.2f));
+                mb.Cylinder(m, Wood, p + new Vector3(0f, legs + 1.45f, 0f), 1.55f, 2.8f, 12);
+                mb.Cylinder(m, MetalDark, p + new Vector3(0f, legs + 0.5f, 0f), 1.58f, 0.08f, 12);   // hoops
+                mb.Cylinder(m, MetalDark, p + new Vector3(0f, legs + 2.3f, 0f), 1.58f, 0.08f, 12);
+                mb.Cone(m, MetalDark, p + new Vector3(0f, legs + 2.85f, 0f), 1.7f, 0.9f, 12);
+            }
+            // antenna masts with red beacons (tall buildings)
+            if (r.Height > 55f)
+            {
+                int masts = 1 + (rng.NextDouble() < 0.5 ? 1 : 0) + (r.Height > 120f ? 1 : 0);
+                for (int i = 0; i < masts; i++)
+                {
+                    var p = P(rng.NextDouble(), rng.NextDouble());
+                    float h = 5f + (float)rng.NextDouble() * (r.Height > 120f ? 14f : 7f);
+                    mb.Cylinder(m, Metal, p + new Vector3(0f, h * 0.5f, 0f), 0.11f, h, 6);
+                    mb.Box(m, Metal, p + new Vector3(0f, h * 0.55f, 0f), new Vector3(0.9f, 0.06f, 0.06f));   // cross bar
+                    mb.Box(m, Beacon, p + new Vector3(0f, h + 0.18f, 0f), new Vector3(0.36f, 0.36f, 0.36f));
+                }
+            }
+        }
+
+        static void Ensure()
+        {
+            if (mats != null) return;
+            mats = new Material[Slots];
+            mats[Concrete] = Lit("RoofConcrete", new Color(0.46f, 0.46f, 0.44f), 0.2f, 0f);
+            mats[Metal] = Lit("RoofMetal", new Color(0.6f, 0.62f, 0.64f), 0.5f, 0.6f);
+            mats[MetalDark] = Lit("RoofMetalDark", new Color(0.1f, 0.1f, 0.11f), 0.35f, 0.5f);
+            mats[Wood] = Lit("RoofTankWood", new Color(0.3f, 0.2f, 0.13f), 0.15f, 0f);
+            mats[Beacon] = Lit("RoofBeacon", new Color(0.4f, 0.03f, 0.02f), 0.4f, 0f);
+        }
+
+        static Material Lit(string name, Color c, float smooth, float metal)
+        {
+            var m = RuntimeMaterials.NewLit(name);
+            if (m == null) return null;
+            m.SetColor("_BaseColor", c);
+            m.SetFloat("_Smoothness", smooth);
+            m.SetFloat("_Metallic", metal);
+            return m;
+        }
+    }
+
+    /// <summary>Accumulates transformed boxes, cylinders and cones into per-material submeshes (flat normals, outward faces).</summary>
+    public sealed class ProcMeshBuilder
+    {
+        readonly List<Vector3> v = new List<Vector3>();
+        readonly List<Vector3> n = new List<Vector3>();
+        readonly List<Vector2> uv = new List<Vector2>();
+        readonly List<int>[] tris;
+        static readonly Vector3[] Dirs = { Vector3.right, Vector3.left, Vector3.up, Vector3.down, Vector3.forward, Vector3.back };
+
+        public ProcMeshBuilder(int slots)
+        {
+            tris = new List<int>[slots];
+            for (int i = 0; i < slots; i++) tris[i] = new List<int>();
+        }
+
+        void Quad(Matrix4x4 m, int slot, Vector3 a, Vector3 b, Vector3 c, Vector3 d, Vector3 normal)
+        {
+            int i0 = v.Count;
+            Vector3 wn = m.MultiplyVector(normal).normalized;
+            v.Add(m.MultiplyPoint3x4(a)); v.Add(m.MultiplyPoint3x4(b)); v.Add(m.MultiplyPoint3x4(c)); v.Add(m.MultiplyPoint3x4(d));
+            n.Add(wn); n.Add(wn); n.Add(wn); n.Add(wn);
+            uv.Add(new Vector2(0, 0)); uv.Add(new Vector2(0, 1)); uv.Add(new Vector2(1, 1)); uv.Add(new Vector2(1, 0));
+            var fn = Vector3.Cross(c - a, d - b);
+            var t = tris[slot];
+            if (Vector3.Dot(fn, normal) >= 0f) { t.Add(i0); t.Add(i0 + 1); t.Add(i0 + 2); t.Add(i0); t.Add(i0 + 2); t.Add(i0 + 3); }
+            else { t.Add(i0); t.Add(i0 + 2); t.Add(i0 + 1); t.Add(i0); t.Add(i0 + 3); t.Add(i0 + 2); }
+        }
+
+        public void Box(Matrix4x4 m, int slot, Vector3 c, Vector3 size)
+        {
+            Vector3 h = size * 0.5f;
+            foreach (var d in Dirs)
+            {
+                Vector3 u = Mathf.Abs(d.y) > 0.5f ? Vector3.right : Vector3.up;
+                Vector3 w = Vector3.Cross(d, u);
+                Vector3 fc = c + Vector3.Scale(d, h);
+                Vector3 du = Vector3.Scale(u, h), dw = Vector3.Scale(w, h);
+                Quad(m, slot, fc - du - dw, fc + du - dw, fc + du + dw, fc - du + dw, d);
+            }
+        }
+
+        public void Cylinder(Matrix4x4 m, int slot, Vector3 c, float r, float height, int sides)
+        {
+            Vector3 ax = Vector3.up * (height * 0.5f);
+            for (int i = 0; i < sides; i++)
+            {
+                float a0 = i * Mathf.PI * 2f / sides, a1 = (i + 1) * Mathf.PI * 2f / sides;
+                Vector3 p0 = new Vector3(Mathf.Cos(a0) * r, 0f, Mathf.Sin(a0) * r), p1 = new Vector3(Mathf.Cos(a1) * r, 0f, Mathf.Sin(a1) * r);
+                Quad(m, slot, c + p0 - ax, c + p0 + ax, c + p1 + ax, c + p1 - ax, ((p0 + p1) * 0.5f).normalized);
+                Quad(m, slot, c + ax, c + ax, c + p1 + ax, c + p0 + ax, Vector3.up);
+                Quad(m, slot, c - ax, c - ax, c + p0 - ax, c + p1 - ax, Vector3.down);
+            }
+        }
+
+        /// <summary>A cone standing on c (base radius r, apex height h above it).</summary>
+        public void Cone(Matrix4x4 m, int slot, Vector3 c, float r, float h, int sides)
+        {
+            Vector3 apex = c + Vector3.up * h;
+            for (int i = 0; i < sides; i++)
+            {
+                float a0 = i * Mathf.PI * 2f / sides, a1 = (i + 1) * Mathf.PI * 2f / sides;
+                Vector3 p0 = c + new Vector3(Mathf.Cos(a0) * r, 0f, Mathf.Sin(a0) * r), p1 = c + new Vector3(Mathf.Cos(a1) * r, 0f, Mathf.Sin(a1) * r);
+                Vector3 mid = ((p0 + p1) * 0.5f - c).normalized;
+                Vector3 nrm = (mid * h + Vector3.up * r).normalized;
+                Quad(m, slot, p0, apex, apex, p1, nrm);
+            }
+        }
+
+        public Mesh ToMesh(string name)
+        {
+            var mesh = new Mesh { name = name };
+            if (v.Count > 65000) mesh.indexFormat = IndexFormat.UInt32;
+            mesh.SetVertices(v);
+            mesh.SetNormals(n);
+            mesh.SetUVs(0, uv);
+            mesh.subMeshCount = tris.Length;
+            for (int i = 0; i < tris.Length; i++) mesh.SetTriangles(tris[i], i);
+            mesh.RecalculateBounds();
+            return mesh;
+        }
+    }
+}
