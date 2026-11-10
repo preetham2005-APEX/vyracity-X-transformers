@@ -70,6 +70,10 @@ namespace VeyraCity.World
         public event Action<WeatherKind> WeatherChanged;
 
         Light[] pool;
+        Vector3[] poolLamp;
+        float[] poolLevel;
+        bool[] poolActive;
+        readonly System.Collections.Generic.HashSet<Vector3> selected = new System.Collections.Generic.HashSet<Vector3>();
         Vector3[] lampBuffer = new Vector3[2048];
         float poolTimer;
         ParticleSystem rain;
@@ -297,19 +301,41 @@ namespace VeyraCity.World
 #endif
         }
 
+        /// <summary>Card L4: real lights for the nearest street lamps, by quality tier (PC_Ultra 96, PC_High 48, PC_Medium 24,
+        /// mobile 8). Downward spot cones (110°) give the light pools on the road; no shadows. Reassigned every 0.25 s to the lamps
+        /// nearest a point slightly ahead of the camera; a lamp keeps its slot while it stays selected, and every slot fades in or
+        /// out over 0.5 s, so lights never pop while driving.</summary>
+        static int PoolSizeForQuality()
+        {
+            string q = QualitySettings.names[QualitySettings.GetQualityLevel()];
+            return q.Contains("Ultra") ? 96 : q.Contains("High") ? 48 : q.Contains("Medium") ? 24 : q.StartsWith("Mobile") ? 8 : 28;
+        }
+
         void UpdateLightPool(bool force)
         {
+            int want = StreetLightCount > 0 ? PoolSizeForQuality() : 0;
+            if (pool != null && pool.Length != want)
+            {
+                foreach (var l in pool) if (l != null) Destroy(l.gameObject);
+                pool = null;
+            }
             if (pool == null)
             {
-                pool = new Light[StreetLightCount];
-                var root = new GameObject("StreetLightPool").transform;
-                root.SetParent(transform, false);
+                pool = new Light[want];
+                poolLamp = new Vector3[want];
+                poolLevel = new float[want];
+                poolActive = new bool[want];
+                var root = transform.Find("StreetLightPool");
+                if (root == null) { root = new GameObject("StreetLightPool").transform; root.SetParent(transform, false); }
                 for (int i = 0; i < pool.Length; i++)
                 {
                     var go = new GameObject("StreetLight_" + i);
                     go.transform.SetParent(root, false);
+                    go.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
                     var l = go.AddComponent<Light>();
-                    l.type = LightType.Point;
+                    l.type = LightType.Spot;
+                    l.spotAngle = 110f;
+                    l.innerSpotAngle = 60f;
                     l.range = StreetLightRange;
                     l.color = StreetLightColor;
                     l.shadows = LightShadows.None;
@@ -317,41 +343,57 @@ namespace VeyraCity.World
                     pool[i] = l;
                 }
             }
-            poolTimer -= Time.deltaTime;
-            if (poolTimer > 0f && !force) return;
-            poolTimer = 0.3f;
             var cam = Camera.main;
             var props = InstancedPropRenderer.Instance;
-            if (cam == null || props == null || NightFactor < 0.25f)
+            bool on = cam != null && props != null && NightFactor >= 0.25f;
+            poolTimer -= Time.deltaTime;
+            if (on && (poolTimer <= 0f || force))
             {
-                foreach (var l in pool) l.enabled = false;
-                return;
-            }
-            Vector3 eye = cam.transform.position;
-            Vector3 ahead = eye + cam.transform.forward * StreetLightRadius * 0.35f;
-            props.CollectLamps(ahead, StreetLightRadius, lampBuffer, out int count);
-            // partial selection of the nearest lamps to the point slightly ahead of the camera
-            int n = Mathf.Min(count, pool.Length);
-            for (int k = 0; k < n; k++)
-            {
-                int best = k;
-                float bd = (lampBuffer[k] - ahead).sqrMagnitude;
-                for (int j = k + 1; j < count; j++)
+                poolTimer = 0.25f;
+                Vector3 eye = cam.transform.position;
+                Vector3 ahead = eye + cam.transform.forward * StreetLightRadius * 0.35f;
+                props.CollectLamps(ahead, StreetLightRadius, lampBuffer, out int count);
+                int n = Mathf.Min(count, pool.Length);
+                for (int k = 0; k < n; k++) // partial selection of the nearest lamps
                 {
-                    float d = (lampBuffer[j] - ahead).sqrMagnitude;
-                    if (d < bd) { bd = d; best = j; }
+                    int best = k;
+                    float bd = (lampBuffer[k] - ahead).sqrMagnitude;
+                    for (int j = k + 1; j < count; j++)
+                    {
+                        float d = (lampBuffer[j] - ahead).sqrMagnitude;
+                        if (d < bd) { bd = d; best = j; }
+                    }
+                    (lampBuffer[k], lampBuffer[best]) = (lampBuffer[best], lampBuffer[k]);
                 }
-                (lampBuffer[k], lampBuffer[best]) = (lampBuffer[best], lampBuffer[k]);
+                selected.Clear();
+                for (int k = 0; k < n; k++) selected.Add(lampBuffer[k]);
+                // Keep slots whose lamp is still selected; free the others (they fade out).
+                for (int i = 0; i < pool.Length; i++)
+                {
+                    poolActive[i] = poolLevel[i] > 0f && selected.Remove(poolLamp[i]) ? true : false;
+                }
+                // New lamps go to fully faded slots.
+                foreach (var lamp in selected)
+                    for (int i = 0; i < pool.Length; i++)
+                        if (!poolActive[i] && poolLevel[i] <= 0.001f)
+                        {
+                            poolLamp[i] = lamp;
+                            poolActive[i] = true;
+                            pool[i].transform.position = lamp + Vector3.down * 0.4f;
+                            break;
+                        }
             }
+            else if (!on)
+            {
+                for (int i = 0; i < pool.Length; i++) poolActive[i] = false;
+            }
+            float step = Time.deltaTime / 0.5f;
             for (int i = 0; i < pool.Length; i++)
             {
-                if (i < n)
-                {
-                    pool[i].transform.position = lampBuffer[i] + Vector3.down * 0.4f;
-                    pool[i].intensity = StreetLightIntensity * NightFactor;
-                    pool[i].enabled = true;
-                }
-                else pool[i].enabled = false;
+                poolLevel[i] = Mathf.MoveTowards(poolLevel[i], poolActive[i] ? 1f : 0f, step);
+                bool lit = poolLevel[i] > 0.001f;
+                if (pool[i].enabled != lit) pool[i].enabled = lit;
+                if (lit) pool[i].intensity = StreetLightIntensity * 2.2f * NightFactor * poolLevel[i];
             }
         }
 
