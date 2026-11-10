@@ -1,0 +1,1015 @@
+{
+ "source": "San_Francisco_City",
+ "licence": {
+  "licence": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "author": "Abimael Gonzalez (https://sketchfab.com/abimaelgonzalez)",
+  "url": "https://sketchfab.com/3d-models/san-francisco-city-108841754fd3485886c1dde13301d341",
+  "credit": "This work is based on \"San Francisco City\" (https://sketchfab.com/3d-models/san-francisco-city-108841754fd3485886c1dde13301d341) by Abimael Gonzalez (https://sketchfab.com/abimaelgonzalez) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "id": "ArtSource/Downloads/FullMapModels/San_Francisco_City_10884175.zip"
+ },
+ "pieces": [
+  {
+   "name": "VC_KB_San_Francisco_City_Building_000",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_000.fbx",
+   "footprint_m": [
+    226.35,
+    228.49
+   ],
+   "height_m": 826.67,
+   "triangles": [
+    578,
+    231,
+    57
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_000_0"
+   ],
+   "materials": [
+    {
+     "source": "Concreto_edifs",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_001",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_001.fbx",
+   "footprint_m": [
+    213.59,
+    216.3
+   ],
+   "height_m": 710.59,
+   "triangles": [
+    1384,
+    553,
+    138
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_001_0"
+   ],
+   "materials": [
+    {
+     "source": "Concreto_edifs",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_002",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_002.fbx",
+   "footprint_m": [
+    157.4,
+    144.17
+   ],
+   "height_m": 886.87,
+   "triangles": [
+    792,
+    316,
+    78
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_002_0"
+   ],
+   "materials": [
+    {
+     "source": "Puente",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_003",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_003.fbx",
+   "footprint_m": [
+    80.02,
+    92.91
+   ],
+   "height_m": 707.75,
+   "triangles": [
+    110,
+    44,
+    11
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_003_0"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_004",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_004.fbx",
+   "footprint_m": [
+    78.97,
+    93.14
+   ],
+   "height_m": 707.75,
+   "triangles": [
+    104,
+    41,
+    10
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_004_0"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_005",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_005.fbx",
+   "footprint_m": [
+    83.65,
+    97.67
+   ],
+   "height_m": 493.03,
+   "triangles": [
+    190,
+    76,
+    19
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_005_0"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_006",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_006.fbx",
+   "footprint_m": [
+    83.65,
+    95.36
+   ],
+   "height_m": 493.03,
+   "triangles": [
+    118,
+    47,
+    11
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_006_0"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_007",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_007.fbx",
+   "footprint_m": [
+    89.33,
+    81.12
+   ],
+   "height_m": 530.61,
+   "triangles": [
+    668,
+    267,
+    66
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_007_0"
+   ],
+   "materials": [
+    {
+     "source": "Puente",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_008",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_008.fbx",
+   "footprint_m": [
+    96.65,
+    84.89
+   ],
+   "height_m": 294.06,
+   "triangles": [
+    54,
+    21,
+    5
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_008_0"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_009",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_009.fbx",
+   "footprint_m": [
+    96.65,
+    84.89
+   ],
+   "height_m": 294.06,
+   "triangles": [
+    54,
+    21,
+    5
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_009_0"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_010",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_010.fbx",
+   "footprint_m": [
+    94.47,
+    97.76
+   ],
+   "height_m": 254.31,
+   "triangles": [
+    8832,
+    3532,
+    1661
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_010_0"
+   ],
+   "materials": [
+    {
+     "source": "Concreto_edifs",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_011",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_011.fbx",
+   "footprint_m": [
+    63.09,
+    71.88
+   ],
+   "height_m": 294.06,
+   "triangles": [
+    54,
+    21,
+    5
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_011_0"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_012",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_012.fbx",
+   "footprint_m": [
+    63.09,
+    71.88
+   ],
+   "height_m": 294.06,
+   "triangles": [
+    54,
+    21,
+    5
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_012_0"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_013",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_013.fbx",
+   "footprint_m": [
+    89.42,
+    84.67
+   ],
+   "height_m": 168.51,
+   "triangles": [
+    102,
+    40,
+    10
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_013_0"
+   ],
+   "materials": [
+    {
+     "source": "Concreto_edifs",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_014",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_014.fbx",
+   "footprint_m": [
+    65.52,
+    67.38
+   ],
+   "height_m": 178.2,
+   "triangles": [
+    5940,
+    2375,
+    594
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_014_0"
+   ],
+   "materials": [
+    {
+     "source": "Concreto_edifs",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_015",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_015.fbx",
+   "footprint_m": [
+    87.11,
+    66.62
+   ],
+   "height_m": 106.7,
+   "triangles": [
+    28,
+    10,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_015"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_chicos",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_016",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_016.fbx",
+   "footprint_m": [
+    106.25,
+    60.36
+   ],
+   "height_m": 91.68,
+   "triangles": [
+    24,
+    8,
+    4
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_016_0"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_chicos",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_017",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_017.fbx",
+   "footprint_m": [
+    73.29,
+    70.08
+   ],
+   "height_m": 74.87,
+   "triangles": [
+    28,
+    10,
+    2
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_017_0"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_chicos",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_018",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_018.fbx",
+   "footprint_m": [
+    88.88,
+    44.39
+   ],
+   "height_m": 83.29,
+   "triangles": [
+    44,
+    16,
+    4
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_018_0"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_chicos",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_019",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_019.fbx",
+   "footprint_m": [
+    106.8,
+    44.86
+   ],
+   "height_m": 60.44,
+   "triangles": [
+    12,
+    4,
+    2
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_019_0"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_chicos",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_020",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_020.fbx",
+   "footprint_m": [
+    67.8,
+    51.11
+   ],
+   "height_m": 74.25,
+   "triangles": [
+    28,
+    10,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_020"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_chicos",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_021",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_021.fbx",
+   "footprint_m": [
+    56.25,
+    56.25
+   ],
+   "height_m": 66.35,
+   "triangles": [
+    48,
+    19,
+    3
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_021_0"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_chicos",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_022",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_022.fbx",
+   "footprint_m": [
+    56.25,
+    56.25
+   ],
+   "height_m": 66.35,
+   "triangles": [
+    48,
+    18,
+    3
+   ],
+   "collision": [
+    "UCX_VC_KB_San_Francisco_City_Building_022_0"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_chicos",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_023",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_023.fbx",
+   "footprint_m": [
+    67.92,
+    50.04
+   ],
+   "height_m": 57.44,
+   "triangles": [
+    12,
+    4,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_023"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_chicos",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_024",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_024.fbx",
+   "footprint_m": [
+    37.72,
+    73.93
+   ],
+   "height_m": 47.92,
+   "triangles": [
+    12,
+    4,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_024"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_chicos",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_025",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_025.fbx",
+   "footprint_m": [
+    14.56,
+    12.71
+   ],
+   "height_m": 655.95,
+   "triangles": [
+    92,
+    36,
+    9
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_025"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_026",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_026.fbx",
+   "footprint_m": [
+    14.56,
+    12.71
+   ],
+   "height_m": 655.95,
+   "triangles": [
+    92,
+    36,
+    9
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_026"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_027",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_027.fbx",
+   "footprint_m": [
+    14.56,
+    12.71
+   ],
+   "height_m": 655.95,
+   "triangles": [
+    92,
+    36,
+    9
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_027"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_028",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_028.fbx",
+   "footprint_m": [
+    14.56,
+    12.71
+   ],
+   "height_m": 655.95,
+   "triangles": [
+    92,
+    36,
+    9
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_028"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_029",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_029.fbx",
+   "footprint_m": [
+    66.53,
+    32.96
+   ],
+   "height_m": 37.84,
+   "triangles": [
+    12,
+    4,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_029"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_chicos",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_030",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_030.fbx",
+   "footprint_m": [
+    66.53,
+    32.96
+   ],
+   "height_m": 37.84,
+   "triangles": [
+    12,
+    4,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_030"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_chicos",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_031",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_031.fbx",
+   "footprint_m": [
+    66.53,
+    32.96
+   ],
+   "height_m": 37.84,
+   "triangles": [
+    12,
+    4,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_031"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_chicos",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_032",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_032.fbx",
+   "footprint_m": [
+    16.23,
+    18.59
+   ],
+   "height_m": 274.84,
+   "triangles": [
+    40,
+    16,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_032"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_033",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_033.fbx",
+   "footprint_m": [
+    16.23,
+    18.59
+   ],
+   "height_m": 274.84,
+   "triangles": [
+    40,
+    16,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_033"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_034",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_034.fbx",
+   "footprint_m": [
+    16.23,
+    18.59
+   ],
+   "height_m": 274.84,
+   "triangles": [
+    40,
+    16,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_034"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_035",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_035.fbx",
+   "footprint_m": [
+    16.23,
+    18.59
+   ],
+   "height_m": 274.84,
+   "triangles": [
+    40,
+    16,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_035"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_036",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_036.fbx",
+   "footprint_m": [
+    16.23,
+    18.59
+   ],
+   "height_m": 274.84,
+   "triangles": [
+    40,
+    16,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_036"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_037",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_037.fbx",
+   "footprint_m": [
+    16.23,
+    18.59
+   ],
+   "height_m": 274.84,
+   "triangles": [
+    40,
+    16,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_037"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_038",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_038.fbx",
+   "footprint_m": [
+    16.23,
+    18.59
+   ],
+   "height_m": 274.84,
+   "triangles": [
+    40,
+    16,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_038"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_San_Francisco_City_Building_039",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/San_Francisco_City/VC_KB_San_Francisco_City_Building_039.fbx",
+   "footprint_m": [
+    16.22,
+    18.59
+   ],
+   "height_m": 274.84,
+   "triangles": [
+    40,
+    16,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_San_Francisco_City_Building_039"
+   ],
+   "materials": [
+    {
+     "source": "Edifs_Cristal",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  }
+ ],
+ "textures": {
+  "source_archive": "ArtSource/Downloads/FullMapModels/San_Francisco_City_10884175.zip",
+  "files": [
+   "Concreto_edifs_diffuse.png",
+   "Concreto_edifs_emissive.png",
+   "Concreto_edifs_normal.png",
+   "Concreto_edifs_specularGlossiness.png",
+   "Edifs_Cristal_diffuse.png",
+   "Edifs_Cristal_emissive.png",
+   "Edifs_Cristal_normal.png",
+   "Edifs_Cristal_specularGlossiness.png",
+   "Edifs_chicos_diffuse.png",
+   "Edifs_chicos_emissive.png",
+   "Edifs_chicos_normal.png",
+   "Edifs_chicos_specularGlossiness.png",
+   "Puente_diffuse.png",
+   "Puente_emissive.png",
+   "Puente_normal.png",
+   "Puente_specularGlossiness.png"
+  ],
+  "copied": 0,
+  "note": "not copied: materials are remapped to the VeyraMaterialLibrary palette (B3)"
+ }
+}

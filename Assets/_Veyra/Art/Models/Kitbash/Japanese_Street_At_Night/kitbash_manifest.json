@@ -1,0 +1,1194 @@
+{
+ "source": "Japanese_Street_At_Night",
+ "licence": {
+  "licence": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "author": "AFX/CGMotion 3DModel Maker (https://sketchfab.com/afx_cgmotion)",
+  "url": "https://sketchfab.com/3d-models/japanese-street-at-night-fb1bdcd71a5544d699379d2d13dd1171",
+  "credit": "This work is based on \"Japanese street at night\" (https://sketchfab.com/3d-models/japanese-street-at-night-fb1bdcd71a5544d699379d2d13dd1171) by AFX/CGMotion 3DModel Maker (https://sketchfab.com/afx_cgmotion) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "id": "ArtSource/Downloads/FullMapModels/Japanese_Street_At_Night_fb1bdcd7.zip"
+ },
+ "pieces": [
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Building_000",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Building_000.fbx",
+   "footprint_m": [
+    4.32,
+    2.52
+   ],
+   "height_m": 8.49,
+   "triangles": [
+    3476,
+    1390,
+    346
+   ],
+   "collision": [
+    "UBX_VC_KB_Japanese_Street_At_Night_Building_000"
+   ],
+   "materials": [
+    {
+     "source": "Build_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_F_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_I",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_J",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_01",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_02",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_05",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_07",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_09",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "pole",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Building_001",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Building_001.fbx",
+   "footprint_m": [
+    3.9,
+    2.76
+   ],
+   "height_m": 8.39,
+   "triangles": [
+    6661,
+    2664,
+    748
+   ],
+   "collision": [
+    "UBX_VC_KB_Japanese_Street_At_Night_Building_001"
+   ],
+   "materials": [
+    {
+     "source": "Build_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_J",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_02",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_06",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_09",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "pole",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Building_002",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Building_002.fbx",
+   "footprint_m": [
+    3.4,
+    3.47
+   ],
+   "height_m": 4.94,
+   "triangles": [
+    4535,
+    1813,
+    452
+   ],
+   "collision": [
+    "UBX_VC_KB_Japanese_Street_At_Night_Building_002"
+   ],
+   "materials": [
+    {
+     "source": "Build_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_4",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_A_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_F_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_F_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_G_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_01",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_02",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_03",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_04",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_05",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_08",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_09",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_10",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Building_003",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Building_003.fbx",
+   "footprint_m": [
+    2.9,
+    3.99
+   ],
+   "height_m": 4.89,
+   "triangles": [
+    6721,
+    2688,
+    672
+   ],
+   "collision": [
+    "UBX_VC_KB_Japanese_Street_At_Night_Building_003"
+   ],
+   "materials": [
+    {
+     "source": "Build_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_3",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_A_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_B_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_B_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_01",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_02",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_03",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_05",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_06",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_08",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_09",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Building_004",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Building_004.fbx",
+   "footprint_m": [
+    2.63,
+    3.81
+   ],
+   "height_m": 4.93,
+   "triangles": [
+    4913,
+    1965,
+    490
+   ],
+   "collision": [
+    "UBX_VC_KB_Japanese_Street_At_Night_Building_004"
+   ],
+   "materials": [
+    {
+     "source": "Build_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_3",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_C_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_D_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_D_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_01",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_03",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_05",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_08",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_09",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Building_005",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Building_005.fbx",
+   "footprint_m": [
+    3.1,
+    2.77
+   ],
+   "height_m": 5.0,
+   "triangles": [
+    4851,
+    1940,
+    484
+   ],
+   "collision": [
+    "UBX_VC_KB_Japanese_Street_At_Night_Building_005"
+   ],
+   "materials": [
+    {
+     "source": "Build_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_4",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_H_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_H_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_01",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_02",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_03",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_05",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_07",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_08",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_09",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Building_006",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Building_006.fbx",
+   "footprint_m": [
+    0.63,
+    11.9
+   ],
+   "height_m": 4.6,
+   "triangles": [
+    26,
+    10,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_Japanese_Street_At_Night_Building_006"
+   ],
+   "materials": [
+    {
+     "source": "Props_06",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "material",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Building_007",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Building_007.fbx",
+   "footprint_m": [
+    2.46,
+    2.66
+   ],
+   "height_m": 5.03,
+   "triangles": [
+    5249,
+    2099,
+    703
+   ],
+   "collision": [
+    "UBX_VC_KB_Japanese_Street_At_Night_Building_007"
+   ],
+   "materials": [
+    {
+     "source": "Build_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_A_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_A_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_01",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_02",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_03",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_05",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_06",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_09",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Building_008",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Building_008.fbx",
+   "footprint_m": [
+    2.63,
+    2.53
+   ],
+   "height_m": 4.69,
+   "triangles": [
+    1314,
+    524,
+    130
+   ],
+   "collision": [
+    "UBX_VC_KB_Japanese_Street_At_Night_Building_008"
+   ],
+   "materials": [
+    {
+     "source": "Build_E",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_01",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_05",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_09",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_10",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Building_009",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Building_009.fbx",
+   "footprint_m": [
+    2.93,
+    2.17
+   ],
+   "height_m": 4.72,
+   "triangles": [
+    6679,
+    2670,
+    883
+   ],
+   "collision": [
+    "UBX_VC_KB_Japanese_Street_At_Night_Building_009"
+   ],
+   "materials": [
+    {
+     "source": "Build_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_4",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_G_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_G_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_01",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_03",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_04",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_06",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Building_010",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Building_010.fbx",
+   "footprint_m": [
+    2.6,
+    2.26
+   ],
+   "height_m": 4.85,
+   "triangles": [
+    3001,
+    1200,
+    299
+   ],
+   "collision": [
+    "UBX_VC_KB_Japanese_Street_At_Night_Building_010"
+   ],
+   "materials": [
+    {
+     "source": "Build_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_3",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_C_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Build_C_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_01",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_02",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_07",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Props_09",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Building_011",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Building_011.fbx",
+   "footprint_m": [
+    0.46,
+    9.6
+   ],
+   "height_m": 4.6,
+   "triangles": [
+    4,
+    1,
+    0
+   ],
+   "collision": [
+    "UBX_VC_KB_Japanese_Street_At_Night_Building_011"
+   ],
+   "materials": [
+    {
+     "source": "material",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Building_012",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Building_012.fbx",
+   "footprint_m": [
+    0.05,
+    0.1
+   ],
+   "height_m": 3.8,
+   "triangles": [
+    132,
+    52,
+    12
+   ],
+   "collision": [
+    "UBX_VC_KB_Japanese_Street_At_Night_Building_012"
+   ],
+   "materials": [
+    {
+     "source": "Build_B_2",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Building_013",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Building_013.fbx",
+   "footprint_m": [
+    0.05,
+    0.03
+   ],
+   "height_m": 3.1,
+   "triangles": [
+    18,
+    6,
+    0
+   ],
+   "collision": [
+    "UBX_VC_KB_Japanese_Street_At_Night_Building_013"
+   ],
+   "materials": [
+    {
+     "source": "Build_F_2",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Building_014",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Building_014.fbx",
+   "footprint_m": [
+    7.0,
+    0.0
+   ],
+   "height_m": 4.6,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Japanese_Street_At_Night_Building_014"
+   ],
+   "materials": [
+    {
+     "source": "material",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_000",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_000.fbx",
+   "footprint_m": [
+    9.52,
+    12.93
+   ],
+   "height_m": 4.89,
+   "triangles": [
+    2464,
+    1036,
+    1036
+   ],
+   "collision": [
+    "UCX_VC_KB_Japanese_Street_At_Night_Prop_000_0"
+   ],
+   "materials": [
+    {
+     "source": "pole",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_001",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_001.fbx",
+   "footprint_m": [
+    2.79,
+    6.76
+   ],
+   "height_m": 0.26,
+   "triangles": [
+    852,
+    339,
+    85
+   ],
+   "collision": [
+    "UBX_VC_KB_Japanese_Street_At_Night_Prop_001"
+   ],
+   "materials": [
+    {
+     "source": "pole",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_002",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_002.fbx",
+   "footprint_m": [
+    0.21,
+    0.68
+   ],
+   "height_m": 0.5,
+   "triangles": [
+    292,
+    116
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "pole",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_003",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_003.fbx",
+   "footprint_m": [
+    0.05,
+    0.05
+   ],
+   "height_m": 0.07,
+   "triangles": [
+    36,
+    13
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Props_10",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_004",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_004.fbx",
+   "footprint_m": [
+    0.05,
+    0.05
+   ],
+   "height_m": 0.07,
+   "triangles": [
+    36,
+    13
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Props_10",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_005",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_005.fbx",
+   "footprint_m": [
+    0.05,
+    0.05
+   ],
+   "height_m": 0.07,
+   "triangles": [
+    36,
+    13
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Props_10",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_006",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_006.fbx",
+   "footprint_m": [
+    0.01,
+    0.6
+   ],
+   "height_m": 0.03,
+   "triangles": [
+    22,
+    8
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Props_10",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_007",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_007.fbx",
+   "footprint_m": [
+    0.01,
+    0.6
+   ],
+   "height_m": 0.03,
+   "triangles": [
+    22,
+    8
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Props_10",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_008",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_008.fbx",
+   "footprint_m": [
+    0.01,
+    0.6
+   ],
+   "height_m": 0.03,
+   "triangles": [
+    22,
+    8
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Props_10",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_009",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_009.fbx",
+   "footprint_m": [
+    0.01,
+    0.75
+   ],
+   "height_m": 0.03,
+   "triangles": [
+    22,
+    8
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Props_10",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_010",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_010.fbx",
+   "footprint_m": [
+    0.01,
+    0.75
+   ],
+   "height_m": 0.03,
+   "triangles": [
+    22,
+    8
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Props_10",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_011",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_011.fbx",
+   "footprint_m": [
+    0.01,
+    0.75
+   ],
+   "height_m": 0.03,
+   "triangles": [
+    22,
+    8
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Props_10",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_012",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_012.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 0.01,
+   "triangles": [
+    16,
+    5
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Props_10",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_013",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_013.fbx",
+   "footprint_m": [
+    0.01,
+    0.09
+   ],
+   "height_m": 0.07,
+   "triangles": [
+    10,
+    4
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Props_10",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_014",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_014.fbx",
+   "footprint_m": [
+    0.01,
+    0.09
+   ],
+   "height_m": 0.07,
+   "triangles": [
+    10,
+    4
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Props_10",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_015",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_015.fbx",
+   "footprint_m": [
+    0.03,
+    0.1
+   ],
+   "height_m": 0.1,
+   "triangles": [
+    10,
+    4
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Props_10",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Japanese_Street_At_Night_Prop_016",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Japanese_Street_At_Night/VC_KB_Japanese_Street_At_Night_Prop_016.fbx",
+   "footprint_m": [
+    0.2,
+    0.11
+   ],
+   "height_m": 0.01,
+   "triangles": [
+    10,
+    4
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Props_10",
+     "veyra": "MetalPainted"
+    }
+   ]
+  }
+ ],
+ "textures": {
+  "source_archive": "ArtSource/Downloads/FullMapModels/Japanese_Street_At_Night_fb1bdcd7.zip",
+  "files": [
+   "Build_1_baseColor.png",
+   "Build_1_emissive.png",
+   "Build_1_metallicRoughness.png",
+   "Build_1_normal.png",
+   "Build_2_baseColor.png",
+   "Build_2_metallicRoughness.png",
+   "Build_2_normal.png",
+   "Build_3_baseColor.png",
+   "Build_3_metallicRoughness.png",
+   "Build_3_normal.png",
+   "Build_4_baseColor.png",
+   "Build_4_metallicRoughness.png",
+   "Build_4_normal.png",
+   "Build_A_1_baseColor.png",
+   "Build_A_1_metallicRoughness.png",
+   "Build_A_1_normal.png",
+   "Build_A_2_baseColor.png",
+   "Build_A_2_metallicRoughness.png",
+   "Build_A_2_normal.png",
+   "Build_B_1_baseColor.png",
+   "Build_B_1_emissive.png",
+   "Build_B_1_metallicRoughness.png",
+   "Build_B_1_normal.png",
+   "Build_B_2_baseColor.png",
+   "Build_B_2_metallicRoughness.png",
+   "Build_B_2_normal.png",
+   "Build_C_1_baseColor.png",
+   "Build_C_1_metallicRoughness.png",
+   "Build_C_1_normal.png",
+   "Build_C_2_baseColor.png",
+   "Build_C_2_metallicRoughness.png",
+   "Build_C_2_normal.png",
+   "Build_D_1_baseColor.png",
+   "Build_D_1_metallicRoughness.png",
+   "Build_D_1_normal.png",
+   "Build_D_2_baseColor.png",
+   "Build_D_2_metallicRoughness.png",
+   "Build_D_2_normal.png",
+   "Build_E_baseColor.png",
+   "Build_E_metallicRoughness.png",
+   "Build_E_normal.png",
+   "Build_F_1_baseColor.png",
+   "Build_F_1_metallicRoughness.png",
+   "Build_F_1_normal.png",
+   "Build_F_2_baseColor.png",
+   "Build_F_2_metallicRoughness.png",
+   "Build_F_2_normal.png",
+   "Build_G_1_baseColor.png",
+   "Build_G_1_metallicRoughness.png",
+   "Build_G_1_normal.png",
+   "Build_G_2_baseColor.png",
+   "Build_G_2_metallicRoughness.png",
+   "Build_G_2_normal.png",
+   "Build_H_1_baseColor.png",
+   "Build_H_1_metallicRoughness.png",
+   "Build_H_1_normal.png",
+   "Build_H_2_baseColor.png",
+   "Build_H_2_metallicRoughness.png",
+   "Build_H_2_normal.png",
+   "Build_I_baseColor.png",
+   "Build_I_metallicRoughness.png",
+   "Build_I_normal.png",
+   "Build_J_baseColor.png",
+   "Build_J_metallicRoughness.png",
+   "Build_J_normal.png",
+   "Props_01_baseColor.png",
+   "Props_01_metallicRoughness.png",
+   "Props_01_normal.png",
+   "Props_02_baseColor.png",
+   "Props_02_metallicRoughness.png",
+   "Props_02_normal.png",
+   "Props_03_baseColor.png",
+   "Props_03_emissive.png",
+   "Props_03_metallicRoughness.png",
+   "Props_03_normal.png",
+   "Props_04_baseColor.png",
+   "Props_04_emissive.png",
+   "Props_04_metallicRoughness.png",
+   "Props_04_normal.png",
+   "Props_05_baseColor.png",
+   "Props_05_emissive.png",
+   "Props_05_metallicRoughness.png",
+   "Props_05_normal.png",
+   "Props_06_baseColor.png",
+   "Props_06_metallicRoughness.png",
+   "Props_06_normal.png",
+   "Props_07_baseColor.png",
+   "Props_07_metallicRoughness.png",
+   "Props_07_normal.png",
+   "Props_08_baseColor.png",
+   "Props_08_emissive.png",
+   "Props_08_metallicRoughness.png",
+   "Props_08_normal.png",
+   "Props_09_baseColor.png",
+   "Props_09_metallicRoughness.png",
+   "Props_09_normal.png",
+   "Props_10_baseColor.png",
+   "Props_10_emissive.png",
+   "Props_10_metallicRoughness.png",
+   "Props_10_normal.png",
+   "pole_baseColor.png",
+   "pole_emissive.png",
+   "pole_metallicRoughness.png",
+   "pole_normal.png"
+  ],
+  "copied": 0,
+  "note": "not copied: materials are remapped to the VeyraMaterialLibrary palette (B3)"
+ }
+}

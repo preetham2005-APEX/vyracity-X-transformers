@@ -1,0 +1,44 @@
+{
+ "source": "City_Road_Layout_Mockup",
+ "licence": {
+  "licence": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "author": "99.Miles (https://sketchfab.com/99.Miles)",
+  "url": "https://sketchfab.com/3d-models/free-city-road-layout-mockup-3260e3fef3434939bc8df94a0a15ead3",
+  "credit": "This work is based on \"[FREE] City Road Layout Mockup\" (https://sketchfab.com/3d-models/free-city-road-layout-mockup-3260e3fef3434939bc8df94a0a15ead3) by 99.Miles (https://sketchfab.com/99.Miles) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "id": "ArtSource/Downloads/FullMapModels/City_Road_Layout_Mockup_3260e3fe.zip"
+ },
+ "pieces": [
+  {
+   "name": "VC_KB_City_Road_Layout_Mockup_Prop_000",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/City_Road_Layout_Mockup/VC_KB_City_Road_Layout_Mockup_Prop_000.fbx",
+   "footprint_m": [
+    252.09,
+    134.71
+   ],
+   "height_m": 4.3,
+   "triangles": [
+    68,
+    27,
+    6
+   ],
+   "collision": [
+    "UCX_VC_KB_City_Road_Layout_Mockup_Prop_000_0"
+   ],
+   "materials": [
+    {
+     "source": "GRASS",
+     "veyra": "Leaves"
+    }
+   ]
+  }
+ ],
+ "textures": {
+  "source_archive": "ArtSource/Downloads/FullMapModels/City_Road_Layout_Mockup_3260e3fe.zip",
+  "files": [
+   "GRASS_baseColor.png"
+  ],
+  "copied": 0,
+  "note": "not copied: materials are remapped to the VeyraMaterialLibrary palette (B3)"
+ }
+}

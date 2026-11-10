@@ -1,0 +1,1033 @@
+{
+ "source": "Atlanta_Corporate_Office",
+ "licence": {
+  "licence": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "author": "99.Miles (https://sketchfab.com/99.Miles)",
+  "url": "https://sketchfab.com/3d-models/free-atlanta-corperate-office-building-d96380fb001345cca9a9be121f3e43d5",
+  "credit": "This work is based on \"[FREE]  Atlanta, Corperate Office Building\" (https://sketchfab.com/3d-models/free-atlanta-corperate-office-building-d96380fb001345cca9a9be121f3e43d5) by 99.Miles (https://sketchfab.com/99.Miles) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "id": "ArtSource/Downloads/FullMapModels/Atlanta_Corporate_Office_d96380fb.zip"
+ },
+ "pieces": [
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_000",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_000.fbx",
+   "footprint_m": [
+    59.28,
+    96.85
+   ],
+   "height_m": 212.0,
+   "triangles": [
+    35024,
+    14008,
+    3735
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_000"
+   ],
+   "materials": [
+    {
+     "source": "Blinds",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Bulb",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Cube.008__0",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Glass_Lobby",
+     "veyra": "GlassCurtainBlueGrey"
+    },
+    {
+     "source": "Lobby_Interior_Baked",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Lobby_Interior_Trimsheet",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Parralax_Mapping",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Windows",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_001",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_001.fbx",
+   "footprint_m": [
+    1.52,
+    92.87
+   ],
+   "height_m": 11.4,
+   "triangles": [
+    26,
+    10,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_001"
+   ],
+   "materials": [
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_002",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_002.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_002"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_003",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_003.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_003"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_004",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_004.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_004"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_005",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_005.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 11.11,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_005"
+   ],
+   "materials": [
+    {
+     "source": "Emmisive",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_006",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_006.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 11.11,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_006"
+   ],
+   "materials": [
+    {
+     "source": "Emmisive",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_007",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_007.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 11.11,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_007"
+   ],
+   "materials": [
+    {
+     "source": "Emmisive",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_008",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_008.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_008"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_009",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_009.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_009"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_010",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_010.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_010"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_011",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_011.fbx",
+   "footprint_m": [
+    0.0,
+    17.73
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_011"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_012",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_012.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_012"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_013",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_013.fbx",
+   "footprint_m": [
+    0.0,
+    17.73
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_013"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_014",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_014.fbx",
+   "footprint_m": [
+    0.0,
+    17.73
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_014"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_015",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_015.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_015"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_016",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_016.fbx",
+   "footprint_m": [
+    0.0,
+    17.73
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_016"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_017",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_017.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_017"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_018",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_018.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_018"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_019",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_019.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_019"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_020",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_020.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_020"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_021",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_021.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_021"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_022",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_022.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_022"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_023",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_023.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_023"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_024",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_024.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_024"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_025",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_025.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_025"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_026",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_026.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_026"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_027",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_027.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_027"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_028",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_028.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_028"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_029",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_029.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_029"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_030",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_030.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_030"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_031",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_031.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_031"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_032",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_032.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_032"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_033",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_033.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_033"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_034",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_034.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_034"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_035",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_035.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_035"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_036",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_036.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_036"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_037",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_037.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_037"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_038",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_038.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_038"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Atlanta_Corporate_Office_Building_039",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Atlanta_Corporate_Office/VC_KB_Atlanta_Corporate_Office_Building_039.fbx",
+   "footprint_m": [
+    17.73,
+    0.0
+   ],
+   "height_m": 4.59,
+   "triangles": [
+    2,
+    2,
+    2
+   ],
+   "collision": [
+    "UBX_VC_KB_Atlanta_Corporate_Office_Building_039"
+   ],
+   "materials": [
+    {
+     "source": "Glass",
+     "veyra": "GlassCurtainBlueGrey"
+    }
+   ]
+  }
+ ],
+ "textures": {
+  "source_archive": "ArtSource/Downloads/FullMapModels/Atlanta_Corporate_Office_d96380fb.zip",
+  "files": [
+   "Blinds_baseColor.png",
+   "Bulb_baseColor.png",
+   "Emmisive_baseColor.png",
+   "Emmisive_emissive.png",
+   "Emmisive_metallicRoughness.png",
+   "Emmisive_normal.png",
+   "Glass_Lobby_baseColor.png",
+   "Glass_baseColor.png",
+   "Glass_clearcoat_normal.png",
+   "Glass_metallicRoughness.png",
+   "Lobby_Interior_Baked_baseColor.png",
+   "Lobby_Interior_Baked_emissive.png",
+   "Lobby_Interior_Baked_metallicRoughness.png",
+   "Lobby_Interior_Baked_normal.png",
+   "Lobby_Interior_Trimsheet_baseColor.png",
+   "Material_baseColor.png",
+   "Material_metallicRoughness.png",
+   "Material_normal.png",
+   "Parralax_Mapping_baseColor.png",
+   "Windows_baseColor.png",
+   "Windows_metallicRoughness.png",
+   "Windows_normal.png"
+  ],
+  "copied": 0,
+  "note": "not copied: materials are remapped to the VeyraMaterialLibrary palette (B3)"
+ }
+}

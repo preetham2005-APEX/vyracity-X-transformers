@@ -1,0 +1,173 @@
+{
+ "source": "test_map_aligned",
+ "licence": {
+  "licence": "CC0",
+  "author": "",
+  "url": "",
+  "credit": "",
+  "id": "Logs/B2_test/test_map_aligned.glb"
+ },
+ "chunk_size_m": 250.0,
+ "chunks": [
+  {
+   "chunk": "Chunk_D5_01",
+   "cell": "D5",
+   "file": "Assets/_Veyra/Art/World/Chunks/_Test/D5/Chunk_D5_01.fbx",
+   "corner_unity_xz": [
+    -1000.0,
+    -1750.0
+   ],
+   "triangles": [
+    216,
+    122,
+    122
+   ],
+   "collision": [
+    "COL_Road_Chunk_D5_01"
+   ],
+   "materials": [
+    {
+     "source": "asphalt",
+     "category": "Road_Surface",
+     "veyra": "RoadAsphaltNew"
+    },
+    {
+     "source": "marking_white",
+     "category": "Road_Surface",
+     "veyra": "RoadMarkingWhite"
+    }
+   ]
+  },
+  {
+   "chunk": "Chunk_D5_02",
+   "cell": "D5",
+   "file": "Assets/_Veyra/Art/World/Chunks/_Test/D5/Chunk_D5_02.fbx",
+   "corner_unity_xz": [
+    -1000.0,
+    -1500.0
+   ],
+   "triangles": [
+    844,
+    450,
+    330
+   ],
+   "collision": [
+    "COL_Road_Chunk_D5_02",
+    "UBX_Chunk_D5_02_Building_0",
+    "UBX_Chunk_D5_02_Building_1",
+    "UBX_Chunk_D5_02_Building_2",
+    "UBX_Chunk_D5_02_Lamp_Pole_0",
+    "UBX_Chunk_D5_02_Lamp_Pole_1",
+    "UBX_Chunk_D5_02_Lamp_Pole_2"
+   ],
+   "materials": [
+    {
+     "source": "brick_facade",
+     "category": "Building",
+     "veyra": "FacadeBrickRed"
+    },
+    {
+     "source": "lamp_metal",
+     "category": "Prop",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "asphalt",
+     "category": "Road_Surface",
+     "veyra": "RoadAsphaltNew"
+    },
+    {
+     "source": "marking_white",
+     "category": "Road_Surface",
+     "veyra": "RoadMarkingWhite"
+    },
+    {
+     "source": "pavement",
+     "category": "Sidewalk",
+     "veyra": "SidewalkConcrete"
+    }
+   ]
+  },
+  {
+   "chunk": "Chunk_D5_11",
+   "cell": "D5",
+   "file": "Assets/_Veyra/Art/World/Chunks/_Test/D5/Chunk_D5_11.fbx",
+   "corner_unity_xz": [
+    -750.0,
+    -1750.0
+   ],
+   "triangles": [
+    376,
+    284,
+    284
+   ],
+   "collision": [
+    "COL_Road_Chunk_D5_11"
+   ],
+   "materials": [
+    {
+     "source": "asphalt",
+     "category": "Road_Surface",
+     "veyra": "RoadAsphaltNew"
+    },
+    {
+     "source": "marking_white",
+     "category": "Road_Surface",
+     "veyra": "RoadMarkingWhite"
+    }
+   ]
+  },
+  {
+   "chunk": "Chunk_D5_12",
+   "cell": "D5",
+   "file": "Assets/_Veyra/Art/World/Chunks/_Test/D5/Chunk_D5_12.fbx",
+   "corner_unity_xz": [
+    -750.0,
+    -1500.0
+   ],
+   "triangles": [
+    1004,
+    610,
+    490
+   ],
+   "collision": [
+    "COL_Road_Chunk_D5_12",
+    "UBX_Chunk_D5_12_Building_4",
+    "UBX_Chunk_D5_12_Building_5",
+    "UBX_Chunk_D5_12_Building_6",
+    "UBX_Chunk_D5_12_Lamp_Pole_4",
+    "UBX_Chunk_D5_12_Lamp_Pole_5",
+    "UBX_Chunk_D5_12_Lamp_Pole_6"
+   ],
+   "materials": [
+    {
+     "source": "brick_facade",
+     "category": "Building",
+     "veyra": "FacadeBrickRed"
+    },
+    {
+     "source": "lamp_metal",
+     "category": "Prop",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "asphalt",
+     "category": "Road_Surface",
+     "veyra": "RoadAsphaltNew"
+    },
+    {
+     "source": "marking_white",
+     "category": "Road_Surface",
+     "veyra": "RoadMarkingWhite"
+    },
+    {
+     "source": "pavement",
+     "category": "Sidewalk",
+     "veyra": "SidewalkConcrete"
+    }
+   ]
+  }
+ ],
+ "border_cracks": 0,
+ "_comment": "Card B3 test copy of the B2 synthetic ALIGNED map (Logs/B2_test, CC0, generated). Placed only into Scenes/Test/T_ChunkImport.unity by Veyra/World/Place Test Chunks; never into VeyraCity.unity."
+}

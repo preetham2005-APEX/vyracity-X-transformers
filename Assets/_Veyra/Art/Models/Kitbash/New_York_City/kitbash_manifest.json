@@ -1,0 +1,2486 @@
+{
+ "source": "New_York_City",
+ "licence": {
+  "licence": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "author": "golukumar (https://sketchfab.com/mortalityrexotable)",
+  "url": "https://sketchfab.com/3d-models/new-york-city-4737b6ee73ed4634ad5b414558fdfa45",
+  "credit": "This work is based on \"New York City\" (https://sketchfab.com/3d-models/new-york-city-4737b6ee73ed4634ad5b414558fdfa45) by golukumar (https://sketchfab.com/mortalityrexotable) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "id": "ArtSource/Downloads/FullMapModels/New_York_City_4737b6ee.zip"
+ },
+ "pieces": [
+  {
+   "name": "VC_KB_New_York_City_Building_000",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_000.fbx",
+   "footprint_m": [
+    247.55,
+    196.12
+   ],
+   "height_m": 112.21,
+   "triangles": [
+    112372,
+    44947,
+    14071
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_000_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGenBark.001",
+     "veyra": "Bark"
+    },
+    {
+     "source": "CityGenBark.002",
+     "veyra": "Bark"
+    },
+    {
+     "source": "CityGenGlass.001",
+     "veyra": "GlassCurtainBlueGrey"
+    },
+    {
+     "source": "CityGenTCom_DecalsStain0047_1_masked_S",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGenWetFloorSign_01.001",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGen_Grass",
+     "veyra": "Leaves"
+    },
+    {
+     "source": "CityGen_Streets",
+     "veyra": "RoadAsphaltNew"
+    },
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGenbasic_rough_metal_dark",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGenbasic_rough_metal_dark_.001",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGenblack_.001",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGenconcrete.001",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGenmetal_trash_can_rust",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGenroof.002",
+     "veyra": "RoofMembrane"
+    },
+    {
+     "source": "CityGentextured_metal",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGenwhite_marble_tiles",
+     "veyra": "SidewalkConcrete"
+    },
+    {
+     "source": "FoliageTrees.001",
+     "veyra": "Leaves"
+    },
+    {
+     "source": "FoliageTrees.002",
+     "veyra": "Leaves"
+    },
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Material.001",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Material.002",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Material.003",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Street_Assets",
+     "veyra": "RoadAsphaltNew"
+    },
+    {
+     "source": "Street_Assets.001",
+     "veyra": "RoadAsphaltNew"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "material_0",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "material_34",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "solar",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_001",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_001.fbx",
+   "footprint_m": [
+    85.27,
+    148.56
+   ],
+   "height_m": 90.72,
+   "triangles": [
+    186,
+    74,
+    18
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_001_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenVent",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_002",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_002.fbx",
+   "footprint_m": [
+    23.92,
+    33.1
+   ],
+   "height_m": 100.16,
+   "triangles": [
+    5629,
+    2251,
+    562
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_002"
+   ],
+   "materials": [
+    {
+     "source": "Building_Facade.001",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGenAC",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGenGlass.001",
+     "veyra": "GlassCurtainBlueGrey"
+    },
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGenbasic_rough_metal_dark",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGenbasic_rough_metal_dark_.001",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGenblack_.001",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGenconcrete.001",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGentextured_metal",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "Material.001",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Material.002",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Material.003",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "material_34",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "solar",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_003",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_003.fbx",
+   "footprint_m": [
+    33.15,
+    7.23
+   ],
+   "height_m": 67.64,
+   "triangles": [
+    342,
+    136,
+    34
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_003_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_004",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_004.fbx",
+   "footprint_m": [
+    28.4,
+    1.93
+   ],
+   "height_m": 93.73,
+   "triangles": [
+    174,
+    68,
+    16
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_004_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_rough_metal_dark_.001",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGenconcrete.001",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_005",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_005.fbx",
+   "footprint_m": [
+    2.69,
+    28.99
+   ],
+   "height_m": 54.67,
+   "triangles": [
+    54,
+    20,
+    5
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_005_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_rough_metal_dark",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "solar",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_006",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_006.fbx",
+   "footprint_m": [
+    6.04,
+    6.04
+   ],
+   "height_m": 85.02,
+   "triangles": [
+    30,
+    12,
+    10
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_006_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenwhite_marble_tiles",
+     "veyra": "SidewalkConcrete"
+    },
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_007",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_007.fbx",
+   "footprint_m": [
+    29.57,
+    1.62
+   ],
+   "height_m": 63.16,
+   "triangles": [
+    932,
+    372,
+    266
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_007"
+   ],
+   "materials": [
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_008",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_008.fbx",
+   "footprint_m": [
+    9.69,
+    7.25
+   ],
+   "height_m": 36.96,
+   "triangles": [
+    1352,
+    540,
+    419
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_008_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenGlass.001",
+     "veyra": "GlassCurtainBlueGrey"
+    },
+    {
+     "source": "CityGenbasic_rough_metal_dark_.001",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGenblack_.001",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGentextured_metal",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "Material.003",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "material",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_009",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_009.fbx",
+   "footprint_m": [
+    6.82,
+    6.82
+   ],
+   "height_m": 48.58,
+   "triangles": [
+    39,
+    15,
+    15
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_009_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGensimple_concrete_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_010",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_010.fbx",
+   "footprint_m": [
+    28.4,
+    1.01
+   ],
+   "height_m": 72.88,
+   "triangles": [
+    308,
+    123,
+    30
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_010"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGentextured_metal",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_011",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_011.fbx",
+   "footprint_m": [
+    29.57,
+    1.06
+   ],
+   "height_m": 63.16,
+   "triangles": [
+    90,
+    36,
+    9
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_011"
+   ],
+   "materials": [
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_012",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_012.fbx",
+   "footprint_m": [
+    28.81,
+    1.22
+   ],
+   "height_m": 48.49,
+   "triangles": [
+    320,
+    128,
+    32
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_012"
+   ],
+   "materials": [
+    {
+     "source": "CityGenGlass.001",
+     "veyra": "GlassCurtainBlueGrey"
+    },
+    {
+     "source": "CityGenbasic_rough_metal_dark_.001",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_013",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_013.fbx",
+   "footprint_m": [
+    29.57,
+    0.88
+   ],
+   "height_m": 51.21,
+   "triangles": [
+    110,
+    44,
+    11
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_013"
+   ],
+   "materials": [
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_014",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_014.fbx",
+   "footprint_m": [
+    5.98,
+    6.01
+   ],
+   "height_m": 32.75,
+   "triangles": [
+    606,
+    242,
+    60
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_014"
+   ],
+   "materials": [
+    {
+     "source": "CityGenGlass.001",
+     "veyra": "GlassCurtainBlueGrey"
+    },
+    {
+     "source": "CityGenbasic_rough_metal_dark",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGenbasic_rough_metal_dark_.001",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGenconcrete.001",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGentextured_metal",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "Material.003",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "solar",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_015",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_015.fbx",
+   "footprint_m": [
+    9.69,
+    3.38
+   ],
+   "height_m": 31.42,
+   "triangles": [
+    630,
+    252,
+    94
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_015_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGenbasic_rough_metal_dark_.001",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGenconcrete.001",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Material.003",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_016",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_016.fbx",
+   "footprint_m": [
+    19.21,
+    0.85
+   ],
+   "height_m": 54.21,
+   "triangles": [
+    148,
+    59,
+    14
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_016"
+   ],
+   "materials": [
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_017",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_017.fbx",
+   "footprint_m": [
+    19.21,
+    0.85
+   ],
+   "height_m": 54.21,
+   "triangles": [
+    80,
+    32,
+    8
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_017"
+   ],
+   "materials": [
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_018",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_018.fbx",
+   "footprint_m": [
+    8.17,
+    3.31
+   ],
+   "height_m": 32.68,
+   "triangles": [
+    618,
+    246,
+    60
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_018_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Material.003",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "material",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_019",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_019.fbx",
+   "footprint_m": [
+    16.98,
+    0.86
+   ],
+   "height_m": 57.21,
+   "triangles": [
+    118,
+    47,
+    11
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_019"
+   ],
+   "materials": [
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_020",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_020.fbx",
+   "footprint_m": [
+    30.34,
+    0.45
+   ],
+   "height_m": 60.21,
+   "triangles": [
+    56,
+    22,
+    5
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_020"
+   ],
+   "materials": [
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_021",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_021.fbx",
+   "footprint_m": [
+    19.21,
+    0.83
+   ],
+   "height_m": 51.21,
+   "triangles": [
+    40,
+    16,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_021"
+   ],
+   "materials": [
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_022",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_022.fbx",
+   "footprint_m": [
+    0.85,
+    22.6
+   ],
+   "height_m": 42.2,
+   "triangles": [
+    62,
+    24,
+    6
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_022"
+   ],
+   "materials": [
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_023",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_023.fbx",
+   "footprint_m": [
+    23.73,
+    0.86
+   ],
+   "height_m": 39.21,
+   "triangles": [
+    62,
+    24,
+    6
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_023"
+   ],
+   "materials": [
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_024",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_024.fbx",
+   "footprint_m": [
+    19.21,
+    0.85
+   ],
+   "height_m": 48.21,
+   "triangles": [
+    42,
+    16,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_024"
+   ],
+   "materials": [
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_025",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_025.fbx",
+   "footprint_m": [
+    19.21,
+    0.79
+   ],
+   "height_m": 51.21,
+   "triangles": [
+    36,
+    14,
+    3
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_025"
+   ],
+   "materials": [
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_026",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_026.fbx",
+   "footprint_m": [
+    6.85,
+    3.35
+   ],
+   "height_m": 31.51,
+   "triangles": [
+    488,
+    195,
+    48
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_026"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGenbasic_rough_metal_dark",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "Material.003",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "solar",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_027",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_027.fbx",
+   "footprint_m": [
+    2.39,
+    9.56
+   ],
+   "height_m": 30.63,
+   "triangles": [
+    40,
+    16,
+    4
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_027_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_rough_metal_dark",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "solar",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_028",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_028.fbx",
+   "footprint_m": [
+    19.21,
+    0.79
+   ],
+   "height_m": 45.2,
+   "triangles": [
+    48,
+    19,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_028"
+   ],
+   "materials": [
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_029",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_029.fbx",
+   "footprint_m": [
+    15.09,
+    0.98
+   ],
+   "height_m": 45.78,
+   "triangles": [
+    98,
+    39,
+    9
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_029"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_rough_metal_dark_.001",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGentextured_metal",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_030",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_030.fbx",
+   "footprint_m": [
+    8.43,
+    3.47
+   ],
+   "height_m": 22.0,
+   "triangles": [
+    1252,
+    500,
+    379
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_030_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGenblack_.001",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGentextured_metal",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "Material.003",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_031",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_031.fbx",
+   "footprint_m": [
+    0.79,
+    15.15
+   ],
+   "height_m": 51.21,
+   "triangles": [
+    18,
+    7,
+    1
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_031"
+   ],
+   "materials": [
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_032",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_032.fbx",
+   "footprint_m": [
+    2.8,
+    6.97
+   ],
+   "height_m": 30.82,
+   "triangles": [
+    154,
+    60,
+    15
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_032_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGenbasic_rough_metal_dark",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "Material.003",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "solar",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_033",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_033.fbx",
+   "footprint_m": [
+    6.37,
+    3.0
+   ],
+   "height_m": 30.82,
+   "triangles": [
+    322,
+    128,
+    31
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_033_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "CityGentextured_metal",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "Material.002",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Material.003",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "material_34",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_034",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_034.fbx",
+   "footprint_m": [
+    5.7,
+    3.34
+   ],
+   "height_m": 30.53,
+   "triangles": [
+    62,
+    24,
+    6
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_034_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenGlass.001",
+     "veyra": "GlassCurtainBlueGrey"
+    },
+    {
+     "source": "CityGenbasic_rough_metal_dark",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "Material.003",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "solar",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_035",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_035.fbx",
+   "footprint_m": [
+    2.48,
+    6.78
+   ],
+   "height_m": 30.58,
+   "triangles": [
+    746,
+    298,
+    74
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_035_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_rough_metal_dark_.001",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGenconcrete.001",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Material.003",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_036",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_036.fbx",
+   "footprint_m": [
+    3.42,
+    3.87
+   ],
+   "height_m": 38.38,
+   "triangles": [
+    573,
+    229,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_036"
+   ],
+   "materials": [
+    {
+     "source": "CityGenGlass.001",
+     "veyra": "GlassCurtainBlueGrey"
+    },
+    {
+     "source": "CityGenbasic_rough_metal_dark",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGenbasic_rough_metal_dark_.001",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "CityGentextured_metal",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "Material.001",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "solar",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_037",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_037.fbx",
+   "footprint_m": [
+    6.94,
+    3.05
+   ],
+   "height_m": 22.94,
+   "triangles": [
+    92,
+    36,
+    9
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_037_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_rough_metal_dark",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "Material.003",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "solar",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_038",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_038.fbx",
+   "footprint_m": [
+    12.19,
+    0.92
+   ],
+   "height_m": 42.2,
+   "triangles": [
+    32,
+    12,
+    3
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Building_038"
+   ],
+   "materials": [
+    {
+     "source": "Material",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "firescape",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Building_039",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Building_039.fbx",
+   "footprint_m": [
+    3.21,
+    4.41
+   ],
+   "height_m": 30.52,
+   "triangles": [
+    70,
+    28,
+    7
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Building_039_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_rough_metal_dark",
+     "veyra": "MetalGalvanized"
+    },
+    {
+     "source": "Material.002",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Material.003",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "solar",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_000",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_000.fbx",
+   "footprint_m": [
+    220.87,
+    137.23
+   ],
+   "height_m": 16.95,
+   "triangles": [
+    1500,
+    600,
+    150
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Prop_000_0"
+   ],
+   "materials": [
+    {
+     "source": "FoliageTrees.003",
+     "veyra": "Leaves"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_001",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_001.fbx",
+   "footprint_m": [
+    213.42,
+    146.82
+   ],
+   "height_m": 16.63,
+   "triangles": [
+    1280,
+    512,
+    128
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Prop_001_0"
+   ],
+   "materials": [
+    {
+     "source": "FoliageTrees.004",
+     "veyra": "Leaves"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_002",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_002.fbx",
+   "footprint_m": [
+    209.55,
+    142.01
+   ],
+   "height_m": 15.45,
+   "triangles": [
+    832,
+    332,
+    82
+   ],
+   "collision": [
+    "UCX_VC_KB_New_York_City_Prop_002_0"
+   ],
+   "materials": [
+    {
+     "source": "CityGenBark.003",
+     "veyra": "Bark"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_003",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_003.fbx",
+   "footprint_m": [
+    1.48,
+    2.1
+   ],
+   "height_m": 1.24,
+   "triangles": [
+    254,
+    100,
+    24
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_003"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_004",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_004.fbx",
+   "footprint_m": [
+    1.28,
+    1.82
+   ],
+   "height_m": 1.07,
+   "triangles": [
+    254,
+    100,
+    24
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_004"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_005",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_005.fbx",
+   "footprint_m": [
+    0.9,
+    0.63
+   ],
+   "height_m": 0.53,
+   "triangles": [
+    254,
+    100
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_005"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_006",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_006.fbx",
+   "footprint_m": [
+    1.11,
+    1.58
+   ],
+   "height_m": 0.93,
+   "triangles": [
+    254,
+    100,
+    24
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_006"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_007",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_007.fbx",
+   "footprint_m": [
+    1.51,
+    2.16
+   ],
+   "height_m": 1.27,
+   "triangles": [
+    254,
+    100,
+    24
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_007"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_008",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_008.fbx",
+   "footprint_m": [
+    1.46,
+    1.02
+   ],
+   "height_m": 0.86,
+   "triangles": [
+    254,
+    100
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_008"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_009",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_009.fbx",
+   "footprint_m": [
+    1.3,
+    1.85
+   ],
+   "height_m": 1.09,
+   "triangles": [
+    254,
+    100,
+    24
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_009"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_010",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_010.fbx",
+   "footprint_m": [
+    1.25,
+    0.88
+   ],
+   "height_m": 0.74,
+   "triangles": [
+    254,
+    100
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_010"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_011",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_011.fbx",
+   "footprint_m": [
+    2.31,
+    1.62
+   ],
+   "height_m": 1.36,
+   "triangles": [
+    254,
+    100,
+    24
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_011"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_012",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_012.fbx",
+   "footprint_m": [
+    0.94,
+    0.66
+   ],
+   "height_m": 0.55,
+   "triangles": [
+    254,
+    100
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_012"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_013",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_013.fbx",
+   "footprint_m": [
+    1.42,
+    2.03
+   ],
+   "height_m": 1.19,
+   "triangles": [
+    254,
+    100,
+    24
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_013"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_014",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_014.fbx",
+   "footprint_m": [
+    0.88,
+    1.25
+   ],
+   "height_m": 0.74,
+   "triangles": [
+    254,
+    100
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_014"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_015",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_015.fbx",
+   "footprint_m": [
+    1.47,
+    1.06
+   ],
+   "height_m": 0.81,
+   "triangles": [
+    254,
+    100
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_015"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_016",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_016.fbx",
+   "footprint_m": [
+    1.82,
+    1.28
+   ],
+   "height_m": 1.07,
+   "triangles": [
+    254,
+    100,
+    24
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_016"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_017",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_017.fbx",
+   "footprint_m": [
+    1.92,
+    1.35
+   ],
+   "height_m": 1.13,
+   "triangles": [
+    254,
+    100,
+    24
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_017"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_018",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_018.fbx",
+   "footprint_m": [
+    1.41,
+    0.99
+   ],
+   "height_m": 0.83,
+   "triangles": [
+    254,
+    100
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_018"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_019",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_019.fbx",
+   "footprint_m": [
+    2.08,
+    1.46
+   ],
+   "height_m": 1.22,
+   "triangles": [
+    254,
+    100,
+    24
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_019"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_020",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_020.fbx",
+   "footprint_m": [
+    1.3,
+    1.85
+   ],
+   "height_m": 1.09,
+   "triangles": [
+    254,
+    100,
+    24
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_020"
+   ],
+   "materials": [
+    {
+     "source": "CityGenAC",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_021",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_021.fbx",
+   "footprint_m": [
+    0.93,
+    1.97
+   ],
+   "height_m": 0.39,
+   "triangles": [
+    236,
+    94,
+    24
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_021"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_022",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_022.fbx",
+   "footprint_m": [
+    3.25,
+    1.54
+   ],
+   "height_m": 0.65,
+   "triangles": [
+    236,
+    94,
+    22
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_022"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_023",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_023.fbx",
+   "footprint_m": [
+    3.84,
+    1.81
+   ],
+   "height_m": 0.76,
+   "triangles": [
+    236,
+    94,
+    23
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_023"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_024",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_024.fbx",
+   "footprint_m": [
+    2.72,
+    1.3
+   ],
+   "height_m": 0.54,
+   "triangles": [
+    236,
+    94,
+    26
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_024"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_025",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_025.fbx",
+   "footprint_m": [
+    3.63,
+    1.77
+   ],
+   "height_m": 0.71,
+   "triangles": [
+    236,
+    94,
+    26
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_025"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_026",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_026.fbx",
+   "footprint_m": [
+    4.77,
+    2.25
+   ],
+   "height_m": 0.95,
+   "triangles": [
+    236,
+    94,
+    23
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_026"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_027",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_027.fbx",
+   "footprint_m": [
+    0.92,
+    1.95
+   ],
+   "height_m": 0.39,
+   "triangles": [
+    236,
+    94,
+    26
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_027"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_028",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_028.fbx",
+   "footprint_m": [
+    3.38,
+    1.59
+   ],
+   "height_m": 0.67,
+   "triangles": [
+    236,
+    94,
+    26
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_028"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_029",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_029.fbx",
+   "footprint_m": [
+    5.01,
+    2.37
+   ],
+   "height_m": 0.99,
+   "triangles": [
+    236,
+    94,
+    26
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_029"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_030",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_030.fbx",
+   "footprint_m": [
+    2.98,
+    1.41
+   ],
+   "height_m": 0.59,
+   "triangles": [
+    236,
+    94,
+    22
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_030"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_031",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_031.fbx",
+   "footprint_m": [
+    1.23,
+    2.61
+   ],
+   "height_m": 0.52,
+   "triangles": [
+    236,
+    94,
+    24
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_031"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_032",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_032.fbx",
+   "footprint_m": [
+    2.35,
+    4.98
+   ],
+   "height_m": 0.99,
+   "triangles": [
+    236,
+    94,
+    26
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_032"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_033",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_033.fbx",
+   "footprint_m": [
+    4.81,
+    2.71
+   ],
+   "height_m": 0.91,
+   "triangles": [
+    236,
+    94,
+    23
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_033"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_034",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_034.fbx",
+   "footprint_m": [
+    2.07,
+    1.16
+   ],
+   "height_m": 0.39,
+   "triangles": [
+    236,
+    94,
+    23
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_034"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_035",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_035.fbx",
+   "footprint_m": [
+    4.5,
+    2.12
+   ],
+   "height_m": 0.89,
+   "triangles": [
+    236,
+    94,
+    24
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_035"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_036",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_036.fbx",
+   "footprint_m": [
+    2.03,
+    1.15
+   ],
+   "height_m": 0.38,
+   "triangles": [
+    236,
+    94,
+    22
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_036"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_037",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_037.fbx",
+   "footprint_m": [
+    3.28,
+    1.55
+   ],
+   "height_m": 0.65,
+   "triangles": [
+    236,
+    94,
+    22
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_037"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_038",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_038.fbx",
+   "footprint_m": [
+    2.74,
+    1.33
+   ],
+   "height_m": 0.54,
+   "triangles": [
+    236,
+    94,
+    26
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_038"
+   ],
+   "materials": [
+    {
+     "source": "CityGenbasic_metal.001",
+     "veyra": "MetalGalvanized"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_New_York_City_Prop_039",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/New_York_City/VC_KB_New_York_City_Prop_039.fbx",
+   "footprint_m": [
+    5.47,
+    2.84
+   ],
+   "height_m": 2.34,
+   "triangles": [
+    158,
+    62,
+    39
+   ],
+   "collision": [
+    "UBX_VC_KB_New_York_City_Prop_039"
+   ],
+   "materials": [
+    {
+     "source": "CityGenconcrete.001",
+     "veyra": "RoadConcreteDeck"
+    }
+   ]
+  }
+ ],
+ "textures": {
+  "source_archive": "ArtSource/Downloads/FullMapModels/New_York_City_4737b6ee.zip",
+  "files": [
+   "Building_Facade.001_baseColor.png",
+   "Building_Facade.001_metallicRoughness.png",
+   "Building_Facade.001_normal.jpeg",
+   "CityGenAC_baseColor.jpeg",
+   "CityGenBark.002_baseColor.jpeg",
+   "CityGenBark.002_metallicRoughness.png",
+   "CityGenBark.002_normal.jpeg",
+   "CityGenGlass.001_normal.jpeg",
+   "CityGenTCom_DecalsStain0047_1_masked_S_baseColor.png",
+   "CityGenVent_baseColor.jpeg",
+   "CityGenWetFloorSign_01.001_baseColor.jpeg",
+   "CityGenWetFloorSign_01.001_metallicRoughness.png",
+   "CityGenWetFloorSign_01.001_normal.jpeg",
+   "CityGen_Grass_baseColor.jpeg",
+   "CityGen_Grass_metallicRoughness.png",
+   "CityGen_Grass_normal.jpeg",
+   "CityGen_Streets_baseColor.jpeg",
+   "CityGen_Streets_metallicRoughness.png",
+   "CityGen_lanes_secondary_color_normal.jpeg",
+   "CityGenconcrete.001_baseColor.jpeg",
+   "CityGenconcrete.001_metallicRoughness.png",
+   "CityGenconcrete.001_normal.jpeg",
+   "CityGenmetal_trash_can_rust_baseColor.jpeg",
+   "CityGenmetal_trash_can_rust_metallicRoughness.png",
+   "CityGenmetal_trash_can_rust_normal.jpeg",
+   "CityGenroof.002_baseColor.jpeg",
+   "CityGenroof.002_normal.jpeg",
+   "CityGensimple_concrete_1_baseColor.jpeg",
+   "CityGensimple_concrete_1_metallicRoughness.png",
+   "CityGentextured_metal_baseColor.jpeg",
+   "CityGentextured_metal_metallicRoughness.png",
+   "CityGentextured_metal_normal.jpeg",
+   "CityGenwhite_marble_tiles_baseColor.jpeg",
+   "CityGenwhite_marble_tiles_metallicRoughness.png",
+   "CityGenwhite_marble_tiles_normal.jpeg",
+   "FoliageTrees.001_baseColor.png",
+   "Material.001_baseColor.png",
+   "Material.001_normal.jpeg",
+   "Material.002_normal.jpeg",
+   "Material.003_baseColor.png",
+   "Material_normal.jpeg",
+   "Street_Assets.001_baseColor.png",
+   "Street_Assets_baseColor.png",
+   "material_34_baseColor.jpeg",
+   "material_baseColor.jpeg",
+   "solar_baseColor.jpeg"
+  ],
+  "copied": 0,
+  "note": "not copied: materials are remapped to the VeyraMaterialLibrary palette (B3)"
+ }
+}

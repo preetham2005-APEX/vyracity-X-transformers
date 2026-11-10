@@ -1,0 +1,1993 @@
+{
+ "source": "CCity_Building_Set_1",
+ "licence": {
+  "licence": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "author": "Neberkenezer (https://sketchfab.com/neberkenezer)",
+  "url": "https://sketchfab.com/3d-models/ccity-building-set-1-a2d5c7bfcc2148fb8994864c43dfcc97",
+  "credit": "This work is based on \"CCity Building Set 1\" (https://sketchfab.com/3d-models/ccity-building-set-1-a2d5c7bfcc2148fb8994864c43dfcc97) by Neberkenezer (https://sketchfab.com/neberkenezer) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "id": "ArtSource/Downloads/FullMapModels/CCity_Building_Set_1_a2d5c7bf.zip"
+ },
+ "pieces": [
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_000",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_000.fbx",
+   "footprint_m": [
+    37.58,
+    17.9
+   ],
+   "height_m": 19.51,
+   "triangles": [
+    548,
+    218,
+    54
+   ],
+   "collision": [
+    "UCX_VC_KB_CCity_Building_Set_1_Building_000_0"
+   ],
+   "materials": [
+    {
+     "source": "Clinic",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_001",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_001.fbx",
+   "footprint_m": [
+    18.6,
+    18.81
+   ],
+   "height_m": 26.18,
+   "triangles": [
+    502,
+    200,
+    50
+   ],
+   "collision": [
+    "UCX_VC_KB_CCity_Building_Set_1_Building_001_0"
+   ],
+   "materials": [
+    {
+     "source": "FillerBuildings1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "FillerBuildings1GLOW",
+     "veyra": "NeonWhite"
+    },
+    {
+     "source": "LMProjects",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "LMProjects1GLOW",
+     "veyra": "NeonWhite"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_002",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_002.fbx",
+   "footprint_m": [
+    17.16,
+    15.13
+   ],
+   "height_m": 31.14,
+   "triangles": [
+    106,
+    42,
+    9
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_002"
+   ],
+   "materials": [
+    {
+     "source": "LMProjects",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "LMProjects1GLOW",
+     "veyra": "NeonWhite"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_003",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_003.fbx",
+   "footprint_m": [
+    17.16,
+    15.13
+   ],
+   "height_m": 31.14,
+   "triangles": [
+    106,
+    42,
+    9
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_003"
+   ],
+   "materials": [
+    {
+     "source": "LMProjects",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "LMProjects1GLOW",
+     "veyra": "NeonWhite"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_004",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_004.fbx",
+   "footprint_m": [
+    15.13,
+    17.16
+   ],
+   "height_m": 31.14,
+   "triangles": [
+    106,
+    42,
+    9
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_004"
+   ],
+   "materials": [
+    {
+     "source": "LMProjects",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "LMProjects1GLOW",
+     "veyra": "NeonWhite"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_005",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_005.fbx",
+   "footprint_m": [
+    24.5,
+    19.17
+   ],
+   "height_m": 15.9,
+   "triangles": [
+    474,
+    189,
+    47
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_005"
+   ],
+   "materials": [
+    {
+     "source": "FillerBuildings1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Paramount",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_006",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_006.fbx",
+   "footprint_m": [
+    15.13,
+    17.2
+   ],
+   "height_m": 28.71,
+   "triangles": [
+    68,
+    27,
+    5
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_006"
+   ],
+   "materials": [
+    {
+     "source": "LMProjects",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "LMProjects1GLOW",
+     "veyra": "NeonWhite"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_007",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_007.fbx",
+   "footprint_m": [
+    17.2,
+    15.13
+   ],
+   "height_m": 28.71,
+   "triangles": [
+    68,
+    27,
+    5
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_007"
+   ],
+   "materials": [
+    {
+     "source": "LMProjects",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "LMProjects1GLOW",
+     "veyra": "NeonWhite"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_008",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_008.fbx",
+   "footprint_m": [
+    17.2,
+    15.0
+   ],
+   "height_m": 28.71,
+   "triangles": [
+    62,
+    24,
+    5
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_008"
+   ],
+   "materials": [
+    {
+     "source": "LMProjects",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "LMProjects1GLOW",
+     "veyra": "NeonWhite"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_009",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_009.fbx",
+   "footprint_m": [
+    18.6,
+    18.52
+   ],
+   "height_m": 17.49,
+   "triangles": [
+    496,
+    197,
+    49
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_009"
+   ],
+   "materials": [
+    {
+     "source": "FillerBuildings1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "FillerBuildings1GLOW",
+     "veyra": "NeonWhite"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_010",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_010.fbx",
+   "footprint_m": [
+    18.52,
+    18.6
+   ],
+   "height_m": 17.49,
+   "triangles": [
+    496,
+    197,
+    49
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_010"
+   ],
+   "materials": [
+    {
+     "source": "FillerBuildings1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "FillerBuildings1GLOW",
+     "veyra": "NeonWhite"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_011",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_011.fbx",
+   "footprint_m": [
+    24.81,
+    18.38
+   ],
+   "height_m": 12.01,
+   "triangles": [
+    194,
+    76,
+    19
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_011"
+   ],
+   "materials": [
+    {
+     "source": "FillerBuildings1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_012",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_012.fbx",
+   "footprint_m": [
+    24.81,
+    18.38
+   ],
+   "height_m": 12.01,
+   "triangles": [
+    194,
+    76,
+    19
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_012"
+   ],
+   "materials": [
+    {
+     "source": "FillerBuildings1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_013",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_013.fbx",
+   "footprint_m": [
+    18.44,
+    20.6
+   ],
+   "height_m": 13.92,
+   "triangles": [
+    786,
+    314,
+    78
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_013"
+   ],
+   "materials": [
+    {
+     "source": "FillerBuildings1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "FillerBuildings1GLOW",
+     "veyra": "NeonWhite"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_014",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_014.fbx",
+   "footprint_m": [
+    18.44,
+    20.6
+   ],
+   "height_m": 13.92,
+   "triangles": [
+    786,
+    314,
+    78
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_014"
+   ],
+   "materials": [
+    {
+     "source": "FillerBuildings1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "FillerBuildings1GLOW",
+     "veyra": "NeonWhite"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_015",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_015.fbx",
+   "footprint_m": [
+    20.6,
+    18.44
+   ],
+   "height_m": 13.92,
+   "triangles": [
+    786,
+    314,
+    78
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_015"
+   ],
+   "materials": [
+    {
+     "source": "FillerBuildings1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "FillerBuildings1GLOW",
+     "veyra": "NeonWhite"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_016",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_016.fbx",
+   "footprint_m": [
+    16.3,
+    18.0
+   ],
+   "height_m": 17.76,
+   "triangles": [
+    70,
+    28,
+    7
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_016"
+   ],
+   "materials": [
+    {
+     "source": "FishFactory",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_017",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_017.fbx",
+   "footprint_m": [
+    18.0,
+    16.3
+   ],
+   "height_m": 17.76,
+   "triangles": [
+    70,
+    28,
+    7
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_017"
+   ],
+   "materials": [
+    {
+     "source": "FishFactory",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_018",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_018.fbx",
+   "footprint_m": [
+    18.0,
+    16.12
+   ],
+   "height_m": 17.76,
+   "triangles": [
+    46,
+    18,
+    3
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_018"
+   ],
+   "materials": [
+    {
+     "source": "FishFactory",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "FishFactory1GLOW",
+     "veyra": "NeonWhite"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_019",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_019.fbx",
+   "footprint_m": [
+    16.12,
+    18.0
+   ],
+   "height_m": 17.76,
+   "triangles": [
+    46,
+    18,
+    3
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_019"
+   ],
+   "materials": [
+    {
+     "source": "FishFactory",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "FishFactory1GLOW",
+     "veyra": "NeonWhite"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_020",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_020.fbx",
+   "footprint_m": [
+    17.57,
+    15.7
+   ],
+   "height_m": 15.38,
+   "triangles": [
+    192,
+    76,
+    19
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_020"
+   ],
+   "materials": [
+    {
+     "source": "Pawnshop",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_021",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_021.fbx",
+   "footprint_m": [
+    15.7,
+    17.57
+   ],
+   "height_m": 15.38,
+   "triangles": [
+    192,
+    76,
+    19
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_021"
+   ],
+   "materials": [
+    {
+     "source": "Pawnshop",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_022",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_022.fbx",
+   "footprint_m": [
+    17.57,
+    15.7
+   ],
+   "height_m": 15.38,
+   "triangles": [
+    192,
+    76,
+    19
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_022"
+   ],
+   "materials": [
+    {
+     "source": "Pawnshop",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_023",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_023.fbx",
+   "footprint_m": [
+    13.0,
+    17.47
+   ],
+   "height_m": 16.44,
+   "triangles": [
+    208,
+    82,
+    19
+   ],
+   "collision": [
+    "UCX_VC_KB_CCity_Building_Set_1_Building_023_0"
+   ],
+   "materials": [
+    {
+     "source": "FishFactory",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_024",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_024.fbx",
+   "footprint_m": [
+    17.47,
+    13.0
+   ],
+   "height_m": 16.44,
+   "triangles": [
+    208,
+    82,
+    19
+   ],
+   "collision": [
+    "UCX_VC_KB_CCity_Building_Set_1_Building_024_0"
+   ],
+   "materials": [
+    {
+     "source": "FishFactory",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_025",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_025.fbx",
+   "footprint_m": [
+    11.55,
+    18.44
+   ],
+   "height_m": 17.49,
+   "triangles": [
+    202,
+    80,
+    20
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_025"
+   ],
+   "materials": [
+    {
+     "source": "FillerBuildings1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_026",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_026.fbx",
+   "footprint_m": [
+    11.55,
+    18.44
+   ],
+   "height_m": 17.49,
+   "triangles": [
+    184,
+    73,
+    18
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_026"
+   ],
+   "materials": [
+    {
+     "source": "FillerBuildings1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_027",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_027.fbx",
+   "footprint_m": [
+    12.0,
+    13.0
+   ],
+   "height_m": 20.59,
+   "triangles": [
+    259,
+    102,
+    25
+   ],
+   "collision": [
+    "UCX_VC_KB_CCity_Building_Set_1_Building_027_0"
+   ],
+   "materials": [
+    {
+     "source": "Paramount",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_028",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_028.fbx",
+   "footprint_m": [
+    13.0,
+    12.0
+   ],
+   "height_m": 20.59,
+   "triangles": [
+    259,
+    102,
+    25
+   ],
+   "collision": [
+    "UCX_VC_KB_CCity_Building_Set_1_Building_028_0"
+   ],
+   "materials": [
+    {
+     "source": "Paramount",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_029",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_029.fbx",
+   "footprint_m": [
+    13.0,
+    5.0
+   ],
+   "height_m": 31.66,
+   "triangles": [
+    61,
+    23,
+    5
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_029"
+   ],
+   "materials": [
+    {
+     "source": "LMProjects",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_030",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_030.fbx",
+   "footprint_m": [
+    5.0,
+    13.0
+   ],
+   "height_m": 31.66,
+   "triangles": [
+    61,
+    23,
+    5
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_030"
+   ],
+   "materials": [
+    {
+     "source": "LMProjects",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_031",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_031.fbx",
+   "footprint_m": [
+    5.0,
+    13.0
+   ],
+   "height_m": 31.66,
+   "triangles": [
+    61,
+    23,
+    5
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_031"
+   ],
+   "materials": [
+    {
+     "source": "LMProjects",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_032",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_032.fbx",
+   "footprint_m": [
+    11.0,
+    6.5
+   ],
+   "height_m": 25.13,
+   "triangles": [
+    14,
+    5,
+    1
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_032"
+   ],
+   "materials": [
+    {
+     "source": "LMProjects",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_033",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_033.fbx",
+   "footprint_m": [
+    11.0,
+    6.5
+   ],
+   "height_m": 25.13,
+   "triangles": [
+    14,
+    5,
+    1
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_033"
+   ],
+   "materials": [
+    {
+     "source": "LMProjects",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_034",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_034.fbx",
+   "footprint_m": [
+    6.5,
+    11.0
+   ],
+   "height_m": 25.13,
+   "triangles": [
+    14,
+    5,
+    1
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_034"
+   ],
+   "materials": [
+    {
+     "source": "LMProjects",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_035",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_035.fbx",
+   "footprint_m": [
+    6.5,
+    11.0
+   ],
+   "height_m": 25.13,
+   "triangles": [
+    14,
+    5,
+    1
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_035"
+   ],
+   "materials": [
+    {
+     "source": "LMProjects",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_036",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_036.fbx",
+   "footprint_m": [
+    6.5,
+    11.0
+   ],
+   "height_m": 25.13,
+   "triangles": [
+    14,
+    5,
+    1
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_036"
+   ],
+   "materials": [
+    {
+     "source": "LMProjects",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_037",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_037.fbx",
+   "footprint_m": [
+    6.5,
+    11.0
+   ],
+   "height_m": 25.13,
+   "triangles": [
+    14,
+    5,
+    1
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Building_037"
+   ],
+   "materials": [
+    {
+     "source": "LMProjects",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_038",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_038.fbx",
+   "footprint_m": [
+    12.3,
+    11.45
+   ],
+   "height_m": 9.09,
+   "triangles": [
+    474,
+    189,
+    47
+   ],
+   "collision": [
+    "UCX_VC_KB_CCity_Building_Set_1_Building_038_0"
+   ],
+   "materials": [
+    {
+     "source": "Laundrymat",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Building_039",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Building_039.fbx",
+   "footprint_m": [
+    12.0,
+    6.0
+   ],
+   "height_m": 12.13,
+   "triangles": [
+    12,
+    4,
+    1
+   ],
+   "collision": [
+    "UCX_VC_KB_CCity_Building_Set_1_Building_039_0"
+   ],
+   "materials": [
+    {
+     "source": "Paramount",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_000",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_000.fbx",
+   "footprint_m": [
+    6.26,
+    3.7
+   ],
+   "height_m": 1.37,
+   "triangles": [
+    1103,
+    440,
+    109
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_000"
+   ],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_001",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_001.fbx",
+   "footprint_m": [
+    2.52,
+    2.95
+   ],
+   "height_m": 0.51,
+   "triangles": [
+    324,
+    128,
+    32
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_001"
+   ],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_002",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_002.fbx",
+   "footprint_m": [
+    1.31,
+    2.99
+   ],
+   "height_m": 0.84,
+   "triangles": [
+    322,
+    128,
+    31
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_002"
+   ],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_003",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_003.fbx",
+   "footprint_m": [
+    1.11,
+    0.57
+   ],
+   "height_m": 1.08,
+   "triangles": [
+    278,
+    111
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_003"
+   ],
+   "materials": [
+    {
+     "source": "Tire",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_004",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_004.fbx",
+   "footprint_m": [
+    1.11,
+    0.57
+   ],
+   "height_m": 1.08,
+   "triangles": [
+    278,
+    111
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_004"
+   ],
+   "materials": [
+    {
+     "source": "Tire",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_005",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_005.fbx",
+   "footprint_m": [
+    1.11,
+    0.57
+   ],
+   "height_m": 1.08,
+   "triangles": [
+    278,
+    111
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_005"
+   ],
+   "materials": [
+    {
+     "source": "Tire",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_006",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_006.fbx",
+   "footprint_m": [
+    1.11,
+    0.57
+   ],
+   "height_m": 1.08,
+   "triangles": [
+    278,
+    111
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_006"
+   ],
+   "materials": [
+    {
+     "source": "Tire",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_007",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_007.fbx",
+   "footprint_m": [
+    6.67,
+    3.69
+   ],
+   "height_m": 0.98,
+   "triangles": [
+    206,
+    82,
+    19
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_007"
+   ],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_008",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_008.fbx",
+   "footprint_m": [
+    2.19,
+    2.44
+   ],
+   "height_m": 0.6,
+   "triangles": [
+    186,
+    74,
+    46
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_008"
+   ],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_009",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_009.fbx",
+   "footprint_m": [
+    0.85,
+    0.16
+   ],
+   "height_m": 0.78,
+   "triangles": [
+    180,
+    71
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_009"
+   ],
+   "materials": [
+    {
+     "source": "Tire",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_010",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_010.fbx",
+   "footprint_m": [
+    0.85,
+    0.16
+   ],
+   "height_m": 0.78,
+   "triangles": [
+    180,
+    71
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_010"
+   ],
+   "materials": [
+    {
+     "source": "Tire",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_011",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_011.fbx",
+   "footprint_m": [
+    0.85,
+    0.16
+   ],
+   "height_m": 0.78,
+   "triangles": [
+    180,
+    71
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_011"
+   ],
+   "materials": [
+    {
+     "source": "Tire",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_012",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_012.fbx",
+   "footprint_m": [
+    0.85,
+    0.16
+   ],
+   "height_m": 0.78,
+   "triangles": [
+    180,
+    71
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_012"
+   ],
+   "materials": [
+    {
+     "source": "Tire",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_013",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_013.fbx",
+   "footprint_m": [
+    1.02,
+    0.39
+   ],
+   "height_m": 0.5,
+   "triangles": [
+    129,
+    51
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_013"
+   ],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_014",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_014.fbx",
+   "footprint_m": [
+    0.9,
+    0.61
+   ],
+   "height_m": 0.5,
+   "triangles": [
+    129,
+    51
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_014"
+   ],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_015",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_015.fbx",
+   "footprint_m": [
+    1.8,
+    1.81
+   ],
+   "height_m": 0.13,
+   "triangles": [
+    126,
+    49,
+    12
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_015"
+   ],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_016",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_016.fbx",
+   "footprint_m": [
+    0.14,
+    0.49
+   ],
+   "height_m": 0.47,
+   "triangles": [
+    125,
+    49
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_017",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_017.fbx",
+   "footprint_m": [
+    1.31,
+    0.91
+   ],
+   "height_m": 1.45,
+   "triangles": [
+    118,
+    47,
+    11
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_017"
+   ],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_018",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_018.fbx",
+   "footprint_m": [
+    1.31,
+    0.91
+   ],
+   "height_m": 1.45,
+   "triangles": [
+    118,
+    47,
+    11
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_018"
+   ],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_019",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_019.fbx",
+   "footprint_m": [
+    1.65,
+    2.22
+   ],
+   "height_m": 0.25,
+   "triangles": [
+    104,
+    40,
+    10
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_019"
+   ],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_020",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_020.fbx",
+   "footprint_m": [
+    2.14,
+    0.68
+   ],
+   "height_m": 0.91,
+   "triangles": [
+    87,
+    33,
+    9
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_020"
+   ],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_021",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_021.fbx",
+   "footprint_m": [
+    2.15,
+    0.65
+   ],
+   "height_m": 0.91,
+   "triangles": [
+    87,
+    33,
+    9
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_021"
+   ],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_022",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_022.fbx",
+   "footprint_m": [
+    0.24,
+    0.44
+   ],
+   "height_m": 0.21,
+   "triangles": [
+    84,
+    32
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_023",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_023.fbx",
+   "footprint_m": [
+    0.13,
+    0.45
+   ],
+   "height_m": 0.21,
+   "triangles": [
+    84,
+    32
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_024",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_024.fbx",
+   "footprint_m": [
+    0.56,
+    2.16
+   ],
+   "height_m": 0.46,
+   "triangles": [
+    66,
+    25,
+    6
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_024"
+   ],
+   "materials": [
+    {
+     "source": "elise",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_025",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_025.fbx",
+   "footprint_m": [
+    0.66,
+    0.91
+   ],
+   "height_m": 0.07,
+   "triangles": [
+    66,
+    26
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_025"
+   ],
+   "materials": [
+    {
+     "source": "Basketball",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_026",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_026.fbx",
+   "footprint_m": [
+    0.66,
+    0.91
+   ],
+   "height_m": 0.07,
+   "triangles": [
+    66,
+    26
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_026"
+   ],
+   "materials": [
+    {
+     "source": "Basketball",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_027",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_027.fbx",
+   "footprint_m": [
+    0.66,
+    0.91
+   ],
+   "height_m": 0.07,
+   "triangles": [
+    66,
+    26
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_027"
+   ],
+   "materials": [
+    {
+     "source": "Basketball",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_028",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_028.fbx",
+   "footprint_m": [
+    0.66,
+    0.91
+   ],
+   "height_m": 0.07,
+   "triangles": [
+    66,
+    26
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_028"
+   ],
+   "materials": [
+    {
+     "source": "Basketball",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_029",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_029.fbx",
+   "footprint_m": [
+    0.91,
+    0.66
+   ],
+   "height_m": 0.07,
+   "triangles": [
+    66,
+    26
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_029"
+   ],
+   "materials": [
+    {
+     "source": "Basketball",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_030",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_030.fbx",
+   "footprint_m": [
+    0.91,
+    0.66
+   ],
+   "height_m": 0.07,
+   "triangles": [
+    66,
+    25
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_030"
+   ],
+   "materials": [
+    {
+     "source": "Basketball",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_031",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_031.fbx",
+   "footprint_m": [
+    3.39,
+    0.49
+   ],
+   "height_m": 1.43,
+   "triangles": [
+    52,
+    20,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_031"
+   ],
+   "materials": [
+    {
+     "source": "CityProps",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_032",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_032.fbx",
+   "footprint_m": [
+    0.49,
+    3.39
+   ],
+   "height_m": 1.43,
+   "triangles": [
+    52,
+    20,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_032"
+   ],
+   "materials": [
+    {
+     "source": "CityProps",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_033",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_033.fbx",
+   "footprint_m": [
+    3.39,
+    0.49
+   ],
+   "height_m": 1.43,
+   "triangles": [
+    52,
+    20,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_033"
+   ],
+   "materials": [
+    {
+     "source": "CityProps",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_034",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_034.fbx",
+   "footprint_m": [
+    0.49,
+    3.39
+   ],
+   "height_m": 1.43,
+   "triangles": [
+    52,
+    20,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_034"
+   ],
+   "materials": [
+    {
+     "source": "CityProps",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_035",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_035.fbx",
+   "footprint_m": [
+    0.49,
+    3.39
+   ],
+   "height_m": 1.43,
+   "triangles": [
+    52,
+    20,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_035"
+   ],
+   "materials": [
+    {
+     "source": "CityProps",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_036",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_036.fbx",
+   "footprint_m": [
+    0.49,
+    3.39
+   ],
+   "height_m": 1.43,
+   "triangles": [
+    52,
+    20,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_036"
+   ],
+   "materials": [
+    {
+     "source": "CityProps",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_037",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_037.fbx",
+   "footprint_m": [
+    0.49,
+    3.39
+   ],
+   "height_m": 1.43,
+   "triangles": [
+    52,
+    20,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_037"
+   ],
+   "materials": [
+    {
+     "source": "CityProps",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_038",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_038.fbx",
+   "footprint_m": [
+    0.49,
+    3.39
+   ],
+   "height_m": 1.43,
+   "triangles": [
+    52,
+    20,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_038"
+   ],
+   "materials": [
+    {
+     "source": "CityProps",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_CCity_Building_Set_1_Prop_039",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/CCity_Building_Set_1/VC_KB_CCity_Building_Set_1_Prop_039.fbx",
+   "footprint_m": [
+    0.49,
+    3.39
+   ],
+   "height_m": 1.43,
+   "triangles": [
+    52,
+    20,
+    4
+   ],
+   "collision": [
+    "UBX_VC_KB_CCity_Building_Set_1_Prop_039"
+   ],
+   "materials": [
+    {
+     "source": "CityProps",
+     "veyra": "MetalPainted"
+    }
+   ]
+  }
+ ],
+ "textures": {
+  "source_archive": "ArtSource/Downloads/FullMapModels/CCity_Building_Set_1_a2d5c7bf.zip",
+  "files": [
+   "Basketball_baseColor.png",
+   "CityProps_baseColor.png",
+   "Clinic_baseColor.png",
+   "FillerBuildings1_baseColor.png",
+   "FishFactory_baseColor.png",
+   "LMProjects1GLOW_baseColor.png",
+   "Laundrymat_baseColor.png",
+   "Paramount_baseColor.png",
+   "Pawnshop_baseColor.png",
+   "Tire_baseColor.png",
+   "elise_baseColor.png"
+  ],
+  "copied": 0,
+  "note": "not copied: materials are remapped to the VeyraMaterialLibrary palette (B3)"
+ }
+}

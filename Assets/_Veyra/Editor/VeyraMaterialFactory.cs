@@ -53,6 +53,7 @@ namespace VeyraCity.EditorTools
             new Spec(VeyraMat.FxParticleAlpha, "T_ParticleAlpha", UrpParticlesUnlit, true, false, false),
             new Spec(VeyraMat.FxParticleAdditive, "T_ParticleAdditive", UrpParticlesUnlit, true, true, false),
             new Spec(VeyraMat.DebugUnlit, "VC_Debug_Unlit", UrpUnlit, false, false, false),
+            new Spec(VeyraMat.DebugMissing, "M_Debug_Missing", UrpUnlit, false, false, false),
         };
 
         /// <summary>Slots filled from existing material assets (not created here).</summary>
@@ -143,6 +144,7 @@ namespace VeyraCity.EditorTools
                 if (created) m.SetColor("_EmissionColor", Color.black);
                 m.globalIlluminationFlags = MaterialGlobalIlluminationFlags.EmissiveIsBlack;
             }
+            if (created && spec.Key == VeyraMat.DebugMissing) m.SetColor("_BaseColor", new Color(1f, 0.35f, 0f)); // obvious orange (B3)
             m.enableInstancing = true;
             EditorUtility.SetDirty(m);
             return m;

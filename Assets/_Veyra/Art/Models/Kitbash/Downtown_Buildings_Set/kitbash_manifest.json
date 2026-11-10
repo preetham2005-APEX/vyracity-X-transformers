@@ -1,0 +1,595 @@
+{
+ "source": "Downtown_Buildings_Set",
+ "licence": {
+  "licence": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "author": "Daniel Zhabotinsky (https://sketchfab.com/DanielZhabotinsky)",
+  "url": "https://sketchfab.com/3d-models/downtown-buildings-set-low-poly-model-7378e7fb9c914c39880d9913a6f4e1d6",
+  "credit": "This work is based on \"Downtown Buildings Set - Low Poly model\" (https://sketchfab.com/3d-models/downtown-buildings-set-low-poly-model-7378e7fb9c914c39880d9913a6f4e1d6) by Daniel Zhabotinsky (https://sketchfab.com/DanielZhabotinsky) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "id": "ArtSource/Downloads/FullMapModels/Downtown_Buildings_Set_7378e7fb.zip"
+ },
+ "pieces": [
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_000",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_000.fbx",
+   "footprint_m": [
+    56.53,
+    40.59
+   ],
+   "height_m": 85.89,
+   "triangles": [
+    15322,
+    6127,
+    1531
+   ],
+   "collision": [
+    "UCX_VC_KB_Downtown_Buildings_Set_Building_000_0"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Facade_FLR_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Facade_FLR_3",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_001",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_001.fbx",
+   "footprint_m": [
+    35.7,
+    35.7
+   ],
+   "height_m": 102.26,
+   "triangles": [
+    2080,
+    832,
+    207
+   ],
+   "collision": [
+    "UCX_VC_KB_Downtown_Buildings_Set_Building_001_0"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Facade_FLR_4",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Modern_Firstfloor_FLR_1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_002",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_002.fbx",
+   "footprint_m": [
+    38.72,
+    38.86
+   ],
+   "height_m": 80.74,
+   "triangles": [
+    1900,
+    760,
+    189
+   ],
+   "collision": [
+    "UBX_VC_KB_Downtown_Buildings_Set_Building_002"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Concrete_FLR_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Firstfloor_FLR_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_International_Side_1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_003",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_003.fbx",
+   "footprint_m": [
+    35.7,
+    35.7
+   ],
+   "height_m": 55.86,
+   "triangles": [
+    1376,
+    550,
+    136
+   ],
+   "collision": [
+    "UCX_VC_KB_Downtown_Buildings_Set_Building_003_0"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Facade_FLR_4",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Modern_Firstfloor_FLR_1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_004",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_004.fbx",
+   "footprint_m": [
+    38.81,
+    31.56
+   ],
+   "height_m": 44.86,
+   "triangles": [
+    2758,
+    1103,
+    275
+   ],
+   "collision": [
+    "UBX_VC_KB_Downtown_Buildings_Set_Building_004"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Concrete_FLR_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Facade_FLR_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Facade_FLR_3",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_005",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_005.fbx",
+   "footprint_m": [
+    26.18,
+    23.51
+   ],
+   "height_m": 64.44,
+   "triangles": [
+    1133,
+    452,
+    113
+   ],
+   "collision": [
+    "UCX_VC_KB_Downtown_Buildings_Set_Building_005_0"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Firstfloor_FLR_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Firstfloortrim_FLR_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Modern_Firstfloor_FLR_1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_006",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_006.fbx",
+   "footprint_m": [
+    36.95,
+    36.95
+   ],
+   "height_m": 27.88,
+   "triangles": [
+    1682,
+    671,
+    167
+   ],
+   "collision": [
+    "UCX_VC_KB_Downtown_Buildings_Set_Building_006_0"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Facade_FLR_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Modern_Firstfloor_FLR_1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_007",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_007.fbx",
+   "footprint_m": [
+    36.95,
+    36.95
+   ],
+   "height_m": 27.88,
+   "triangles": [
+    1698,
+    679,
+    168
+   ],
+   "collision": [
+    "UCX_VC_KB_Downtown_Buildings_Set_Building_007_0"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Facade_FLR_3",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Modern_Firstfloor_FLR_1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_008",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_008.fbx",
+   "footprint_m": [
+    39.22,
+    38.69
+   ],
+   "height_m": 21.89,
+   "triangles": [
+    3216,
+    1285,
+    320
+   ],
+   "collision": [
+    "UBX_VC_KB_Downtown_Buildings_Set_Building_008"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Concrete_FLR_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Modern_Firstfloor_FLR_1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_009",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_009.fbx",
+   "footprint_m": [
+    35.18,
+    35.18
+   ],
+   "height_m": 25.78,
+   "triangles": [
+    838,
+    335,
+    82
+   ],
+   "collision": [
+    "UCX_VC_KB_Downtown_Buildings_Set_Building_009_0"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Facade_FLR_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Modern_Firstfloor_FLR_1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_010",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_010.fbx",
+   "footprint_m": [
+    31.62,
+    31.62
+   ],
+   "height_m": 29.88,
+   "triangles": [
+    1369,
+    547,
+    135
+   ],
+   "collision": [
+    "UCX_VC_KB_Downtown_Buildings_Set_Building_010_0"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Facade_FLR_3",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Modern_Firstfloor_FLR_1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_011",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_011.fbx",
+   "footprint_m": [
+    18.02,
+    31.35
+   ],
+   "height_m": 45.07,
+   "triangles": [
+    2400,
+    960,
+    239
+   ],
+   "collision": [
+    "UCX_VC_KB_Downtown_Buildings_Set_Building_011_0"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Concrete_FLR_1",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Facade_FLR_3",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Firstfloor_FLR_2",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_012",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_012.fbx",
+   "footprint_m": [
+    52.98,
+    19.35
+   ],
+   "height_m": 24.71,
+   "triangles": [
+    3086,
+    1234,
+    422
+   ],
+   "collision": [
+    "UCX_VC_KB_Downtown_Buildings_Set_Building_012_0"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Brownstone_Firstfloor_1",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Downtown_Facade_FLR_2",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_013",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_013.fbx",
+   "footprint_m": [
+    26.18,
+    23.51
+   ],
+   "height_m": 37.07,
+   "triangles": [
+    689,
+    275,
+    68
+   ],
+   "collision": [
+    "UCX_VC_KB_Downtown_Buildings_Set_Building_013_0"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Facade_FLR_7_0",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Firstfloor_FLR_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Firstfloortrim_FLR_1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_014",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_014.fbx",
+   "footprint_m": [
+    31.67,
+    31.59
+   ],
+   "height_m": 17.74,
+   "triangles": [
+    1437,
+    573,
+    143
+   ],
+   "collision": [
+    "UCX_VC_KB_Downtown_Buildings_Set_Building_014_0"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Facade_FLR_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Firstfloor_FLR_2",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_015",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_015.fbx",
+   "footprint_m": [
+    14.72,
+    39.83
+   ],
+   "height_m": 26.25,
+   "triangles": [
+    3261,
+    1304,
+    326
+   ],
+   "collision": [
+    "UCX_VC_KB_Downtown_Buildings_Set_Building_015_0"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_2",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Downtown_Facade_FLR_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Firstfloor_FLR_2",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Maskedstuff_1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_016",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_016.fbx",
+   "footprint_m": [
+    13.31,
+    23.03
+   ],
+   "height_m": 18.39,
+   "triangles": [
+    466,
+    186,
+    46
+   ],
+   "collision": [
+    "UBX_VC_KB_Downtown_Buildings_Set_Building_016"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Facade_FLR_7",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Modern_Firstfloor_FLR_1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Downtown_Buildings_Set_Building_017",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Downtown_Buildings_Set/VC_KB_Downtown_Buildings_Set_Building_017.fbx",
+   "footprint_m": [
+    10.0,
+    21.45
+   ],
+   "height_m": 21.24,
+   "triangles": [
+    825,
+    329,
+    163
+   ],
+   "collision": [
+    "UBX_VC_KB_Downtown_Buildings_Set_Building_017"
+   ],
+   "materials": [
+    {
+     "source": "Downtown_Facade_FLR_6",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Downtown_Facade_FLR_8",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  }
+ ],
+ "textures": {
+  "source_archive": "ArtSource/Downloads/FullMapModels/Downtown_Buildings_Set_7378e7fb.zip",
+  "files": [
+   "Brownstone_Facade_Flr_2_baseColor.jpeg",
+   "Brownstone_Facade_Flr_2_metallicRoughness.png",
+   "Brownstone_Facade_Flr_2_specularf0.png",
+   "Downtown_Brownstone_Firstfloor_1_baseColor.jpeg",
+   "Downtown_Brownstone_Firstfloor_1_metallicRoughness.png",
+   "Downtown_Brownstone_Firstfloor_1_specularf0.png",
+   "Downtown_Concrete_FLR_1_baseColor.jpeg",
+   "Downtown_Concrete_FLR_1_specularf0.png",
+   "Downtown_Facade_FLR_1_baseColor.jpeg",
+   "Downtown_Facade_FLR_1_metallicRoughness.png",
+   "Downtown_Facade_FLR_1_specularf0.png",
+   "Downtown_Facade_FLR_2_baseColor.jpeg",
+   "Downtown_Facade_FLR_2_metallicRoughness.png",
+   "Downtown_Facade_FLR_2_specularf0.png",
+   "Downtown_Facade_FLR_3_baseColor.jpeg",
+   "Downtown_Facade_FLR_3_metallicRoughness.png",
+   "Downtown_Facade_FLR_3_specularf0.png",
+   "Downtown_Facade_FLR_4_baseColor.jpeg",
+   "Downtown_Facade_FLR_4_metallicRoughness.png",
+   "Downtown_Facade_FLR_4_specularf0.png",
+   "Downtown_Facade_FLR_6_baseColor.jpeg",
+   "Downtown_Facade_FLR_6_metallicRoughness.png",
+   "Downtown_Facade_FLR_6_specularf0.png",
+   "Downtown_Facade_FLR_7_baseColor.jpeg",
+   "Downtown_Facade_FLR_7_metallicRoughness.png",
+   "Downtown_Facade_FLR_7_specularf0.png",
+   "Downtown_Facade_FLR_8_baseColor.jpeg",
+   "Downtown_Facade_FLR_8_metallicRoughness.png",
+   "Downtown_Facade_FLR_8_specularf0.png",
+   "Downtown_Firstfloor_FLR_2_baseColor.jpeg",
+   "Downtown_Firstfloor_FLR_2_metallicRoughness.png",
+   "Downtown_Firstfloor_FLR_2_specularf0.png",
+   "Downtown_Firstfloortrim_FLR_1_baseColor.jpeg",
+   "Downtown_Firstfloortrim_FLR_1_metallicRoughness.png",
+   "Downtown_Firstfloortrim_FLR_1_specularf0.png",
+   "Downtown_International_Side_1_baseColor.jpeg",
+   "Downtown_International_Side_1_metallicRoughness.png",
+   "Downtown_International_Side_1_specularf0.png",
+   "Downtown_Maskedstuff_1_baseColor.jpeg",
+   "Downtown_Maskedstuff_1_metallicRoughness.png",
+   "Downtown_Maskedstuff_1_specularf0.png",
+   "Downtown_Modern_Firstfloor_FLR_1_baseColor.jpeg",
+   "Downtown_Modern_Firstfloor_FLR_1_metallicRoughness.png",
+   "Downtown_Modern_Firstfloor_FLR_1_specularf0.png"
+  ],
+  "copied": 0,
+  "note": "not copied: materials are remapped to the VeyraMaterialLibrary palette (B3)"
+ }
+}

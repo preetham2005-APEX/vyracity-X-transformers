@@ -101,6 +101,8 @@ namespace VeyraCity.World
         // Debug (1100–1199)
         /// <summary>URP/Unlit opaque white, for runtime debug geometry.</summary>
         DebugUnlit = 1100,
+        /// <summary>URP/Unlit opaque orange: card B3's fallback for imported model materials that material_map.json cannot map.</summary>
+        DebugMissing = 1101,
     }
 
     /// <summary>

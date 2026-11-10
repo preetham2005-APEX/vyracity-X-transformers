@@ -1,0 +1,81 @@
+{
+ "source": "Realistic_Chicago_Buildings",
+ "licence": {
+  "licence": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "author": "99.Miles (https://sketchfab.com/Mazen220)",
+  "url": "https://sketchfab.com/3d-models/realistic-chicago-buildings-c4a3993ef1e84e6d9d5a15c78da88aae",
+  "credit": "This work is based on \"Realistic chicago buildings\" (https://sketchfab.com/3d-models/realistic-chicago-buildings-c4a3993ef1e84e6d9d5a15c78da88aae) by 99.Miles (https://sketchfab.com/Mazen220) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "id": "ArtSource/Downloads/FullMapModels/Realistic_Chicago_Buildings_c4a3993e.zip"
+ },
+ "pieces": [
+  {
+   "name": "VC_KB_Realistic_Chicago_Buildings_Building_000",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Realistic_Chicago_Buildings/VC_KB_Realistic_Chicago_Buildings_Building_000.fbx",
+   "footprint_m": [
+    77.81,
+    55.16
+   ],
+   "height_m": 71.38,
+   "triangles": [
+    9626,
+    3850,
+    961
+   ],
+   "collision": [
+    "UBX_VC_KB_Realistic_Chicago_Buildings_Building_000"
+   ],
+   "materials": [
+    {
+     "source": "BLACK_BUILD",
+     "veyra": "FacadeConcrete"
+    },
+    {
+     "source": "Bricks",
+     "veyra": "FacadeBrickRed"
+    },
+    {
+     "source": "Bulbs",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Realistic_Chicago_Buildings_Building_001",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Realistic_Chicago_Buildings/VC_KB_Realistic_Chicago_Buildings_Building_001.fbx",
+   "footprint_m": [
+    89.72,
+    52.87
+   ],
+   "height_m": 62.03,
+   "triangles": [
+    1565,
+    625,
+    156
+   ],
+   "collision": [
+    "UBX_VC_KB_Realistic_Chicago_Buildings_Building_001"
+   ],
+   "materials": [
+    {
+     "source": "Building",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  }
+ ],
+ "textures": {
+  "source_archive": "ArtSource/Downloads/FullMapModels/Realistic_Chicago_Buildings_c4a3993e.zip",
+  "files": [
+   "BLACK_BUILD_baseColor.jpeg",
+   "BLACK_BUILD_metallicRoughness.png",
+   "Bricks_baseColor.png",
+   "Building_baseColor.jpeg",
+   "Building_metallicRoughness.png",
+   "Bulbs_baseColor.png"
+  ],
+  "copied": 0,
+  "note": "not copied: materials are remapped to the VeyraMaterialLibrary palette (B3)"
+ }
+}

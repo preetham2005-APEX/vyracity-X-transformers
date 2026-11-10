@@ -1,0 +1,949 @@
+{
+ "source": "Brownstone_Building_Set",
+ "licence": {
+  "licence": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "author": "Daniel Zhabotinsky (https://sketchfab.com/DanielZhabotinsky)",
+  "url": "https://sketchfab.com/3d-models/brownstone-building-set-low-poly-model-b15e6344acd844eabc823e1cc8332574",
+  "credit": "This work is based on \"Brownstone Building Set - Low poly model\" (https://sketchfab.com/3d-models/brownstone-building-set-low-poly-model-b15e6344acd844eabc823e1cc8332574) by Daniel Zhabotinsky (https://sketchfab.com/DanielZhabotinsky) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "id": "ArtSource/Downloads/FullMapModels/Brownstone_Building_Set_b15e6344.zip"
+ },
+ "pieces": [
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_000",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_000.fbx",
+   "footprint_m": [
+    68.28,
+    20.56
+   ],
+   "height_m": 16.59,
+   "triangles": [
+    2333,
+    933,
+    233
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_000"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_1",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Facade_Flr_2",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Firstfloor_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_001",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_001.fbx",
+   "footprint_m": [
+    64.66,
+    20.56
+   ],
+   "height_m": 17.02,
+   "triangles": [
+    1083,
+    433,
+    108
+   ],
+   "collision": [
+    "UCX_VC_KB_Brownstone_Building_Set_Building_001_0"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_FLR_7",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Facade_Flr_2",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Facade_Flr_4",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_002",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_002.fbx",
+   "footprint_m": [
+    30.69,
+    30.68
+   ],
+   "height_m": 17.77,
+   "triangles": [
+    2808,
+    1123,
+    280
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_002"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_FLR_7",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Facade_Flr_3",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_003",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_003.fbx",
+   "footprint_m": [
+    30.0,
+    21.38
+   ],
+   "height_m": 22.77,
+   "triangles": [
+    3972,
+    1588,
+    397
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_003"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_2",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Facade_Flr_6",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Firstfloor_1",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Maskedstuff_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_004",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_004.fbx",
+   "footprint_m": [
+    30.44,
+    28.64
+   ],
+   "height_m": 15.5,
+   "triangles": [
+    3045,
+    1217,
+    303
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_004"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_1",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Wall_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_005",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_005.fbx",
+   "footprint_m": [
+    30.0,
+    20.98
+   ],
+   "height_m": 21.06,
+   "triangles": [
+    2178,
+    871,
+    216
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_005"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_1",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Firstfloor_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_006",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_006.fbx",
+   "footprint_m": [
+    30.69,
+    30.68
+   ],
+   "height_m": 13.99,
+   "triangles": [
+    2262,
+    903,
+    225
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_006"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_FLR_7",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Facade_Flr_4",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_007",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_007.fbx",
+   "footprint_m": [
+    30.69,
+    30.68
+   ],
+   "height_m": 13.94,
+   "triangles": [
+    2198,
+    879,
+    219
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_007"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_FLR_7",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Facade_Flr_3",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_008",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_008.fbx",
+   "footprint_m": [
+    28.39,
+    21.4
+   ],
+   "height_m": 21.04,
+   "triangles": [
+    2742,
+    1095,
+    273
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_008"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_3",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Facade_Flr_6",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Maskedstuff_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_009",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_009.fbx",
+   "footprint_m": [
+    30.0,
+    20.48
+   ],
+   "height_m": 20.38,
+   "triangles": [
+    2024,
+    808,
+    202
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_009"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_4",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_010",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_010.fbx",
+   "footprint_m": [
+    30.0,
+    20.48
+   ],
+   "height_m": 20.38,
+   "triangles": [
+    2024,
+    808,
+    201
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_010"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_5",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_011",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_011.fbx",
+   "footprint_m": [
+    30.01,
+    23.56
+   ],
+   "height_m": 12.86,
+   "triangles": [
+    3066,
+    1225,
+    305
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_011"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_2",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Facade_Flr_5",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Firstfloor_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_012",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_012.fbx",
+   "footprint_m": [
+    20.0,
+    21.45
+   ],
+   "height_m": 21.18,
+   "triangles": [
+    3592,
+    1436,
+    485
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_012"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_FLR_7",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Facade_Flr_1",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Maskedstuff_1_0",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_013",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_013.fbx",
+   "footprint_m": [
+    20.0,
+    21.45
+   ],
+   "height_m": 21.04,
+   "triangles": [
+    3456,
+    1382,
+    345
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_013"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_3_Dif",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Firstfloor_1_dif",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Maskedstuff_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_014",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_014.fbx",
+   "footprint_m": [
+    20.0,
+    20.13
+   ],
+   "height_m": 21.85,
+   "triangles": [
+    2206,
+    882,
+    224
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_014"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_3",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_015",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_015.fbx",
+   "footprint_m": [
+    30.0,
+    20.48
+   ],
+   "height_m": 13.47,
+   "triangles": [
+    1544,
+    617,
+    153
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_015"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_1",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Firstfloor_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_016",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_016.fbx",
+   "footprint_m": [
+    30.0,
+    21.3
+   ],
+   "height_m": 12.79,
+   "triangles": [
+    1742,
+    695,
+    174
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_016"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_FLR_7",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Facade_Flr_4",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_017",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_017.fbx",
+   "footprint_m": [
+    21.28,
+    22.45
+   ],
+   "height_m": 16.16,
+   "triangles": [
+    2457,
+    981,
+    245
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_017"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_5",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Midcity_Facade_FLR_1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_018",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_018.fbx",
+   "footprint_m": [
+    30.0,
+    22.65
+   ],
+   "height_m": 9.1,
+   "triangles": [
+    1412,
+    563,
+    140
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_018"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_1",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Facade_Flr_2",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_019",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_019.fbx",
+   "footprint_m": [
+    19.37,
+    23.05
+   ],
+   "height_m": 13.22,
+   "triangles": [
+    1799,
+    719,
+    178
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_019"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_020",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_020.fbx",
+   "footprint_m": [
+    20.0,
+    21.43
+   ],
+   "height_m": 13.45,
+   "triangles": [
+    1856,
+    741,
+    185
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_020"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_3_Dif",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Firstfloor_1_dif",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_021",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_021.fbx",
+   "footprint_m": [
+    21.73,
+    22.91
+   ],
+   "height_m": 10.39,
+   "triangles": [
+    1699,
+    678,
+    168
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_021"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_5",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Midcity_Facade_FLR_1",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_022",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_022.fbx",
+   "footprint_m": [
+    13.32,
+    20.6
+   ],
+   "height_m": 18.73,
+   "triangles": [
+    2741,
+    1096,
+    274
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_022"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_4",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Firstfloor_1",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Maskedstuff_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_023",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_023.fbx",
+   "footprint_m": [
+    13.32,
+    20.6
+   ],
+   "height_m": 18.73,
+   "triangles": [
+    2741,
+    1096,
+    273
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_023"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_FLR_7",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Facade_Flr_5",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Maskedstuff_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_024",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_024.fbx",
+   "footprint_m": [
+    13.32,
+    20.6
+   ],
+   "height_m": 18.73,
+   "triangles": [
+    2713,
+    1084,
+    271
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_024"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_4",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Firstfloor_1",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Maskedstuff_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_025",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_025.fbx",
+   "footprint_m": [
+    10.0,
+    21.43
+   ],
+   "height_m": 21.04,
+   "triangles": [
+    1367,
+    546,
+    135
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_025"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_5",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Firstfloor_1",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Maskedstuff_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_026",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_026.fbx",
+   "footprint_m": [
+    10.15,
+    28.64
+   ],
+   "height_m": 15.5,
+   "triangles": [
+    1103,
+    440,
+    110
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_026"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_1",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Wall_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_027",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_027.fbx",
+   "footprint_m": [
+    10.0,
+    20.48
+   ],
+   "height_m": 21.04,
+   "triangles": [
+    863,
+    344,
+    183
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_027"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_Flr_2",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Firstfloor_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_028",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_028.fbx",
+   "footprint_m": [
+    30.0,
+    1.69
+   ],
+   "height_m": 18.61,
+   "triangles": [
+    1982,
+    792,
+    245
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_028"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_FLR_7",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Maskedstuff_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_029",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_029.fbx",
+   "footprint_m": [
+    30.0,
+    1.69
+   ],
+   "height_m": 18.61,
+   "triangles": [
+    1982,
+    792,
+    245
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_029"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Facade_FLR_7",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Maskedstuff_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Brownstone_Building_Set_Building_030",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Brownstone_Building_Set/VC_KB_Brownstone_Building_Set_Building_030.fbx",
+   "footprint_m": [
+    19.71,
+    1.84
+   ],
+   "height_m": 16.65,
+   "triangles": [
+    1170,
+    468,
+    132
+   ],
+   "collision": [
+    "UBX_VC_KB_Brownstone_Building_Set_Building_030"
+   ],
+   "materials": [
+    {
+     "source": "Brownstone_Firstfloor_1",
+     "veyra": "FacadeLimestoneDeco"
+    },
+    {
+     "source": "Brownstone_Maskedstuff_1",
+     "veyra": "FacadeLimestoneDeco"
+    }
+   ]
+  }
+ ],
+ "textures": {
+  "source_archive": "ArtSource/Downloads/FullMapModels/Brownstone_Building_Set_b15e6344.zip",
+  "files": [
+   "Brownstone_Facade_Flr_1_baseColor.jpeg",
+   "Brownstone_Facade_Flr_1_metallicRoughness.png",
+   "Brownstone_Facade_Flr_1_specularf0.png",
+   "Brownstone_Facade_Flr_2_baseColor.jpeg",
+   "Brownstone_Facade_Flr_2_metallicRoughness.png",
+   "Brownstone_Facade_Flr_2_specularf0.png",
+   "Brownstone_Facade_Flr_3_baseColor.jpeg",
+   "Brownstone_Facade_Flr_3_metallicRoughness.png",
+   "Brownstone_Facade_Flr_3_specularf0.png",
+   "Brownstone_Facade_Flr_4_baseColor.jpeg",
+   "Brownstone_Facade_Flr_4_metallicRoughness.png",
+   "Brownstone_Facade_Flr_4_specularf0.png",
+   "Brownstone_Facade_Flr_5_baseColor.jpeg",
+   "Brownstone_Facade_Flr_5_metallicRoughness.png",
+   "Brownstone_Facade_Flr_5_specularf0.png",
+   "Brownstone_Facade_Flr_6_baseColor.jpeg",
+   "Brownstone_Facade_Flr_6_metallicRoughness.png",
+   "Brownstone_Facade_Flr_6_specularf0.png",
+   "Brownstone_Firstfloor_1_baseColor.jpeg",
+   "Brownstone_Firstfloor_1_metallicRoughness.png",
+   "Brownstone_Firstfloor_1_specularf0.png",
+   "Brownstone_Maskedstuff_1_baseColor.jpeg",
+   "Brownstone_Maskedstuff_1_metallicRoughness.png",
+   "Brownstone_Maskedstuff_1_specularf0.png",
+   "Brownstone_Wall_1_baseColor.jpeg",
+   "Brownstone_Wall_1_metallicRoughness.png",
+   "Brownstone_Wall_1_specularf0.png",
+   "Midcity_Facade_FLR_1_baseColor.jpeg",
+   "Midcity_Facade_FLR_1_metallicRoughness.png",
+   "Midcity_Facade_FLR_1_specularf0.png"
+  ],
+  "copied": 0,
+  "note": "not copied: materials are remapped to the VeyraMaterialLibrary palette (B3)"
+ }
+}

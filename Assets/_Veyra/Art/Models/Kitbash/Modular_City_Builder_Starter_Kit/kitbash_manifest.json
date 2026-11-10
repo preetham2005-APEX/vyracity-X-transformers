@@ -1,0 +1,1872 @@
+{
+ "source": "Modular_City_Builder_Starter_Kit",
+ "licence": {
+  "licence": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "author": "Pieter Ferreira (https://sketchfab.com/Badboy17Aiden)",
+  "url": "https://sketchfab.com/3d-models/modular-kit-city-builder-starter-kit-784358d2b44a43398079770d316b6de7",
+  "credit": "This work is based on \"modular kit city builder starter kit\" (https://sketchfab.com/3d-models/modular-kit-city-builder-starter-kit-784358d2b44a43398079770d316b6de7) by Pieter Ferreira (https://sketchfab.com/Badboy17Aiden) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "id": "ArtSource/Downloads/FullMapModels/Modular_City_Builder_Starter_Kit_784358d2.zip"
+ },
+ "pieces": [
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_000",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_000.fbx",
+   "footprint_m": [
+    15.51,
+    65.87
+   ],
+   "height_m": 36.7,
+   "triangles": [
+    1112,
+    444,
+    110
+   ],
+   "collision": [
+    "UCX_VC_KB_Modular_City_Builder_Starter_Kit_Building_000_0"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_001",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_001.fbx",
+   "footprint_m": [
+    15.51,
+    65.87
+   ],
+   "height_m": 36.7,
+   "triangles": [
+    1112,
+    444,
+    110
+   ],
+   "collision": [
+    "UCX_VC_KB_Modular_City_Builder_Starter_Kit_Building_001_0"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_002",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_002.fbx",
+   "footprint_m": [
+    9.47,
+    45.6
+   ],
+   "height_m": 5.93,
+   "triangles": [
+    1584,
+    633,
+    158
+   ],
+   "collision": [
+    "UCX_VC_KB_Modular_City_Builder_Starter_Kit_Building_002_0"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_003",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_003.fbx",
+   "footprint_m": [
+    17.21,
+    19.87
+   ],
+   "height_m": 6.44,
+   "triangles": [
+    1364,
+    544,
+    137
+   ],
+   "collision": [
+    "UCX_VC_KB_Modular_City_Builder_Starter_Kit_Building_003_0"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_004",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_004.fbx",
+   "footprint_m": [
+    3.1,
+    15.82
+   ],
+   "height_m": 20.18,
+   "triangles": [
+    1560,
+    623,
+    155
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_004"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_005",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_005.fbx",
+   "footprint_m": [
+    4.55,
+    28.48
+   ],
+   "height_m": 5.93,
+   "triangles": [
+    2508,
+    1002,
+    250
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_005"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_006",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_006.fbx",
+   "footprint_m": [
+    14.62,
+    16.19
+   ],
+   "height_m": 3.13,
+   "triangles": [
+    148,
+    59,
+    14
+   ],
+   "collision": [
+    "UCX_VC_KB_Modular_City_Builder_Starter_Kit_Building_006_0"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_007",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_007.fbx",
+   "footprint_m": [
+    14.62,
+    16.19
+   ],
+   "height_m": 3.13,
+   "triangles": [
+    148,
+    59,
+    14
+   ],
+   "collision": [
+    "UCX_VC_KB_Modular_City_Builder_Starter_Kit_Building_007_0"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_008",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_008.fbx",
+   "footprint_m": [
+    1.21,
+    11.64
+   ],
+   "height_m": 47.72,
+   "triangles": [
+    1046,
+    418,
+    104
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_008"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_009",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_009.fbx",
+   "footprint_m": [
+    1.21,
+    11.64
+   ],
+   "height_m": 47.72,
+   "triangles": [
+    1046,
+    418,
+    103
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_009"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_010",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_010.fbx",
+   "footprint_m": [
+    12.48,
+    7.61
+   ],
+   "height_m": 6.44,
+   "triangles": [
+    682,
+    272,
+    69
+   ],
+   "collision": [
+    "UCX_VC_KB_Modular_City_Builder_Starter_Kit_Building_010_0"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_011",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_011.fbx",
+   "footprint_m": [
+    1.21,
+    10.51
+   ],
+   "height_m": 45.96,
+   "triangles": [
+    886,
+    354,
+    88
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_011"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_012",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_012.fbx",
+   "footprint_m": [
+    1.21,
+    10.51
+   ],
+   "height_m": 45.96,
+   "triangles": [
+    886,
+    354,
+    88
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_012"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_013",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_013.fbx",
+   "footprint_m": [
+    1.21,
+    10.06
+   ],
+   "height_m": 42.3,
+   "triangles": [
+    854,
+    340,
+    84
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_013"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_014",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_014.fbx",
+   "footprint_m": [
+    1.21,
+    10.06
+   ],
+   "height_m": 42.3,
+   "triangles": [
+    886,
+    354,
+    88
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_014"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_015",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_015.fbx",
+   "footprint_m": [
+    1.21,
+    8.45
+   ],
+   "height_m": 47.72,
+   "triangles": [
+    830,
+    332,
+    82
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_015"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_016",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_016.fbx",
+   "footprint_m": [
+    1.21,
+    8.45
+   ],
+   "height_m": 47.72,
+   "triangles": [
+    830,
+    332,
+    82
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_016"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_017",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_017.fbx",
+   "footprint_m": [
+    1.21,
+    9.98
+   ],
+   "height_m": 36.79,
+   "triangles": [
+    886,
+    354,
+    88
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_017"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_018",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_018.fbx",
+   "footprint_m": [
+    1.21,
+    9.98
+   ],
+   "height_m": 36.79,
+   "triangles": [
+    854,
+    340,
+    85
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_018"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_019",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_019.fbx",
+   "footprint_m": [
+    11.99,
+    5.7
+   ],
+   "height_m": 6.44,
+   "triangles": [
+    506,
+    201,
+    66
+   ],
+   "collision": [
+    "UCX_VC_KB_Modular_City_Builder_Starter_Kit_Building_019_0"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_020",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_020.fbx",
+   "footprint_m": [
+    1.21,
+    7.29
+   ],
+   "height_m": 45.96,
+   "triangles": [
+    830,
+    332,
+    82
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_020"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_021",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_021.fbx",
+   "footprint_m": [
+    1.21,
+    7.29
+   ],
+   "height_m": 45.96,
+   "triangles": [
+    830,
+    332,
+    82
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_021"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_022",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_022.fbx",
+   "footprint_m": [
+    1.43,
+    45.6
+   ],
+   "height_m": 5.93,
+   "triangles": [
+    1408,
+    563,
+    140
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_022"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_023",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_023.fbx",
+   "footprint_m": [
+    1.2,
+    10.1
+   ],
+   "height_m": 29.45,
+   "triangles": [
+    872,
+    347,
+    86
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_023"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_024",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_024.fbx",
+   "footprint_m": [
+    1.2,
+    10.1
+   ],
+   "height_m": 29.45,
+   "triangles": [
+    904,
+    361,
+    89
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_024"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_025",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_025.fbx",
+   "footprint_m": [
+    1.21,
+    10.1
+   ],
+   "height_m": 29.45,
+   "triangles": [
+    904,
+    361,
+    90
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_025"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_026",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_026.fbx",
+   "footprint_m": [
+    1.2,
+    10.1
+   ],
+   "height_m": 29.45,
+   "triangles": [
+    872,
+    347,
+    86
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_026"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_027",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_027.fbx",
+   "footprint_m": [
+    1.21,
+    6.81
+   ],
+   "height_m": 42.3,
+   "triangles": [
+    798,
+    318,
+    78
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_027"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_028",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_028.fbx",
+   "footprint_m": [
+    1.21,
+    6.81
+   ],
+   "height_m": 42.3,
+   "triangles": [
+    830,
+    332,
+    82
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_028"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_029",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_029.fbx",
+   "footprint_m": [
+    1.2,
+    13.46
+   ],
+   "height_m": 20.58,
+   "triangles": [
+    910,
+    363,
+    90
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_029"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_030",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_030.fbx",
+   "footprint_m": [
+    1.2,
+    13.46
+   ],
+   "height_m": 20.58,
+   "triangles": [
+    942,
+    375,
+    94
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_030"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_031",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_031.fbx",
+   "footprint_m": [
+    1.2,
+    6.81
+   ],
+   "height_m": 36.79,
+   "triangles": [
+    798,
+    318,
+    78
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_031"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_032",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_032.fbx",
+   "footprint_m": [
+    1.2,
+    6.81
+   ],
+   "height_m": 36.79,
+   "triangles": [
+    830,
+    332,
+    82
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_032"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_033",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_033.fbx",
+   "footprint_m": [
+    1.21,
+    10.2
+   ],
+   "height_m": 20.58,
+   "triangles": [
+    886,
+    353,
+    88
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_033"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_034",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_034.fbx",
+   "footprint_m": [
+    1.21,
+    10.2
+   ],
+   "height_m": 20.58,
+   "triangles": [
+    854,
+    341,
+    85
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_034"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_035",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_035.fbx",
+   "footprint_m": [
+    1.2,
+    10.07
+   ],
+   "height_m": 6.81,
+   "triangles": [
+    80,
+    32,
+    7
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_035"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_036",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_036.fbx",
+   "footprint_m": [
+    1.2,
+    10.07
+   ],
+   "height_m": 6.81,
+   "triangles": [
+    80,
+    32,
+    7
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_036"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_037",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_037.fbx",
+   "footprint_m": [
+    1.2,
+    10.06
+   ],
+   "height_m": 6.81,
+   "triangles": [
+    80,
+    32,
+    7
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_037"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_038",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_038.fbx",
+   "footprint_m": [
+    1.2,
+    10.06
+   ],
+   "height_m": 6.81,
+   "triangles": [
+    80,
+    32,
+    7
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_038"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Building_039",
+   "type": "Building",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Building_039.fbx",
+   "footprint_m": [
+    1.2,
+    10.06
+   ],
+   "height_m": 6.81,
+   "triangles": [
+    80,
+    32,
+    8
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Building_039"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "FacadeConcrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_000",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_000.fbx",
+   "footprint_m": [
+    4.67,
+    6.09
+   ],
+   "height_m": 1.52,
+   "triangles": [
+    660,
+    264,
+    65
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_000"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_001",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_001.fbx",
+   "footprint_m": [
+    0.14,
+    0.17
+   ],
+   "height_m": 0.27,
+   "triangles": [
+    318,
+    126
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_002",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_002.fbx",
+   "footprint_m": [
+    0.14,
+    0.17
+   ],
+   "height_m": 0.35,
+   "triangles": [
+    318,
+    126
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_003",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_003.fbx",
+   "footprint_m": [
+    0.02,
+    0.27
+   ],
+   "height_m": 0.27,
+   "triangles": [
+    288,
+    114
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_004",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_004.fbx",
+   "footprint_m": [
+    1.58,
+    7.59
+   ],
+   "height_m": 0.74,
+   "triangles": [
+    176,
+    70,
+    17
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_004"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_005",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_005.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_005"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_006",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_006.fbx",
+   "footprint_m": [
+    0.01,
+    0.4
+   ],
+   "height_m": 0.39,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_007",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_007.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_007"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_008",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_008.fbx",
+   "footprint_m": [
+    0.01,
+    0.4
+   ],
+   "height_m": 0.39,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_009",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_009.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_009"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_010",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_010.fbx",
+   "footprint_m": [
+    0.01,
+    0.4
+   ],
+   "height_m": 0.39,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_011",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_011.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_011"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_012",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_012.fbx",
+   "footprint_m": [
+    0.01,
+    0.4
+   ],
+   "height_m": 0.39,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_013",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_013.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_013"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_014",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_014.fbx",
+   "footprint_m": [
+    0.01,
+    0.4
+   ],
+   "height_m": 0.39,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_015",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_015.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_015"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_016",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_016.fbx",
+   "footprint_m": [
+    0.01,
+    0.4
+   ],
+   "height_m": 0.39,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_017",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_017.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_017"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_018",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_018.fbx",
+   "footprint_m": [
+    0.01,
+    0.4
+   ],
+   "height_m": 0.39,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_019",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_019.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_019"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_020",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_020.fbx",
+   "footprint_m": [
+    0.01,
+    0.4
+   ],
+   "height_m": 0.39,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_021",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_021.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_021"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_022",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_022.fbx",
+   "footprint_m": [
+    0.01,
+    0.4
+   ],
+   "height_m": 0.39,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_023",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_023.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_023"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_024",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_024.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_024"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_025",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_025.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_025"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_026",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_026.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_026"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_027",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_027.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_027"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_028",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_028.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_028"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_029",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_029.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_029"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_030",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_030.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_030"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_031",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_031.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_031"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_032",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_032.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_032"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_033",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_033.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_033"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_034",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_034.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_034"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_035",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_035.fbx",
+   "footprint_m": [
+    0.01,
+    0.4
+   ],
+   "height_m": 0.39,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_036",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_036.fbx",
+   "footprint_m": [
+    0.03,
+    0.03
+   ],
+   "height_m": 1.12,
+   "triangles": [
+    144,
+    56
+   ],
+   "collision": [
+    "UBX_VC_KB_Modular_City_Builder_Starter_Kit_Prop_036"
+   ],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_037",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_037.fbx",
+   "footprint_m": [
+    0.03,
+    0.07
+   ],
+   "height_m": 0.01,
+   "triangles": [
+    100,
+    40
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_038",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_038.fbx",
+   "footprint_m": [
+    0.03,
+    0.07
+   ],
+   "height_m": 0.01,
+   "triangles": [
+    100,
+    40
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  },
+  {
+   "name": "VC_KB_Modular_City_Builder_Starter_Kit_Prop_039",
+   "type": "Prop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Modular_City_Builder_Starter_Kit/VC_KB_Modular_City_Builder_Starter_Kit_Prop_039.fbx",
+   "footprint_m": [
+    0.03,
+    0.07
+   ],
+   "height_m": 0.01,
+   "triangles": [
+    100,
+    40
+   ],
+   "collision": [],
+   "materials": [
+    {
+     "source": "Material_1176",
+     "veyra": "MetalPainted"
+    }
+   ]
+  }
+ ],
+ "textures": {
+  "source_archive": "ArtSource/Downloads/FullMapModels/Modular_City_Builder_Starter_Kit_784358d2.zip",
+  "files": [
+   "Material_1176_baseColor.png",
+   "Material_1176_metallicRoughness.png",
+   "Material_1176_normal.png"
+  ],
+  "copied": 0,
+  "note": "not copied: materials are remapped to the VeyraMaterialLibrary palette (B3)"
+ }
+}
