@@ -61,6 +61,7 @@ namespace VeyraCity.World
         public static WorldEnvironment Instance { get; private set; }
         /// <summary>0 = full day, 1 = full night.</summary>
         public float NightFactor { get; private set; }
+        [Tooltip("Card L5: wetness of the Downtown / Neon Mile wet-night preset (0 = off)")] [Range(0f, 1f)] public float WetNightLevel = 0.65f;
         /// <summary>0..1 golden-hour factor (sun up and below ~22° elevation); drives the L2 Golden volume weight.</summary>
         public float GoldenFactor { get; private set; }
         /// <summary>0 = dry, 1 = soaked; ramps over ~20 s when the weather changes.</summary>
@@ -236,7 +237,8 @@ namespace VeyraCity.World
             RenderSettings.fog = true;
             RenderSettings.fogMode = FogMode.ExponentialSquared;
             float wetHaze = Wetness * 0.0006f + Cloudiness * 0.00035f;
-            RenderSettings.fogDensity = Mathf.Lerp(0.00042f, 0.00085f, NightFactor) + wetHaze;
+            // Card L3: exponential-squared density day 0.00035, golden 0.0005, night 0.0007 (+ wet / cloud haze).
+            RenderSettings.fogDensity = Mathf.Lerp(Mathf.Lerp(0.00035f, 0.0005f, golden), 0.0007f, NightFactor) + wetHaze;
             RenderSettings.fogColor = Color.Lerp(Color.Lerp(new Color(0.66f, 0.72f, 0.80f), new Color(0.78f, 0.58f, 0.45f), golden),
                                                  new Color(0.035f, 0.045f, 0.075f), NightFactor);
             if (SkyboxMaterial != null) RenderSettings.skybox = SkyboxMaterial;
@@ -251,9 +253,12 @@ namespace VeyraCity.World
                 bloom.threshold.value = Mathf.Lerp(1.25f, 0.9f, NightFactor);
             }
 
-            ApplyMaterials(NightFactor, golden, Wetness);
+            // Card L5: the "wet night" preset: Downtown and Neon Mile streets are wet at night even without rain (district
+            // weight from PostVolumeDirector, faded at the district border and with the night factor).
+            float wet = Mathf.Max(Wetness, PostVolumeDirector.WetNight * WetNightLevel);
+            ApplyMaterials(NightFactor, golden, wet);
             float rain = Application.isPlaying ? RainIntensity : Mathf.Max(RainIntensity, Weather == WeatherKind.Rain ? 1f : 0f);
-            VeyraGlobals.Apply(TimeOfDay, Wetness, rain, WindStrength, WindDirection, Sun != null ? -Sun.transform.forward : Vector3.up);
+            VeyraGlobals.Apply(TimeOfDay, wet, rain, WindStrength, WindDirection, Sun != null ? -Sun.transform.forward : Vector3.up);
 
             if (Application.isPlaying)
             {
