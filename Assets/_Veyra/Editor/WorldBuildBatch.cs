@@ -49,11 +49,15 @@ namespace VeyraCity.EditorTools
                         case "neon": log.Append(NeonSignBuilder.Build()); break;
                         case "shore": log.Append(ShorelineBuilder.Build()); break;
                         case "pylons": log.Append(BridgePylonSmoother.Run()); break;
+                        case "plaza": log.Append(PlazaBuilder.Run()); break;
                         case "probe":   // renderers within 12 m (x/z) of -veyraProbe x,z
                         {
                             int pi = Array.IndexOf(args, "-veyraProbe");
-                            var xz = args[pi + 1].Replace("m", "-").Split(',');
+                            foreach (var pt in args[pi + 1].Split(';'))
+                            {
+                            var xz = pt.Replace("m", "-").Split(',');
                             var p = new Vector3(float.Parse(xz[0], System.Globalization.CultureInfo.InvariantCulture), 0f, float.Parse(xz[1], System.Globalization.CultureInfo.InvariantCulture));
+                            log.AppendLine($" probe {p.x:0},{p.z:0}");
                             foreach (var r in UnityEngine.Object.FindObjectsByType<Renderer>(FindObjectsInactive.Include))
                             {
                                 var b = r.bounds;
@@ -62,6 +66,7 @@ namespace VeyraCity.EditorTools
                                 var mf = r.GetComponent<MeshFilter>();
                                 string path = r.name; for (var t = r.transform.parent; t != null; t = t.parent) path = t.name + "/" + path;
                                 log.AppendLine($"  {path} | enabled {r.enabled} | mesh {(mf != null && mf.sharedMesh != null ? mf.sharedMesh.name : "-")} | mats {string.Join(",", r.sharedMaterials.Select(m => m != null ? m.name : "null"))} | y {b.min.y:0.0}-{b.max.y:0.0}");
+                            }
                             }
                             break;
                         }
@@ -107,6 +112,50 @@ namespace VeyraCity.EditorTools
                             UnityEngine.Object.DestroyImmediate(camGo);
                             foreach (var g in turnedOn) g.SetActive(false);
                             if (env != null) { env.SetTime(t0h); env.SetWetness(0f); }
+                            break;
+                        }
+                        case "rayprobe":   // -veyraRay camX,camY,camZ,tgtX,tgtY,tgtZ,fov,u,v (u,v 0-1 from bottom-left, 16:9)
+                        {
+                            int ri = Array.IndexOf(args, "-veyraRay");
+                            var f = args[ri + 1].Replace("m", "-").Split(',').Select(x => float.Parse(x, System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+                            var camGo = new GameObject("RayCam"); var cam = camGo.AddComponent<Camera>();
+                            cam.transform.position = new Vector3(f[0], f[1], f[2]); cam.transform.LookAt(new Vector3(f[3], f[4], f[5]));
+                            cam.fieldOfView = f[6]; cam.aspect = 16f / 9f;
+                            var ray = cam.ViewportPointToRay(new Vector3(f[7], f[8], 0f));
+                            log.AppendLine($"ray from {ray.origin} dir {ray.direction}");
+                            var hits = new System.Collections.Generic.List<(float d, string s)>();
+                            foreach (var r in UnityEngine.Object.FindObjectsByType<Renderer>(FindObjectsInactive.Include))
+                            {
+                                if (!r.enabled || !r.gameObject.activeInHierarchy) continue;
+                                if (!r.bounds.IntersectRay(ray, out float d)) continue;
+                                var mf = r.GetComponent<MeshFilter>();
+                                string path = r.name; for (var t = r.transform.parent; t != null; t = t.parent) path = t.name + "/" + path;
+                                hits.Add((d, $"  {d,7:0.0} m {path} | mesh {(mf != null && mf.sharedMesh != null ? mf.sharedMesh.name : "-")} | mats {string.Join(",", r.sharedMaterials.Select(m => m != null ? m.name : "null"))} | bounds {r.bounds.min} - {r.bounds.max}"));
+                            }
+                            foreach (var h in hits.OrderBy(h => h.d).Take(40)) log.AppendLine(h.s);
+                            UnityEngine.Object.DestroyImmediate(camGo);
+                            break;
+                        }
+                        case "camshot":   // -veyraRay camX,camY,camZ,tgtX,tgtY,tgtZ,fov -> Logs/ITER/camshot.png (authoring scene, edit mode)
+                        {
+                            int ri = Array.IndexOf(args, "-veyraRay");
+                            var f = args[ri + 1].Replace("m", "-").Split(',').Select(x => float.Parse(x, System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+                            var camGo = new GameObject("ShotCam"); var cam = camGo.AddComponent<Camera>();
+                            cam.transform.position = new Vector3(f[0], f[1], f[2]); cam.transform.LookAt(new Vector3(f[3], f[4], f[5]));
+                            cam.fieldOfView = f[6]; cam.farClipPlane = 5000f;
+                            int bi = Array.IndexOf(args, "-veyraLodBias");
+                            if (bi >= 0) QualitySettings.lodBias = float.Parse(args[bi + 1], System.Globalization.CultureInfo.InvariantCulture);
+                            var envS = UnityEngine.Object.FindAnyObjectByType<VeyraCity.World.WorldEnvironment>(FindObjectsInactive.Include);
+                            int hi = Array.IndexOf(args, "-veyraHour");
+                            float hour0 = envS != null ? envS.TimeOfDay : 12f;
+                            if (envS != null && hi >= 0) envS.SetTime(float.Parse(args[hi + 1], System.Globalization.CultureInfo.InvariantCulture));
+                            var rt = new RenderTexture(1280, 720, 24, RenderTextureFormat.ARGB32); cam.targetTexture = rt; cam.aspect = 16f / 9f;
+                            cam.Render();
+                            RenderTexture.active = rt; var tex = new Texture2D(1280, 720, TextureFormat.RGB24, false); tex.ReadPixels(new Rect(0, 0, 1280, 720), 0, 0); tex.Apply();
+                            System.IO.File.WriteAllBytes("Logs/ITER/camshot.png", tex.EncodeToPNG());
+                            if (envS != null && hi >= 0) envS.SetTime(hour0);
+                            RenderTexture.active = null;
+                            UnityEngine.Object.DestroyImmediate(camGo);
                             break;
                         }
                         case "sheet": log.Append(KitbashMaterials.ContactSheet()); break;

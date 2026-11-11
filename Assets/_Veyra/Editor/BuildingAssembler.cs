@@ -121,7 +121,7 @@ namespace VeyraCity.EditorTools
 
             // kit instances
             var plinth = PlinthAsset();
-            int placed = 0; long tris = 0;
+            int placed = 0, floating = 0, fitted = 0; float maxStretch = 0f; long tris = 0;
             var perDistrict = new Dictionary<string, int>();
             foreach (var b in records)
             {
@@ -141,6 +141,11 @@ namespace VeyraCity.EditorTools
                     string rn = r.name.ToUpperInvariant();
                     if (rn.StartsWith("UCX_") || rn.StartsWith("UBX_") || rn.StartsWith("COL_") || rn.Contains("COLLISION") || rn.Contains("COLLIDER")) r.enabled = false;
                 }
+                floating += HideUnsupported(go, ground);
+                // iteration 14: the data height is the authority (RooftopDetails puts roof props on the data collision box,
+                // so a shorter kit left them hovering, CAM_05): stretch the kit along its up axis to base + HeightM
+                float sy = FitHeight(go, ground, b.UnityYBase + b.HeightM);
+                if (Mathf.Abs(sy - 1f) > 0.001f) { fitted++; maxStretch = Mathf.Max(maxStretch, Mathf.Abs(sy - 1f)); }
                 KitbashMaterials.Apply(go, c.e);   // the packs' own textures (the export strips them from the FBX)
                 foreach (var t in go.GetComponentsInChildren<Transform>(true)) t.gameObject.isStatic = true;
                 // plinth: footprint × (2 m below ground .. 0.3 m above the lowest corner, hidden where the ground is higher)
@@ -149,6 +154,9 @@ namespace VeyraCity.EditorTools
                 p.transform.SetPositionAndRotation(new Vector3(b.UnityX, ground - 0.85f, b.UnityZ), Quaternion.Euler(0f, b.UnityYawDeg, 0f));
                 p.transform.localScale = Vector3.one;
                 p.transform.localScale = new Vector3(b.FootprintWM, 2.3f, b.FootprintLM) / Mathf.Max(0.01f, c.scale);
+                // undo the parent's height stretch on the plinth (its world size stays footprint x 2.3 m)
+                var ls = p.transform.lossyScale; var want = new Vector3(b.FootprintWM, 2.3f, b.FootprintLM);
+                p.transform.localScale = new Vector3(p.transform.localScale.x * want.x / Mathf.Max(0.001f, ls.x), p.transform.localScale.y * want.y / Mathf.Max(0.001f, ls.y), p.transform.localScale.z * want.z / Mathf.Max(0.001f, ls.z));
                 p.AddComponent<MeshFilter>().sharedMesh = plinth;
                 var pr = p.AddComponent<MeshRenderer>();
                 pr.sharedMaterial = plinthMat;
@@ -158,7 +166,7 @@ namespace VeyraCity.EditorTools
                 Count(perDistrict, b.DistrictId);
             }
             AssetDatabase.SaveAssets();
-            sb.AppendLine($"records {records.Count}; kit models placed {placed} ({tris:N0} LOD0 tris); shells kept {records.Count - placed}");
+            sb.AppendLine($"records {records.Count}; kit models placed {placed} ({tris:N0} LOD0 tris); shells kept {records.Count - placed}; floating kit parts hidden {floating}; kits stretched to the data height {fitted} (max {maxStretch * 100f:0} %)");
             sb.AppendLine("kits per district: " + string.Join(", ", perDistrict.OrderBy(k => k.Key).Select(k => $"{k.Key} {k.Value}")));
             sb.AppendLine("shells kept because: " + string.Join("; ", noFit.OrderByDescending(k => k.Value).Select(k => $"{k.Key} {k.Value}")));
             sb.AppendLine("models used: " + choice.Values.Select(v => v.e.Id).Distinct().Count() + " distinct of " + usable.Count + " usable");
@@ -166,6 +174,49 @@ namespace VeyraCity.EditorTools
             Directory.CreateDirectory("Logs/C");
             File.WriteAllText("Logs/C/assembler.txt", sb.ToString());
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Iteration 14 (CAM_05: slabs and an empty frame hovering over downtown kit towers): a kit renderer is supported
+        /// when it starts at the ground or rests on (or overlaps) a supported renderer below it (bounds overlap in x/z,
+        /// within 0.75 m vertically). Unsupported renderers are hidden. Returns how many were hidden.
+        /// </summary>
+        static int HideUnsupported(GameObject go, float ground)
+        {
+            var rs = go.GetComponentsInChildren<Renderer>(true).Where(r => r.enabled).Select(r => (r, b: r.bounds)).OrderBy(x => x.b.min.y).ToList();
+            var ok = new List<Bounds>();
+            int hidden = 0;
+            foreach (var (r, b) in rs)
+            {
+                bool sup = b.min.y <= ground + 1.5f;
+                if (!sup)
+                    foreach (var s in ok)
+                    {
+                        bool xz = b.min.x < s.max.x - 0.2f && b.max.x > s.min.x + 0.2f && b.min.z < s.max.z - 0.2f && b.max.z > s.min.z + 0.2f;
+                        if (xz && s.max.y >= b.min.y - 0.75f) { sup = true; break; }
+                    }
+                if (sup) ok.Add(b);
+                else { r.enabled = false; hidden++; }
+            }
+            return hidden;
+        }
+
+        /// <summary>
+        /// Scales the kit along the local axis that points up so its rendered top reaches <paramref name="top"/> (the pivot is
+        /// at the base, so the base stays). Returns the factor applied (1 when the kit already fits or its root is tilted).
+        /// </summary>
+        static float FitHeight(GameObject go, float ground, float top)
+        {
+            float cur = float.NegativeInfinity;
+            foreach (var r in go.GetComponentsInChildren<Renderer>(true)) if (r.enabled) cur = Mathf.Max(cur, r.bounds.max.y);
+            if (float.IsInfinity(cur) || cur - ground < 2f) return 1f;
+            float sy = (top - ground) / (cur - ground);
+            if (Mathf.Abs(sy - 1f) < 0.01f) return 1f;
+            var up = Quaternion.Inverse(go.transform.rotation) * Vector3.up;
+            int axis = Mathf.Abs(up.x) > Mathf.Abs(up.y) ? (Mathf.Abs(up.x) > Mathf.Abs(up.z) ? 0 : 2) : (Mathf.Abs(up.y) > Mathf.Abs(up.z) ? 1 : 2);
+            if (Mathf.Abs(up[axis]) < 0.99f) return 1f;
+            var s = go.transform.localScale; s[axis] *= sy; go.transform.localScale = s;
+            return sy;
         }
 
         static void Count(Dictionary<string, int> d, string k) => d[k] = d.TryGetValue(k, out int n) ? n + 1 : 1;

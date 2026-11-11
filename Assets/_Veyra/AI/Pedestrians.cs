@@ -57,7 +57,13 @@ namespace VeyraCity.AI
             public float CrossT, CrossCooldown;
             public int Slot;
             public Vector3 DodgeVel, DodgeOffset;
+            // world iteration 16: strolling round a plaza fountain (ring between the benches and the planters)
+            public bool Stroll;
+            public Vector3 StrollC;
+            public float StrollR, StrollTh, StrollDir;
         }
+
+        readonly List<Vector3> plazas = new List<Vector3>();
 
         readonly List<Anchor> anchors = new List<Anchor>();
         readonly Dictionary<long, List<int>> grid = new Dictionary<long, List<int>>();
@@ -105,7 +111,10 @@ namespace VeyraCity.AI
                     }
                 }
             }
-            Debug.Log($"[Pedestrians] {anchors.Count} pavement anchors");
+            // world iteration 16: plaza centres (registry landmarks named Plaza; PlazaBuilder dresses them)
+            foreach (var l in WorldData.Locations)
+                if (l != null && l.category == "Landmark" && l.name != null && l.name.Contains("Plaza")) plazas.Add(l.Position);
+            Debug.Log($"[Pedestrians] {anchors.Count} pavement anchors, {plazas.Count} plazas");
         }
 
         void Update()
@@ -127,6 +136,15 @@ namespace VeyraCity.AI
             }
             if (!built) Build();
             Vector3 focus = Player.transform.position;
+            // world iteration 16: fixed review shots park the car 400 m below the map and photo/free cameras leave it behind:
+            // people live around the streaming focus a review forced, or around the camera, when either is far from the car
+            var forced = VeyraCity.World.Streaming.CellStreamer.ForcedFocus;
+            if (forced.HasValue && (forced.Value - focus).sqrMagnitude > 200f * 200f) focus = forced.Value;
+            else
+            {
+                var mainCam = Camera.main;
+                if (mainCam != null && (mainCam.transform.position - focus).sqrMagnitude > 200f * 200f) focus = mainCam.transform.position;
+            }
             float dt = Time.deltaTime;
             Wet = WorldEnvironment.Instance != null ? Mathf.Max(WorldEnvironment.Instance.Wetness, WorldEnvironment.Instance.RainIntensity) : 0f;
             frame++;
@@ -151,8 +169,11 @@ namespace VeyraCity.AI
             {
                 float min = SpawnMin;
                 SpawnMin = 8f;
-                for (int k = 0; k < MaxPeds && live.Count < MaxPeds; k++) TrySpawn(focus);
+                // the 0.25 s creation limit would leave a fresh pool at one or two figures: a teleport may hitch once
+                for (int k = 0; k < MaxPeds && live.Count < MaxPeds; k++) { createCooldown = 0f; TrySpawn(focus); }
                 SpawnMin = min;
+                int strolling = 0; foreach (var o in live) if (o.Stroll) strolling++;
+                Debug.Log($"[Pedestrians] refill at {focus:F0}: {live.Count} live, {strolling} on a plaza");
             }
             if (spawnTimer <= 0f && live.Count < MaxPeds && anchors.Count > 0)
             {
@@ -163,6 +184,80 @@ namespace VeyraCity.AI
 
         Vector3 lastFocus;
         bool hasLastFocus;
+
+        /// <summary>
+        /// World iteration 16 (CAM_05: the furnished Crown Plaza had nobody on it): up to 16 people per plaza within reach,
+        /// three in four strolling the ring between the benches (11 m) and the planters (18 m), the rest standing at the
+        /// fountain rim looking in.
+        /// </summary>
+        bool TrySpawnPlaza(Vector3 focus)
+        {
+            foreach (var c in plazas)
+            {
+                float d = Vector3.Distance(new Vector3(c.x, focus.y, c.z), focus);
+                if (d > SpawnMax + 20f) continue;
+                int here = 0;
+                foreach (var o in live) if ((o.Stroll || o.Idle) && (new Vector3(o.Root.position.x - c.x, 0f, o.Root.position.z - c.z)).sqrMagnitude < 30f * 30f) here++;
+                if (here >= 16) continue;
+                float th = Random.value * Mathf.PI * 2f;
+                bool stroll = Random.value < 0.75f;
+                float r = stroll ? Random.Range(13f, 16.5f) : Random.Range(7.6f, 8.2f);
+                var pos = new Vector3(c.x + Mathf.Cos(th) * r, c.y, c.z + Mathf.Sin(th) * r);
+                if (!Ground(pos, out float gy)) continue;
+                foreach (var o in live) if ((o.Root.position - pos).sqrMagnitude < 1.5f) return false;
+                var p = pool.Count > 0 ? pool.Pop() : Create();
+                Dress(p);
+                p.Road = -1;
+                p.Phase = Random.value * 10f;
+                p.DodgeTime = 0f; p.DodgeOffset = Vector3.zero; p.PendingDt = 0f;
+                p.Slot = Random.Range(0, 3);
+                p.Ground = gy; p.GroundTimer = Random.value;
+                p.Crossing = false;
+                if (stroll)
+                {
+                    p.Idle = false; p.Stroll = true;
+                    p.StrollC = c; p.StrollR = r; p.StrollTh = th; p.StrollDir = Random.value < 0.5f ? 1f : -1f;
+                    p.Speed = Random.Range(0.85f, 1.3f);
+                }
+                else
+                {
+                    p.Idle = true; p.Stroll = false;
+                    p.IdlePos = new Vector3(pos.x, gy, pos.z);
+                    p.IdleYaw = Mathf.Atan2(c.x - pos.x, c.z - pos.z) * Mathf.Rad2Deg + Random.Range(-30f, 30f);
+                    p.Speed = 0f;
+                }
+                p.Go.SetActive(true);
+                live.Add(p);
+                Step(p, 0f);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>World iteration 16: one stroller step round the plaza ring (walk cycle as on the pavement).</summary>
+        void StepStroll(Ped p, float dt)
+        {
+            p.StrollTh += p.StrollDir * p.Speed / Mathf.Max(1f, p.StrollR) * dt;
+            var pos = p.StrollC + new Vector3(Mathf.Cos(p.StrollTh), 0f, Mathf.Sin(p.StrollTh)) * p.StrollR;
+            p.GroundTimer -= dt;
+            if (p.GroundTimer <= 0f) { p.GroundTimer = 1.2f; if (Ground(pos, out float gy)) p.Ground = gy; }
+            pos.y = p.Ground;
+            var face = new Vector3(-Mathf.Sin(p.StrollTh), 0f, Mathf.Cos(p.StrollTh)) * p.StrollDir;
+            if (dt > 0f) p.Root.rotation = Quaternion.Slerp(p.Root.rotation, Quaternion.LookRotation(face), 1f - Mathf.Exp(-dt * 8f));
+            else p.Root.rotation = Quaternion.LookRotation(face);
+            p.Root.position = pos;
+            p.Phase += dt * p.Speed * 5.2f;
+            float sw = Mathf.Sin(p.Phase);
+            p.LegL.localRotation = Quaternion.Euler(26f * sw, 0f, 0f);
+            p.LegR.localRotation = Quaternion.Euler(-26f * sw, 0f, 0f);
+            p.ArmL.localRotation = Quaternion.Euler(-22f * sw, 0f, -4f);
+            bool umbrella = p.WantsUmbrella && Wet > 0.3f;
+            if (p.Umbrella.gameObject.activeSelf != umbrella) p.Umbrella.gameObject.SetActive(umbrella);
+            p.ArmR.localRotation = umbrella ? Quaternion.Euler(-70f, 0f, 8f) : Quaternion.Euler(22f * sw, 0f, 4f);
+            if (umbrella) p.Umbrella.localRotation = Quaternion.Euler(45f, 0f, -8f);
+            p.Hips.localPosition = new Vector3(0f, p.Height * 0.53f + Mathf.Abs(Mathf.Cos(p.Phase)) * 0.035f, 0f);
+            p.Torso.localRotation = Quaternion.Euler(2f, 0f, 0f);
+        }
 
         StreetFurniture furniture;
 
@@ -212,6 +307,7 @@ namespace VeyraCity.AI
                 createCooldown = 0.25f;
             }
             if (Random.value < 0.17f && TrySpawnWaiting(focus)) return;
+            if (plazas.Count > 0 && TrySpawnPlaza(focus)) return;
             candidates.Clear();
             int cx = Mathf.FloorToInt(focus.x / Cell), cz = Mathf.FloorToInt(focus.z / Cell);
             int reach = Mathf.CeilToInt(SpawnMax / Cell);
@@ -283,6 +379,7 @@ namespace VeyraCity.AI
 
         void Step(Ped p, float dt)
         {
+            if (p.Stroll) { StepStroll(p, dt); return; }
             if (p.Idle) { StepIdle(p, dt); return; }
             var road = WorldData.Roads[p.Road];
             float len = road.Path.Length;
@@ -470,6 +567,7 @@ namespace VeyraCity.AI
         /// <summary>New proportions and clothes for a pooled walker.</summary>
         static void Dress(Ped p)
         {
+            p.Stroll = false;
             float h = Random.Range(1.55f, 1.92f);
             float build = Random.Range(0.85f, 1.2f);
             p.Height = h;

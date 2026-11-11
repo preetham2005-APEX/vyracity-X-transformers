@@ -150,6 +150,9 @@ namespace VeyraCity.World.Streaming
         }
 
         /// <summary>Forces the window around a point (teleports, review cameras); null returns to following the camera/car.</summary>
+        /// <summary>The point a review camera or tool forced with <see cref="Focus"/> (null while streaming follows the car).</summary>
+        public static Vector3? ForcedFocus => Instance != null ? Instance.forcedFocus : null;
+
         public static void Focus(Vector3? point)
         {
             if (Instance == null) return;
