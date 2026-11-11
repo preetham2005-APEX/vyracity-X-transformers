@@ -51,6 +51,7 @@ namespace VeyraCity.EditorTools
                         case "pylons": log.Append(BridgePylonSmoother.Run()); break;
                         case "plaza": log.Append(PlazaBuilder.Run()); break;
                         case "hwlights": log.Append(HighwayLightsBuilder.Run()); break;
+                        case "propclear": log.Append(PropRoadClear.Run()); break;
                         case "probe":   // renderers within 12 m (x/z) of -veyraProbe x,z
                         {
                             int pi = Array.IndexOf(args, "-veyraProbe");

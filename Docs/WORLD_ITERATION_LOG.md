@@ -30,6 +30,8 @@
 | 18 | Motorway, expressway and highways unlit (CAM_08, CAM_12) | New HighwayLightsBuilder (step `hwlights`): 12 m galvanised masts every 45 m, staggered, 1 m outside the carriageway at grade (base 3 m down) or on the deck parapet, arm over the road, flat Lamp_Head luminaire (night emissive); none in tunnels or at road ends: 657 masts on 5 roads | Review 8/8, 0 pink; R_BRIDGES 14/14 PASS. Day: masts read as GTA-style highway lighting (CAM_12). Night: luminaires glow but the road beneath stays black (no real lights there) |
 | 19 | Highway road surface black under the glowing luminaires (CAM_08 night) | HighwayLightsBuilder: a warm additive light pool (GlowPool shader, radial blob, night-only emissive, saved while unregistered per BUG-122) on the carriageway under every mast | Review 4/4, 0 pink; R_BRIDGES 14/14 PASS. CAM_08 night: lit patches on the wet viaduct. New flaw: on CAM_12 a pool overhangs the road edge and reads as a lit board at the barrier → pools now kept inside the carriageway (outer edge on the road edge, width ≤ 60 % of the half-width) |
 | 20 | Full verification (all 18 cameras × noon / 22:00 wet, three routes) after the pool clamp | — | Build 0 errors / 0 warnings; review 36/36, 0 pink / empty / error-shader slots; R_SMOKE 2/2 (53.9 FPS), R_BRIDGES 14/14 (40.8 FPS), R_DOWNTOWN_NIGHT 5/5 (34.5 FPS) PASS: Dev build on the laptop's Silent power plan (BUG-120), so these FPS figures are not the 4070 target. Still open: night aerials (CAM_01/02/11) near black and the CAM_01 overview fogged (lighting track); BUG-123 frame over CAM_05 back in this run (intermittent, player-only); RoadWear patch rectangles (BUG-121, runtime track); pine needle fringe still dark close up |
+| 21 | Two lamp poles stand in the Laurel Street junction (CAM_16, BUG-121); pine fringe dark and hairy (CAM_10) | New PropRoadClear (step `propclear`): placement props whose base and four points 0.75 m around it lie on rendered M_Asphalt are skipped (data not moved), prop colliders rebuilt: 144 skipped (131 urban lamps, 11 palms, 1 high mast, 1 broadleaf), 70,132 kept, list in `Logs/ITER/propclear.txt`; needle tile: soft foliage body under each side twig, lighter needle tips | Build 0/0; review 36/36, 0 pink; R_SMOKE 2/2 (94.5 FPS), R_BRIDGES 14/14 (101.3 FPS), R_DOWNTOWN_NIGHT 5/5 (93.3 FPS). CAM_16 junction clear. Pines full but near black |
+| 22 | Pines near black after the foliage body (CAM_10) | Needle tile and dense conifer strip about 30 % brighter (sRGB greens 0.27→0.35-0.40) | Build 0/0; review 8/8 (CAM_09/10/11/16), 0 pink; R_SMOKE 2/2 (98.4 FPS). Pines read as layered green cones, no hairy fringe; still darker than the grass (lighting track) |
 
 ## Summary after 20 rounds (2026-11-11)
 
@@ -40,3 +42,9 @@
 - **Trees:** second broadleaf species, single-sided pine cards (no more black cones), lighter needles.
 - **Buildings:** 214 kits stretched to the data heights (no hovering roof props), suburban wall/roof mix, industrial doors and vents, cornices and porches; Crown and Westhaven plazas furnished.
 - **Night (Cyberpunk look):** neon sign kit and cables (rounds 1–4) plus 1,038 coloured light pools on the wet ground under signs and banners.
+
+## Rounds 21-22 (2026-11-11)
+
+- **Roads:** 144 data props that stood inside the rendered carriageway are skipped (BUG-121 props part).
+- **Trees:** pine needle cards painted as foliage masses (no hairy fringe), brighter greens.
+- **Frame rate:** with a stray hand-started game window closed, the Dev routes measure 93-101 FPS (iteration 20: 34-54 FPS); see BUG-120.
