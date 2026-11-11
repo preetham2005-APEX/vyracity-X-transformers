@@ -329,6 +329,8 @@ namespace VeyraCity.AI
                     if (vp.z > 0f && vp.x > -0.05f && vp.x < 1.05f && vp.y > -0.05f && vp.y < 1.05f) continue;   // no popping in close in view
                 }
                 if (!Ground(pos, out float gy)) continue;
+                // world iteration 17 (CAM_15: a downtown-sized crowd on the container-port quay): pavement density per district
+                if (Random.value > DistrictDensity(pos)) continue;
                 bool crowded = false;
                 foreach (var o in live) if ((o.Root.position - pos).sqrMagnitude < 4f) { crowded = true; break; }
                 if (crowded) continue;
@@ -367,6 +369,23 @@ namespace VeyraCity.AI
                 live.Add(p);
                 Step(p, 0f);
                 return;
+            }
+        }
+
+        /// <summary>World iteration 17: share of pavement spawns kept per district (downtown and Neon Mile busiest).</summary>
+        static float DistrictDensity(Vector3 p)
+        {
+            var d = WorldData.DistrictAt(p);
+            switch (d != null ? d.id : "")
+            {
+                case "D1": case "D6": return 1f;
+                case "D2": return 0.6f;
+                case "D5": return 0.45f;
+                case "D8": return 0.3f;
+                case "D3": return 0.12f;
+                case "D7": return 0.1f;
+                case "D4": return 0.06f;
+                default: return 0.3f;
             }
         }
 

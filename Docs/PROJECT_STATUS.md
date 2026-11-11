@@ -115,3 +115,5 @@ did not happen formally. Changes made in that area, all additive, no new materia
   was a daytime sky, so wet night streets away from the car mirrored white.
 - New runtime systems (Gameplay): `GroundHeightField`, `AtmosphereScatter`, `RoadWear`, `SkyReflection`, `SpeedTraps`;
   (UI): world map GPS/atlas view, HUD satnav, speed lines, speed-trap banner.
+
+| World iterations 1–20 | ✅ (partial) | 2026-11-11 | 20 check → fix → re-run rounds on people, roads, bridges, water, trees, buildings and the neon night (Docs/WORLD_ITERATION_LOG.md). Final pass: build 0/0, review 36/36 0 pink, R_SMOKE / R_BRIDGES / R_DOWNTOWN_NIGHT PASS. Open: BUG-120 (power plan), BUG-121 (props in a junction, RoadWear patches), BUG-122 (save-guard trap, worked around), BUG-123 (player-only frame), night aerials dark |
