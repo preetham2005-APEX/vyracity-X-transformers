@@ -393,9 +393,26 @@ namespace VeyraCity.EditorTools
                         int i2 = part.Add(p10, new Vector2(0f, s[k1]), Vector2.zero, white), i3 = part.Add(p11, new Vector2(1f, s[k1]), Vector2.zero, white);
                         part.Quad(m, i0, i1, i2, i3);
                     }
+                    // a marking patch between lateral offsets l0..l1 and fractions f0..f1 of the row (k0 -> k1)
+                    void Patch(M m, float l0, float l1, float f0, float f1)
+                    {
+                        Vector3 P(float l, float f) => Vector3.Lerp(Lat(grid, k0, cols, hw, width, l), Lat(grid, k1, cols, hw, width, l), f) + Vector3.up * MarkLift;
+                        var white = new Color32(255, 255, 255, 255);
+                        float sa = Mathf.Lerp(s[k0], s[k1], f0), sb = Mathf.Lerp(s[k0], s[k1], f1);
+                        int i0 = part.Add(P(l0, f0), new Vector2(0f, sa), Vector2.zero, white), i1 = part.Add(P(l1, f0), new Vector2(1f, sa), Vector2.zero, white);
+                        int i2 = part.Add(P(l0, f1), new Vector2(0f, sb), Vector2.zero, white), i3 = part.Add(P(l1, f1), new Vector2(1f, sb), Vector2.zero, white);
+                        part.Quad(m, i0, i1, i2, i3);
+                    }
                     if (zebra)
                     {
-                        for (float zl = -hw + 0.6f; zl < hw - 0.5f; zl += 1.0f) Line(M.White, zl + 0.25f, 0.5f);
+                        // iteration 8: stop line (0.4 m) across the approach lanes on the far side from the junction, then the
+                        // zebra stripes (right-hand traffic: approaching with increasing s uses lat > 0)
+                        bool ahead = k1 + 1 < n && markOff[k1 + 1];
+                        float fa = ahead ? 0.3f : 0f, fb = ahead ? 1f : 0.7f;
+                        for (float zl = -hw + 0.6f; zl < hw - 0.5f; zl += 1.0f) Patch(M.White, zl, zl + 0.5f, fa, fb);
+                        float stopIn = divided ? MedianHalf : 0.15f;
+                        if (ahead) Patch(M.White, stopIn, hw - 0.35f, 0f, 0.2f);
+                        else Patch(M.White, -hw + 0.35f, -stopIn, 0.8f, 1f);
                         continue;
                     }
                     bool dash = (s[k0] % dashCycle) < dashOn;

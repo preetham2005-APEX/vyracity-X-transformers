@@ -224,7 +224,13 @@ namespace VeyraCity.EditorTools
                 case "ModernLowrise": case "SuburbanRetail": case "Roadside": return "facade_mid";
                 case "Industrial": case "Aviation": return "metal_clad";
                 case "Alpine": case "Rural": return "wood_wall";
-                default: return "house_wall";
+                default:
+                {
+                    // world iteration 9: suburban variety (rows of identical render walls): render 50 %, timber 20 %,
+                    // brick 15 %, stucco 15 %, by the record's seed
+                    float r = Mathf.Repeat(F(b["seed"]) * 13.7f, 1f);
+                    return r < 0.5f ? "house_wall" : r < 0.7f ? "wood_wall" : r < 0.85f ? "facade_brick" : "facade_stucco";
+                }
             }
         }
 
@@ -278,7 +284,10 @@ namespace VeyraCity.EditorTools
             string chunk = b["chunk"], shape = b["shape"], kind = b["kind"], district = b["district_id"];
             string facade = FacadeFor(b);
             bool pitched = shape == "house";
-            string roofMat = pitched ? (b["style_kit"] == "Alpine" ? "roof_metal" : "roof_tile") : (facade == "metal_clad" || facade == "tank_white" ? "roof_metal" : "roof_dark");
+            // world iteration 9: pitched roofs vary too (tile 55 %, dark slate/membrane 30 %, metal 15 %)
+            float rr = Mathf.Repeat(F(b["seed"]) * 29.3f, 1f);
+            string roofMat = pitched ? (b["style_kit"] == "Alpine" ? "roof_metal" : rr < 0.55f ? "roof_tile" : rr < 0.85f ? "roof_dark" : "roof_metal")
+                                     : (facade == "metal_clad" || facade == "tank_white" ? "roof_metal" : "roof_dark");
             // keep the ridge along the longer side (rotation keeps handedness)
             if (pitched && l > w) { yaw += 90f; (w, l) = (l, w); }
             var f = new Frame { O = o, Q = Quaternion.Euler(0f, yaw, 0f) };
@@ -367,6 +376,10 @@ namespace VeyraCity.EditorTools
                     float podium = shops ? 4.5f : 0f;
                     if (shops) Walls(ctx.Get(chunk, "storefront"), f, -hx, hx, -hz, hz, below, podium, 12f, 4.5f, 0f);
                     Box(wall, roof, f, -hx, hx, -hz, hz, shops ? podium : below, h, U, V, 0f);
+                    // world iteration 8: industrial buildings get roller-shutter loading doors on both long sides and roof
+                    // vents (D3/D7/D8 warehouses read as plain boxes)
+                    if (kind == "warehouse" || kind == "rail_shed" || b["style_kit"].StartsWith("Industrial") || b["style_kit"] == "BrickIndustrial")
+                        Industrial(ctx, chunk, f, hx, hz, h, seed);
                     // iteration 1: cornice + parapet at the roof line and a plinth band at street level (flat walls read as boxes)
                     if (h > 8f)
                     {
@@ -439,6 +452,43 @@ namespace VeyraCity.EditorTools
         }
 
         /// <summary>Rooftop plant: HVAC boxes and a stair core, deterministic from the seed.</summary>
+        static void Industrial(Ctx ctx, string chunk, Frame f, float hx, float hz, float h, float seed)
+        {
+            bool alongX = hx >= hz;
+            float longHalf = alongX ? hx : hz, shortHalf = alongX ? hz : hx;
+            int doors = Mathf.Clamp(Mathf.FloorToInt(longHalf * 2f / 9f), 1, 8);
+            float doorW = 4.2f, doorH = Mathf.Min(5f, h - 1.5f);
+            var shutter = ctx.Get(chunk, "metal_clad");
+            var frame = ctx.Get(chunk, "concrete");
+            for (int side = -1; side <= 1; side += 2)
+                for (int d = 0; d < doors; d++)
+                {
+                    float t = (d + 0.5f) / doors * 2f - 1f;
+                    float c = t * (longHalf - doorW);
+                    if (Mathf.Repeat(seed * (d + 1) * 5.7f + side, 1f) < 0.25f) continue;   // not every bay has a door
+                    float o = side * (shortHalf + 0.04f);
+                    if (alongX)
+                    {
+                        Box(frame, frame, f, c - doorW * 0.5f - 0.3f, c + doorW * 0.5f + 0.3f, o - 0.05f, o + 0.05f, 0f, doorH + 0.4f, 2f, 2f, 0f);
+                        Box(shutter, shutter, f, c - doorW * 0.5f, c + doorW * 0.5f, o + side * 0.06f - 0.03f, o + side * 0.06f + 0.03f, 0.05f, doorH, 1f, 0.25f, 0f);
+                    }
+                    else
+                    {
+                        Box(frame, frame, f, o - 0.05f, o + 0.05f, c - doorW * 0.5f - 0.3f, c + doorW * 0.5f + 0.3f, 0f, doorH + 0.4f, 2f, 2f, 0f);
+                        Box(shutter, shutter, f, o + side * 0.06f - 0.03f, o + side * 0.06f + 0.03f, c - doorW * 0.5f, c + doorW * 0.5f, 0.05f, doorH, 1f, 0.25f, 0f);
+                    }
+                }
+            // roof vents in a row along the ridge
+            var vent = ctx.Get(chunk, "roof_metal");
+            int vents = Mathf.Clamp(Mathf.FloorToInt(longHalf * 2f / 12f), 1, 10);
+            for (int v = 0; v < vents; v++)
+            {
+                float c = ((v + 0.5f) / vents * 2f - 1f) * (longHalf - 3f);
+                if (alongX) Box(vent, vent, f, c - 0.9f, c + 0.9f, -0.9f, 0.9f, h, h + 1.4f, 2f, 2f, h);
+                else Box(vent, vent, f, -0.9f, 0.9f, c - 0.9f, c + 0.9f, h, h + 1.4f, 2f, 2f, h);
+            }
+        }
+
         static void RoofKit(Ctx ctx, string chunk, Frame f, float hx, float hz, float h, float seed)
         {
             var mb = ctx.Get(chunk, "roof_metal");

@@ -72,7 +72,82 @@ namespace VeyraCity.EditorTools
                 if (!d.TryGetValue(m, out var mb)) d[m] = mb = new MB();
                 return mb;
             }
-            int store = 0, blade = 0, roof = 0;
+            int store = 0, blade = 0, roof = 0, pools = 0;
+            // iteration 12: coloured light pools on the wet ground under the signs (night only, additive)
+            var glows = GlowMaterials(mats);
+            // iteration 13: pools sit on the RENDERED pavement/asphalt (the collision-only drive surface lies up to 0.6 m
+            // lower under the sidewalks): world-space triangles of the enabled sidewalk/asphalt/kerb/paving renderers in a
+            // 10 m grid; the highest triangle under a point wins
+            var grid = new Dictionary<long, List<Vector3>>();
+            long Key(float x, float z) => ((long)Mathf.FloorToInt(x / 10f) << 32) ^ (uint)Mathf.FloorToInt(z / 10f);
+            int surfMeshes = 0;
+            foreach (var mf in world.GetComponentsInChildren<MeshFilter>(false))
+            {
+                if (mf.sharedMesh == null || mf.name.EndsWith("_LOD1") || mf.name.EndsWith("_LOD2")) continue;
+                var mr = mf.GetComponent<MeshRenderer>();
+                if (mr == null || !mr.enabled || mr.bounds.size.y > 60f) continue;
+                var sm = mr.sharedMaterials;
+                var mesh = mf.sharedMesh;
+                var vv = mesh.vertices; var l2w = mf.transform.localToWorldMatrix;
+                bool any = false;
+                for (int si = 0; si < mesh.subMeshCount && si < sm.Length; si++)
+                {
+                    var m = sm[si];
+                    if (m == null || !(m.name.StartsWith("M_Sidewalk") || m.name.StartsWith("M_Asphalt") || m.name.StartsWith("M_Kerb") || m.name.Contains("Paving") || m.name.Contains("Plaza"))) continue;
+                    any = true;
+                    var tt = mesh.GetTriangles(si);
+                    for (int i = 0; i < tt.Length; i += 3)
+                    {
+                        var a = l2w.MultiplyPoint3x4(vv[tt[i]]); var b2 = l2w.MultiplyPoint3x4(vv[tt[i + 1]]); var c2 = l2w.MultiplyPoint3x4(vv[tt[i + 2]]);
+                        float x0 = Mathf.Min(a.x, Mathf.Min(b2.x, c2.x)), x1 = Mathf.Max(a.x, Mathf.Max(b2.x, c2.x));
+                        float z0 = Mathf.Min(a.z, Mathf.Min(b2.z, c2.z)), z1 = Mathf.Max(a.z, Mathf.Max(b2.z, c2.z));
+                        if (x1 - x0 > 200f || z1 - z0 > 200f) continue;
+                        for (float gx = Mathf.Floor(x0 / 10f) * 10f; gx <= x1; gx += 10f)
+                            for (float gz = Mathf.Floor(z0 / 10f) * 10f; gz <= z1; gz += 10f)
+                            {
+                                long k = Key(gx + 0.01f, gz + 0.01f);
+                                if (!grid.TryGetValue(k, out var lst)) grid[k] = lst = new List<Vector3>();
+                                lst.Add(a); lst.Add(b2); lst.Add(c2);
+                            }
+                    }
+                }
+                if (any) surfMeshes++;
+            }
+            Debug.Log($"[neon] surface sampling: {surfMeshes} meshes, {grid.Count} grid cells");
+            float SurfaceY(Vector3 at, float fallbackY)
+            {
+                float best = float.NegativeInfinity;
+                if (grid.TryGetValue(Key(at.x, at.z), out var lst))
+                    for (int i = 0; i < lst.Count; i += 3)
+                    {
+                        var a = lst[i]; var b2 = lst[i + 1]; var c2 = lst[i + 2];
+                        float d = (b2.z - c2.z) * (a.x - c2.x) + (c2.x - b2.x) * (a.z - c2.z);
+                        if (Mathf.Abs(d) < 1e-6f) continue;
+                        float w0 = ((b2.z - c2.z) * (at.x - c2.x) + (c2.x - b2.x) * (at.z - c2.z)) / d;
+                        float w1 = ((c2.z - a.z) * (at.x - c2.x) + (a.x - c2.x) * (at.z - c2.z)) / d;
+                        float w2 = 1f - w0 - w1;
+                        if (w0 < -1e-4f || w1 < -1e-4f || w2 < -1e-4f) continue;
+                        float y = w0 * a.y + w1 * b2.y + w2 * c2.y;
+                        if (y > best && y < at.y + 25f) best = y;
+                    }
+                return float.IsNegativeInfinity(best) ? WorldData.GroundHeight(at, fallbackY) : best;
+            }
+            void Pool(Vector3 at, Vector3 fwd, Material signMat, float w, float l, float fallbackY)
+            {
+                int gi = System.Array.IndexOf(mats, signMat);
+                if (gi < 0 || gi >= glows.Length || glows[gi] == null) return;
+                fwd.y = 0f; fwd.Normalize();
+                // highest rendered surface over the pool (facade foot, middle, outer edge)
+                float gy = Mathf.Max(SurfaceY(at + fwd * 0.5f, fallbackY), Mathf.Max(SurfaceY(at + fwd * l * 0.5f, fallbackY), SurfaceY(at + fwd * (l - 0.3f), fallbackY)));
+                var mb = Get(ChunkOf(at), glows[gi]);
+                var o = new Vector3(at.x, gy + 0.03f, at.z);
+                var rr = Vector3.Cross(Vector3.up, fwd).normalized * w * 0.5f;
+                int vi = mb.V.Count;
+                mb.V.Add(o - rr); mb.V.Add(o + rr); mb.V.Add(o + rr + fwd * l); mb.V.Add(o - rr + fwd * l);
+                mb.UV.Add(new Vector2(0f, 1f)); mb.UV.Add(new Vector2(1f, 1f)); mb.UV.Add(new Vector2(1f, 0f)); mb.UV.Add(new Vector2(0f, 0f));
+                Tri(mb, vi, Vector3.up);
+                pools++;
+            }
             foreach (var b in records)
             {
                 bool d6 = b.DistrictId == "D6", d1 = b.DistrictId == "D1";
@@ -107,6 +182,7 @@ namespace VeyraCity.EditorTools
                     var o = face + Vector3.up * 3.9f;
                     Panel(Get(chunk, back), o - n * 0.06f, right, n, w + 0.3f, 1.2f, Vector2.zero, Vector2.one);
                     Panel(Get(chunk, mat), o, right, n, w, 0.9f, RowUV(word, widths[word], false), RowUV(word, widths[word], true));
+                    Pool(face + n * 0.2f, n, mat, w + 3f, 5.5f, b.UnityYBase);
                     store++;
                 }
                 // blade sign on the corner (vertical text)
@@ -122,6 +198,7 @@ namespace VeyraCity.EditorTools
                     var uv0 = RowUV(w2, widths[w2], false); var uv1 = RowUV(w2, widths[w2], true);
                     VPanel(Get(chunk, m2), bo + right * 0.1f, n, right, 0.75f, len, uv0, uv1);
                     VPanel(Get(chunk, m2), bo - right * 0.1f, -n, -right, 0.75f, len, uv0, uv1);
+                    Pool(corner + n * 0.2f, n, m2, 4f, 6f, b.UnityYBase);
                     blade++;
                 }
                 // rooftop LED billboard
@@ -178,6 +255,7 @@ namespace VeyraCity.EditorTools
                                 Box(Get(ChunkOf(mid), back), mid + Vector3.up * 0.25f, side, Vector3.up, t, bw + 0.2f, 0.7f, 0.08f);
                                 Panel(Get(ChunkOf(mid), m2), mid + t * 0.05f, Vector3.Cross(t, Vector3.up).normalized, t, bw, 0.5f, RowUV(w2, widths[w2], false), RowUV(w2, widths[w2], true));
                                 Panel(Get(ChunkOf(mid), m2), mid - t * 0.05f, Vector3.Cross(-t, Vector3.up).normalized, -t, bw, 0.5f, RowUV(w2, widths[w2], false), RowUV(w2, widths[w2], true));
+                                Pool(new Vector3(mid.x, p.y, mid.z) + t * 2.5f, t, m2, bw + 2.5f, 5f, p.y);
                                 banners++;
                             }
                         }
@@ -208,7 +286,7 @@ namespace VeyraCity.EditorTools
             foreach (var f in Directory.GetFiles(MeshDir, "*.asset"))
                 if (!keep.Contains(Path.GetFileNameWithoutExtension(f))) AssetDatabase.DeleteAsset(f.Replace('\\', '/'));
             AssetDatabase.SaveAssets();
-            string r2 = $"Neon signs: {store} storefront, {blade} blade, {roof} rooftop LED, {cables} overhead cables with {banners} hanging banners (D6) in {chunks.Count} chunks ({renderers} renderers); {Words.Length} original sign words\n";
+            string r2 = $"Neon signs: {store} storefront, {blade} blade, {roof} rooftop LED, {cables} overhead cables with {banners} hanging banners (D6), {pools} night light pools in {chunks.Count} chunks ({renderers} renderers); {Words.Length} original sign words\n";
             Directory.CreateDirectory("Logs/C");
             File.WriteAllText("Logs/C/neon_signs.txt", r2);
             return r2;
@@ -328,6 +406,82 @@ namespace VeyraCity.EditorTools
                 ti.textureCompression = TextureImporterCompression.CompressedHQ; ti.SaveAndReimport();
             }
             return widths;
+        }
+
+        /// <summary>GLSL-style smoothstep(e0, e1, x) (Mathf.SmoothStep interpolates between its first two arguments instead).</summary>
+        static float Edge(float e0, float e1, float x) { float t = Mathf.Clamp01((x - e0) / (e1 - e0)); return t * t * (3f - 2f * t); }
+
+        /// <summary>
+        /// Iteration 12: one light-pool material per sign colour. Shader Veyra/World/GlowPool (additive unlit: a soft radial
+        /// blob, brighter towards the facade, times an HDR colour). Registered
+        /// with the scene's WorldEnvironment as night-only emissives: black (invisible) by day.
+        /// </summary>
+        static Material[] GlowMaterials(Material[] signMats)
+        {
+            const string texPath = "Assets/_Veyra/Art/Textures/Neon/T_Neon_Pool.png";
+            Directory.CreateDirectory(Path.GetDirectoryName(texPath));
+            if (!File.Exists(texPath))
+            {
+                const int S = 128;
+                var tex = new Texture2D(S, S, TextureFormat.RGBA32, false);
+                var px = new Color32[S * S];
+                for (int y = 0; y < S; y++)
+                    for (int x = 0; x < S; x++)
+                    {
+                        // u across, v from the facade (v = 1) out to the street (v = 0)
+                        float u = (x + 0.5f) / S * 2f - 1f, v = (y + 0.5f) / S;
+                        // iteration 13: centre 15 % off the facade, soft at both ends (a hard edge showed at the facade line)
+                        float d = Mathf.Sqrt(u * u + (0.85f - v) * (0.85f - v) * 1.3f);
+                        float a = Mathf.Clamp01(1f - d);
+                        a = a * a * (3f - 2f * a);
+                        a *= Edge(0f, 0.2f, 1f - Mathf.Abs(u)) * Edge(0f, 0.35f, v) * Edge(1f, 0.9f, v);
+                        byte c = (byte)(a * 255f);
+                        px[y * S + x] = new Color32(c, c, c, 255);
+                    }
+                tex.SetPixels32(px);
+                File.WriteAllBytes(texPath, tex.EncodeToPNG());
+                Object.DestroyImmediate(tex);
+                AssetDatabase.ImportAsset(texPath);
+                var ti = (TextureImporter)AssetImporter.GetAtPath(texPath);
+                ti.wrapMode = TextureWrapMode.Clamp; ti.sRGBTexture = false;
+                ti.SaveAndReimport();
+            }
+            var blob = AssetDatabase.LoadAssetAtPath<Texture2D>(texPath);
+            var env = Object.FindAnyObjectByType<WorldEnvironment>(FindObjectsInactive.Include);
+            var outMats = new Material[signMats.Length];
+            var entries = new List<WorldEnvironment.EmissiveEntry>();
+            // unregister the pool materials while they are edited and saved: the BUG-039 save guard writes the reference
+            // state into every registered emissive and clears its dirty flag, so a registered material is never saved
+            if (env != null) env.Emissives.RemoveAll(e => e.Material != null && e.Material.name.StartsWith("M_NeonPool_"));
+            for (int i = 0; i < signMats.Length; i++)
+            {
+                var sm = signMats[i];
+                string path = $"{MatDir}/{sm.name.Replace("M_NeonSign_", "M_NeonPool_")}.mat";
+                var m = AssetDatabase.LoadAssetAtPath<Material>(path);
+                var poolShader = Shader.Find("Veyra/World/GlowPool");   // Editor code (iteration 13: URP Lit transparent emission rendered black)
+                if (poolShader == null) poolShader = AssetDatabase.LoadAssetAtPath<Shader>("Assets/_Veyra/Art/Shaders/VC_GlowPool.shader");
+                if (i == 0) Debug.Log($"[neon] pool shader {(poolShader != null ? poolShader.name + " supported " + poolShader.isSupported : "MISSING")}");
+                if (m == null) { m = new Material(poolShader) { name = Path.GetFileNameWithoutExtension(path) }; AssetDatabase.CreateAsset(m, path); }
+                else if (m.shader != poolShader) { m.shader = poolShader; m.shaderKeywords = new string[0]; }
+                // the sign shader (VC_Neon) glows with _NeonColor x _NeonIntensity; the pool takes half of that
+                var col = sm.HasProperty("_NeonColor") ? sm.GetColor("_NeonColor") : sm.HasProperty("_EmissionColor") ? sm.GetColor("_EmissionColor") : Color.white;
+                float inten = sm.HasProperty("_NeonIntensity") ? sm.GetFloat("_NeonIntensity") : 2f;
+                float mx = Mathf.Max(0.001f, Mathf.Max(col.r, Mathf.Max(col.g, col.b)));
+                var emis = new Color(col.r / mx, col.g / mx, col.b / mx) * Mathf.Clamp(inten * 0.3f, 0.8f, 3f);   // iteration 13: 0.5 read as paint
+                m.SetTexture("_EmissionMap", blob);
+                m.SetColor("_EmissionColor", emis);
+                m.renderQueue = -1;
+                m.enableInstancing = true;
+                EditorUtility.SetDirty(m);
+                // write now: WorldEnvironment's edit-mode preview clears the dirty flag of every registered emissive
+                // material (BUG-039), so a later SaveAssets would drop these edits
+                AssetDatabase.SaveAssetIfDirty(m);
+                outMats[i] = m;
+                entries.Add(new WorldEnvironment.EmissiveEntry { Material = m, BaseEmission = emis, NightOnly = 1f });
+            }
+            AssetDatabase.SaveAssets();
+            if (env != null) { env.Emissives.AddRange(entries); EditorUtility.SetDirty(env); }
+            return outMats;
         }
 
         /// <summary>Sign variants of the palette neon materials: same shader and colour, the text atlas as the pattern.</summary>

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,7 @@ namespace VeyraCity.EditorTools
             ("deciduous_tree_10m", "VC_Tree_Broadleaf", 10f),
             ("palm_tree_12m", "VC_Tree_Palm", 12f),
             ("bush_2m", "VC_Tree_Bush", 2f),
+            ("deciduous_tree_10m_b", "VC_Tree_Broadleaf2", 10f),
         };
 
         [MenuItem("Veyra/World/Use Authored Trees")]
@@ -63,9 +65,74 @@ namespace VeyraCity.EditorTools
                 proto.LowMesh = m1; proto.LowMaterials = mats1;
                 sb.AppendLine($"  {protoName} <- {model}: LOD0 {m0.triangles.Length / 3} tris, far (LOD2) {(m1 != null ? m1.triangles.Length / 3 : 0)} tris, height {m0.bounds.max.y:0.0} m (expected {height:0} m), slots {string.Join("/", mats0.Select(x => x.name))}");
             }
+            sb.Append(Variant(ipr, bark));
             EditorUtility.SetDirty(ipr);
             AssetDatabase.SaveAssets();
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// World iteration 7: species variety. A second broadleaf prototype (VC_Tree_Broadleaf2: taller, narrower crown; warmer
+        /// foliage tint M_Tree_Foliage_B) takes ~40 % of the deciduous placements (seeded by position, data positions
+        /// unchanged). The split runs once: when the variant prototype already exists only its meshes and materials refresh.
+        /// </summary>
+        static string Variant(InstancedPropRenderer ipr, Material bark)
+        {
+            const string A = "deciduous_tree_10m", B = "deciduous_tree_10m_b";
+            int ia = System.Array.FindIndex(ipr.Prototypes, p => p != null && p.Name == A);
+            if (ia < 0) return "  variant: no deciduous prototype\n";
+            var go = AssetDatabase.LoadAssetAtPath<GameObject>($"{ModelDir}/VC_Tree_Broadleaf2.fbx");
+            if (go == null) return "  variant: VC_Tree_Broadleaf2.fbx not imported\n";
+            var leafB = Mat("M_Tree_Foliage_B", $"{TexDir}/T_Foliage_Atlas.png", true);
+            leafB.SetColor("_BaseColor", new Color(1.12f, 1.08f, 0.72f));
+            EditorUtility.SetDirty(leafB);
+            Mesh MeshOf(int l, out Material[] mats)
+            {
+                mats = null;
+                var mf = go.GetComponentsInChildren<MeshFilter>(true).FirstOrDefault(f => f.name.EndsWith($"_LOD{l}"));
+                if (mf == null) return null;
+                mats = mf.GetComponent<MeshRenderer>().sharedMaterials.Select(m => m != null && m.name.Contains("Bark") ? bark : leafB).ToArray();
+                return mf.sharedMesh;
+            }
+            int ib = System.Array.FindIndex(ipr.Prototypes, p => p != null && p.Name == B);
+            bool split = ib < 0;
+            if (split)
+            {
+                var a = ipr.Prototypes[ia];
+                var list = ipr.Prototypes.ToList();
+                list.Add(new InstancedPropRenderer.Prototype { Name = B, LodDistance = a.LodDistance, DrawDistance = a.DrawDistance, ShadowDistance = a.ShadowDistance });
+                ipr.Prototypes = list.ToArray();
+                ib = ipr.Prototypes.Length - 1;
+            }
+            var pb = ipr.Prototypes[ib];
+            pb.Mesh = MeshOf(0, out var m0); pb.Materials = m0;
+            pb.LowMesh = MeshOf(2, out var m2); pb.LowMaterials = m2;
+            int moved = 0;
+            if (split)
+            {
+                var cells = ipr.Cells.ToList();
+                int count = cells.Count;
+                for (int c = 0; c < count; c++)
+                {
+                    var cell = cells[c];
+                    if (cell.Prototype != ia || cell.Placements == null) continue;
+                    var keepP = new List<Vector4>(); var keepS = new List<float>(); var moveP = new List<Vector4>(); var moveS = new List<float>();
+                    for (int i = 0; i < cell.Placements.Length; i++)
+                    {
+                        var p = cell.Placements[i];
+                        uint h = (uint)(Mathf.FloorToInt(p.x * 3.1f) * 73856093) ^ (uint)(Mathf.FloorToInt(p.z * 2.7f) * 19349663);
+                        bool toB = (h % 100) < 40;
+                        float s = cell.Scales != null && i < cell.Scales.Length ? cell.Scales[i] : 1f;
+                        if (toB) { moveP.Add(p); moveS.Add(s); } else { keepP.Add(p); keepS.Add(s); }
+                    }
+                    if (moveP.Count == 0) continue;
+                    cell.Placements = keepP.ToArray(); cell.Scales = keepS.ToArray();
+                    cells.Add(new InstancedPropRenderer.Cell { Prototype = ib, Bounds = cell.Bounds, Placements = moveP.ToArray(), Scales = moveS.ToArray() });
+                    moved += moveP.Count;
+                }
+                ipr.Cells = cells.ToArray();
+            }
+            return $"  {B} <- VC_Tree_Broadleaf2 (warm tint): {(split ? $"{moved} placements moved from {A}" : "meshes/materials refreshed")}\n";
         }
 
         static Material Mat(string name, string texPath, bool foliage)
@@ -87,7 +154,7 @@ namespace VeyraCity.EditorTools
             }
             mat.SetTexture("_BaseMap", AssetDatabase.LoadAssetAtPath<Texture2D>(texPath));
             mat.SetColor("_BaseColor", Color.white);
-            mat.SetFloat("_Smoothness", foliage ? 0.28f : 0.12f);
+            mat.SetFloat("_Smoothness", foliage ? 0.12f : 0.1f);   // iteration 8: less sheen (pines read grey)
             mat.SetFloat("_Metallic", 0f);
             if (foliage)
             {

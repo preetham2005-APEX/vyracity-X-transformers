@@ -47,6 +47,8 @@ namespace VeyraCity.EditorTools
                         case "catalog": log.Append(KitbashCatalogBuilder.Build()); break;
                         case "assemble": log.Append(BuildingAssembler.Run()); break;
                         case "neon": log.Append(NeonSignBuilder.Build()); break;
+                        case "shore": log.Append(ShorelineBuilder.Build()); break;
+                        case "pylons": log.Append(BridgePylonSmoother.Run()); break;
                         case "probe":   // renderers within 12 m (x/z) of -veyraProbe x,z
                         {
                             int pi = Array.IndexOf(args, "-veyraProbe");
@@ -61,6 +63,50 @@ namespace VeyraCity.EditorTools
                                 string path = r.name; for (var t = r.transform.parent; t != null; t = t.parent) path = t.name + "/" + path;
                                 log.AppendLine($"  {path} | enabled {r.enabled} | mesh {(mf != null && mf.sharedMesh != null ? mf.sharedMesh.name : "-")} | mats {string.Join(",", r.sharedMaterials.Select(m => m != null ? m.name : "null"))} | y {b.min.y:0.0}-{b.max.y:0.0}");
                             }
+                            break;
+                        }
+                        case "poolshot":   // iteration 13 debug: editor render of a neon light pool at 22:00
+                        {
+                            var env = UnityEngine.Object.FindAnyObjectByType<VeyraCity.World.WorldEnvironment>(FindObjectsInactive.Include);
+                            float t0h = env != null ? env.TimeOfDay : 12f;
+                            if (env != null) { env.SetTime(22f); env.SetWetness(1f); }
+                            var pool = UnityEngine.Object.FindObjectsByType<MeshRenderer>(FindObjectsInactive.Include).Where(r => r.sharedMaterial != null && r.sharedMaterial.name == "M_NeonPool_Magenta" && r.bounds.center.x > -700f && r.bounds.center.x < -500f).OrderBy(r => r.bounds.size.magnitude).FirstOrDefault();
+                            if (pool == null) { log.AppendLine("no pool"); break; }
+                            var turnedOn = new System.Collections.Generic.List<GameObject>();
+                            for (var tr = pool.transform; tr != null; tr = tr.parent) if (!tr.gameObject.activeSelf) { tr.gameObject.SetActive(true); turnedOn.Add(tr.gameObject); }
+                            var b = pool.bounds;
+                            var camGo = new GameObject("PoolCam"); var cam = camGo.AddComponent<Camera>();
+                            cam.transform.position = b.center + new Vector3(12f, 7f, 12f);
+                            cam.transform.LookAt(b.center); cam.fieldOfView = 60f; cam.farClipPlane = 2000f;
+                            var rt = new RenderTexture(1280, 720, 24, RenderTextureFormat.ARGB32); cam.targetTexture = rt;
+                            var pm = pool.sharedMaterial; var keepM = new Material(pm);
+                            void Shot(string tag)
+                            {
+                                cam.Render();
+                                RenderTexture.active = rt; var tex = new Texture2D(1280, 720, TextureFormat.RGB24, false); tex.ReadPixels(new Rect(0, 0, 1280, 720), 0, 0); tex.Apply();
+                                System.IO.File.WriteAllBytes($"Logs/ITER/poolshot_{tag}.png", tex.EncodeToPNG());
+                                RenderTexture.active = null;
+                            }
+                            Shot("asis");
+                            var em = pm.GetTexture("_EmissionMap") as Texture2D;
+                            log.AppendLine($"  map {(em != null ? em.name + " " + em.width + "x" + em.height + " readable " + em.isReadable : "null")}, shader {pm.shader.name}, queue {pm.renderQueue}");
+                            var mf2 = pool.GetComponent<MeshFilter>().sharedMesh; var uvs = mf2.uv;
+                            log.AppendLine($"  mesh {mf2.name} verts {mf2.vertexCount} uv {uvs.Length} uvmax {(uvs.Length > 0 ? uvs.Max(u => u.y) : -1)} bounds {pool.bounds}");
+                            pm.SetTexture("_EmissionMap", Texture2D.whiteTexture);
+                            Shot("white");
+                            pm.CopyPropertiesFromMaterial(keepM); pm.shaderKeywords = keepM.shaderKeywords; pm.renderQueue = keepM.renderQueue;
+                            foreach (var h in Physics.RaycastAll(b.center + Vector3.up * 30f, Vector3.down, 80f, ~0, QueryTriggerInteraction.Collide).OrderBy(h => h.distance))
+                                log.AppendLine($"  hit {h.collider.name} (layer {h.collider.gameObject.layer}, trigger {h.collider.isTrigger}) y {h.point.y:0.00}");
+                            foreach (var r in UnityEngine.Object.FindObjectsByType<MeshRenderer>(FindObjectsInactive.Include))
+                            {
+                                var rb = r.bounds;
+                                if (r == pool || rb.size.y > 40f || !rb.Contains(new Vector3(b.center.x, rb.center.y, b.center.z))) continue;
+                                if (Mathf.Abs(rb.max.y - b.center.y) < 1.5f) log.AppendLine($"  renderer {r.name} ({(r.sharedMaterial != null ? r.sharedMaterial.name : "-")}) top {rb.max.y:0.00}");
+                            }
+                            log.AppendLine($"poolshot {pool.name} at {b.center} size {b.size}; emission {pool.sharedMaterial.GetColor("_EmissionColor")}");
+                            UnityEngine.Object.DestroyImmediate(camGo);
+                            foreach (var g in turnedOn) g.SetActive(false);
+                            if (env != null) { env.SetTime(t0h); env.SetWetness(0f); }
                             break;
                         }
                         case "sheet": log.Append(KitbashMaterials.ContactSheet()); break;

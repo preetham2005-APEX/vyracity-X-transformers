@@ -105,7 +105,7 @@ def foliage_atlas(size=1024, seed=11):
                 for s2 in (-1, 1):
                     ln = rng.uniform(10, 18) * (1.0 - 0.5 * t)
                     g = rng.uniform(0.75, 1.1)
-                    line(img, px_, py_, px_ + ln * 0.8, py_ + s2 * ln * 0.35 + s * ln * 0.3, 1.5, (0.09 * g, 0.20 * g, 0.11 * g))
+                    line(img, px_, py_, px_ + ln * 0.8, py_ + s2 * ln * 0.35 + s * ln * 0.3, 2.2, (0.13 * g, 0.29 * g, 0.12 * g))   # iteration 10: fuller, lighter needles (CAM_10 read black and hairy)
     # palm frond (bottom-left): rib along the tile diagonal with leaflets
     ox, oy = 0, 0
     line(img, ox + 16, oy + half * 0.5, ox + half - 10, oy + half * 0.5, 2.5, (0.36, 0.34, 0.16))
@@ -125,7 +125,7 @@ def foliage_atlas(size=1024, seed=11):
         ellipse(img, ox + half * 0.5 + r * math.cos(a), oy + half * 0.5 + r * math.sin(a), rng.uniform(9, 15), rng.uniform(5, 8), rng.uniform(0, math.pi), (0.14 * g, 0.28 * g, 0.10 * g))
     # dense conifer strip (x 1024-1536, full height): opaque dark-green base and thousands of short needle strokes
     x0, x1 = size, size + half
-    base = np.array((0.055, 0.12, 0.065), np.float32)
+    base = np.array((0.08, 0.21, 0.08), np.float32)   # iteration 8: greener (read grey in CAM_10)
     img[:, x0:x1, :3] = base
     img[:, x0:x1, 3] = 1.0
     for _ in range(5200):
@@ -134,7 +134,7 @@ def foliage_atlas(size=1024, seed=11):
         ln = rng.uniform(6, 14)
         g = rng.uniform(0.7, 1.35)
         ang = rng.uniform(-0.9, 0.9)
-        line(img, x, y, x + math.sin(ang) * ln, y - math.cos(ang) * ln, 1.2, (0.07 * g, 0.17 * g, 0.09 * g))
+        line(img, x, y, x + math.sin(ang) * ln, y - math.cos(ang) * ln, 1.2, (0.10 * g, 0.29 * g, 0.11 * g))
     img[:, x0:x1, 3] = 1.0
     # dilate colour into transparent texels so mips do not bleed black
     rgb, a = img[..., :3], img[..., 3:4]
@@ -212,7 +212,9 @@ class Builder:
         corners = [centre - right - up, centre + right - up, centre + right + up, centre - right + up]
         uvs = [(u0 + 0.01 * AU, v0 + 0.01), (u0 + 0.49 * AU, v0 + 0.01), (u0 + 0.49 * AU, v0 + 0.49), (u0 + 0.01 * AU, v0 + 0.49)]
         fn = right.cross(up).normalized()
-        for side in (1, -1):
+        # iteration 9: one face per card (the foliage material is two-sided; a reversed twin with inward normals
+        # z-fought it and rendered the trees near black)
+        for side in (1,):
             n = fn * side
             nrm = []
             for c in corners:
@@ -254,11 +256,13 @@ class Builder:
         return obj
 
 
-def broadleaf(detail, seed=3):
+def broadleaf(detail, seed=3, spread=1.0, zsq=1.25, crownz=6.6):
+    """spread scales the branch reach, zsq flattens (>1) or elongates (<1) the crown ellipsoid (world iteration 7:
+    a second, taller and narrower broadleaf for species variety)."""
     rng = random.Random(seed)
     b = Builder()
     sides = [8, 6, 4][detail]
-    crown = Vector((0, 0, 6.6))
+    crown = Vector((0, 0, crownz))
     trunk = [Vector((0, 0, 0)), Vector((0.05, 0, 1.5)), Vector((0.1, 0.05, 3.0)), Vector((0.05, 0.1, 4.2))]
     b.tube(trunk, [0.32, 0.26, 0.22, 0.18], sides, 0)
     n_branch = [6, 5, 4][detail]
@@ -267,8 +271,8 @@ def broadleaf(detail, seed=3):
         a = i / n_branch * math.tau + rng.uniform(-0.3, 0.3)
         out = Vector((math.cos(a), math.sin(a), 0))
         start = trunk[-1] + Vector((0, 0, rng.uniform(-0.6, 0.3)))
-        mid = start + out * rng.uniform(1.0, 1.6) + Vector((0, 0, rng.uniform(1.2, 1.8)))
-        end = mid + out * rng.uniform(1.0, 1.8) + Vector((0, 0, rng.uniform(0.8, 1.8)))
+        mid = start + out * rng.uniform(1.0, 1.6) * spread + Vector((0, 0, rng.uniform(1.2, 1.8)))
+        end = mid + out * rng.uniform(1.0, 1.8) * spread + Vector((0, 0, rng.uniform(0.8, 1.8) / max(0.6, spread)))
         if detail < 2:
             b.tube([start, mid, end], [0.13, 0.08, 0.035], max(3, sides - 3), 0)
         tips += [mid, end, (mid + end) * 0.5 + Vector((0, 0, 0.5))]
@@ -277,10 +281,12 @@ def broadleaf(detail, seed=3):
     size = [1.25, 1.75, 2.6][detail]
     for _ in range(cards):
         t = rng.choice(tips)
-        c = t + Vector((rng.gauss(0, 1.1), rng.gauss(0, 1.1), rng.gauss(0, 0.8)))
+        c = t + Vector((rng.gauss(0, 1.1 * spread), rng.gauss(0, 1.1 * spread), rng.gauss(0, 0.8)))
         # keep the crown roughly ellipsoidal (9.9 m top)
         d = c - crown
-        d.z *= 1.25
+        d.z *= zsq
+        d.x /= spread
+        d.y /= spread
         if d.length > 3.4:
             c = crown + (c - crown) * (3.4 / d.length)
         r = Vector((rng.uniform(-1, 1), rng.uniform(-1, 1), rng.uniform(-0.3, 0.3))).normalized()
@@ -310,7 +316,6 @@ def cone_mass(b, tiers, sides, z0=2.6, top=14.0, r0=3.0, rng=None):
             ua, ub = CONIFER_U[0] + (CONIFER_U[1] - CONIFER_U[0]) * k / sides, CONIFER_U[0] + (CONIFER_U[1] - CONIFER_U[0]) * (k + 1) / sides
             uvs = [(ua, 0.02), (ub, 0.02), ((ua + ub) * 0.5, 0.98)]
             b.face([p0, p1, apex], uvs, 1, [n0, n1, na])
-            b.face([apex, p1, p0], list(reversed(uvs)), 1, [-na, -n1, -n0])
 
 
 def pine(detail, seed=7):
@@ -318,7 +323,7 @@ def pine(detail, seed=7):
     b = Builder()
     sides = [7, 5, 4][detail]
     b.tube([Vector((0, 0, 0)), Vector((0, 0, 5)), Vector((0, 0, 10)), Vector((0, 0, 14))], [0.28, 0.2, 0.11, 0.02], sides, 0)
-    cone_mass(b, [5, 4, 3][detail], [9, 7, 6][detail], r0=[2.6, 2.9, 3.1][detail], rng=rng)
+    cone_mass(b, [5, 4, 3][detail], [9, 7, 6][detail], r0=[1.9, 2.7, 3.1][detail], rng=rng)   # iteration 8: smaller core up close
     whorls = [12, 5, 0][detail]
     per = [8, 5, 4][detail]
     for w in range(whorls):
@@ -375,7 +380,6 @@ def palm(detail, seed=9):
                 if n.z < 0:
                     n = -n
                 b.face(quad, uvs, 1, [n] * 4)
-                b.face(list(reversed(quad)), list(reversed(uvs)), 1, [-n] * 4)
             prev = cur
     return b
 
@@ -407,7 +411,8 @@ def main():
     save_png(foliage_atlas(), os.path.join(TEX_DIR, "T_Foliage_Atlas.png"))
     save_png(bark_texture(), os.path.join(TEX_DIR, "T_Bark.png"))
     lines = []
-    for name, fn in (("VC_Tree_Broadleaf", broadleaf), ("VC_Tree_Pine", pine), ("VC_Tree_Palm", palm), ("VC_Tree_Bush", bush)):
+    for name, fn in (("VC_Tree_Broadleaf", broadleaf), ("VC_Tree_Broadleaf2", lambda d: broadleaf(d, seed=29, spread=0.72, zsq=0.8, crownz=7.0)),
+                     ("VC_Tree_Pine", pine), ("VC_Tree_Palm", palm), ("VC_Tree_Bush", bush)):
         parent = bpy.data.objects.new(name, None)
         bpy.context.scene.collection.objects.link(parent)
         lods = []
