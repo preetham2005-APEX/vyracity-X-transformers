@@ -27,6 +27,7 @@ namespace VeyraCity.EditorTools
         /// </summary>
         public static Func<string, bool> SkipRender;
 
+        const string mats_brick = "facade_brick";
         /// <summary>BUG-072: per-building facade u offset in metres (whole window columns), set by EmitBuilding.</summary>
         static float uOffset;
 
@@ -306,6 +307,12 @@ namespace VeyraCity.EditorTools
                     float eaves = Mathf.Max(3f, h * 0.62f);
                     Walls(wall, f, -hx, hx, -hz, hz, below, eaves, U, V, 0f);
                     Gable(roof, wall, f, -hx, hx, -hz, hz, eaves, h, 0.45f, U, V, 0f);
+                    // iteration 1: a brick chimney on ~45 % of houses (silhouette variety along suburban streets)
+                    if (Mathf.Repeat(seed * 3.17f, 1f) < 0.45f)
+                    {
+                        float cx = hx * (Mathf.Repeat(seed * 5.3f, 1f) < 0.5f ? -0.55f : 0.55f);
+                        Box(ctx.Get(chunk, mats_brick), null, f, cx - 0.35f, cx + 0.35f, -0.35f, 0.35f, eaves, h + 0.9f, 2f, 2f, 0f);
+                    }
                     break;
                 }
                 case "cylinder":
@@ -359,6 +366,14 @@ namespace VeyraCity.EditorTools
                     float podium = shops ? 4.5f : 0f;
                     if (shops) Walls(ctx.Get(chunk, "storefront"), f, -hx, hx, -hz, hz, below, podium, 12f, 4.5f, 0f);
                     Box(wall, roof, f, -hx, hx, -hz, hz, shops ? podium : below, h, U, V, 0f);
+                    // iteration 1: cornice + parapet at the roof line and a plinth band at street level (flat walls read as boxes)
+                    if (h > 8f)
+                    {
+                        var trim = ctx.Get(chunk, "concrete");
+                        Walls(trim, f, -hx, hx, -hz, hz, h - 0.75f, h + 0.35f, 4f, 4f, 0f, 0.3f);
+                        Top(trim, f, -hx - 0.3f, hx + 0.3f, -hz - 0.3f, hz + 0.3f, h + 0.35f, 8f);
+                        Walls(trim, f, -hx, hx, -hz, hz, below, 0.7f, 4f, 4f, 0f, 0.12f);
+                    }
                     if (shape == "tower" || h > 120f) Crown(ctx, chunk, f, hx * 0.45f, hz * 0.45f, h, seed);
                     else if (h > 10f && w > 12f && l > 12f) RoofKit(ctx, chunk, f, hx, hz, h, seed);
                     bool neon = district == "D6" || (district == "D1" && (kind == "office" || kind == "midrise" || kind == "apartment" || kind == "theater" || kind == "hotel") && seed > 0.35f);

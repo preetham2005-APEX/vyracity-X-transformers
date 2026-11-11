@@ -54,6 +54,11 @@ namespace VeyraCity.EditorTools
             if (cat == null) { cat = ScriptableObject.CreateInstance<KitbashCatalog>(); AssetDatabase.CreateAsset(cat, CatalogPath); }
             cat.Entries.Clear();
             int usable = 0, missing = 0;
+            // visual review of the contact sheet (Veyra/Buildings/Kitbash Contact Sheet): id -> reason, Data/kitbash_review.json
+            var review = new Dictionary<string, string>();
+            const string ReviewPath = "Assets/_Veyra/Data/kitbash_review.json";
+            if (File.Exists(ReviewPath))
+                foreach (var kv in JObject.Parse(File.ReadAllText(ReviewPath))) review[kv.Key] = (string)kv.Value;
             var styleCount = new Dictionary<string, int>();
             foreach (var mf in Directory.GetFiles(Root, "kitbash_manifest.json", SearchOption.AllDirectories).OrderBy(x => x))
             {
@@ -76,6 +81,7 @@ namespace VeyraCity.EditorTools
                         Triangles = (p["triangles"] ?? new JArray()).Select(t => (int)t).ToArray(),
                         Collider = string.Join(",", (p["collision"] ?? new JArray()).Select(c => ((string)c).Split('_')[0]).Distinct()),
                         Districts = pack.districts ?? new string[0],
+                        SourceMaterials = (p["materials"] ?? new JArray()).Select(m => (string)m["source"]).ToArray(),
                     };
                     e.Styles = e.Height >= 30f ? pack.tall ?? new string[0] : pack.low ?? new string[0];
                     e.FloorHeight = e.Styles.Contains("GlassModern") ? 4.0f : 3.4f;
@@ -88,6 +94,7 @@ namespace VeyraCity.EditorTools
                     else if ((source == "New_York_City" || source == "San_Francisco_City") && e.Height > 150f)
                     { e.Excluded = true; e.Note = "possible likeness of a real-world landmark tower (Veyra City is fictional)"; }
                     else if (e.Triangles.Length > 0 && e.Triangles[0] > 60000) { e.Excluded = true; e.Note = "LOD0 over the 60k per-building budget"; }
+                    else if (review.TryGetValue(e.Id, out var why)) { e.Excluded = true; e.Note = why.Contains("untextured") ? "contact sheet review: untextured" : why.Contains("frame") || why.Contains("skeletal") ? "contact sheet review: incomplete segment (frame/skeleton)" : "contact sheet review: fragment, pole, slab or tank"; }
                     if (!e.Excluded)
                     {
                         usable++;

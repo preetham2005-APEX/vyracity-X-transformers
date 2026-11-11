@@ -92,9 +92,10 @@ namespace VeyraCity.EditorTools
                     for (int t = 0; t < 2; t++)
                     {
                         float kw = t == 0 ? e.Footprint.x : e.Footprint.y, kl = t == 0 ? e.Footprint.y : e.Footprint.x;
-                        float s = Mathf.Clamp(Mathf.Sqrt(b.FootprintWM * b.FootprintLM / Mathf.Max(1f, kw * kl)), 0.9f, 1.1f);
+                        // iteration 1: Â±22 % footprint, uniform 0.85-1.2, height 0.65-1.5 x (C1: Â±15 % / 0.9-1.1 fitted 70 of 2,708)
+                        float s = Mathf.Clamp(Mathf.Sqrt(b.FootprintWM * b.FootprintLM / Mathf.Max(1f, kw * kl)), 0.85f, 1.2f);
                         float fw = kw * s / b.FootprintWM, fl = kl * s / b.FootprintLM, fh = e.Height * s / Mathf.Max(1f, b.HeightM);
-                        if (fw < 0.85f || fw > 1.15f || fl < 0.85f || fl > 1.15f || fh < 0.75f || fh > 1.33f) continue;
+                        if (fw < 0.78f || fw > 1.22f || fl < 0.78f || fl > 1.22f || fh < 0.65f || fh > 1.5f) continue;
                         cands.Add((e, s, t == 1));
                     }
                 }
@@ -134,6 +135,7 @@ namespace VeyraCity.EditorTools
                 go.transform.SetPositionAndRotation(new Vector3(b.UnityX, ground, b.UnityZ), Quaternion.Euler(0f, yaw, 0f) * go.transform.rotation);
                 go.transform.localScale = go.transform.localScale * c.scale;
                 foreach (var col in go.GetComponentsInChildren<Collider>(true)) col.enabled = false;
+                KitbashMaterials.Apply(go, c.e);   // the packs' own textures (the export strips them from the FBX)
                 foreach (var t in go.GetComponentsInChildren<Transform>(true)) t.gameObject.isStatic = true;
                 // plinth: footprint × (2 m below ground .. 0.3 m above the lowest corner, hidden where the ground is higher)
                 var p = new GameObject("Plinth") { isStatic = true };

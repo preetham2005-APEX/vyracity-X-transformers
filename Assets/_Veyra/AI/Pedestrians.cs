@@ -64,7 +64,7 @@ namespace VeyraCity.AI
         readonly List<Ped> live = new List<Ped>();
         readonly Stack<Ped> pool = new Stack<Ped>();
         readonly List<int> candidates = new List<int>();
-        static Mesh box, sphere, canopy;
+        static Mesh box, sphere, canopy, torsoMesh, limbMesh, hipsMesh, shoeMesh;
         static Material[] shirtMats, trouserMats, skinMats, hairMats, umbrellaMats;
         static Material shoeMat;
         const float Cell = 100f;
@@ -429,21 +429,21 @@ namespace VeyraCity.AI
             p.Root = p.Go.transform;
             p.Hips = Node("Hips", p.Root);
             p.Torso = Node("Torso", p.Hips);
-            p.Trousers = Part("HipsMesh", p.Hips, box, Vector3.zero, Vector3.one);
-            p.Shirt = Part("TorsoMesh", p.Torso, box, Vector3.zero, Vector3.one, true);
+            p.Trousers = Part("HipsMesh", p.Hips, hipsMesh, Vector3.zero, Vector3.one);
+            p.Shirt = Part("TorsoMesh", p.Torso, torsoMesh, Vector3.zero, Vector3.one, true);
             p.Head = Node("Head", p.Torso);
             p.Skin = Part("HeadMesh", p.Head, sphere, Vector3.zero, Vector3.one);
             p.Hair = Part("HairMesh", p.Head, sphere, Vector3.zero, Vector3.one);
             p.ArmL = Node("ArmL", p.Torso);
             p.ArmR = Node("ArmR", p.Torso);
-            p.ArmLR = Part("ArmLMesh", p.ArmL, box, Vector3.zero, Vector3.one);
-            p.ArmRR = Part("ArmRMesh", p.ArmR, box, Vector3.zero, Vector3.one);
+            p.ArmLR = Part("ArmLMesh", p.ArmL, limbMesh, Vector3.zero, Vector3.one);
+            p.ArmRR = Part("ArmRMesh", p.ArmR, limbMesh, Vector3.zero, Vector3.one);
             p.LegL = Node("LegL", p.Hips);
             p.LegR = Node("LegR", p.Hips);
-            p.LegLR = Part("LegLMesh", p.LegL, box, Vector3.zero, Vector3.one);
-            p.LegRR = Part("LegRMesh", p.LegR, box, Vector3.zero, Vector3.one);
-            p.ShoeL = Part("ShoeL", p.LegL, box, Vector3.zero, Vector3.one);
-            p.ShoeR = Part("ShoeR", p.LegR, box, Vector3.zero, Vector3.one);
+            p.LegLR = Part("LegLMesh", p.LegL, limbMesh, Vector3.zero, Vector3.one);
+            p.LegRR = Part("LegRMesh", p.LegR, limbMesh, Vector3.zero, Vector3.one);
+            p.ShoeL = Part("ShoeL", p.LegL, shoeMesh, Vector3.zero, Vector3.one);
+            p.ShoeR = Part("ShoeR", p.LegR, shoeMesh, Vector3.zero, Vector3.one);
             p.ShoeL.sharedMaterial = p.ShoeR.sharedMaterial = shoeMat;
             // rain: an umbrella held in the right hand (GTA's walkers open them when it rains)
             p.Umbrella = Node("Umbrella", p.ArmR);
@@ -535,7 +535,12 @@ namespace VeyraCity.AI
         {
             if (box != null) return;
             box = BuildBox();
-            sphere = BuildSphere(10, 7);
+            sphere = BuildSphere(14, 10);
+            // world iteration 1: shaped body parts instead of boxes (unit size; Dress scales them like the boxes before)
+            torsoMesh = BuildRounded("PedTorso", 14, 8, 1.0f, 0.8f, 3f, 6f);
+            limbMesh = BuildRounded("PedLimb", 10, 8, 1.0f, 0.72f, 2f, 3f);
+            hipsMesh = BuildRounded("PedHips", 12, 6, 0.92f, 1.0f, 3f, 5f);
+            shoeMesh = BuildRounded("PedShoe", 10, 5, 1.0f, 1.0f, 3.5f, 4f);
             canopy = BuildCanopy(10);
             shoeMat = Palette("PedShoe", new[] { new Color(0.05f, 0.05f, 0.05f) }, 0.3f)[0];
             umbrellaMats = Palette("PedUmbrella", new[] { new Color(0.04f, 0.04f, 0.05f), new Color(0.5f, 0.06f, 0.08f), new Color(0.08f, 0.15f, 0.4f), new Color(0.15f, 0.15f, 0.16f) }, 0.6f);
@@ -558,6 +563,44 @@ namespace VeyraCity.AI
                 mats[i] = m;
             }
             return mats;
+        }
+
+        /// <summary>
+        /// A unit rounded body part centred on the origin (y âˆ’0.5 â€¦ 0.5): superellipse cross-section (exponent
+        /// <paramref name="n"/>: 2 round, 3â€“4 rounded box), width tapering from <paramref name="bottom"/> to <paramref name="top"/>,
+        /// ends rounded with exponent <paramref name="p"/> (higher = flatter). Smooth normals.
+        /// </summary>
+        static Mesh BuildRounded(string name, int seg, int rings, float top, float bottom, float n, float p)
+        {
+            var v = new List<Vector3>();
+            var tri = new List<int>();
+            for (int r = 0; r <= rings; r++)
+            {
+                float t = r / (float)rings;
+                float y = t - 0.5f;
+                float end = Mathf.Pow(Mathf.Max(0f, 1f - Mathf.Pow(Mathf.Abs(2f * t - 1f), p)), 1f / p);
+                float w = Mathf.Lerp(bottom, top, t) * end * 0.5f;
+                for (int s = 0; s <= seg; s++)
+                {
+                    float a = 2f * Mathf.PI * s / seg;
+                    float c = Mathf.Cos(a), sn = Mathf.Sin(a);
+                    float x = Mathf.Sign(c) * Mathf.Pow(Mathf.Abs(c), 2f / n), z = Mathf.Sign(sn) * Mathf.Pow(Mathf.Abs(sn), 2f / n);
+                    v.Add(new Vector3(x * w, y, z * w));
+                }
+            }
+            for (int r = 0; r < rings; r++)
+                for (int s = 0; s < seg; s++)
+                {
+                    int a = r * (seg + 1) + s, b = a + seg + 1;
+                    tri.AddRange(new[] { a, a + 1, b, a + 1, b + 1, b });
+                }
+            var m = new Mesh { name = name };
+            m.SetVertices(v);
+            m.SetTriangles(tri, 0);
+            Outward(m);
+            m.RecalculateNormals();
+            m.RecalculateBounds();
+            return m;
         }
 
         /// <summary>Unit cube centred on the origin, flat normals.</summary>

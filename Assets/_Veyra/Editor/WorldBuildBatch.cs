@@ -38,6 +38,9 @@ namespace VeyraCity.EditorTools
                         case "seawalls": log.Append(SeawallBuilder.Build()); break;
                         case "catalog": log.Append(KitbashCatalogBuilder.Build()); break;
                         case "assemble": log.Append(BuildingAssembler.Run()); break;
+                        case "neon": log.Append(NeonSignBuilder.Build()); break;
+                        case "sheet": log.Append(KitbashMaterials.ContactSheet()); break;
+                        case "pso": log.Append(PsoCollectionBuilder.Build()); break;   // merge Logs/PSO traces (-veyraTracePSO)
                         default: log.AppendLine($"unknown step '{s}'"); code = 1; break;
                     }
                     log.AppendLine($"[{s}] {(DateTime.Now - t0).TotalSeconds:0} s");

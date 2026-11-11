@@ -27,6 +27,8 @@ namespace VeyraCity.World
             public string LicenceId;
             public int[] Triangles = Array.Empty<int>();
             public string Collider;
+            [Tooltip("Source material names in slot order (kitbash_manifest.json); textures in Art/Textures/Imported/<Source>/<name>_baseColor.*")]
+            public string[] SourceMaterials = Array.Empty<string>();
             [Tooltip("Excluded from assembly (reason in Note): too small, prop, not a building, monolithic block, oversize")]
             public bool Excluded;
             public string Note;
