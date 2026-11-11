@@ -26,10 +26,116 @@ namespace VeyraCity.EditorTools
         [MenuItem("Veyra/World/Terrain Layer PBR Maps")]
         public static void Menu() => Debug.Log(Run());
 
+        /// <summary>
+        /// Iteration 3: 1024 px tileable albedo per layer with its own character (the 256 px single-noise tints blurred up close,
+        /// review CAM_14): grass with blade speckle and clover patches, forest floor with needles and twigs, rock with strata
+        /// and cracks, sand with ripples, paving with slab joints, dirt with pebbles, farmland with furrows, lawn finer and
+        /// greener. Colours stay the layer's calibrated base colour (Appendix B albedo ranges).
+        /// </summary>
+        static Texture2D Albedo(string layer, Color baseCol)
+        {
+            const int S = 1024;
+            int seed = layer.GetHashCode() & 0xffff;
+            var px = new Color[S * S];
+            var rng = new System.Random(seed);
+            for (int y = 0; y < S; y++)
+                for (int x = 0; x < S; x++)
+                {
+                    float u = x / (float)S, v = y / (float)S;
+                    float big = ProcTextures.Fbm(u, v, 4, 3, seed);
+                    float mid = ProcTextures.Fbm(u, v, 16, 3, seed + 7);
+                    float fine = ProcTextures.Fbm(u, v, 128, 2, seed + 13);
+                    float g = 1f;
+                    var c = baseCol;
+                    if (layer.Contains("Grass") || layer.Contains("Lawn"))
+                    {
+                        g = 0.78f + 0.3f * big + 0.25f * (fine - 0.5f) * 2f;
+                        float dry = Mathf.Clamp01((mid - 0.58f) * 4f) * (layer.Contains("Lawn") ? 0.25f : 0.6f);
+                        c = Color.Lerp(baseCol, new Color(baseCol.r * 1.55f, baseCol.g * 1.25f, baseCol.b * 0.8f), dry);
+                    }
+                    else if (layer.Contains("Forest"))
+                    {
+                        g = 0.7f + 0.35f * mid + 0.3f * (fine - 0.5f);
+                        c = Color.Lerp(baseCol, new Color(0.24f, 0.18f, 0.1f), Mathf.Clamp01((big - 0.5f) * 2f));
+                    }
+                    else if (layer.Contains("Rock"))
+                    {
+                        // iteration 3: softer strata and fewer cracks (iteration 2 review CAM_14: cliffs read like contour lines)
+                        float strata = 0.5f + 0.5f * Mathf.Sin((v + 0.35f * big + 0.08f * mid) * Mathf.PI * 2f * 5f);
+                        g = 0.74f + 0.08f * strata + 0.28f * (fine - 0.5f) + 0.22f * (mid - 0.5f) + 0.15f * big;
+                        float crack = Mathf.Abs(ProcTextures.Fbm(u, v, 12, 2, seed + 31) - 0.5f);
+                        if (crack < 0.004f) g *= 0.75f;
+                    }
+                    else if (layer.Contains("Sand"))
+                    {
+                        float ripple = 0.5f + 0.5f * Mathf.Sin((u * 40f + v * 9f + big * 6f) * Mathf.PI * 2f / 4f);
+                        g = 0.9f + 0.06f * ripple + 0.12f * (fine - 0.5f) + 0.1f * (big - 0.5f);
+                    }
+                    else if (layer.Contains("Paving"))
+                    {
+                        float jx = Mathf.Repeat(u * 8f, 1f), jy = Mathf.Repeat(v * 8f + (Mathf.Floor(u * 8f) % 2) * 0.5f, 1f);
+                        bool joint = jx < 0.015f || jy < 0.015f;
+                        g = (joint ? 0.62f : 0.95f) + 0.12f * (mid - 0.5f) + 0.1f * (fine - 0.5f);
+                    }
+                    else if (layer.Contains("Dirt"))
+                    {
+                        g = 0.78f + 0.25f * mid + 0.3f * (fine - 0.5f);
+                    }
+                    else if (layer.Contains("Farm"))
+                    {
+                        float furrow = 0.5f + 0.5f * Mathf.Sin(u * Mathf.PI * 2f * 32f);
+                        g = 0.75f + 0.18f * furrow + 0.2f * (mid - 0.5f) + 0.15f * (fine - 0.5f);
+                    }
+                    px[y * S + x] = new Color(Mathf.Clamp01(c.r * g), Mathf.Clamp01(c.g * g), Mathf.Clamp01(c.b * g), 1f);
+                }
+            // scattered detail: pebbles (dirt, sand, rock), twigs and needles (forest), clover (lawn/grass)
+            int count = layer.Contains("Dirt") || layer.Contains("Rock") ? 2600 : layer.Contains("Forest") ? 3200 : layer.Contains("Grass") || layer.Contains("Lawn") ? 1800 : layer.Contains("Sand") ? 900 : 0;
+            for (int i = 0; i < count; i++)
+            {
+                int cx = rng.Next(S), cy = rng.Next(S), r = 1 + rng.Next(layer.Contains("Rock") ? 4 : 3);
+                float tone = 0.65f + (float)rng.NextDouble() * 0.6f;
+                bool stroke = layer.Contains("Forest");
+                for (int dy = -r; dy <= r; dy++)
+                    for (int dx = stroke ? -r * 3 : -r; dx <= (stroke ? r * 3 : r); dx++)
+                    {
+                        if (!stroke && dx * dx + dy * dy > r * r) continue;
+                        int xx = (cx + dx + S) % S, yy = (cy + dy + S) % S;
+                        var o = px[yy * S + xx];
+                        px[yy * S + xx] = new Color(o.r * tone, o.g * tone, o.b * tone, 1f);
+                    }
+            }
+            string path = $"{OutDir}/T_{layer}_A.png";
+            var t = new Texture2D(S, S, TextureFormat.RGBA32, true);
+            t.SetPixels(px); t.Apply();
+            File.WriteAllBytes(path, t.EncodeToPNG());
+            Object.DestroyImmediate(t);
+            AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
+            if (AssetImporter.GetAtPath(path) is TextureImporter ti)
+            {
+                ti.sRGBTexture = true; ti.mipmapEnabled = true; ti.wrapMode = TextureWrapMode.Repeat;
+                ti.textureCompression = TextureImporterCompression.CompressedHQ; ti.anisoLevel = 8; ti.SaveAndReimport();
+            }
+            return AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+        }
+
+        static readonly System.Collections.Generic.Dictionary<string, Color> BaseColours = new System.Collections.Generic.Dictionary<string, Color>
+        {
+            ["L_Grass"] = new Color(0.27f, 0.33f, 0.16f), ["L_ForestFloor"] = new Color(0.18f, 0.16f, 0.11f), ["L_Rock"] = new Color(0.4f, 0.39f, 0.37f),
+            ["L_Sand"] = new Color(0.72f, 0.65f, 0.5f), ["L_Paving"] = new Color(0.42f, 0.42f, 0.41f), ["L_Dirt"] = new Color(0.36f, 0.29f, 0.21f),
+            ["L_Farmland"] = new Color(0.38f, 0.33f, 0.2f), ["L_Lawn"] = new Color(0.24f, 0.36f, 0.15f),
+        };
+
         public static string Run()
         {
             var sb = new StringBuilder("Terrain layer PBR maps\n");
             Directory.CreateDirectory(OutDir);
+            foreach (var path in Directory.GetFiles(LayerDir, "*.terrainlayer").Select(p => p.Replace(Path.DirectorySeparatorChar, '/')))
+            {
+                var layer = AssetDatabase.LoadAssetAtPath<TerrainLayer>(path);
+                if (layer == null || !BaseColours.TryGetValue(layer.name, out var bc)) continue;
+                layer.diffuseTexture = Albedo(layer.name, bc);   // the normal/mask maps below derive from this albedo
+                EditorUtility.SetDirty(layer);
+            }
             foreach (var path in Directory.GetFiles(LayerDir, "*.terrainlayer").Select(p => p.Replace('\\', '/')))
             {
                 var layer = AssetDatabase.LoadAssetAtPath<TerrainLayer>(path);

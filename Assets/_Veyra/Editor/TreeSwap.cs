@@ -55,7 +55,7 @@ namespace VeyraCity.EditorTools
                     return t.sharedMesh;
                 }
                 var m0 = Lod(0, out var mats0);
-                // far mesh: LOD2 (â‰ˆ 15 % of LOD0) â€” the prototype has two levels and the far one covers 90 m to 1.4 km
+                // far mesh: LOD2 (≈ 15 % of LOD0) — the prototype has two levels and the far one covers 90 m to 1.4 km
                 // (B1 run 1 with LOD1 there: 6.4 M triangles p95, GPU p95 9.7 ms)
                 var m1 = Lod(2, out var mats1) ?? Lod(1, out mats1);
                 if (m0 == null) { sb.AppendLine($"  {protoName}: {model} has no _LOD0"); continue; }

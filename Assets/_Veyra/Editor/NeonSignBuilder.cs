@@ -94,7 +94,8 @@ namespace VeyraCity.EditorTools
                     float d = Vector3.Dot((q * dir).normalized, toRoad.normalized);
                     if (d > best) { best = d; n = q * dir; half = hd; along = wid; }
                 }
-                var right = Vector3.Cross(Vector3.up, n).normalized;
+                // a reader facing the sign looks along -n: their right is Cross(n, up) (iteration 1: "JAZZ" read mirrored)
+                var right = Vector3.Cross(n, Vector3.up).normalized;
                 var face = c + n * (half + 0.12f);
                 string chunk = ChunkOf(face);
                 int word = rng.Next(Words.Length);
@@ -136,6 +137,52 @@ namespace VeyraCity.EditorTools
                     roof++;
                 }
             }
+            // iteration 4: overhead cables across Neon Mile streets (sagging, 7-12 m up) with small hanging neon banners
+            int cables = 0, banners = 0;
+            var d6poly = WorldData.Districts.districts.FirstOrDefault(d => d.id == "D6")?.polygon;
+            if (d6poly != null && back != null)
+                for (int r = 0; r < WorldData.Roads.Count; r++)
+                {
+                    var road = WorldData.Roads[r];
+                    if (road.Data.cls != "CO" && road.Data.cls != "AR" && road.Data.cls != "SV") continue;
+                    var rr = new System.Random(r * 7919);
+                    for (float s = 15f; s < road.Path.Length - 15f; s += 18f + (float)rr.NextDouble() * 14f)
+                    {
+                        var p = road.Path.PositionAt(s);
+                        if (!WorldData.PointInPolygon(d6poly, p.x, p.z)) continue;
+                        var t = road.Path.TangentAt(s); t.y = 0f; t.Normalize();
+                        var side = new Vector3(t.z, 0f, -t.x);
+                        float half = road.HalfWidth + 3.4f;   // over the pavement, onto the facades
+                        int n = 1 + rr.Next(3);
+                        for (int k = 0; k < n; k++)
+                        {
+                            float y0 = 7f + (float)rr.NextDouble() * 5f, y1 = y0 + ((float)rr.NextDouble() - 0.5f) * 2f;
+                            var a = p - side * half + t * (k * 0.8f) + Vector3.up * y0;
+                            var b = p + side * half + t * (k * 0.8f + ((float)rr.NextDouble() - 0.5f) * 3f) + Vector3.up * y1;
+                            float sag = 0.6f + (float)rr.NextDouble() * 0.9f;
+                            Vector3 prev = a;
+                            for (int q = 1; q <= 8; q++)
+                            {
+                                float f = q / 8f;
+                                var c = Vector3.Lerp(a, b, f) - Vector3.up * sag * 4f * f * (1f - f);
+                                Box(Get(ChunkOf(c), back), (prev + c) * 0.5f, (c - prev), Vector3.up, Vector3.Cross(c - prev, Vector3.up), (c - prev).magnitude, 0.035f, 0.035f);
+                                prev = c;
+                            }
+                            cables++;
+                            if (rr.NextDouble() < 0.35)
+                            {
+                                int w2 = rr.Next(Words.Length);
+                                var mid = Vector3.Lerp(a, b, 0.5f) - Vector3.up * (sag + 0.55f);
+                                float bw = Mathf.Clamp(widths[w2] * 0.5f / RowH, 1.5f, 4f);
+                                var m2 = mats[rr.Next(mats.Length)];
+                                Box(Get(ChunkOf(mid), back), mid + Vector3.up * 0.25f, side, Vector3.up, t, bw + 0.2f, 0.7f, 0.08f);
+                                Panel(Get(ChunkOf(mid), m2), mid + t * 0.05f, Vector3.Cross(t, Vector3.up).normalized, t, bw, 0.5f, RowUV(w2, widths[w2], false), RowUV(w2, widths[w2], true));
+                                Panel(Get(ChunkOf(mid), m2), mid - t * 0.05f, Vector3.Cross(-t, Vector3.up).normalized, -t, bw, 0.5f, RowUV(w2, widths[w2], false), RowUV(w2, widths[w2], true));
+                                banners++;
+                            }
+                        }
+                    }
+                }
             var keep = new HashSet<string>();
             int renderers = 0;
             foreach (var kv in chunks)
@@ -161,7 +208,7 @@ namespace VeyraCity.EditorTools
             foreach (var f in Directory.GetFiles(MeshDir, "*.asset"))
                 if (!keep.Contains(Path.GetFileNameWithoutExtension(f))) AssetDatabase.DeleteAsset(f.Replace('\\', '/'));
             AssetDatabase.SaveAssets();
-            string r2 = $"Neon signs: {store} storefront, {blade} blade, {roof} rooftop LED in {chunks.Count} chunks ({renderers} renderers); {Words.Length} original sign words\n";
+            string r2 = $"Neon signs: {store} storefront, {blade} blade, {roof} rooftop LED, {cables} overhead cables with {banners} hanging banners (D6) in {chunks.Count} chunks ({renderers} renderers); {Words.Length} original sign words\n";
             Directory.CreateDirectory("Logs/C");
             File.WriteAllText("Logs/C/neon_signs.txt", r2);
             return r2;

@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -33,12 +34,35 @@ namespace VeyraCity.EditorTools
                     {
                         case "roads": log.Append(RoadRenderBuilder.Build()); break;
                         case "grass": log.Append(GrassMasks.Apply()); break;
+                        case "regrass":   // replant (GrassBuilder), then the masks
+                        {
+                            var wr = scene.GetRootGameObjects().First(g => g.name == "World").transform;
+                            GrassBuilder.AddGrass(wr, "Assets/_Veyra/World/Generated");
+                            log.Append(GrassMasks.Apply());
+                            break;
+                        }
                         case "terrainmaps": log.Append(TerrainLayerMaps.Run()); break;
                         case "trees": log.Append(TreeSwap.Run()); break;
                         case "seawalls": log.Append(SeawallBuilder.Build()); break;
                         case "catalog": log.Append(KitbashCatalogBuilder.Build()); break;
                         case "assemble": log.Append(BuildingAssembler.Run()); break;
                         case "neon": log.Append(NeonSignBuilder.Build()); break;
+                        case "probe":   // renderers within 12 m (x/z) of -veyraProbe x,z
+                        {
+                            int pi = Array.IndexOf(args, "-veyraProbe");
+                            var xz = args[pi + 1].Replace("m", "-").Split(',');
+                            var p = new Vector3(float.Parse(xz[0], System.Globalization.CultureInfo.InvariantCulture), 0f, float.Parse(xz[1], System.Globalization.CultureInfo.InvariantCulture));
+                            foreach (var r in UnityEngine.Object.FindObjectsByType<Renderer>(FindObjectsInactive.Include))
+                            {
+                                var b = r.bounds;
+                                if (p.x < b.min.x - 12f || p.x > b.max.x + 12f || p.z < b.min.z - 12f || p.z > b.max.z + 12f) continue;
+                                if (b.size.x > 600f || b.size.z > 600f) continue;
+                                var mf = r.GetComponent<MeshFilter>();
+                                string path = r.name; for (var t = r.transform.parent; t != null; t = t.parent) path = t.name + "/" + path;
+                                log.AppendLine($"  {path} | enabled {r.enabled} | mesh {(mf != null && mf.sharedMesh != null ? mf.sharedMesh.name : "-")} | mats {string.Join(",", r.sharedMaterials.Select(m => m != null ? m.name : "null"))} | y {b.min.y:0.0}-{b.max.y:0.0}");
+                            }
+                            break;
+                        }
                         case "sheet": log.Append(KitbashMaterials.ContactSheet()); break;
                         case "pso": log.Append(PsoCollectionBuilder.Build()); break;   // merge Logs/PSO traces (-veyraTracePSO)
                         default: log.AppendLine($"unknown step '{s}'"); code = 1; break;

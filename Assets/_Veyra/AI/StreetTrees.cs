@@ -11,7 +11,7 @@ namespace VeyraCity.AI
     /// prototypes the world builder already made for <see cref="InstancedPropRenderer"/>, places them every ~14 m on
     /// both sides of collector and arterial roads (skipping junctions, bridges and building footprints), and draws
     /// the ones near the player with GPU instancing. Trunk colliders (Phase B, D2 request): a pool of capsules
-    /// (r 0.25 m Ã— scale, 3.2 m high, layer Default) follows the trees within <see cref="ColliderRadius"/> of the player.
+    /// (r 0.25 m × scale, 3.2 m high, layer Default) follows the trees within <see cref="ColliderRadius"/> of the player.
     /// </summary>
     public sealed class StreetTrees : MonoBehaviour
     {

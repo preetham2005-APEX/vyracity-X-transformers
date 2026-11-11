@@ -143,12 +143,26 @@ namespace VeyraCity.AI
             }
             spawnTimer -= dt;
             createCooldown -= dt;
+            // world iteration 4: after a teleport (map jump, respawn, review camera) fill the new street at once from the pool,
+            // from 8 m out, instead of one walker per 0.08 s from 30 m (reviews never showed people)
+            bool jumped = hasLastFocus && (focus - lastFocus).sqrMagnitude > 150f * 150f;
+            lastFocus = focus; hasLastFocus = true;
+            if (jumped && anchors.Count > 0)
+            {
+                float min = SpawnMin;
+                SpawnMin = 8f;
+                for (int k = 0; k < MaxPeds && live.Count < MaxPeds; k++) TrySpawn(focus);
+                SpawnMin = min;
+            }
             if (spawnTimer <= 0f && live.Count < MaxPeds && anchors.Count > 0)
             {
                 spawnTimer = 0.08f;
                 TrySpawn(focus);
             }
         }
+
+        Vector3 lastFocus;
+        bool hasLastFocus;
 
         StreetFurniture furniture;
 
@@ -566,8 +580,8 @@ namespace VeyraCity.AI
         }
 
         /// <summary>
-        /// A unit rounded body part centred on the origin (y âˆ’0.5 â€¦ 0.5): superellipse cross-section (exponent
-        /// <paramref name="n"/>: 2 round, 3â€“4 rounded box), width tapering from <paramref name="bottom"/> to <paramref name="top"/>,
+        /// A unit rounded body part centred on the origin (y −0.5 … 0.5): superellipse cross-section (exponent
+        /// <paramref name="n"/>: 2 round, 3–4 rounded box), width tapering from <paramref name="bottom"/> to <paramref name="top"/>,
         /// ends rounded with exponent <paramref name="p"/> (higher = flatter). Smooth normals.
         /// </summary>
         static Mesh BuildRounded(string name, int seg, int rings, float top, float bottom, float n, float p)

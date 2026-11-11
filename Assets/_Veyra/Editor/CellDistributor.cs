@@ -34,7 +34,7 @@ namespace VeyraCity.EditorTools
         public const string CellDir = "Assets/_Veyra/Scenes/Cells";
         /// <summary>World children that stay in the main scene (global or already streamed by distance).</summary>
         /// <summary>
-        /// World children that stay in the main scene: global water, instanced props, and the terrain â€” A2 run 2 measured 45â€“68 ms
+        /// World children that stay in the main scene: global water, instanced props, and the terrain — A2 run 2 measured 45–68 ms
         /// frames when a 1 km terrain tile (heightfield collider) woke with its cell, so the 48 tiles (62 MB, all resident before
         /// streaming too) stay loaded and only the chunked content streams.
         /// </summary>

@@ -28,8 +28,8 @@ namespace VeyraCity.EditorTools
                     new DetailPrototype
                     {
                         prototype = proto, usePrototypeMesh = true, useInstancing = true, renderMode = DetailRenderMode.VertexLit,
-                        minWidth = 0.7f, maxWidth = 1.3f, minHeight = 0.6f, maxHeight = 1.25f, noiseSpread = 0.3f,
-                        healthyColor = Color.white, dryColor = new Color(0.86f, 0.82f, 0.62f),
+                        minWidth = 0.6f, maxWidth = 1.1f, minHeight = 0.4f, maxHeight = 0.9f, noiseSpread = 0.45f,
+                        healthyColor = new Color(0.92f, 1f, 0.9f), dryColor = new Color(0.92f, 0.84f, 0.6f),
                     }
                 };
                 td.SetDetailScatterMode(DetailScatterMode.InstanceCountMode);
@@ -101,9 +101,10 @@ namespace VeyraCity.EditorTools
             var tex = new Texture2D(256, 256, TextureFormat.RGBA32, true);
             var px = new Color[256 * 256];
             var rng = new System.Random(5);
-            for (int b = 0; b < 26; b++)
+            // world iteration 3: 70 thinner blades (26 broad blades read as cardboard clumps up close, review CAM_14)
+            for (int b = 0; b < 70; b++)
             {
-                float cx = (float)rng.NextDouble() * 256f, hgt = 140f + (float)rng.NextDouble() * 110f, w = 4f + (float)rng.NextDouble() * 5f;
+                float cx = (float)rng.NextDouble() * 256f, hgt = 110f + (float)rng.NextDouble() * 140f, w = 1.6f + (float)rng.NextDouble() * 2.6f;
                 float lean = ((float)rng.NextDouble() - 0.5f) * 40f;
                 var col = Color.Lerp(new Color(0.22f, 0.36f, 0.12f), new Color(0.42f, 0.5f, 0.2f), (float)rng.NextDouble());
                 for (int y = 0; y < hgt && y < 256; y++)

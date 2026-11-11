@@ -135,6 +135,12 @@ namespace VeyraCity.EditorTools
                 go.transform.SetPositionAndRotation(new Vector3(b.UnityX, ground, b.UnityZ), Quaternion.Euler(0f, yaw, 0f) * go.transform.rotation);
                 go.transform.localScale = go.transform.localScale * c.scale;
                 foreach (var col in go.GetComponentsInChildren<Collider>(true)) col.enabled = false;
+                // iteration 2: collision/helper meshes never render (review CAM_05: frames and slabs floating over towers)
+                foreach (var r in go.GetComponentsInChildren<Renderer>(true))
+                {
+                    string rn = r.name.ToUpperInvariant();
+                    if (rn.StartsWith("UCX_") || rn.StartsWith("UBX_") || rn.StartsWith("COL_") || rn.Contains("COLLISION") || rn.Contains("COLLIDER")) r.enabled = false;
+                }
                 KitbashMaterials.Apply(go, c.e);   // the packs' own textures (the export strips them from the FBX)
                 foreach (var t in go.GetComponentsInChildren<Transform>(true)) t.gameObject.isStatic = true;
                 // plinth: footprint × (2 m below ground .. 0.3 m above the lowest corner, hidden where the ground is higher)

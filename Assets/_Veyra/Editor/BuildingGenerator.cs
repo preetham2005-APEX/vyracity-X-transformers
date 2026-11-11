@@ -313,6 +313,7 @@ namespace VeyraCity.EditorTools
                         float cx = hx * (Mathf.Repeat(seed * 5.3f, 1f) < 0.5f ? -0.55f : 0.55f);
                         Box(ctx.Get(chunk, mats_brick), null, f, cx - 0.35f, cx + 0.35f, -0.35f, 0.35f, eaves, h + 0.9f, 2f, 2f, 0f);
                     }
+                    HouseFront(ctx, chunk, f, o, hx, hz, eaves, seed, roofMat);
                     break;
                 }
                 case "cylinder":
@@ -383,6 +384,49 @@ namespace VeyraCity.EditorTools
             }
         }
 
+        /// <summary>
+        /// World iteration 4 (D5 suburbs read as rows of bare boxes, review CAM_16): on the wall facing the nearest road a front
+        /// door, a porch (slab, two posts, small roof) and a concrete driveway pad running towards the road.
+        /// </summary>
+        static void HouseFront(Ctx ctx, string chunk, Frame f, Vector3 o, float hx, float hz, float eaves, float seed, string roofMat)
+        {
+            var toRoad = Vector3.back;
+            float roadDist = 12f;
+            if (VeyraCity.World.WorldData.NearestRoad(o, 70f, out var hit))
+            {
+                toRoad = hit.Point - o; toRoad.y = 0f;
+                roadDist = toRoad.magnitude - VeyraCity.World.WorldData.Roads[hit.Road].HalfWidth;
+                toRoad.Normalize();
+            }
+            var faces = new[] { (Vector3.forward, hz, hx), (Vector3.back, hz, hx), (Vector3.right, hx, hz), (Vector3.left, hx, hz) };
+            var best = faces[0]; float bd = -2f;
+            foreach (var fc in faces) { float d = Vector3.Dot(f.D(fc.Item1), toRoad); if (d > bd) { bd = d; best = fc; } }
+            var (dir, half, width) = best;
+            var side = Vector3.Cross(Vector3.up, dir);   // local, along the facade
+            float off = (Mathf.Repeat(seed * 9.1f, 1f) - 0.5f) * Mathf.Max(0f, width * 2f - 4f) * 0.5f;
+            // a box in local coordinates: centre c, sa along the facade, sd outward depth, y range
+            void LBox(string mat, Vector3 c, float sa, float sd, float y0, float y1)
+            {
+                var a = side * sa * 0.5f; var dd = dir * sd * 0.5f;
+                var ext = new Vector3(Mathf.Abs(a.x) + Mathf.Abs(dd.x), 0f, Mathf.Abs(a.z) + Mathf.Abs(dd.z));
+                Box(ctx.Get(chunk, mat), null, f, c.x - ext.x, c.x + ext.x, c.z - ext.z, c.z + ext.z, y0, y1, 2f, 2f, 0f);
+            }
+            var doorC = dir * (half + 0.05f) + side * off;
+            LBox("wood_wall", doorC, 1.0f, 0.12f, 0f, 2.15f);                                         // door
+            var porchC = dir * (half + 1.0f) + side * off;
+            LBox("concrete", porchC, 3.0f, 2.0f, -0.4f, 0.25f);                                     // porch slab
+            LBox("wood_wall", porchC + dir * 0.85f + side * 1.35f, 0.14f, 0.14f, 0.25f, 2.65f);     // posts
+            LBox("wood_wall", porchC + dir * 0.85f - side * 1.35f, 0.14f, 0.14f, 0.25f, 2.65f);
+            LBox(roofMat, porchC + dir * 0.1f, 3.3f, 2.3f, 2.65f, 2.82f);                           // porch roof
+            // driveway towards the road beside the porch
+            float len = Mathf.Clamp(roadDist - half - 0.5f, 0f, 22f);
+            if (len > 2f)
+            {
+                var dC = dir * (half + len * 0.5f) + side * (off + (off > 0f ? -3.4f : 3.4f));
+                LBox("concrete", dC, 3.2f, len, -0.6f, 0.06f);
+            }
+        }
+
         /// <summary>Tower crown: a setback box, a mast and an aircraft-warning light.</summary>
         static void Crown(Ctx ctx, string chunk, Frame f, float hx, float hz, float h, float seed)
         {
@@ -424,6 +468,25 @@ namespace VeyraCity.EditorTools
         }
 
         /// <summary>Ship-to-shore gantry crane: portal legs on the quay, boom out over the water (south), A-frame to full height.</summary>
+        /// <summary>A square beam between two world points (thickness t).</summary>
+        static void Beam(MB m, Vector3 a, Vector3 b, float t)
+        {
+            var d = b - a;
+            if (d.sqrMagnitude < 1e-4f) return;
+            var dir = d.normalized;
+            var up = Mathf.Abs(Vector3.Dot(dir, Vector3.up)) > 0.95f ? Vector3.right : Vector3.up;
+            var s1 = Vector3.Cross(dir, up).normalized * t * 0.5f;
+            var s2 = Vector3.Cross(dir, s1).normalized * t * 0.5f;
+            Vector3[] c = { s1 + s2, -s1 + s2, -s1 - s2, s1 - s2 };
+            float len = d.magnitude;
+            for (int i = 0; i < 4; i++)
+            {
+                var p0 = c[i]; var p1 = c[(i + 1) % 4];
+                var n = (p0 + p1).normalized;
+                Quad(m, a + p0, a + p1, b + p1, b + p0, n, new Vector2(0f, 0f), new Vector2(t / 6f, len / 6f));
+            }
+        }
+
         static void EmitCrane(Ctx ctx, Vector3 o, float h, string id)
         {
             string chunk = ChunkOf(o.x, o.z);
@@ -437,7 +500,28 @@ namespace VeyraCity.EditorTools
             }
             Box(paint, paint, f, -gx - leg, gx + leg, -gz - leg, -gz + leg, portal, portal + 2.5f, 6f, 6f, 0f);
             Box(paint, paint, f, -gx - leg, gx + leg, gz - leg, gz + leg, portal, portal + 2.5f, 6f, 6f, 0f);
-            Box(paint, paint, f, -2.2f, 2.2f, -72f, 42f, portal + 2.5f, portal + 6f, 6f, 6f, 0f);          // boom + backreach
+            // world iteration 5: truss structure instead of solid bars (review CAM_15: cranes read as flat beams)
+            foreach (float x in new[] { -gx, gx })
+            {
+                Box(paint, paint, f, x - 1.3f, x + 1.3f, -gz - 3f, gz + 3f, 0f, 1.6f, 6f, 6f, 0f);                       // gantry sill + bogies
+                Beam(paint, f.P(x, 3f, -gz), f.P(x, portal - 3f, gz), 0.45f);                                             // side X bracing
+                Beam(paint, f.P(x, 3f, gz), f.P(x, portal - 3f, -gz), 0.45f);
+            }
+            foreach (float z in new[] { -gz, gz })
+                Box(paint, paint, f, -gx, gx, z - 0.5f, z + 0.5f, portal * 0.45f, portal * 0.45f + 1.2f, 6f, 6f, 0f);    // portal tie
+            for (int side = -1; side <= 1; side += 2)
+            {
+                float bx = side * 1.9f;
+                Box(paint, paint, f, bx - 0.45f, bx + 0.45f, -72f, 42f, portal + 2.5f, portal + 3.5f, 6f, 6f, 0f);        // lower chord
+                Box(paint, paint, f, bx - 0.4f, bx + 0.4f, -72f, 42f, portal + 5.6f, portal + 6.4f, 6f, 6f, 0f);          // upper chord
+                for (float z = -72f; z < 42f; z += 6f)
+                    Beam(paint, f.P(bx, portal + 3f, z), f.P(bx, portal + 6f, z + 6f), 0.22f);                            // web
+                Beam(ctx.Get(chunk, "steel"), f.P(bx * 0.5f, h - 0.5f, 0f), f.P(bx, portal + 6.2f, -70f), 0.12f);        // forestays
+                Beam(ctx.Get(chunk, "steel"), f.P(bx * 0.5f, h - 0.5f, 0f), f.P(bx, portal + 6.2f, 40f), 0.12f);         // backstays
+            }
+            for (float z = -72f; z < 42f; z += 12f)
+                Box(paint, paint, f, -2.3f, 2.3f, z - 0.3f, z + 0.3f, portal + 2.5f, portal + 3.1f, 6f, 6f, 0f);          // boom cross ties
+            Box(ctx.Get(chunk, "glass_blue"), null, f, -1.4f, 1.4f, -38.5f, -36f, portal - 3.5f, portal + 1f, 2f, 2f, 0f); // operator cab
             Box(paint, paint, f, -6f, 6f, gz - 4f, gz + 8f, portal + 6f, portal + 13f, 6f, 6f, 0f);         // machinery house
             Box(paint, paint, f, -gx * 0.5f - 0.6f, -gx * 0.5f + 0.6f, -1f, 1f, portal + 6f, h, 6f, 6f, 0f); // A-frame legs
             Box(paint, paint, f, gx * 0.5f - 0.6f, gx * 0.5f + 0.6f, -1f, 1f, portal + 6f, h, 6f, 6f, 0f);

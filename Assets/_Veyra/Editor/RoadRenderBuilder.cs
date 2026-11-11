@@ -277,6 +277,18 @@ namespace VeyraCity.EditorTools
             // a kerb opening is widened by one row each way (fillet room)
             bool[] Widen(bool[] a) { var b = (bool[])a.Clone(); for (int k = 0; k < n; k++) if (a[k]) { if (k > 0) b[k - 1] = true; if (k + 1 < n) b[k + 1] = true; } return b; }
             openL = Widen(openL); openR = Widen(openR);
+            float[] Ramp(bool[] open)
+            {
+                var f = new float[n];
+                for (int k = 0; k < n; k++)
+                {
+                    int d = 99;
+                    for (int q = Mathf.Max(0, k - 3); q <= Mathf.Min(n - 1, k + 3); q++) if (open[q]) d = Mathf.Min(d, Mathf.Abs(q - k));
+                    f[k] = Mathf.Clamp01((d - 1) / 2f);   // next to an opening 0 (flush), 2 rows on 0.5, 3+ rows full height
+                }
+                return f;
+            }
+            var rampL = Ramp(openL); var rampR = Ramp(openR);
             for (int k = 0; k < n; k++) if (openL[k] || openR[k]) openKerbRows++;
 
             // carriageway height with junction drop
@@ -324,18 +336,39 @@ namespace VeyraCity.EditorTools
                         bool open = side < 0 ? (openL[k0] || openL[k1]) : (openR[k0] || openR[k1]);
                         if (structure[k0] || structure[k1])
                         {
-                            if (!open) Profile(part, M.Kerb, e0, e1, r0, r1, s[k0], s[k1], new[] { (0f, 0f), (0.02f, 0.18f), (0.35f, 0.2f) }, lod);
+                            if (!open)
+                            {
+                                Profile(part, M.Kerb, e0, e1, r0, r1, s[k0], s[k1], new[] { (0f, 0f), (0.02f, 0.18f), (0.35f, 0.2f) }, lod, 1f, 1f, true);
+                                // iteration 3: bridge railing on the parapet kerb (posts every 2.5 m, rails at 0.6 and 1.05 m)
+                                if (lod < 2)
+                                {
+                                    var b0 = e0 + r0 * 0.25f + Vector3.up * 0.2f; var b1 = e1 + r1 * 0.25f + Vector3.up * 0.2f;
+                                    foreach (float ry in lod == 0 ? new[] { 0.6f, 1.05f } : new[] { 1.05f })
+                                        Profile(part, M.Metal, b0 + Vector3.up * ry, b1 + Vector3.up * ry, r0, r1, s[k0], s[k1], new[] { (0f, 0f), (0f, 0.06f), (0.05f, 0.06f) }, lod);
+                                    if (lod == 0)
+                                        for (float ps = Mathf.Ceil(s[k0] / 2.5f) * 2.5f; ps < s[k1]; ps += 2.5f)
+                                        {
+                                            float fp = (ps - s[k0]) / Mathf.Max(0.01f, s[k1] - s[k0]);
+                                            Post(part, M.Metal, Vector3.Lerp(b0, b1, fp), 0.06f, 1.1f, r0);
+                                        }
+                                }
+                            }
                         }
                         else if (urban)
                         {
                             if (open) continue;
+                            // iteration 2: dropped kerbs — kerb and pavement ramp to road level over the 2 rows before a junction
+                            // mouth (iteration 1 review CAM_16: pavements ended in floating slabs)
+                            float[] rp = side < 0 ? rampL : rampR;
+                            float f0 = rp[k0], f1 = rp[k1];
                             Profile(part, M.Kerb, e0, e1, r0, r1, s[k0], s[k1], lod == 0
                                 ? new[] { (0f, 0f), (0.02f, 0.11f), (0.06f, 0.15f), (0.30f, 0.15f) }
-                                : new[] { (0f, 0f), (0.03f, 0.15f), (0.30f, 0.15f) }, lod);
-                            var o0 = e0 + r0 * 0.30f + Vector3.up * 0.15f; var o1 = e1 + r1 * 0.30f + Vector3.up * 0.15f;
-                            Profile(part, M.Sidewalk, o0, o1, r0, r1, s[k0], s[k1], new[] { (0f, 0f), (sidewalk, sidewalk * 0.02f) }, lod);
-                            var w0 = o0 + r0 * sidewalk + Vector3.up * sidewalk * 0.02f; var w1 = o1 + r1 * sidewalk + Vector3.up * sidewalk * 0.02f;
-                            Profile(part, M.Sidewalk, w0, w1, r0, r1, s[k0], s[k1], new[] { (0f, 0f), (0.05f, -1.2f) }, lod);
+                                : new[] { (0f, 0f), (0.03f, 0.15f), (0.30f, 0.15f) }, lod, f0, f1, true);   // kerb: along-road UVs (iteration 3: barcode streaks)
+                            var o0 = e0 + r0 * 0.30f + Vector3.up * 0.15f * f0; var o1 = e1 + r1 * 0.30f + Vector3.up * 0.15f * f1;
+                            Profile(part, M.Sidewalk, o0, o1, r0, r1, s[k0], s[k1], new[] { (0f, 0f), (sidewalk, sidewalk * 0.02f) }, lod, f0, f1);
+                            var w0 = o0 + r0 * sidewalk + Vector3.up * sidewalk * 0.02f * f0; var w1 = o1 + r1 * sidewalk + Vector3.up * sidewalk * 0.02f * f1;
+                            // skirt into the ground: plain granite, along-road UVs (iteration 1: sidewalk texture squeezed into stripes)
+                            Profile(part, M.Kerb, w0, w1, r0, r1, s[k0], s[k1], new[] { (0f, 0f), (0.05f, -1.2f) }, lod, 1f, 1f, true);
                         }
                         else
                         {
@@ -348,6 +381,8 @@ namespace VeyraCity.EditorTools
                     if (lod == 2 || gravel) continue;
                     // markings
                     if (markOff[k0] || markOff[k1]) continue;
+                    // iteration 3: zebra crossing on urban approaches, in the 2 m row just before the junction markings stop
+                    bool zebra = urban && lod == 0 && ((k1 + 1 < n && markOff[k1 + 1]) || (k0 - 1 >= 0 && markOff[k0 - 1]));
                     void Line(M m, float lat, float w)
                     {
                         float l0 = lat - w * 0.5f, l1 = lat + w * 0.5f;
@@ -357,6 +392,11 @@ namespace VeyraCity.EditorTools
                         int i0 = part.Add(p00, new Vector2(0f, s[k0]), Vector2.zero, white), i1 = part.Add(p01, new Vector2(1f, s[k0]), Vector2.zero, white);
                         int i2 = part.Add(p10, new Vector2(0f, s[k1]), Vector2.zero, white), i3 = part.Add(p11, new Vector2(1f, s[k1]), Vector2.zero, white);
                         part.Quad(m, i0, i1, i2, i3);
+                    }
+                    if (zebra)
+                    {
+                        for (float zl = -hw + 0.6f; zl < hw - 0.5f; zl += 1.0f) Line(M.White, zl + 0.25f, 0.5f);
+                        continue;
                     }
                     bool dash = (s[k0] % dashCycle) < dashOn;
                     float edgeInset = fast ? 0.5f : 0.35f;
@@ -535,7 +575,9 @@ namespace VeyraCity.EditorTools
         }
 
         /// <summary>A strip outward from an edge (e0 at row 0, e1 at row 1) through (offset, rise) points.</summary>
-        static void Profile(Part part, M m, Vector3 e0, Vector3 e1, Vector3 r0, Vector3 r1, float s0, float s1, (float off, float rise)[] pts, int lod)
+        /// <summary>sc0/sc1 scale the rises at either row (dropped kerbs); alongU puts the road direction on u (vertical skirts).</summary>
+        static void Profile(Part part, M m, Vector3 e0, Vector3 e1, Vector3 r0, Vector3 r1, float s0, float s1, (float off, float rise)[] pts, int lod,
+                            float sc0 = 1f, float sc1 = 1f, bool alongU = false)
         {
             var c = new Color32(255, 255, 255, 255);
             int pa = -1, pb = -1;
@@ -543,8 +585,10 @@ namespace VeyraCity.EditorTools
             for (int i = 0; i < pts.Length; i++)
             {
                 if (i > 0) u += new Vector2(pts[i].off - pts[i - 1].off, pts[i].rise - pts[i - 1].rise).magnitude;
-                int a = part.Add(e0 + r0 * pts[i].off + Vector3.up * pts[i].rise, new Vector2(u, s0), Vector2.zero, c);
-                int b = part.Add(e1 + r1 * pts[i].off + Vector3.up * pts[i].rise, new Vector2(u, s1), Vector2.zero, c);
+                var uv0 = alongU ? new Vector2(s0, u) : new Vector2(u, s0);
+                var uv1 = alongU ? new Vector2(s1, u) : new Vector2(u, s1);
+                int a = part.Add(e0 + r0 * pts[i].off + Vector3.up * pts[i].rise * sc0, uv0, Vector2.zero, c);
+                int b = part.Add(e1 + r1 * pts[i].off + Vector3.up * pts[i].rise * sc1, uv1, Vector2.zero, c);
                 if (i > 0)
                 {
                     // face outward-up: winding so the normal points away from the road / up
@@ -627,7 +671,57 @@ namespace VeyraCity.EditorTools
             var city = world.Find("CityMeshes");
             if (city != null)
                 foreach (var mr in city.GetComponentsInChildren<MeshRenderer>(true))
-                    if (BlockoutGroups.Contains(mr.name) && mr.enabled) { mr.enabled = false; n++; }
+                {
+                    // iteration 5: also by mesh name (M_<group>_<cx>_<cz>): some blockout objects have empty names (probe at CAM_16)
+                    var mf0 = mr.GetComponent<MeshFilter>();
+                    string mesh = mf0 != null && mf0.sharedMesh != null ? mf0.sharedMesh.name : "";
+                    bool byMesh = BlockoutGroups.Any(g => mesh.StartsWith("M_" + g + "_"));
+                    if ((BlockoutGroups.Contains(mr.name) || byMesh) && mr.enabled) { mr.enabled = false; n++; }
+                }
+            // iteration 4: blockout "concrete" pavements beside urban roads (review CAM_16: wide slabs with striped edges
+            // next to the generated kerb + pavement): render copies without the triangles that lie within the road's
+            // half-width + 4.5 m and within 1.5 m of its height, except on structures. Colliders are untouched.
+            if (city != null)
+            {
+                var clipDir = MeshDir + "/BlockoutClip";
+                System.IO.Directory.CreateDirectory(clipDir);
+                foreach (var mr in city.GetComponentsInChildren<MeshRenderer>(true))
+                {
+                    if (mr.name != "concrete" || !mr.enabled) continue;
+                    var mf = mr.GetComponent<MeshFilter>();
+                    var src = mf != null ? mf.sharedMesh : null;
+                    if (src == null) continue;
+                    if (src.name.StartsWith("CLIP_")) continue;   // already clipped (re-run)
+                    var v = src.vertices; var tri = src.triangles; var keepT = new List<int>();
+                    var l2w = mr.transform.localToWorldMatrix;
+                    int removed = 0;
+                    for (int i = 0; i < tri.Length; i += 3)
+                    {
+                        var c = l2w.MultiplyPoint3x4((v[tri[i]] + v[tri[i + 1]] + v[tri[i + 2]]) / 3f);
+                        bool drop = false;
+                        WorldData.RoadsAt(c, -4.5f, 1.5f, hits);
+                        foreach (var h in hits)
+                        {
+                            var rd = WorldData.Roads[h.Road];
+                            if (!Urban.Contains(rd.Data.cls) || rd.StructureAt(h.Segment) != StructureKind.None) continue;
+                            drop = true; break;
+                        }
+                        if (drop) { removed++; continue; }
+                        keepT.Add(tri[i]); keepT.Add(tri[i + 1]); keepT.Add(tri[i + 2]);
+                    }
+                    if (removed == 0) continue;
+                    var clip = UnityEngine.Object.Instantiate(src);
+                    clip.name = "CLIP_" + src.name;
+                    clip.subMeshCount = 1;
+                    clip.SetTriangles(keepT, 0);
+                    clip.RecalculateBounds();
+                    string path = $"{clipDir}/{clip.name}.asset";
+                    if (AssetDatabase.LoadAssetAtPath<Mesh>(path) != null) AssetDatabase.DeleteAsset(path);
+                    AssetDatabase.CreateAsset(clip, path);
+                    mf.sharedMesh = clip;
+                    n++;
+                }
+            }
             // C2 ease ribbons and patches draw the eased profile that the drive surface now carries
             foreach (var mr in world.GetComponentsInChildren<MeshRenderer>(true))
             {
