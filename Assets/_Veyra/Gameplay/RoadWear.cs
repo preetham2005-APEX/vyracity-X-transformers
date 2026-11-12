@@ -81,7 +81,7 @@ namespace VeyraCity.Gameplay
                 m.SetFloat("_TyreWear", worn ? 1f : 0.6f);
                 m.SetTexture("_DetailMap", tex);
                 m.SetTextureScale("_DetailMap", new Vector2(1f / 14f, 1f / 14f));   // road UV0 is in metres
-                m.SetFloat("_PatchAmount", worn ? 0.85f : 0.45f);   // iteration 25: patches every few hundred metres
+                m.SetFloat("_PatchAmount", worn ? 0.5f : 0.25f);   // iteration 25: patches every few hundred metres; World BUG-121: fewer
                 m.SetFloat("_PatchScale", 11f);
                 // iteration 30: stronger world-space tone variation (aged and repaired stretches); needs no UVs, so it also
                 // tells whether runtime material changes reach the road renderers at all
@@ -173,22 +173,30 @@ namespace VeyraCity.Gameplay
             var px = new Color32[n * n];
             var rng = new System.Random(4242);
             // patches: rotated rectangles
-            for (int k = 0; k < 14; k++)
+            // World BUG-121 (RoadWear patches read as dark rectangles, CAM_16 / CAM_10 / CAM_13): patches only a shade darker
+            // than the asphalt (tone 55-75, alpha ~120 with grain), a thin tar seam, edges feathered over 6 px, fewer and smaller
+            for (int k = 0; k < 9; k++)
             {
                 float cx = (float)rng.NextDouble() * n, cy = (float)rng.NextDouble() * n;
-                float hw = 18f + (float)rng.NextDouble() * 70f, hh = 12f + (float)rng.NextDouble() * 40f;
+                float hw = 14f + (float)rng.NextDouble() * 46f, hh = 10f + (float)rng.NextDouble() * 28f;
                 float a = (float)rng.NextDouble() * Mathf.PI, ca = Mathf.Cos(a), sa = Mathf.Sin(a);
-                byte tone = (byte)(30 + rng.Next(18));
-                int r = Mathf.CeilToInt(Mathf.Sqrt(hw * hw + hh * hh)) + 3;
+                int tone = 55 + rng.Next(20);
+                int r = Mathf.CeilToInt(Mathf.Sqrt(hw * hw + hh * hh)) + 8;
                 for (int y = (int)cy - r; y <= (int)cy + r; y++)
                     for (int x = (int)cx - r; x <= (int)cx + r; x++)
                     {
                         float dx = x - cx, dy = y - cy;
                         float u = Mathf.Abs(dx * ca + dy * sa), v = Mathf.Abs(-dx * sa + dy * ca);
-                        if (u > hw + 2.5f || v > hh + 2.5f) continue;
-                        bool seam = u > hw - 0.5f || v > hh - 0.5f;
+                        float outside = Mathf.Max(u - hw, v - hh);   // > 0 outside the rectangle
+                        if (outside > 6f) continue;
                         int ix = ((x % n) + n) % n, iy = ((y % n) + n) % n;
-                        px[iy * n + ix] = seam ? new Color32(14, 14, 15, 235) : new Color32(tone, tone, (byte)(tone + 2), 200);
+                        var old = px[iy * n + ix];
+                        bool seam = outside > -0.8f && outside < 0.4f;
+                        float grain = (float)rng.NextDouble();
+                        byte al = seam ? (byte)150 : outside > 0f ? (byte)(110f * (1f - outside / 6f)) : (byte)(105 + grain * 30f);
+                        if (al <= old.a) continue;
+                        byte t = seam ? (byte)24 : (byte)(tone + (int)(grain * 8f) - 4);
+                        px[iy * n + ix] = new Color32(t, t, (byte)(t + 2), al);
                     }
             }
             // cracks: jagged random walks with branches

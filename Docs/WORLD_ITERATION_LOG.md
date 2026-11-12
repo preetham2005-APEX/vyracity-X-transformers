@@ -47,6 +47,7 @@
 | 35 | Pine canopies ~0.04 linear albedo, below Appendix B vegetation range 0.05-0.20 (D1 finding, BUG-128) | vc_trees.py needle tile, foliage body and dense conifer strip ~30 % brighter (sRGB greens 0.40->0.50; ~0.065 linear average) | Noon CAM_10 green, not washed out; CAM_10 22 h wet forest reads as silhouettes; CAM_11 22 h aerial still near black |
 | 36 | Crane rails visible only in patches (X_PortShip) | PortBuilder: ground sampling keeps the large apron quads (triangles up to 3 km) | rails on the apron |
 | 37 | Final verification of rounds 23-36 | — | Build 0/0; review 50/50 (18 cameras + 7 landmark cameras, noon and 22:00 wet), 0 pink / empty / error-shader slots; R_SMOKE 2/2 (54.8 FPS), R_BRIDGES 14/14 (45.5), R_DOWNTOWN_NIGHT 5/5 (36.7) PASS on the Silent power plan (BUG-120) |
+| 38 | BUG-151 (D2: grey haze through a parked car on C1) and BUG-121 RoadWear dark rectangles | HighwayLightsBuilder pools draped on the rendered asphalt (5 x 3 grid, +5 cm; off-asphalt pools dropped); RoadWear patches softened (tone, alpha, feathered edges, fewer) | Build 0/0; review 10/10 (CAM_08/10/12/13/16, noon + 22 h wet), 0 pink; R_SMOKE 2/2 (71.1 FPS) |
 
 ## Summary after 20 rounds (2026-11-11)
 

@@ -42,6 +42,55 @@ namespace VeyraCity.EditorTools
             var head = AssetDatabase.LoadAssetAtPath<Material>($"{MatDir}/Lamp_Head.mat");
             if (pole == null || head == null) return "FAIL: Lamp_Pole / Lamp_Head materials missing\n";
             var poolMat = PoolMaterial();
+            // BUG-151 (D2 brake-disc close-up on C1): a flat 16 m pool quad at centreline height + 0.12 stood up to 0.4 m above
+            // the asphalt on grades and across the camber, and its additive haze cut through parked cars. The pool is now a 5 x 3
+            // grid draped on the rendered asphalt (highest asphalt triangle under each vertex) + 5 cm.
+            var grid = new Dictionary<long, List<Vector3>>();
+            long GKey(float x, float z) => ((long)Mathf.FloorToInt(x / 10f) << 32) ^ (uint)Mathf.FloorToInt(z / 10f);
+            foreach (var mf in world.GetComponentsInChildren<MeshFilter>(false))
+            {
+                if (mf.sharedMesh == null || mf.name.EndsWith("_LOD1") || mf.name.EndsWith("_LOD2")) continue;
+                var mr = mf.GetComponent<MeshRenderer>();
+                if (mr == null || !mr.enabled) continue;
+                var sm = mr.sharedMaterials; var mesh = mf.sharedMesh; Vector3[] vv = null; var l2w = mf.transform.localToWorldMatrix;
+                for (int si = 0; si < mesh.subMeshCount && si < sm.Length; si++)
+                {
+                    if (sm[si] == null || !sm[si].name.StartsWith("M_Asphalt")) continue;
+                    if (vv == null) vv = mesh.vertices;
+                    var tt = mesh.GetTriangles(si);
+                    for (int i = 0; i < tt.Length; i += 3)
+                    {
+                        var a = l2w.MultiplyPoint3x4(vv[tt[i]]); var b = l2w.MultiplyPoint3x4(vv[tt[i + 1]]); var c = l2w.MultiplyPoint3x4(vv[tt[i + 2]]);
+                        float x0 = Mathf.Min(a.x, Mathf.Min(b.x, c.x)), x1 = Mathf.Max(a.x, Mathf.Max(b.x, c.x));
+                        float z0 = Mathf.Min(a.z, Mathf.Min(b.z, c.z)), z1 = Mathf.Max(a.z, Mathf.Max(b.z, c.z));
+                        if (x1 - x0 > 200f || z1 - z0 > 200f) continue;
+                        for (float gx = Mathf.Floor(x0 / 10f) * 10f; gx <= x1; gx += 10f)
+                            for (float gz = Mathf.Floor(z0 / 10f) * 10f; gz <= z1; gz += 10f)
+                            {
+                                long k = GKey(gx + 0.01f, gz + 0.01f);
+                                if (!grid.TryGetValue(k, out var lst)) grid[k] = lst = new List<Vector3>();
+                                lst.Add(a); lst.Add(b); lst.Add(c);
+                            }
+                    }
+                }
+            }
+            float AsphaltY(Vector3 at)
+            {
+                float best = float.NegativeInfinity;
+                if (grid.TryGetValue(GKey(at.x, at.z), out var lst))
+                    for (int i = 0; i < lst.Count; i += 3)
+                    {
+                        var a = lst[i]; var b = lst[i + 1]; var c = lst[i + 2];
+                        float d = (b.z - c.z) * (a.x - c.x) + (c.x - b.x) * (a.z - c.z);
+                        if (Mathf.Abs(d) < 1e-6f) continue;
+                        float w0 = ((b.z - c.z) * (at.x - c.x) + (c.x - b.x) * (at.z - c.z)) / d, w1 = ((c.z - a.z) * (at.x - c.x) + (a.x - c.x) * (at.z - c.z)) / d, w2 = 1f - w0 - w1;
+                        if (w0 < -1e-4f || w1 < -1e-4f || w2 < -1e-4f) continue;
+                        float y = w0 * a.y + w1 * b.y + w2 * c.y;
+                        if (Mathf.Abs(y - at.y) < 3f && y > best) best = y;   // the deck at this level, not a road over or under it
+                    }
+                return best;
+            }
+            int draped = 0, dropped = 0;
             var chunks = new Dictionary<string, (MB pole, MB head, MB pool)>();
             (MB pole, MB head, MB pool) Get(Vector3 p)
             {
@@ -88,12 +137,35 @@ namespace VeyraCity.EditorTools
                         float halfAcross = Mathf.Min(5f, road.HalfWidth * 0.6f);
                         var edge = p + right * side * road.HalfWidth;
                         var pc = new Vector3(edge.x, p.y + 0.12f, edge.z) + inward * (halfAcross + 0.2f);
-                        var ac = inward * halfAcross; var al = t * 8f;
-                        int vi = mb.pool.V.Count;
-                        mb.pool.V.Add(pc - ac - al); mb.pool.V.Add(pc + ac - al); mb.pool.V.Add(pc + ac + al); mb.pool.V.Add(pc - ac + al);
-                        mb.pool.UV.Add(new Vector2(0, 0)); mb.pool.UV.Add(new Vector2(1, 0)); mb.pool.UV.Add(new Vector2(1, 1)); mb.pool.UV.Add(new Vector2(0, 1));
-                        if (Vector3.Cross(mb.pool.V[vi + 1] - mb.pool.V[vi], mb.pool.V[vi + 2] - mb.pool.V[vi]).y >= 0f) mb.pool.T.AddRange(new[] { vi, vi + 1, vi + 2, vi, vi + 2, vi + 3 });
-                        else mb.pool.T.AddRange(new[] { vi, vi + 2, vi + 1, vi, vi + 3, vi + 2 });
+                        // BUG-151: 5 (along) x 3 (across) vertices, each 5 cm above the asphalt under it; a pool with any vertex off
+                        // the asphalt is dropped (no haze sheet over a verge or a lower road)
+                        const int NA = 5, NC = 3;
+                        var vs = new Vector3[NA * NC]; bool ok = true;
+                        for (int ia = 0; ia < NA && ok; ia++)
+                            for (int ic = 0; ic < NC && ok; ic++)
+                            {
+                                float fa = ia / (float)(NA - 1) * 2f - 1f, fc = ic / (float)(NC - 1) * 2f - 1f;
+                                float sAlong = s + fa * 8f;
+                                var cen = road.Path.PositionAt(Mathf.Clamp(sAlong, 0f, len));
+                                var q = new Vector3(cen.x, cen.y, cen.z) + right * side * road.HalfWidth + inward * (halfAcross + 0.2f) + inward * fc * halfAcross;
+                                float y = AsphaltY(q);
+                                if (float.IsNegativeInfinity(y)) { ok = false; break; }
+                                vs[ia * NC + ic] = new Vector3(q.x, y + 0.05f, q.z);
+                            }
+                        if (!ok) { dropped++; }
+                        else
+                        {
+                            int vi = mb.pool.V.Count;
+                            for (int k2 = 0; k2 < vs.Length; k2++) { mb.pool.V.Add(vs[k2]); mb.pool.UV.Add(new Vector2((k2 % NC) / (float)(NC - 1), (k2 / NC) / (float)(NA - 1))); }
+                            for (int ia = 0; ia + 1 < NA; ia++)
+                                for (int ic = 0; ic + 1 < NC; ic++)
+                                {
+                                    int g0 = vi + ia * NC + ic, g1 = g0 + 1, h0 = g0 + NC, h1 = h0 + 1;
+                                    if (Vector3.Cross(mb.pool.V[g1] - mb.pool.V[g0], mb.pool.V[h1] - mb.pool.V[g0]).y >= 0f) mb.pool.T.AddRange(new[] { g0, g1, h1, g0, h1, h0 });
+                                    else mb.pool.T.AddRange(new[] { g0, h1, g1, g0, h0, h1 });
+                                }
+                            draped++;
+                        }
                     }
                     masts++;
                 }
@@ -123,7 +195,7 @@ namespace VeyraCity.EditorTools
             foreach (var f in Directory.GetFiles(MeshDir, "*.asset"))
                 if (!keep.Contains(Path.GetFileNameWithoutExtension(f))) AssetDatabase.DeleteAsset(f.Replace('\\', '/'));
             AssetDatabase.SaveAssets();
-            string rep = $"Highway lights: {masts} masts on {roads} MW/EX/HW roads in {chunks.Count} chunks\n";
+            string rep = $"Highway lights: {masts} masts on {roads} MW/EX/HW roads in {chunks.Count} chunks; light pools draped on the asphalt {draped}, dropped (off the asphalt) {dropped} (BUG-151)\n";
             Directory.CreateDirectory("Logs/C");
             File.WriteAllText("Logs/C/highway_lights.txt", rep);
             return rep;
