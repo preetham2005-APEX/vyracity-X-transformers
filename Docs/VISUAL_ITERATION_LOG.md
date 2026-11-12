@@ -564,3 +564,9 @@ The G5 capture check missed in passes 38-39 because the build's 30 s autosave ha
 clears the garage's record first (pass 40: `activity:GAR-01:found`).
 BUG-151: the brake close-up haze is not a vehicle effect (pass 40 log: 0 tyre-smoke and 0 engine-smoke particles, damage 0,
 ABS holding slip at 0.08); handed to the world/road track.
+
+### Iteration 41 (2026-11-12, D2): BUG-151 confirmed fixed
+
+Rebuild after the world session's 6f862699 (highway light pools draped on the asphalt): the it17 brake-disc close-up is clear
+again (bumper and full wheel on the road, no grey sheet), matching pass 36. Player run 0 exceptions, avg 62.9 FPS, p99 77 ms;
+`activity:GAR-01:found`. BUG-151 closed.
