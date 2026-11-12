@@ -453,7 +453,7 @@ namespace VeyraCity.EditorTools
             go.AddComponent<AudioListener>();
             var data = go.AddComponent<UniversalAdditionalCameraData>();
             data.renderPostProcessing = true;
-            data.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+            data.antialiasing = AntialiasingMode.None;   // BUG-074: STP on the PC URP tiers does temporal AA; SMAA on top only costs
             go.transform.position = new Vector3(170f, 200f, -1200f);
             return go.AddComponent<ChaseCamera>();
         }

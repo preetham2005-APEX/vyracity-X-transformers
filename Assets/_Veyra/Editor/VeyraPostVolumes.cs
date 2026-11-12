@@ -135,7 +135,7 @@ namespace VeyraCity.EditorTools
             var night = Profile("VP_Global_Night");
             Global(night, new Look
             {
-                BloomThreshold = 0.9f, BloomIntensity = 1.2f, Exposure = 0.35f, Contrast = 12f, Saturation = 10f, Temperature = -8f, Tint = 0f,
+                BloomThreshold = 0.9f, BloomIntensity = 1.2f, Exposure = 0.55f, Contrast = 10f, Saturation = 10f, Temperature = -8f, Tint = 0f,
                 SplitShadows = NightShadows, SplitHighlights = NightHighlights, SplitBalance = -20f, SmhShadows = new Vector4(1f, 1f, 1f, 0f),
                 Chromatic = 0.06f, Grain = 0.12f, Vignette = 0.25f,
             });

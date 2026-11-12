@@ -116,7 +116,7 @@ namespace VeyraCity.Testing
             cam.enabled = false; // rendered on demand only
             var data = go.AddComponent<UniversalAdditionalCameraData>();
             data.renderPostProcessing = true;
-            data.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+            data.antialiasing = AntialiasingMode.None;   // BUG-074: STP (URP asset) does temporal AA; SMAA on top only costs
             return cam;
         }
 

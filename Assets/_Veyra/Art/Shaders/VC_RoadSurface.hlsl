@@ -70,7 +70,8 @@ void VC_Surface(VC_FragInput f, inout SurfaceData s, inout half3 normalWS)
         // highlight on a 0.98-smooth surface scattered by ripple normals turned wet night streets snow-white), so they fade
         // with distance and the wet gloss is capped below a perfect mirror
         float dCam = distance(_WorldSpaceCameraPos.xyz, f.positionWS);
-        half nearRipple = saturate(1.0 - (dCam - 8.0) / 22.0);
+        // D1 rain: small, high-frequency ripples (rings ~15 cm) that are gone by ~14 m (were 0.5 m rings out to 30 m)
+        half nearRipple = saturate(1.0 - (dCam - 4.0) / 10.0);
         half detailKeep = lerp(1.0, 0.15, saturate((dCam - 6.0) / 40.0));
         float pnoise = VC_Fbm(w / 7.0, 3);
         half puddle = saturate((pnoise - (1.02 - wet * _PuddleAmount * 0.75)) * 9.0);
@@ -78,20 +79,28 @@ void VC_Surface(VC_FragInput f, inout SurfaceData s, inout half3 normalWS)
         albedo.rgb *= lerp(1.0, 0.55, wet);
         // iteration 31: 0.72 (the lamp pool's 48 spot lights reflected off 0.86-0.98 gloss at grazing angles merged into
         // one white sheet past ~15 m on wet nights; real wet asphalt and paving are glossy, not mirrors; puddles stay sharp)
-        smooth = lerp(smooth, 0.72, wet);
+        // D1: porosity: open asphalt soaks up the first rain and only turns glossy when saturated (wet^1.5)
+        smooth = lerp(smooth, 0.72, wet * sqrt(wet));
         nTS.xy *= lerp(1.0, 0.3 * detailKeep, wet);
         albedo.rgb *= lerp(1.0, 0.85, puddle);
         smooth = lerp(smooth, 0.9, puddle);
         nTS = lerp(nTS, half3(0, 0, 1), puddle);
         if (_VC_RainIntensity > 0.001)
-            nTS.xy += VC_Ripples(w * 1.7, _Time.y) * _VC_RainIntensity * (0.25 + 0.75 * puddle) * wet * nearRipple;
+            nTS.xy += (VC_Ripples(w * 5.5, _Time.y * 1.3) + VC_Ripples(w * 7.3 + 3.1, _Time.y * 1.3 + 0.5)) * 0.3
+                      * _VC_RainIntensity * (0.3 + 0.7 * puddle) * wet * nearRipple;
         nTS = normalize(nTS);
     }
 
     normalWS = TransformTangentToWorld(nTS, half3x3(f.tangentWS, f.bitangentWS, f.normalWS));
     s.albedo = saturate(albedo.rgb);
     s.metallic = metal;
-    s.smoothness = smooth;
+    // D1 specular anti-aliasing (Kaplanyan-Tokuyoshi): the normal's variance across the pixel widens the highlight, so the
+    // moon and the lamps reflect as soft streaks instead of white glitter on wet bumpy asphalt at a distance
+    float3 dndx = ddx(normalWS), dndy = ddy(normalWS);
+    float kernel = min(0.5 * (dot(dndx, dndx) + dot(dndy, dndy)), 0.12);
+    float pr = 1.0 - smooth;
+    float a2 = saturate(pr * pr * pr * pr + kernel);
+    s.smoothness = 1.0 - sqrt(sqrt(a2));
     // iteration 32: environment reflection at night: the scene's default reflection is the editor-baked daytime sky, which URP's
     // Forward+ path keeps using outside the probe boxes (a runtime sky probe and a custom default reflection both had no
     // effect in iterations 25-31); occlusion scales only indirect light, so lamps and the moon still reflect

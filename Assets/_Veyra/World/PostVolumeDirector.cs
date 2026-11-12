@@ -50,7 +50,7 @@ namespace VeyraCity.World
             float golden = env != null ? env.GoldenFactor : 0f;
             if (Golden != null) Golden.weight = golden;
             if (Night != null) Night.weight = night;
-            var cam = Camera.main;
+            var cam = WorldEnvironment.ViewOrMain;   // D1: the review camera during captures (BUG-125)
             if (cam == null || Areas == null) return;
             var p = new Vector2(cam.transform.position.x, cam.transform.position.z);
             float wetNight = 0f;

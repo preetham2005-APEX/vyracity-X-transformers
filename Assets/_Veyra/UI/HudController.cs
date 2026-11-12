@@ -49,7 +49,6 @@ namespace VeyraCity.UI
         RectTransform racePanel, minimapRoot, mapRotator, playerArrow, markerLayer, toastLayer;
         RawImage mapImage, routeImage, buildingsImage, speedLines, lensDrops;
         static Texture2D dropTex;
-        float dropScroll;
         RectTransform gpsPanel, gpsArrow, trapPanel;
         Text trapTitle, trapSpeed, trapSub;
         Image cameraFlash;
@@ -363,14 +362,17 @@ namespace VeyraCity.UI
         }
 
         /// <summary>
-        /// Iteration 27 (Forza / NFS rain): droplets on the camera lens while it rains, bright-rimmed beads with a dark
-        /// core; they bead up slowly when stopped and run down the screen with speed. One RawImage, fades with the rain.
+        /// Lens rain (iteration 27, D1 card 5): a few hundred micro-beads (1.5-4 px at 1440p) on the outer edge of the lens only,
+        /// clear like real water: an almost transparent body, a thin bright rim, a white highlight up-left and a darker
+        /// refraction crescent at the bottom. The centre of the screen stays clean. One RawImage over the whole screen (no
+        /// tiling), fades in with the rain and clears with speed.
         /// </summary>
         void BuildLensDrops()
         {
             lensDrops = UIKit.Rect(root, "LensDrops", Vector2.zero, Vector2.one).gameObject.AddComponent<RawImage>();
             lensDrops.raycastTarget = false;
             lensDrops.texture = DropTexture();
+            lensDrops.uvRect = new Rect(0f, 0f, 1f, 1f);
             lensDrops.color = new Color(1f, 1f, 1f, 0f);
             lensDrops.enabled = false;
         }
@@ -378,38 +380,44 @@ namespace VeyraCity.UI
         static Texture2D DropTexture()
         {
             if (dropTex != null) return dropTex;
-            const int n = 512;
-            var px = new Color32[n * n];
+            const int w = 1024, h = 512;   // stretched over the screen (2.5 px per texel at 2560 x 1440)
+            var px = new Color32[w * h];
             var rng = new System.Random(77);
-            for (int k = 0; k < 140; k++)
+            int placed = 0;
+            for (int tries = 0; tries < 20000 && placed < 520; tries++)
             {
-                float cx = (float)rng.NextDouble() * n, cy = (float)rng.NextDouble() * n;
-                float r = 2.5f + (float)(rng.NextDouble() * rng.NextDouble()) * 11f;
-                float tail = rng.NextDouble() < 0.35 ? r * (2f + (float)rng.NextDouble() * 5f) : 0f;   // some drops have run
-                int x0 = Mathf.FloorToInt(cx - r - 2), x1 = Mathf.CeilToInt(cx + r + 2);
-                int y0 = Mathf.FloorToInt(cy - r - 2), y1 = Mathf.CeilToInt(cy + r + tail + 2);
+                float cx = (float)rng.NextDouble() * w, cy = (float)rng.NextDouble() * h;
+                // edge band only: elliptical distance from the centre, 0 at the centre, 1 at the edge midpoints
+                float ex = (cx / w - 0.5f) * 2f, ey = (cy / h - 0.5f) * 2f;
+                float edge = Mathf.Sqrt(ex * ex * 0.8f + ey * ey * 1.2f);
+                float keep = Mathf.SmoothStep(0.62f, 1.05f, edge);
+                if (rng.NextDouble() > keep) continue;
+                placed++;
+                float r = 0.6f + (float)(rng.NextDouble() * rng.NextDouble()) * 1.2f;   // radius in texels
+                int x0 = Mathf.FloorToInt(cx - r - 1), x1 = Mathf.CeilToInt(cx + r + 1);
+                int y0 = Mathf.FloorToInt(cy - r - 1), y1 = Mathf.CeilToInt(cy + r + 1);
                 for (int y = y0; y <= y1; y++)
                     for (int x = x0; x <= x1; x++)
                     {
-                        float dy = y - cy;
-                        float rr = dy > 0f && tail > 0f ? Mathf.Lerp(r, r * 0.35f, Mathf.Clamp01(dy / tail)) : r;
-                        float ey = dy > 0f && tail > 0f ? Mathf.Max(0f, dy - tail * Mathf.Clamp01(dy / tail)) : dy;
-                        float d = Mathf.Sqrt((x - cx) * (x - cx) + ey * ey) / Mathf.Max(0.5f, rr);
-                        if (d > 1f) continue;
-                        int ix = ((x % n) + n) % n, iy = ((y % n) + n) % n;
-                        // rim highlight (top-left brighter), darker refracting core
-                        float rim = Mathf.SmoothStep(0.6f, 1f, d) * (1f - Mathf.SmoothStep(0.92f, 1f, d));
-                        float hl = Mathf.Clamp01(1f - Mathf.Sqrt((x - (cx - rr * 0.35f)) * (x - (cx - rr * 0.35f)) + (y - (cy + rr * 0.35f)) * (y - (cy + rr * 0.35f))) / (rr * 0.3f));
-                        // D1: clear drops, not grey discs: near-transparent core, bright thin rim and highlight
-                        byte v = (byte)Mathf.Clamp(200f + 55f * Mathf.Max(rim, hl), 0f, 255f);
-                        byte a = (byte)Mathf.Clamp(255f * (0.04f + 0.45f * rim + 0.7f * hl), 0f, 255f);
-                        var c = px[iy * n + ix];
-                        if (a > c.a) px[iy * n + ix] = new Color32(v, v, (byte)Mathf.Min(255, v + 8), a);
+                        if (x < 0 || y < 0 || x >= w || y >= h) continue;
+                        float dx = (x + 0.5f - cx) / r, dy = (y + 0.5f - cy) / r;
+                        float d = Mathf.Sqrt(dx * dx + dy * dy);
+                        if (d > 1.15f) continue;
+                        float body = 1f - Mathf.SmoothStep(0.85f, 1.15f, d);
+                        float rim = Mathf.SmoothStep(0.55f, 0.9f, d) * body;
+                        float hl = Mathf.Clamp01(1f - Mathf.Sqrt((dx + 0.35f) * (dx + 0.35f) + (dy - 0.35f) * (dy - 0.35f)) / 0.45f);
+                        float crescent = Mathf.Clamp01(-dy) * rim;   // texture y up: the lower edge refracts darker
+                        float lum = Mathf.Lerp(215f, 255f, hl) - 120f * crescent;
+                        float a = 255f * Mathf.Clamp01(0.05f * body + 0.3f * rim + 0.75f * hl + 0.15f * crescent);
+                        int i = y * w + x;
+                        if (a <= px[i].a) continue;
+                        byte v = (byte)Mathf.Clamp(lum, 0f, 255f);
+                        px[i] = new Color32(v, v, (byte)Mathf.Min(255, v + 6), (byte)a);
                     }
             }
-            dropTex = new Texture2D(n, n, TextureFormat.RGBA32, true) { name = "LensDrops", wrapMode = TextureWrapMode.Repeat, filterMode = FilterMode.Trilinear };
+            dropTex = new Texture2D(w, h, TextureFormat.RGBA32, false) { name = "LensDrops", wrapMode = TextureWrapMode.Clamp, filterMode = FilterMode.Bilinear };
             dropTex.SetPixels32(px);
-            dropTex.Apply(true, true);
+            dropTex.Apply(false, true);
             return dropTex;
         }
 
@@ -419,14 +427,13 @@ namespace VeyraCity.UI
             var env = WorldEnvironment.Instance;
             float rain = env != null ? env.RainIntensity : 0f;
             float kmh = vehicle != null && vehicle.IsInitialised ? vehicle.State.SpeedKmh : 0f;
-            float target = rain * 0.45f * (1f - 0.5f * Mathf.Clamp01(kmh / 160f));   // wind clears the lens at speed
+            float target = rain * 0.7f * (1f - 0.6f * Mathf.Clamp01(kmh / 140f));   // wind clears the lens at speed
             var c = lensDrops.color;
             c.a = Mathf.MoveTowards(c.a, target, dt * 0.4f);
             lensDrops.color = c;
             lensDrops.enabled = c.a > 0.01f;
             if (!lensDrops.enabled) return;
-            dropScroll += dt * (0.01f + 0.12f * Mathf.Clamp01(kmh / 120f));   // run down faster with speed
-            lensDrops.uvRect = new Rect(0f, dropScroll, 3.4f, 3.4f * Screen.height / Mathf.Max(1f, Screen.width));   // D1: smaller drops
+            // D1: the beads stay put (a scrolling tile carried them into the middle of the view); speed only fades them
         }
 
         /// <summary>Iteration 26: speed-trap banner (top centre) and the camera's white flash.</summary>

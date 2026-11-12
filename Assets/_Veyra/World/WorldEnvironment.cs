@@ -57,8 +57,21 @@ namespace VeyraCity.World
         public float StreetLightRange = 26f;
         public float StreetLightIntensity = 4.5f;
         public Color StreetLightColor = new Color(1f, 0.78f, 0.52f);
+        // D1 tunables. Renamed from the old D1 draft (StreetLightGain, MoonIntensity, LampSpriteDistance) so the stale values
+        // serialized in VeyraCity.unity (1.5, 0.32) no longer override the defaults below.
+        [Tooltip("D1: street-light intensity multiplier. URP spot intensity falls with distance squared: 4.5 x 100 = 450 (x height gain) gives ~4.5 on the road under a 10 m head, several times the moonlit ground (dark asphalt, albedo ~0.08)")] public float PoolGain = 100f;
+        [Tooltip("D1: moonlight intensity at night (clear sky)")] public float MoonLight = 0.4f;
+        [Tooltip("D1: top of the ground haze layer (m); fog thins above it for aerial views")] public float FogLayerTop = 120f;
+        [Tooltip("D1: far lamps drawn as glow sprites out to this distance (0 = off)")] public float FarLampDistance = 2400f;
+        [Tooltip("D1: far traffic drawn as head/tail-light sprites on the major roads at night (0 = off)")] public float FarTrafficDistance = 3200f;
 
         public static WorldEnvironment Instance { get; private set; }
+        /// <summary>D1: the camera the player is looking through when it is not Camera.main (review captures render with their
+        /// own on-demand camera). The light pool, the lamp sprites and the district haze follow it; null = Camera.main.</summary>
+        [NonSerialized] public Camera ViewCamera;
+        Camera View => ViewCamera != null ? ViewCamera : Camera.main;
+        /// <summary>The camera the player sees through: the review camera during captures, else Camera.main (D1, BUG-125).</summary>
+        public static Camera ViewOrMain => Instance != null && Instance.ViewCamera != null ? Instance.ViewCamera : Camera.main;
         /// <summary>0 = full day, 1 = full night.</summary>
         public float NightFactor { get; private set; }
         [Tooltip("Card L5: wetness of the Downtown / Neon Mile wet-night preset (0 = off)")] [Range(0f, 1f)] public float WetNightLevel = 0.65f;
@@ -77,6 +90,14 @@ namespace VeyraCity.World
         readonly System.Collections.Generic.HashSet<Vector3> selected = new System.Collections.Generic.HashSet<Vector3>();
         Vector3[] lampBuffer = new Vector3[2048];
         float poolTimer;
+        bool noLightPool;
+        float districtHaze, districtHazeTarget, hazeTimer;
+        ParticleSystem lampSprites;
+        ParticleSystem.Particle[] spriteBuf;
+        Vector3[] spriteLamps;
+        float spriteTimer;
+        DistantTrafficLights farTraffic;
+        Camera lastAaCam;
         ParticleSystem rain;
         ColorAdjustments colorAdj;
         Bloom bloom;
@@ -93,6 +114,8 @@ namespace VeyraCity.World
         void OnEnable()
         {
             Instance = this;
+            noLightPool = Array.IndexOf(Environment.GetCommandLineArgs(), "-veyraNoLightPool") >= 0;   // BUG-109 A/B
+            RenderPipelineManager.beginCameraRendering += OnBeginCamera;
             if (materials != null || Application.isPlaying) VeyraMaterialLibrary.Activate(materials, this);
             if (PostVolume != null && PostVolume.sharedProfile != null)
             {
@@ -109,6 +132,7 @@ namespace VeyraCity.World
         void OnDisable()
         {
             if (Instance == this) Instance = null;
+            RenderPipelineManager.beginCameraRendering -= OnBeginCamera;
             // Edit mode (scene closed, recompiled or built in batch mode): leave the shared .mat assets in their reference state
             // so a later asset save never writes the preview (BUG-039; the editor save guard covers saves while the scene is open).
             if (!Application.isPlaying) WriteReferenceMaterialState();
@@ -190,6 +214,19 @@ namespace VeyraCity.World
         /// <summary>Re-applies the current time of day and weather after <see cref="WriteReferenceMaterialState"/>.</summary>
         public void ReapplyCurrentState() => Apply(true);
 
+        float baseFogDensity = 0.00035f;
+
+        /// <summary>BUG-059: fog thins above the ground haze layer (x0.12 at FogLayerTop + 900 m and higher).</summary>
+        float FogAltitudeFactor(float y) => Mathf.Lerp(1f, 0.12f, Smooth(FogLayerTop, FogLayerTop + 900f, y));
+
+        /// <summary>URP takes the fog parameters per camera from RenderSettings when the camera is set up, so the altitude
+        /// factor is applied for every camera just before it renders (main, review, reflection-probe cameras).</summary>
+        void OnBeginCamera(ScriptableRenderContext ctx, Camera cam)
+        {
+            if (cam == null) return;
+            RenderSettings.fogDensity = baseFogDensity * FogAltitudeFactor(cam.transform.position.y);
+        }
+
         static float Smooth(float a, float b, float x) => Mathf.SmoothStep(0f, 1f, Mathf.InverseLerp(a, b, x));
 
         void Apply(bool force)
@@ -203,7 +240,8 @@ namespace VeyraCity.World
             float elevation = sunUp ? Mathf.Sin(dayPhase * Mathf.PI) * 62f : -25f * Mathf.Sin(Mathf.Clamp01(nightPhase) * Mathf.PI);
             float azimuth = Mathf.Lerp(80f, 280f, dayPhase);
             NightFactor = Mathf.Clamp01(1f - Smooth(-6f, 10f, elevation));
-            float golden = sunUp ? 1f - Smooth(4f, 22f, elevation) : 0f;
+            // BUG-060: golden hour below 30 deg sun elevation (18.8 h = 17 deg: 0.58; was 0.17 with the 22 deg window).
+            float golden = sunUp ? 1f - Smooth(6f, 30f, elevation) : 0f;
             GoldenFactor = golden;
 
             if (Sun != null)
@@ -218,15 +256,18 @@ namespace VeyraCity.World
                 {
                     // Moonlight: cool, dim, high.
                     Sun.transform.rotation = Quaternion.Euler(48f, 210f, 0f);
-                    Sun.color = new Color(0.55f, 0.65f, 0.95f);
-                    Sun.intensity = 0.18f;
+                    Sun.color = new Color(0.62f, 0.7f, 0.92f);
+                    // D1: brighter moon fill so rural and aerial night views keep their shapes (was 0.18: black).
+                    Sun.intensity = MoonLight * Mathf.Lerp(1f, 0.45f, Cloudiness);
                 }
                 Sun.shadowStrength = Mathf.Lerp(0.9f, 0.55f, NightFactor);
             }
 
-            Color skyDay = new Color(0.48f, 0.62f, 0.82f), skyGold = new Color(0.62f, 0.48f, 0.42f), skyNight = new Color(0.05f, 0.07f, 0.13f);
-            Color eqDay = new Color(0.62f, 0.66f, 0.70f), eqGold = new Color(0.72f, 0.50f, 0.36f), eqNight = new Color(0.07f, 0.07f, 0.11f);
-            Color grDay = new Color(0.30f, 0.29f, 0.27f), grNight = new Color(0.03f, 0.03f, 0.04f);
+            // D1 night: moonlit blue sky fill and a warm city-glow horizon (GTA-style readable night: shapes stay visible far
+            // from street lights; was 0.05-0.1 and rural / aerial views rendered black).
+            Color skyDay = new Color(0.48f, 0.62f, 0.82f), skyGold = new Color(0.62f, 0.48f, 0.42f), skyNight = new Color(0.19f, 0.23f, 0.35f);
+            Color eqDay = new Color(0.62f, 0.66f, 0.70f), eqGold = new Color(0.72f, 0.50f, 0.36f), eqNight = new Color(0.16f, 0.15f, 0.18f);
+            Color grDay = new Color(0.30f, 0.29f, 0.27f), grNight = new Color(0.06f, 0.06f, 0.07f);
             Color sky = Color.Lerp(Color.Lerp(skyDay, skyGold, golden), skyNight, NightFactor);
             sky = Color.Lerp(sky, new Color(0.42f, 0.45f, 0.5f) * Mathf.Lerp(1f, 0.15f, NightFactor), Cloudiness * 0.7f);
             Color eq = Color.Lerp(Color.Lerp(eqDay, eqGold, golden), eqNight, NightFactor);
@@ -238,9 +279,17 @@ namespace VeyraCity.World
             RenderSettings.fogMode = FogMode.ExponentialSquared;
             float wetHaze = Wetness * 0.0006f + Cloudiness * 0.00035f;
             // Card L3: exponential-squared density day 0.00035, golden 0.0005, night 0.0007 (+ wet / cloud haze).
-            RenderSettings.fogDensity = Mathf.Lerp(Mathf.Lerp(0.00035f, 0.0005f, golden), 0.0007f, NightFactor) + wetHaze;
+            float density = Mathf.Lerp(Mathf.Lerp(0.00035f, 0.0005f, golden), 0.0007f, NightFactor) + wetHaze;
+            // D1 / BUG-059: height fog. URP fog depends on camera distance only, so the density thins with camera altitude
+            // above the ground haze layer (aerial views no longer a fog wall) and thickens in the hazy districts (D6 Neon Mile
+            // at night, D3 Ironport always). No extra GPU cost: same fog term, different density.
+            var fogCam = View;
+            float camY = fogCam != null ? fogCam.transform.position.y : 0f;
+            if (Application.isPlaying && fogCam != null) UpdateDistrictHaze(fogCam.transform.position);
+            baseFogDensity = density * (1f + districtHaze);
+            RenderSettings.fogDensity = baseFogDensity * FogAltitudeFactor(camY);
             RenderSettings.fogColor = Color.Lerp(Color.Lerp(new Color(0.66f, 0.72f, 0.80f), new Color(0.78f, 0.58f, 0.45f), golden),
-                                                 new Color(0.035f, 0.045f, 0.075f), NightFactor);
+                                                 new Color(0.058f, 0.064f, 0.085f), NightFactor);   // D1: night haze lit by the city
             if (SkyboxMaterial != null) RenderSettings.skybox = SkyboxMaterial;
             // Card L2: with a PostVolumeDirector the Day / Golden / Night volumes carry these values (weights only, no profile
             // writes, so no asset changes in Play mode); the legacy writes stay for scenes without one.
@@ -263,6 +312,7 @@ namespace VeyraCity.World
             if (Application.isPlaying)
             {
                 UpdateLightPool(force);
+                UpdateLampSprites(force);
                 UpdateRain();
             }
         }
@@ -277,7 +327,7 @@ namespace VeyraCity.World
             if (SkyboxMaterial != null)
             {
                 if (SkyboxMaterial.HasProperty(ExposureId)) SkyboxMaterial.SetFloat(ExposureId, Mathf.Lerp(1.15f, 0.06f, night));
-                if (SkyboxMaterial.HasProperty(AtmosphereId)) SkyboxMaterial.SetFloat(AtmosphereId, Mathf.Lerp(0.85f, 1.6f, golden));
+                if (SkyboxMaterial.HasProperty(AtmosphereId)) SkyboxMaterial.SetFloat(AtmosphereId, Mathf.Lerp(0.85f, 1.05f, golden));   // D1: 1.3 turned the upper golden sky green
                 if (SkyboxMaterial.HasProperty(SkyTintId)) SkyboxMaterial.SetColor(SkyTintId, Color.Lerp(new Color(0.5f, 0.55f, 0.62f), new Color(0.25f, 0.28f, 0.45f), night));
             }
             foreach (var e in Emissives)
@@ -306,15 +356,27 @@ namespace VeyraCity.World
 #endif
         }
 
-        /// <summary>Card L4: real lights for the nearest street lamps, by quality tier (PC_Ultra 96, PC_High 48, PC_Medium 24,
-        /// mobile 8). Downward spot cones (110°) give the light pools on the road; no shadows. Reassigned every 0.25 s to the lamps
-        /// nearest a point slightly ahead of the camera; a lamp keeps its slot while it stays selected, and every slot fades in or
-        /// out over 0.5 s, so lights never pop while driving.</summary>
+        /// <summary>Card L4: real lights for the street lamps around the player's car, by quality tier (PC_Ultra 96, PC_High 64,
+        /// PC_Medium 48, mobile 8). Downward spot cones (90°) give the light pools on the road; no shadows. D1 / BUG-073: the
+        /// pool is centred on the car (about 7 m ahead of the chase camera), refreshed every 0.25 s with hysteresis: a lit lamp
+        /// stays lit until it is more than 25 % beyond the radius of the nearest-N set, so lamps at the edge never flicker; each
+        /// slot fades in and out over 0.6 s (smoothstep). Colour temperature by district (<see cref="LampColour"/>).</summary>
         static int PoolSizeForQuality()
         {
             string q = QualitySettings.names[QualitySettings.GetQualityLevel()];
-            return q.Contains("Ultra") ? 96 : q.Contains("High") ? 48 : q.Contains("Medium") ? 24 : q.StartsWith("Mobile") ? 8 : 28;
+            return q.Contains("Ultra") ? 96 : q.Contains("High") ? 64 : q.Contains("Medium") ? 48 : q.StartsWith("Mobile") ? 8 : 28;
         }
+
+        /// <summary>The point the light pool and the haze follow: the car, about 7 m ahead of the chase camera on the ground plane.</summary>
+        static Vector3 FocusPoint(Camera cam)
+        {
+            var fwd = Vector3.ProjectOnPlane(cam.transform.forward, Vector3.up);
+            return cam.transform.position + (fwd.sqrMagnitude > 1e-4f ? fwd.normalized * 7f : Vector3.zero);
+        }
+
+        readonly float[] lampDist = new float[2048];
+        float[] poolHeightGain;
+        int lastCollect; Vector3 lastFocus;
 
         void UpdateLightPool(bool force)
         {
@@ -330,6 +392,7 @@ namespace VeyraCity.World
                 poolLamp = new Vector3[want];
                 poolLevel = new float[want];
                 poolActive = new bool[want];
+                poolHeightGain = new float[want];
                 var root = transform.Find("StreetLightPool");
                 if (root == null) { root = new GameObject("StreetLightPool").transform; root.SetParent(transform, false); }
                 for (int i = 0; i < pool.Length; i++)
@@ -339,8 +402,8 @@ namespace VeyraCity.World
                     go.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
                     var l = go.AddComponent<Light>();
                     l.type = LightType.Spot;
-                    l.spotAngle = 110f;
-                    l.innerSpotAngle = 60f;
+                    l.spotAngle = 90f;        // BUG-109: the road below, not the facades beside the lamp
+                    l.innerSpotAngle = 50f;
                     l.range = StreetLightRange;
                     l.color = StreetLightColor;
                     l.shadows = LightShadows.None;
@@ -348,92 +411,286 @@ namespace VeyraCity.World
                     pool[i] = l;
                 }
             }
-            var cam = Camera.main;
+            var cam = View;
             var props = InstancedPropRenderer.Instance;
-            bool on = cam != null && props != null && NightFactor >= 0.25f;
+            bool on = cam != null && props != null && NightFactor >= 0.25f && !noLightPool;
             poolTimer -= Time.deltaTime;
             if (on && (poolTimer <= 0f || force))
             {
                 poolTimer = 0.25f;
-                Vector3 eye = cam.transform.position;
-                Vector3 ahead = eye + cam.transform.forward * StreetLightRadius * 0.35f;
-                props.CollectLamps(ahead, StreetLightRadius, lampBuffer, out int count);
+                Vector3 focus = FocusPoint(cam);
+                props.CollectLamps(focus, StreetLightRadius, lampBuffer, out int count);
+                lastCollect = count; lastFocus = focus;
                 int n = Mathf.Min(count, pool.Length);
+                for (int j = 0; j < count; j++) lampDist[j] = (lampBuffer[j] - focus).sqrMagnitude;
                 for (int k = 0; k < n; k++) // partial selection of the nearest lamps
                 {
                     int best = k;
-                    float bd = (lampBuffer[k] - ahead).sqrMagnitude;
-                    for (int j = k + 1; j < count; j++)
-                    {
-                        float d = (lampBuffer[j] - ahead).sqrMagnitude;
-                        if (d < bd) { bd = d; best = j; }
-                    }
+                    for (int j = k + 1; j < count; j++) if (lampDist[j] < lampDist[best]) best = j;
                     (lampBuffer[k], lampBuffer[best]) = (lampBuffer[best], lampBuffer[k]);
+                    (lampDist[k], lampDist[best]) = (lampDist[best], lampDist[k]);
                 }
+                // Hysteresis radius: 25 % beyond the farthest lamp of the nearest-N set (the whole radius when fewer lamps).
+                float keep = n >= pool.Length && n > 0 ? Mathf.Sqrt(lampDist[n - 1]) * 1.25f : StreetLightRadius;
+                float keep2 = keep * keep;
                 selected.Clear();
                 for (int k = 0; k < n; k++) selected.Add(lampBuffer[k]);
-                // Keep slots whose lamp is still selected; free the others (they fade out).
+                // Lit slots stay lit while their lamp is inside the hysteresis radius (selected or not).
                 for (int i = 0; i < pool.Length; i++)
                 {
-                    poolActive[i] = poolLevel[i] > 0f && selected.Remove(poolLamp[i]) ? true : false;
+                    if (!poolActive[i] && poolLevel[i] <= 0f) continue;
+                    bool stay = (poolLamp[i] - focus).sqrMagnitude <= keep2;
+                    selected.Remove(poolLamp[i]);
+                    poolActive[i] = stay;
+                    if (force && !stay) poolLevel[i] = 0f;
                 }
-                // New lamps go to fully faded slots.
-                foreach (var lamp in selected)
+                // New lamps (nearest first) go to fully faded slots.
+                for (int k = 0; k < n; k++)
+                {
+                    var lamp = lampBuffer[k];
+                    if (!selected.Contains(lamp)) continue;
                     for (int i = 0; i < pool.Length; i++)
                         if (!poolActive[i] && poolLevel[i] <= 0.001f)
                         {
                             poolLamp[i] = lamp;
                             poolActive[i] = true;
                             pool[i].transform.position = lamp + Vector3.down * 0.4f;
+                            pool[i].color = LampColour(lamp);
+                            // D1: same light on the ground whatever the mast height (6 m coastal to 25 m high-mast): the
+                            // intensity scales with the head height squared, the range with the height
+                            float h = Physics.Raycast(lamp + Vector3.down * 0.6f, Vector3.down, out var hit, 40f, 1, QueryTriggerInteraction.Ignore) ? hit.distance + 0.6f : 9f;
+                            h = Mathf.Clamp(h, 4f, 30f);
+                            poolHeightGain[i] = (h * h) / 100f;
+                            pool[i].range = Mathf.Max(StreetLightRange, h * 1.9f);
                             break;
                         }
+                }
             }
             else if (!on)
             {
                 for (int i = 0; i < pool.Length; i++) poolActive[i] = false;
             }
-            float step = Time.deltaTime / 0.5f;
+            if (force && Debug.isDebugBuild)
+            {
+                int litN = 0; for (int i = 0; i < pool.Length; i++) if (poolActive[i]) litN++;
+                Debug.Log($"[LightPool] forced: on {on} (cam {(cam != null ? cam.name : "null")}, props {(props != null)}, night {NightFactor:0.00}, off-flag {noLightPool}), slots {pool.Length}, active {litN}, collected {lastCollect} at {lastFocus:F0}, gain {PoolGain}");
+            }
+            float step = force ? 1f : Time.deltaTime / 0.6f;   // a forced update (time set, camera cut) snaps, no fade
             for (int i = 0; i < pool.Length; i++)
             {
                 poolLevel[i] = Mathf.MoveTowards(poolLevel[i], poolActive[i] ? 1f : 0f, step);
                 bool lit = poolLevel[i] > 0.001f;
                 if (pool[i].enabled != lit) pool[i].enabled = lit;
-                if (lit) pool[i].intensity = StreetLightIntensity * 2.2f * NightFactor * poolLevel[i];
+                float s = poolLevel[i] * poolLevel[i] * (3f - 2f * poolLevel[i]);
+                if (lit) pool[i].intensity = StreetLightIntensity * PoolGain * poolHeightGain[i] * NightFactor * s;
             }
         }
 
+        // District colour temperatures (card L4): D1 Crown Downtown 4000 K LED, D2 Azure Coast 2700 K, D3 Ironport 2200 K
+        // high-pressure sodium, D4 Blackridge 3000 K, D5 Westhaven 3000 K, D6 Neon Mile 4000 K LED, D7 Falcon Airfield 4500 K,
+        // D8 Redwood Valley 2700 K.
+        static readonly Dictionary<string, float> DistrictKelvin = new Dictionary<string, float>
+        { { "D1", 4000f }, { "D2", 2700f }, { "D3", 2200f }, { "D4", 3000f }, { "D5", 3000f }, { "D6", 4000f }, { "D7", 4500f }, { "D8", 2700f } };
+        readonly Dictionary<long, Color> lampColourCache = new Dictionary<long, Color>();
+
+        /// <summary>Street-light colour at p from its district's colour temperature; cached on a 50 m grid (the district
+        /// polygon test is too slow for thousands of far-lamp sprites).</summary>
+        public Color LampColour(Vector3 p)
+        {
+            long key = ((long)Mathf.FloorToInt(p.x / 50f) << 32) ^ (uint)Mathf.FloorToInt(p.z / 50f);
+            if (lampColourCache.TryGetValue(key, out var c)) return c;
+            var d = WorldData.DistrictAt(p);
+            string id = d != null && d.id != null && d.id.Length >= 2 ? d.id.Substring(0, 2) : "";
+            c = DistrictKelvin.TryGetValue(id, out float k) ? KelvinColour(k) : StreetLightColor;
+            lampColourCache[key] = c;
+            return c;
+        }
+
+        /// <summary>Normalised sRGB colour (max channel 1) of a black body at the given temperature (for Light.color).</summary>
+        public static Color KelvinColour(float kelvin)
+        {
+            var c = Mathf.CorrelatedColorTemperatureToRGB(kelvin).gamma;   // the function is linear; Light.color is sRGB
+            float m = Mathf.Max(c.r, Mathf.Max(c.g, c.b));
+            return m > 0f ? new Color(c.r / m, c.g / m, c.b / m, 1f) : Color.white;
+        }
+
+        void UpdateDistrictHaze(Vector3 p)
+        {
+            hazeTimer -= Time.deltaTime;
+            if (hazeTimer <= 0f)
+            {
+                hazeTimer = 1f;
+                var d = WorldData.DistrictAt(p);
+                string id = d != null && d.id != null ? d.id : "";
+                districtHazeTarget = id.StartsWith("D3") ? 0.6f : id.StartsWith("D6") ? 0.8f * NightFactor : 0f;
+            }
+            districtHaze = Mathf.MoveTowards(districtHaze, districtHazeTarget, Time.deltaTime / 6f);
+        }
+
+        /// <summary>
+        /// D1: far street lamps as glow sprites (one particle system of billboards, no lights), so rural roads and aerial
+        /// night views show the lamp lines instead of black. Lamps inside the light-pool radius have a lit head and a real
+        /// light; beyond it each lamp gets a soft additive dot of about constant screen size. Rebuilt every 0.5 s.
+        /// </summary>
+        /// <summary>BUG-074: with STP (temporal upscaling and AA, URP asset) a camera must not also request SMAA; the scene's
+        /// main camera still has SMAA serialized, so it is turned off on whichever camera becomes Camera.main.</summary>
+        void EnsureNoSmaaUnderStp(Camera cam)
+        {
+            if (cam == null || cam == lastAaCam) return;
+            lastAaCam = cam;
+            var urp = GraphicsSettings.currentRenderPipeline as UniversalRenderPipelineAsset;
+            if (urp == null || urp.upscalingFilter != UpscalingFilterSelection.STP) return;
+            if (cam.TryGetComponent<UniversalAdditionalCameraData>(out var data) && data.antialiasing != AntialiasingMode.None)
+                data.antialiasing = AntialiasingMode.None;
+        }
+
+        void UpdateLampSprites(bool force)
+        {
+            var cam = View;
+            var props = InstancedPropRenderer.Instance;
+            EnsureNoSmaaUnderStp(Camera.main);
+            if (cam == null || props == null || FarLampDistance <= 0f) return;
+            bool on = NightFactor > 0.2f;
+            if (lampSprites == null)
+            {
+                if (!on) return;
+                var m = RuntimeMaterials.NewParticle("LampGlow", true);
+                if (m == null) return;
+                m.SetTexture("_BaseMap", GlowTexture());
+                m.SetColor("_BaseColor", new Color(3f, 3f, 3f, 1f));   // HDR: particle colours are 8-bit, the glow needs > 1
+                var go = new GameObject("LampGlowSprites");
+                go.transform.SetParent(transform, false);
+                lampSprites = go.AddComponent<ParticleSystem>();
+                lampSprites.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                var main = lampSprites.main;
+                main.loop = false;
+                main.playOnAwake = false;
+                main.maxParticles = 8192;
+                main.simulationSpace = ParticleSystemSimulationSpace.World;
+                main.startLifetime = 1e6f;
+                main.startSpeed = 0f;
+                var em = lampSprites.emission; em.enabled = false;
+                var sh = lampSprites.shape; sh.enabled = false;
+                var r = lampSprites.GetComponent<ParticleSystemRenderer>();
+                r.renderMode = ParticleSystemRenderMode.Billboard;
+                r.sharedMaterial = m;
+                r.shadowCastingMode = ShadowCastingMode.Off;
+                r.receiveShadows = false;
+                r.minParticleSize = 0f;
+                r.maxParticleSize = 0.12f;   // haze halos near the camera
+                spriteBuf = new ParticleSystem.Particle[8192];
+                spriteLamps = new Vector3[8192];
+            }
+            if (farTraffic == null && on && FarTrafficDistance > 0f)
+                farTraffic = DistantTrafficLights.Create(transform, RuntimeMaterials.NewParticle("FarTrafficGlow", true), GlowTexture());
+            if (farTraffic != null)
+            {
+                long fc0 = VeyraCity.Core.FrameCost.Start();
+                farTraffic.Tick(cam, NightFactor, FarTrafficDistance);
+                VeyraCity.Core.FrameCost.Stop("FarTraffic", fc0);
+            }
+            spriteTimer -= Time.deltaTime;
+            if (!force && spriteTimer > 0f) return;
+            spriteTimer = 0.5f;
+            if (!on) { lampSprites.Clear(); return; }
+            Vector3 eye = cam.transform.position;
+            props.CollectLamps(eye, FarLampDistance, spriteLamps, out int count);
+            float near = StreetLightRadius * 0.6f;
+            // L3 haze: in the hazy districts (D3 Ironport, D6 Neon Mile at night) the near lamps get a soft halo, the look of
+            // light scattering in the haze, without a volumetric pass.
+            float halo = Mathf.Clamp01(districtHaze) * NightFactor;
+            int n = 0;
+            for (int i = 0; i < count && n < spriteBuf.Length; i++)
+            {
+                float d = Vector3.Distance(spriteLamps[i], eye);
+                var c = LampColour(spriteLamps[i]);
+                if (d < near)
+                {
+                    if (halo < 0.05f || d < 6f) continue;
+                    spriteBuf[n++] = new ParticleSystem.Particle
+                    {
+                        position = spriteLamps[i] + Vector3.down * 0.6f,
+                        startSize = 7f,
+                        startColor = new Color(c.r, c.g, c.b, 0.07f * halo * Mathf.Clamp01((d - 6f) / 20f)),
+                        remainingLifetime = 1e6f,
+                        startLifetime = 1e6f,
+                        randomSeed = (uint)i,
+                    };
+                    continue;
+                }
+                float a = NightFactor * Mathf.Clamp01((d - near) / 60f) * Mathf.Clamp01((FarLampDistance - d) / 300f);
+                if (a <= 0.01f) continue;
+                spriteBuf[n++] = new ParticleSystem.Particle
+                {
+                    position = spriteLamps[i],
+                    startSize = Mathf.Clamp(d * 0.006f, 1.2f, 12f),   // ~7 px at 1440p at any distance
+                    startColor = new Color(c.r, c.g, c.b, a),
+                    remainingLifetime = 1e6f,
+                    startLifetime = 1e6f,
+                    randomSeed = (uint)i,
+                };
+            }
+            lampSprites.SetParticles(spriteBuf, n);
+            if (!lampSprites.isPlaying) lampSprites.Play();
+        }
+
+        static Texture2D glowTex;
+        static Texture2D GlowTexture()
+        {
+            if (glowTex != null) return glowTex;
+            const int n = 32;
+            var px = new Color32[n * n];
+            for (int y = 0; y < n; y++)
+                for (int x = 0; x < n; x++)
+                {
+                    float dx = (x + 0.5f) / n * 2f - 1f, dy = (y + 0.5f) / n * 2f - 1f;
+                    float r = Mathf.Sqrt(dx * dx + dy * dy);
+                    float a = Mathf.Clamp01(1f - r);
+                    a = a * a * (0.4f + 0.6f * Mathf.Exp(-r * r * 18f));
+                    px[y * n + x] = new Color32(255, 255, 255, (byte)(255f * a));
+                }
+            glowTex = new Texture2D(n, n, TextureFormat.RGBA32, true) { name = "LampGlow", wrapMode = TextureWrapMode.Clamp };
+            glowTex.SetPixels32(px);
+            glowTex.Apply(true, true);
+            return glowTex;
+        }
+
+        /// <summary>
+        /// D1 rain (card 5): thin wind-slanted needles instead of thick streaks (8 mm wide, ~0.5 m long from the velocity
+        /// stretch at 9 m/s terminal speed, soft-particle material so they fade into geometry), plus small splashes on the
+        /// ground around the camera (one short additive burst per raycast hit, ~250 per second). Both follow the viewing camera.
+        /// </summary>
         void UpdateRain()
         {
-            var cam = Camera.main;
+            var cam = View;
             if (cam == null) return;
-            if (rain == null && Weather != WeatherKind.Rain) return; // built on first rain
+            if (rain == null && Weather != WeatherKind.Rain && RainIntensity <= 0f) return; // built on first rain
             if (rain == null)
             {
-                var m = RuntimeMaterials.NewParticle("Rain", false);
+                var m = RuntimeMaterials.NewParticleSoft("Rain");
                 if (m == null) return; // RuntimeMaterials logged why (no library or empty slot)
-                m.SetColor(BaseColorId, new Color(0.8f, 0.85f, 1f, 0.3f));
+                m.SetColor(BaseColorId, new Color(0.78f, 0.84f, 0.95f, 0.4f));
                 var go = new GameObject("Rain");
+                go.transform.SetParent(transform, false);
                 rain = go.AddComponent<ParticleSystem>();
+                rain.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
                 var main = rain.main;
                 main.loop = true;
-                main.startLifetime = 1.1f;
+                main.startLifetime = 1.4f;
                 main.startSpeed = 0f;
                 main.startSize3D = true;
-                main.startSizeX = 0.02f;
-                main.startSizeY = 0.9f;
-                main.startSizeZ = 0.02f;
-                main.maxParticles = 6000;
+                main.startSizeX = 0.008f;
+                main.startSizeY = 0.25f;   // stretched mode: length = size + speed x velocityScale (~0.65 m)
+                main.startSizeZ = 0.008f;
+                main.maxParticles = 12000;
                 main.simulationSpace = ParticleSystemSimulationSpace.World;
-                main.startColor = new Color(0.75f, 0.82f, 0.95f, 0.35f);
+                main.startColor = new ParticleSystem.MinMaxGradient(new Color(0.8f, 0.86f, 0.98f, 0.1f), new Color(0.85f, 0.9f, 1f, 0.26f));
                 var vel = rain.velocityOverLifetime;
                 vel.enabled = true;
                 vel.space = ParticleSystemSimulationSpace.World;
-                vel.y = new ParticleSystem.MinMaxCurve(-24f);
-                vel.x = new ParticleSystem.MinMaxCurve(-1.5f);
-                vel.z = new ParticleSystem.MinMaxCurve(0f);
                 var shape = rain.shape;
                 shape.shapeType = ParticleSystemShapeType.Box;
-                shape.scale = new Vector3(60f, 1f, 60f);
+                shape.scale = new Vector3(44f, 1f, 44f);
                 var emission = rain.emission;
                 emission.rateOverTime = 0f;
                 var r = rain.GetComponent<ParticleSystemRenderer>();
@@ -441,11 +698,87 @@ namespace VeyraCity.World
                 r.velocityScale = 0.04f;
                 r.lengthScale = 1f;
                 r.sharedMaterial = m;
+                r.shadowCastingMode = ShadowCastingMode.Off;
+                r.receiveShadows = false;
                 rain.Play();
+
+                var sm = RuntimeMaterials.NewParticle("RainSplash", true);
+                if (sm != null)
+                {
+                    sm.SetTexture("_BaseMap", GlowTexture());
+                    var sgo = new GameObject("RainSplashes");
+                    sgo.transform.SetParent(transform, false);
+                    splashes = sgo.AddComponent<ParticleSystem>();
+                    splashes.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                    var sMain = splashes.main;
+                    sMain.loop = false;
+                    sMain.playOnAwake = false;
+                    sMain.startLifetime = 0.14f;
+                    sMain.startSpeed = 0f;
+                    sMain.maxParticles = 600;
+                    sMain.simulationSpace = ParticleSystemSimulationSpace.World;
+                    var sEm = splashes.emission; sEm.enabled = false;
+                    var sSh = splashes.shape; sSh.enabled = false;
+                    var size = splashes.sizeOverLifetime;
+                    size.enabled = true;
+                    size.size = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Linear(0f, 0.4f, 1f, 1f));
+                    var col = splashes.colorOverLifetime;
+                    col.enabled = true;
+                    var g = new Gradient();
+                    g.SetKeys(new[] { new GradientColorKey(Color.white, 0f), new GradientColorKey(Color.white, 1f) },
+                              new[] { new GradientAlphaKey(1f, 0f), new GradientAlphaKey(0f, 1f) });
+                    col.color = g;
+                    var sr = splashes.GetComponent<ParticleSystemRenderer>();
+                    sr.renderMode = ParticleSystemRenderMode.Billboard;
+                    sr.sharedMaterial = sm;
+                    sr.shadowCastingMode = ShadowCastingMode.Off;
+                    sr.receiveShadows = false;
+                    splashes.Play();
+                }
             }
-            rain.transform.position = cam.transform.position + Vector3.up * 14f + cam.transform.forward * 12f;
+            float k = Mathf.Clamp01(RainIntensity);
+            // Wind slant: the needles lean with the global wind (2-6 m/s sideways against 9 m/s fall).
+            var wind = WindDirection.sqrMagnitude > 1e-4f ? new Vector3(WindDirection.x, 0f, WindDirection.z).normalized : Vector3.right;
+            float windSpeed = Mathf.Lerp(1.5f, 6f, Mathf.Clamp01(WindStrength));
+            var v = rain.velocityOverLifetime;
+            v.x = new ParticleSystem.MinMaxCurve(wind.x * windSpeed * 0.8f, wind.x * windSpeed * 1.2f);
+            v.y = new ParticleSystem.MinMaxCurve(-10f, -8.5f);
+            v.z = new ParticleSystem.MinMaxCurve(wind.z * windSpeed * 0.8f, wind.z * windSpeed * 1.2f);
+            // Emitter upwind and above, so the slanted needles fill the view around the camera.
+            var fwd = Vector3.ProjectOnPlane(cam.transform.forward, Vector3.up);
+            rain.transform.position = cam.transform.position + Vector3.up * 11f + fwd.normalized * 10f - wind * windSpeed * 1.1f;
             var em = rain.emission;
-            em.rateOverTime = Weather == WeatherKind.Rain ? 5500f : 0f;
+            em.rateOverTime = 9000f * k;
+            EmitSplashes(cam, k);
+        }
+
+        ParticleSystem splashes;
+        float splashBudget;
+        readonly RaycastHit[] splashHit = new RaycastHit[1];
+
+        /// <summary>~250 splashes per second at full rain within 22 m of the camera (one downward raycast each).</summary>
+        void EmitSplashes(Camera cam, float k)
+        {
+            if (splashes == null || k <= 0.01f) return;
+            splashBudget += 250f * k * Time.deltaTime;
+            var origin = cam.transform.position;
+            var fwd = Vector3.ProjectOnPlane(cam.transform.forward, Vector3.up).normalized;
+            int n = Mathf.Min(12, (int)splashBudget);
+            splashBudget -= n;
+            for (int i = 0; i < n; i++)
+            {
+                var r2 = UnityEngine.Random.insideUnitCircle * 22f;
+                var p = origin + fwd * 9f + new Vector3(r2.x, 30f, r2.y);
+                if (Physics.RaycastNonAlloc(p, Vector3.down, splashHit, 80f, 1, QueryTriggerInteraction.Ignore) == 0) continue;
+                var ep = new ParticleSystem.EmitParams
+                {
+                    position = splashHit[0].point + splashHit[0].normal * 0.03f,
+                    startSize = UnityEngine.Random.Range(0.1f, 0.22f),
+                    startColor = new Color(0.85f, 0.9f, 1f, 0.22f + 0.2f * NightFactor),
+                    applyShapeToPosition = false,
+                };
+                splashes.Emit(ep, 1);
+            }
         }
     }
 }

@@ -188,6 +188,10 @@ namespace VeyraCity.Testing
                 if (env != null) { env.ViewCamera = cam; env.ReapplyCurrentState(); }
                 yield return new WaitForSecondsRealtime(0.8f); // lighting, LOD and streaming settle
                 if (env != null && wet) env.SetWetness(1f);
+                // D1 / BUG-068: the box probes around the shot render now, at this time and weather (in play they refresh
+                // over a few seconds, one face per frame).
+                var probes = FindAnyObjectByType<ReflectionProbeDirector>();
+                if (probes != null) { probes.RenderNearNow(cam.transform.position); yield return null; }
                 // The review camera renders on demand only, so its motion history still holds the previous shot's pose and the
                 // jump reads as camera motion (S5: every player chase shot came out motion-blurred). Render it at this pose on
                 // two consecutive frames first so the history matches.

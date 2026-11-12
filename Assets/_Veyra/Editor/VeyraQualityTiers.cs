@@ -213,6 +213,10 @@ namespace VeyraCity.EditorTools
                 if (rp.objectReferenceValue != asset) rp.objectReferenceValue = asset;
                 var aa = e.FindPropertyRelative("antiAliasing");
                 if (aa != null) aa.intValue = t.Stp ? 0 : (t.Mobile ? 2 : 4);
+                // BUG-068 (D1): realtime reflection probes on the PC tiers (the world box probes and the car probe render only
+                // with this on); mobile keeps them off.
+                var rrp = e.FindPropertyRelative("realtimeReflectionProbes");
+                if (rrp != null && rrp.boolValue != !t.Mobile) { rrp.boolValue = !t.Mobile; log.AppendLine($"{t.Name}: realtimeReflectionProbes = {!t.Mobile}"); }
                 var sd = e.FindPropertyRelative("shadowDistance");
                 if (sd != null) sd.floatValue = t.ShadowDistance;
             }

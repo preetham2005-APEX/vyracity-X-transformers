@@ -101,13 +101,25 @@ Shader "Veyra/SkyDome"
                 float tw = 0.6 + 0.4 * sin(_Time.y * (1.5 + h * 4.0) + h * 40.0);
                 col += float3(0.9, 0.94, 1.0) * star * tw * 1.6 * night * smoothstep(0.1, 0.4, up);
 
+                // ---- D1 night sky: the procedural skybox is almost black at night (exposure 0.06) and the ACES toe crushes
+                // anything below ~0.03, so rural and aerial night views went black. An opaque night base: moonlit blue zenith,
+                // warm city-glow horizon (brighter under cloud, which reflects the city's light), continued below the horizon
+                // so far aerial horizons never show a black band.
+                float3 nightZen = float3(0.014, 0.021, 0.048);
+                float3 nightHor = float3(0.042, 0.047, 0.064) + _CityGlowColor.rgb * _CityGlow * 0.03;
+                float3 nightSky = lerp(nightHor, nightZen, smoothstep(-0.02, 0.45, up)) * lerp(1.0, 1.7, cloudy);
+                col += nightSky * night;
+
                 // ---- horizon haze by day (matches the fog colour), city light pollution by night
                 float haze = exp(-max(up, 0.0) * 5.5) * above;
                 float ha = saturate(haze * (_HazeStrength * day + _CityGlow * night * 0.8));
+                // D1 / BUG-059: below the horizon (aerial views see past the map edge) the procedural skybox shows its dark
+                // ground colour as a black band; fill it with the haze colour so it meets the fogged sea and land
+                ha = lerp(1.0, ha, smoothstep(-0.06, 0.0, up));
                 float3 hazeCol = lerp(_HazeColor.rgb * (0.6 + 0.4 * sunVis), _CityGlowColor.rgb * 0.22 + _HazeColor.rgb, night);
                 hazeCol = lerp(hazeCol, hazeCol * float3(1.15, 0.85, 0.7), golden * pow(saturate(mu * 0.5 + 0.5), 2.0));
                 col = col * (1.0 - ha) + hazeCol * ha;
-                float a = ha;
+                float a = ha + night * (1.0 - ha);   // D1: opaque night base under the haze (premultiplied "over")
 
                 // ---- sunset band (round 2): a warm orange-to-pink gradient low in the sky around the sun at golden hour
                 float az = saturate(mu * 0.5 + 0.5);
