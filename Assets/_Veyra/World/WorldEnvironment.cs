@@ -60,7 +60,7 @@ namespace VeyraCity.World
         // D1 tunables. Renamed from the old D1 draft (StreetLightGain, MoonIntensity, LampSpriteDistance) so the stale values
         // serialized in VeyraCity.unity (1.5, 0.32) no longer override the defaults below.
         [Tooltip("D1: street-light intensity multiplier. URP spot intensity falls with distance squared: 4.5 x 100 = 450 (x height gain) gives ~4.5 on the road under a 10 m head, several times the moonlit ground (dark asphalt, albedo ~0.08)")] public float PoolGain = 100f;
-        [Tooltip("D1: moonlight intensity at night (clear sky)")] public float MoonLight = 0.4f;
+        [Tooltip("D1: moonlight intensity at night (clear sky); BUG-128: 0.8 keeps rural and aerial night terrain readable above the ACES toe")] public float MoonLight = 0.8f;
         [Tooltip("D1: top of the ground haze layer (m); fog thins above it for aerial views")] public float FogLayerTop = 120f;
         [Tooltip("D1: far lamps drawn as glow sprites out to this distance (0 = off)")] public float FarLampDistance = 2400f;
         [Tooltip("D1: far traffic drawn as head/tail-light sprites on the major roads at night (0 = off)")] public float FarTrafficDistance = 3200f;
