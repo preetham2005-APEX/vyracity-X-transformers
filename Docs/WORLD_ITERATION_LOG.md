@@ -41,6 +41,9 @@
 | 29 | Grass texture smeared down steep cliffs (CAM_14) | MeadowPass: slopes over 32 deg blend to the rock layer (full at 44 deg), 46,238 texels | |
 | 30 | Landmarks missing (audit): Azure Pier, Azure Marina, refinery towers, clock tower plain, Sable Falls; ship edge | LandmarkBuilder: LM-08 pier (220 m on piles, 30 m Ferris wheel, 5 stalls), LM-10 marina (150 m pontoon, 20 berths, 14 yachts), LM-12 refinery (3 distillation columns, 3 flare stacks with flames, pipe racks), LM-26 clock faces + slate spire on the data building; PortBuilder edge per crane (-2792.5 to -2795) and per-berth ship offset; `-reviewExtra` cameras X_* | Build 0/0; review 50/50 (36 + 14 X_ shots), 0 pink; R_SMOKE 2/2, R_BRIDGES 14/14, R_DOWNTOWN_NIGHT 5/5 PASS (Silent power plan) |
 | 31 | Plaza bushes white/black cards after a reimport (CAM_05); BUG-129 streets without lamps; Sable Falls only 3 m | PlazaBuilder assigns M_Tree_Foliage / M_Tree_Bark to the bush instances; new LampFill (step `lampfill`, DERIVED rule, then `propclear`): 51 urban LED lamps on D1/D6 AR/CO/SV streets with no data lamp within 40 m; Sable Falls needs a 6 m terrain step and is not built (data gap: the terrain has 4 m at most) | Build 0/0; review 20/20, 0 pink; R_DOWNTOWN_NIGHT 5/5 PASS |
+| 32 | Ships' accommodation plain (X_PortShip) | PortBuilder: enclosed lifeboats on davits both sides, radar mast with scanner on the bridge | |
+| 33 | Quay apron empty | PortBuilder: 16 parked straddle carriers (2 per crane, clear of data container stacks within 9 m) | |
+| 34 | Airfield had no windsock; verification of 32-34 + cell-scene library holder | AirfieldBuilder: orange/white windsock 60 m off the runway at mid-length | Build 0/0; review 50/50, 0 pink; R_SMOKE 2/2, R_BRIDGES 14/14, R_DOWNTOWN_NIGHT 5/5 PASS (Silent power plan); cell scenes carry the library holder. Crane rails visible only in places (height sampling under the quay paving) |
 
 ## Summary after 20 rounds (2026-11-11)
 

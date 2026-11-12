@@ -129,6 +129,23 @@ namespace VeyraCity.EditorTools
                         lights++;
                     }
 
+            // iteration 34: windsock 60 m off the left edge at mid-runway: 8 m mast, 4 m sock in orange and white bands
+            {
+                var orange = LitMat("M_Air_SockOrange", new Color(0.9f, 0.32f, 0.05f), 0.2f);
+                var mast = LitMat("M_Air_MastWhite", new Color(0.8f, 0.8f, 0.78f), 0.3f);
+                var mp = path.PositionAt(L * 0.5f); var mt = path.TangentAt(L * 0.5f); mt.y = 0f; mt.Normalize();
+                var left = -new Vector3(mt.z, 0f, -mt.x);
+                var wb = mp + left * (hw + 60f);
+                Box(Get(mast), wb + Vector3.up * 4f, mt, 0.18f, 8f, 0.18f);
+                var sockDir = (mt + left * 0.4f).normalized;   // a steady breeze
+                for (int k = 0; k < 5; k++)
+                {
+                    float r0 = 0.45f - k * 0.06f, r1 = r0 - 0.06f;
+                    var a = wb + Vector3.up * (7.6f - k * 0.08f) + sockDir * (k * 0.8f); var b = a + sockDir * 0.8f - Vector3.up * 0.08f;
+                    Tube(Get((k & 1) == 0 ? orange : mast), a, b, r0, r1, 10);
+                }
+            }
+
             // taxiways: yellow centreline; holding bars where a link ends within 80 m of the runway centreline
             int holds = 0;
             foreach (var tw in rws.Where(r => r != runway))
@@ -254,6 +271,24 @@ namespace VeyraCity.EditorTools
             Q(P(-1, -1, 1), P(-1, -1, -1), P(-1, 1, -1), P(-1, 1, 1), -ax);
             Q(P(1, -1, -1), P(1, -1, 1), P(1, 1, 1), P(1, 1, -1), ax);
             Q(P(-1, 1, -1), P(1, 1, -1), P(1, 1, 1), P(-1, 1, 1), Vector3.up);
+        }
+
+        /// <summary>Open tapered tube from a (radius r0) to b (radius r1).</summary>
+        static void Tube(MB m, Vector3 a, Vector3 b, float r0, float r1, int n)
+        {
+            var d = (b - a).normalized;
+            var u = Vector3.Cross(d, Vector3.up).normalized; if (u.sqrMagnitude < 1e-4f) u = Vector3.right;
+            var v = Vector3.Cross(u, d);
+            for (int i = 0; i < n; i++)
+            {
+                float t0 = i * Mathf.PI * 2f / n, t1 = (i + 1) * Mathf.PI * 2f / n;
+                Vector3 o0 = u * Mathf.Cos(t0) + v * Mathf.Sin(t0), o1 = u * Mathf.Cos(t1) + v * Mathf.Sin(t1);
+                int k = m.V.Count;
+                m.V.Add(a + o0 * r0); m.V.Add(a + o1 * r0); m.V.Add(b + o1 * r1); m.V.Add(b + o0 * r1);
+                for (int q = 0; q < 4; q++) m.UV.Add(Vector2.zero);
+                if (Vector3.Dot(Vector3.Cross(m.V[k + 1] - m.V[k], m.V[k + 2] - m.V[k]), o0 + o1) >= 0f) m.T.AddRange(new[] { k, k + 1, k + 2, k, k + 2, k + 3 });
+                else m.T.AddRange(new[] { k, k + 2, k + 1, k, k + 3, k + 2 });
+            }
         }
 
         static Mesh Save(string name, MB mb)

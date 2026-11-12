@@ -200,6 +200,36 @@ namespace VeyraCity.EditorTools
                 bollards++;
             }
 
+            // iteration 33: parked straddle carriers on the apron landside of each crane (two per crane, 25 m behind the
+            // landside leg line), skipped where a data container stack is within 9 m
+            var yellow = LitMat("M_Port_StraddleYellow", new Color(0.82f, 0.6f, 0.08f), 0.4f, 0.2f);
+            var cont = new List<Vector2>();
+            var cl = File.ReadAllLines("Assets/_Veyra/Data/container_placements.csv");
+            var ch = cl[0].Split(',');
+            int kx = System.Array.IndexOf(ch, "unity_x"), kz = System.Array.IndexOf(ch, "unity_z");
+            foreach (var l in cl.Skip(1)) { var f = l.Split(','); if (f.Length > kz) cont.Add(new Vector2(float.Parse(f[kx], CultureInfo.InvariantCulture), float.Parse(f[kz], CultureInfo.InvariantCulture))); }
+            int carriers = 0;
+            foreach (var c in cranes)
+                foreach (float dx in new[] { -22f, 22f })
+                {
+                    var p = new Vector3(c.x + dx, 0f, zc + 15f + 25f);
+                    if (cont.Any(q => (q - new Vector2(p.x, p.z)).sqrMagnitude < 9f * 9f)) continue;
+                    p.y = GroundY(p.x, p.z);
+                    if (p.y < Sea + 1f) continue;
+                    // frame 15 m tall, 6 m wide (x) by 9 m long (z): 4 legs, two top beams, cab, 8 wheels
+                    foreach (float lx in new[] { -3f, 3f })
+                        foreach (float lz in new[] { -4.3f, 4.3f })
+                        {
+                            Box(Get(yellow), p + new Vector3(lx, 8f, lz), Vector3.right, Vector3.forward, 0.6f, 14f, 0.8f);
+                            Cyl(Get(bollardM), p + new Vector3(lx, 0f, lz), 0.6f, 0f, 1.2f, 10);
+                        }
+                    foreach (float lx in new[] { -3f, 3f }) Box(Get(yellow), p + new Vector3(lx, 15.2f, 0f), Vector3.right, Vector3.forward, 0.9f, 1.4f, 9.6f);
+                    Box(Get(yellow), p + new Vector3(0f, 15.2f, -4.3f), Vector3.right, Vector3.forward, 6.6f, 1.2f, 0.9f);
+                    Box(Get(yellow), p + new Vector3(0f, 15.2f, 4.3f), Vector3.right, Vector3.forward, 6.6f, 1.2f, 0.9f);
+                    Box(Get(superM), p + new Vector3(2.4f, 17f, 3.6f), Vector3.right, Vector3.forward, 1.8f, 2.2f, 1.8f);
+                    carriers++;
+                }
+
             // ships: one per pair of cranes from the west, 50 m gaps; length from the pair's span
             var root = new GameObject("Port") { isStatic = true }.transform;
             root.SetParent(world.transform, false);
@@ -249,7 +279,7 @@ namespace VeyraCity.EditorTools
             foreach (var f in Directory.GetFiles(MeshDir, "*.asset"))
                 if (!keep.Contains(Path.GetFileNameWithoutExtension(f))) AssetDatabase.DeleteAsset(f.Replace('\\', '/'));
             AssetDatabase.SaveAssets();
-            sb.AppendLine($"  rails {rx1 - rx0:0} m x 2 lines, {bollards} bollards, {ships} ships with {boxes} deck containers");
+            sb.AppendLine($"  rails {rx1 - rx0:0} m x 2 lines, {bollards} bollards, {carriers} straddle carriers, {ships} ships with {boxes} deck containers");
             Directory.CreateDirectory("Logs/C");
             File.WriteAllText("Logs/C/port.txt", sb.ToString());
             return sb.ToString();
@@ -298,6 +328,18 @@ namespace VeyraCity.EditorTools
             Box(Get(sup), Fw(ax + 2f, free + 19f, 0f), Vector3.right, Vector3.forward, 9f, 2.6f, beam + 2f);   // bridge + wings
             Box(Get(win), Fw(ax + 6.55f, free + 19.3f, 0f), Vector3.right, Vector3.forward, 0.08f, 1.2f, beam * 0.9f);
             Box(Get(funnel), Fw(ax - 11f, free + 8f, 0f), Vector3.right, Vector3.forward, 7f, 16f, 6f);
+            // iteration 32: enclosed lifeboats on davits each side of the accommodation, radar mast with scanner on the bridge
+            foreach (float side in new[] { -1f, 1f })
+            {
+                var lb = Fw(ax - 2f, free + 7.5f, side * (beam * 0.36f + 2.2f));
+                Box(Get(funnel), lb, Vector3.right, Vector3.forward, 8.5f, 2.6f, 3.0f);
+                Box(Get(sup), lb + Vector3.up * 1.5f, Vector3.right, Vector3.forward, 6.5f, 0.6f, 2.4f);
+                foreach (float a in new[] { -3.5f, 3.5f })
+                    Box(Get(boot), Fw(ax - 2f + a, free + 9.3f, side * (beam * 0.36f + 1.2f)), Vector3.right, Vector3.forward, 0.4f, 4.2f, 0.4f);
+            }
+            Box(Get(sup), Fw(ax + 1f, free + 23.5f, 0f), Vector3.right, Vector3.forward, 0.6f, 6.4f, 0.6f);
+            Box(Get(sup), Fw(ax + 1f, free + 24.5f, 0f), Vector3.right, Vector3.forward, 0.3f, 0.3f, 7f);
+            Box(Get(boot), Fw(ax + 1f, free + 26.9f, 0f), Vector3.right, Vector3.forward, 0.5f, 0.25f, 4.2f);
             Box(Get(boot), Fw(ax - 11f, free + 16.4f, 0f), Vector3.right, Vector3.forward, 7.2f, 1.2f, 6.2f);
             // deck containers: 40 ft bays from the accommodation to the forecastle, 13 rows across, 1-6 tiers (lower at the ends)
             int n = 0;
