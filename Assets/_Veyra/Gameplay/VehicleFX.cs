@@ -232,9 +232,11 @@ namespace VeyraCity.Gameplay
                 }
             puff.Apply();
             // Copies of the library's particle templates (card F1); null only when the library is missing (RuntimeMaterials logs it).
-            // pass 37: the soft-particle version turned a standing tyre-smoke cloud into a flat grey haze over the brake
-            // close-up (BUG-150), so tyre smoke keeps the plain template; crash dust, engine smoke and spray stay soft
-            smokeMat = Particle("TyreSmoke", false, new Color(0.85f, 0.86f, 0.88f, 0.55f));
+            // D2: soft particles, so smoke fades where it meets the road and the car instead of cutting hard edges through it
+            // (pass 38: the plain template showed a flat slab through the body; the brake close-up haze, BUG-151, is not
+            // caused by the material: it appears with both)
+            smokeMat = RuntimeMaterials.NewParticleSoft("TyreSmoke");
+            if (smokeMat != null) smokeMat.SetColor("_BaseColor", new Color(0.85f, 0.86f, 0.88f, 0.55f));
             if (smokeMat != null) smokeMat.SetTexture("_BaseMap", puff);
             flameMat = Particle("NitroFlame", true, new Color(1f, 0.55f, 0.15f, 0.8f));
             coneMat = Particle("NitroCone", true, Color.white);

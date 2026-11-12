@@ -542,3 +542,11 @@ not comparable): rooftops on 43.5 / off 33.1 KB/frame GC (pass 36: 26.7 / 10.2 w
 EditMode **98/100**: the failures were the GPS test (13 locations; shortcuts are off-road by design and areas now route to
 the nearest road inside their radius, 5 real gaps kept as BUG-150) and `EveryBuildScene_ReferencesTheLibrary` on the world
 session's uncommitted `VeyraCity_Boot.unity`. The refined GPS test is compile-checked, not yet re-run in Unity.
+
+### Iteration 38 (2026-11-12, D2): paint flake review, tests 100/100
+
+Softened paint flake applied (`Editor/PaintFlake`, tiling 40, strength 0.07, 18 M_Paint_* materials): a faint metallic
+mottle in the close-ups, no grain (`it8_car_closeup`, `it17_brake_disc`). Tyre smoke on the plain template still showed the
+brake close-up haze and cut a hard slab through the body in it8, so the haze is not the soft material (BUG-151 reopened with
+that finding) and tyre smoke is back on soft particles. Player run 0 exceptions, avg 53.5 FPS, driving GC 33.0 KB/frame;
+EditMode **100/100** (world session's cell scenes now carry the material library; GPS 92/97 with the BUG-150 list).
