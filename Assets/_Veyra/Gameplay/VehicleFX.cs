@@ -16,6 +16,11 @@ namespace VeyraCity.Gameplay
         VehicleController car;
         NitroSystem nitro;
         readonly ParticleSystem[] smoke = new ParticleSystem[4];
+        /// <summary>BUG-151 diagnostics: live tyre-smoke particles on all wheels, and the peak emission intensity (0-1)
+        /// since <see cref="ResetSmokePeak"/>.</summary>
+        public int SmokeParticles { get { int n = 0; foreach (var s in smoke) if (s != null) n += s.particleCount; return n; } }
+        public float SmokePeak { get; private set; }
+        public void ResetSmokePeak() => SmokePeak = 0f;
         readonly int[] lastMark = { -1, -1, -1, -1 };
         Renderer[] brakeRenderers, headRenderers;
         MaterialPropertyBlock mpb;
@@ -408,6 +413,7 @@ namespace VeyraCity.Gameplay
                 bool soft = w.Surface != null && (w.Surface.name.Contains("gravel") || w.Surface.name.Contains("dirt") || w.Surface.name.Contains("grass"));
                 var em = smoke[i].emission;
                 em.rateOverTime = intensity * (soft ? 30f : 55f);
+                SmokePeak = Mathf.Max(SmokePeak, intensity);
                 var main = smoke[i].main;   // BUG-080: dust on soft ground, white smoke again back on tarmac
                 main.startColor = soft ? new Color(0.55f, 0.47f, 0.36f, 1f) : Color.white;
                 if (intensity > 0.15f && w.Grounded) lastMark[i] = SkidMarks.Add(w.ContactPoint, w.ContactNormal, car.Body.GetPointVelocity(w.ContactPoint), 0.24f, Mathf.Clamp01(intensity * 1.3f), lastMark[i]);

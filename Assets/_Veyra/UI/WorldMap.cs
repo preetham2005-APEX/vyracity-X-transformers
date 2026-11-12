@@ -764,6 +764,9 @@ namespace VeyraCity.UI
 
         // ------------------------------------------------------------------ waypoint and route
 
+        /// <summary>G5: sets the GPS waypoint from gameplay (delivery jobs), as a map click would.</summary>
+        public void RouteTo(Vector3 world) => SetWaypoint(world);
+
         void SetWaypoint(Vector3 world)
         {
             if (player == null) return;

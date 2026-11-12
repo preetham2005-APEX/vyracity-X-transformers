@@ -596,8 +596,26 @@ namespace VeyraCity.Gameplay
             if (chaseCamera != null) chaseCamera.enabled = true;
             // it17 (round 2): a hard stop from 200 km/h: brake-light streaks, BRAKE/ABS lamps and the G-meter in the chase
             // view, then the glowing front disc up close
+            // BUG-151: log what the stop does to the tyres (peak slip ratio, ABS frames, smoke) to find the haze's cause
+            float slip17 = 0f; int abs17 = 0, frames17 = 0;
+            bool reset17 = false;
             yield return Drive("C1", 0.25f, 200f, 19.7f, clear, false, 3.7f, "it17_brake",   // iteration 24: at dusk, where glowing discs and light trails read
-                               (t, i) => { if (t > 2.6f) { i.Throttle = 0f; i.Brake = 1f; i.Nitro = false; } return i; }, 1.4f);
+                               (t, i) =>
+                               {
+                                   if (t > 2.6f)
+                                   {
+                                       i.Throttle = 0f; i.Brake = 1f; i.Nitro = false;
+                                       if (!reset17) { reset17 = true; player.GetComponent<VehicleFX>()?.ResetSmokePeak(); }   // Drive respawns the car: look it up now
+                                       frames17++;
+                                       if (player.State.AbsActive) abs17++;
+                                       for (int w = 0; w < 4; w++) slip17 = Mathf.Max(slip17, Mathf.Abs(player.GetWheel(w).SlipRatio));
+                                   }
+                                   return i;
+                               }, 1.4f);
+            var fx17 = player.GetComponent<VehicleFX>();
+            var dmg17 = player.GetComponent<CarDamage>();
+            log.Append($" brakeStop:slipMax{slip17:0.00}/abs{abs17}of{frames17}/tyreSmokePeak{(fx17 != null ? fx17.SmokePeak : -1f):0.00}" +
+                       $"/tyreSmoke{(fx17 != null ? fx17.SmokeParticles : -1)}/damage{(dmg17 != null ? dmg17.Damage01 : -1f):0.00}/engineSmoke{(dmg17 != null ? dmg17.EngineSmokeParticles : -1)}");
             if (chaseCamera != null) chaseCamera.enabled = false;
             {
                 var bt = player.transform;
@@ -685,6 +703,7 @@ namespace VeyraCity.Gameplay
                     }
                 if (gar != null)
                 {
+                    save.Events.RemoveAll(e => e.Id == "ACT:" + gar.id);   // the 30 s autosave kept earlier runs' discoveries
                     int before = ActivityHooks.Events;
                     yield return Drive(gr.Data.id, Mathf.Max(0f, sG - 90f) / gr.Path.Length, 140f, 10f, clear, false, 2.5f, "it22_tmp",
                                        (t, i) => { i.Throttle = 0.6f; i.Brake = 0f; return i; }, 1.4f);

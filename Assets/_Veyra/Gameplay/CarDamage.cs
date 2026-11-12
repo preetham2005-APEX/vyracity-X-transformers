@@ -31,6 +31,8 @@ namespace VeyraCity.Gameplay
         Color paint = new Color(0.5f, 0.5f, 0.5f);
         static Material shardMat, dustMat;
         public float Damage01 { get; private set; }
+        /// <summary>BUG-151 diagnostics: live engine-smoke particles.</summary>
+        public int EngineSmokeParticles => engineSmoke != null ? engineSmoke.particleCount : 0;
 
         // D2 (round 3): damage by zone, so a front hit cracks the windscreen and breaks the headlights, a rear hit the
         // tail lamps. Zones: 0 front, 1 rear, 2 left, 3 right (by where the contact lands on the body).

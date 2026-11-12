@@ -550,3 +550,17 @@ mottle in the close-ups, no grain (`it8_car_closeup`, `it17_brake_disc`). Tyre s
 brake close-up haze and cut a hard slab through the body in it8, so the haze is not the soft material (BUG-151 reopened with
 that finding) and tyre smoke is back on soft particles. Player run 0 exceptions, avg 53.5 FPS, driving GC 33.0 KB/frame;
 EditMode **100/100** (world session's cell scenes now carry the material library; GPS 92/97 with the BUG-150 list).
+
+### Iterations 39-40 (2026-11-12, D2): G5 follow-ups, BUG-151 diagnosis
+
+G5 follow-ups in `Gameplay/ActivityHooks` (data from `Tools/Data/build_activities.py`): route time trials on the race route
+that shares the trial's road (TT-01 Halcyon Pass Road = RACE-07, TT-05 Veyra Ring flying lap = RACE-02, TT-06 Old Farm Road =
+RACE-10), the Falcon top-speed run (speed at 1.5 km) and acceleration test (0-100, 0-200, 100-0), delivery jobs between the
+5 hubs (GPS waypoint via `WorldMap.RouteTo`, time limit from the road route, fragile cargo at DEL-04) and collectibles (the
+registry count per area as glowing pickups beside the roads, saved as a bit mask). Not built: garage interiors (need interior
+art), the Falcon handling course (needs cones). EditMode **102/102** (pass 39: all 10 areas place their full count; trial
+routes exist; GPS 92/97 with the BUG-150 list). Player runs 0 exceptions (pass 40: avg 65.8 FPS, p99 62 ms).
+The G5 capture check missed in passes 38-39 because the build's 30 s autosave had kept pass 37's discovery; the check now
+clears the garage's record first (pass 40: `activity:GAR-01:found`).
+BUG-151: the brake close-up haze is not a vehicle effect (pass 40 log: 0 tyre-smoke and 0 engine-smoke particles, damage 0,
+ABS holding slip at 0.08); handed to the world/road track.

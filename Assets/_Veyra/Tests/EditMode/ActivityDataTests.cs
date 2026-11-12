@@ -47,6 +47,32 @@ namespace VeyraCity.Tests
             }
         }
 
+        [Test]
+        public void CollectibleAreasPlaceTheirItemsBesideRoads()
+        {
+            var report = new List<string>();
+            foreach (var a in ActivityHooks.Load().Where(a => a.category == "Collectible area"))
+            {
+                var pos = ActivityHooks.CollectiblePositions(a);
+                report.Add($"{a.id} {pos.Count}/{a.count}");
+                Assert.AreEqual(a.count, pos.Count, a.id + " items placed");
+                foreach (var q in pos) Assert.LessOrEqual(Vector2.Distance(new Vector2(q.x, q.z), new Vector2(a.x, a.z)), a.radius + 30f, a.id + " item outside its area");
+                for (int i = 0; i < pos.Count; i++)
+                    for (int j = i + 1; j < pos.Count; j++)
+                        Assert.GreaterOrEqual(Vector2.Distance(new Vector2(pos[i].x, pos[i].z), new Vector2(pos[j].x, pos[j].z)), 39.9f, a.id + " items too close");
+                Assert.AreEqual(pos, ActivityHooks.CollectiblePositions(a), a.id + " placement must be deterministic");
+            }
+            Debug.Log("[G5] collectibles: " + string.Join(", ", report));
+        }
+
+        [Test]
+        public void TimeTrialsWithRoutesPointAtExistingRaceRoutes()
+        {
+            var trials = ActivityHooks.Load().Where(a => a.category == "Time trial / test" && !string.IsNullOrEmpty(a.route)).ToList();
+            Assert.GreaterOrEqual(trials.Count, 3, "TT-01, TT-05, TT-06 reuse race routes");
+            foreach (var a in trials) Assert.IsNotNull(ActivityHooks.FindRoute(a.route), a.id + " -> " + a.route);
+        }
+
         /// <summary>BUG-150 (pass 37): locations the current road data cannot reach (more than 120 m from any road, or on a
         /// road not joined to the network). The world session owns the road data; remove ids here as access roads arrive.</summary>
         static readonly HashSet<string> KnownUnreachable = new HashSet<string>
