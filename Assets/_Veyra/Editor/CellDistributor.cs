@@ -163,6 +163,16 @@ namespace VeyraCity.EditorTools
             var loader = new GameObject("CellBootLoader").AddComponent<CellBootLoader>();
             loader.MainScene = Path.GetFileNameWithoutExtension(MainScene);
             loader.CellScenes = cellNames;
+            // every build scene references the material library (MaterialArchitectureTests.EveryBuildScene_ReferencesTheLibrary;
+            // the regenerated boot scene lost it)
+            var lib = AssetDatabase.LoadAssetAtPath<VeyraCity.World.VeyraMaterialLibrary>(VeyraMaterialFactory.LibraryPath);
+            if (lib != null)
+            {
+                var holder = new GameObject("[VeyraMaterials]").AddComponent<VeyraCity.World.VeyraMaterialsHolder>();
+                var so = new SerializedObject(holder);
+                var prop = so.FindProperty("materials");
+                if (prop != null) { prop.objectReferenceValue = lib; so.ApplyModifiedPropertiesWithoutUndo(); }
+            }
             EditorSceneManager.SaveScene(boot, BootScene);
 
             // 6. build scene list

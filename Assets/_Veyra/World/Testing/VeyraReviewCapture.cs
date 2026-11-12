@@ -99,8 +99,30 @@ namespace VeyraCity.Testing
             yield return null;
             yield return null;
             string dir = string.IsNullOrEmpty(outDir) ? ReviewCameraRig.OutputDir(Path.GetDirectoryName(Application.dataPath) ?? ".", card, "player") : outDir;
-            yield return CaptureAll(gf, cfg.ReviewCameras, net, dir, filter, card + " (player)", times);
+            yield return CaptureAll(gf, WithExtras(cfg.ReviewCameras), net, dir, filter, card + " (player)", times);
             Done(0);
+        }
+
+        /// <summary>
+        /// World iteration 26: "-reviewExtra NAME:px,py,pz:lx,ly,lz[;...]" adds fixed cameras for this run only (Y absolute;
+        /// a runtime copy of the set, the asset is never changed). Used to review new landmarks no listed camera sees.
+        /// </summary>
+        static ReviewCameraSet WithExtras(ReviewCameraSet set)
+        {
+            string spec = Arg(Environment.GetCommandLineArgs(), "-reviewExtra");
+            if (string.IsNullOrWhiteSpace(spec)) return set;
+            var copy = ScriptableObject.CreateInstance<ReviewCameraSet>();
+            copy.Cameras = new List<ReviewCameraSet.Entry>(set.Cameras);
+            var ci = System.Globalization.CultureInfo.InvariantCulture;
+            Vector3 V(string s) { var f = s.Split(','); return new Vector3(float.Parse(f[0], ci), float.Parse(f[1], ci), float.Parse(f[2], ci)); }
+            foreach (var item in spec.Split(';'))
+            {
+                var p = item.Split(':');
+                if (p.Length < 3) continue;
+                try { copy.Cameras.Add(new ReviewCameraSet.Entry { name = p[0], kind = ReviewCameraSet.Kind.Fixed, district = "World", position = V(p[1]), lookAt = V(p[2]), fov = 55f, hour = 12f }); }
+                catch (FormatException) { Debug.LogWarning($"[ReviewCapture] bad -reviewExtra entry '{item}'"); }
+            }
+            return copy;
         }
 
         void Done(int code)
@@ -162,6 +184,8 @@ namespace VeyraCity.Testing
                     env.SetRainIntensity(wet && times != null ? 1f : 0f);
                 }
                 ReviewCameraRig.Apply(cam, pose);
+                // D1: the light pool, lamp sprites, haze and fog altitude follow the camera that renders the shot.
+                if (env != null) { env.ViewCamera = cam; env.ReapplyCurrentState(); }
                 yield return new WaitForSecondsRealtime(0.8f); // lighting, LOD and streaming settle
                 if (env != null && wet) env.SetWetness(1f);
                 // The review camera renders on demand only, so its motion history still holds the previous shot's pose and the
@@ -184,6 +208,7 @@ namespace VeyraCity.Testing
             Destroy(cam.gameObject);
             if (car != null) car.Body.isKinematic = wasKinematic;
             if (CellStreamer.Active) { CellStreamer.Focus(null); if (car != null) CellStreamer.Track(car.Body); }
+            if (env != null) env.ViewCamera = null;
             if (env != null) { env.SetTime(oldTime); env.SetWetness(0f); env.SetRainIntensity(0f); env.SetWeather(WorldEnvironment.WeatherKind.Clear); }
             LastReport = log.ToString();
             File.WriteAllText(Path.Combine(dir, "review.txt"), LastReport, new UTF8Encoding(false));

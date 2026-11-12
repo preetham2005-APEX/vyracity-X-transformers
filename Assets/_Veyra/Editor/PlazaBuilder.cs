@@ -122,6 +122,11 @@ namespace VeyraCity.EditorTools
                     {
                         float d = new Vector2(gx, gz).magnitude;
                         if (d < 18f || d > Radius) continue;
+                        // iteration 23: eight radial walkways (every 45°, 5 m wide each side) stay open from the plaza edge to
+                        // the fountain (CAM_05: a planter stood in the middle of the southern approach)
+                        float ang = Mathf.Atan2(gx, gz) * Mathf.Rad2Deg;
+                        float off = Mathf.Abs(Mathf.DeltaAngle(ang, Mathf.Round(ang / 45f) * 45f));
+                        if (d * Mathf.Sin(off * Mathf.Deg2Rad) < 8f) continue;   // iteration 24: 8 m each side
                         var p = c + new Vector3(gx + (float)(rng.NextDouble() - 0.5) * 2f, 0f, gz + (float)(rng.NextDouble() - 0.5) * 2f);
                         if (!Free(p, 2f)) continue;
                         p.y = Ground(p, c.y);
@@ -133,7 +138,7 @@ namespace VeyraCity.EditorTools
                             g.name = "PlanterBush";
                             g.transform.position = p + Vector3.up * 0.55f;
                             g.transform.rotation = Quaternion.Euler(0f, (float)rng.NextDouble() * 360f, 0f) * g.transform.rotation;
-                            g.transform.localScale = Vector3.one * (0.9f + (float)rng.NextDouble() * 0.3f);
+                            g.transform.localScale = Vector3.one * (0.55f + (float)rng.NextDouble() * 0.15f);   // iteration 24: low shrubs (chest-high bushes walled the views)
                             parentLater.Add(g);
                         }
                         planters++;

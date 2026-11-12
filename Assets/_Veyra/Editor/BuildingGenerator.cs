@@ -303,8 +303,24 @@ namespace VeyraCity.EditorTools
                 float bottom = below - rc, height = h - bottom;
                 ctx.Capsule(chunk, o + Vector3.up * (bottom + height * 0.5f), rc, height, "UCX_" + b["id"]);
             }
+            else if (shape == "stepped" && (SkipRender == null || !SkipRender(b["id"])))
+            {
+                // world iteration 25 (BUG-123): one box per tier, as drawn below. A single full-footprint box up to the top
+                // tier left RooftopDetails' parapet ring hanging in the air round the narrow crown (CAM_05 "frame")
+                float[] ys = { 0f, 0.55f, 0.82f, 1f };
+                float[] sc = { 1f, 0.78f, 0.56f };
+                for (int t = 0; t < 3; t++)
+                {
+                    float top = ys[t + 1] * h;
+                    ctx.Collider(chunk, f.P(0f, (top + below) * 0.5f, 0f), f.Q, new Vector3(w * sc[t], top - below, l * sc[t]), t == 0 ? "UBX_" + b["id"] : $"UBX_{b["id"]}_T{t}");
+                }
+            }
+            else if (shape == "hangar")
+                // iteration 25: the box stops at the eaves (wall top); the barrel vault above is not a flat roof to dress
+                ctx.Collider(chunk, f.P(0f, (h * 0.45f + below) * 0.5f, 0f), f.Q, new Vector3(w, h * 0.45f - below, l), "UBX_" + b["id"]);
             else ctx.Collider(chunk, f.P(0f, (h + below) * 0.5f, 0f), f.Q, new Vector3(w, h - below, l), "UBX_" + b["id"]);
             if (SkipRender != null && SkipRender(b["id"])) return;   // Phase C: a kit model stands here
+            if (LandmarkBuilder.Replaces(b["landmark_id"])) return;   // iteration 25: an authored landmark model stands here (collider kept)
             var wall = ctx.Get(chunk, facade);
             var roof = ctx.Get(chunk, roofMat);
             const float U = 12f, V = 14f;

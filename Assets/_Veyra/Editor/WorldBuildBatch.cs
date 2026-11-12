@@ -52,6 +52,67 @@ namespace VeyraCity.EditorTools
                         case "plaza": log.Append(PlazaBuilder.Run()); break;
                         case "hwlights": log.Append(HighwayLightsBuilder.Run()); break;
                         case "propclear": log.Append(PropRoadClear.Run()); break;
+                        case "landmarks": log.Append(LandmarkBuilder.Run()); break;
+                        case "port": log.Append(PortBuilder.Run()); break;
+                        case "airfield": log.Append(AirfieldBuilder.Run()); break;
+                        case "meadow": log.Append(MeadowPass.Run()); break;
+                        case "lmaudit":   // iteration 23: what stands on every registry landmark point (renderers within 25 m)
+                        {
+                            var reg = VeyraCity.World.Data.LocationRegistry.Parse(VeyraDataValidator.LoadText("location_registry.csv"));
+                            var rs = UnityEngine.Object.FindObjectsByType<Renderer>(FindObjectsInactive.Exclude);
+                            foreach (var loc in reg.All.Where(l => l.Category == "Landmark"))
+                            {
+                                var c = loc.Unity;
+                                var near = rs.Where(r => r.enabled && !(r is ParticleSystemRenderer) && r.bounds.size.x < 1500f
+                                    && c.x > r.bounds.min.x - 25f && c.x < r.bounds.max.x + 25f && c.z > r.bounds.min.z - 25f && c.z < r.bounds.max.z + 25f).ToList();
+                                var names = near.Select(r => (r.transform.parent != null ? r.transform.parent.name + "/" : "") + r.name).GroupBy(n => n).OrderByDescending(g => g.Count()).Take(6).Select(g => g.Key);
+                                log.AppendLine($"  {loc.Id} {loc.Name} ({c.x:0},{c.y:0.0},{c.z:0}): {near.Count} renderers, top {(near.Count > 0 ? near.Max(r => r.bounds.max.y) : 0f):0.0} m | {string.Join("; ", names)}");
+                            }
+                            break;
+                        }
+                        case "boxprobe":   // iteration 23: BoxColliders within 30 m (x/z) of -veyraProbe x,z (RooftopDetails dresses every box top)
+                        {
+                            int pi = Array.IndexOf(args, "-veyraProbe");
+                            var xz = args[pi + 1].Replace("m", "-").Split(',');
+                            var p = new Vector3(float.Parse(xz[0], System.Globalization.CultureInfo.InvariantCulture), 0f, float.Parse(xz[1], System.Globalization.CultureInfo.InvariantCulture));
+                            foreach (var bc in UnityEngine.Object.FindObjectsByType<BoxCollider>(FindObjectsInactive.Include))
+                            {
+                                var b = bc.bounds;
+                                if (p.x < b.min.x - 30f || p.x > b.max.x + 30f || p.z < b.min.z - 30f || p.z > b.max.z + 30f) continue;
+                                string path = bc.name; for (var t = bc.transform.parent; t != null; t = t.parent) path = t.name + "/" + path;
+                                var r = bc.GetComponentInParent<Renderer>();
+                                log.AppendLine($"  box {path} | y {b.min.y:0.0}-{b.max.y:0.0} | x {b.min.x:0}-{b.max.x:0} z {b.min.z:0}-{b.max.z:0} | rot {bc.transform.eulerAngles} | size {bc.size} scale {bc.transform.lossyScale}");
+                            }
+                            foreach (var r in UnityEngine.Object.FindObjectsByType<Renderer>(FindObjectsInactive.Include))
+                            {
+                                var b = r.bounds;
+                                if (b.max.y < 100f || p.x < b.min.x - 30f || p.x > b.max.x + 30f || p.z < b.min.z - 30f || p.z > b.max.z + 30f) continue;
+                                if (b.size.x > 600f || b.size.z > 600f) continue;
+                                string path = r.name; for (var t = r.transform.parent; t != null; t = t.parent) path = t.name + "/" + path;
+                                log.AppendLine($"  tall {path} | enabled {r.enabled} | y {b.min.y:0.0}-{b.max.y:0.0}");
+                                var mf = r.GetComponent<MeshFilter>();
+                                if (mf == null || mf.sharedMesh == null) continue;
+                                // connected parts (welded at 1 cm) whose top is above 100 m and that lie within 60 m of the probe
+                                var mesh = mf.sharedMesh; var vv = mesh.vertices; var tt = mesh.triangles; var l2w = r.transform.localToWorldMatrix;
+                                var wv = vv.Select(v => l2w.MultiplyPoint3x4(v)).ToArray();
+                                var key = new System.Collections.Generic.Dictionary<Vector3Int, int>(); var id = new int[wv.Length];
+                                for (int k = 0; k < wv.Length; k++) { var q = Vector3Int.RoundToInt(wv[k] * 100f); if (!key.TryGetValue(q, out id[k])) key[q] = id[k] = k; }
+                                var par = Enumerable.Range(0, wv.Length).ToArray();
+                                int Find(int a) { while (par[a] != a) a = par[a] = par[par[a]]; return a; }
+                                for (int k = 0; k < tt.Length; k += 3) { int a = Find(id[tt[k]]); par[Find(id[tt[k + 1]])] = a; par[Find(id[tt[k + 2]])] = a; }
+                                var groups = new System.Collections.Generic.Dictionary<int, (Bounds b, int tris)>();
+                                for (int k = 0; k < tt.Length; k += 3)
+                                {
+                                    int g = Find(id[tt[k]]);
+                                    var tb = new Bounds(wv[tt[k]], Vector3.zero); tb.Encapsulate(wv[tt[k + 1]]); tb.Encapsulate(wv[tt[k + 2]]);
+                                    groups[g] = groups.TryGetValue(g, out var e) ? (Enc(e.b, tb), e.tris + 1) : (tb, 1);
+                                }
+                                static Bounds Enc(Bounds a, Bounds c) { a.Encapsulate(c); return a; }
+                                foreach (var g in groups.Values.Where(g => g.b.max.y > 100f && Mathf.Abs(g.b.center.x - p.x) < 60f && Mathf.Abs(g.b.center.z - p.z) < 60f).OrderBy(g => g.b.min.y))
+                                    log.AppendLine($"    part tris {g.tris} | x {g.b.min.x:0.0}-{g.b.max.x:0.0} y {g.b.min.y:0.0}-{g.b.max.y:0.0} z {g.b.min.z:0.0}-{g.b.max.z:0.0}");
+                            }
+                            break;
+                        }
                         case "probe":   // renderers within 12 m (x/z) of -veyraProbe x,z
                         {
                             int pi = Array.IndexOf(args, "-veyraProbe");
