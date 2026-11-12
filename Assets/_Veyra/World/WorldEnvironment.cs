@@ -264,10 +264,12 @@ namespace VeyraCity.World
             }
 
             // D1 night: moonlit blue sky fill and a warm city-glow horizon (GTA-style readable night: shapes stay visible far
-            // from street lights; was 0.05-0.1 and rural / aerial views rendered black).
-            Color skyDay = new Color(0.48f, 0.62f, 0.82f), skyGold = new Color(0.62f, 0.48f, 0.42f), skyNight = new Color(0.19f, 0.23f, 0.35f);
-            Color eqDay = new Color(0.62f, 0.66f, 0.70f), eqGold = new Color(0.72f, 0.50f, 0.36f), eqNight = new Color(0.16f, 0.15f, 0.18f);
-            Color grDay = new Color(0.30f, 0.29f, 0.27f), grNight = new Color(0.06f, 0.06f, 0.07f);
+            // from street lights). BUG-128: the Trilight colours are gamma-space (the player builds the ambient SH from their
+            // linear values: 0.19 gave 0.026), so the night set is 6x the old linear fill (SH up 0.16 / 0.20 / 0.40, measured
+            // with a dev-build probe dump); rural and aerial night views were black.
+            Color skyDay = new Color(0.48f, 0.62f, 0.82f), skyGold = new Color(0.62f, 0.48f, 0.42f), skyNight = new Color(0.46f, 0.55f, 0.80f);
+            Color eqDay = new Color(0.62f, 0.66f, 0.70f), eqGold = new Color(0.72f, 0.50f, 0.36f), eqNight = new Color(0.40f, 0.38f, 0.44f);
+            Color grDay = new Color(0.30f, 0.29f, 0.27f), grNight = new Color(0.19f, 0.19f, 0.21f);
             Color sky = Color.Lerp(Color.Lerp(skyDay, skyGold, golden), skyNight, NightFactor);
             sky = Color.Lerp(sky, new Color(0.42f, 0.45f, 0.5f) * Mathf.Lerp(1f, 0.15f, NightFactor), Cloudiness * 0.7f);
             Color eq = Color.Lerp(Color.Lerp(eqDay, eqGold, golden), eqNight, NightFactor);
