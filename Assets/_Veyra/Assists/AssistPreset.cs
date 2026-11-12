@@ -27,6 +27,9 @@ namespace VeyraCity.Assists
         [Tooltip("Drift assist: holds the drift angle band and prevents spins (0 = off)")] [Range(0f, 1f)] public float DriftAssist = 1f;
         [Tooltip("Target drift band, degrees")] public Vector2 DriftBandDeg = new Vector2(25f, 45f);
         [Tooltip("While drift assist holds a slide: driven-wheel slip limit as a multiple of peak slip (0 = unlimited)")] public float DriftTcsPeakSlipFactor = 3f;
+        [Tooltip("BUG-087: counter-steer dead band, degrees of body slip")] public float CounterSteerDeadBandDeg = 4f;
+        [Tooltip("BUG-087: drift hold blends in from this slip angle over this many degrees")] public float DriftEngageDeg = 10f, DriftEngageRampDeg = 8f;
+        [Tooltip("BUG-087: drift-hold PD gains (deg of steer per deg of error, and per deg/s of slip rate)")] public float DriftHoldP = 0.55f, DriftHoldD = 0.09f;
 
         [Tooltip("A quick brake tap while steering at speed starts an arcade drift (player presets; off for AI)")] public bool DriftTap;
 

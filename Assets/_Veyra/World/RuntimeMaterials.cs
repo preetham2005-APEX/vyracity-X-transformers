@@ -17,6 +17,15 @@ namespace VeyraCity.World
         /// <summary>A copy of a URP/Particles/Unlit template, alpha-blended or additive.</summary>
         public static Material NewParticle(string name, bool additive) => Copy(additive ? VeyraMat.FxParticleAdditive : VeyraMat.FxParticleAlpha, name);
 
+        /// <summary>An alpha-blended particle copy that fades out where it meets geometry (soft particles); falls back to
+        /// the plain alpha template while the library has no soft slot yet.</summary>
+        public static Material NewParticleSoft(string name)
+        {
+            var lib = VeyraMaterialLibrary.Active;
+            if (lib != null && lib.TryGet(VeyraMat.FxParticleAlphaSoft, out var soft) && soft != null) return new Material(soft) { name = name };
+            return NewParticle(name, false);
+        }
+
         /// <summary>A copy of a URP/Unlit transparent template, alpha-blended or additive.</summary>
         public static Material NewUnlitTransparent(string name, bool additive) => Copy(additive ? VeyraMat.FxUnlitAdditive : VeyraMat.FxUnlitAlpha, name);
 

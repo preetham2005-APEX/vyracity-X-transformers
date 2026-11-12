@@ -31,7 +31,7 @@ namespace VeyraCity.Gameplay
                         tex.SetPixel(x, y, new Color(1f, 1f, 1f, a));
                     }
                 tex.Apply();
-                mistMat = RuntimeMaterials.NewParticle("RoadSpray", false);
+                mistMat = RuntimeMaterials.NewParticleSoft("RoadSpray");   // D2: soft particles
                 mistMat.SetTexture("_BaseMap", tex);
                 mistMat.SetColor("_BaseColor", new Color(0.78f, 0.82f, 0.88f, 0.5f));
             }

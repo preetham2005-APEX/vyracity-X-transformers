@@ -26,6 +26,8 @@ namespace VeyraCity.Gameplay
         public void Bind(VehicleController v)
         {
             car = v;
+            var f = v.Feel;   // BUG-087: gains from the HandlingFeel asset when the car has one
+            if (f != null) { RollPerG = f.LeanRollPerG; PitchPerG = f.LeanPitchPerG; MaxRoll = f.LeanMaxRoll; MaxPitch = f.LeanMaxPitch; DriftRoll = f.LeanDriftRoll; Response = f.LeanResponse; }
             var list = new System.Collections.Generic.List<Transform>();
             foreach (var t in GetComponentsInChildren<Transform>(true))
                 if (t.name.StartsWith("Body_LOD")) list.Add(t);

@@ -417,3 +417,4 @@ MonoBehaviour:
   - {fileID: 884141774432725239, guid: 2047cf0f0663ad94790897efbbee2173, type: 3}
   - {fileID: 5846904493884793480, guid: f5066b626105c8d4899ad27cfcd374d1, type: 3}
   Feel: {fileID: 11400000, guid: b7e29e17f700e3841b398f3adb78f7b2, type: 2}
+  Nitro: {fileID: 11400000, guid: f361175f3a617c244ab347f5d08f72fc, type: 2}

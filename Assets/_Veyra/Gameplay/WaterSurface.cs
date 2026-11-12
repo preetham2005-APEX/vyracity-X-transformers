@@ -12,6 +12,12 @@ namespace VeyraCity.Gameplay
     {
         void Start()
         {
+            VeyraCity.World.Streaming.CellStreamer.CellLoaded += (cell, sc) => { if (this != null) Swap(); };   // round 3: streamed cells
+            Swap();
+        }
+
+        void Swap()
+        {
             var lib = VeyraMaterialLibrary.Active;
             if (lib == null || !lib.TryGet(VeyraMat.WaterSurface, out var water) || water == null)
             {
@@ -20,7 +26,7 @@ namespace VeyraCity.Gameplay
             }
             int swapped = 0, inland = 0;
             MaterialPropertyBlock calm = null;
-            foreach (var r in FindObjectsByType<MeshRenderer>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+            foreach (var r in FindObjectsByType<MeshRenderer>(FindObjectsInactive.Include))
             {
                 var m = r.sharedMaterial;
                 if (m == null || m.name != "Water") continue;

@@ -120,10 +120,10 @@ namespace VeyraCity.Assists
             if (preset != null && preset.CounterSteer > 0f && travel > 5f && !ReverseMode)
             {
                 // Small slides: steer toward the direction of travel beyond a 4° dead band.
-                float excess = Mathf.Sign(slip) * Mathf.Max(0f, Mathf.Abs(slip) - 4f);
+                float excess = Mathf.Sign(slip) * Mathf.Max(0f, Mathf.Abs(slip) - preset.CounterSteerDeadBandDeg);
                 float gripSteer = steer + preset.CounterSteer * Mathf.Clamp(excess / maxSteerDeg, -1f, 1f);
 
-                float driftWeight = preset.DriftAssist > 0f && travel > 8f ? Mathf.Clamp01((Mathf.Abs(slip) - 10f) / 8f) : 0f;
+                float driftWeight = preset.DriftAssist > 0f && travel > 8f ? Mathf.Clamp01((Mathf.Abs(slip) - preset.DriftEngageDeg) / Mathf.Max(0.1f, preset.DriftEngageRampDeg)) : 0f;
                 if (driftWeight > 0f)
                 {
                     // Drift-angle hold: the front wheels follow the front axle's direction of travel (true counter-steer),
@@ -132,7 +132,7 @@ namespace VeyraCity.Assists
                     float inward = Mathf.Clamp(-s * playerSteer, -1f, 1f);
                     driftTarget = Mathf.Lerp(preset.DriftBandDeg.x, preset.DriftBandDeg.y, 0.5f + 0.5f * inward);
                     driftError = Mathf.Abs(slip) - driftTarget;
-                    float steerDeg = state.FrontSlipAngleDeg + s * (0.55f * driftError + 0.09f * s * slipRate);
+                    float steerDeg = state.FrontSlipAngleDeg + s * (preset.DriftHoldP * driftError + preset.DriftHoldD * s * slipRate);
                     float driftSteer = Mathf.Clamp(steerDeg / maxSteerDeg, -1f, 1f);
                     steer = Mathf.Lerp(gripSteer, driftSteer, Mathf.Clamp01(preset.CounterSteer + 0.25f) * driftWeight);
                 }

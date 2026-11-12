@@ -32,6 +32,19 @@ namespace VeyraCity.Gameplay
         static Material shardMat, dustMat;
         public float Damage01 { get; private set; }
 
+        // D2 (round 3): damage by zone, so a front hit cracks the windscreen and breaks the headlights, a rear hit the
+        // tail lamps. Zones: 0 front, 1 rear, 2 left, 3 right (by where the contact lands on the body).
+        public enum Zone { Front, Rear, Left, Right }
+        readonly float[] zones = new float[4];
+        public float ZoneDamage(Zone z) => zones[(int)z];
+        /// <summary>1 = lamps intact; falls to 0 as the front (or rear) zone passes 35-65 % damage.</summary>
+        public float LampHealth(bool front) => 1f - Mathf.Clamp01((zones[front ? 0 : 1] - 0.35f) / 0.3f);
+
+        struct GlassSlot { public Renderer R; public int Slot; public Zone Zone; public Color Base; public bool Cracked; }
+        readonly List<GlassSlot> glass = new List<GlassSlot>();
+        static Texture2D crackTex;
+        MaterialPropertyBlock glassBlock;
+
         public void Bind(VehicleController v)
         {
             car = v;
@@ -44,6 +57,7 @@ namespace VeyraCity.Gameplay
                     if (m != null && m.name.Contains("Paint") && m.HasProperty("_BaseColor")) { paint = m.GetColor("_BaseColor"); break; }
             BuildDebris();
             BuildEngineSmoke(v);
+            FindGlass(v);
             v.Collided += OnHit;
         }
 
@@ -65,7 +79,118 @@ namespace VeyraCity.Gameplay
             float depth = Mathf.Min(MaxDepth, dv * 0.013f);
             foreach (var b in bodies) Dent(b, point, normal, radius, depth);
             Damage01 = Mathf.Clamp01(Damage01 + dv / 60f);
+            var z = ZoneOf(v, point);
+            zones[(int)z] = Mathf.Clamp01(zones[(int)z] + dv / 30f);
+            CrackGlass();
             Burst(point, -normal, dv);
+        }
+
+        public static Zone ZoneOf(Vector3 local, Vector3 size)
+        {
+            // normalised position on the footprint; the end zones take the outer quarter of the length
+            float zx = size.x > 0.1f ? local.x / (size.x * 0.5f) : 0f;
+            float zz = size.z > 0.1f ? local.z / (size.z * 0.5f) : 0f;
+            if (Mathf.Abs(zz) > 0.5f && Mathf.Abs(zz) >= Mathf.Abs(zx) * 0.5f) return zz > 0f ? Zone.Front : Zone.Rear;
+            return zx < 0f ? Zone.Left : Zone.Right;
+        }
+
+        Zone ZoneOf(VehicleController v, Vector3 world)
+        {
+            var size = v.Definition != null ? v.Definition.Chassis.Dimensions : new Vector3(1.9f, 1.3f, 4.4f);
+            return ZoneOf(v.transform.InverseTransformPoint(world), size);
+        }
+
+        /// <summary>Glass slots (windscreen, side and rear windows), each assigned to the zone it sits in. Lamp lenses
+        /// are left to VehicleFX (they dim through <see cref="LampHealth"/>).</summary>
+        void FindGlass(VehicleController v)
+        {
+            var size = v.Definition != null ? v.Definition.Chassis.Dimensions : new Vector3(1.9f, 1.3f, 4.4f);
+            foreach (var r in GetComponentsInChildren<Renderer>(true))
+            {
+                if (r is ParticleSystemRenderer || r is TrailRenderer) continue;
+                var mats = r.sharedMaterials;
+                for (int i = 0; i < mats.Length; i++)
+                {
+                    var m = mats[i];
+                    if (m == null) continue;
+                    string n = m.name;
+                    if (n.StartsWith("M_Lamp") || n.Contains("Light") || n.Contains("Inside")) continue;
+                    if (!(n.Contains("Glass") || n.Contains("Window")) || !m.HasProperty("_BaseColor")) continue;
+                    var local = v.transform.InverseTransformPoint(r.bounds.center);
+                    glass.Add(new GlassSlot { R = r, Slot = i, Zone = ZoneOf(local, size), Base = m.GetColor("_BaseColor") });
+                }
+            }
+        }
+
+        /// <summary>A glass slot cracks once its zone passes 40 % damage (a whole-car hit above 70 % cracks all of it):
+        /// a procedural crack texture through the slot's own UVs, frosted a little more opaque.</summary>
+        void CrackGlass()
+        {
+            for (int i = 0; i < glass.Count; i++)
+            {
+                var g = glass[i];
+                if (g.Cracked || g.R == null) continue;
+                if (zones[(int)g.Zone] < 0.4f && Damage01 < 0.7f) continue;
+                if (crackTex == null) crackTex = CrackTexture();
+                glassBlock ??= new MaterialPropertyBlock();
+                g.R.GetPropertyBlock(glassBlock, g.Slot);
+                glassBlock.SetTexture("_BaseMap", crackTex);
+                glassBlock.SetVector("_BaseMap_ST", new Vector4(2f, 2f, 0f, 0f));
+                glassBlock.SetColor("_BaseColor", new Color(g.Base.r, g.Base.g, g.Base.b, Mathf.Max(g.Base.a, 0.1f) * 2.5f));
+                g.R.SetPropertyBlock(glassBlock, g.Slot);
+                g.Cracked = true;
+                glass[i] = g;
+            }
+        }
+
+        /// <summary>A shattered-safety-glass pattern: radial cracks from an impact point plus concentric rings, as
+        /// opaque white lines (alpha 1) over clear glass (alpha 0.4), tileable enough at 2x2.</summary>
+        static Texture2D CrackTexture()
+        {
+            const int N = 256;
+            var px = new Color32[N * N];
+            for (int i = 0; i < px.Length; i++) px[i] = new Color32(160, 165, 170, 100);
+            var rng = new System.Random(7);
+            var c = new Vector2(N * 0.45f, N * 0.55f);
+            void Line(Vector2 a, Vector2 b)
+            {
+                int steps = Mathf.CeilToInt(Vector2.Distance(a, b));
+                for (int s = 0; s <= steps; s++)
+                {
+                    var p = Vector2.Lerp(a, b, s / (float)Mathf.Max(1, steps));
+                    int x = Mathf.RoundToInt(p.x), y = Mathf.RoundToInt(p.y);
+                    if (x < 0 || y < 0 || x >= N || y >= N) continue;
+                    px[y * N + x] = new Color32(235, 240, 245, 255);
+                }
+            }
+            int rays = 14;
+            var ends = new Vector2[rays];
+            for (int k = 0; k < rays; k++)
+            {
+                float ang = (k + (float)rng.NextDouble() * 0.6f) / rays * Mathf.PI * 2f;
+                var p = c;
+                float len = N * (0.35f + 0.3f * (float)rng.NextDouble());
+                for (int seg = 0; seg < 6; seg++)
+                {
+                    ang += ((float)rng.NextDouble() - 0.5f) * 0.35f;
+                    var q = p + new Vector2(Mathf.Cos(ang), Mathf.Sin(ang)) * (len / 6f);
+                    Line(p, q);
+                    p = q;
+                }
+                ends[k] = p;
+            }
+            // concentric rings joining neighbouring rays at three radii
+            foreach (float t in new[] { 0.15f, 0.32f, 0.55f })
+                for (int k = 0; k < rays; k++)
+                {
+                    var a = Vector2.Lerp(c, ends[k], t + 0.04f * (float)rng.NextDouble());
+                    var b = Vector2.Lerp(c, ends[(k + 1) % rays], t + 0.04f * (float)rng.NextDouble());
+                    Line(a, b);
+                }
+            var tex = new Texture2D(N, N, TextureFormat.RGBA32, true) { name = "CrackedGlass", wrapMode = TextureWrapMode.Repeat };
+            tex.SetPixels32(px);
+            tex.Apply(true, true);
+            return tex;
         }
 
         /// <summary>
@@ -92,7 +217,7 @@ namespace VeyraCity.Gameplay
                         soft.SetPixel(x, y, new Color(1f, 1f, 1f, Mathf.Pow(Mathf.Clamp01(1f - d), 2f)));
                     }
                 soft.Apply();
-                dustMat = RuntimeMaterials.NewParticle("CrashDust", false);
+                dustMat = RuntimeMaterials.NewParticleSoft("CrashDust");   // D2: soft particles (also the engine smoke)
                 dustMat.SetTexture("_BaseMap", soft);
             }
             debris = MakeSystem("CrashDebris", shardMat, 80, ParticleSystemRenderMode.Billboard);

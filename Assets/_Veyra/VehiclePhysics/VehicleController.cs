@@ -72,7 +72,16 @@ namespace VeyraCity.VehiclePhysics
         public VehicleControls Controls => controls;
         public bool IsInitialised => initialised;
         public SurfaceDefinition DefaultSurface { get => defaultSurface; set => defaultSurface = value; }
-        public HandlingFeel Feel { get => feel; set => feel = value; }
+        public HandlingFeel Feel
+        {
+            get => feel;
+            set
+            {
+                feel = value;
+                // BUG-087: the feel asset may arrive after Initialize; keep the rigidbody limits in step with it
+                if (rb != null && feel != null) { rb.angularDamping = feel.AngularDamping; rb.maxAngularVelocity = feel.MaxAngularVelocity; }
+            }
+        }
         /// <summary>Raised when the body glances off or hits static world geometry: contact point, wall normal, 0..1 intensity.</summary>
         public event Action<Vector3, Vector3, float> Scraped;
         /// <summary>Raised when a flipped car was set back on its wheels.</summary>
@@ -160,11 +169,11 @@ namespace VeyraCity.VehiclePhysics
             Vector3 up = transform.up;
             Vector3 w = rb.angularVelocity;
             float yaw = Vector3.Dot(w, up);
-            float yawNew = yaw * Mathf.Pow(0.4f, Time.fixedDeltaTime * 100f);   // BUG-082: same damping at 50–120 Hz
+            float yawNew = yaw * Mathf.Pow(feel.WallYawKeepPer10ms, Time.fixedDeltaTime * 100f);   // BUG-082: same damping at 50–120 Hz
             if (firstContact && vt.sqrMagnitude > 1f)
             {
                 float toTangent = Vector3.SignedAngle(Vector3.ProjectOnPlane(transform.forward, up), vt, up) * Mathf.Deg2Rad;
-                if (Mathf.Abs(toTangent) < 1.2f) yawNew = Mathf.Clamp(toTangent * 2.5f, -2.5f, 2.5f);
+                if (Mathf.Abs(toTangent) < feel.WallAlignMaxRad) yawNew = Mathf.Clamp(toTangent * feel.WallAlignGain, -feel.WallAlignMaxRate, feel.WallAlignMaxRate);
             }
             rb.angularVelocity = w + up * (yawNew - yaw);
         }
@@ -192,8 +201,8 @@ namespace VeyraCity.VehiclePhysics
             var c = def.Chassis;
             rb.mass = Mathf.Max(50f, c.Mass);
             rb.linearDamping = 0f;
-            rb.angularDamping = 0.05f;
-            rb.maxAngularVelocity = 30f;
+            rb.angularDamping = feel != null ? feel.AngularDamping : 0.05f;   // BUG-087: from the HandlingFeel asset
+            rb.maxAngularVelocity = feel != null ? feel.MaxAngularVelocity : 30f;
 
             float halfBase = def.Wheelbase * 0.5f;
             var hubs = new Vector3[WheelCount];
@@ -612,8 +621,17 @@ namespace VeyraCity.VehiclePhysics
             Stepped?.Invoke(this);
         }
 
+        /// <summary>D2 (round 3): the feel layer's side forces act between the centre of mass and the ground under it
+        /// (<see cref="HandlingFeel.SideForceContactShare"/>), so they roll the body and shift load to the outer tyres.</summary>
+        Vector3 SideForcePoint(HandlingFeel f)
+        {
+            Vector3 com = rb.worldCenterOfMass;
+            float h = definition != null ? Mathf.Max(0.1f, definition.Chassis.CoMHeight) : 0.5f;
+            return com - transform.up * (h * Mathf.Clamp01(f.SideForceContactShare));
+        }
+
         /// <summary>
-        /// The <see cref="HandlingFeel"/> layer. All forces act at the centre of mass (no roll moment) and all torques
+        /// The <see cref="HandlingFeel"/> layer. Side forces act part-way down to the contact patches and all torques
         /// about the body's up axis or, in the air, pitch/roll toward level. Grip mode and drift mode blend by driftBlend.
         /// </summary>
         void ApplyFeel(float dt, int grounded, Vector3 v)
@@ -642,10 +660,10 @@ namespace VeyraCity.VehiclePhysics
             if (drifting)
             {
                 float inward = steerIn * driftDir;   // 1 = full steering into the corner, -1 = full counter-steer
-                bool ending = inward < 0.12f || speed * 3.6f < f.DriftMinSpeedKmh * 0.6f || controls.Brake > 0.6f
-                              || controls.WantsReverse || airTime > 0.6f;
+                bool ending = inward < f.DriftExitSteer || speed * 3.6f < f.DriftMinSpeedKmh * f.DriftExitSpeedShare
+                              || controls.Brake > f.DriftExitBrake || controls.WantsReverse || airTime > f.DriftExitAirSeconds;
                 driftExitTimer = ending ? driftExitTimer + dt : 0f;
-                if (driftExitTimer >= f.DriftExitDelay || inward < -0.5f) drifting = false;
+                if (driftExitTimer >= f.DriftExitDelay || inward < -f.DriftCancelCounterSteer) drifting = false;
             }
             driftBlend = Mathf.MoveTowards(driftBlend, drifting ? 1f : 0f, dt / Mathf.Max(0.01f, drifting ? f.DriftBlendIn : f.DriftBlendOut));
 
@@ -659,14 +677,14 @@ namespace VeyraCity.VehiclePhysics
                 }
 
                 // ---- grip mode: slide damping and yaw tracking (GTA-like) ----
-                float wGrip = (1f - driftBlend) * (1f - 0.85f * Mathf.Clamp01(controls.Handbrake));
+                float wGrip = (1f - driftBlend) * (1f - f.HandbrakeGripCut * Mathf.Clamp01(controls.Handbrake));
                 if (wGrip > 0.001f && speed > 1f)
                 {
                     float vLat = Vector3.Dot(v, right);
                     if (f.SlideDamping > 0f)
                     {
                         float a = Mathf.Clamp(-vLat * f.SlideDamping, -f.SlideDampingMaxG * g, f.SlideDampingMaxG * g);
-                        rb.AddForce(right * (a * mass * wGrip));
+                        rb.AddForceAtPosition(right * (a * mass * wGrip), SideForcePoint(f));
                     }
                     if (f.YawTracking > 0f && Mathf.Abs(fwdSpeed) > 1f)
                     {
@@ -702,7 +720,7 @@ namespace VeyraCity.VehiclePhysics
                         float loss = controls.Throttle > 0.3f ? f.DriftSpeedLoss : f.DriftSpeedLoss * 4f;
                         driftSpeed = Mathf.Max(0f, driftSpeed - driftSpeed * loss * dt + controls.ExtraThrust / mass * dt);
                         float alongNeeded = mass * (driftSpeed - vmag) * 3f - Vector3.Dot(tyreForceSum, vDir);
-                        rb.AddForce((latDir * latNeeded + vDir * alongNeeded) * driftBlend);
+                        rb.AddForceAtPosition((latDir * latNeeded + vDir * alongNeeded) * driftBlend, SideForcePoint(f));
                         // Heading: drift angle β (velocity relative to heading, + = right) toward the target set by the steering.
                         float beta = Mathf.Atan2(Vector3.Dot(vFlat, right), Mathf.Max(0.1f, Vector3.Dot(vFlat, fwd)));
                         float target = -driftDir * Mathf.Lerp(f.DriftAngleDeg.x, f.DriftAngleDeg.y, inward) * Mathf.Deg2Rad;

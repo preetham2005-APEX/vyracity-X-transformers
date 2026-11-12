@@ -512,3 +512,33 @@ run (scene teleports and streaming only), **0 exceptions**, EditMode **93/93**; 
 InstancedPropRenderer change (instanced trees/lamps now per camera).
 **Still open after round 2:** road wear does not show on the city's asphalt meshes (it does on a control patch with the same
 material); the brake-disc glow does not read through this car's rims.
+
+### Iteration 37 (2026-11-12, round 3 / D2): tuning assets, lamps by function, crash zones, activity hooks
+
+Build `Builds/IterMono` (includes the world session's uncommitted rounds 23-25), muted. Captures in
+`Screenshots/2026-11-12_iter37`, player log `Logs/A8/iter37_player.log`, tests `Logs/A8/editmode.log`.
+
+- BUG-087: nitro table, drain, Clean Boost window, Overdrive timings and drift-score limits in `NitroTuning`
+  (`Data/Tuning/NitroTuning.asset`, `GameDatabase.Nitro`); wall yaw, rigidbody limits, drift exits, handbrake grip cut and
+  body-lean gains in `HandlingFeel`; counter-steer dead band and drift-hold gains in `AssistPreset`. Defaults equal the old
+  constants (`TuningAssetTests`).
+- BUG-064: lamp slots by function (`VehicleFX.ClassifyLamp`): braking lights the rear lamps only, reverse lamps when
+  reversing, housings dark.
+- Crash damage by zone (front/rear/left/right): glass in a zone past 40 % cracks (procedural crack map through the slot UVs);
+  front/rear past 35-65 % flicker and kill the head/tail lamps. Feel-layer side forces act 35 % of the way from the centre
+  of mass to the contact patches (`HandlingFeel.SideForceContactShare`), so slides roll the body; drift dutch angle on the
+  chase camera; lamp streak length in metres; HUD damage text cached.
+- Soft particles (`VeyraMat.FxParticleAlphaSoft`, slot 1051, keyword set on the asset): crash dust, engine smoke, road and
+  traffic spray. Tyre smoke went back to the plain template after the brake close-up showed a flat grey haze (BUG-151).
+- Paint flake (`Editor/PaintFlake`): applied in this pass at tiling 24 / strength 0.18, read as grain on the close-ups, so the
+  materials were reverted; the tool now defaults to 40 / 0.07 and waits for a close-up review before it is applied again.
+- G5 activity hooks (`Gameplay/ActivityHooks`, data `Resources/Activities/activities.json` from
+  `Tools/Data/build_activities.py`): speed zones, drift zones, stunt jumps, drag strips, discoveries; results saved as
+  `ACT:<id>` event records. Player run: `activity:GAR-01:found`, speed trap `Strait Camera:219`.
+
+Results: main run **0 exceptions**, avg 56.1 FPS, p99 93 ms, worst frame 2.8 s (StreetTrees 349 ms + GC at scene setup,
+world track); driving GC 31.2 KB/frame. In-run A/B (a World route player ran at the same time, so frame times are
+not comparable): rooftops on 43.5 / off 33.1 KB/frame GC (pass 36: 26.7 / 10.2 with fewer roofs), HUD on 70.9 / off 62.5.
+EditMode **98/100**: the failures were the GPS test (13 locations; shortcuts are off-road by design and areas now route to
+the nearest road inside their radius, 5 real gaps kept as BUG-150) and `EveryBuildScene_ReferencesTheLibrary` on the world
+session's uncommitted `VeyraCity_Boot.unity`. The refined GPS test is compile-checked, not yet re-run in Unity.

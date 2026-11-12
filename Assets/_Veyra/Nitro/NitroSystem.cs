@@ -21,12 +21,13 @@ namespace VeyraCity.Nitro
         public const float MeterMax = 100f;
         public const float RaceStartAmount = 33f;
         // Mode table (spec section 2)
-        static readonly float[] TorqueMul = { 1f, 1.35f, 1.55f, 1.90f };
-        static readonly float[] SpeedCap = { 0f, 0.05f, 0.07f, 0.10f };
-        static readonly float[] ThrustAccel = { 0f, 2.4f, 3.1f, 4.4f }; // m/s^2 at standstill (x mass)
+        // BUG-087 (round 3): the mode table and timings live in a NitroTuning asset; the constants below are its defaults
+        // and stay public for callers that only need the spec values (HUD hints, tests)
         public const float StandardDrain = 20f;
         public const float CleanWindowOpen = 0.60f, CleanWindowClose = 0.85f;
         public const float OverdriveTapWindow = 0.30f, OverdriveDuration = 2f, OverdriveCooldown = 1f;
+        [Tooltip("Mode table and timings (versioned asset); the spec defaults when empty")] public NitroTuning Tuning;
+        NitroTuning T => Tuning != null ? Tuning : NitroTuning.Defaults;
 
         [Tooltip("Passive regeneration per second (1 in races, 0 in free roam)")] public float PassiveRegen;
         [Tooltip("Upgrade: multiplies all charge gains")] public float ChargeMultiplier = 1f;
@@ -41,7 +42,7 @@ namespace VeyraCity.Nitro
         public NitroMode Mode { get; private set; }
         /// <summary>0..1 actual boost strength after ramps; VFX/audio/FOV follow this.</summary>
         public float BoostScalar { get; private set; }
-        public bool CleanWindowOpenNow => Mode == NitroMode.Standard && sinceActivation >= CleanWindowOpen && sinceActivation <= CleanWindowClose;
+        public bool CleanWindowOpenNow => Mode == NitroMode.Standard && sinceActivation >= T.CleanWindowOpen && sinceActivation <= T.CleanWindowClose;
         public float SinceActivation => sinceActivation;
         public float OverdriveCooldownLeft => cooldown;
         public float ExtraThrust { get; private set; }
@@ -198,13 +199,13 @@ namespace VeyraCity.Nitro
 
             if (edge)
             {
-                bool doubleTap = now - lastTapTime <= OverdriveTapWindow;
+                bool doubleTap = now - lastTapTime <= T.OverdriveTapWindow;
                 if (doubleTap && tapStartedFull && cooldown <= 0f && Mode != NitroMode.Overdrive)
                 {
                     StartMode(NitroMode.Overdrive);
-                    overdriveLeft = OverdriveDuration;
+                    overdriveLeft = T.OverdriveDuration;
                 }
-                else if (Mode == NitroMode.Standard && !cleanUsedThisActivation && sinceActivation >= CleanWindowOpen && sinceActivation <= CleanWindowClose)
+                else if (Mode == NitroMode.Standard && !cleanUsedThisActivation && sinceActivation >= T.CleanWindowOpen && sinceActivation <= T.CleanWindowClose)
                 {
                     cleanUsedThisActivation = true;
                     CleanBoostHits++;
@@ -228,18 +229,18 @@ namespace VeyraCity.Nitro
                 case NitroMode.CleanBoost:
                     // Clean Boost window needs the button released and pressed again, so a released button
                     // inside the window keeps Standard alive until the window closes.
-                    bool keepAlive = pressed || (Mode == NitroMode.Standard && !cleanUsedThisActivation && sinceActivation < CleanWindowClose);
-                    float drain = StandardDrain * (Mode == NitroMode.CleanBoost ? 0.85f : 1f);
+                    bool keepAlive = pressed || (Mode == NitroMode.Standard && !cleanUsedThisActivation && sinceActivation < T.CleanWindowClose);
+                    float drain = T.StandardDrain * (Mode == NitroMode.CleanBoost ? 0.85f : 1f);
                     if (pressed) Consume(drain * dt);
                     if (!keepAlive || Amount <= 0f) Mode = NitroMode.Off;
                     break;
                 case NitroMode.Overdrive:
-                    Consume(MeterMax / OverdriveDuration * dt);
+                    Consume(MeterMax / T.OverdriveDuration * dt);
                     overdriveLeft -= dt;
                     if (overdriveLeft <= 0f || Amount <= 0f)
                     {
                         Mode = NitroMode.Off;
-                        cooldown = OverdriveCooldown;
+                        cooldown = T.OverdriveCooldown;
                     }
                     break;
             }
@@ -253,12 +254,12 @@ namespace VeyraCity.Nitro
             if (c.WantsReverse || c.Brake > 0.2f) { ExtraThrust = 0f; return; }
 
             int m = (int)(Mode == NitroMode.Off ? lastMode : Mode);
-            float mul = Mathf.Min(1f + (TorqueMul[m] - 1f) * PowerMultiplier, 2.5f);   // BUG-084: cap the boost torque
+            float mul = Mathf.Min(1f + (T.Torque((NitroMode)m) - 1f) * PowerMultiplier, T.MaxTorqueMul);   // BUG-084: cap the boost torque
             c.Throttle = Mathf.Max(c.Throttle, BoostScalar);
             c.TorqueScale = (c.TorqueScale > 0f ? c.TorqueScale : 1f) * Mathf.Lerp(1f, mul, BoostScalar);
             float v = Mathf.Max(0f, vehicle.State.ForwardSpeed);
-            float capV = vmax * (1f + SpeedCap[m]);
-            float thrust = ThrustAccel[m] * vehicle.Body.mass * Mathf.Max(0f, 1f - v / capV) * BoostScalar;
+            float capV = vmax * (1f + T.Cap((NitroMode)m));
+            float thrust = T.Thrust((NitroMode)m) * vehicle.Body.mass * Mathf.Max(0f, 1f - v / capV) * BoostScalar;
             ExtraThrust = thrust;
             c.ExtraThrust += thrust;
         }

@@ -17,6 +17,8 @@ namespace VeyraCity.Gameplay
         public GameObject[] TrafficModels = Array.Empty<GameObject>();
         [Tooltip("Driving style layer applied to every car the game spawns (Arcade by default; null = pure simulation)")]
         public HandlingFeel Feel;
+        [Tooltip("BUG-087: nitro mode table and timings (null = NITRO_BALANCE_SPEC defaults)")]
+        public VeyraCity.Nitro.NitroTuning Nitro;
 
         public CarEntry Car(string id)
         {

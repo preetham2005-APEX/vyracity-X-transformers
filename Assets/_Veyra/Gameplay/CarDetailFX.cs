@@ -142,6 +142,10 @@ namespace VeyraCity.Gameplay
             {
                 if (tr == null) continue;
                 tr.emitting = (boost > 0.2f || brakeTrail) && v > 15f;
+                // D2 (round 3): the streak follows the car's path with a length set in metres, not seconds: about 3 m at
+                // 60 km/h growing to 9 m at 300 km/h, so it neither hangs behind at low speed nor vanishes at top speed
+                float lengthM = Mathf.Lerp(3f, 9f, Mathf.InverseLerp(16f, 83f, v)) * (boost > 0.2f ? 1.3f : 1f);
+                tr.time = Mathf.Clamp(lengthM / Mathf.Max(5f, v), 0.05f, 0.3f);
                 tr.startColor = new Color(sc.r, sc.g, sc.b, k);
                 tr.endColor = new Color(sc.r, sc.g, sc.b, 0f);
             }

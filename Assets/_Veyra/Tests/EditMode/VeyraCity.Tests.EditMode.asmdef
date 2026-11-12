@@ -13,6 +13,7 @@
         "VeyraCity.Testing",
         "VeyraCity.Gameplay",
         "VeyraCity.Nitro",
+        "VeyraCity.UI",
         "Unity.InputSystem"
     ],
     "includePlatforms": [

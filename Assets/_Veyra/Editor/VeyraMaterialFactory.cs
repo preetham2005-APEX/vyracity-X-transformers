@@ -52,6 +52,7 @@ namespace VeyraCity.EditorTools
             new Spec(VeyraMat.FxUnlitAlpha, "T_UnlitAlpha", UrpUnlit, true, false, false),
             new Spec(VeyraMat.FxParticleAlpha, "T_ParticleAlpha", UrpParticlesUnlit, true, false, false),
             new Spec(VeyraMat.FxParticleAdditive, "T_ParticleAdditive", UrpParticlesUnlit, true, true, false),
+            new Spec(VeyraMat.FxParticleAlphaSoft, "T_ParticleAlphaSoft", UrpParticlesUnlit, true, false, false),
             new Spec(VeyraMat.DebugUnlit, "VC_Debug_Unlit", UrpUnlit, false, false, false),
             new Spec(VeyraMat.DebugMissing, "M_Debug_Missing", UrpUnlit, false, false, false),
         };
@@ -143,6 +144,16 @@ namespace VeyraCity.EditorTools
                 m.EnableKeyword("_EMISSION");
                 if (created) m.SetColor("_EmissionColor", Color.black);
                 m.globalIlluminationFlags = MaterialGlobalIlluminationFlags.EmissiveIsBlack;
+            }
+            if (spec.Key == VeyraMat.FxParticleAlphaSoft)
+            {
+                // D2: soft particles, set on the asset at edit time (no runtime keyword changes, card F1); needs the
+                // camera depth texture, which the PC URP tiers enable
+                m.SetFloat("_SoftParticlesEnabled", 1f);
+                m.SetFloat("_SoftParticlesNearFadeDistance", 0f);
+                m.SetFloat("_SoftParticlesFarFadeDistance", 1.2f);
+                m.SetVector("_SoftParticleFadeParams", new Vector4(0f, 1f / 1.2f, 0f, 0f));
+                m.EnableKeyword("_SOFTPARTICLES_ON");
             }
             if (created && spec.Key == VeyraMat.DebugMissing) m.SetColor("_BaseColor", new Color(1f, 0.35f, 0f)); // obvious orange (B3)
             m.enableInstancing = true;

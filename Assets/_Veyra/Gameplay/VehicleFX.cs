@@ -26,6 +26,27 @@ namespace VeyraCity.Gameplay
         TrailRenderer[] trails;
         Renderer[] lampRenderers;
         int[] lampSlots;
+        LampFn[] lampFns;
+
+        /// <summary>BUG-064 (round 3): what a lamp material slot does, so braking lights the brake lamps only.</summary>
+        public enum LampFn { Head, Rear, Reverse, Combined, None }
+
+        /// <summary>Classifies an imported lamp material by its name; a combined lights-and-glass material falls back to
+        /// where its renderer sits on the car (rear third = rear lamps, front third = headlights).</summary>
+        public static LampFn ClassifyLamp(string materialName, float localZ, float halfLength)
+        {
+            string n = materialName.ToLowerInvariant();
+            if (n.Contains("housing") || n.Contains("clamp") || n.Contains("chrome") || n.Contains("metal") || n.Contains("plastic")) return LampFn.None;
+            if (n.Contains("reverse")) return LampFn.Reverse;
+            if (n.Contains("brake") || n.Contains("tail") || n.Contains("red_strip") || n.Contains("rear")) return LampFn.Rear;
+            if (n.Contains("head") || n.Contains("hdlight") || n.Contains("beam") || n.Contains("day_light")) return LampFn.Head;
+            if (halfLength > 0.1f)
+            {
+                if (localZ < -0.33f * halfLength) return LampFn.Rear;
+                if (localZ > 0.33f * halfLength) return LampFn.Head;
+            }
+            return LampFn.Combined;
+        }
         float backfire, prevThrottle;
         static Material smokeMat, flameMat, sparkMat, trailMat;
         MaterialPropertyBlock flameBlock;
@@ -101,20 +122,23 @@ namespace VeyraCity.Gameplay
                     headLights[i] = l;
                 }
             }
+            // D2 (round 3): shock-cone flames instead of a stretched capsule primitive: three crossed quads along -Z with a
+            // procedural texture (white-hot core, coloured sheath, three Mach diamonds), plus embers from each exhaust
             flames = new Transform[2];
+            embers = new ParticleSystem[2];
             for (int i = 0; i < 2; i++)
             {
-                var f = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-                DestroyImmediate(f.GetComponent<Collider>());
-                f.name = "NitroFlame" + i;
+                var f = new GameObject("NitroFlame" + i);
                 f.transform.SetParent(transform, false);
-                f.transform.localPosition = new Vector3(i == 0 ? -0.35f : 0.35f, 0.32f, -d.Chassis.Dimensions.z * 0.5f - 0.25f);
-                f.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+                f.transform.localPosition = new Vector3(i == 0 ? -0.35f : 0.35f, 0.32f, -d.Chassis.Dimensions.z * 0.5f - 0.2f);
                 f.transform.localScale = Vector3.zero;
-                var r = f.GetComponent<Renderer>();
-                r.sharedMaterial = flameMat;
+                f.AddComponent<MeshFilter>().sharedMesh = FlameMesh();
+                var r = f.AddComponent<MeshRenderer>();
+                r.sharedMaterial = coneMat != null ? coneMat : flameMat;
                 r.shadowCastingMode = ShadowCastingMode.Off;
+                r.receiveShadows = false;
                 flames[i] = f.transform;
+                embers[i] = MakeEmbers(f.transform.localPosition);
             }
             var fl = new GameObject("FlameLight");
             fl.transform.SetParent(transform, false);
@@ -171,17 +195,27 @@ namespace VeyraCity.Gameplay
             v.Scraped -= OnScraped;
             v.Scraped += OnScraped;
 
-            // Imported cars: lamp materials (M_Lamp_*) glow by slot at night and under braking.
+            // Imported cars: lamp materials (M_Lamp_*) glow by slot and by function (BUG-064): headlights at night,
+            // brake/tail lamps at night and under braking, reverse lamps when reversing; housings and chrome stay dark.
             var lr = new List<Renderer>();
             var ls = new List<int>();
+            var lf = new List<LampFn>();
+            float halfLen = d.Chassis.Dimensions.z * 0.5f;
             foreach (var r in GetComponentsInChildren<Renderer>())
             {
                 var mats = r.sharedMaterials;
+                float z = transform.InverseTransformPoint(r.bounds.center).z;
                 for (int i = 0; i < mats.Length; i++)
-                    if (mats[i] != null && mats[i].name.StartsWith("M_Lamp")) { lr.Add(r); ls.Add(i); }
+                    if (mats[i] != null && mats[i].name.StartsWith("M_Lamp"))
+                    {
+                        var fn = ClassifyLamp(mats[i].name, z, halfLen);
+                        if (fn == LampFn.None) continue;
+                        lr.Add(r); ls.Add(i); lf.Add(fn);
+                    }
             }
             lampRenderers = lr.ToArray();
             lampSlots = ls.ToArray();
+            lampFns = lf.ToArray();
         }
 
         static void EnsureMaterials()
@@ -198,11 +232,121 @@ namespace VeyraCity.Gameplay
                 }
             puff.Apply();
             // Copies of the library's particle templates (card F1); null only when the library is missing (RuntimeMaterials logs it).
+            // pass 37: the soft-particle version turned a standing tyre-smoke cloud into a flat grey haze over the brake
+            // close-up (BUG-150), so tyre smoke keeps the plain template; crash dust, engine smoke and spray stay soft
             smokeMat = Particle("TyreSmoke", false, new Color(0.85f, 0.86f, 0.88f, 0.55f));
             if (smokeMat != null) smokeMat.SetTexture("_BaseMap", puff);
             flameMat = Particle("NitroFlame", true, new Color(1f, 0.55f, 0.15f, 0.8f));
+            coneMat = Particle("NitroCone", true, Color.white);
+            if (coneMat != null) coneMat.SetTexture("_BaseMap", FlameTexture());
+            emberMat = Particle("NitroEmber", true, new Color(1f, 0.7f, 0.3f, 1f));
             sparkMat = Particle("Sparks", true, new Color(1f, 0.8f, 0.45f, 1f));
             trailMat = Particle("NitroTrail", true, new Color(1f, 1f, 1f, 0.7f));
+        }
+
+        CarDamage damage;
+        bool damageLooked;
+
+        /// <summary>1 for intact lamps, 0 for smashed ones; in between the lamp flickers (a loose connection).</summary>
+        float LampFactor(bool front)
+        {
+            if (damage == null) return 1f;
+            float h = damage.LampHealth(front);
+            if (h >= 0.999f || h <= 0.001f) return h;
+            float n = Mathf.PerlinNoise(Time.time * 9f, front ? 0.3f : 5.1f);
+            return n < 1f - h ? 0.05f : 1f;
+        }
+
+        static Material coneMat, emberMat;
+        static Mesh flameMesh;
+        static Texture2D flameTex;
+        ParticleSystem[] embers;
+        float prevBoost, pulse;
+
+        /// <summary>Three quads crossed at 60 degrees along -Z (0 at the exhaust, -1 at the tip), width 1.</summary>
+        static Mesh FlameMesh()
+        {
+            if (flameMesh != null) return flameMesh;
+            var v = new List<Vector3>(); var uv = new List<Vector2>(); var t = new List<int>();
+            for (int k = 0; k < 3; k++)
+            {
+                var side = Quaternion.AngleAxis(k * 60f, Vector3.forward) * Vector3.right * 0.5f;
+                int b = v.Count;
+                v.Add(-side); v.Add(side); v.Add(-side + Vector3.back); v.Add(side + Vector3.back);
+                uv.Add(new Vector2(0, 0)); uv.Add(new Vector2(1, 0)); uv.Add(new Vector2(0, 1)); uv.Add(new Vector2(1, 1));
+                t.AddRange(new[] { b, b + 2, b + 1, b + 1, b + 2, b + 3, b, b + 1, b + 2, b + 1, b + 3, b + 2 });
+            }
+            flameMesh = new Mesh { name = "NitroShockCone" };
+            flameMesh.SetVertices(v); flameMesh.SetUVs(0, uv); flameMesh.SetTriangles(t, 0);
+            flameMesh.RecalculateBounds();
+            return flameMesh;
+        }
+
+        /// <summary>u across (0-1), v along the jet (0 at the nozzle): a white core, a sheath that narrows to the tip,
+        /// three Mach diamonds (bright nodes where the core pinches) and flicker noise. Alpha carries the shape; rgb stays
+        /// near white so the per-car _BaseColor tints it by boost mode.</summary>
+        static Texture2D FlameTexture()
+        {
+            if (flameTex != null) return flameTex;
+            const int W = 64, H = 256;
+            var px = new Color32[W * H];
+            for (int y = 0; y < H; y++)
+            {
+                float vv = (y + 0.5f) / H;
+                float radius = Mathf.Lerp(0.42f, 0.04f, Mathf.Pow(vv, 0.8f));
+                float diamonds = Mathf.Pow(Mathf.Abs(Mathf.Cos(vv * Mathf.PI * 3.5f)), 6f) * (1f - vv);
+                for (int x = 0; x < W; x++)
+                {
+                    float u = Mathf.Abs((x + 0.5f) / W - 0.5f);
+                    float sheath = Mathf.Clamp01(1f - u / radius);
+                    float core = Mathf.Clamp01(1f - u / (radius * 0.35f + 0.02f)) * (1f - vv * 0.7f);
+                    float n = Mathf.PerlinNoise(x * 0.15f, y * 0.06f);
+                    float a = Mathf.Clamp01(sheath * sheath * (0.55f + 0.45f * n) * (1f - vv * vv) + core * 0.9f + diamonds * sheath * 1.2f);
+                    float white = Mathf.Clamp01(core + diamonds * 0.8f);
+                    px[y * W + x] = new Color32(255, (byte)(255 * Mathf.Lerp(0.85f, 1f, white)), (byte)(255 * Mathf.Lerp(0.75f, 1f, white)), (byte)(255 * a));
+                }
+            }
+            flameTex = new Texture2D(W, H, TextureFormat.RGBA32, true) { name = "NitroShockCone", wrapMode = TextureWrapMode.Clamp, filterMode = FilterMode.Bilinear };
+            flameTex.SetPixels32(px);
+            flameTex.Apply(true, true);
+            return flameTex;
+        }
+
+        ParticleSystem MakeEmbers(Vector3 local)
+        {
+            var go = new GameObject("NitroEmbers");
+            go.transform.SetParent(transform, false);
+            go.transform.localPosition = local;
+            go.transform.localRotation = Quaternion.LookRotation(Vector3.back);
+            var ps = go.AddComponent<ParticleSystem>();
+            ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            var main = ps.main;
+            main.startLifetime = new ParticleSystem.MinMaxCurve(0.15f, 0.4f);
+            main.startSpeed = new ParticleSystem.MinMaxCurve(4f, 9f);
+            main.startSize = new ParticleSystem.MinMaxCurve(0.02f, 0.05f);
+            main.simulationSpace = ParticleSystemSimulationSpace.World;
+            main.maxParticles = 80;
+            main.gravityModifier = 0.4f;
+            var shape = ps.shape;
+            shape.shapeType = ParticleSystemShapeType.Cone;
+            shape.angle = 9f;
+            shape.radius = 0.04f;
+            var em = ps.emission;
+            em.rateOverTime = 0f;
+            var col = ps.colorOverLifetime;
+            col.enabled = true;
+            var g = new Gradient();
+            g.SetKeys(new[] { new GradientColorKey(new Color(1f, 0.9f, 0.6f), 0f), new GradientColorKey(new Color(1f, 0.35f, 0.05f), 1f) },
+                      new[] { new GradientAlphaKey(1f, 0f), new GradientAlphaKey(0f, 1f) });
+            col.color = g;
+            var r = go.GetComponent<ParticleSystemRenderer>();
+            r.sharedMaterial = emberMat;
+            r.renderMode = ParticleSystemRenderMode.Stretch;
+            r.velocityScale = 0.04f;
+            r.lengthScale = 1.5f;
+            r.shadowCastingMode = ShadowCastingMode.Off;
+            ps.Play();
+            return ps;
         }
 
         static Material Particle(string name, bool additive, Color colour)
@@ -280,9 +424,12 @@ namespace VeyraCity.Gameplay
                     r.SetPropertyBlock(mpb);
                 }
             }
+            // D2 (round 3): crash damage breaks lamps by zone; a half-broken lamp flickers
+            if (damage == null && !damageLooked) { damage = GetComponent<CarDamage>(); damageLooked = true; }
+            float headOk = LampFactor(true), rearOk = LampFactor(false);
             if (headRenderers != null)
             {
-                var col = new Color(1f, 0.97f, 0.9f) * (0.4f + night * 3f);
+                var col = new Color(1f, 0.97f, 0.9f) * (0.4f + night * 3f) * headOk;
                 foreach (var r in headRenderers)
                 {
                     r.GetPropertyBlock(mpb);
@@ -291,13 +438,24 @@ namespace VeyraCity.Gameplay
                 }
             }
             if (headLights != null)
-                foreach (var l in headLights) { l.enabled = night > 0.3f; l.intensity = 14f * night; }
+                foreach (var l in headLights) { l.enabled = night > 0.3f && headOk > 0.05f; l.intensity = 14f * night * headOk; }
             if (lampRenderers != null && lampRenderers.Length > 0)
             {
-                var lampCol = Color.white * (0.15f + night * 1.4f + brake * 1.6f);
-                mpb.Clear();
-                mpb.SetColor("_EmissionColor", lampCol);
-                for (int i = 0; i < lampRenderers.Length; i++) lampRenderers[i].SetPropertyBlock(mpb, lampSlots[i]);
+                bool reversing = car.Controls.WantsReverse;
+                for (int i = 0; i < lampRenderers.Length; i++)
+                {
+                    float k = lampFns[i] switch
+                    {
+                        LampFn.Head => 0.15f + night * 1.6f,
+                        LampFn.Rear => 0.15f + night * 1.0f + brake * 1.8f,
+                        LampFn.Reverse => reversing ? 1.6f : 0.05f,
+                        _ => 0.15f + night * 1.2f,
+                    };
+                    mpb.Clear();
+                    k *= lampFns[i] == LampFn.Head ? headOk : lampFns[i] == LampFn.Combined ? Mathf.Min(headOk, rearOk) : rearOk;
+                    mpb.SetColor("_EmissionColor", Color.white * k);
+                    lampRenderers[i].SetPropertyBlock(mpb, lampSlots[i]);
+                }
                 mpb.Clear();
             }
             // exhaust backfire: lifting off hard at high revs pops a short flame
@@ -314,17 +472,28 @@ namespace VeyraCity.Gameplay
             if (b < 0.01f && pop > 0f) fc = new Color(1f, 0.5f, 0.12f);
             float flick = 0.8f + 0.4f * Mathf.PerlinNoise(Time.time * 18f, 0.3f);
             float f = Mathf.Max(b, pop);
+            // a light pulse and a longer jet for 0.25 s when a boost starts (the Asphalt kick)
+            if (b > 0.2f && prevBoost <= 0.2f) pulse = 0.25f;
+            prevBoost = b;
+            pulse = Mathf.Max(0f, pulse - Time.deltaTime);
+            float kick = 1f + 1.4f * (pulse / 0.25f);
             for (int i = 0; i < flames.Length; i++)
             {
-                flames[i].localScale = f > 0.01f ? new Vector3(0.16f * Mathf.Sqrt(f), 0.45f * f * flick, 0.16f * Mathf.Sqrt(f)) : Vector3.zero;
-                flames[i].localPosition = new Vector3(flames[i].localPosition.x, flames[i].localPosition.y, -car.Definition.Chassis.Dimensions.z * 0.5f - 0.25f - 0.4f * f * flick);
+                float w = 0.24f * Mathf.Sqrt(f) * (0.9f + 0.1f * flick);
+                float len = (0.55f + 0.9f * f) * flick * kick * (b > 0.01f ? 1f : 0.6f);
+                flames[i].localScale = f > 0.01f ? new Vector3(w, w, len) : Vector3.zero;
+                if (embers != null && embers[i] != null)
+                {
+                    var em = embers[i].emission;
+                    em.rateOverTime = b > 0.2f ? 60f * b : pop > 0f ? 40f : 0f;
+                }
             }
             // BUG-081: per-renderer colour (the flame material is shared by every car)
             flameBlock ??= new MaterialPropertyBlock();
             flameBlock.SetColor("_BaseColor", new Color(fc.r, fc.g, fc.b, 0.85f));
             foreach (var fl in flames) fl.GetComponent<Renderer>().SetPropertyBlock(flameBlock);
             flameLight.color = fc;
-            flameLight.intensity = f * 6f * flick;
+            flameLight.intensity = f * 6f * flick * (1f + 2f * (pulse / 0.25f));
             if (trails != null)
                 foreach (var tr in trails)
                 {

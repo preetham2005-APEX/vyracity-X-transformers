@@ -102,6 +102,9 @@ namespace VeyraCity.World
         /// <summary>Veyra/SkyDome: clouds, haze, stars and moon over the skybox (visual iteration 5; keys 1050–1059 belong to the
         /// vehicle/visual session; built by Veyra/Materials/Build Sky Dome, SkyDomeMaterial.cs).</summary>
         SkyDome = 1050,
+        /// <summary>URP/Particles/Unlit alpha-blended with soft particles on (fades where it meets geometry: tyre smoke,
+        /// crash dust, engine smoke, spray). D2 round 3; built by Build Material Library with the keyword set on the asset.</summary>
+        FxParticleAlphaSoft = 1051,
 
         // Debug (1100–1199)
         /// <summary>URP/Unlit opaque white, for runtime debug geometry.</summary>

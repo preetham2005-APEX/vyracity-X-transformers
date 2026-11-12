@@ -69,6 +69,7 @@ namespace VeyraCity.Gameplay
         HudController hud;
         RoadWear roadWear;
         SpeedTraps speedTraps;
+        ActivityHooks activities;
         WorldMap worldMap;
         MenuController menu;
         TrafficSystem traffic;
@@ -162,6 +163,7 @@ namespace VeyraCity.Gameplay
             roadWear = gameObject.AddComponent<RoadWear>();   // iteration 24: wheel paths, oil, gutters, patches on the asphalt
             gameObject.AddComponent<SkyReflection>();         // iteration 25: reflections follow the sky (wet night roads read as snow)
             speedTraps = gameObject.AddComponent<SpeedTraps>(); // iteration 26: Forza-style speed cameras from the world data
+            activities = gameObject.AddComponent<ActivityHooks>(); // G5 (round 3): speed/drift zones, jumps, drag strips, discoveries
             hud.Build();
             menu = gameObject.AddComponent<MenuController>();
             menu.Build();
@@ -317,6 +319,9 @@ namespace VeyraCity.Gameplay
             for (int a = 0; a + 1 < argv.Length; a++) if (argv[a] == "-veyraIterAB") abFeature = argv[a + 1].Trim().ToLowerInvariant();
             var abOn = new List<float>(4096);
             var abOff = new List<float>(4096);
+            // P1 (round 3): managed allocations per frame (the audit measured 14.7 KB/frame after round 2, 3.3 in V0)
+            var gcRec = Unity.Profiling.ProfilerRecorder.StartNew(Unity.Profiling.ProfilerCategory.Memory, "GC Allocated In Frame");
+            long gcSum = 0, gcOnSum = 0, gcOffSum = 0; int gcN = 0, gcOnN = 0, gcOffN = 0;
             void SetFeature(bool on)
             {
                 switch (abFeature)
@@ -397,7 +402,7 @@ namespace VeyraCity.Gameplay
                 float nextTrace = 2.4f;
                 while (Time.time - start < seconds)
                 {
-                    if (Time.time - start > 1f) { frameMs.Add(Time.unscaledDeltaTime * 1000f); maxSlip = Mathf.Max(maxSlip, Mathf.Abs(player.State.SlipAngleDeg)); }
+                    if (Time.time - start > 1f) { frameMs.Add(Time.unscaledDeltaTime * 1000f); maxSlip = Mathf.Max(maxSlip, Mathf.Abs(player.State.SlipAngleDeg)); if (gcRec.Valid) { gcSum += gcRec.LastValue; gcN++; } }
                     if (standing && t100 < 0f && player.State.SpeedKmh >= 100f) t100 = Time.time - start;
                     if (trace != null && Time.time - start >= nextTrace)
                     {
@@ -416,7 +421,11 @@ namespace VeyraCity.Gameplay
                         float tt = Time.time - start - 1f;
                         bool on = ((int)(tt / 0.8f) & 1) == 0;
                         SetFeature(on);
-                        if (tt % 0.8f > 0.2f) (on ? abOn : abOff).Add(Time.unscaledDeltaTime * 1000f);
+                        if (tt % 0.8f > 0.2f)
+                        {
+                            (on ? abOn : abOff).Add(Time.unscaledDeltaTime * 1000f);
+                            if (gcRec.Valid) { if (on) { gcOnSum += gcRec.LastValue; gcOnN++; } else { gcOffSum += gcRec.LastValue; gcOffN++; } }
+                        }
                     }
                     yield return null;
                 }
@@ -460,7 +469,7 @@ namespace VeyraCity.Gameplay
                 // are the problem, if not the material/shader path is
                 GameObject testPatch = null;
                 Material wornMat = null;
-                foreach (var mr in FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None))
+                foreach (var mr in FindObjectsByType<MeshRenderer>())
                     if (mr.sharedMaterial != null && mr.sharedMaterial.name == "M_Asphalt_Worn") { wornMat = mr.sharedMaterial; break; }
                 if (wornMat != null)
                 {
@@ -489,7 +498,7 @@ namespace VeyraCity.Gameplay
                 // still draws the street there is what the camera really sees
                 var hidden = new List<Renderer>();
                 var spot = rt0.position + rt0.forward * 9f;
-                foreach (var mr in FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None))
+                foreach (var mr in FindObjectsByType<MeshRenderer>())
                 {
                     if (!mr.enabled || !mr.bounds.Intersects(new Bounds(spot, new Vector3(60f, 40f, 60f)))) continue;
                     foreach (var m in mr.sharedMaterials)
@@ -522,7 +531,7 @@ namespace VeyraCity.Gameplay
                     }
                     sb.Append(")");
                 }
-                foreach (var mr in FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None))
+                foreach (var mr in FindObjectsByType<MeshRenderer>())
                 {
                     var bb = mr.bounds;
                     if (probePt.x < bb.min.x || probePt.x > bb.max.x || probePt.z < bb.min.z || probePt.z > bb.max.z) continue;
@@ -661,6 +670,30 @@ namespace VeyraCity.Gameplay
                     yield return null;
                     System.IO.File.Delete(System.IO.Path.Combine(iterShotDir, "it21_tmp.png"));
                     log.Append($" speedTrap:{(SpeedTraps.Triggers > before ? SpeedTraps.LastResult : "missed")}");
+                }
+                // G5 (round 3): an activity hook fires in the player run: drive past the first garage that sits on a road
+                LocationJson gar = null;
+                RoadPath gr = null;
+                float sG = 0f;
+                foreach (var l in WorldData.Locations)
+                    if (l.category == "Garage" && WorldData.NearestRoad(l.Position, 25f, out var gh))
+                    {
+                        var cand = WorldData.Roads[gh.Road];
+                        if (cand.Path.Closed || gh.S < 120f) continue;
+                        gar = l; gr = cand; sG = gh.S;
+                        break;
+                    }
+                if (gar != null)
+                {
+                    int before = ActivityHooks.Events;
+                    yield return Drive(gr.Data.id, Mathf.Max(0f, sG - 90f) / gr.Path.Length, 140f, 10f, clear, false, 2.5f, "it22_tmp",
+                                       (t, i) => { i.Throttle = 0.6f; i.Brake = 0f; return i; }, 1.4f);
+                    float tw4 = Time.realtimeSinceStartup;
+                    while (ActivityHooks.Events == before && Time.realtimeSinceStartup - tw4 < 4f) yield return null;
+                    ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(iterShotDir, "it22_activity.png"));
+                    yield return null;
+                    System.IO.File.Delete(System.IO.Path.Combine(iterShotDir, "it22_tmp.png"));
+                    log.Append($" activity:{(ActivityHooks.Events > before ? ActivityHooks.LastEvent : "missed " + gar.id)}");
                 }
             }
             var crashDamage = player.GetComponent<CarDamage>();
@@ -822,6 +855,8 @@ namespace VeyraCity.Gameplay
             log.Append($" zebraCrossings:{Pedestrians.CrossingsStarted}");
             Debug.Log(log.ToString());
             Debug.Log(perf.ToString());
+            Debug.Log($"[IterGC] driving scenes: {(gcN > 0 ? gcSum / 1024f / gcN : 0f):0.0} KB/frame over {gcN} frames (recorder {(gcRec.Valid ? "valid" : "unavailable")})");
+            gcRec.Dispose();
             if (abFeature != null)
             {
                 SetFeature(true);
@@ -833,7 +868,7 @@ namespace VeyraCity.Gameplay
                     foreach (var x in l) sum += x;
                     return $"avg {sum / l.Count:0.00} ms, p95 {l[(int)(l.Count * 0.95f)]:0.0} ms ({l.Count} frames)";
                 }
-                Debug.Log($"[IterAB] {abFeature}: on {Stat(abOn)} | off {Stat(abOff)}");
+                Debug.Log($"[IterAB] {abFeature}: on {Stat(abOn)} | off {Stat(abOff)} | GC on {(gcOnN > 0 ? gcOnSum / 1024f / gcOnN : 0f):0.0} KB/frame, off {(gcOffN > 0 ? gcOffSum / 1024f / gcOffN : 0f):0.0} KB/frame");
             }
             yield return new WaitForSecondsRealtime(1f);
             Application.Quit();
@@ -1065,8 +1100,10 @@ namespace VeyraCity.Gameplay
             playerDriver = player.gameObject.AddComponent<VehicleDriver>();
             playerDriver.Bind(player, input, save.Settings.AssistLevel == 0 ? db.Casual : db.Advanced);
             playerDrift = player.gameObject.AddComponent<DriftScorer>();
+            playerDrift.Tuning = db.Nitro;
             playerDrift.Bind(player);
             playerNitro = player.gameObject.AddComponent<NitroSystem>();
+            playerNitro.Tuning = db.Nitro;
             playerNitro.PowerMultiplier = Upgrade.NitroMul[owned.Upgrades[Upgrade.Nitro]];
             playerNitro.ChargeMultiplier = Upgrade.NitroMul[owned.Upgrades[Upgrade.Nitro]];
             playerNitro.Bind(player, playerDriver, playerDrift);
@@ -1084,6 +1121,7 @@ namespace VeyraCity.Gameplay
             if (worldMap != null) worldMap.Track(player.transform);   // the GPS follows the new car
             if (roadWear != null) roadWear.Player = player.transform;
             if (speedTraps != null) { speedTraps.Player = player; speedTraps.Hud = hud; }
+            if (activities != null) { activities.Player = player; activities.Hud = hud; activities.Save = () => save; activities.Persist = () => { if (string.IsNullOrEmpty(iterShotDir)) SaveSystem.Save(save); }; }   // captures never write the profile
             traffic.PlayerCar = player;
             var parked = GetComponentInChildren<ParkedCars>();
             if (parked != null) parked.Player = player;
@@ -1618,6 +1656,7 @@ namespace VeyraCity.Gameplay
                 var ai = car.gameObject.AddComponent<AIRacerDriver>();
                 var nit = car.gameObject.AddComponent<NitroSystem>();
                 nit.PassiveRegen = 1f;
+                nit.Tuning = db.Nitro;
                 var part = race.AddParticipant(car.name, car, drv, false, RivalColors[i % RivalColors.Length]);
                 ai.Init(car, race, part, nit, Mathf.Clamp(skillBase + UnityEngine.Random.Range(-0.02f, 0.02f), 0.82f, 1.03f));
                 ai.Aggression = UnityEngine.Random.value;

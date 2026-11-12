@@ -91,7 +91,7 @@ namespace VeyraCity.AI
                         tex.SetPixel(x, y, new Color(1f, 1f, 1f, Mathf.Pow(Mathf.Clamp01(1f - dist), 2f)));
                     }
                 tex.Apply();
-                mistMat = RuntimeMaterials.NewParticle("TrafficSpray", false);
+                mistMat = RuntimeMaterials.NewParticleSoft("TrafficSpray");   // D2: soft particles
                 if (mistMat != null) mistMat.SetTexture("_BaseMap", tex);
             }
             for (int i = 0; i < Mathf.Min(Emitters, owner.Length); i++)

@@ -16,6 +16,9 @@ namespace VeyraCity.Nitro
         public const float MinSpeedKmh = 30f;
         public float GraceSeconds = 1.3f;
         public float MaxMultiplier = 5f;
+        [Tooltip("BUG-087: drift-scoring thresholds (the constants above when empty)")] public NitroTuning Tuning;
+        float MinAngle => Tuning != null ? Tuning.DriftMinAngleDeg : MinAngleDeg;
+        float MinSpeed => Tuning != null ? Tuning.DriftMinSpeedKmh : MinSpeedKmh;
 
         VehicleController vehicle;
 
@@ -92,7 +95,7 @@ namespace VeyraCity.Nitro
             float angle = Mathf.Abs(st.SlipAngleDeg);
             CurrentAngle = angle;
             bool progressOk = RouteProgress == null || RouteProgress() > 0.3f;
-            bool sliding = angle > MinAngleDeg && angle < 120f && st.SpeedKmh > MinSpeedKmh && st.GroundedWheels >= 2 && progressOk;
+            bool sliding = angle > MinAngle && angle < 120f && st.SpeedKmh > MinSpeed && st.GroundedWheels >= 2 && progressOk;
 
             float yaw = vehicle.transform.eulerAngles.y;
             if (sliding)
@@ -121,7 +124,7 @@ namespace VeyraCity.Nitro
                 }
                 if (!Circling)
                 {
-                    float angleFactor = Mathf.Clamp(angle, MinAngleDeg, 60f);
+                    float angleFactor = Mathf.Clamp(angle, MinAngle, Tuning != null ? Tuning.DriftMaxScoredAngleDeg : 60f);
                     ChainPoints += angleFactor * st.Speed * dt * 1.6f * Multiplier;
                 }
             }

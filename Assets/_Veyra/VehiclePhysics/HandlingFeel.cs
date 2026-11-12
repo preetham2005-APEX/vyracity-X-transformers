@@ -48,6 +48,9 @@ namespace VeyraCity.VehiclePhysics
         [Tooltip("Speed lost per second while drifting on throttle, as a fraction of the entry speed")] public float DriftSpeedLoss = 0.04f;
         [Tooltip("Seconds of straight steering (or counter-steer) that end a drift")] public float DriftExitDelay = 0.25f;
         [Tooltip("Blend in / out time, seconds")] public float DriftBlendIn = 0.2f, DriftBlendOut = 0.35f;
+        [Tooltip("BUG-087: a drift starts ending below this inward steering (fraction), or at once past this counter-steer")] public float DriftExitSteer = 0.12f, DriftCancelCounterSteer = 0.5f;
+        [Tooltip("BUG-087: a drift ends below this share of the minimum speed, above this brake input, or after this airtime (s)")] public float DriftExitSpeedShare = 0.6f, DriftExitBrake = 0.6f, DriftExitAirSeconds = 0.6f;
+        [Tooltip("BUG-087: share of grip-mode yaw control removed at full handbrake")] [Range(0f, 1f)] public float HandbrakeGripCut = 0.85f;
 
         [Header("Air")]
         [Tooltip("Auto-level gain while airborne, 1/s² (keeps the wheels down for the landing)")] public float AirLevelGain = 9f;
@@ -61,5 +64,20 @@ namespace VeyraCity.VehiclePhysics
         [Tooltip("Hits shallower than this keep their speed along the wall, degrees (0 = off)")] public float WallGlanceMaxDeg = 38f;
         [Tooltip("Share of speed lost along the wall on a glancing hit")] [Range(0f, 1f)] public float WallSpeedLoss = 0.1f;
         [Tooltip("Bounce off the wall (share of the speed into it)")] [Range(0f, 1f)] public float WallRestitution = 0.15f;
+        [Tooltip("BUG-087: yaw rate kept per 10 ms while scraping a wall (0.4 = 60 % removed)")] [Range(0f, 1f)] public float WallYawKeepPer10ms = 0.4f;
+        [Tooltip("BUG-087: on first contact, turn toward the wall tangent when within this angle (rad)")] public float WallAlignMaxRad = 1.2f;
+        [Tooltip("BUG-087: alignment yaw rate per radian off the tangent, and its limit (rad/s)")] public float WallAlignGain = 2.5f, WallAlignMaxRate = 2.5f;
+
+        [Header("Visual body lean (VehicleBodyLean)")]
+        [Tooltip("BUG-087: degrees of roll / pitch per g, their limits, extra drift roll (deg) and response (1/s)")]
+        public float LeanRollPerG = 2.4f, LeanPitchPerG = 1.8f, LeanMaxRoll = 4f, LeanMaxPitch = 2.6f, LeanDriftRoll = 1.5f, LeanResponse = 7f;
+
+        [Header("Weight transfer")]
+        [Tooltip("D2: where the feel layer's side forces act, from the centre of mass (0) down to the tyre contact patches (1). "
+               + "Above 0 they roll the body and move load onto the outer wheels like real tyre forces do")]
+        [Range(0f, 1f)] public float SideForceContactShare = 0.35f;
+
+        [Header("Rigidbody")]
+        [Tooltip("BUG-087: rigidbody angular damping and maximum angular velocity")] public float AngularDamping = 0.05f, MaxAngularVelocity = 30f;
     }
 }

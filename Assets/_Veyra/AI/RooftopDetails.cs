@@ -33,16 +33,39 @@ namespace VeyraCity.AI
 
         static long Key(int x, int z) => ((long)x << 32) ^ (uint)z;
 
-        void Scan()
+        readonly ProcMeshBuilder sharedBuilder = new ProcMeshBuilder(Slots);
+
+        /// <summary>Deterministic per-roof random numbers without allocation (xorshift32).</summary>
+        struct FastRng
         {
-            scanned = true;
-            foreach (var box in FindObjectsByType<BoxCollider>(FindObjectsSortMode.None))
-            {
+            uint s;
+            public FastRng(int seed) { s = (uint)seed * 2654435761u + 1u; if (s == 0) s = 1; }
+            public double NextDouble() { s ^= s << 13; s ^= s >> 17; s ^= s << 5; return (s & 0xFFFFFF) / 16777216.0; }
+        }
+
+        // round 3: streamed cells (world-abc's CellStreamer) bring their buildings later; at boot all 48 cells are
+        // loaded before main starts, so the first scan sees the whole city and later loads only add that cell's roofs
+        void OnEnable() => VeyraCity.World.Streaming.CellStreamer.CellLoaded += OnCellLoaded;
+        void OnDisable() => VeyraCity.World.Streaming.CellStreamer.CellLoaded -= OnCellLoaded;
+
+        void OnCellLoaded(string cell, UnityEngine.SceneManagement.Scene scene)
+        {
+            if (!scanned) return;
+            var seenKeys = new HashSet<long>();
+            foreach (var go in scene.GetRootGameObjects())
+                foreach (var box in go.GetComponentsInChildren<BoxCollider>(true)) AddRoof(box, seenKeys);
+            // cells already dressed whose roof list changed are rebuilt on the next ticks
+            foreach (var key in seenKeys)
+                if (built.TryGetValue(key, out var g)) { if (g != null) { Destroy(g.GetComponent<MeshFilter>().sharedMesh); Destroy(g); } built.Remove(key); }
+        }
+
+        void AddRoof(BoxCollider box, HashSet<long> touched)
+        {
                 var n = box.name;
-                if (!n.StartsWith("UBX_") || n.EndsWith("_Leg")) continue;
+                if (!n.StartsWith("UBX_") || n.EndsWith("_Leg")) return;
                 var t = box.transform;
                 Vector3 size = Vector3.Scale(box.size, t.lossyScale);
-                if (size.y < 12f || size.x < 9f || size.z < 9f) continue;
+                if (size.y < 12f || size.x < 9f || size.z < 9f) return;
                 Vector3 c = t.TransformPoint(box.center);
                 var roof = new Roof
                 {
@@ -57,7 +80,13 @@ namespace VeyraCity.AI
                 if (!grid.TryGetValue(key, out var list)) grid[key] = list = new List<Roof>();
                 list.Add(roof);
                 roofCount++;
-            }
+                        touched?.Add(Key(Mathf.FloorToInt(box.transform.TransformPoint(box.center).x / Cell), Mathf.FloorToInt(box.transform.TransformPoint(box.center).z / Cell)));
+        }
+
+        void Scan()
+        {
+            scanned = true;
+            foreach (var box in FindObjectsByType<BoxCollider>()) AddRoof(box, null);
             Debug.Log($"[Rooftops] {roofCount} roofs dressed");
         }
 
@@ -134,7 +163,8 @@ namespace VeyraCity.AI
                     pendingKey = best;
                     pendingRoofs = roofs;
                     pendingIndex = 0;
-                    pendingBuilder = new ProcMeshBuilder(Slots);
+                    pendingBuilder = sharedBuilder;   // round 3 P1: one builder reused (a fresh one per cell regrew its lists: ~16 KB/frame)
+                    pendingBuilder.Clear();
                 }
                 else built[best] = null;
             }
@@ -162,7 +192,7 @@ namespace VeyraCity.AI
 
         static void Dress(ProcMeshBuilder mb, Roof r)
         {
-            var rng = new System.Random(r.Seed);
+            var rng = new FastRng(r.Seed);   // round 3 P1: no System.Random (and its int[56]) per roof
             var m = Matrix4x4.TRS(r.Top, r.Rot, Vector3.one);
             float ax = r.HalfW * 0.33f, az = r.HalfL * 0.33f;   // the safe middle third
             Vector3 P(double u, double v) => new Vector3((float)(u * 2 - 1) * ax, 0f, (float)(v * 2 - 1) * az);
@@ -336,6 +366,13 @@ namespace VeyraCity.AI
                 Vector3 nrm = (mid * h + Vector3.up * r).normalized;
                 Quad(m, slot, p0, apex, apex, p1, nrm);
             }
+        }
+
+        /// <summary>Empties the builder for reuse (keeps the lists' capacity).</summary>
+        public void Clear()
+        {
+            v.Clear(); n.Clear(); uv.Clear();
+            foreach (var t in tris) t.Clear();
         }
 
         public Mesh ToMesh(string name)

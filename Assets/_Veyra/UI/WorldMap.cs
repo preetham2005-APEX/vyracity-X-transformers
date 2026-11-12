@@ -24,6 +24,12 @@ namespace VeyraCity.UI
     public sealed class WorldMap : MonoBehaviour
     {
         public bool IsOpen { get; private set; }
+        static bool buildingsDirty;
+
+        // round 3: streamed cells bring buildings the map has not drawn yet; rebuild its building layers on the next open
+        void OnEnable() => VeyraCity.World.Streaming.CellStreamer.CellLoaded += MarkDirty;
+        void OnDisable() => VeyraCity.World.Streaming.CellStreamer.CellLoaded -= MarkDirty;
+        static void MarkDirty(string cell, UnityEngine.SceneManagement.Scene s) => buildingsDirty = true;
 
         /// <summary>The waypoint (world position), shared with the minimap.</summary>
         public static Vector3? Waypoint { get; private set; }
@@ -103,6 +109,16 @@ namespace VeyraCity.UI
         {
             player = playerTransform;
             if (canvas == null) Build();
+            else if (buildingsDirty && !IsOpen)
+            {
+                buildingsDirty = false;
+                if (buildingOverlay != null) Destroy(buildingOverlay);
+                if (buildingFill != null) Destroy(buildingFill);
+                buildingOverlay = null;
+                buildingFill = null;
+                buildingImg.texture = BuildingOverlay();
+                blockImg.texture = BuildingFillTexture();
+            }
             canvas.gameObject.SetActive(true);
             IsOpen = true;
             openT = 0f;
@@ -564,7 +580,7 @@ namespace VeyraCity.UI
             var b = WorldData.Bounds;
             var mask = new byte[W * H];
             var foot = new List<Vector2[]>();
-            foreach (var box in FindObjectsByType<BoxCollider>(FindObjectsSortMode.None))
+            foreach (var box in FindObjectsByType<BoxCollider>())
             {
                 var n = box.name;
                 if (!n.StartsWith("UBX_") || n.EndsWith("_Leg")) continue;

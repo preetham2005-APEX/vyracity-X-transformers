@@ -29,6 +29,7 @@ namespace VeyraCity.UI
         Text gText, nitroHint, nitroGain;
         // iteration 29: texts are only rebuilt when what they show changes (fewer strings, fewer canvas rebuilds)
         int shownSpeed = int.MinValue, shownGear = int.MinValue, shownG = int.MinValue, shownNitroKey = int.MinValue, shownHintKey = int.MinValue;
+        int shownStatusKey = int.MinValue;
         int shownGpsKey = int.MinValue;
         string shownGpsStreet;
         float gainTimer, gainAmount;
@@ -64,7 +65,7 @@ namespace VeyraCity.UI
         NitroSystem nitro;
         DriftScorer drift;
         RaceSession race;
-        float bigTimer, driftFlashTimer;
+        float bigTimer;
         string lastDistrict;
         float districtTimer, districtCheck;
         static Texture2D mapTexture;
@@ -399,8 +400,9 @@ namespace VeyraCity.UI
                         // rim highlight (top-left brighter), darker refracting core
                         float rim = Mathf.SmoothStep(0.6f, 1f, d) * (1f - Mathf.SmoothStep(0.92f, 1f, d));
                         float hl = Mathf.Clamp01(1f - Mathf.Sqrt((x - (cx - rr * 0.35f)) * (x - (cx - rr * 0.35f)) + (y - (cy + rr * 0.35f)) * (y - (cy + rr * 0.35f))) / (rr * 0.3f));
-                        byte v = (byte)Mathf.Clamp(150f + 105f * Mathf.Max(rim, hl), 0f, 255f);
-                        byte a = (byte)Mathf.Clamp(255f * (0.22f + 0.5f * rim + 0.6f * hl), 0f, 255f);
+                        // D1: clear drops, not grey discs: near-transparent core, bright thin rim and highlight
+                        byte v = (byte)Mathf.Clamp(200f + 55f * Mathf.Max(rim, hl), 0f, 255f);
+                        byte a = (byte)Mathf.Clamp(255f * (0.04f + 0.45f * rim + 0.7f * hl), 0f, 255f);
                         var c = px[iy * n + ix];
                         if (a > c.a) px[iy * n + ix] = new Color32(v, v, (byte)Mathf.Min(255, v + 8), a);
                     }
@@ -417,14 +419,14 @@ namespace VeyraCity.UI
             var env = WorldEnvironment.Instance;
             float rain = env != null ? env.RainIntensity : 0f;
             float kmh = vehicle != null && vehicle.IsInitialised ? vehicle.State.SpeedKmh : 0f;
-            float target = rain * 0.55f * (1f - 0.5f * Mathf.Clamp01(kmh / 160f));   // wind clears the lens at speed
+            float target = rain * 0.45f * (1f - 0.5f * Mathf.Clamp01(kmh / 160f));   // wind clears the lens at speed
             var c = lensDrops.color;
             c.a = Mathf.MoveTowards(c.a, target, dt * 0.4f);
             lensDrops.color = c;
             lensDrops.enabled = c.a > 0.01f;
             if (!lensDrops.enabled) return;
             dropScroll += dt * (0.01f + 0.12f * Mathf.Clamp01(kmh / 120f));   // run down faster with speed
-            lensDrops.uvRect = new Rect(0f, dropScroll, 2.2f, 2.2f * Screen.height / Mathf.Max(1f, Screen.width));
+            lensDrops.uvRect = new Rect(0f, dropScroll, 3.4f, 3.4f * Screen.height / Mathf.Max(1f, Screen.width));   // D1: smaller drops
         }
 
         /// <summary>Iteration 26: speed-trap banner (top centre) and the camera's white flash.</summary>
@@ -721,7 +723,7 @@ namespace VeyraCity.UI
             else if (m == NitroMode.Overdrive) ShowToast("OVERDRIVE", UIKit.Accent2);
         }
 
-        void OnDriftBanked(float points) { ShowToast("DRIFT +" + Mathf.RoundToInt(points).ToString("N0"), UIKit.Accent); driftFlashTimer = 0f; }
+        void OnDriftBanked(float points) { ShowToast("DRIFT +" + Mathf.RoundToInt(points).ToString("N0"), UIKit.Accent); }
         void OnDriftFailed(float points) { if (points > 500f) ShowToast("DRIFT LOST", UIKit.Bad); }
 
         public void SetRace(RaceSession s)
@@ -853,7 +855,8 @@ namespace VeyraCity.UI
             // car status: the body tints from white to red with damage (GT / Forza style car icon)
             float dmg = Damage != null ? Mathf.Clamp01(Damage()) : 0f;
             carBody.color = Color.Lerp(new Color(1f, 1f, 1f, 0.1f), new Color(1f, 0.28f, 0.22f, 0.75f), Mathf.Clamp01(dmg * 1.6f));
-            carStatus.text = dmg > 0.04f ? $"DAMAGE {Mathf.RoundToInt(dmg * 100f)}%" : "BRAKES";
+            int skey = dmg > 0.04f ? Mathf.RoundToInt(dmg * 100f) : -1;   // P1 (round 3): rebuild the string only when it changes
+            if (skey != shownStatusKey) { shownStatusKey = skey; carStatus.text = skey >= 0 ? $"DAMAGE {skey}%" : "BRAKES"; }
             carStatus.color = dmg > 0.04f ? Color.Lerp(UIKit.Amber, UIKit.Bad, dmg) : UIKit.TextDim;
             bool blink = Mathf.Repeat(Time.unscaledTime * 6f, 1f) < 0.5f;
             Lamp(0, b > 0.08f, UIKit.Bad);

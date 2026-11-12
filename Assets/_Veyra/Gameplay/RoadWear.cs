@@ -34,11 +34,28 @@ namespace VeyraCity.Gameplay
         static Texture2D patchTex;
         readonly System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
 
+        readonly HashSet<Mesh> seen = new HashSet<Mesh>();
+        readonly HashSet<Material> configured = new HashSet<Material>();
+
         void Start()
         {
-            var seen = new HashSet<Mesh>();
+            ScanRenderers(FindObjectsByType<MeshRenderer>());
+            // round 3: streamed cells (additive scenes) bring their roads later
+            VeyraCity.World.Streaming.CellStreamer.CellLoaded += OnCellLoaded;
+        }
+
+        void OnCellLoaded(string cell, UnityEngine.SceneManagement.Scene scene)
+        {
+            var list = new List<MeshRenderer>();
+            foreach (var go in scene.GetRootGameObjects()) list.AddRange(go.GetComponentsInChildren<MeshRenderer>(true));
+            ScanRenderers(list);
+        }
+
+        void ScanRenderers(IEnumerable<MeshRenderer> renderers)
+        {
             var mats = new HashSet<Material>();
-            foreach (var mr in FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None))
+            int before = pending.Count;
+            foreach (var mr in renderers)
             {
                 // iteration 28: the concrete road deck too; iteration 31: every material slot (the eased road ribbons that lie
                 // 2-3 cm over the old surface on many streets carry [asphalt, concrete] and are what the camera sees there)
@@ -57,6 +74,7 @@ namespace VeyraCity.Gameplay
             var tex = PatchTexture();
             foreach (var m in mats)
             {
+                if (!configured.Add(m)) continue;
                 saved.Add(new Saved { M = m, Wear = m.GetFloat("_TyreWear"), Patch = m.GetFloat("_PatchAmount"), PatchScale = m.GetFloat("_PatchScale"), Macro = m.GetFloat("_MacroVariation"),
                                       Detail = m.GetTexture("_DetailMap"), DetailScale = m.GetTextureScale("_DetailMap") });
                 bool worn = m.name.Contains("Worn") || m.name.Contains("Concrete_Deck");
@@ -69,11 +87,12 @@ namespace VeyraCity.Gameplay
                 // tells whether runtime material changes reach the road renderers at all
                 m.SetFloat("_MacroVariation", 0.3f);
             }
-            Debug.Log($"[RoadWear] {pending.Count} asphalt meshes, {mats.Count} materials");
+            Debug.Log($"[RoadWear] +{pending.Count - before} asphalt meshes ({pending.Count} pending), {configured.Count} materials");
         }
 
         void OnDestroy()
         {
+            VeyraCity.World.Streaming.CellStreamer.CellLoaded -= OnCellLoaded;
             if (!Application.isEditor) return;   // players exit anyway; the editor must not keep runtime values in the assets
             foreach (var s in saved)
             {

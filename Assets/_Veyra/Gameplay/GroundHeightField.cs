@@ -21,6 +21,13 @@ namespace VeyraCity.Gameplay
 
         void Start()
         {
+            // round 3: baked once; CellBootLoader has all 48 cells loaded before main starts, and a rebake per streamed cell
+            // would be a 30-100 ms hitch and would read 0 m where far cells are unloaded
+            Bake();
+        }
+
+        void Bake()
+        {
             float t0 = Time.realtimeSinceStartup;
             var b = WorldData.Bounds;
             var terrains = Terrain.activeTerrains;
@@ -45,6 +52,7 @@ namespace VeyraCity.Gameplay
                     }
                     h[y * W + x] = v;
                 }
+            if (tex != null) Destroy(tex);
             tex = new Texture2D(W, H, TextureFormat.RFloat, false, true) { name = "VC_GroundHeight", wrapMode = TextureWrapMode.Clamp, filterMode = FilterMode.Bilinear };
             tex.SetPixelData(h, 0);
             tex.Apply(false, true);

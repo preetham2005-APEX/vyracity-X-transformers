@@ -118,3 +118,12 @@ did not happen formally. Changes made in that area, all additive, no new materia
 
 | World iterations 1–20 | ✅ (partial) | 2026-11-11 | 20 check → fix → re-run rounds on people, roads, bridges, water, trees, buildings and the neon night (Docs/WORLD_ITERATION_LOG.md). Final pass: build 0/0, review 36/36 0 pink, R_SMOKE / R_BRIDGES / R_DOWNTOWN_NIGHT PASS. Open: BUG-120 (power plan), BUG-121 (props in a junction, RoadWear patches), BUG-122 (save-guard trap, worked around), BUG-123 (player-only frame), night aerials dark |
 | World iterations 21–22 | ✅ (partial) | 2026-11-11 | Data props skipped where they stood in the carriageway (144, BUG-121 props part); pine needle cards as foliage masses, brighter. Build 0/0, review 36/36 + 8/8, 0 pink; R_SMOKE/R_BRIDGES/R_DOWNTOWN_NIGHT PASS at 93-101 FPS with a stray game window closed (BUG-120). Open: RoadWear rectangles, BUG-123, dark night aerials |
+
+## Round 3 vehicle/FX/G5 (D2 session, 2026-11-12)
+
+Iteration 37 (`Docs/VISUAL_ITERATION_LOG.md`): BUG-087 fixed (tuning in `NitroTuning` / `HandlingFeel` / `AssistPreset`
+assets), BUG-064 fixed (lamps by function), crash damage zones with cracked glass and broken lamps, contact-patch side
+forces, drift dutch camera, soft particles for dust/smoke/spray, G5 activity hooks (speed/drift zones, jumps, drag strips,
+discoveries; maps already showed the icons). Player run 0 exceptions; EditMode 98/100 (one world-session scene, one GPS
+data gap now tracked as BUG-150). Not done: paint flake (reverted after review), garage interiors, collectible items,
+delivery and time-trial routes, audio (needs licensed assets and the user's OK), roster changes (frozen on BUG-066).

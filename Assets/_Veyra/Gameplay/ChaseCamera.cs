@@ -22,6 +22,7 @@ namespace VeyraCity.Gameplay
         public enum Mode { Chase, CloseChase, Bonnet }
 
         [SerializeField] VehicleController target;
+        [Tooltip("Camera roll toward the slide at full drift, degrees")] public float DriftDutchDeg = 4f;
         public Mode CurrentMode = Mode.Chase;
         public bool LookBack;
         public float BaseFov = 60f;
@@ -184,7 +185,9 @@ namespace VeyraCity.Gameplay
             Vector3 lookAt = pos + Vector3.up * 0.85f + smoothedDir * 3.0f;
             transform.SetPositionAndRotation(camPos, Quaternion.LookRotation(lookAt - camPos, Vector3.up));
             // Asphalt-style bank: the camera rolls a little into the turn with lateral g.
-            roll = Mathf.Lerp(roll, Mathf.Clamp(-st.LateralG * 2.4f, -3.5f, 3.5f) * SpeedEffectsIntensity, 1f - Mathf.Exp(-4f * dt));
+            // D2 (round 3): plus a drift dutch angle, leaning the frame toward the slide (about 4 deg at full drift)
+            float dutch = -Mathf.Sign(st.SlipAngleDeg) * DriftDutchDeg * driftK * Mathf.Clamp01(Mathf.Abs(st.SlipAngleDeg) / 25f);
+            roll = Mathf.Lerp(roll, Mathf.Clamp(-st.LateralG * 2.4f + dutch, -6f, 6f) * SpeedEffectsIntensity, 1f - Mathf.Exp(-4f * dt));
             transform.rotation *= Quaternion.Euler(0f, 0f, roll);
             ApplyShake(dt, 1f);
             ApplyFov(speed, dt);
