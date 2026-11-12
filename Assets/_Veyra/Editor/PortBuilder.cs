@@ -92,7 +92,7 @@ namespace VeyraCity.EditorTools
                     var a = l2w.MultiplyPoint3x4(vv[tt[i]]); var b = l2w.MultiplyPoint3x4(vv[tt[i + 1]]); var c = l2w.MultiplyPoint3x4(vv[tt[i + 2]]);
                     float ax0 = Mathf.Min(a.x, Mathf.Min(b.x, c.x)), ax1 = Mathf.Max(a.x, Mathf.Max(b.x, c.x));
                     float az0 = Mathf.Min(a.z, Mathf.Min(b.z, c.z)), az1 = Mathf.Max(a.z, Mathf.Max(b.z, c.z));
-                    if (ax1 - ax0 > 300f || az1 - az0 > 300f) continue;
+                    if (ax1 - ax0 > 3000f || az1 - az0 > 3000f) continue;   // iteration 35: the apron paving uses quads over 300 m
                     for (float gx = Mathf.Floor(ax0 / 10f) * 10f; gx <= ax1; gx += 10f)
                         for (float gz = Mathf.Floor(az0 / 10f) * 10f; gz <= az1; gz += 10f)
                         {

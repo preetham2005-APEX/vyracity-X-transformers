@@ -101,7 +101,7 @@ def foliage_atlas(size=1024, seed=11):
             # iteration 21: a soft foliage body under every side twig, so the alpha-tested spray reads as a needle
             # mass and not as dark hairs (CAM_10 fringe)
             mx, my = (x0 + x1) * 0.5 + 4, (cy + y1) * 0.5
-            ellipse(img, mx, my, span * 0.62, max(7.0, span * 0.16), math.atan2(y1 - cy, x1 - x0), (0.16, 0.35, 0.13), soft=6.0)   # iteration 22: brighter (iteration 21 read near black)
+            ellipse(img, mx, my, span * 0.62, max(7.0, span * 0.16), math.atan2(y1 - cy, x1 - x0), (0.2, 0.44, 0.16), soft=6.0)   # iteration 35: linear albedo ~0.04 -> ~0.065 (D1: pines black at night)
             line(img, x0, cy, x1, y1, 1.6, twig)
             for k in range(26):
                 t = k / 26.0
@@ -109,7 +109,7 @@ def foliage_atlas(size=1024, seed=11):
                 for s2 in (-1, 1):
                     ln = rng.uniform(10, 18) * (1.0 - 0.5 * t)
                     g = rng.uniform(0.85, 1.15) * (1.0 + 0.25 * t)   # iteration 21: lighter new growth towards the tips
-                    line(img, px_, py_, px_ + ln * 0.8, py_ + s2 * ln * 0.35 + s * ln * 0.3, 2.4, (0.18 * g, 0.40 * g, 0.15 * g))   # iteration 10: fuller, lighter needles (CAM_10 read black and hairy)
+                    line(img, px_, py_, px_ + ln * 0.8, py_ + s2 * ln * 0.35 + s * ln * 0.3, 2.4, (0.22 * g, 0.5 * g, 0.18 * g))   # iteration 10: fuller, lighter needles (CAM_10 read black and hairy)
     # palm frond (bottom-left): rib along the tile diagonal with leaflets
     ox, oy = 0, 0
     line(img, ox + 16, oy + half * 0.5, ox + half - 10, oy + half * 0.5, 2.5, (0.36, 0.34, 0.16))
@@ -129,7 +129,7 @@ def foliage_atlas(size=1024, seed=11):
         ellipse(img, ox + half * 0.5 + r * math.cos(a), oy + half * 0.5 + r * math.sin(a), rng.uniform(9, 15), rng.uniform(5, 8), rng.uniform(0, math.pi), (0.14 * g, 0.28 * g, 0.10 * g))
     # dense conifer strip (x 1024-1536, full height): opaque dark-green base and thousands of short needle strokes
     x0, x1 = size, size + half
-    base = np.array((0.10, 0.27, 0.10), np.float32)   # iteration 8: greener (read grey in CAM_10)
+    base = np.array((0.13, 0.34, 0.12), np.float32)   # iteration 8: greener (read grey in CAM_10)
     img[:, x0:x1, :3] = base
     img[:, x0:x1, 3] = 1.0
     for _ in range(5200):
@@ -138,7 +138,7 @@ def foliage_atlas(size=1024, seed=11):
         ln = rng.uniform(6, 14)
         g = rng.uniform(0.7, 1.35)
         ang = rng.uniform(-0.9, 0.9)
-        line(img, x, y, x + math.sin(ang) * ln, y - math.cos(ang) * ln, 1.2, (0.13 * g, 0.36 * g, 0.13 * g))
+        line(img, x, y, x + math.sin(ang) * ln, y - math.cos(ang) * ln, 1.2, (0.16 * g, 0.45 * g, 0.16 * g))
     img[:, x0:x1, 3] = 1.0
     # dilate colour into transparent texels so mips do not bleed black
     rgb, a = img[..., :3], img[..., 3:4]

@@ -44,6 +44,9 @@
 | 32 | Ships' accommodation plain (X_PortShip) | PortBuilder: enclosed lifeboats on davits both sides, radar mast with scanner on the bridge | |
 | 33 | Quay apron empty | PortBuilder: 16 parked straddle carriers (2 per crane, clear of data container stacks within 9 m) | |
 | 34 | Airfield had no windsock; verification of 32-34 + cell-scene library holder | AirfieldBuilder: orange/white windsock 60 m off the runway at mid-length | Build 0/0; review 50/50, 0 pink; R_SMOKE 2/2, R_BRIDGES 14/14, R_DOWNTOWN_NIGHT 5/5 PASS (Silent power plan); cell scenes carry the library holder. Crane rails visible only in places (height sampling under the quay paving) |
+| 35 | Pine canopies ~0.04 linear albedo, below Appendix B vegetation range 0.05-0.20 (D1 finding, BUG-128) | vc_trees.py needle tile, foliage body and dense conifer strip ~30 % brighter (sRGB greens 0.40->0.50; ~0.065 linear average) | Noon CAM_10 green, not washed out; CAM_10 22 h wet forest reads as silhouettes; CAM_11 22 h aerial still near black |
+| 36 | Crane rails visible only in patches (X_PortShip) | PortBuilder: ground sampling keeps the large apron quads (triangles up to 3 km) | rails on the apron |
+| 37 | Final verification of rounds 23-36 | — | Build 0/0; review 50/50 (18 cameras + 7 landmark cameras, noon and 22:00 wet), 0 pink / empty / error-shader slots; R_SMOKE 2/2 (54.8 FPS), R_BRIDGES 14/14 (45.5), R_DOWNTOWN_NIGHT 5/5 (36.7) PASS on the Silent power plan (BUG-120) |
 
 ## Summary after 20 rounds (2026-11-11)
 
@@ -68,3 +71,8 @@
 - **Ground:** meadows green where no tree stands, rock on cliffs. **Lamps:** 51 derived lamps on unlit D1/D6 streets.
 - **BUG-123** fixed (tiered stepped-tower colliders). Sable Falls not built: the terrain data has no 12 m step (data gap).
 - **Derived content (data-authority deviation for the user to accept):** the pier, marina, refinery towers, port ships/rails, airfield paint, highway masts (round 18) and the 51 fill lamps are placed by deterministic rules from the data (registry points, road centrelines, crane line, district polygons), not from placement CSV rows.
+
+## Rounds 32-37 (2026-11-12)
+
+- Ship lifeboats and radar masts, straddle carriers on the apron, airfield windsock, crane rails on the apron, pine canopies inside the vegetation albedo range.
+- Final: build 0/0, review 50/50 with 0 pink, all three routes PASS. 15 rounds requested after round 22 are complete (23-37).
