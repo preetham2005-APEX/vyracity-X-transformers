@@ -35,6 +35,12 @@
 | 23 | No lighthouse on the headland (registry LM-06); a planter in the CAM_05 sight line; BUG-123 frame unexplained | New LandmarkBuilder (step `landmarks`): LM-06 lighthouse (granite plinth, 28 m white tower, red band, gallery, glazed lantern lit at night, red dome) and keeper's cottage on the registry point; PlazaBuilder radial walkways; RayDumpDiagnostic (dev players, `-veyraRayDump`) and editor steps `lmaudit`, `boxprobe` | Build 0/0; review 4/4, 0 pink. Lighthouse used texture/palette materials (orange tower) |
 | 24 | Lighthouse colours wrong (atlas materials); plaza shrubs chest-high | Lighthouse gets its own plain M_LM_* materials; plaza walkways 8 m, low shrubs (scale 0.55-0.7); landmark audit of all 28 registry landmarks (`lmaudit`) | Build 0/0; review 4/4, 0 pink. Ray dump: the CAM_05 frame is RooftopDetails' parapet ring on BLD-00148's full-footprint box at 137.7 m, round the narrow stepped crown |
 | 25 | BUG-123 frame; the data's glass cylinder shell around the new lighthouse | BuildingGenerator: stepped buildings get one UBX box per tier (base 0.55 h, 0.82 h at 78 %, h at 56 %), hangars a box to the eaves; LM-06's generic data shell is not drawn (its capsule collider stays) | Build 0/0; review 12/12, 0 pink; CAM_05 open plaza, no frame |
+| 26 | Container terminal had no ships; quay bare (CAM_15) | New PortBuilder (step `port`), all derived from crane_placements.csv: quay edge found under each crane, two crane rails per leg line, safety line, bollards, three 280 x 34 m container ships (raked bow, antifouling, 2,737 deck containers in the data's container colours, accommodation block, funnel) at the berths | Steps rc 0; first edge detection mixed terrain and quay (-2795 / -2771 m) |
+| 27 | Falcon runway and taxiways blank (CAM_17) | New AirfieldBuilder (step `airfield`) on the RW roads: piano keys, designators 36 / 18 computed from the centreline bearing, touchdown bars, aiming points, centreline dashes, edge lines, 66 edge lights (Lamp_Head, night), yellow taxiway centrelines, 3 holding positions | Build 0/0, review 50/50 |
+| 28 | Meadows read as dark soil with grass stickers (CAM_18, CAM_09) | New MeadowPass (step `meadow`, then `regrass`): forest-floor splat with no data tree within 18 m and slope < 28 deg moves 85 % to grass (29,440 texels) | CAM_18 / CAM_09 green meadows |
+| 29 | Grass texture smeared down steep cliffs (CAM_14) | MeadowPass: slopes over 32 deg blend to the rock layer (full at 44 deg), 46,238 texels | |
+| 30 | Landmarks missing (audit): Azure Pier, Azure Marina, refinery towers, clock tower plain, Sable Falls; ship edge | LandmarkBuilder: LM-08 pier (220 m on piles, 30 m Ferris wheel, 5 stalls), LM-10 marina (150 m pontoon, 20 berths, 14 yachts), LM-12 refinery (3 distillation columns, 3 flare stacks with flames, pipe racks), LM-26 clock faces + slate spire on the data building; PortBuilder edge per crane (-2792.5 to -2795) and per-berth ship offset; `-reviewExtra` cameras X_* | Build 0/0; review 50/50 (36 + 14 X_ shots), 0 pink; R_SMOKE 2/2, R_BRIDGES 14/14, R_DOWNTOWN_NIGHT 5/5 PASS (Silent power plan) |
+| 31 | Plaza bushes white/black cards after a reimport (CAM_05); BUG-129 streets without lamps; Sable Falls only 3 m | PlazaBuilder assigns M_Tree_Foliage / M_Tree_Bark to the bush instances; new LampFill (step `lampfill`, DERIVED rule, then `propclear`): 51 urban LED lamps on D1/D6 AR/CO/SV streets with no data lamp within 40 m; Sable Falls needs a 6 m terrain step and is not built (data gap: the terrain has 4 m at most) | Build 0/0; review 20/20, 0 pink; R_DOWNTOWN_NIGHT 5/5 PASS |
 
 ## Summary after 20 rounds (2026-11-11)
 
@@ -51,3 +57,11 @@
 - **Roads:** 144 data props that stood inside the rendered carriageway are skipped (BUG-121 props part).
 - **Trees:** pine needle cards painted as foliage masses (no hairy fringe), brighter greens.
 - **Frame rate:** with a stray hand-started game window closed, the Dev routes measure 93-101 FPS (iteration 20: 34-54 FPS); see BUG-120.
+
+## Rounds 23-31 (2026-11-12)
+
+- **Landmarks:** Lantern Point lighthouse, Azure Pier with Ferris wheel, Azure Marina with yachts, refinery columns and flare stacks, Millbrook clock faces and spire.
+- **Port:** ships at the berths, crane rails, bollards. **Airfield:** full runway and taxiway markings, edge lights.
+- **Ground:** meadows green where no tree stands, rock on cliffs. **Lamps:** 51 derived lamps on unlit D1/D6 streets.
+- **BUG-123** fixed (tiered stepped-tower colliders). Sable Falls not built: the terrain data has no 12 m step (data gap).
+- **Derived content (data-authority deviation for the user to accept):** the pier, marina, refinery towers, port ships/rails, airfield paint, highway masts (round 18) and the 51 fill lamps are placed by deterministic rules from the data (registry points, road centrelines, crane line, district polygons), not from placement CSV rows.

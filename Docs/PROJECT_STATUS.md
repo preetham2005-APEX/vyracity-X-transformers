@@ -119,6 +119,7 @@ did not happen formally. Changes made in that area, all additive, no new materia
 
 | World iterations 1–20 | ✅ (partial) | 2026-11-11 | 20 check → fix → re-run rounds on people, roads, bridges, water, trees, buildings and the neon night (Docs/WORLD_ITERATION_LOG.md). Final pass: build 0/0, review 36/36 0 pink, R_SMOKE / R_BRIDGES / R_DOWNTOWN_NIGHT PASS. Open: BUG-120 (power plan), BUG-121 (props in a junction, RoadWear patches), BUG-122 (save-guard trap, worked around), BUG-123 (player-only frame), night aerials dark |
 | World iterations 21–22 | ✅ (partial) | 2026-11-11 | Data props skipped where they stood in the carriageway (144, BUG-121 props part); pine needle cards as foliage masses, brighter. Build 0/0, review 36/36 + 8/8, 0 pink; R_SMOKE/R_BRIDGES/R_DOWNTOWN_NIGHT PASS at 93-101 FPS with a stray game window closed (BUG-120). Open: RoadWear rectangles, BUG-123, dark night aerials |
+| World iterations 23-31 | ✅ (partial) | 2026-11-12 | Landmarks (lighthouse, pier + Ferris wheel, marina, refinery, clock tower), port ships/rails/bollards, airfield markings, green meadows and rock cliffs, BUG-123 fixed, BUG-129 lamps (derived). Build 0/0, review 50/50 + 20/20, 0 pink; R_SMOKE / R_BRIDGES / R_DOWNTOWN_NIGHT PASS (Silent power plan, BUG-120). Deviation for the user: rule-derived content (see WORLD_ITERATION_LOG rounds 23-31). Open: BUG-130 Sable Falls data gap, RoadWear rectangles |
 
 ## Round 3 vehicle/FX/G5 (D2 session, 2026-11-12)
 

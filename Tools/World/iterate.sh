@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # World visual iteration loop (user request 2026-11-11: >= 20 check / fix / re-run rounds towards a GTA V day and
 # Cyberpunk-style wet neon night). From Git Bash in E:\VeyraCity:
-#   Tools/World/iterate.sh <N> [--no-build] [--steps roads,trees,...] [--routes "R_SMOKE ..."] [--filter CAM_05,CAM_06]
+#   Tools/World/iterate.sh <N> [--no-build] [--steps roads,trees,...] [--routes "R_SMOKE ..."] [--filter CAM_05,CAM_06] [--extra "NAME:px,py,pz:lx,ly,lz;..."]
 # 1. optional world builders (WorldBuildBatch steps) on the authoring scene
 # 2. Dev Mono build (runs Distribute To Cells)                                  -> Logs/ITER/<N>/build_unity.log
 # 3. review capture of the cameras at noon and at 22:00 wet/rain                 -> Screenshots/<date>_iter<N>/ (2 contact sheets)
@@ -9,13 +9,14 @@
 # Prints one line per step. The critique and the change list go to Docs/WORLD_ITERATION_LOG.md (written by hand).
 set -u
 N="${1:?iteration number}"; shift
-BUILD=1; STEPS=""; ROUTES=""; FILTER=""
+BUILD=1; STEPS=""; ROUTES=""; FILTER=""; EXTRA=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --no-build) BUILD=0 ;;
     --steps) STEPS="$2"; shift ;;
     --routes) ROUTES="$2"; shift ;;
     --filter) FILTER="$2"; shift ;;
+    --extra) EXTRA="$2"; shift ;;   # iteration 30: -reviewExtra NAME:px,py,pz:lx,ly,lz;...
   esac
   shift
 done
@@ -39,8 +40,9 @@ if [ "$BUILD" = 1 ]; then
   [ "$rc" = 0 ] || { grep "error CS" "$OUT/build_unity.log" | sort -u | head; exit 1; }
 fi
 FARG=""; [ -n "$FILTER" ] && FARG="-reviewFilter $FILTER"
+XARG=(); [ -n "$EXTRA" ] && XARG=(-reviewExtra "$EXTRA")
 "$EXE" -screen-width 2560 -screen-height 1440 -screen-fullscreen 1 -reviewCapture -reviewCard "iter$N" -reviewDir "$(cygpath -w "$SHOTS")" \
-  -reviewTimes 12,22w $FARG -veyraMute -logFile "$(cygpath -w "$OUT/review_player.log")"
+  -reviewTimes 12,22w $FARG "${XARG[@]}" -veyraMute -logFile "$(cygpath -w "$OUT/review_player.log")"
 echo "REVIEW: $(grep -c '^OK' "$SHOTS/review.txt" 2>/dev/null) OK, $(grep -c '^FAIL' "$SHOTS/review.txt" 2>/dev/null) FAIL; $(grep -o 'materials:.*' "$SHOTS/review.txt" | head -1) -> $SHOTS"
 for R in $ROUTES; do
   D="$OUT/Dev_$R"; mkdir -p "$D"

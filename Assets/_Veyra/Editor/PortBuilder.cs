@@ -80,7 +80,10 @@ namespace VeyraCity.EditorTools
                 if (mf.sharedMesh == null || mr == null || !mr.enabled || mf.name.EndsWith("_LOD1") || mf.name.EndsWith("_LOD2")) continue;
                 var bb = mr.bounds;
                 if (bb.max.x < x0w || bb.min.x > x1w || bb.max.z < zc - 150f || bb.min.z > zc + 60f) continue;
-                if (bb.size.y > 8f) continue;   // ground-like only (no buildings, cranes, stacks)
+                // iteration 30: ground-like = not under Buildings / Port / Landmarks (the quay paving and seawall meshes are tall)
+                bool skip = false;
+                for (var tr = mf.transform; tr != null; tr = tr.parent) if (tr.name == "Buildings" || tr.name == "Port" || tr.name == "Landmarks" || tr.name == "HighwayLights") { skip = true; break; }
+                if (skip) continue;
                 var sm = mr.sharedMaterials;
                 if (sm.Any(m => m != null && (m.name.Contains("Water") || m.name.Contains("Foam")))) continue;
                 var vv = mf.sharedMesh.vertices; var tt = mf.sharedMesh.triangles; var l2w = mf.transform.localToWorldMatrix;
@@ -100,6 +103,7 @@ namespace VeyraCity.EditorTools
                 }
             }
             var terrains = Object.FindObjectsByType<Terrain>(FindObjectsInactive.Include);
+            float cap = float.MaxValue;   // ignore surfaces above this (decks, roofs) while sampling the quay
             float GroundY(float x, float z)
             {
                 float best = float.NegativeInfinity;
@@ -111,7 +115,8 @@ namespace VeyraCity.EditorTools
                         if (Mathf.Abs(d) < 1e-6f) continue;
                         float w0 = ((b.z - c.z) * (x - c.x) + (c.x - b.x) * (z - c.z)) / d, w1 = ((c.z - a.z) * (x - c.x) + (a.x - c.x) * (z - c.z)) / d, w2 = 1f - w0 - w1;
                         if (w0 < -1e-4f || w1 < -1e-4f || w2 < -1e-4f) continue;
-                        best = Mathf.Max(best, w0 * a.y + w1 * b.y + w2 * c.y);
+                        float yy = w0 * a.y + w1 * b.y + w2 * c.y;
+                        if (yy <= cap) best = Mathf.Max(best, yy);
                     }
                 foreach (var t in terrains)
                 {
@@ -122,14 +127,24 @@ namespace VeyraCity.EditorTools
             }
 
             // quay edge under each crane: first point south of the crane centre where the ground drops below 1 m
+            // iteration 30: per crane, walk seaward from the landside leg line; water = ground more than 1.2 m below the
+            // crane's own base (the data quay level), surfaces above base + 2 m ignored
             var edges = new List<float>();
-            foreach (var c in cranes)
+            var edgeOf = new float[cranes.Count];
+            for (int ci = 0; ci < cranes.Count; ci++)
             {
+                var c = cranes[ci];
+                cap = c.y + 2f;
                 float edge = float.NaN;
-                for (float dz = 0f; dz < 90f; dz += 0.5f)
-                    if (GroundY(c.x, c.z - dz) < Sea + 1f) { edge = c.z - dz + 0.5f; break; }
+                for (float dz = -15f; dz < 90f; dz += 0.5f)
+                {
+                    float gy = Mathf.Max(GroundY(c.x - 6f, c.z - dz), GroundY(c.x + 6f, c.z - dz));
+                    if (gy < c.y - 1.2f) { edge = c.z - dz + 0.5f; break; }
+                }
+                edgeOf[ci] = edge;
                 if (!float.IsNaN(edge)) edges.Add(edge);
             }
+            cap = float.MaxValue;
             if (edges.Count == 0) return "FAIL: no quay edge found south of the crane line\n";
             float edgeZ = Median(edges);
             float quayY = Median(cranes.Select(c => c.y).ToList());
@@ -196,7 +211,8 @@ namespace VeyraCity.EditorTools
                 float cx = (cranes[i].x + cranes[i + 1].x) * 0.5f;
                 float len = Mathf.Clamp(cranes[i + 1].x - cranes[i].x + 120f, 200f, 300f);
                 float beam = 34f, free = 11f, draft = 9f;
-                float hz = edgeZ - 3f - beam * 0.5f;   // 3 m fender gap
+                float own = float.IsNaN(edgeOf[i]) ? edgeZ : float.IsNaN(edgeOf[i + 1]) ? edgeOf[i] : Mathf.Min(edgeOf[i], edgeOf[i + 1]);
+                float hz = own - 3f - beam * 0.5f;   // 3 m fender gap off this berth's own edge
                 var c = new Vector3(cx, Sea, hz);
                 bool bowEast = (ships & 1) == 0;
                 boxes += Ship(Get, c, len, beam, free, draft, bowEast, hullTop, hullBoot, hullBottom, deckM, superM, funnelM, windowM ?? superM, boxMats, rng);

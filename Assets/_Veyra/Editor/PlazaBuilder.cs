@@ -51,6 +51,7 @@ namespace VeyraCity.EditorTools
             var granite = Mat("M_Kerb_Granite"); var water = Mat("M_Water"); var wood = Mat("M_Wood_Weathered") ?? Mat("M_Facade_Wood");
             var steel = Mat("M_Metal_Painted") ?? Mat("M_Metal_Galvanized");
             var bush = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Veyra/Art/Models/Vegetation/VC_Tree_Bush.fbx");
+            var leafM = Mat("M_Tree_Foliage"); var barkM = Mat("M_Tree_Bark");
             var reg = LocationRegistry.Parse(VeyraDataValidator.LoadText("location_registry.csv"));
             var buildings = PlacementReader.Buildings(VeyraDataValidator.LoadText("world_building_placements.csv"), "world_building_placements.csv");
             var terrains = Object.FindObjectsByType<Terrain>(FindObjectsInactive.Include);
@@ -136,6 +137,15 @@ namespace VeyraCity.EditorTools
                         {
                             var g = (GameObject)PrefabUtility.InstantiatePrefab(bush);
                             g.name = "PlanterBush";
+                            // iteration 32: library foliage / bark materials (the FBX's imported MI_ materials rendered as white
+                            // and black cards after a reimport, CAM_05)
+                            foreach (var rr in g.GetComponentsInChildren<Renderer>(true))
+                            {
+                                var sm = rr.sharedMaterials;
+                                for (int mi = 0; mi < sm.Length; mi++)
+                                    sm[mi] = sm[mi] != null && sm[mi].name.Contains("Bark") ? (barkM ?? sm[mi]) : (leafM ?? sm[mi]);
+                                rr.sharedMaterials = sm;
+                            }
                             g.transform.position = p + Vector3.up * 0.55f;
                             g.transform.rotation = Quaternion.Euler(0f, (float)rng.NextDouble() * 360f, 0f) * g.transform.rotation;
                             g.transform.localScale = Vector3.one * (0.55f + (float)rng.NextDouble() * 0.15f);   // iteration 24: low shrubs (chest-high bushes walled the views)

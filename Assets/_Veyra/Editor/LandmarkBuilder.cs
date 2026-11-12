@@ -416,6 +416,58 @@ namespace VeyraCity.EditorTools
                 sb.AppendLine($"  {loc.Id} {loc.Name}: {cols2} distillation columns, {flares} flare stacks, pipe racks between them ({spots.Count} free spots within 160 m)");
             }
 
+            // ---------------------------------------------------------------- LM-26 Millbrook Clock Tower (iteration 31)
+            // the data building (shape "tower", brick) gets four clock faces under the eaves and a slate pyramid spire
+            foreach (var loc in reg.All.Where(l => l.Category == "Landmark" && l.Name.Contains("Clock")))
+            {
+                var bd = buildings.FirstOrDefault(x => x.LandmarkId == loc.Id);
+                if (bd == null) { sb.AppendLine($"  {loc.Id}: no data building with this landmark_id"); continue; }
+                var pp = new Dictionary<Material, MB>(); MB G(Material m) { if (!pp.TryGetValue(m, out var mb)) pp[m] = mb = new MB(); return mb; }
+                var q = Quaternion.Euler(0f, bd.UnityYawDeg, 0f);
+                Vector3 ax = q * Vector3.right, az = q * Vector3.forward;
+                float w = bd.FootprintWM, l = bd.FootprintLM, top = bd.UnityYBase + bd.HeightM;
+                var b0 = new Vector3(bd.UnityX, top, bd.UnityZ);
+                var mSlate = LitMat("M_LM_SlateRoof", new Color(0.16f, 0.17f, 0.19f), 0.3f, 0f, false);
+                // pyramid spire with a 0.4 m overhang and a finial
+                float hx = w * 0.5f + 0.4f, hz = l * 0.5f + 0.4f, ph = Mathf.Max(w, l) * 1.1f;
+                var apex = b0 + Vector3.up * ph;
+                Vector3[] e = { b0 - ax * hx - az * hz, b0 + ax * hx - az * hz, b0 + ax * hx + az * hz, b0 - ax * hx + az * hz };
+                for (int k = 0; k < 4; k++)
+                {
+                    var m0 = e[k]; var m1 = e[(k + 1) % 4];
+                    var mid = (m0 + m1) * 0.5f - b0;
+                    Quad(G(mSlate), m0, m1, apex, apex, mid.normalized + Vector3.up * 0.6f);
+                }
+                Frustum(G(mDark), apex - Vector3.up * 0.3f, 0.12f, 0.04f, 3.2f, 6);
+                // clock faces: 1/3 of the narrower side, centred 3.5 m under the eaves, 0.15 m proud of the wall; dial ring,
+                // 12 hour marks, hands at ten past ten
+                float r = Mathf.Min(w, l) * 0.33f;
+                foreach (var (n, half) in new[] { (az, l * 0.5f), (-az, l * 0.5f), (ax, w * 0.5f), (-ax, w * 0.5f) })
+                {
+                    var fc = b0 + n * (half + 0.15f) - Vector3.up * 3.5f;
+                    var right = Vector3.Cross(Vector3.up, n).normalized;
+                    for (int k = 0; k < 24; k++)
+                    {
+                        float a0 = k * Mathf.PI * 2f / 24f, a1 = (k + 1) * Mathf.PI * 2f / 24f;
+                        Vector3 R(float a, float rr) => fc + (right * Mathf.Cos(a) + Vector3.up * Mathf.Sin(a)) * rr;
+                        Quad(G(mWhite), fc, R(a0, r), R(a1, r), fc, n);
+                        Quad(G(mDark), R(a0, r) + n * 0.02f, R(a1, r) + n * 0.02f, R(a1, r + 0.35f) + n * 0.02f, R(a0, r + 0.35f) + n * 0.02f, n);
+                    }
+                    for (int k = 0; k < 12; k++)
+                    {
+                        float a = k * Mathf.PI / 6f;
+                        var d = right * Mathf.Cos(a) + Vector3.up * Mathf.Sin(a);
+                        Beam(G(mDark), fc + d * r * 0.78f + n * 0.04f, fc + d * r * 0.92f + n * 0.04f, k % 3 == 0 ? 0.22f : 0.12f);
+                    }
+                    var hourDir = right * Mathf.Cos(Mathf.PI * 5f / 6f) + Vector3.up * Mathf.Sin(Mathf.PI * 5f / 6f);   // 10 o'clock
+                    var minDir = right * Mathf.Cos(Mathf.PI / 6f) + Vector3.up * Mathf.Sin(Mathf.PI / 6f);              // 2 (ten past)
+                    Beam(G(mDark), fc + n * 0.07f, fc + hourDir * r * 0.5f + n * 0.07f, 0.22f);
+                    Beam(G(mDark), fc + n * 0.09f, fc + minDir * r * 0.75f + n * 0.09f, 0.14f);
+                }
+                Emit(loc.Id, loc.Name.Replace(' ', '_'), pp, new List<(Vector3, Vector3, Vector3)>());
+                sb.AppendLine($"  {loc.Id} {loc.Name}: data building {bd.Id} {w:0.0} x {l:0.0} m, eaves {top:0.0} m: four clock faces r {r:0.0} m, pyramid spire {ph:0.0} m");
+            }
+
             // ---------------------------------------------------------------- LM-25 Sable Falls
             foreach (var loc in reg.All.Where(l => l.Category == "Landmark" && l.Name.Contains("Falls")))
             {
@@ -429,7 +481,28 @@ namespace VeyraCity.EditorTools
                     float dd = Ground(c - d * 20f, c.y) - Ground(c + d * 20f, c.y);
                     if (dd > drop) { drop = dd; down = d; }
                 }
-                if (drop < 4f || mFoam == null) { sb.AppendLine($"  {loc.Id} {loc.Name}: terrain drop {drop:0.0} m over 40 m, no falls built"); continue; }
+                // iteration 30: the registry point sits on the river's first reach with no step under it; the falls are the
+                // steepest 20 m stretch of the river polyline (districts.json, flowing from Mirror Lake) within 250 m
+                var rv = WorldData.Districts?.river;
+                if (drop < 4f && rv != null && rv.Length >= 4)
+                {
+                    float bestDrop = 0f; Vector3 bestP = c, bestD = down;
+                    for (int i = 0; i + 3 < rv.Length; i += 2)
+                    {
+                        var a = new Vector3(rv[i], 0f, rv[i + 1]); var b = new Vector3(rv[i + 2], 0f, rv[i + 3]);
+                        float segLen = (b - a).magnitude; if (segLen < 0.1f) continue;
+                        var t = (b - a) / segLen;
+                        for (float u = 0f; u < segLen; u += 2f)
+                        {
+                            var p = a + t * u;
+                            if (new Vector2(p.x - c.x, p.z - c.z).sqrMagnitude > 250f * 250f) continue;
+                            float dd = Ground(p - t * 10f, c.y) - Ground(p + t * 10f, c.y);
+                            if (dd > bestDrop) { bestDrop = dd; bestP = p; bestD = t; }
+                        }
+                    }
+                    if (bestDrop > drop) { drop = bestDrop; down = bestD; c = new Vector3(bestP.x, Ground(bestP, c.y), bestP.z); }
+                }
+                if (drop < 6f || mFoam == null) { sb.AppendLine($"  {loc.Id} {loc.Name}: terrain drop {drop:0.0} m (registry point and river within 250 m) - the terrain data has no falls step (registry: 12 m); none built (data gap)"); continue; }
                 var sideF = Vector3.Cross(Vector3.up, down).normalized;
                 // lip = last point along the descent still within 1 m of the upper level; base = where the slope flattens
                 float top = Ground(c - down * 20f, c.y), lipS = -20f;
