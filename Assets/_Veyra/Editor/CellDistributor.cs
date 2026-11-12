@@ -102,6 +102,16 @@ namespace VeyraCity.EditorTools
                 var cs = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Additive);
                 var root = new GameObject(cellNames[i]) { isStatic = true };
                 SceneManager.MoveGameObjectToScene(root, cs);
+                // every build scene references the material library (MaterialArchitectureTests); a tiny holder per cell
+                var cellLib = AssetDatabase.LoadAssetAtPath<VeyraCity.World.VeyraMaterialLibrary>(VeyraMaterialFactory.LibraryPath);
+                if (cellLib != null)
+                {
+                    var holderGo = new GameObject("[VeyraMaterials]");
+                    SceneManager.MoveGameObjectToScene(holderGo, cs);
+                    var so = new SerializedObject(holderGo.AddComponent<VeyraCity.World.VeyraMaterialsHolder>());
+                    var prop = so.FindProperty("materials");
+                    if (prop != null) { prop.objectReferenceValue = cellLib; so.ApplyModifiedPropertiesWithoutUndo(); }
+                }
                 var groups = new Dictionary<string, Transform>();
                 int objects = 0;
                 var activate = new List<GameObject>();
