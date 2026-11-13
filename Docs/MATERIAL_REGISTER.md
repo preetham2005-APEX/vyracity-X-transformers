@@ -98,3 +98,36 @@ with current evidence: materials cost draw calls rather than CPU, and `FrameCost
 only 9–23 % of frame time, so existing budget figures cannot speak to it. Measure against real
 draw-call counts after import, then either keep the district split or collapse it with numbers
 attached. Nobody should author around this in the meantime.
+
+## Import mapping (2026-11-14)
+
+The import does **not** need ~108 new library slots. `VeyraModelPostprocessor` maps each FBX
+material *name* through `Tools/Blender/material_map.json` (regex, first match wins, optional
+category filter) onto an existing `VeyraMat` slot. So the work was mapping, not authoring.
+
+All 50 representative kit names now resolve; verified by running the names through the same
+first-match-wins logic the importer uses, not by inspection.
+
+### Two real mis-mappings this caught
+
+- **`VC_Roof_Tile`, `VC_Cs_RoofTile` → `SidewalkConcrete`.** The generic `tile` rule fired
+  before any roof rule, so every pitched suburban roof would have been surfaced with pavement
+  concrete. Roof rules now sit above the sidewalk rule.
+- Several painted-metal names (`VC_Steel_Dark`, `VC_Iron_Painted`, `VC_Metal_Garage`) fell
+  through to `MetalGalvanized` — bare galvanised steel — because the generic
+  `steel|metal|iron` rule caught them. They now map to `MetalPainted` ahead of it.
+
+### Known-wrong and stand-in mappings — fix before shipping
+
+| Name(s) | Maps to | Why it is wrong |
+|---|---|---|
+| all `*_Roof*`, `VC_Roof_Tile`, `VC_Roof_Shingle` | `RoofMembrane` | A dark flat commercial membrane on pitched suburban tile and shingle roofs. **Needs a `RoofTile` slot.** This is the most visible of the gaps. |
+| `VC_Fac_Fabric` | `FacadeStuccoWhite` | Awning canvas as painted render. No cloth slot exists. |
+| `VC_Trim_Paint` | `FacadeStuccoWhite` | Painted timber trim as wall render. Close, but not its own material. |
+| `VC_Hydrant_Yellow` | `MetalPaintedRed` | Yellow hydrant rendered red. Only one painted-colour slot exists. |
+| `VC_Signal_Lens` | `NeonSignalRed` | Signal lenses are red, amber and green; all three become red. |
+| the 11 district concretes, 10 district glasses | `FacadeConcrete`, `GlassCurtainBlueGrey` | The district tints we deliberately kept collapse to one material each at import, so district identity is lost. Honouring that decision needs per-district slots. |
+
+The last row matters: the decision above to keep district tints is **not** currently honoured
+by the import. Either add the slots or revisit the decision — do not leave it looking kept
+when it is not.
