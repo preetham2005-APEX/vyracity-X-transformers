@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -34,16 +35,23 @@ namespace VeyraCity.AI
         InstancedPropRenderer.Prototype proto;
         const float Cell = 100f;
         bool built;
+        IEnumerator buildJob;
+        /// <summary>Candidate positions placed between yields (BUG-170): each one costs road queries + a raycast.</summary>
+        const int YieldEvery = 4;
         float timer;
         static readonly RaycastHit[] hits = new RaycastHit[8];
 
         static long Key(int x, int z) => ((long)x << 32) ^ (uint)z;
 
-        void Build()
+        /// <summary>
+        /// Builds the slot table a few positions at a time (BUG-170). Placing every tree in one frame cost 225 ms and
+        /// drove the 2,037 ms worst frame of iteration 41; the work is the same, only spread over frames by
+        /// <see cref="FrameBudget.Pump"/>. Trees appear over the first seconds behind the menu, as before.
+        /// </summary>
+        IEnumerator BuildSteps()
         {
-            built = true;
             var ipr = InstancedPropRenderer.Instance;
-            if (ipr == null) return;
+            if (ipr == null) { built = true; yield break; }
             foreach (var p in ipr.Prototypes)
             {
                 if (p == null || p.Mesh == null || p.IsLamp) continue;
@@ -52,9 +60,9 @@ namespace VeyraCity.AI
                 proto = p;
                 break;
             }
-            if (proto == null) { Debug.Log("[StreetTrees] no broadleaf tree prototype found"); return; }
+            if (proto == null) { built = true; Debug.Log("[StreetTrees] no broadleaf tree prototype found"); yield break; }
             var roads = WorldData.Roads;
-            int count = 0;
+            int count = 0, sinceYield = 0;
             for (int r = 0; r < roads.Count; r++)
             {
                 var road = roads[r];
@@ -63,6 +71,7 @@ namespace VeyraCity.AI
                 int k = 0;
                 for (float s = 18f; s < len - 18f; s += Spacing, k++)
                 {
+                    if (++sinceYield >= YieldEvery) { sinceYield = 0; yield return null; }
                     var p = road.Path.PositionAt(s);
                     var t = road.Path.TangentAt(s);
                     var right = new Vector3(t.z, 0f, -t.x).normalized;
@@ -84,13 +93,16 @@ namespace VeyraCity.AI
                     }
                 }
             }
+            built = true;
             Debug.Log($"[StreetTrees] {count} street trees ({proto.Name})");
         }
 
         static bool NearOtherRoad(Vector3 pos, Vector3 along, int road)
         {
-            foreach (var probe in new[] { pos, pos + along * 8f, pos - along * 8f })
-                if (WorldData.NearestRoad(probe, 5f, out var hit) && hit.Road != road) return true;
+            // no array here: this runs once per candidate position and the garbage showed up in the worst frames
+            if (WorldData.NearestRoad(pos, 5f, out var a) && a.Road != road) return true;
+            if (WorldData.NearestRoad(pos + along * 8f, 5f, out var b) && b.Road != road) return true;
+            if (WorldData.NearestRoad(pos - along * 8f, 5f, out var c) && c.Road != road) return true;
             return false;
         }
 
@@ -119,13 +131,17 @@ namespace VeyraCity.AI
         {
             // iteration 10: build the slot tables right after the scene loads (behind the menu), on staggered frames,
             // instead of on the first frame of free roam
-            if (!built && Active && Time.frameCount > 5) Build();
+            // BUG-170: pump the build within a frame budget instead of doing it all on one frame.
+            if (!built && Active && Time.frameCount > 5)
+            {
+                if (buildJob == null) buildJob = BuildSteps();
+                if (!VeyraCity.Core.FrameBudget.Pump(buildJob)) buildJob = null;
+            }
             if (!Active || Player == null) return;
             timer -= Time.deltaTime;
             if (timer <= 0f)
             {
                 timer = 0.5f;
-                if (!built) Build();
                 visible.Clear();
                 far.Clear();
                 if (proto != null)

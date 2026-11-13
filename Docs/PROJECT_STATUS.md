@@ -134,3 +134,45 @@ forces, drift dutch camera, soft particles for dust/smoke/spray, G5 activity hoo
 discoveries; maps already showed the icons). Player run 0 exceptions; EditMode 98/100 (one world-session scene, one GPS
 data gap now tracked as BUG-150). Not done: paint flake (reverted after review), garage interiors, collectible items,
 delivery and time-trial routes, audio (needs licensed assets and the user's OK), roster changes (frozen on BUG-066).
+
+## AAA visual push (coordinator, 2026-11-13)
+
+Goal: close the "downtown towers still plain boxes, sparse streets → not yet ART PASS" finding from Phase E,
+against the benchmark frames in `ReferenceImages/08_GTAV_VideoCapture_2026-11-12/` (33 captures, filed with a
+usability split in `ReferenceImages/MANIFEST_FOR_CLAUDE.md`: trustworthy for composition, geometry, density and
+wear patterns; **never** for colour, black level, contrast or grade). Gap analysis: `Docs/VISUAL_GAP_ANALYSIS.md`.
+
+### ⛔ BLOCKER — Unity Editor licence
+
+Batch builds fail at exit 198: `Access token is unavailable`, `Found 0 entitlement groups and 0 free
+entitlements`, `No valid Unity Editor license found` (`Logs/A8/iter42_build.log`). No `.ulf` on the machine;
+Unity 6 takes its token from a signed-in Hub, so the sign-in has lapsed since the Release build of 2026-11-12
+18:38. **User action: open Unity Hub and sign in.** Until then no build, no batch editor method, no new
+capture — all Unity work below is blocked. Blender authoring is unaffected and continues.
+
+### Authored off-Unity while blocked (nothing in `Assets/` yet)
+
+| Set | Location | Content | LOD0 budget |
+|---|---|---|---|
+| Road infrastructure | `ArtSource/Blender/Infra/` | 18 props: kerb/gutter modules, drain inlet, W-beam guardrail, Jersey barriers, gantry trusses 12/20 m, signal mast, utility poles | 32–2,760 tris, QA 18/18 |
+| Street furniture | `ArtSource/Blender/Street/` | 16 props: hydrant, meter, bins, dumpster, post/news box, bus shelter, 5 lamps, blank signage, bollard, barrel | 3,696 tris total |
+| Vegetation | `ArtSource/Blender/Vegetation/` | 17 assets: royal/fan palms, broadleaf, cypress, pine, hedges, scrub; shared 2048 foliage + 1024 bark atlas | 80–1,552 tris |
+| Building kit set 1 | `ArtSource/Blender/Buildings/` | 8 D5 suburban houses with real window openings — the missing recipe for the 1,923 `style_kit=Suburban` records BUG-004 is written against | 7,552 tris for all 8 |
+
+All original, S4 `VC_Unity_Prop` preset, LOD0/1/2, `COL_`/`UCX_`/`UBX_` collision, per-set `MANIFEST.md`
+and a scripted re-import self-check. In flight: D1 towers + D6 low-rise, road-wear decal atlases,
+D3/D4/D8 vegetation.
+
+### Order of work once the licence is back
+
+1. **Amortise cell-load scatter spawn** — prerequisite for all placement (see BUG-170 below).
+2. Ambient bounce floor + sky gradient in `WorldEnvironment.cs`, A/B captured against `Screenshots/2026-11-12_iter41/`.
+3. Road wear decals and flush surface meshes.
+4. Place the authored sets behind the amortised spawner.
+
+### BUG-170 root cause narrowed
+
+`Logs/A8/iter41_player.log` shows the hitches are **scatter spawn spikes on cell load**, not streaming I/O:
+StreetTrees 225.1 ms, StreetFurniture 205.3, ParkedCars 166.5, Pedestrians 93.3 in the spawn frame, each
+averaging < 0.2 ms; worst frame 2,037 ms (StreetTrees + GC); cruise p99 63.2 ms with 21 frames > 50 ms.
+The fix is time-slicing the spawn, not cutting content.
