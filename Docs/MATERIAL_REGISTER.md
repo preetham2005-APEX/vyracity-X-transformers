@@ -20,11 +20,17 @@ Count: ~106–108 distinct names across six kits (buildings 68, facade 7, street
 infra 11, roadwear 1 new, vegetation 5). The exact combined list is in
 `Docs/KitHandovers/MATERIAL_REGISTER_ALL_SETS.md`.
 
-**Two materials toggle `_EMISSION` at runtime, not one:** `VC_Fac_Emissive` (facade crown
-light coves) and `VC_Neon_Emissive` (building kit). Both need coverage in
-`Assets/_Veyra/Art/Shaders/VC_Variants.shadervariants` or a material in the build, or the
-variant strips and the player throws — this is BUG-002's exact failure mode, and it works in
-the editor either way, so it must be verified in a Dev Mono player.
+**`VC_Fac_Emissive` / `VC_Neon_Emissive` need no shadervariants work — checked 2026-11-14.**
+Both Blender sessions flagged these as runtime-toggled and needing variant coverage. They do
+not, for three independent reasons, any one of which is sufficient:
+1. The importer **remaps** FBX material names to library materials, so neither authored
+   material ever enters the build — the crown cove gets `NeonWhite`.
+2. No non-Editor code in the project calls `EnableKeyword` or `DisableKeyword` at all
+   (verified by search). Runtime code sets colours on materials whose keywords are serialized.
+3. `VC_Neon.shader` declares no `_EMISSION` shader feature; emission is unconditional, so
+   there is no variant to strip.
+A reasonable thing for them to flag — they could see neither the remap nor the shaders. Do not
+re-open it.
 
 The 11 category-scheme names in the building kit (`VC_Wall_*`, `VC_Roof_*`, `VC_Trim_Paint`,
 `VC_Glass_Window`, `VC_Door_Wood`, `VC_Metal_Garage`) belong to the D5 suburban house set and
