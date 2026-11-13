@@ -1,10 +1,13 @@
 # Material register — Blender kit imports
 
 Decisions taken 2026-11-14 while the six authored kits were being prepared for import.
-Recorded here because the consolidated register they were first written into lived in a
-side-session notes folder that did not survive the session ending. The per-kit
-`ArtSource/Blender/*/MANIFEST.md` files all survive and remain the source of truth for
-per-asset detail; this file holds only the cross-kit decisions.
+Recorded here because they were first written only into a side-session notes folder outside
+the repo. **Correction:** that folder was not lost when its session ended — all nine notes are
+now copied into `Docs/KitHandovers/`, including `infra-props-handover.md` and
+`roadwear-handover.md`, whose authoring session has ended and which hold the `_MS` channel
+layout, per-atlas world sizes and the flush-collider rule that appear in no MANIFEST. The
+per-kit `ArtSource/Blender/*/MANIFEST.md` files remain the source of truth for per-asset
+detail; this file holds the cross-kit decisions.
 
 ## Why this matters
 
@@ -14,8 +17,18 @@ fails if more than 5 % fall back to `M_Debug_Missing`. The FBX exports carry slo
 only. So every name below needs a library slot or the import errors.
 
 Count: ~106–108 distinct names across six kits (buildings 68, facade 7, street furniture 19,
-infra 11, roadwear 1 new, vegetation 5). Re-consolidate the exact list from the six
-MANIFESTs; the earlier combined list is gone.
+infra 11, roadwear 1 new, vegetation 5). The exact combined list is in
+`Docs/KitHandovers/MATERIAL_REGISTER_ALL_SETS.md`.
+
+**Two materials toggle `_EMISSION` at runtime, not one:** `VC_Fac_Emissive` (facade crown
+light coves) and `VC_Neon_Emissive` (building kit). Both need coverage in
+`Assets/_Veyra/Art/Shaders/VC_Variants.shadervariants` or a material in the build, or the
+variant strips and the player throws — this is BUG-002's exact failure mode, and it works in
+the editor either way, so it must be verified in a Dev Mono player.
+
+The 11 category-scheme names in the building kit (`VC_Wall_*`, `VC_Roof_*`, `VC_Trim_Paint`,
+`VC_Glass_Window`, `VC_Door_Wood`, `VC_Metal_Garage`) belong to the D5 suburban house set and
+are deliberately not district-prefixed, per the standing rule below.
 
 ## Merged duplicate pairs
 
