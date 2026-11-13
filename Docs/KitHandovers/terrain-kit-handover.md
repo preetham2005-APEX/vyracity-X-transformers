@@ -5,7 +5,8 @@ Nothing in `Assets/`, no Unity, no commits, no branch switch. `Vegetation/` and 
 read but not modified.
 
 ## Headline numbers
-- 13 rock assets + 6 far-tree impostors. LOD0 total **7,294 tris**; impostors are **4 tris each**.
+- 13 rock assets + 6 far-tree impostors. LOD0 total **7,306 tris**; impostors are **6 tris each**
+  (3 cards: two crossed vertical + one horizontal).
 - **2 new materials** (`M_Veyra_Rock`, `M_Veyra_Impostor`); the fallen logs reuse `M_Veyra_Bark`.
   Whole natural world across three kits = **5 materials**.
 - Rock is a **tiling** texture set, not an atlas: 410 px/m at a 2.5 m repeat, one material.
