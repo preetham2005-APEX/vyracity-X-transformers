@@ -185,6 +185,26 @@
     {
       "pattern": "bark|trunk",
       "key": "Bark"
+    },
+    {
+      "pattern": "panel|clad|corrugat|sheet.?metal",
+      "key": "FacadeMetalPanel"
+    },
+    {
+      "pattern": "poster",
+      "key": "SignBacklit"
+    },
+    {
+      "pattern": "board|siding",
+      "key": "FacadeWood"
+    },
+    {
+      "pattern": "trim",
+      "key": "FacadeStuccoWhite"
+    },
+    {
+      "pattern": "paint|retro",
+      "key": "MetalPainted"
     }
   ],
   "category_defaults": {
@@ -198,6 +218,7 @@
   "_import_notes": [
     "Blender kit imports 2026-11-14 (six authored kits). Specific first: first match wins, and several of these would otherwise be caught by the generic metal/concrete/glass rules below and mapped wrong.",
     "roof BEFORE the generic sidewalk rule: 'tile' matched sidewalk first, so VC_Roof_Tile and VC_Cs_RoofTile were resolving to pavement concrete on pitched suburban roofs.",
-    "STAND-INS, not correct materials. No cloth slot exists, and painted timber trim has no slot of its own; both land on a diffuse painted white. Replace when a Fabric and a TrimPaint slot are added - see Docs/MATERIAL_REGISTER.md."
+    "STAND-INS, not correct materials. No cloth slot exists, and painted timber trim has no slot of its own; both land on a diffuse painted white. Replace when a Fabric and a TrimPaint slot are added - see Docs/MATERIAL_REGISTER.md.",
+    "Kit nodes have NO category: CategoryOf() only matches chunk and kit naming patterns, which the authored kit models do not use. So every rule carrying \"category\" is inert for them. The trailing uncategorised rules above are the fallbacks that category-filtered rules would otherwise have provided. Verify any new rule with cat=None."
   ]
 }
