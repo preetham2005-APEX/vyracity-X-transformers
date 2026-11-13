@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -28,6 +29,11 @@ namespace VeyraCity.AI
         static Material[] mats;
         static readonly int EmissionId = Shader.PropertyToID("_EmissionColor");
         bool scanned;
+        /// <summary>A cell arrived while the scan was running, so the snapshot missed it (BUG-170).</summary>
+        bool rescan;
+        IEnumerator scanJob;
+        /// <summary>Colliders tested between yields (BUG-170): each one costs a name test and a transform.</summary>
+        const int YieldEvery = 256;
         float timer;
         int roofCount;
 
@@ -48,15 +54,46 @@ namespace VeyraCity.AI
         void OnEnable() => VeyraCity.World.Streaming.CellStreamer.CellLoaded += OnCellLoaded;
         void OnDisable() => VeyraCity.World.Streaming.CellStreamer.CellLoaded -= OnCellLoaded;
 
+        // BUG-170: reused across cell loads. A cell streaming back in used to allocate a HashSet plus one array per
+        // root object and one per GetComponentsInChildren call; that garbage landed in the streaming frames.
+        readonly HashSet<long> seenKeys = new HashSet<long>();
+        readonly List<GameObject> rootBuf = new List<GameObject>();
+        readonly List<BoxCollider> boxBuf = new List<BoxCollider>();
+
         void OnCellLoaded(string cell, UnityEngine.SceneManagement.Scene scene)
         {
-            if (!scanned) return;
-            var seenKeys = new HashSet<long>();
-            foreach (var go in scene.GetRootGameObjects())
-                foreach (var box in go.GetComponentsInChildren<BoxCollider>(true)) AddRoof(box, seenKeys);
+            // BUG-170: the scan snapshots the collider list, so a cell arriving mid-scan is in neither the snapshot
+            // nor this path. Flag it and the scan runs again; AddRoof dedupes, so the second pass only picks up what
+            // the first could not see. Doing the work here instead would undo the budget - at boot all 48 cells land
+            // at once, which is the whole-city scan again, on the loading frames.
+            if (!scanned) { rescan = true; return; }
+            seenKeys.Clear();
+            rootBuf.Clear();
+            scene.GetRootGameObjects(rootBuf);
+            for (int g = 0; g < rootBuf.Count; g++)
+            {
+                rootBuf[g].GetComponentsInChildren(true, boxBuf);
+                for (int i = 0; i < boxBuf.Count; i++) AddRoof(boxBuf[i], seenKeys);
+            }
             // cells already dressed whose roof list changed are rebuilt on the next ticks
             foreach (var key in seenKeys)
                 if (built.TryGetValue(key, out var g)) { if (g != null) { Destroy(g.GetComponent<MeshFilter>().sharedMesh); Destroy(g); } built.Remove(key); }
+        }
+
+        // BUG-170: all 48 cells load at boot and far ones stream out and back in; a reloaded cell's roofs are already in the
+        // grid, so they are recognised by name and position (0.5 m) and neither added twice nor rebuilt
+        readonly HashSet<long> knownRoofs = new HashSet<long>();
+
+        static long RoofId(string name, Vector3 c)
+        {
+            unchecked
+            {
+                long h = name.GetHashCode();
+                h = h * 486187739 + Mathf.RoundToInt(c.x * 2f);
+                h = h * 486187739 + Mathf.RoundToInt(c.y * 2f);
+                h = h * 486187739 + Mathf.RoundToInt(c.z * 2f);
+                return h;
+            }
         }
 
         void AddRoof(BoxCollider box, HashSet<long> touched)
@@ -67,6 +104,7 @@ namespace VeyraCity.AI
                 Vector3 size = Vector3.Scale(box.size, t.lossyScale);
                 if (size.y < 12f || size.x < 9f || size.z < 9f) return;
                 Vector3 c = t.TransformPoint(box.center);
+                if (!knownRoofs.Add(RoofId(n, c))) return;
                 var roof = new Roof
                 {
                     Top = c + Vector3.up * (size.y * 0.5f),
@@ -80,14 +118,35 @@ namespace VeyraCity.AI
                 if (!grid.TryGetValue(key, out var list)) grid[key] = list = new List<Roof>();
                 list.Add(roof);
                 roofCount++;
-                        touched?.Add(Key(Mathf.FloorToInt(box.transform.TransformPoint(box.center).x / Cell), Mathf.FloorToInt(box.transform.TransformPoint(box.center).z / Cell)));
+                touched?.Add(key);
         }
 
-        void Scan()
+        /// <summary>
+        /// Builds the roof table a few hundred colliders at a time (BUG-170). The whole-city scan cost 108 ms on one
+        /// frame; the work is identical, only spread by <see cref="FrameBudget.Pump"/>. No cell may be dressed until
+        /// this finishes: a cell built mid-scan would cache a mesh missing the roofs found after it, and an empty cell
+        /// caches as null, so it would never be revisited.
+        /// </summary>
+        IEnumerator ScanSteps()
         {
+            int sinceYield = 0, passes = 0, colliders = 0;
+            do
+            {
+                rescan = false;
+                passes++;
+                // FindObjectsSortMode.None: the InstanceID sort over a whole city of colliders is pure cost here, and
+                // the roof set does not depend on the order (dedupe is by name and position)
+                var boxes = FindObjectsByType<BoxCollider>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+                colliders = boxes.Length;
+                for (int i = 0; i < boxes.Length; i++)
+                {
+                    if (++sinceYield >= YieldEvery) { sinceYield = 0; yield return null; }
+                    AddRoof(boxes[i], null);
+                }
+            }
+            while (rescan);   // a cell loaded while we were scanning: sweep again for what the snapshot missed
             scanned = true;
-            foreach (var box in FindObjectsByType<BoxCollider>()) AddRoof(box, null);
-            Debug.Log($"[Rooftops] {roofCount} roofs dressed");
+            Debug.Log($"[Rooftops] {roofCount} roofs dressed (from {colliders} colliders, {passes} scan pass(es))");
         }
 
         void Update()
@@ -99,7 +158,13 @@ namespace VeyraCity.AI
 
         void UpdateBody()
         {
-            if (!scanned && Active && Time.frameCount > 11) Scan();   // behind the menu, after the other slot builders
+            // behind the menu, after the other slot builders
+            // BUG-170: pump the scan within a frame budget instead of doing it all on one frame.
+            if (!scanned && Active && Time.frameCount > 11)
+            {
+                if (scanJob == null) scanJob = ScanSteps();
+                if (!VeyraCity.Core.FrameBudget.Pump(scanJob)) scanJob = null;
+            }
             if (!Active || Player == null) return;
             if (mats != null && mats[Beacon] != null)
             {
@@ -107,6 +172,10 @@ namespace VeyraCity.AI
                 float blink = Mathf.Repeat(Time.time * 0.75f, 1f) < 0.35f ? 1f : 0.15f;   // aviation red, ~45 flashes a minute
                 mats[Beacon].SetColor(EmissionId, new Color(1f, 0.06f, 0.04f) * (0.4f + 6f * night) * blink);
             }
+            // BUG-170: cell meshes are built once and cached, and a cell with no roofs caches as null, so nothing may
+            // be dressed until the scan is complete — a cell built mid-scan would silently lose every roof found after
+            // it, with no error and no second chance. The beacon blink above still runs.
+            if (!scanned) return;
             // a cell under construction gets 8 roofs a frame (iteration 22: with parapets a whole downtown cell in one
             // frame cost up to 28 ms)
             if (pendingRoofs != null)
