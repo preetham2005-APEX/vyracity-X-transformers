@@ -268,8 +268,11 @@ namespace VeyraCity.World
             // linear values: 0.19 gave 0.026), so the night set is 6x the old linear fill (SH up 0.16 / 0.20 / 0.40, measured
             // with a dev-build probe dump); rural and aerial night views were black.
             Color skyDay = new Color(0.48f, 0.62f, 0.82f), skyGold = new Color(0.62f, 0.48f, 0.42f), skyNight = new Color(0.46f, 0.55f, 0.80f);
-            Color eqDay = new Color(0.62f, 0.66f, 0.70f), eqGold = new Color(0.72f, 0.50f, 0.36f), eqNight = new Color(0.40f, 0.38f, 0.44f);
-            Color grDay = new Color(0.30f, 0.29f, 0.27f), grNight = new Color(0.19f, 0.19f, 0.21f);
+            // iteration 56: night equator and ground fill raised ~15 % in gamma (~40 % linear). A vertical facade is lit
+            // almost entirely by the equator term, and against windows bright enough to drive the tonemap the walls
+            // between them were crushing to black - so a tower lost its silhouette and read as lit dots on nothing.
+            Color eqDay = new Color(0.62f, 0.66f, 0.70f), eqGold = new Color(0.72f, 0.50f, 0.36f), eqNight = new Color(0.46f, 0.45f, 0.52f);
+            Color grDay = new Color(0.30f, 0.29f, 0.27f), grNight = new Color(0.24f, 0.24f, 0.27f);
             Color sky = Color.Lerp(Color.Lerp(skyDay, skyGold, golden), skyNight, NightFactor);
             sky = Color.Lerp(sky, new Color(0.42f, 0.45f, 0.5f) * Mathf.Lerp(1f, 0.15f, NightFactor), Cloudiness * 0.7f);
             Color eq = Color.Lerp(Color.Lerp(eqDay, eqGold, golden), eqNight, NightFactor);

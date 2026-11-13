@@ -88,6 +88,12 @@ void VC_Surface(VC_FragInput f, inout SurfaceData s, inout half3 normalWS)
 
     half glass = 0.0, frame = 0.0, sill = 0.0, fascia = 0.0, shutter = 0.0;
     float2 room = c;
+    // iteration 56 (night facades read as lit rectangles painted on a flat wall): ouv is the position inside the
+    // opening, 0-1, used for the fake reveal; outD is the distance from the opening out across the wall, used for
+    // the light spill. The interior ray-cast already fades out past 40 m, so beyond that a window had no depth cue
+    // at all and a tower became confetti on black.
+    float2 ouv = c;
+    float outD = 1e9;
     if (vertical)
     {
         if (shopFloor)
@@ -134,6 +140,9 @@ void VC_Surface(VC_FragInput f, inout SurfaceData s, inout half3 normalWS)
             glass = inside * (1.0 - frame);
             sill = step(x0 - 0.03, c.x) * step(c.x, x1 + 0.03) * step(y0 - 0.035, c.y) * step(c.y, y0);
             room = c;
+            ouv = float2(saturate((c.x - x0) / max(1e-4, x1 - x0)), saturate((c.y - y0) / max(1e-4, y1 - y0)));
+            float2 od = float2(max(max(x0 - c.x, c.x - x1), 0.0), max(max(y0 - c.y, c.y - y1), 0.0));
+            outD = length(od);
         }
     }
 
@@ -191,6 +200,44 @@ void VC_Surface(VC_FragInput f, inout SurfaceData s, inout half3 normalWS)
         half signOn = step(frac(sseed * 3.3), 0.75) * smoothstep(0.05, 0.35, _VC_NightFactor);
         emission += fc * letters * _WindowEmission * 0.45 * signOn * fascia;
     }
+    // --- which windows are lit: hoisted out of the glass branch, because the wall needs it too (spill, below) ---
+    // iteration 24: occupancy per ~60 m block varies from nearly dark to busy, ~25 % overall
+    float occ = VC_Hash12(floor(f.positionWS.xz / 60.0) + _Seed * 7.7);
+    float litFrac = street ? 0.86 : lerp(_LitFractionMin, _LitFractionMax, bseed) * lerp(0.15, 1.3, occ * occ);
+    float hour = _VC_TimeOfDay;
+    half officeDim = (_Office > 0.5 && (hour >= 23.0 || hour < 6.0)) ? 0.35 : 1.0;
+    // iteration 56: real towers light by FLOOR and by CORE, not per window. A per-floor factor gives busy floors and
+    // nearly dark ones; ~7 % of vertical columns are stair / lift cores that stay lit all night. Without this the lit
+    // set is white noise, which is why a tower read as confetti scattered on black rather than a building with floors.
+    float floorSeed = VC_Hash12(float2(cellId.y, bseed * 17.3));
+    float colSeed = VC_Hash12(float2(cellId.x, bseed * 29.7));
+    half floorK = 0.25 + 1.5 * floorSeed * floorSeed;
+    // ~4 % of columns, at partial weight: a full-strength 7 % read as bright barcode stripes down the facade
+    half core = step(0.96, colSeed) * 0.65 * (street ? 0.0 : 1.0);
+    half pLit = saturate(litFrac * officeDim * floorK);
+    half isLit = street ? step(sseed, litFrac) : saturate(step(wseed, pLit) + core);
+    float threshold = street ? lerp(0.05, 0.3, frac(sseed * 7.31)) : lerp(0.12, 0.92, frac(wseed * 7.31));
+    half on = isLit * smoothstep(threshold - 0.06, threshold + 0.06, _VC_NightFactor);
+    // far away: the average lit share, varied per block of 4 x 4 windows so a skyline keeps some structure
+    half blockVar = 0.5 + VC_Hash12(floor(cellCoord / 4.0) + bseed * 31.0);
+    on = lerp(on, saturate(litFrac * officeDim * blockVar) * smoothstep(0.1, 0.9, _VC_NightFactor), aa);
+    half3 warm = half3(1.0, 0.71, 0.42), cool = half3(1.0, 0.88, 0.76);
+    // iteration 23: three light temperatures (warm lamps, cool white, LED blue-white) and per-window brightness
+    float lk = frac(wseed * 3.77);
+    half3 lightColor = lk < 0.55 ? warm : lk < 0.88 ? cool : half3(0.78, 0.88, 1.0);
+    // iteration 56: wider brightness spread. 0.6-1.2 made every lit pane near enough the same value, which is the
+    // other half of the confetti read; real windows differ by far more than 2:1.
+    lightColor *= 0.35 + 1.15 * frac(wseed * 23.9);
+
+    // iteration 56: light spilling out of a lit window onto the wall around the opening - the cue that says the light
+    // comes from a hole rather than being painted on the surface. Punched windows only: a curtain wall has no wall to
+    // spill onto, and outD stays 1e9 there.
+    if (outD < 1e8)
+    {
+        half spill = (1.0 - glass) * (1.0 - frame) * exp2(-outD * 20.0) * on;
+        emission += lightColor * _WindowEmission * spill * 0.3;
+    }
+
     half3 wnTS = nTS;
     if (glass > 0.0)
     {
@@ -217,33 +264,28 @@ void VC_Surface(VC_FragInput f, inout SurfaceData s, inout half3 normalWS)
         half slat = 0.82 + 0.18 * step(0.5, frac(room.y * 38.0));
         roomColor = lerp(roomColor, half3(0.52, 0.48, 0.4) * slat, blind);
 
-        // iteration 24: occupancy per ~60 m block varies from nearly dark to busy (iteration 21's flat two-thirds still
-        // read as an even wall of lit windows; real and GTA V skylines mix dark towers with bright ones), ~25 % overall
-        float occ = VC_Hash12(floor(f.positionWS.xz / 60.0) + _Seed * 7.7);
-        float litFrac = street ? 0.86 : lerp(_LitFractionMin, _LitFractionMax, bseed) * lerp(0.15, 1.3, occ * occ);
-        float hour = _VC_TimeOfDay;
-        half officeDim = (_Office > 0.5 && (hour >= 23.0 || hour < 6.0)) ? 0.35 : 1.0;
-        half isLit = step(street ? sseed : wseed, street ? litFrac : litFrac * officeDim);
-        float threshold = street ? lerp(0.05, 0.3, frac(sseed * 7.31)) : lerp(0.12, 0.92, frac(wseed * 7.31));
-        half on = isLit * smoothstep(threshold - 0.06, threshold + 0.06, _VC_NightFactor);
-        // far away: the average lit share, varied per block of 4 x 4 windows so a skyline keeps some structure
-        half blockVar = 0.5 + VC_Hash12(floor(cellCoord / 4.0) + bseed * 31.0);
-        on = lerp(on, saturate(litFrac * officeDim * blockVar) * smoothstep(0.1, 0.9, _VC_NightFactor), aa);
-        half3 warm = half3(1.0, 0.71, 0.42), cool = half3(1.0, 0.88, 0.76);
-        // iteration 23: three light temperatures (warm lamps, cool white, LED blue-white) and per-window brightness
-        float lk = frac(wseed * 3.77);
-        half3 lightColor = lk < 0.55 ? warm : lk < 0.88 ? cool : half3(0.78, 0.88, 1.0);
-        lightColor *= 0.6 + 0.6 * frac(wseed * 23.9);
+        // iteration 56: fake reveal. The opening is recessed, so the head shades the top of the glass and the jambs
+        // shade its sides. The facade kit places real 0.26 m reveal geometry on street-facing lower floors, so this
+        // ramps UP from 55 m as that geometry LODs out - the two must never stack into a double head shadow.
+        half revealK = saturate((dist - 55.0) / 45.0);
+        half headShade = saturate(1.0 - (1.0 - ouv.y) * 5.0);
+        half jambShade = saturate(1.0 - min(ouv.x, 1.0 - ouv.x) * 7.0);
+        half reveal = saturate(headShade * 0.8 + jambShade * 0.4) * revealK;
         half3 day = roomColor * _InteriorDim * (1.0 - 0.85 * saturate(_VC_NightFactor)) * (0.35 + 0.65 * nearK) * (1.0 - fres);
         // Lit rooms take the colour of their light: interior colours are desaturated towards their luminance.
         half lumRoom = dot(roomColor, half3(0.2126, 0.7152, 0.0722));
         half3 litRoom = lerp(lumRoom.xxx, roomColor, 0.35) * 1.6;
-        half3 night = litRoom * lightColor * _WindowEmission * on * (blind > 0.5 ? 0.55 : 1.0);
+        // iteration 56: the lit room is only visible through the opening's solid angle, so a window seen square-on
+        // shows the room and one seen edge-on shows mostly jamb and glass reflection. Without this both faces of a
+        // tower glowed identically and the building read as a flat lit rectangle no matter which way you looked at
+        // it - this is the cue that makes a box read as a box, and it costs one dot product.
+        half faceK = lerp(0.3, 1.0, NdotV);
+        half3 night = litRoom * lightColor * _WindowEmission * on * faceK * (blind > 0.5 ? 0.55 : 1.0);
         if (street) night *= 1.35;   // display windows and lobbies are brighter than flats and offices
         // a few flats watch TV: a cool, flickering light
         if (!street && _Office < 0.5 && frac(wseed * 41.7) < 0.09)
             night *= half3(0.55, 0.72, 1.25) * (0.7 + 0.3 * sin(_Time.y * (6.0 + 11.0 * frac(wseed * 3.1))) * sin(_Time.y * 2.3 + wseed * 50.0));
-        emission += (day + night) * glass;
+        emission += (day + night) * glass * (1.0 - 0.6 * reveal);
 
         half paneTint = lerp(0.8 + 0.4 * frac(wseed * 17.3), 1.0, aa);   // panes differ slightly (blinds, film, dirt)
         albedo = lerp(albedo, _GlassColor.rgb * 0.12 * paneTint, glass);
