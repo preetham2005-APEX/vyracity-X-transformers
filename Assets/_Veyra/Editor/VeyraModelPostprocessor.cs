@@ -110,12 +110,27 @@ namespace VeyraCity.EditorTools
             if (!File.Exists(full)) return map;
             var json = JObject.Parse(File.ReadAllText(full));
             foreach (var r in json["rules"] ?? new JArray())
-                map.Rules.Add(new MaterialRule
+            {
+                // A bad entry must not take the pipeline down with it. This threw ArgumentNullException on a null
+                // pattern, and because OnPostprocessModel calls this before doing anything else, one malformed rule
+                // disabled EVERY import rule for EVERY model - no material remap, no colliders built from COL_/UCX_/
+                // UBX_, no LOD thresholds - while looking exactly like a bad mapping rather than a broken map file.
+                string pattern = (string)r["pattern"], key = (string)r["key"];
+                if (string.IsNullOrEmpty(pattern) || string.IsNullOrEmpty(key))
                 {
-                    Pattern = new Regex((string)r["pattern"], RegexOptions.IgnoreCase | RegexOptions.CultureInvariant),
-                    Key = (string)r["key"],
-                    Category = (string)r["category"],
-                });
+                    Debug.LogWarning($"[Veyra] {MaterialMapFile}: skipping a rule with no pattern or key ({r}). " +
+                                     "Comments belong outside the \"rules\" array.");
+                    continue;
+                }
+                Regex rx;
+                try { rx = new Regex(pattern, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant); }
+                catch (ArgumentException e)
+                {
+                    Debug.LogWarning($"[Veyra] {MaterialMapFile}: skipping rule '{pattern}' ({e.Message})");
+                    continue;
+                }
+                map.Rules.Add(new MaterialRule { Pattern = rx, Key = key, Category = (string)r["category"] });
+            }
             if (json["category_defaults"] is JObject d)
                 foreach (var kv in d) map.Defaults[kv.Key] = (string)kv.Value;
             return map;
