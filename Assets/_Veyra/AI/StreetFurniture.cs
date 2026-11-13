@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -37,6 +38,9 @@ namespace VeyraCity.AI
         static Material adMat;
         static readonly int EmissionId = Shader.PropertyToID("_EmissionColor");
         bool placed;
+        IEnumerator placeJob;
+        /// <summary>Candidate positions placed between yields (BUG-170): each one costs a road query.</summary>
+        const int YieldEvery = 4;
         float timer;
         readonly List<Vector3> vents = new List<Vector3>();
         /// <summary>Bus shelters (position, yaw facing the road): pedestrians wait at them.</summary>
@@ -55,10 +59,15 @@ namespace VeyraCity.AI
 
         // ------------------------------------------------------------------ placement
 
-        void Place()
+        /// <summary>
+        /// Places the props a few positions at a time (BUG-170). Doing the whole city on one frame cost 173 ms in
+        /// iteration 43 and was that run's worst frame; the work is identical, only spread by
+        /// <see cref="FrameBudget.Pump"/>. Cell meshes are still merged lazily near the player as before.
+        /// </summary>
+        IEnumerator PlaceSteps()
         {
-            placed = true;
             var roads = WorldData.Roads;
+            int sinceYield = 0;
             for (int r = 0; r < roads.Count; r++)
             {
                 var road = roads[r];
@@ -96,6 +105,7 @@ namespace VeyraCity.AI
                 int k = 0;
                 for (float s = 16f; s < len - 16f; s += 9f, k++)
                 {
+                    if (++sinceYield >= YieldEvery) { sinceYield = 0; yield return null; }
                     int hint = 0;
                     var p = road.Path.PositionAt(s);
                     hint = road.Path.SegmentAt(s);   // binary search (iteration 9)
@@ -143,6 +153,7 @@ namespace VeyraCity.AI
                     }
                 }
             }
+            placed = true;
             Debug.Log($"[StreetFurniture] {propCount} props placed");
         }
 
@@ -169,7 +180,12 @@ namespace VeyraCity.AI
         {
             // iteration 10: build the slot tables right after the scene loads (behind the menu), on staggered frames,
             // instead of on the first frame of free roam
-            if (!placed && Active && Time.frameCount > 7) Place();
+            // BUG-170: pump the placement within a frame budget instead of doing it all on one frame.
+            if (!placed && Active && Time.frameCount > 7)
+            {
+                if (placeJob == null) placeJob = PlaceSteps();
+                if (!VeyraCity.Core.FrameBudget.Pump(placeJob)) placeJob = null;
+            }
             if (!Active || Player == null) return;
             if (adMat != null)
             {
@@ -180,7 +196,9 @@ namespace VeyraCity.AI
             timer -= Time.deltaTime;
             if (timer > 0f) return;
             timer = 0.2f;
-            if (!placed) Place();
+            // BUG-170: cell meshes are merged once and cached, so none may be built until the grid is complete —
+            // a cell merged mid-build would silently lose the props placed after it.
+            if (!placed) return;
             Vector3 f = Player.transform.position;
             // drop far cells
             List<long> drop = null;

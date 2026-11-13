@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -75,6 +76,9 @@ namespace VeyraCity.AI
         static Material shoeMat;
         const float Cell = 100f;
         bool built;
+        IEnumerator buildJob;
+        /// <summary>Anchor positions tested between yields (BUG-170): each one costs a road query and a raycast.</summary>
+        const int YieldEvery = 4;
         int frame;
         float createCooldown;
         float spawnTimer;
@@ -83,16 +87,22 @@ namespace VeyraCity.AI
 
         static long Key(int x, int z) => ((long)x << 32) ^ (uint)z;
 
-        void Build()
+        /// <summary>
+        /// Builds the pavement anchors a few positions at a time (BUG-170). The whole-city build cost 88 ms on one
+        /// frame; the work is identical, only spread by <see cref="FrameBudget.Pump"/>. Anchors are re-sampled near
+        /// the player every tick, so a partly built list simply spawns fewer people for the first seconds.
+        /// </summary>
+        IEnumerator BuildSteps()
         {
-            built = true;
             var roads = WorldData.Roads;
+            int sinceYield = 0;
             for (int r = 0; r < roads.Count; r++)
             {
                 var road = roads[r];
                 if (!Classes.Contains(road.Data.cls) || road.Path.Closed || road.Path.Length < 40f) continue;
                 for (float s = 15f; s < road.Path.Length - 15f; s += 12f)
                 {
+                    if (++sinceYield >= YieldEvery) { sinceYield = 0; yield return null; }
                     int hint = 0;
                     var p = road.Path.PositionAt(s);
                     hint = road.Path.SegmentAt(s);   // binary search (iteration 9)
@@ -114,6 +124,7 @@ namespace VeyraCity.AI
             // world iteration 16: plaza centres (registry landmarks named Plaza; PlazaBuilder dresses them)
             foreach (var l in WorldData.Locations)
                 if (l != null && l.category == "Landmark" && l.name != null && l.name.Contains("Plaza")) plazas.Add(l.Position);
+            built = true;
             Debug.Log($"[Pedestrians] {anchors.Count} pavement anchors, {plazas.Count} plazas");
         }
 
@@ -128,13 +139,17 @@ namespace VeyraCity.AI
         {
             // iteration 10: build the slot tables right after the scene loads (behind the menu), on staggered frames,
             // instead of on the first frame of free roam
-            if (!built && Active && Time.frameCount > 9) Build();
+            // BUG-170: pump the build within a frame budget instead of doing it all on one frame.
+            if (!built && Active && Time.frameCount > 9)
+            {
+                if (buildJob == null) buildJob = BuildSteps();
+                if (!VeyraCity.Core.FrameBudget.Pump(buildJob)) buildJob = null;
+            }
             if (!Active || Player == null)
             {
                 if (live.Count > 0) { foreach (var p in live) Recycle(p); live.Clear(); }
                 return;
             }
-            if (!built) Build();
             Vector3 focus = Player.transform.position;
             // world iteration 16: fixed review shots park the car 400 m below the map and photo/free cameras leave it behind:
             // people live around the streaming focus a review forced, or around the camera, when either is far from the car

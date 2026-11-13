@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VeyraCity.VehiclePhysics;
@@ -37,15 +38,23 @@ namespace VeyraCity.AI
         readonly Dictionary<int, Stack<GameObject>> pools = new Dictionary<int, Stack<GameObject>>();
         const float Cell = 100f;
         bool built;
+        IEnumerator buildJob;
+        /// <summary>Kerbside slots tested between yields (BUG-170): each one costs a road query and a raycast.</summary>
+        const int YieldEvery = 4;
         float timer;
 
         static long Key(int x, int z) => ((long)x << 32) ^ (uint)z;
 
-        void BuildSlots()
+        /// <summary>
+        /// Builds the kerbside slot table a few positions at a time (BUG-170). The whole-city build cost 167 ms on
+        /// one frame; the work is identical, only spread by <see cref="FrameBudget.Pump"/>. Cars are spawned and
+        /// recycled from the slots near the player each tick, so a partly built table just parks fewer cars at first.
+        /// </summary>
+        IEnumerator BuildSteps()
         {
-            built = true;
-            if (Prefabs == null || Prefabs.Length == 0) return;
+            if (Prefabs == null || Prefabs.Length == 0) { built = true; yield break; }
             var roads = WorldData.Roads;
+            int sinceYield = 0;
             for (int r = 0; r < roads.Count; r++)
             {
                 var road = roads[r];
@@ -55,6 +64,7 @@ namespace VeyraCity.AI
                 int k = 0;
                 for (float s = 22f; s < len - 22f; s += Spacing, k++)
                 {
+                    if (++sinceYield >= YieldEvery) { sinceYield = 0; yield return null; }
                     var p = road.Path.PositionAt(s);
                     var t = road.Path.TangentAt(s);
                     var right = new Vector3(t.z, 0f, -t.x).normalized;
@@ -81,6 +91,7 @@ namespace VeyraCity.AI
                     }
                 }
             }
+            built = true;
             Debug.Log($"[ParkedCars] {slots.Count} kerbside slots on {roads.Count} roads");
         }
 
@@ -114,12 +125,16 @@ namespace VeyraCity.AI
         {
             // iteration 10: build the slot tables right after the scene loads (behind the menu), on staggered frames,
             // instead of on the first frame of free roam
-            if (!built && Active && Time.frameCount > 3) BuildSlots();
+            // BUG-170: pump the build within a frame budget instead of doing it all on one frame.
+            if (!built && Active && Time.frameCount > 3)
+            {
+                if (buildJob == null) buildJob = BuildSteps();
+                if (!VeyraCity.Core.FrameBudget.Pump(buildJob)) buildJob = null;
+            }
             if (!Active || Player == null) { if (live.Count > 0) ClearAll(); return; }
             timer -= Time.deltaTime;
             if (timer > 0f) return;
             timer = 0.12f;   // iteration 9: small batches often instead of everything every 0.4 s (streaming hitches)
-            if (!built) BuildSlots();
             Vector3 focus = Player.transform.position;
             // recycle far cars
             gone.Clear();
