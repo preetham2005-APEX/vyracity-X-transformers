@@ -16,7 +16,13 @@ namespace VeyraCity.Core
     {
         sealed class Slot { public string Name; public double FrameMs, MaxMs, TotalMs; public int Over8, Frames; }
 
-        struct Worst { public float FrameMs; public string Top; public bool Gc; }
+        struct Worst { public float FrameMs; public string Top; public bool Gc; public float Cov; }
+
+        // How much of each frame the instrumented systems actually account for. Without this the worst-frame lines
+        // name a system that may be a small slice of the frame (a 103 ms cruise frame whose top system is 21 ms), and
+        // reading that as "the cause" sends the next card after the wrong 20 %.
+        static double covTotalMs, frameTotalMs;
+        static int covFrames;
 
         static readonly Dictionary<string, Slot> slots = new Dictionary<string, Slot>();
         static readonly List<Slot> order = new List<Slot>();
@@ -47,19 +53,24 @@ namespace VeyraCity.Core
                 bool hadGc = gc != gcCount;
                 gcCount = gc;
                 Slot top = null;
+                double covered = 0.0;
                 foreach (var s in order)
                 {
                     if (s.FrameMs <= 0.0) continue;
+                    covered += s.FrameMs;
                     s.TotalMs += s.FrameMs;
                     s.Frames++;
                     if (s.FrameMs > s.MaxMs) s.MaxMs = s.FrameMs;
                     if (s.FrameMs > 8.0) s.Over8++;
                     if (top == null || s.FrameMs > top.FrameMs) top = s;
                 }
+                covTotalMs += covered;
+                frameTotalMs += frameMs;
+                covFrames++;
                 if (frameMs > 33f && (worst.Count < 12 || frameMs > worst[worst.Count - 1].FrameMs))
                 {
                     string desc = top != null ? $"{top.Name} {top.FrameMs:0.0}" : "none";
-                    worst.Add(new Worst { FrameMs = frameMs, Top = desc, Gc = hadGc });
+                    worst.Add(new Worst { FrameMs = frameMs, Top = desc, Gc = hadGc, Cov = (float)covered });
                     worst.Sort((a, b) => b.FrameMs.CompareTo(a.FrameMs));
                     if (worst.Count > 12) worst.RemoveAt(worst.Count - 1);
                 }
@@ -69,11 +80,23 @@ namespace VeyraCity.Core
             frame = f;
         }
 
+        static readonly Dictionary<string, int> counts = new Dictionary<string, int>();
+
+        /// <summary>Counts an event (e.g. "CarProbe.cycles"); the totals print at the end of <see cref="Report"/>.</summary>
+        public static void Count(string name)
+        {
+            counts.TryGetValue(name, out int n);
+            counts[name] = n + 1;
+        }
+
         public static void Reset()
         {
+            counts.Clear();
             slots.Clear();
             order.Clear();
             worst.Clear();
+            covTotalMs = frameTotalMs = 0.0;
+            covFrames = 0;
             frame = -1;
         }
 
@@ -85,8 +108,17 @@ namespace VeyraCity.Core
             sorted.Sort((a, b) => b.MaxMs.CompareTo(a.MaxMs));
             foreach (var s in sorted)
                 sb.Append($" {s.Name}:max{s.MaxMs:0.0}/avg{(s.Frames > 0 ? s.TotalMs / s.Frames : 0):0.00}/over8x{s.Over8}");
+            if (covFrames > 0)
+                sb.Append($" | covered {covTotalMs / covFrames:0.00} of {frameTotalMs / covFrames:0.00} ms/frame ({100.0 * covTotalMs / System.Math.Max(0.001, frameTotalMs):0}%)");
+            // cov = how many ms of that frame the instrumented systems account for; frame - cov is unattributed
+            // (rendering, physics steps, GC, engine work). A big gap means the named system is not the cause.
             sb.Append(" | worst frames:");
-            foreach (var w in worst) sb.Append($" {w.FrameMs:0}ms[{w.Top}{(w.Gc ? ",GC" : "")}]");
+            foreach (var w in worst) sb.Append($" {w.FrameMs:0}ms[{w.Top}{(w.Gc ? ",GC" : "")},cov{w.Cov:0}]");
+            if (counts.Count > 0)
+            {
+                sb.Append(" | counts:");
+                foreach (var kv in counts) sb.Append($" {kv.Key}={kv.Value}");
+            }
             return sb.ToString();
         }
     }
