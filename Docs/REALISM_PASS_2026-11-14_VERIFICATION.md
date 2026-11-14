@@ -34,11 +34,17 @@ Measured result worth recording: D2's BUG-170 trims took R_SMOKE release CPU p95
 
 ## B. Not started
 
-- **Shader Graph and Visual Effect Graph are still not installed.** `Packages/manifest.json` has
-  neither, and `find Assets -name "*.vfx"` returns nothing. Every smoke, dust, spray, crash and
-  nitro effect is therefore still the runtime-built Shuriken system on a 64×64 procedural puff.
-  **This is the single largest remaining realism gap and it blocks six-way lit smoke, the nitro
-  moment and the crash VFX.**
+- **Visual Effect Graph was missing; it has now been added** (see §F). No `.vfx` asset exists yet,
+  so every smoke, dust, spray, crash and nitro effect is still the runtime-built Shuriken system on
+  a 64×64 procedural puff. **This remains the largest realism gap: six-way lit smoke, the nitro
+  moment and the crash VFX are all still to be authored.**
+
+  Correction to an earlier claim of mine: **Shader Graph was never missing.** It resolves as
+  `com.unity.shadergraph` 17.6.0 with `"source": "builtin"` — it ships with the Editor and arrives
+  as a dependency of URP, so it is absent from `manifest.json` but present in the project. Same for
+  **Burst 1.8.14** and **Collections 2.4.3**, which arrive as dependencies of
+  `com.unity.render-pipelines.core`. Only Mathematics, Terrain Tools, Recorder, Memory Profiler and
+  Addressables are genuinely absent of the packages CLAUDE.md names.
 - **Pedestrians are still boxes and spheres.** `AI/Pedestrians.cs:74, 578-581, 684-686` —
   `sphere` head, `sphere` hair, procedural `torsoMesh`/`limbMesh`.
 - **Foliage wind is still not consumed.** `_VC_WindStrength` is published by
@@ -77,8 +83,8 @@ adds what the independent check turned up.
 
 Additions and emphasis:
 
-1. **Install Shader Graph + VFX Graph before any further VFX planning.** Nothing in §B's VFX
-   chain can start until the packages exist. It is one manifest edit and one Unity slot.
+1. **VFX Graph is installed (§F); the Editor still has to resolve it.** Shader Graph was already
+   present. The VFX authoring work itself is untouched.
 2. **Run `Veyra/Physics/Validate Drivable` and commit the report.** The physics claim of the whole
    pass rests on it and it has not been measured once. Before/after would be ideal; after alone is
    the minimum.
@@ -105,3 +111,29 @@ Still genuinely blocked on the user, not on a session:
 No performance number here was measured by this session. No screenshot was captured. The frame
 timings quoted in §A are the owning sessions' own measurements, repeated with their source so they
 can be checked, not independently reproduced.
+
+---
+
+## F. VFX Graph install (2026-11-14, this session)
+
+`com.unity.visualeffectgraph` `17.6.0` added to `Packages/manifest.json`, after `com.unity.ugui`.
+JSON validated. `manifest.json` was clean in git at the time of the edit, so nothing was clobbered.
+
+**Why 17.6.0:** the other SRP packages in `packages-lock.json` resolve as
+`"source": "builtin"` at `17.6.0` (`com.unity.render-pipelines.core`, `com.unity.shadergraph`).
+Builtin packages are versioned with the Editor, so 17.6.0 is the version matching
+Unity 6000.6.8f1. It is not a registry pin and should not be bumped independently of the Editor.
+
+**Not yet verified — the next person to open the Editor must confirm:**
+
+1. The package resolves and `packages-lock.json` gains a `com.unity.visualeffectgraph` entry.
+   At the time of writing, the MCP bridge reported no Editor instance and there was no
+   `Temp/UnityLockfile`, so the project was not open and no resolve could be triggered.
+2. The console is clean after the import (VFX Graph pulls in its own shader set; expect a
+   one-off import and a domain reload).
+3. `VisualEffect` components and `.vfx` assets are creatable.
+
+**Owner note:** the coordinator's table assigns the VFX/Shader Graph install slot to Lighting D1.
+This was done out of that order at the user's explicit request. Lighting D1 has been told. If the
+resolve conflicts with anything in Lighting's working tree, revert the single manifest line —
+nothing else in the project depends on it yet.
