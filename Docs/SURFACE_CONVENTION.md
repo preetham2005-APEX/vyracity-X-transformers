@@ -77,17 +77,39 @@ sweep distances tie exactly as a ray would, so the hazard is unchanged.
 Its one refinement: **"flush" needs a tolerance under a sphere sweep**, not an exact zero. The
 +/-0.5 mm band used by `RoadWear/build/check_coplanar.py` is the right line.
 
-**And a constraint on kerb-like colliders.** A car is meant to mount a kerb: `DriveOffOnTests`
-covers steps of 0.15, 0.20 and 0.25 m, and checks that the normal the sphere actually reports at
-each is above the wall cutoff. The cutoff is `VehicleController.MinGroundNormalY = 0.35f` —
-"hits whose normal is steeper than this are walls, not ground: never climbed". So **a kerb,
-apron or verge edge a car should be able to mount must not present a face steeper than that**,
-or the wheel treats it as a wall and refuses to climb. A vertical kerb face with a hard top arris
-is the shape most likely to trip it; a chamfer or a slight radius at the top is what keeps the
-sweep's reported normal above the cutoff.
+**And a constraint on mountable edges — but it is HEIGHT, not face angle.**
 
-Verified in `VehicleController.cs:61-63, 845` and `Tests/EditMode/DriveOffOnTests.cs:24, 79-82`,
-not relayed.
+My first version of this said a kerb a car should mount must not present a face steeper than the
+0.35 cutoff, and recommended a chamfer. **That was wrong**, and the vehicle-physics session
+corrected it with measurements.
+
+`DriveOffOnTests` drives at a synthetic slab: a BoxCollider with a 90-degree face and a perfectly
+sharp arris. **It passes.** The sphere never lands on the vertical face — it lands on the arris,
+and the normal reported there points from the edge toward the sphere centre, not along the face.
+Lowest wheel `normal.y` while crossing at 40 km/h at 85 degrees:
+
+| Step | reported `normal.y` | cutoff |
+|---|---|---|
+| 0.15 m | **0.648** | 0.35 |
+| 0.20 m | **0.591** | 0.35 |
+
+So a near-vertical kerb with a sharp arris is fine, and a chamfer is not needed for mounting.
+
+What actually fails is **step height**. The sphere is 0.85 x tyre radius, about 0.28 m on these
+cars; it only touches the vertical face itself — `normal.y` near 0, a wall — once the arris is at
+or above the sphere centre.
+
+**Authoring constraint:**
+
+- **<= 0.20 m:** any face angle, sharp arris fine. Measured.
+- **0.20-0.25 m:** pending a further run.
+- **above ~0.25 m:** treat as a wall unless chamfered.
+
+A split kerb collider is fine **provided the `COL_kerb_*` face and top are one continuous mesh**,
+with no gap for the sphere to drop into.
+
+Note the 0.25 m failure originally recorded was **not the wheel** — it was the car's front
+overhang striking the step first (BUG-152).
 
 ## Is it actually flush? Measure before assuming
 
