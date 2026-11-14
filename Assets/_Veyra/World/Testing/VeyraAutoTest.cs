@@ -25,6 +25,20 @@ namespace VeyraCity.Testing
     [DefaultExecutionOrder(200)]
     public sealed class VeyraAutoTest : MonoBehaviour
     {
+        // BUG-170 (D2): physics catch-up per frame (release builds have no profiler markers for PhysicsFixedUpdate)
+        int physThisFrame, physMax, physOver3, physOver5, physFrames;
+        void LateUpdate()
+        {
+            if (physFrames > 0 || physThisFrame > 0)
+            {
+                physFrames++;
+                physMax = Mathf.Max(physMax, physThisFrame);
+                if (physThisFrame >= 3) physOver3++;
+                if (physThisFrame >= 5) physOver5++;
+            }
+            physThisFrame = 0;
+        }
+
         public sealed class Options
         {
             public bool Enabled, ReviewCapture;
@@ -344,6 +358,7 @@ namespace VeyraCity.Testing
 
         void FixedUpdate()
         {
+            physThisFrame++;
             if (!driving || car == null || cur == null) return;
             float dt = Time.fixedDeltaTime, t = Time.time;
             var st = car.State;
@@ -488,7 +503,9 @@ namespace VeyraCity.Testing
         {
             driving = false;
             StreamingSnapshot(false);
-            Debug.Log("[AutoTest] " + FrameCost.Report());   // A2: worst frames with their top system (hitch attribution)
+            Debug.Log("[AutoTest] " + FrameCost.Report());
+            Debug.Log($"[AutoTest] physics steps per frame: max {physMax}, frames with >=3 {physOver3}, >=5 {physOver5}, " +
+                      $"of {physFrames} frames; fixed step {Time.fixedDeltaTime * 1000f:0.0} ms, catch-up cap {Time.maximumDeltaTime * 1000f:0} ms");   // A2: worst frames with their top system (hitch attribution)
             report.end_reason = endReason;
             report.duration_s = routeStartRealtime > 0f ? Time.realtimeSinceStartup - routeStartRealtime : 0f;
             var s = frames.Summarize();

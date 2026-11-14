@@ -1017,6 +1017,9 @@ namespace VeyraCity.Gameplay
                 // route validation without street life in the lanes (the autopilot does not avoid other cars)
                 if (args[i] == "-veyraNoParked") { var pc = GetComponentInChildren<ParkedCars>(); if (pc != null) pc.Active = false; }
                 if (args[i] == "-veyraNoTraffic") noTraffic = true;
+                // BUG-170 check (D2): run physics at another rate (50 / 100 / 120 Hz) to test the 0.04 s catch-up cap
+                if (args[i] == "-veyraFixedHz" && i + 1 < args.Length && float.TryParse(args[i + 1], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var hz) && hz >= 30f && hz <= 240f)
+                { Time.fixedDeltaTime = 1f / hz; Debug.Log($"[Veyra] fixed timestep {Time.fixedDeltaTime * 1000f:0.0} ms ({hz:0} Hz), catch-up cap {Time.maximumDeltaTime * 1000f:0} ms"); }
                 // Phase E follow-up (D2): street life off one system at a time, to measure each one's CPU cost on the routes
                 if (args[i] == "-veyraNoPeds") { var ps = GetComponentInChildren<Pedestrians>(true); if (ps != null) ps.gameObject.SetActive(false); }
             }
@@ -1150,6 +1153,10 @@ namespace VeyraCity.Gameplay
             if (worldMap != null) worldMap.Track(player.transform);   // the GPS follows the new car
             if (roadWear != null) roadWear.Player = player.transform;
             if (speedTraps != null) { speedTraps.Player = player; speedTraps.Hud = hud; }
+            // realism §1.1 (D2): a stuck player car always recovers (nudge, then respawn on the nearest at-grade road lane)
+            var stuck = player.gameObject.AddComponent<StuckRecovery>();
+            stuck.Bind(player);
+            stuck.Recovered += (sr, what) => { if (hud != null) hud.ShowToast(what == "respawn" ? "RECOVERED TO THE ROAD" : "UNSTUCK", UIKit.Amber, 1.6f); };
             if (activities != null) { activities.Player = player; activities.Hud = hud; activities.Save = () => save; activities.Persist = () => { if (string.IsNullOrEmpty(iterShotDir)) SaveSystem.Save(save); }; }   // captures never write the profile
             traffic.PlayerCar = player;
             var parked = GetComponentInChildren<ParkedCars>();

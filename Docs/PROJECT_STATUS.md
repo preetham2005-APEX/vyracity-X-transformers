@@ -194,3 +194,19 @@ Brief: `Docs/OPUS_55_MASTER_PROMPT.md`. Spot-checked in code before assigning: `
 | Addressables (CLAUDE.md lists it, manifest lacks it) | — | Doc/manifest mismatch reported to the user |
 
 Unity lock queue: World (profile parse) → building kit assembly (other group) → D2 → Lighting → others on request. No batch Editor or player run without a slot: concurrent runs swung timings 10× (`62e01bd8`). One Editor at a time; staged code stays outside `Assets/` until its owner holds the lock.
+
+### BUG-170 D2 trims measured (2026-11-14, release IL2CPP at 9e945b87, quiet machine)
+
+Same build, back to back, D2 trims on ("new") vs off ("legacy" = old behaviour via a temporary -veyraD2Legacy switch,
+removed after the runs). Main-thread CPU p95 / p99 (ms), FrameCost "Streamer.CellLoaded callbacks" avg (ms), frames with >= 5
+physics steps, car-probe cycles:
+
+| Route | legacy | new |
+|---|---|---|
+| R_SMOKE | 33.6 / 79.9, 81.2, 126, 356 (52.6 FPS, 93 hitches) | 17.6 / 26.6, 3.6, 1, 79 (85.6 FPS, 22 hitches) |
+| R_BRIDGES | 76.3 / 106.0, 74.3, 2841, 3302 | 56.8 / 77.0, 9.9, 6, 855 |
+| R_DOWNTOWN_NIGHT | 105.0 / 129.9, 59.3, 862, 653 | 76.4 / 97.4, 18.2, 12, 141 |
+
+Hitch share on the long routes is unchanged (8-10 % of frames over 50 ms): the remaining spikes are outside the D2 systems.
+50 Hz and 120 Hz (-veyraFixedHz) drive R_SMOKE normally (2/2 segments). Traffic: no impacts any more, but the autopilot waits
+out stationary traffic on 6 segments (BUG-154). Evidence: `Logs/D2_BUG170/summary.txt` and per-run folders.
