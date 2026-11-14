@@ -211,3 +211,22 @@ physics steps, car-probe cycles:
 Hitch share on the long routes is unchanged (8-10 % of frames over 50 ms): the remaining spikes are outside the D2 systems.
 50 Hz and 120 Hz (-veyraFixedHz) drive R_SMOKE normally (2/2 segments). Traffic: no impacts any more, but the autopilot waits
 out stationary traffic on 6 segments (BUG-154). Evidence: `Logs/D2_BUG170/summary.txt` and per-run folders.
+
+## Realism pass — state and remaining work (coordinator, 2026-11-14 evening)
+
+**Landed today (committed):** building kit city `a0b6c9c8` (2,690/2,708 records, faster than the boxes), night glass `b73f605b`, road decal atlas `7cd1d6bf`, World grass/probe guard `42421af3`, D2 realism A `9e945b87` (sphere wheels, splat surfaces, stuck recovery, drive-on matrix) and D2 BUG-170 trims `fdd2014c` (R_SMOKE release CPU p95/p99 33.6/79.9 → 17.6/26.6 ms), D1 probe A/B `e58bede5`, surface convention docs `f97730a3`…`615180d0`. The 887a0005 device-removed at 09:38 was a transient GPU/driver fault (`Logs/R14_crash/`).
+
+**In flight:** Lighting holds the lock — render scale 1.0, SSAO High, DBuffer decals on all PC tiers (in the working tree, uncommitted until its 3-route + 72-shot comparison passes).
+
+**Unity lock queue:** Lighting → World → D2 → foliage-peds → other group (lamps, guardrails/medians, COL_ parser).
+
+| Owner | Remaining work |
+|---|---|
+| Lighting D1 | Commit scale/SSAO/decals with numbers; APV + sky occlusion spike (D1/D6); noon sky; neon/wet wiring; crown light cove (own material, not the shared `M_Neon_White`); Shader Graph + VFX Graph install (own slot); six-way lit smoke, nitro and crash VFX; BUG-124 |
+| World | Drivable shoulders + edge-step validator (A10/A19 sites), Validate Drivable ≥ 99.5 %; terrain surface tags; BUG-001/026/049/050/052/065; R_BRIDGES windowed profile (8–10 % frames > 50 ms remain on bridges/downtown); BUG-037/038 LODs and chunking; PBR terrain; decal placement; packages (Burst, Mathematics, Collections, Terrain Tools, Recorder, Memory Profiler) |
+| Vehicle D2 | BUG-154 autopilot braking for kinematic traffic, BUG-061 lane centre, BUG-152 overhang lift (staged); real-site drive-off/on; then handling/weight transfer telemetry, BUG-028 AI spread, nitro moment, crash hit-stop/part detachment hooks |
+| foliage-peds | Foliage wind/translucency/impostors, vegetation kit placement (67,482 placements, 22 prototypes), real pedestrians; EditMode 104/104 |
+| Other group (`e3b346b8`) | Lamp kit swap, guardrails/medians, COL_ surface parser (targeted steps, never the full city build — BUG-045); 11 landmark hero assets |
+| Unowned | Audio (blocked: needs user OK for licensed downloads); Addressables (CLAUDE.md lists it, manifest lacks it); garage interiors and handling-course cones (need art); BUG-130 Sable Falls data gap; final Phase E release sign-off once all of the above land |
+
+**User actions:** power plan off Silent before the final sign-off; OK or refuse licensed audio/character downloads; BUG-066 (5 CC-BY real-brand rebadges); revoke the old Sketchfab token (SEC-003); Unity CLI update 1.0.0-beta.13 → 1.0.0.
