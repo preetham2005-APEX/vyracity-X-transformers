@@ -91,6 +91,9 @@ namespace VeyraCity.World
         Vector3[] lampBuffer = new Vector3[2048];
         float poolTimer;
         bool noLightPool;
+        // DIAG noon sweep (temporary): -veyraNoon <0|1|2>
+        static int noonPreset = -1;
+        static int NoonPreset { get { if (noonPreset < 0) { var g = Environment.GetCommandLineArgs(); int i = Array.IndexOf(g, "-veyraNoon"); noonPreset = i >= 0 && i + 1 < g.Length && int.TryParse(g[i + 1], out int v) ? v : 0; } return noonPreset; } }
         float districtHaze, districtHazeTarget, hazeTimer;
         ParticleSystem lampSprites;
         ParticleSystem.Particle[] spriteBuf;
@@ -284,7 +287,7 @@ namespace VeyraCity.World
             RenderSettings.fogMode = FogMode.ExponentialSquared;
             float wetHaze = Wetness * 0.0006f + Cloudiness * 0.00035f;
             // Card L3: exponential-squared density day 0.00035, golden 0.0005, night 0.0007 (+ wet / cloud haze).
-            float density = Mathf.Lerp(Mathf.Lerp(0.00035f, 0.0005f, golden), 0.0007f, NightFactor) + wetHaze;
+            float density = Mathf.Lerp(Mathf.Lerp(0.00035f * (NoonPreset >= 1 ? 0.6f : 1f), 0.0005f, golden), 0.0007f, NightFactor) + wetHaze;   // DIAG noon
             // D1 / BUG-059: height fog. URP fog depends on camera distance only, so the density thins with camera altitude
             // above the ground haze layer (aerial views no longer a fog wall) and thickens in the hazy districts (D6 Neon Mile
             // at night, D3 Ironport always). No extra GPU cost: same fog term, different density.
@@ -293,7 +296,7 @@ namespace VeyraCity.World
             if (Application.isPlaying && fogCam != null) UpdateDistrictHaze(fogCam.transform.position);
             baseFogDensity = density * (1f + districtHaze);
             RenderSettings.fogDensity = baseFogDensity * FogAltitudeFactor(camY);
-            RenderSettings.fogColor = Color.Lerp(Color.Lerp(new Color(0.66f, 0.72f, 0.80f), new Color(0.78f, 0.58f, 0.45f), golden),
+            RenderSettings.fogColor = Color.Lerp(Color.Lerp(NoonPreset >= 1 ? new Color(0.58f, 0.66f, 0.78f) : new Color(0.66f, 0.72f, 0.80f), new Color(0.78f, 0.58f, 0.45f), golden),
                                                  new Color(0.058f, 0.064f, 0.085f), NightFactor);   // D1: night haze lit by the city
             if (SkyboxMaterial != null) RenderSettings.skybox = SkyboxMaterial;
             // Card L2: with a PostVolumeDirector the Day / Golden / Night volumes carry these values (weights only, no profile
@@ -331,9 +334,9 @@ namespace VeyraCity.World
         {
             if (SkyboxMaterial != null)
             {
-                if (SkyboxMaterial.HasProperty(ExposureId)) SkyboxMaterial.SetFloat(ExposureId, Mathf.Lerp(1.15f, 0.06f, night));
-                if (SkyboxMaterial.HasProperty(AtmosphereId)) SkyboxMaterial.SetFloat(AtmosphereId, Mathf.Lerp(0.85f, 1.05f, golden));   // D1: 1.3 turned the upper golden sky green
-                if (SkyboxMaterial.HasProperty(SkyTintId)) SkyboxMaterial.SetColor(SkyTintId, Color.Lerp(new Color(0.5f, 0.55f, 0.62f), new Color(0.25f, 0.28f, 0.45f), night));
+                if (SkyboxMaterial.HasProperty(ExposureId)) SkyboxMaterial.SetFloat(ExposureId, Mathf.Lerp(NoonPreset >= 2 ? 1.0f : 1.15f, 0.06f, night));
+                if (SkyboxMaterial.HasProperty(AtmosphereId)) SkyboxMaterial.SetFloat(AtmosphereId, Mathf.Lerp(NoonPreset >= 2 ? 0.7f : 0.85f, 1.05f, golden));   // D1: 1.3 turned the upper golden sky green
+                if (SkyboxMaterial.HasProperty(SkyTintId)) SkyboxMaterial.SetColor(SkyTintId, Color.Lerp(NoonPreset >= 2 ? new Color(0.42f, 0.5f, 0.66f) : new Color(0.5f, 0.55f, 0.62f), new Color(0.25f, 0.28f, 0.45f), night));
             }
             foreach (var e in Emissives)
             {
