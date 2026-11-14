@@ -60,7 +60,9 @@ namespace VeyraCity.EditorTools
             root.SetParent(world.transform, false);
 
             // Buildings, from their UBX boxes. Same filter as RooftopDetails so the two agree about what a building is.
-            var boxes = Object.FindObjectsByType<BoxCollider>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            // no sort mode: the overload taking one is deprecated in Unity 6.6, and the crown set does not depend on
+            // the order (buildings are deduped by name and position)
+            var boxes = Object.FindObjectsByType<BoxCollider>(FindObjectsInactive.Include);
             var cells = new Dictionary<long, Transform>();
             int towers = 0, pieces = 0, fins = 0;
             var seen = new HashSet<long>();
