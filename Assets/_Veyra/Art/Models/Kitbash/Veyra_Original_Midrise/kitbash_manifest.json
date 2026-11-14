@@ -1,0 +1,252 @@
+{
+ "source": "Veyra_Original_Midrise",
+ "original": true,
+ "generator": "ArtSource/Blender/Buildings/build/",
+ "pieces": [
+  {
+   "name": "VC_Mid_Mid34A",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Midrise/VC_Mid_Mid34A.fbx",
+   "type": "Building",
+   "footprint_m": [
+    34.0,
+    18.0
+   ],
+   "height_m": 18.68,
+   "triangles": [
+    624,
+    408,
+    144
+   ],
+   "collision": [
+    "UBX_VC_Mid_Mid34A"
+   ],
+   "materials": [
+    {
+     "source": "VC_Mr_Panel"
+    },
+    {
+     "source": "VC_Mr_Glass"
+    },
+    {
+     "source": "VC_Mr_Metal"
+    },
+    {
+     "source": "VC_Mr_Concrete"
+    },
+    {
+     "source": "VC_Mr_Brick"
+    }
+   ]
+  },
+  {
+   "name": "VC_Mid_Mid34B",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Midrise/VC_Mid_Mid34B.fbx",
+   "type": "Building",
+   "footprint_m": [
+    34.0,
+    18.0
+   ],
+   "height_m": 18.68,
+   "triangles": [
+    588,
+    408,
+    144
+   ],
+   "collision": [
+    "UBX_VC_Mid_Mid34B"
+   ],
+   "materials": [
+    {
+     "source": "VC_Mr_Brick"
+    },
+    {
+     "source": "VC_Mr_Glass"
+    },
+    {
+     "source": "VC_Mr_Metal"
+    },
+    {
+     "source": "VC_Mr_Concrete"
+    },
+    {
+     "source": "VC_Mr_Panel"
+    }
+   ]
+  },
+  {
+   "name": "VC_Mid_Mid34C",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Midrise/VC_Mid_Mid34C.fbx",
+   "type": "Building",
+   "footprint_m": [
+    34.0,
+    18.0
+   ],
+   "height_m": 15.68,
+   "triangles": [
+    588,
+    396,
+    144
+   ],
+   "collision": [
+    "UBX_VC_Mid_Mid34C"
+   ],
+   "materials": [
+    {
+     "source": "VC_Mr_Brick"
+    },
+    {
+     "source": "VC_Mr_Glass"
+    },
+    {
+     "source": "VC_Mr_Metal"
+    },
+    {
+     "source": "VC_Mr_Concrete"
+    },
+    {
+     "source": "VC_Mr_Panel"
+    }
+   ]
+  },
+  {
+   "name": "VC_Mid_Mid3830",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Midrise/VC_Mid_Mid3830.fbx",
+   "type": "Building",
+   "footprint_m": [
+    38.0,
+    24.0
+   ],
+   "height_m": 31.68,
+   "triangles": [
+    816,
+    480,
+    144
+   ],
+   "collision": [
+    "UBX_VC_Mid_Mid3830"
+   ],
+   "materials": [
+    {
+     "source": "VC_Mr_Panel"
+    },
+    {
+     "source": "VC_Mr_Glass"
+    },
+    {
+     "source": "VC_Mr_Metal"
+    },
+    {
+     "source": "VC_Mr_Concrete"
+    },
+    {
+     "source": "VC_Mr_Brick"
+    }
+   ]
+  },
+  {
+   "name": "VC_Mid_Mid3845",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Midrise/VC_Mid_Mid3845.fbx",
+   "type": "Building",
+   "footprint_m": [
+    38.0,
+    24.0
+   ],
+   "height_m": 46.68,
+   "triangles": [
+    852,
+    540,
+    144
+   ],
+   "collision": [
+    "UBX_VC_Mid_Mid3845"
+   ],
+   "materials": [
+    {
+     "source": "VC_Mr_Panel"
+    },
+    {
+     "source": "VC_Mr_Glass"
+    },
+    {
+     "source": "VC_Mr_Metal"
+    },
+    {
+     "source": "VC_Mr_Concrete"
+    },
+    {
+     "source": "VC_Mr_Brick"
+    }
+   ]
+  },
+  {
+   "name": "VC_Mid_Mid3860",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Midrise/VC_Mid_Mid3860.fbx",
+   "type": "Building",
+   "footprint_m": [
+    38.0,
+    24.0
+   ],
+   "height_m": 61.68,
+   "triangles": [
+    1140,
+    588,
+    144
+   ],
+   "collision": [
+    "UBX_VC_Mid_Mid3860"
+   ],
+   "materials": [
+    {
+     "source": "VC_Mr_Brick"
+    },
+    {
+     "source": "VC_Mr_Glass"
+    },
+    {
+     "source": "VC_Mr_Metal"
+    },
+    {
+     "source": "VC_Mr_Concrete"
+    },
+    {
+     "source": "VC_Mr_Panel"
+    }
+   ]
+  },
+  {
+   "name": "VC_Mid_Mid3875",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Midrise/VC_Mid_Mid3875.fbx",
+   "type": "Building",
+   "footprint_m": [
+    38.0,
+    24.0
+   ],
+   "height_m": 76.68,
+   "triangles": [
+    1068,
+    648,
+    144
+   ],
+   "collision": [
+    "UBX_VC_Mid_Mid3875"
+   ],
+   "materials": [
+    {
+     "source": "VC_Mr_Panel"
+    },
+    {
+     "source": "VC_Mr_Glass"
+    },
+    {
+     "source": "VC_Mr_Metal"
+    },
+    {
+     "source": "VC_Mr_Concrete"
+    },
+    {
+     "source": "VC_Mr_Brick"
+    }
+   ]
+  }
+ ]
+}

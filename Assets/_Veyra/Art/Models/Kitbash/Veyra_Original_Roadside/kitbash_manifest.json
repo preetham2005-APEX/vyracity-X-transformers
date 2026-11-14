@@ -1,0 +1,42 @@
+{
+ "source": "Veyra_Original_Roadside",
+ "original": true,
+ "generator": "ArtSource/Blender/Buildings/build/",
+ "pieces": [
+  {
+   "name": "VC_Ret_GasStation",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Roadside/VC_Ret_GasStation.fbx",
+   "type": "Building",
+   "footprint_m": [
+    26.0,
+    16.0
+   ],
+   "height_m": 6.64,
+   "triangles": [
+    208,
+    168,
+    96
+   ],
+   "collision": [
+    "UBX_VC_Ret_GasStation"
+   ],
+   "materials": [
+    {
+     "source": "VC_Rt_Panel"
+    },
+    {
+     "source": "VC_Rt_Glass"
+    },
+    {
+     "source": "VC_Rt_Metal"
+    },
+    {
+     "source": "VC_Rt_Concrete"
+    },
+    {
+     "source": "VC_Rt_Brick"
+    }
+   ]
+  }
+ ]
+}

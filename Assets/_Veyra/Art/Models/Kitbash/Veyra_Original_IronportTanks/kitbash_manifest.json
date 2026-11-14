@@ -1,0 +1,94 @@
+{
+ "source": "Veyra_Original_IronportTanks",
+ "original": true,
+ "generator": "ArtSource/Blender/Buildings/build/",
+ "pieces": [
+  {
+   "name": "VC_Ind_ProcessColumn",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_IronportTanks/VC_Ind_ProcessColumn.fbx",
+   "type": "Building",
+   "footprint_m": [
+    8.0,
+    8.0
+   ],
+   "height_m": 52.1,
+   "triangles": [
+    578,
+    218,
+    70
+   ],
+   "collision": [
+    "UBX_VC_Ind_ProcessColumn"
+   ],
+   "materials": [
+    {
+     "source": "VC_In_TankShell"
+    },
+    {
+     "source": "VC_In_Metal"
+    },
+    {
+     "source": "VC_In_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Ind_TankCone",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_IronportTanks/VC_Ind_TankCone.fbx",
+   "type": "Building",
+   "footprint_m": [
+    34.0,
+    34.0
+   ],
+   "height_m": 19.1,
+   "triangles": [
+    1020,
+    600,
+    108
+   ],
+   "collision": [
+    "UBX_VC_Ind_TankCone"
+   ],
+   "materials": [
+    {
+     "source": "VC_In_TankShell"
+    },
+    {
+     "source": "VC_In_Metal"
+    },
+    {
+     "source": "VC_In_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Ind_TankDome",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_IronportTanks/VC_Ind_TankDome.fbx",
+   "type": "Building",
+   "footprint_m": [
+    34.0,
+    34.0
+   ],
+   "height_m": 14.55,
+   "triangles": [
+    1058,
+    626,
+    126
+   ],
+   "collision": [
+    "UBX_VC_Ind_TankDome"
+   ],
+   "materials": [
+    {
+     "source": "VC_In_TankShell"
+    },
+    {
+     "source": "VC_In_Metal"
+    },
+    {
+     "source": "VC_In_Concrete"
+    }
+   ]
+  }
+ ]
+}

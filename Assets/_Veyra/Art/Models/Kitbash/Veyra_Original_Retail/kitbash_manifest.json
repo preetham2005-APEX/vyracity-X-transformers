@@ -1,0 +1,112 @@
+{
+ "source": "Veyra_Original_Retail",
+ "original": true,
+ "generator": "ArtSource/Blender/Buildings/build/",
+ "pieces": [
+  {
+   "name": "VC_Ret_RetailBigbox",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Retail/VC_Ret_RetailBigbox.fbx",
+   "type": "Building",
+   "footprint_m": [
+    120.0,
+    60.0
+   ],
+   "height_m": 11.46,
+   "triangles": [
+    548,
+    324,
+    120
+   ],
+   "collision": [
+    "UBX_VC_Ret_RetailBigbox"
+   ],
+   "materials": [
+    {
+     "source": "VC_Rt_Panel"
+    },
+    {
+     "source": "VC_Rt_Glass"
+    },
+    {
+     "source": "VC_Rt_Metal"
+    },
+    {
+     "source": "VC_Rt_Concrete"
+    },
+    {
+     "source": "VC_Rt_Brick"
+    }
+   ]
+  },
+  {
+   "name": "VC_Ret_RetailSmall",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Retail/VC_Ret_RetailSmall.fbx",
+   "type": "Building",
+   "footprint_m": [
+    24.0,
+    14.0
+   ],
+   "height_m": 6.2,
+   "triangles": [
+    192,
+    168,
+    120
+   ],
+   "collision": [
+    "UBX_VC_Ret_RetailSmall"
+   ],
+   "materials": [
+    {
+     "source": "VC_Rt_Panel"
+    },
+    {
+     "source": "VC_Rt_Glass"
+    },
+    {
+     "source": "VC_Rt_Metal"
+    },
+    {
+     "source": "VC_Rt_Concrete"
+    },
+    {
+     "source": "VC_Rt_Brick"
+    }
+   ]
+  },
+  {
+   "name": "VC_Ret_RetailStrip",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Retail/VC_Ret_RetailStrip.fbx",
+   "type": "Building",
+   "footprint_m": [
+    40.0,
+    30.0
+   ],
+   "height_m": 7.72,
+   "triangles": [
+    360,
+    312,
+    120
+   ],
+   "collision": [
+    "UBX_VC_Ret_RetailStrip"
+   ],
+   "materials": [
+    {
+     "source": "VC_Rt_Panel"
+    },
+    {
+     "source": "VC_Rt_Glass"
+    },
+    {
+     "source": "VC_Rt_Metal"
+    },
+    {
+     "source": "VC_Rt_Concrete"
+    },
+    {
+     "source": "VC_Rt_Brick"
+    }
+   ]
+  }
+ ]
+}

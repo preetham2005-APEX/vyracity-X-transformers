@@ -1,0 +1,159 @@
+{
+ "source": "Veyra_Original_Alpine",
+ "original": true,
+ "generator": "ArtSource/Blender/Buildings/build/",
+ "pieces": [
+  {
+   "name": "VC_Alp_ChaletA",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Alpine/VC_Alp_ChaletA.fbx",
+   "type": "Building",
+   "footprint_m": [
+    12.0,
+    10.0
+   ],
+   "height_m": 8.02,
+   "triangles": [
+    956,
+    668,
+    176
+   ],
+   "collision": [
+    "UBX_VC_Alp_ChaletA"
+   ],
+   "materials": [
+    {
+     "source": "VC_Al_Timber"
+    },
+    {
+     "source": "VC_Al_Stone"
+    },
+    {
+     "source": "VC_Al_Roof"
+    },
+    {
+     "source": "VC_Al_Glass"
+    },
+    {
+     "source": "VC_Al_Trim"
+    },
+    {
+     "source": "VC_Al_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Alp_ChaletB",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Alpine/VC_Alp_ChaletB.fbx",
+   "type": "Building",
+   "footprint_m": [
+    12.0,
+    10.0
+   ],
+   "height_m": 8.0,
+   "triangles": [
+    836,
+    572,
+    152
+   ],
+   "collision": [
+    "UBX_VC_Alp_ChaletB"
+   ],
+   "materials": [
+    {
+     "source": "VC_Al_Timber"
+    },
+    {
+     "source": "VC_Al_Stone"
+    },
+    {
+     "source": "VC_Al_Roof"
+    },
+    {
+     "source": "VC_Al_Glass"
+    },
+    {
+     "source": "VC_Al_Trim"
+    },
+    {
+     "source": "VC_Al_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Alp_ChaletC",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Alpine/VC_Alp_ChaletC.fbx",
+   "type": "Building",
+   "footprint_m": [
+    12.0,
+    10.0
+   ],
+   "height_m": 8.0,
+   "triangles": [
+    520,
+    376,
+    116
+   ],
+   "collision": [
+    "UBX_VC_Alp_ChaletC"
+   ],
+   "materials": [
+    {
+     "source": "VC_Al_Timber"
+    },
+    {
+     "source": "VC_Al_Stone"
+    },
+    {
+     "source": "VC_Al_Roof"
+    },
+    {
+     "source": "VC_Al_Glass"
+    },
+    {
+     "source": "VC_Al_Trim"
+    },
+    {
+     "source": "VC_Al_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Alp_Workshop",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Alpine/VC_Alp_Workshop.fbx",
+   "type": "Building",
+   "footprint_m": [
+    42.0,
+    24.0
+   ],
+   "height_m": 8.5,
+   "triangles": [
+    680,
+    416,
+    152
+   ],
+   "collision": [
+    "UBX_VC_Alp_Workshop"
+   ],
+   "materials": [
+    {
+     "source": "VC_Al_Timber"
+    },
+    {
+     "source": "VC_Al_Stone"
+    },
+    {
+     "source": "VC_Al_Roof"
+    },
+    {
+     "source": "VC_Al_Glass"
+    },
+    {
+     "source": "VC_Al_Trim"
+    },
+    {
+     "source": "VC_Al_Concrete"
+    }
+   ]
+  }
+ ]
+}

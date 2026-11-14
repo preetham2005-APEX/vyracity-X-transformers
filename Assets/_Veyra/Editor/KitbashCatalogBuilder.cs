@@ -30,6 +30,26 @@ namespace VeyraCity.EditorTools
         static readonly Dictionary<string, (string lic, string[] tall, string[] low, string[] districts, string exclude)> Packs =
             new Dictionary<string, (string, string[], string[], string[], string)>
         {
+            // Veyra's own building kit (ArtSource/Blender/Buildings, 88 models, 2026-11-14). Original content, so the
+            // licence id is VC-ORIGINAL with a matching row in Docs/THIRD_PARTY_LICENSE_REGISTER.csv - without it the
+            // entries read as UNREGISTERED. Without these lines the catalog gives the entries no styles or districts,
+            // StyleMatch fails, and nothing is placed at all.
+            // tall / low are chosen by Height >= 30 m. Only NeonMile and IronportTanks use the split (brick blocks
+            // 30-62 m vs low-rise 16-21 m; process columns 52 m vs tanks 12-19 m); the rest list the same both sides.
+            ["Veyra_Original_Suburban"] = ("VC-ORIGINAL", new[] { "Suburban" }, new[] { "Suburban" }, new[] { "D5" }, null),
+            ["Veyra_Original_Downtown"] = ("VC-ORIGINAL", new[] { "GlassModern", "ArtDeco" }, new[] { "GlassModern", "ArtDeco" }, new[] { "D1" }, null),
+            ["Veyra_Original_NeonMile"] = ("VC-ORIGINAL", new[] { "BrickIndustrial" }, new[] { "ModernLowrise" }, new[] { "D6" }, null),
+            ["Veyra_Original_Coast"] = ("VC-ORIGINAL", new[] { "CoastalStucco" }, new[] { "CoastalStucco" }, new[] { "D2" }, null),
+            ["Veyra_Original_MarketTown"] = ("VC-ORIGINAL", new[] { "MarketTownBrick" }, new[] { "MarketTownBrick" }, new[] { "D8" }, null),
+            ["Veyra_Original_Midrise"] = ("VC-ORIGINAL", new[] { "ResidentialMidrise" }, new[] { "ResidentialMidrise" }, new[] { "D1", "D5" }, null),
+            ["Veyra_Original_Ironport"] = ("VC-ORIGINAL", new[] { "Industrial" }, new[] { "Industrial" }, new[] { "D3", "D7" }, null),
+            ["Veyra_Original_IronportTanks"] = ("VC-ORIGINAL", new[] { "IndustrialRefinery" }, new[] { "IndustrialTank" }, new[] { "D3" }, null),
+            ["Veyra_Original_Alpine"] = ("VC-ORIGINAL", new[] { "Alpine" }, new[] { "Alpine" }, new[] { "D4" }, null),
+            ["Veyra_Original_Rural"] = ("VC-ORIGINAL", new[] { "Rural" }, new[] { "Rural" }, new[] { "D8" }, null),
+            ["Veyra_Original_Aviation"] = ("VC-ORIGINAL", new[] { "Aviation" }, new[] { "Aviation" }, new[] { "D7" }, null),
+            ["Veyra_Original_Retail"] = ("VC-ORIGINAL", new[] { "SuburbanRetail" }, new[] { "SuburbanRetail" }, new[] { "D5" }, null),
+            ["Veyra_Original_Roadside"] = ("VC-ORIGINAL", new[] { "Roadside" }, new[] { "Roadside" }, new[] { "D4" }, null),
+
             ["Downtown_Buildings_Set"] = ("KB-01", new[] { "GlassModern" }, new[] { "ModernLowrise" }, new[] { "D1", "D6" }, null),
             ["Atlanta_Corporate_Office"] = ("KB-02", new[] { "GlassModern" }, new[] { "ModernLowrise" }, new[] { "D1" }, null),
             ["Realistic_Chicago_Buildings"] = ("KB-03", new[] { "ArtDeco" }, new[] { "BrickIndustrial" }, new[] { "D1" }, null),
