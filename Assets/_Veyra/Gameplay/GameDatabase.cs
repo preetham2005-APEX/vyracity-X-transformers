@@ -12,6 +12,25 @@ namespace VeyraCity.Gameplay
         public CarEntry[] Cars = Array.Empty<CarEntry>();
         public AssistPreset Casual, Advanced, AIPreset;
         public SurfaceDefinition DryAsphalt, WetAsphalt, Concrete, Gravel, Grass, Dirt;
+        [Tooltip("Realism §1.1: kerbs, old-town cobbles, bridge/port steel, beach sand, rock, plaza paving")]
+        public SurfaceDefinition Kerb, Cobblestone, Metal, Sand, Rock, Paving;
+
+        /// <summary>
+        /// Default terrain splat-layer → surface rules for <see cref="VehicleSurface.TerrainLayers"/> (the world's terrain
+        /// builder assigns them): matched by CityBuilder's layer names (L_Grass, L_ForestFloor, L_Rock, L_Sand, L_Paving,
+        /// L_Dirt, L_Farmland, L_Lawn).
+        /// </summary>
+        public VehicleSurface.LayerRule[] DefaultTerrainLayerRules() => new[]
+        {
+            new VehicleSurface.LayerRule { NameContains = "Sand", Surface = Sand },
+            new VehicleSurface.LayerRule { NameContains = "Rock", Surface = Rock },
+            new VehicleSurface.LayerRule { NameContains = "Paving", Surface = Paving },
+            new VehicleSurface.LayerRule { NameContains = "Dirt", Surface = Dirt },
+            new VehicleSurface.LayerRule { NameContains = "ForestFloor", Surface = Dirt },
+            new VehicleSurface.LayerRule { NameContains = "Farmland", Surface = Dirt },
+            new VehicleSurface.LayerRule { NameContains = "Lawn", Surface = Grass },
+            new VehicleSurface.LayerRule { NameContains = "Grass", Surface = Grass },
+        };
         public Material PlaceholderBody, PlaceholderWheel;
         // Runtime material templates moved to the VeyraMaterialLibrary in card F1 (Assets/_Veyra/World/Generated/Materials).
         public GameObject[] TrafficModels = Array.Empty<GameObject>();

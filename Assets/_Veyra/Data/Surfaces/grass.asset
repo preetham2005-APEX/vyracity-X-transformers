@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: grass
   m_EditorClassIdentifier: VeyraCity.VehiclePhysics::VeyraCity.VehiclePhysics.SurfaceDefinition
   Id: grass
-  GripMultiplier: 0.5
-  RollingResistanceMultiplier: 4
+  GripMultiplier: 0.6
+  RollingResistanceMultiplier: 2.5

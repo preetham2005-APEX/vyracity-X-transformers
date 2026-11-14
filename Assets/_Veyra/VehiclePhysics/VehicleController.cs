@@ -53,6 +53,15 @@ namespace VeyraCity.VehiclePhysics
         readonly float[] fxSum = new float[WheelCount];
         readonly float[] fySum = new float[WheelCount];
         readonly RaycastHit[] hitBuffer = new RaycastHit[8];
+        /// <summary>
+        /// Realism §1.1: wheels find the ground with a sphere of this share of the tyre radius instead of one thin ray, so a
+        /// kerb face, road-edge step or terrain lip in front of the tyre is seen and climbed (the contact normal tilts toward
+        /// the wheel) rather than missed until the body hits it. 0 = the old centre ray (tests, A/B).
+        /// </summary>
+        public static float WheelSphereShare = 0.85f;
+        /// <summary>Hits whose normal is steeper than this (normal.y below it) are walls, not ground: never climbed.</summary>
+        public const float MinGroundNormalY = 0.35f;
+        public int SphereContacts { get; private set; }
         readonly Dictionary<Collider, SurfaceDefinition> surfaceCache = new Dictionary<Collider, SurfaceDefinition>();
         float steerAngle;
         float tcsCut;
@@ -306,13 +315,13 @@ namespace VeyraCity.VehiclePhysics
                 float r = Axle(i).Tyre.Radius;
                 Vector3 mount = t.TransformPoint(mountLocal[i]);
                 float length;
-                if (CastWheel(mount, -up, sus.RestLength + r, out RaycastHit hit))
+                if (CastWheel(mount, -up, sus.RestLength, r, out RaycastHit hit, out float hitLength))
                 {
-                    length = Mathf.Max(0f, hit.distance - r);
+                    length = Mathf.Max(0f, hitLength);
                     w.Grounded = true;
                     w.ContactPoint = hit.point;
                     w.ContactNormal = hit.normal;
-                    w.Surface = ResolveSurface(hit.collider);
+                    w.Surface = ResolveSurface(hit.collider, hit.point);
                     grounded++;
                 }
                 else
@@ -817,10 +826,40 @@ namespace VeyraCity.VehiclePhysics
             else { left = innerDeg; right = outerDeg; }
         }
 
-        bool CastWheel(Vector3 origin, Vector3 direction, float maxDistance, out RaycastHit best)
+        /// <summary>
+        /// Wheel contact along <paramref name="direction"/> from the suspension mount. <paramref name="length"/> is the
+        /// suspension length (mount to hub). With <see cref="WheelSphereShare"/> &gt; 0 a sphere of that share of the tyre
+        /// radius is swept with its bottom where the tyre's bottom is, so on flat ground it returns exactly the ray's length
+        /// and near a step it touches the edge first (shorter length = the wheel rides up; normal from the edge toward the
+        /// wheel = a climbing force). Wall-like hits are ignored; with no usable sphere hit the centre ray decides.
+        /// </summary>
+        bool CastWheel(Vector3 origin, Vector3 direction, float restLength, float radius, out RaycastHit best, out float length)
         {
             best = default;
-            int count = Physics.RaycastNonAlloc(origin, direction, hitBuffer, maxDistance, ~0, QueryTriggerInteraction.Ignore);
+            length = restLength;
+            float share = WheelSphereShare;
+            if (share > 0.05f)
+            {
+                float s = radius * Mathf.Clamp(share, 0.1f, 1f);
+                Vector3 start = origin + direction * (radius - s);   // sphere bottom = tyre bottom
+                int n = Physics.SphereCastNonAlloc(start, s, direction, hitBuffer, restLength, ~0, QueryTriggerInteraction.Ignore);
+                float bestD = float.MaxValue;
+                bool any = false;
+                for (int i = 0; i < n; i++)
+                {
+                    var h = hitBuffer[i];
+                    if (h.rigidbody == rb || h.distance <= 0f) continue;   // own body; distance 0 = started inside a collider
+                    if (Vector3.Dot(h.normal, -direction) < MinGroundNormalY) continue;   // a wall, not ground
+                    if (h.distance < bestD) { bestD = h.distance; best = h; any = true; }
+                }
+                if (any)
+                {
+                    length = bestD;
+                    SphereContacts++;
+                    return true;
+                }
+            }
+            int count = Physics.RaycastNonAlloc(origin, direction, hitBuffer, restLength + radius, ~0, QueryTriggerInteraction.Ignore);
             float bestDistance = float.MaxValue;
             bool found = false;
             for (int i = 0; i < count; i++)
@@ -829,15 +868,26 @@ namespace VeyraCity.VehiclePhysics
                 if (hit.rigidbody == rb) continue;
                 if (hit.distance < bestDistance) { bestDistance = hit.distance; best = hit; found = true; }
             }
+            if (found) length = bestDistance - radius;
             return found;
         }
 
-        SurfaceDefinition ResolveSurface(Collider c)
+        readonly Dictionary<Collider, VehicleSurface> layeredTerrain = new Dictionary<Collider, VehicleSurface>();
+
+        SurfaceDefinition ResolveSurface(Collider c, Vector3 point)
         {
             if (c == null) return defaultSurface;
+            // realism §1.1: a terrain whose VehicleSurface maps splat layers gives the surface at the contact point
+            if (layeredTerrain.TryGetValue(c, out var layered)) { var ls = layered.SurfaceAt(point); return ls != null ? ls : defaultSurface; }
             if (!surfaceCache.TryGetValue(c, out var surface))
             {
                 var tag = c.GetComponentInParent<VehicleSurface>();
+                if (tag != null && tag.HasLayerRules && c is TerrainCollider)
+                {
+                    layeredTerrain[c] = tag;
+                    var ls = tag.SurfaceAt(point);
+                    return ls != null ? ls : defaultSurface;
+                }
                 surface = tag != null && tag.Surface != null ? tag.Surface : defaultSurface;
                 surfaceCache[c] = surface;
             }

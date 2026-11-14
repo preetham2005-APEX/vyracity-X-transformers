@@ -394,6 +394,12 @@ MonoBehaviour:
   Gravel: {fileID: 11400000, guid: 5009d603204cefc4cbb71579032ff9cd, type: 2}
   Grass: {fileID: 11400000, guid: 221a23555f5a7994ba2cedd2d3f7b5fc, type: 2}
   Dirt: {fileID: 11400000, guid: 93fb28ce7d1cd954ab178802e0a64dd8, type: 2}
+  Kerb: {fileID: 11400000, guid: 225c0ff679cb1a34ea55d5233b9d8e89, type: 2}
+  Cobblestone: {fileID: 11400000, guid: 5492c40ffe50a1d46950967567bcbcde, type: 2}
+  Metal: {fileID: 11400000, guid: 73d3245a98a83744a9dbd4c3c3b5e323, type: 2}
+  Sand: {fileID: 11400000, guid: 1bd7e35c928576d48afe8c239a57eb2c, type: 2}
+  Rock: {fileID: 11400000, guid: d55a8df9ef524bf44b798d5b6c1d6271, type: 2}
+  Paving: {fileID: 11400000, guid: 39fcd0fe2e88a8f499a00e8d2389c5e2, type: 2}
   PlaceholderBody: {fileID: 2100000, guid: c18169339c4bd6544916d0dd21a128d1, type: 2}
   PlaceholderWheel: {fileID: 2100000, guid: 99e3eb4682b217440b89c4ba045ea034, type: 2}
   TrafficModels:
