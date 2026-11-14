@@ -31,13 +31,13 @@ gutter genuinely needs two colliders, butted on the same plane at the same toe h
 `COL_concrete_<prop>_Kerb` and `COL_dry_asphalt_<prop>_Gutter`. CLAUDE.md allows no vertical step
 over 0.05 m between adjacent collider surfaces, and a wheel crossing that seam finds any error.
 
-## Hazard: coplanar drive-over colliders are already in a raycast tie
+## Hazard: coplanar drive-over colliders are already in a contact tie
 
 Raised by the vegetation session, and it generalises well past the case that prompted it.
 
 A flush, decal-style collider sitting at z = 0 — a scree rim, a manhole, a joint strip, a drain
 cover — is **exactly coplanar with the ground collider underneath it, by design**, because that
-is what keeps the vertical step at zero. So the wheel raycast is already ambiguous there: which
+is what keeps the vertical step at zero. So the wheel contact test is already ambiguous there: which
 collider wins is effectively a coin flip.
 
 That is harmless today **only because both surfaces are at the same height and both answers are
@@ -63,6 +63,20 @@ Graded scree response belongs in a larger asset — a 10 m spill with a loose ce
 outer scatter, where each zone is metres wide and a wheel spends real time in it. Subdividing a
 4.5 m patch buys nothing and risks the flicker.
 
+### The wheel is a sphere sweep, not a ray
+
+Verified in `VehicleController.cs:845` by the infra session rather than relayed: since 9e945b87
+wheel contact is `Physics.SphereCastNonAlloc` at 0.85 x tyre radius, nearest hit along the sweep,
+hits with `normal.y < 0.35` ignored, centre ray only as a fallback.
+
+This **strengthens** the conclusion above rather than changing it. The sphere meets a proud
+casting's raised top or rim on approach, so the wheel reads its surface while over it and the
+suspension takes the 6-10 mm bump — which is what you want. For genuinely coplanar colliders the
+sweep distances tie exactly as a ray would, so the hazard is unchanged.
+
+Its one refinement: **"flush" needs a tolerance under a sphere sweep**, not an exact zero. The
++/-0.5 mm band used by `RoadWear/build/check_coplanar.py` is the right line.
+
 ## Is it actually flush? Measure before assuming
 
 I asserted that the RoadWear castings were flush and therefore must not take `metal`. **That was
@@ -74,7 +88,7 @@ wrong, and the infra session corrected it with measurements.** From its manifest
 | `VC_UtilityCover_Square` | **+10 mm** |
 | `VC_StormDrain_Grate_Road` | **+6 mm** |
 
-A collider 6–10 mm above the road plane is **not** coplanar with it, so there is no raycast tie
+A collider 6–10 mm above the road plane is **not** coplanar with it, so there is no contact tie
 and no flicker. `metal` is correct for all four, and they now use it.
 
 The expansion joint strip genuinely is flush, and it ships with **no collider** — the road
@@ -85,7 +99,7 @@ flush thing" by virtue of being a casting. Before giving a drive-over collider a
 differs from the ground beneath it, **check its actual height above the road**:
 
 - **Coplanar (0 mm):** no own collider, or match the ground's surface. The tie is real.
-- **Proud by a few mm or more:** its own collider and its own true surface. The raycast has an
+- **Proud by a few mm or more:** its own collider and its own true surface. The contact test has an
   unambiguous winner.
 
 A millimetre figure settles it; an assumption about what kind of object it is does not. I had
