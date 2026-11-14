@@ -41,6 +41,8 @@ namespace VeyraCity.World
         public Cell[] Cells = Array.Empty<Cell>();
         [Range(0.25f, 2f)] public float DistanceScale = 1f;
         public bool Shadows = true;
+        [Tooltip("Draw distance multiplier for reflection-probe cameras (BUG-170: each probe face is a full camera render)")]
+        [Range(0f, 1f)] public float ReflectionDistanceScale = 0.35f;
 
         readonly Plane[] planes = new Plane[6];
         public static InstancedPropRenderer Instance { get; private set; }
@@ -86,6 +88,10 @@ namespace VeyraCity.World
             if (cam == null || cam.cameraType == CameraType.Preview) return;
             if (Cells == null || Prototypes == null || !SystemInfo.supportsInstancing) return;
             if ((cam.cullingMask & (1 << gameObject.layer)) == 0) return;
+            // Reflection probes only need the nearby props, low LOD and without shadow casters (BUG-170).
+            bool probe = cam.cameraType == CameraType.Reflection;
+            float scale = DistanceScale * (probe ? ReflectionDistanceScale : 1f);
+            if (scale <= 0f) return;
             GeometryUtility.CalculateFrustumPlanes(cam, planes);
             Vector3 eye = cam.transform.position;
             foreach (var c in Cells)
@@ -93,13 +99,14 @@ namespace VeyraCity.World
                 if (c.Matrices == null || c.Matrices.Length == 0 || c.Prototype < 0 || c.Prototype >= Prototypes.Length) continue;
                 var proto = Prototypes[c.Prototype];
                 float dist = Mathf.Sqrt(c.Bounds.SqrDistance(eye));
-                if (dist > proto.DrawDistance * DistanceScale) continue;
+                // Lamp heads keep their full distance in probes so wet-road reflections keep distant lamp glows.
+                if (dist > proto.DrawDistance * (proto.IsLamp ? DistanceScale : scale)) continue;
                 if (!GeometryUtility.TestPlanesAABB(planes, c.Bounds)) continue;
-                bool low = dist > proto.LodDistance * DistanceScale && proto.LowMesh != null;
+                bool low = proto.LowMesh != null && (probe || dist > proto.LodDistance * DistanceScale);
                 var mesh = low ? proto.LowMesh : proto.Mesh;
                 var mats = low && proto.LowMaterials != null && proto.LowMaterials.Length > 0 ? proto.LowMaterials : proto.Materials;
                 if (mesh == null || mats == null) continue;
-                bool shadows = Shadows && dist < proto.ShadowDistance;
+                bool shadows = Shadows && !probe && dist < proto.ShadowDistance;
                 for (int sm = 0; sm < mesh.subMeshCount && sm < mats.Length; sm++)
                 {
                     if (mats[sm] == null) continue;

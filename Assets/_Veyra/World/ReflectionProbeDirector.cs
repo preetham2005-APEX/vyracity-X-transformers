@@ -23,9 +23,9 @@ namespace VeyraCity.World
         [Tooltip("Re-render a probe when the night factor or wetness changed by more than this since its last render")]
         public float RefreshDelta = 0.08f;
         [Tooltip("Only probes within this distance of the camera render (the others wait until the camera comes near)")]
-        public float ActiveRadius = 900f;
+        public float ActiveRadius = 500f;   // BUG-170: was 900
         [Tooltip("Seconds between the start of two probe renders (each render takes 6 frames, one face per frame)")]
-        public float MinInterval = 0.3f;
+        public float MinInterval = 2f;   // BUG-170: was 0.3 (a city render every 0.3 s after each cell load)
 
         float[] seenNight, seenWet;
         int current = -1, renderId;
@@ -37,7 +37,11 @@ namespace VeyraCity.World
 
         void OnEnable()
         {
-            supported = QualitySettings.realtimeReflectionProbes;
+            // BUG-170 A/B (CPU split): -veyraNoProbeDirector stops the city box probes, -veyraNoRealtimeProbes also the car probe.
+            var cmd = System.Environment.GetCommandLineArgs();
+            if (System.Array.IndexOf(cmd, "-veyraNoRealtimeProbes") >= 0) QualitySettings.realtimeReflectionProbes = false;
+            bool off = System.Array.IndexOf(cmd, "-veyraNoProbeDirector") >= 0;
+            supported = QualitySettings.realtimeReflectionProbes && !off;
             string q = QualitySettings.names[QualitySettings.GetQualityLevel()];
             int res = q.Contains("Ultra") ? 256 : 128;
             foreach (var p in Probes)
@@ -45,6 +49,7 @@ namespace VeyraCity.World
                 if (p == null) continue;
                 p.enabled = supported;
                 p.resolution = res;
+                p.farClipPlane = Mathf.Min(p.farClipPlane, FarClip);   // BUG-170: each face is a full city cull + draw
             }
             seenNight = new float[Probes.Count];
             seenWet = new float[Probes.Count];
@@ -52,7 +57,15 @@ namespace VeyraCity.World
             CellStreamer.CellLoaded += OnCellLoaded;
         }
 
-        void OnDisable() => CellStreamer.CellLoaded -= OnCellLoaded;
+        /// <summary>BUG-170: far clip of the city probes at runtime (built with 600 m); box-projected reflections of the
+        /// street need the nearby facades only.</summary>
+        public const float FarClip = 300f;
+
+        void OnDisable()
+        {
+            CellStreamer.CellLoaded -= OnCellLoaded;
+            if (Debug.isDebugBuild) Debug.Log($"[ProbeDirector] renders={Renders} supported={supported}");   // BUG-170 A/B
+        }
 
         /// <summary>A streamed 1 km cell arrived (A2): probes within 1 km of its centre are marked stale (they re-render when
         /// their turn comes, near the camera first), so they reflect its buildings.</summary>
