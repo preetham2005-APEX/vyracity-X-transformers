@@ -38,6 +38,10 @@ namespace VeyraCity.EditorTools
             // full set of URP/Lit variants to the Windows build (L1 measured 2,880 ForwardLit variants per API with mixed tiers).
             // PC_Medium saves through shadow resolution, cascades, render scale and half-resolution SSAO instead.
             public bool Hdr, Ssao, Stp, SsaoHalfRes;
+            // Realism pass F: 12 SSAO samples + High normal reconstruction (Medium keeps 8 / Medium; the sample count is a keyword
+            // of the SSAO pass only, not of the lit shaders). Decals: the same DBuffer settings on every PC tier, so the
+            // _DBUFFER_MRT keyword never differs between them (BUG-106); mobile has none (DBuffer needs a depth-normals prepass).
+            public bool SsaoHigh, Decals;
             public Vector3 Split4 = new Vector3(0.06f, 0.18f, 0.45f);
             public float Split2 = 0.25f;
         }
@@ -46,9 +50,9 @@ namespace VeyraCity.EditorTools
         {
             new Tier { Name = "Mobile_Low", Mobile = true, ShadowDistance = 25f, Cascades = 1, MainShadowRes = 1024, AdditionalShadowAtlas = 512, SoftShadowQuality = 0, Hdr = false, Ssao = false, Stp = false, RenderScale = 0.75f },
             new Tier { Name = "Mobile_Mid", Mobile = true, ShadowDistance = 40f, Cascades = 2, MainShadowRes = 2048, AdditionalShadowAtlas = 1024, SoftShadowQuality = 1, Hdr = true, Ssao = false, Stp = false, RenderScale = 0.85f },
-            new Tier { Name = "PC_Medium", ShadowDistance = 120f, Cascades = 2, MainShadowRes = 2048, AdditionalShadowAtlas = 2048, SoftShadowQuality = 3, Hdr = true, Ssao = true, SsaoHalfRes = true, Stp = true, RenderScale = 0.8f },
-            new Tier { Name = "PC_High", ShadowDistance = 160f, Cascades = 4, MainShadowRes = 4096, AdditionalShadowAtlas = 4096, SoftShadowQuality = 3, Hdr = true, Ssao = true, Stp = true, RenderScale = 0.9f },
-            new Tier { Name = "PC_Ultra", ShadowDistance = 250f, Cascades = 4, MainShadowRes = 4096, AdditionalShadowAtlas = 4096, SoftShadowQuality = 3, Hdr = true, Ssao = true, Stp = true, RenderScale = 1.0f },
+            new Tier { Name = "PC_Medium", ShadowDistance = 120f, Cascades = 2, MainShadowRes = 2048, AdditionalShadowAtlas = 2048, SoftShadowQuality = 3, Hdr = true, Ssao = true, SsaoHalfRes = true, Stp = true, RenderScale = 0.8f, Decals = true },
+            new Tier { Name = "PC_High", ShadowDistance = 160f, Cascades = 4, MainShadowRes = 4096, AdditionalShadowAtlas = 4096, SoftShadowQuality = 3, Hdr = true, Ssao = true, Stp = true, RenderScale = 1.0f, SsaoHigh = true, Decals = true },   // F: was 0.9 (STP)
+            new Tier { Name = "PC_Ultra", ShadowDistance = 250f, Cascades = 4, MainShadowRes = 4096, AdditionalShadowAtlas = 4096, SoftShadowQuality = 3, Hdr = true, Ssao = true, Stp = true, RenderScale = 1.0f, SsaoHigh = true, Decals = true },
         };
 
         static readonly Dictionary<string, (string asset, string renderer)> Legacy = new Dictionary<string, (string, string)>
@@ -62,6 +66,15 @@ namespace VeyraCity.EditorTools
 
         [MenuItem("Veyra/Rendering/Build Quality Tiers")]
         static void Menu() => Debug.Log(Apply());
+
+        /// <summary>Batch entry (-executeMethod VeyraCity.EditorTools.VeyraQualityTiers.Batch); log in Logs/F/quality_tiers.txt.</summary>
+        public static void Batch()
+        {
+            string log = Apply();
+            System.IO.Directory.CreateDirectory("Logs/F");
+            System.IO.File.AppendAllText("Logs/F/quality_tiers.txt", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " " + log + "\n");
+            Debug.Log(log);
+        }
 
         public static string Apply()
         {
@@ -167,11 +180,46 @@ namespace VeyraCity.EditorTools
                 {
                     if (ssao.isActive != t.Ssao) { ssao.SetActive(t.Ssao); changes++; }
                     var fso = new SerializedObject(ssao);
-                    if (Set(fso, "m_Settings.Downsample", t.SsaoHalfRes ? 1 : 0)) { changes++; fso.ApplyModifiedPropertiesWithoutUndo(); }
+                    if (Set(fso, "m_Settings.Downsample", t.SsaoHalfRes ? 1 : 0)) changes++;
+                    if (Set(fso, "m_Settings.Samples", t.SsaoHigh ? 0 : 1)) changes++;          // AOSampleOption: High 12, Medium 8
+                    if (Set(fso, "m_Settings.NormalSamples", t.SsaoHigh ? 2 : 1)) changes++;    // NormalQuality: High, Medium
+                    fso.ApplyModifiedPropertiesWithoutUndo();
                 }
             }
+            if (t.Decals && !t.Mobile) changes += EnsureDecals(r);
             if (changes > 0) { EditorUtility.SetDirty(a); EditorUtility.SetDirty(r); }
             return $"{t.Name,-11} shadows {t.ShadowDistance} m x{t.Cascades} @{t.MainShadowRes}, soft {t.SoftShadowQuality}, scale {t.RenderScale} {(t.Stp ? "STP" : "MSAA")}, HDR {t.Hdr}, SSAO {t.Ssao}: {changes} change(s)\n";
+        }
+
+        /// <summary>Realism pass F: a Decal Renderer Feature (DBuffer, Albedo + Normal + MAOS, 150 m) on the renderer; the VC_*
+        /// shaders apply it in VC_ForwardPass like URP/Lit. Returns the number of changes.</summary>
+        static int EnsureDecals(UniversalRendererData r)
+        {
+            int changes = 0;
+            var decal = r.rendererFeatures.FirstOrDefault(f => f is DecalRendererFeature);
+            if (decal == null)
+            {
+                decal = ScriptableObject.CreateInstance<DecalRendererFeature>();
+                decal.name = "Decal";
+                AssetDatabase.AddObjectToAsset(decal, r);
+                AssetDatabase.TryGetGUIDAndLocalFileIdentifier(decal, out _, out long localId);
+                var rso = new SerializedObject(r);
+                var list = rso.FindProperty("m_RendererFeatures");
+                var map = rso.FindProperty("m_RendererFeatureMap");
+                list.arraySize++;
+                list.GetArrayElementAtIndex(list.arraySize - 1).objectReferenceValue = decal;
+                map.arraySize++;
+                map.GetArrayElementAtIndex(map.arraySize - 1).longValue = localId;
+                rso.ApplyModifiedPropertiesWithoutUndo();
+                r.SetDirty();
+                changes++;
+            }
+            var dso = new SerializedObject(decal);
+            if (Set(dso, "m_Settings.technique", 1)) changes++;                      // DecalTechniqueOption.DBuffer
+            if (Set(dso, "m_Settings.maxDrawDistance", 150f)) changes++;
+            if (Set(dso, "m_Settings.dBufferSettings.surfaceData", 2)) changes++;    // DecalSurfaceData.AlbedoNormalMAOS
+            dso.ApplyModifiedPropertiesWithoutUndo();
+            return changes;
         }
 
         static string ConfigureQualityLevels()

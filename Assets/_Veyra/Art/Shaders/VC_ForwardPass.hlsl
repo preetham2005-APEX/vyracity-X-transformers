@@ -105,6 +105,11 @@ half4 VC_Fragment(VC_Varyings i) : SV_Target
     d.normalizedScreenSpaceUV = GetNormalizedScreenSpaceUV(i.positionCS);
     d.shadowMask = half4(1, 1, 1, 1);
 
+#if defined(_DBUFFER)
+    // Realism pass F: decals (road wear, grime, patches, tyre marks) from the DBuffer, like URP/Lit; shaders without the
+    // _DBUFFER_MRT pragma (water, neon) compile this out.
+    ApplyDecalToSurfaceData(i.positionCS, s, d);
+#endif
     half4 color = UniversalFragmentPBR(d, s);
     color.rgb = MixFog(color.rgb, d.fogCoord);
     color.a = 1.0;
