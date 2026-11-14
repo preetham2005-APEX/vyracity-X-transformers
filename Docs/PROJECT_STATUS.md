@@ -184,12 +184,13 @@ Brief: `Docs/OPUS_55_MASTER_PROMPT.md`. Spot-checked in code before assigning: `
 | Brief item | Owner session | Status |
 |---|---|---|
 | A world side: shoulder collider, splat surface tagging, BUG-001/026/027/049–052/065, Validate Drivable ≥ 99.5 % | World | Queued after BUG-170 |
-| BUG-170 spawner time-slicing (before any new content), R_BRIDGES hitches; BUG-037/038 LODs and chunking | World | R_SMOKE fixed in `42421af3` (Dev: p99 88 → 25 ms, 0 hitches); R_BRIDGES open |
-| E: PBR terrain, facade depth, kerbside density, decal content; packages Burst/Mathematics/Collections/Terrain Tools/Recorder/Memory Profiler | World | Pending |
+| BUG-170 scatter-spawn amortisation; night facade shading; building kit catalog + assembly (replaces box buildings); TowerCrowns | Unity plugin and MCP servers setup (other group) | Spawner done (`345c8739`, `bd04a2be`, `0979ced3`), night facades `02224645`; kit assembly next in the lock queue |
+| R_BRIDGES hitches; BUG-037/038 LODs and chunking | World | Grass/probe fix `42421af3`; its Dev numbers (p99 88 → 25 ms) were taken while another group's runs shared the CPU, so they need a clean re-measure |
+| E: PBR terrain, kerbside density, decal content; packages Burst/Mathematics/Collections/Terrain Tools/Recorder/Memory Profiler | World | Pending |
 | A vehicle side: SphereCast wheel + step probe, body collider, stuck recovery, Kerb/Cobblestone/Metal/Sand/Rock/Paving surfaces, DynamicsManager; B handling + AI (BUG-061/028); C/D nitro and crash gameplay | Vehicle D2 | BUG-170 release slot first |
 | F: render scale 1.0, SSAO, Decal Renderer Feature, APV + sky occlusion, noon sky, neon night; D: Shader Graph + VFX Graph, six-way smoke, nitro/crash VFX | Lighting D1 | BUG-170 probe A/B slot first |
 | Foliage wind/translucency/impostors (on `ArtSource/Blender/Vegetation/`), real pedestrians | foliage-peds (new) | Started, staging offline |
 | Audio (recorded engine, impacts, nitro) | — | **Blocked: needs user OK for licensed downloads** |
 | Addressables (CLAUDE.md lists it, manifest lacks it) | — | Doc/manifest mismatch reported to the user |
 
-Unity lock queue: external A8 build → World (profile parse) → D2 → Lighting → others on request. One Editor at a time; staged code stays outside `Assets/` until its owner holds the lock.
+Unity lock queue: World (profile parse) → building kit assembly (other group) → D2 → Lighting → others on request. No batch Editor or player run without a slot: concurrent runs swung timings 10× (`62e01bd8`). One Editor at a time; staged code stays outside `Assets/` until its owner holds the lock.
