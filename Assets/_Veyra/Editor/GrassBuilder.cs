@@ -33,7 +33,9 @@ namespace VeyraCity.EditorTools
                     }
                 };
                 td.SetDetailScatterMode(DetailScatterMode.InstanceCountMode);
-                td.SetDetailResolution(DetailRes, 32);
+                // BUG-170: 16 detail cells per patch (64 m) instead of 32 (128 m): each patch rebuild (DetailMesh.MeshGenerationJob,
+                // 1.5 s of main-thread time over the >50 ms frames of a profiled R_SMOKE) is a quarter of the work
+                td.SetDetailResolution(DetailRes, 16);
                 var am = td.GetAlphamaps(0, 0, td.alphamapWidth, td.alphamapHeight);
                 var road = RoadMask(t.transform.position, td.size.x);
                 var layer = new int[DetailRes, DetailRes];
@@ -52,7 +54,7 @@ namespace VeyraCity.EditorTools
                         planted += n;
                     }
                 td.SetDetailLayer(0, 0, 0, layer);
-                t.detailObjectDistance = 120f;
+                t.detailObjectDistance = 100f;   // BUG-170: was 120 m
                 t.detailObjectDensity = 1f;
                 t.drawTreesAndFoliage = true;
                 EditorUtility.SetDirty(td);

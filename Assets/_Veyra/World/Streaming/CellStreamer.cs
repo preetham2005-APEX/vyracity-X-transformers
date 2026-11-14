@@ -263,6 +263,19 @@ namespace VeyraCity.World.Streaming
             if (worst >= 0) StartCoroutine(Unload(worst));
         }
 
+        static readonly System.Collections.Generic.Dictionary<System.Reflection.MethodInfo, string> subscriberNames = new System.Collections.Generic.Dictionary<System.Reflection.MethodInfo, string>();
+        static string SubscriberName(Delegate d)
+        {
+            var m = d.Method;
+            if (!subscriberNames.TryGetValue(m, out var n))
+            {
+                var t = m.DeclaringType;
+                while (t != null && t.IsNested && t.Name.StartsWith("<")) t = t.DeclaringType;   // lambdas: the owning class
+                subscriberNames[m] = n = "CellLoaded:" + (t != null ? t.Name : "?") + "." + (m.Name.StartsWith("<") ? "lambda" : m.Name);
+            }
+            return n;
+        }
+
         IEnumerator Load(int i)
         {
             busy = true;
@@ -310,8 +323,16 @@ namespace VeyraCity.World.Streaming
             if (LogOps) Debug.Log($"[CellStreamer] load {CellName(i)}: {lastLoadMs[i]:0} ms over {frames} frames, {activated} objects activated, worst frame {worst:0.0} ms");
             float a0 = Time.realtimeSinceStartup;
             long fcb = FrameCost.Start();
-            try { if (!noEvents) CellLoaded?.Invoke(CellName(i), scene); }
-            catch (Exception e) { Debug.LogException(e); }
+            // BUG-170: each subscriber timed on its own (FrameCost "CellLoaded:<Type.Method>"), so the per-cell cost is
+            // attributed to its owner; the total keeps its old name
+            if (!noEvents && CellLoaded != null)
+                foreach (var d in CellLoaded.GetInvocationList())
+                {
+                    long fcs = FrameCost.Start();
+                    try { ((Action<string, Scene>)d)(CellName(i), scene); }
+                    catch (Exception e) { Debug.LogException(e); }
+                    FrameCost.Stop(SubscriberName(d), fcs);
+                }
             FrameCost.Stop("Streamer.CellLoaded callbacks", fcb);
             maxActivationMs = Mathf.Max(maxActivationMs, (Time.realtimeSinceStartup - a0) * 1000f);
             busy = false;

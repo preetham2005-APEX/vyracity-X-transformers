@@ -57,6 +57,7 @@ namespace VeyraCity.EditorTools
                         case "airfield": log.Append(AirfieldBuilder.Run()); break;
                         case "meadow": log.Append(MeadowPass.Run()); break;
                         case "lampfill": log.Append(LampFill.Run()); break;
+                        case "profparse": { int pa = Array.IndexOf(args, "-veyraProf"); log.Append(ProfileParse.Run(pa >= 0 ? args[pa + 1] : "Logs/ITER/prof.raw")); break; }
                         case "lmaudit":   // iteration 23: what stands on every registry landmark point (renderers within 25 m)
                         {
                             var reg = VeyraCity.World.Data.LocationRegistry.Parse(VeyraDataValidator.LoadText("location_registry.csv"));
