@@ -1,0 +1,143 @@
+/* Veyra City realism report: print stylesheet (rendered to PDF with headless Chrome) */
+:root {
+  --ink: #16191f;
+  --ink-2: #3b4250;
+  --muted: #6b7383;
+  --rule: #d9dde4;
+  --paper: #ffffff;
+  --panel: #f4f6f9;
+  --accent: #c2185b;      /* neon magenta, used sparingly */
+  --accent-2: #0b7285;    /* teal */
+  --crit: #b3261e;
+  --high: #d9480f;
+  --med: #b08800;
+  --low: #2b8a3e;
+  --code-bg: #eef1f5;
+}
+@page {
+  size: A4;
+  margin: 15mm 14mm 16mm 14mm;
+  @bottom-left { content: "Veyra City - Realism Upgrade Report - 2026-11-11"; font: 8pt "Segoe UI", Arial, sans-serif; color: #8a90a0; }
+  @bottom-right { content: "Page " counter(page) " of " counter(pages); font: 8pt "Segoe UI", Arial, sans-serif; color: #8a90a0; }
+}
+@page :first { margin: 0; @bottom-left { content: none; } @bottom-right { content: none; } }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 9.6pt;
+  line-height: 1.45;
+}
+h1, h2, h3, h4 { font-family: "Segoe UI Semibold", "Segoe UI", Arial, sans-serif; color: var(--ink); line-height: 1.2; }
+h1 { font-size: 21pt; margin: 0 0 6mm; letter-spacing: -0.2px; }
+h2 { font-size: 15pt; margin: 8mm 0 3mm; padding-bottom: 1.5mm; border-bottom: 1.5px solid var(--ink); break-after: avoid; }
+h3 { font-size: 11.5pt; margin: 5mm 0 2mm; break-after: avoid; }
+h4 { font-size: 10pt; margin: 3.5mm 0 1.5mm; break-after: avoid; color: var(--ink-2); }
+p { margin: 0 0 2.4mm; }
+ul, ol { margin: 0 0 2.6mm; padding-left: 5mm; }
+li { margin: 0 0 1mm; }
+a { color: var(--accent-2); text-decoration: none; word-break: break-word; }
+code, .mono { font-family: "Cascadia Mono", Consolas, "Courier New", monospace; font-size: 8.2pt; background: var(--code-bg); padding: 0 1.2mm; border-radius: 2px; word-break: break-word; }
+strong { font-weight: 650; }
+.small { font-size: 8.4pt; color: var(--ink-2); }
+.muted { color: var(--muted); }
+.chapter { break-before: page; }
+.avoid { break-inside: avoid; }
+
+/* Cover */
+.cover { position: relative; height: 100vh; width: 100vw; overflow: hidden; color: #fff; background: #0d1017; break-after: page; }
+.cover img.hero { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.62; }
+.cover .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,12,18,0.15) 0%, rgba(10,12,18,0.55) 55%, rgba(10,12,18,0.95) 100%); }
+.cover .text { position: absolute; left: 18mm; right: 18mm; bottom: 26mm; }
+.cover .kicker { font-size: 10pt; letter-spacing: 2.5px; text-transform: uppercase; color: #ff7ab8; margin-bottom: 4mm; }
+.cover h1 { color: #fff; font-size: 30pt; margin: 0 0 4mm; }
+.cover .sub { font-size: 12.5pt; color: #e3e7ef; max-width: 160mm; margin-bottom: 8mm; }
+.cover .meta { font-size: 9pt; color: #b9c0cf; border-top: 1px solid rgba(255,255,255,0.25); padding-top: 3mm; display: flex; gap: 10mm; flex-wrap: wrap; }
+
+/* Panels and callouts */
+.panel { background: var(--panel); border: 1px solid var(--rule); border-radius: 3px; padding: 3.5mm 4mm; margin: 2.5mm 0 3.5mm; break-inside: avoid; }
+.callout { border-left: 3px solid var(--accent); background: #fbf2f6; padding: 3mm 4mm; margin: 3mm 0; break-inside: avoid; }
+.callout.teal { border-left-color: var(--accent-2); background: #eef7f9; }
+.callout.warn { border-left-color: var(--high); background: #fdf3ec; }
+.callout h4 { margin-top: 0; }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5mm; margin: 3mm 0 4mm; }
+.kpi { border: 1px solid var(--rule); border-radius: 3px; padding: 2.5mm 3mm; break-inside: avoid; }
+.kpi .v { font-size: 16pt; font-weight: 650; line-height: 1.1; }
+.kpi .l { font-size: 8pt; color: var(--muted); }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 2mm 0 4mm; font-size: 8.4pt; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th { text-align: left; font-weight: 650; background: #e9edf2; border-bottom: 1.2px solid #b9c0cc; padding: 1.6mm 2mm; vertical-align: bottom; }
+td { border-bottom: 1px solid var(--rule); padding: 1.5mm 2mm; vertical-align: top; }
+td.num, th.num { text-align: right; white-space: nowrap; }
+.score-bar { display: inline-block; height: 2.6mm; background: var(--accent-2); border-radius: 1px; vertical-align: middle; }
+.score-bg { display: inline-block; width: 30mm; height: 2.6mm; background: #e3e7ee; border-radius: 1px; vertical-align: middle; position: relative; }
+.score-bg .score-bar { position: absolute; left: 0; top: 0; }
+
+/* Severity tags */
+.tag { display: inline-block; font-size: 7.2pt; font-weight: 700; letter-spacing: 0.3px; text-transform: uppercase; color: #fff; padding: 0.3mm 1.6mm; border-radius: 2px; vertical-align: 1px; white-space: nowrap; }
+.tag.critical { background: var(--crit); }
+.tag.high { background: var(--high); }
+.tag.medium { background: var(--med); }
+.tag.low { background: var(--low); }
+.tag.effort { background: #5b6475; }
+.tag.verified { background: #1c7c54; }
+.tag.corrected { background: #7048e8; }
+.tag.added { background: #1971c2; }
+
+/* Findings */
+.finding { border: 1px solid var(--rule); border-radius: 3px; margin: 0 0 3mm; break-inside: avoid; }
+.finding .fh { display: flex; gap: 2mm; align-items: baseline; padding: 2mm 3mm; background: #f1f3f7; border-bottom: 1px solid var(--rule); }
+.finding .fid { font-family: "Cascadia Mono", Consolas, monospace; font-size: 8pt; color: var(--muted); white-space: nowrap; }
+.finding .ft { font-weight: 650; font-size: 9.6pt; flex: 1; }
+.finding .fb { padding: 2mm 3mm 2.4mm; display: grid; grid-template-columns: 24mm 1fr; column-gap: 3mm; row-gap: 1.2mm; }
+.finding .k { font-size: 7.8pt; text-transform: uppercase; letter-spacing: 0.4px; color: var(--muted); padding-top: 0.4mm; }
+.finding .ev { font-family: "Cascadia Mono", Consolas, monospace; font-size: 7.4pt; color: var(--ink-2); word-break: break-word; }
+
+/* Figures */
+figure { margin: 2mm 0 4mm; break-inside: avoid; }
+figure img { width: 100%; display: block; border-radius: 2px; border: 1px solid #c9ced8; }
+figcaption { font-size: 8.2pt; color: var(--ink-2); margin-top: 1.4mm; }
+figcaption b { color: var(--ink); }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; }
+.grid2 figure, .grid3 figure { margin: 0; }
+.fig-row { margin: 2mm 0 4mm; }
+
+/* Roadmap */
+.phase { border: 1px solid var(--rule); border-left: 4px solid var(--accent-2); border-radius: 3px; padding: 3mm 4mm; margin: 0 0 3.5mm; break-inside: avoid; }
+.phase h3 { margin-top: 0; }
+.phase .when { font-size: 8.4pt; color: var(--muted); margin-bottom: 1.5mm; }
+.toc { columns: 2; column-gap: 8mm; font-size: 9.2pt; }
+.toc li { break-inside: avoid; }
+.sources li { font-size: 8.2pt; margin-bottom: 0.8mm; }
+.twocol { columns: 2; column-gap: 7mm; }
+.twocol > * { break-inside: avoid; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 4mm 0; }
+
+/* Domain summaries, notes and inline lists inside finding cards */
+.dsum { margin: 0 0 3mm; }
+.dsum p { margin: 0 0 2mm; }
+.dsum ul, .dsum ol { margin-bottom: 2mm; }
+.finding .fb p { margin: 0 0 1.2mm; }
+.finding .fb p:last-child { margin-bottom: 0; }
+.finding .fb ul, .finding .fb ol { margin: 0.5mm 0 1mm; padding-left: 4.5mm; }
+.finding .fb li { margin: 0 0 0.6mm; }
+.finding .note { color: #5a3e00; background: #fff6dc; border-radius: 2px; padding: 0.6mm 1.6mm; }
+.tag.selfchk { background: #8a93a6; }
+.wins td:first-child { white-space: nowrap; font-family: "Cascadia Mono", Consolas, monospace; font-size: 7.6pt; color: var(--ink-2); }
+.feature-yes { color: #1c7c54; font-weight: 650; }
+.feature-no { color: var(--crit); font-weight: 650; }
+.feature-pre { color: var(--med); font-weight: 650; }
+
+/* Register IDs never wrap; table of contents */
+td.mono { white-space: nowrap; }
+.tocl { list-style: none; padding: 0; margin: 2mm 0 0; font-size: 10.5pt; }
+.tocl li { display: flex; align-items: baseline; padding: 1.6mm 0; border-bottom: 1px dotted #c3c8d2; margin: 0; }
+.tocl li a { color: var(--ink); flex: 1; }
+.tocl li .pg { font-variant-numeric: tabular-nums; color: var(--ink-2); padding-left: 4mm; }

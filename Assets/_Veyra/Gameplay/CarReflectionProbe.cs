@@ -19,9 +19,20 @@ namespace VeyraCity.Gameplay
         // iteration 29: 360 m box (was 70): the street the camera sees reflects the real surroundings instead of the
         // editor-baked daytime sky (wet night roads beyond 35 m read as snow)
         public float Range = 360f;
-        public float FarClip = 300f;
+        // BUG-170 (D2): 200 m (was 300) and a new cycle at most every 0.4 s (was back to back): the probe rendered one face of
+        // the city every frame forever; now it is busy about 9 frames out of every ~25 at 60 FPS
+        public float FarClip = 200f;
+        public float MinCycleSeconds = 0.4f;
+        // BUG-170 (D1 / coordinator): a new full cube only when the view can have changed: the car moved 12 m or turned 20 deg
+        // since the last cube, or the light or wetness changed by 0.05; nothing while the car stands still. One face per frame
+        // (IndividualFaces) as before
+        public float RefreshDistance = 12f, RefreshTurnDeg = 20f, RefreshEnvDelta = 0.05f;
+        float lastCycle = -10f, lastNight = -1f, lastWet = -1f, lastYaw;
+        Vector3 lastPos = new Vector3(1e9f, 0f, 0f);
 
         ReflectionProbe probe;
+        /// <summary>Refresh cycles started (for the run reports).</summary>
+        public static int Cycles { get; private set; }
         int renderId = -1;
 
         public void Bind(VehicleController car)
@@ -60,8 +71,24 @@ namespace VeyraCity.Gameplay
         void LateUpdateBody()
         {
             if (probe == null) return;
-            // Start the next time-sliced refresh as soon as the previous one has finished (about every 9 frames).
-            if (renderId < 0 || probe.IsFinishedRendering(renderId)) renderId = probe.RenderProbe();
+            // Start the next time-sliced refresh once the previous one has finished and MinCycleSeconds have passed.
+            if (renderId >= 0 && !probe.IsFinishedRendering(renderId)) return;
+            float since = Time.unscaledTime - lastCycle;
+            if (since < MinCycleSeconds) return;
+            var env = VeyraCity.World.WorldEnvironment.Instance;
+            float night = env != null ? env.NightFactor : 0f, wet = env != null ? env.Wetness : 0f;
+            float yaw = transform.eulerAngles.y;
+            bool moved = (transform.position - lastPos).sqrMagnitude > RefreshDistance * RefreshDistance
+                         || Mathf.Abs(Mathf.DeltaAngle(yaw, lastYaw)) > RefreshTurnDeg;
+            bool envChanged = Mathf.Abs(night - lastNight) > RefreshEnvDelta || Mathf.Abs(wet - lastWet) > RefreshEnvDelta;
+            if (!moved && !envChanged) return;
+            lastCycle = Time.unscaledTime;
+            lastPos = transform.position;
+            lastYaw = yaw;
+            lastNight = night; lastWet = wet;
+            renderId = probe.RenderProbe();
+            Cycles++;
+            VeyraCity.Core.FrameCost.Count("CarProbe.cycles");
         }
     }
 }

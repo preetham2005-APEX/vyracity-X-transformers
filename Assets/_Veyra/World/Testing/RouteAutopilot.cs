@@ -26,6 +26,13 @@ namespace VeyraCity.Testing
         /// <summary>Signed distance from the lane centre, m (+ = right).</summary>
         public float LateralError { get; private set; }
         public bool Active { get; set; }
+        /// <summary>Phase E follow-up (D2): brake for vehicles in the lane ahead, so V1 routes can run with traffic.</summary>
+        public bool AvoidTraffic { get; set; } = true;
+        /// <summary>Distance along the lane to the nearest vehicle ahead (m), or -1 when the lane is clear.</summary>
+        public float ObstacleDistance { get; private set; } = -1f;
+        /// <summary>Fixed steps in which the traffic check lowered the target speed (for the run report).</summary>
+        public int ObstacleSlowdowns { get; private set; }
+        readonly Collider[] probeHits = new Collider[16];
 
         public RouteAutopilot(VehicleController car)
         {
@@ -74,12 +81,48 @@ namespace VeyraCity.Testing
                 float vc = Mathf.Sqrt(0.75f * mu * 9.81f / k);
                 vt = Mathf.Min(vt, Mathf.Sqrt(vc * vc + 2f * 4f * d));
             }
+            if (AvoidTraffic)
+            {
+                ObstacleDistance = VehicleAhead(Mathf.Clamp(12f + v * 2.2f, 20f, 90f), out float otherSpeed);
+                if (ObstacleDistance >= 0f)
+                {
+                    // stop 9 m short of it at 5 m/s², plus the speed it is moving away with
+                    float room = Mathf.Max(0f, ObstacleDistance - 9f);
+                    float vObs = Mathf.Sqrt(2f * 5f * room) + Mathf.Max(0f, otherSpeed);
+                    if (vObs < vt) { vt = vObs; ObstacleSlowdowns++; }
+                }
+            }
             float e = vt - v;
             integral = Mathf.Clamp(integral + e * dt, -6f, 6f);
             float u = 0.35f * e + 0.08f * integral;
             if (u >= 0f) intent.Throttle = Mathf.Clamp01(u);
-            else if (e < -1f && v > 1f) intent.Brake = Mathf.Clamp01(-u * 0.6f); // never brake at a standstill (that engages reverse)
+            else if (e < -1f && v > 1f) intent.Brake = Mathf.Clamp01(-u * (ObstacleDistance >= 0f && ObstacleDistance < 25f ? 1.2f : 0.6f)); // never brake at a standstill (that engages reverse)
+            if (ObstacleDistance >= 0f && ObstacleDistance < 10f && intent.Throttle > 0f && v < 2f) intent.Throttle = 0f;   // wait behind a stopped car
             return intent;
+        }
+
+        /// <summary>
+        /// Nearest other vehicle (a collider with a rigidbody that is not this car) on the lane path within
+        /// <paramref name="range"/> m ahead: overlap spheres every 5 m along the lane, so curves are followed and cars in the
+        /// other lane or parked at the kerb are not hit. Walls and props (no rigidbody) are ignored. Returns -1 when clear.
+        /// </summary>
+        float VehicleAhead(float range, out float otherSpeed)
+        {
+            otherSpeed = 0f;
+            Vector3 fwd = car.transform.forward;
+            for (float d = 5f; d <= range; d += 5f)
+            {
+                Vector3 c = Path.PositionAt(U + d) + Vector3.up * 0.9f;
+                int n = Physics.OverlapSphereNonAlloc(c, 1.3f, probeHits, ~0, QueryTriggerInteraction.Ignore);
+                for (int i = 0; i < n; i++)
+                {
+                    var rb = probeHits[i].attachedRigidbody;
+                    if (rb == null || rb == car.Body) continue;
+                    otherSpeed = Vector3.Dot(rb.isKinematic ? Vector3.zero : rb.linearVelocity, fwd);
+                    return d;
+                }
+            }
+            return -1f;
         }
 
         /// <summary>Lane offset to the right of travel: the centre of the right-hand half of the class width.</summary>

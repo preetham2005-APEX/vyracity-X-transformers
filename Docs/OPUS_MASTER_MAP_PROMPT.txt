@@ -1,0 +1,222 @@
+You are the Lead World Architect, Technical Artist, Graphics Engineer and Gameplay Physics Engineer for VEYRA CITY — an original 8 x 6 km open-world driving game targeting GTA V daytime realism and Cyberpunk 2077 night-neon quality on Unity 6.6 (6000.6.8f1) URP Forward+.
+
+PROJECT ROOT: E:\VeyraCity
+DESIGN REPO (read-only): E:\PROJECT BANGERRR
+RULES: Read E:\VeyraCity\CLAUDE.md first and follow every rule strictly.
+TARGET HARDWARE: PC RTX 4070, 2560x1440 (PC_High), Release IL2CPP, locked 60+ FPS (avg >= 60, 1% low >= 60, p99 <= 16.6 ms, 0 hitches > 50 ms, GPU <= 13 ms, CPU <= 10 ms, SetPass <= 450, visible tris <= 8 M, GFX memory <= 4 GB).
+
+===============================================================================
+SECTION 1 — ACTUAL CURRENT PROJECT STATE (DO NOT RE-DO COMPLETED WORK)
+===============================================================================
+
+The project is far past S1. Before touching any code, check `git log -n 10 --oneline` + `git status` (another session may already have landed W7 / BUG-108 changes), and read:
+  - E:\VeyraCity\CLAUDE.md
+  - E:\VeyraCity\Docs\PROJECT_STATUS.md
+  - E:\VeyraCity\Docs\BUG_TRACKER.md
+  - E:\VeyraCity\Docs\AUDIT_AAA_COMPARISON.md
+  - E:\VeyraCity\Docs\VISUAL_ITERATION_LOG.md
+  - E:\VeyraCity\Docs\VEYRA_CLAUDE_CODE_PROMPTS.md (full playbook + Appendices A–H)
+  - E:\VeyraCity\Docs\ASSET_SOURCES.md
+  - E:\VeyraCity\Logs\V1\B108_R_BRIDGES\verify.txt
+  - E:\VeyraCity\Logs\V1\B108_R_DOWNTOWN_NIGHT\verify.txt
+  - E:\VeyraCity\ReferenceImages\MANIFEST_FOR_CLAUDE.md (VISUAL BENCHMARK IMAGES ONLY: inspect these screenshots of GTA V, Cyberpunk 2077, Asphalt Legends, NFS, Forza Horizon, and NVIDIA/Courreges rendering studies side-by-side against Veyra's latest Screenshots\2026-11-10_* captures to match lighting, reflections, foliage, road wear, and camera composition — NEVER import or copy any logo, texture, or asset from ReferenceImages into Assets\!)
+
+Current git state is around commit 9bace44 (plus uncommitted working-tree edits around VC_Variants / RoadProfileApply / scenes). Cards and systems ALREADY built in the repo:
+  - DONE: S1–S5 (CLAUDE.md, audit, Veyra data import, Blender bridge + S4_PASSED, 18 review cameras), V0 (player build + autotest harness), F1 (VeyraMaterialLibrary + zero runtime Shader.Find), F2a/b/c (Veyra/Road, Veyra/Facade, Veyra/Neon hand-written URP shaders), F3 (VeyraGlobals), B1 (licence gate + _Quarantine), B2/B3 (564+ kitbash FBXs imported in Assets/_Veyra/Art/Models/Kitbash/* and T_ChunkImport.unity), C1/C2 (BridgeDeckFiller, RoadProfileEaser, RoadProfileApply), C3 (PropColliderBuilder).
+  - PARALLEL VISUAL ITERATIONS (1–32) ALREADY IN CODE — PRESERVE AND UPGRADE, DO NOT DELETE:
+    * SkyDome.cs + VC_SkyDome.shader (clouds, moon, stars, night glow)
+    * StreetTrees.cs (10,068 roadside trees, currently using placeholder blob meshes)
+    * StreetFurniture.cs (9,147 urban props, crossings, stop lines, steam vents)
+    * Pedestrians.cs (walkers + umbrellas + zebra crossings)
+    * ParkedCars.cs + TrafficSystem.cs + TrafficLights.cs + TrafficSpray.cs
+    * RooftopDetails.cs (rooftop HVAC, water tanks, parapets, solar panels)
+    * WaterSurface.cs + VC_Water.shader
+    * GroundHeightField.cs (_VC_GroundHeight)
+    * RoadWear.cs (runtime UV1 + patch texture injection)
+    * WorldMap.cs + RoadGraph.cs (GTA-style pause map, atlas view, GPS A* nav)
+    * SpeedTraps.cs, CarDamage.cs, CarDetailFX.cs, CarSprayFX.cs, NitroBurstFX.cs, HudController.cs
+    * 26+ drivable cars & 19 traffic cars already integrated under GameDatabase / CarImportTools.
+  - PARTIAL / FAILING CARDS RIGHT NOW: L1 (thermal perf open, GRD off, decals off), L2 (golden/night look not accepted, BUG-109), L3 (no height fog pass), L4 (light pools weak), L5 (no SSR), V1 (FAILS 3 driving rules due to BUG-108).
+
+CRITICAL CONSTRAINTS:
+1. NEVER use ripped or commercial-game assets (GTA, Cyberpunk, Forza, etc.) or non-commercial/NC/SA/ND/Standard downloads already in ArtSource\Downloads\_Quarantine. Resolve BUG-066 (5 CC-BY rebadged cars vs CLAUDE.md originality) with me BEFORE publishing or modifying car rosters.
+2. NEVER call Shader.Find or Toggle Keywords at runtime (F1 rule). All runtime shaders live in VeyraMaterialLibrary / VC_Variants.shadervariants.
+3. Veyra data CSVs and road_network_geometry.json are the ONLY authority for positions, heights, and road profiles (1 unit = 1 m, Unity = (x - 4000, z, y - 3000)).
+4. Build loop discipline on EVERY task:
+   PLAN -> SMALL EDIT -> COMPILE (0 errors, 0 new warnings) -> TEST / BUILD PLAYER -> CAPTURE 18 REVIEW CAMERAS + ITER SHOTS + LOGS -> INSPECT IMAGES CRITICALLY -> FIX -> UPDATE PROJECT_STATUS.md & BUG_TRACKER.md -> COMMIT.
+
+===============================================================================
+SECTION 2 — VERIFIED FULL-GAME FLAWS TO FIX (FROM LATEST CAPTURES & CODE)
+===============================================================================
+
+Inspected evidence: Screenshots\2026-11-10_iter32\*, Screenshots\2026-11-10_iter31\*, Screenshots\2026-11-10_V1_player\* (all 72 shots), Docs\design\09_ART_PASS_BENCHMARK\renders\*, Logs\V1\B108_*. The car models and HUD now look strong, which exposes how badly the surrounding world still reads as a "kids' play greybox prototype":
+
+A. DRIVABILITY & BUG BLOCKERS (V1 currently FAILS):
+   - BUG-108: R_BRIDGES fails 10/14 (4 walls: R1 s7130, A2 s1483, A10 s1304, H3 s584) and R_DOWNTOWN_NIGHT fails 3/5 (3 walls: A4, A22; A4 spawn False). Cause: overlapping Ease_*/Patch_*/Plate_* ribbons vs old blockout concrete/terrain in junctions and partial corridor carves.
+   - BUG-067 (Assets\_Veyra\World\InstancedPropRenderer.cs:75-107): Frustum-culls 67,499 vegetation trees and 2,777 lamps only against Camera.main in LateUpdate(), so ALL 36+ review camera captures render ZERO forest/mountain trees (CAM_10 shows completely bald hills despite 1,206 pines within 300 m in data) and shadow casters outside main frustum vanish.
+   - BUG-056 & BUG-109 (CAM_16): Review camera sits 2.5 m inside apartment BLD-02353 wall and blows out solid white at 23:00.
+   - BUG-057 (CAM_18): Mirror Lake (lake_level_m = 150) is invisible because terrain at VP-08 dipped to 130–143.9 m and renders as flat grass.
+   - BUG-090 (VeyraAutoTest.cs): stats.json does not log GPU ms, CPU ms, SetPass calls, draw calls, or visible triangles.
+   - BUG-075 (DefaultVolumeProfile.asset:977): Leftover test components and missing script reference.
+
+B. BUILDINGS & ARCHITECTURE ("Toy Rectangular Boxes"):
+   - BuildingGenerator.cs generates 2,708 extruded primitive boxes/cylinders merged per chunk with 1-level culling-only LODGroups. Meanwhile, 564+ B3 kitbash FBX models already sit in Assets\_Veyra\Art\Models\Kitbash\ unused in VeyraCity.unity!
+   - Skyline towers lack varied silhouettes, recessed mullions, architectural depth, ledges, setbacks, and balconies (even after RooftopDetails).
+   - Ground-floor storefronts (VC_FacadeSurface.hlsl) render as blinding flat white/cyan/pink glowing lightboxes at night (it3_neon_night.png, CAM_13) and solid magenta horizontal neon bars even at noon (it1_noon_city.png).
+   - Window lights repeat in 4x4 phase-locked patterns per 24 m hash cell (BUG-072).
+   - BUG-058: Empty downtown lots between skyscrapers are green grass meadows with grass tufts instead of paved urban plazas, parking lots, and concrete curbs.
+   - Zero architectural landmarks modeled to hero spec (Veyra Spire crown, Starlight Theater marquee, Falcon Control Tower, Ironport STS trusses, Lighthouse).
+
+C. FOLIAGE, TERRAIN & WATER ("Play-Doh Trees & Grass Everywhere"):
+   - PropMeshes.Deciduous / Pine / Bush / Palm (CityBuilder.cs:1080-1136) literally build Play-Doh green Perlin spheres on brown cylinders and flat green cones — reused by BOTH InstancedPropRenderer AND StreetTrees.cs (10,068 street trees).
+   - GrassBuilder.cs plants stiff 3-card grass tufts across EVERY flat area with grass/lawn weights: right between D3 Ironport cranes on port dirt/concrete (CAM_15), between D1 downtown towers (it1, CAM_05), across D7 airfield margins (CAM_17), and inside the dry Mirror Lake bed (CAM_18).
+   - CityBuilder.cs:573-600 terrain layers are 256x256 procedural flat noise without normal or mask maps; coastal/mountain slopes (CAM_10, CAM_14) look like smooth clay triangles with zero cliff rock meshes, boulders, coastal sand beaches, or coastal scrub.
+   - Riverbanks and coastlines (it15_riverfront.png, sheet_world.png): smooth green grass slopes straight into water with ZERO concrete seawalls, waterfront promenades, piers, riprap rocks, or marinas.
+
+D. ROADS, PATCH BUGS & INFRASTRUCTURE ("Double Road Meshes & Missing Furniture"):
+   - Duplicate/hidden road geometry (iter32 it20c_road_hidden.png): hiding asphalt/concrete-deck renderers reveals a SECOND blurry grey-green road mesh underneath; hand-patched RoadWearControl (it20b_road_top.png) displays cracks and wheel wear while the city street around it stays plain monochrome asphalt.
+   - Overlapping ribbon cutouts / Z-fighting black polygons on mountain roads (CAM_10_BR_Halcyon_Drive_12h.png has huge jagged dark patches across lanes).
+   - Roads are flat 2-vertex slabs: 0% crown, 0% superelevation on hairpins, streaked vertical planar-XZ kerbs (BUG-069), missing terrain fill embankments (BUG-070), no URP Decal Renderer Feature (no tar seams, cracks, oil, manholes, crossings baked cleanly).
+   - Zero W-beam guardrails, zero hairpin chevron boards, and zero delineators on D4 Blackridge cliff edges (CAM_10, CAM_11); Lantern Strait Bridge pylons/cables (CAM_14, it5) are thin bare untextured geometry.
+
+E. ALL 8 DISTRICTS LACK REAL IDENTITY (especially Rural/Suburban/Industrial/Airfield):
+   - D6 Neon Mile (CAM_13, it3): Only one lonely pink vertical stick; missing layered cyberpunk-flavored neon signs, overhead cables, alley clutter, lit volumetric street haze, puddles mirroring signs.
+   - D3 Ironport (CAM_15): Cranes are flat solid blue/red bars standing in grass; shipping containers are featureless pixel blocks; missing corrugated metal, rust, dock bollards, tank cylindrical colliders (BUG-071), refinery pipe racks, sodium light pools.
+   - D5 Westhaven (CAM_16): 1,973 houses are uniform boxes with bright cartoonish orange gable roofs on bare grass (no driveways, yards, fences, garages, power lines, retail strips).
+   - D7 Falcon Airfield (CAM_17): One lone grey rectangular box in bright green grass with speckled flat white strips for runways; missing 6 curved hangars, ATC tower, runway threshold art/skid marks, PAPI/edge lights, fencing, grandstands.
+   - D4 Blackridge & D8 Redwood Valley (CAM_09–11, CAM_18): Empty brown-green terrain, missing forest canopy, missing rocky outcrops, missing Mirror Lake water surface, missing barns/silos/bridges.
+
+F. LIGHTING, NIGHT VISIBILITY, REFLECTIONS & RAIN VFX:
+   - Rural/coastal/industrial/aerial night blackout (V1_player contact_sheet rows 5–6): CAM_01, CAM_02, CAM_09, CAM_10, CAM_11, CAM_12, CAM_14, CAM_15, CAM_17, CAM_18 are near-pitch-black silhouettes at 23:00! No moonlight bounce/ambient fill, no highway/port/runway lighting, no GTA-style distant instanced light sprites across the 8x6 km road & skyline grid.
+   - Aerial fog whiteout/orangeout (BUG-059): CAM_01 at 12:00 and 19:30 renders as a solid uniform wall of Exp2 fog with no altitude falloff.
+   - Reflections (BUG-068): 0 reflection probes in VeyraCity.unity, realtimeReflectionProbes = 0 in QualitySettings.asset; wet roads reflect stale daytime sky/spotlights into an icy-white snow glare sheet (it4_rain_night.png, CAM_13) instead of crisp neon & building reflections.
+   - Ugly rain & puddle VFX:
+     * HudController.cs:368-428 (BuildLensDrops) draws oversized translucent grey circle/teardrop overlay spots across the entire screen in rain (it4_rain_night.png).
+     * WorldEnvironment.cs:405-449 spawns stretched thick rain lines + blurred dot sprites.
+     * VC_RoadSurface.hlsl VC_Ripples draws comic-sized target rings across wet lanes (CAM_13).
+
+G. VEHICLES, CRASHES, VFX & PERFORMANCE:
+   - Downtown FPS drops to 40–50 FPS (20.1–24.9 ms) in Dev Mono (iter32 it20/it20b) even BEFORE adding kitbash buildings, because there is NO 1 km cell streaming (W7), NO HLOD, NO occlusion culling, and GPU Resident Drawer is off.
+   - Nitro & brake VFX: VehicleFX.cs:107 uses literal PrimitiveType.Capsule shapes for NitroFlame; CarDetailFX.cs streaks read as stiff straight laser beams floating behind tail lamps (sheet_car.png); smoke particles show hard intersection clipping against roads/barriers.
+   - Crash physics & damage (sheet_crash.png): Cars clip into street-tree trunks and building walls; CarDamage.cs denting is barely noticeable with zero scratches, detached bumpers/hoods, cracked glass, or broken lamps.
+   - Vehicle pipeline & feel (BUG-064, 077, 078, 079, 082, 084, 085, 087, 088): headlights light when braking (shared M_Lamp), _ClearCoat float left at 0, heavy cars underdamped (scale by sqrt(mass)), aero drag abused as speed limiter, rate-dependent arcade filters at 50/120 Hz, synthesized audio only (0 audio clips), 5 ProceduralCar catalog boxes still present, ChaseCamera clips or lacks Cinemachine de-occlusion polish.
+
+===============================================================================
+SECTION 3 — EXECUTION ROADMAP (RUN IN EXACT ORDER, COMMIT PER CARD)
+===============================================================================
+
+Do NOT try to rewrite everything in one giant untested edit. Execute phase by phase using the existing playbook build loop:
+
+-------------------------------------------------------------------------------
+PHASE A — BLOCKERS, SAFETY, TELEMETRY & STREAMING FOUNDATION (MUST RUN FIRST)
+-------------------------------------------------------------------------------
+Step A1 (V1 Driving Blockers — BUG-108 + BUG-067 + BUG-056/057/090/075):
+  1. Fix InstancedPropRenderer.cs (BUG-067): move culling & draw submission to RenderPipelineManager.beginCameraRendering per camera with RenderParams.camera set. Verify with Veyra/Review/Capture All Cameras Now that all 67,499 vegetation instances + 2,777 lamps render cleanly in CAM_09/10/11/14/18!
+  2. Fix BUG-108 in RoadProfileApply.cs + RoadProfileEaser.cs: eliminate the remaining 4 walls on R_BRIDGES (R1 s7130, A2 s1483, A10 s1304, H3 s584) and 3 walls on R_DOWNTOWN_NIGHT (A4, A22) plus A4 spawn=False by building clean junction ribbons from eased profiles and carving terrain corridors across ALL overlapping/nearby roads. Verify R_BRIDGES 14/14, R_DOWNTOWN_NIGHT 5/5, R_SMOKE 2/2 PASS in player build!
+  3. Fix BUG-090 in VeyraAutoTest.cs (log Batches, SetPass Calls, Triangles, GPU ms, CPU ms via FrameTimingManager + ProfilerRecorder into stats.json). Clean BUG-075 (DefaultVolumeProfile.asset). Reconcile BUG-056 (CAM_16 camera placement on Westhaven road clear of BLD-02353) and BUG-057 (Mirror Lake terrain basin vs lake_level_m = 150 so water actually fills the basin at VP-08).
+  4. Resolve BUG-066 / SEC-003 compliance check with user decisions documented cleanly in PROJECT_STATUS.md.
+
+Step A2 (Card W7 — 1 km Streaming Cells + HLOD + Occlusion + Shader DOTS Instancing):
+  1. Make VeyraCity.unity lightweight bootstrap (player, SkyDome, WorldEnvironment, Sea, PostVolumes, managers) + 48 additive scene cells Assets\_Veyra\Scenes\Cells\Cell_<A1..H6>.unity via Addressables, keeping each 250 m chunk as Chunk_<Cell>_<i><j>.
+  2. Build CellStreamer with 5x5 active cell radius (~2 km), velocity look-ahead prefetch (600 m), time-sliced async activation (0 hitches > 50 ms), and F3 debug telemetry overlay.
+  3. Build per-cell HLOD proxy meshes (<= 30k tris/cell, baked facade atlas) active beyond 1.2 km + separate far LODs for landmarks + baked static Occlusion Culling in dense D1/D6 cells.
+  4. Add DOTS instancing / BatchRendererGroup compatibility to VC_*.shader / VC_Input.hlsl or keep SRP Batcher batching tight so PC_High locks 60+ FPS even after adding rich kitbash geometry.
+  5. Pre-bake all MeshCollider physics data (BUG-053) and fix CityBuilder.cs idempotency so rebuilds keep stable GUIDs (BUG-045).
+
+-------------------------------------------------------------------------------
+PHASE B — AAA ROADS, TERRAIN & WATER OVERHAUL (W1–W6, F2 POLISH)
+-------------------------------------------------------------------------------
+Step B1 (W4 + W5 + W6 — Replace Blockout+Patch Roads with Unified Spline Network):
+  1. Remove the hidden duplicate underlying road meshes (iter32 it20c_road_hidden diagnostic) and eliminate stacked Ease_*/Patch_*/Plate_* Z-fighting triangles (fix CAM_10 black polygons!).
+  2. Upgrade road generation from CityBuilder / W4 splines + RoadProfileEaser:
+     - Multi-vertex cross-sections per class (MW 32m, EX 24m, HW 18m, AR 20m, CO 11m, MT 7.5m, RU 7m, GR 5.5m, SV 12m, RW 45m): 2% crown (2.5% MW/EX/HW), curve superelevation, 0.3–0.5m concrete gutters, 0.15m BEVELED granite kerbs with along-road UVs (fix BUG-069, add SurfaceDefinitions for Kerb, Cobblestone, Metal per BUG-042), 3m sloped sidewalks with expansion joints & kerb ramps, cut/fill terrain embankments (BUG-070: 1:1.5 cut, 1:2 fill).
+     - Bake UV0 (tileable metre-accurate) and UV1 (lane wear coordinates) at build time into the generated road chunk meshes (eliminating RoadWear.cs runtime vertex-reupload hitches), plus vertex colour channels (R=wheel wear, G=gutter grime, B=puddle depressions, A=patch mask).
+     - Build clean geometry-matched intersection meshes with corner curb radii (6–9 m), recessed crosswalk markings/arrows (depth-offset / decals, zero emission, zero Z-fighting).
+     - Enable URP Decal Renderer Feature on PC_RPAsset/Renderer and scatter seeded road decals (cracks, tar repairs, oil stains, manhole covers, tyre skids at junctions).
+  3. Roadside structures & safety hardware (W5/W6):
+     - Add continuous W-beam guardrails, delineator posts, rockfall nets, and hairpin chevron boards along D4 Blackridge switchbacks and cliffs (CAM_10, CAM_11).
+     - Upgrade Lantern Strait Bridge (A4/W6e), Harbor Viaduct, and river bridges with proper tapered concrete piers down to terrain/seabed, expansion joints, stay-cable details, aviation warning beacons, and portal interiors on all 3 tunnels.
+     - Verify C1 Validate Drivable = 0 misses, C2 Validate Road Profile = 0 violations, R_BRIDGES 14/14, R_DOWNTOWN_NIGHT 5/5.
+
+Step B2 (W2 + W3 + A7 — AAA Terrain, Seawalls, Water & Real Foliage Replacing Blob Trees):
+  1. Upgrade terrain textures (W2): author/pack 8 CC0 2048x2048 PBR TerrainLayers (Grass, ForestFloor, Rock, Sand, UrbanPaving, DirtGravel, Farmland, Lawn) with matching Normal + Mask maps (height/AO/smoothness), height-blend shader, slope triplanar cliffs on >32 deg slopes, and macro distance variation.
+  2. Paint accurate district splatmaps + fix GrassBuilder.cs:
+     - Mask OUT grass completely from D1/D6 urban plazas & sidewalk zones, D3 Ironport concrete port aprons (CAM_15), D7 Falcon Airfield tarmac/aprons (CAM_17), and below water level / Mirror Lake bed (CAM_18).
+     - Add paved concrete/cobble plazas, median planters, gravel shoulders, coastal sand beaches, and dirt track verges matching each district's splat layer!
+  3. Upgrade vegetation (A7): REPLACE EVERY blob/cone tree in CityBuilder.PropMeshes AND StreetTrees.cs (pine_tree_14m x3 variants, deciduous_tree_10m x3 variants, bush_2m x3 variants, palm_tree_12m x2 variants, urban street trees x2, plus 6 granite boulder & 4 cliff-face rock meshes) using CC0/Blender multi-branch bark trunks and alpha-tested double-sided leaf cards with wind shader sway (_VC_WindStrength), subsurface leaf glow, AO, LOD0/1/2 + impostor billboards! Upgrade GrassBuilder grass clumps to curved multi-blade wild grass + coastal scrub + wildflower clusters.
+  4. Upgrade Water & Shorelines (W3):
+     - Build concrete seawalls, stepped stone river embankments, piers, railings, and coastal riprap boulders along Sable River (fix it15_riverfront.png) and Azure Coast.
+     - Fix Mirror Lake basin + water level (BUG-057, CAM_18), add Sable Falls (LM-25) waterfall particles/mesh, wet-sand shoreline decals, and crisp shallow-turquoise to deep-navy depth shading + shoreline foam in VC_Water.shader.
+
+-------------------------------------------------------------------------------
+PHASE C — REAL ARCHITECTURE, KITBASH BUILDINGS & ALL 8 DISTRICTS (A1–A6, DS1–DS3)
+-------------------------------------------------------------------------------
+Step C1 (A1 + A2 + BuildingAssembler + KitbashCatalog):
+  1. Audit provenance of the imported CC-BY packs in Assets\_Veyra\Art\Models\Kitbash\ (flagging/cleaning any suspect textures) and build a ScriptableObject KitbashCatalog mapping all valid 564+ kitbash prefabs by style tag, footprint, height, LOD0/1/2, and UBX/UCX colliders.
+  2. Author Blender trim sheets (A1: T_Trim_Facade_A, Brick, Coastal, Industrial at 4K) + 4x4 interior parallax day/night room atlases + modular kits (A2) for what CC-BY packs do not cover — top priority by count: the **1,973 D5 Westhaven Suburban houses** (porches, garages, roof gables/hips, driveways, yards, fences) plus CoastalStucco villas (D2), Aviation hangars/tower (D7), Industrial sheds/tanks (D3), Rural barns/silos (D8).
+  3. Replace BuildingGenerator.cs primitive shells in VeyraCity.unity with BuildingAssembler using the exact 2,708 placements in world_building_placements.csv:
+     - Landmarks -> KitbashCatalog fit -> Modular A2 trim-sheet recipe.
+     - Add 2 m underground plinths (zero floating), verify zero road overlap, keep UBX/cylinder colliders tight (BUG-071 cylindrical colliders on 92 tanks/masts).
+     - Fix VC_FacadeSurface.hlsl: remove flat glowing white/pink storefront blocks & bright noon magenta stripes; recess mullions, add depth parallax with subtle localized interior glow, varied blinds, true per-building vertex/UV2 seed (fixes BUG-072), street grime, and architectural roof parapets/antennas/cornices.
+
+Step C2 (A4 Landmarks + A6 Neon + DS1 Downtown & DS2 Neon Mile Vertical Slices):
+  1. Author hero landmarks (A4) at registry coordinates: LM-01 Veyra Spire (342 m + crown lighting), LM-03 Exchange Tower, LM-02 Crown Plaza (paved pattern, animated fountain, trees, sculpture), LM-20 Starlight Theater (30 m marquee), LM-21 Grand Lumen Hotel, LM-06 Lantern Point Lighthouse (rotating light beam), LM-11 Gantry STS Cranes (replace current flat red/blue sticks with steel truss geometry), LM-13 Falcon Control Tower, LM-08 Azure Pier + Ferris Wheel.
+  2. Author original fictional Neon & Signage kit (A6: ~60 original fictional Veyra brands — curved 3D neon tubes, blade signs, awnings, rooftop billboards, marquis chasing lights, LED displays) layered densely across D6 Neon Mile (Lumen Ave, Arcade St, Lantern Alley, Reel St) and selectively in D1 theatre/hotel streets.
+  3. Fill empty downtown lots (BUG-058) with paved plazas, multi-level car parks, benches, outdoor seating, alley fire escapes, dumpsters, and string lights.
+
+Step C3 (DS3 — Bring Remaining 6 Districts to ART PASS):
+  - D2 Azure Coast: sandy beaches, rock cliffs, coastal palm medians, white luxury villas/pools, marina boats, lighthouse beam.
+  - D5 Westhaven: suburban lawns, fenced yards, paved driveways, mailboxes, utility poles/cables, starter garage GAR-01 hero interior, plaza retail.
+  - D3 Ironport: industrial stained concrete aprons, textured corrugated 6,050 containers + rusted gantry cranes, tank farm + flare stacks (heat haze + flame), rail freight yard, dock ships, sodium orange lighting.
+  - D7 Falcon Airfield: 1.9 km detailed concrete runway + threshold/tyre markings, 6 barrel-vault hangars, 1960s ATC tower, grandstands, dragway staging tree & timing board, perimeter fencing, night floodlights.
+  - D8 Redwood Valley: redwood/pine trees, Golden farmland fields, wooden fences, red barns & silos, Millbrook stone-arch bridge + clock tower, visible Mirror Lake + jetty + Sable Falls.
+  - D4 Blackridge: dense 53,500 pine forest, granite boulders/cliffs, tunnel portals, cliffside guardrails + switchback chevrons, summit masts.
+
+-------------------------------------------------------------------------------
+PHASE D — AAA LIGHTING, REFLECTIONS, VOLUMETRICS, RAIN/VFX & VEHICLES (L1–L5, G1–G4)
+-------------------------------------------------------------------------------
+Step D1 (L1–L5 + Night & Weather Overhaul):
+  1. Lighting & Rural Night Fix:
+     - Fix rural pitch-black nights (CAM_01, 09, 10, 11, 12, 14, 15, 17, 18 at 23:00): tune moonlight direction/intensity, night skybox & horizon city-glow ambient, Adaptive Probe Volumes (APV with Day/Night scenarios), and GTA-style **instanced distant light sprites** on all 2,777 street lamps, distant windows, and far highway headlights beyond 300 m.
+     - Upgrade StreetLightPool (L4, BUG-073): smooth fade/hysteresis centred on car + Forward+ 48–96 pool lights with IES/cookie projection + district-calibrated lamps (4000K D1, 2700K D2, 2200K sodium D3) + fix CAM_16 blown-out wall (BUG-109).
+  2. Fog & Sky (L3, BUG-059, BUG-060):
+     - Replace flat uniform Exp2 distance fog with a custom URP Render Graph Height-Fog pass that reduces density with camera altitude (fixing CAM_01/02 washed-out aerials!) + subtle localized volumetric light-scattering haze in D6 Neon Mile & D3 Ironport (<= 0.6 ms).
+     - Calibrate golden hour elevation/tint cleanly around 18:30–19:30 and clean DefaultVolumeProfile.asset (BUG-075).
+  3. Real Reflections & AA (L1, L5, BUG-068, BUG-074):
+     - Enable realtimeReflectionProbes = 1 on PC tiers; bake box-projected reflection probes across D1/D6/bridges (Day & Night blending) + fix CarReflectionProbe blending + benchmark URP Screen-Space Reflections (SSR) within <= 1.5 ms budget on wet streets/water/glass towers!
+     - Use STP (0.9–1.0 render scale) or TAA with specular AA (MSAA off, fixing BUG-074).
+  4. Fix Ugly Rain, Puddle & Lens Artifacts (iter31/32 + CAM_13):
+     - Redesign HudController.BuildLensDrops() (currently giant gray opaque circle blobs in it4_rain_night.png): replace with subtle refract/vignette-weighted micro-beads near screen edges or disable opaque UI sprites completely!
+     - Replace blurry thick rain streaks in WorldEnvironment.UpdateRain() with crisp thin wind-slanted rain needles + road splash rings.
+     - Fix VC_RoadSurface.hlsl rain ripples (high-frequency subtle micro-ripples fading nicely with distance instead of giant cartoon target circles in CAM_13) and eliminate frosted-white wet specular glare by balancing wet roughness/porosity and specular AA!
+
+Step D2 (Cars, Physics, VFX, Audio & Damage — A8/A9, G1–G4):
+  1. Fix VehicleFX & CarDetailFX visual artifacts:
+     - Replace PrimitiveType.Capsule NitroFlame objects (VehicleFX.cs:107) with custom animated supersonic shader shock-cones + exhaust ember bursts + boost light pulse; soften CarDetailFX tail-lamp ribbons so they follow velocity curves cleanly instead of rigid red rods.
+     - Give tyre smoke & CarSprayFX soft depth-fade particles + surface color matching (BUG-080) to stop hard triangle intersections against barriers/asphalt.
+  2. Fix Crash Clipping & True Visual Damage:
+     - Ensure every street tree (including StreetTrees.cs!) & furniture prop has proper collision response so cars never clip inside tree trunks/walls (sheet_crash.png).
+     - Upgrade CarDamage.cs: visible multi-zone crumpled bodywork, scratch/dirt wear mask driven by impact, shattered/cracked windshield & headlamps, sparking scrapes, and detachable/hinging bumpers/hoods!
+  3. Car Pipeline & Physics Fixes:
+     - Fix CarImportTools / Blender pipeline: separate glass & per-function lamp materials (BUG-064), enforce 100/40/10% LODs + include wheels in LODGroup (BUG-088), scale dampers by mass ratio (BUG-077), set _ClearCoat = 1 (BUG-078) + metallic flake micro-normal, replace speed-limiting CdA drag with proper power/gearing (BUG-079), replace remaining 5 ProceduralCar catalog boxes with authored/accepted models.
+     - Apply arcade lateral forces at axle contact patches for authentic GTA body roll/weight transfer without sacrificing precision; fix rate-dependent filters for 50/100/120 Hz parity (BUG-082); fix Nitro top-speed cap (BUG-084); move hard-coded physics tables into versioned ScriptableObjects (BUG-087); wrap ChaseCamera with Cinemachine 3 collision/de-occlusion & dynamic drift dutch angle.
+  4. Real Layered Audio (G4): replace synthetic oscillators with CC0/licensed multi-RPM layered engine loops, surface-specific tyre roll/gravel/squeal audio (fixing BUG-085 thread-safety), shift blow-offs, crash thuds, and per-district ambient soundscapes.
+
+-------------------------------------------------------------------------------
+PHASE E — FINAL VERIFICATION & VISUAL SIGN-OFF (V1, P1, P2, Q1, Q2)
+-------------------------------------------------------------------------------
+Run full automated QA (Q1), Release IL2CPP build at 2560x1440 PC_High (VSync OFF and ON):
+  1. Drivability: R_BRIDGES 14/14 PASS, R_DOWNTOWN_NIGHT 5/5 PASS, R_SMOKE 2/2 PASS, Validate Drivable = 0 misses, Validate Road Profile = 0 violations, 0 falls, 0 walls, 0 exceptions, 0 "shader is null", 0 pink/missing materials.
+  2. Performance (RTX 4070, 1440p, Release): avg >= 60 FPS, 1% low >= 60 FPS, p99 <= 16.6 ms, 0 hitches > 50 ms, GPU <= 13 ms, CPU <= 10 ms, SetPass <= 450, Memory flat over 10-min Grand Loop drive.
+  3. Q2 Visual Audit: capture all 18 review cameras (Day, Golden, Night, Night-Wet) + iteration drive/crash/car shots; inspect every frame against GTA V daytime realism & Cyberpunk 2077 night neon bar; iterate on the lowest-scoring shots until every district reaches >= 4.0/5 ART PASS quality.
+
+===============================================================================
+HOW TO START THIS SESSION
+===============================================================================
+
+1. Read CLAUDE.md, PROJECT_STATUS.md, BUG_TRACKER.md, and AUDIT_AAA_COMPARISON.md first.
+2. Check Temp\UnityLockfile (only one Unity Editor at a time) and verify any pending user decisions (BUG-066 real-brand rebadges, arcade-assist spec rule, SEC-002/003 token rotation status).
+3. Reply "Ready" with:
+   - Exact current git state & cards already done vs partial/failing
+   - Brief inspection check of Step A1 (BUG-108 + BUG-067 + BUG-056/057/090)
+   - Your exact plan for Step A1 (first commit before moving to W7 streaming).

@@ -218,7 +218,8 @@ namespace VeyraCity.Testing
                 float segStart = Time.time;
                 driving = true;
                 bool spawnChecked = false;
-                float stuck = 0f, limit = seg.LengthM / Mathf.Max(1f, target) * 2f + 20f;
+                float stuck = 0f, waiting = 0f, limit = seg.LengthM / Mathf.Max(1f, target) * 2f + 20f;
+                int slowdowns0 = autopilot.ObstacleSlowdowns;
                 while (true)
                 {
                     yield return null;
@@ -226,8 +227,11 @@ namespace VeyraCity.Testing
                     if (!spawnChecked && el >= SettleSeconds) { CheckSpawn(); spawnChecked = true; }
                     if (autopilot.U >= endU - 3f) { cur.completed = true; cur.result = "completed"; break; }
                     if (el > limit) { cur.result = "timeout"; break; }
-                    if (car.State.Speed < 1f && el > 4f) { stuck += Time.deltaTime; if (stuck > 6f) { cur.result = "stuck"; break; } }
-                    else stuck = 0f;
+                    // waiting behind traffic (autopilot sees a vehicle in the lane) is not "stuck"; the time limit grows with it
+                    bool queued = autopilot.ObstacleDistance >= 0f && autopilot.ObstacleDistance < 20f;
+                    if (car.State.Speed < 1f && queued) { waiting += Time.deltaTime; limit += Time.deltaTime; if (waiting > 30f) { cur.result = "blocked by traffic"; break; } }
+                    else if (car.State.Speed < 1f && el > 4f) { stuck += Time.deltaTime; if (stuck > 6f) { cur.result = "stuck"; break; } }
+                    else { stuck = 0f; if (car.State.Speed > 3f) waiting = 0f; }
                     if (TimeUp()) { cur.result = "time limit"; endReason = "time limit"; break; }
                 }
                 driving = false;
@@ -236,7 +240,7 @@ namespace VeyraCity.Testing
                 cur.avg_kmh = cur.time_s > 0f ? cur.distance_m / cur.time_s * 3.6f : 0f;
                 cur.min_kmh = minKmh == float.MaxValue ? 0f : minKmh;
                 if (cur.completed) report.vehicle.segments_completed++;
-                Debug.Log($"[AutoTest] segment {i} {seg} -> {cur.result} in {cur.time_s:0.0} s, avg {cur.avg_kmh:0} km/h, min {cur.min_kmh:0}, airborne {cur.airborne_events}, falls {cur.falls_below_surface}, walls {cur.invisible_wall_events}, spawn on road {cur.spawned_on_road} ({cur.spawn_surface}, {cur.spawn_height_above_surface_m:0.00} m)");
+                Debug.Log($"[AutoTest] segment {i} {seg} -> {cur.result} in {cur.time_s:0.0} s, avg {cur.avg_kmh:0} km/h, min {cur.min_kmh:0}, airborne {cur.airborne_events}, falls {cur.falls_below_surface}, walls {cur.invisible_wall_events}, spawn on road {cur.spawned_on_road} ({cur.spawn_surface}, {cur.spawn_height_above_surface_m:0.00} m), traffic slowdowns {autopilot.ObstacleSlowdowns - slowdowns0}");
             }
             autopilot.Active = false;
             report.route_complete = report.vehicle.segments_completed == report.vehicle.segments_total;

@@ -73,6 +73,8 @@ namespace VeyraCity.Gameplay
         WorldMap worldMap;
         MenuController menu;
         TrafficSystem traffic;
+        /// <summary>BUG-170: the most physics catch-up per frame (s); see Start.</summary>
+        public const float MaxCatchUpSeconds = 0.04f;
         RaceSession race;
         Camera cam;
         AudioSource uiAudio;
@@ -144,6 +146,10 @@ namespace VeyraCity.Gameplay
         void Start()
         {
             WarmUpShaders();
+            // BUG-170 (D2): physics runs at 100 Hz and the project allowed 0.1 s of catch-up, so one 100 ms hitch was followed by
+            // up to 10 physics steps in the next frame (the 30-40 ms PhysicsFixedUpdate frames in the profile); 0.04 s = at most
+            // 4 steps, the game slows briefly during a hitch instead of spiralling (-veyraTimeScale scales it as before)
+            Time.maximumDeltaTime = MaxCatchUpSeconds * Mathf.Max(1f, Time.timeScale);
             save = SaveSystem.Load() ?? NewSave();
             if (FindAnyObjectByType<EventSystem>() == null)
             {
@@ -338,6 +344,8 @@ namespace VeyraCity.Gameplay
                     case "skyrefl": { var sr = GetComponent<SkyReflection>(); if (sr != null) sr.enabled = on; var pr = sr != null ? sr.GetComponentInChildren<ReflectionProbe>(true) : null; if (pr != null) pr.enabled = on; break; }
                     case "carprobe": { var pr = player != null ? player.GetComponentInChildren<ReflectionProbe>(true) : null; if (pr != null) pr.enabled = on; break; }
                     case "hud": hud.Visible = on; break;
+                    // Phase E follow-up (D2): pause the traffic root like peds/parked (TrafficSystem.Active=false would clear and respawn every car)
+                    case "traffic": if (traffic != null) traffic.gameObject.SetActive(on); break;
                     case "probe": { var pr = player != null ? player.GetComponentInChildren<ReflectionProbe>() : null; if (pr != null) pr.enabled = on; break; }
                 }
             }
@@ -1003,12 +1011,14 @@ namespace VeyraCity.Gameplay
                 if (args[i] == "-veyraCarShots" && i + 1 < args.Length) carShotDir = args[i + 1];
                 if (args[i] == "-veyraIterShots" && i + 1 < args.Length) iterShotDir = args[i + 1];
                 if (args[i] == "-veyraIterCar" && i + 1 < args.Length) iterCar = args[i + 1];
-                if (args[i] == "-veyraTimeScale" && i + 1 < args.Length && float.TryParse(args[i + 1], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var ts)) { baseTimeScale = Mathf.Clamp(ts, 0.1f, 8f); Time.timeScale = baseTimeScale; Time.maximumDeltaTime = 0.1f * baseTimeScale; }
+                if (args[i] == "-veyraTimeScale" && i + 1 < args.Length && float.TryParse(args[i + 1], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var ts)) { baseTimeScale = Mathf.Clamp(ts, 0.1f, 8f); Time.timeScale = baseTimeScale; Time.maximumDeltaTime = MaxCatchUpSeconds * baseTimeScale; }
                 if (args[i] == "-veyraShots" && i + 1 < args.Length) shotDir = args[i + 1];
                 if (args[i] == "-veyraShotEvery" && i + 1 < args.Length) float.TryParse(args[i + 1], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out shotEvery);
                 // route validation without street life in the lanes (the autopilot does not avoid other cars)
                 if (args[i] == "-veyraNoParked") { var pc = GetComponentInChildren<ParkedCars>(); if (pc != null) pc.Active = false; }
                 if (args[i] == "-veyraNoTraffic") noTraffic = true;
+                // Phase E follow-up (D2): street life off one system at a time, to measure each one's CPU cost on the routes
+                if (args[i] == "-veyraNoPeds") { var ps = GetComponentInChildren<Pedestrians>(true); if (ps != null) ps.gameObject.SetActive(false); }
             }
             if (!string.IsNullOrEmpty(shotDir)) StartCoroutine(Shots());
             if (tour) { demo = true; StartCoroutine(Tour()); }

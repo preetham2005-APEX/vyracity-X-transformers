@@ -51,6 +51,7 @@ namespace VeyraCity.EditorTools
                         case "pylons": log.Append(BridgePylonSmoother.Run()); break;
                         case "plaza": log.Append(PlazaBuilder.Run()); break;
                         case "hwlights": log.Append(HighwayLightsBuilder.Run()); break;
+                        case "crowns": log.Append(CrownBuilder.Run()); break;
                         case "propclear": log.Append(PropRoadClear.Run()); break;
                         case "landmarks": log.Append(LandmarkBuilder.Run()); break;
                         case "port": log.Append(PortBuilder.Run()); break;

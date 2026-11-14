@@ -12,11 +12,25 @@ namespace VeyraCity.Gameplay
     {
         void Start()
         {
-            VeyraCity.World.Streaming.CellStreamer.CellLoaded += (cell, sc) => { if (this != null) Swap(); };   // round 3: streamed cells
-            Swap();
+            VeyraCity.World.Streaming.CellStreamer.CellLoaded += OnCellLoaded;   // round 3: streamed cells
+            Swap(FindObjectsByType<MeshRenderer>(FindObjectsInactive.Include));
         }
 
-        void Swap()
+        void OnDestroy() => VeyraCity.World.Streaming.CellStreamer.CellLoaded -= OnCellLoaded;
+
+        readonly System.Collections.Generic.List<MeshRenderer> cellRenderers = new System.Collections.Generic.List<MeshRenderer>();
+
+        // BUG-170: only the loaded cell's renderers (a whole-scene FindObjectsByType per cell load was part of the
+        // 6-55 ms "Streamer.CellLoaded callbacks")
+        void OnCellLoaded(string cell, UnityEngine.SceneManagement.Scene scene)
+        {
+            if (this == null) return;
+            cellRenderers.Clear();
+            foreach (var go in scene.GetRootGameObjects()) cellRenderers.AddRange(go.GetComponentsInChildren<MeshRenderer>(true));
+            Swap(cellRenderers);
+        }
+
+        void Swap(System.Collections.Generic.IEnumerable<MeshRenderer> renderers)
         {
             var lib = VeyraMaterialLibrary.Active;
             if (lib == null || !lib.TryGet(VeyraMat.WaterSurface, out var water) || water == null)
@@ -26,7 +40,7 @@ namespace VeyraCity.Gameplay
             }
             int swapped = 0, inland = 0;
             MaterialPropertyBlock calm = null;
-            foreach (var r in FindObjectsByType<MeshRenderer>(FindObjectsInactive.Include))
+            foreach (var r in renderers)
             {
                 var m = r.sharedMaterial;
                 if (m == null || m.name != "Water") continue;
@@ -44,7 +58,7 @@ namespace VeyraCity.Gameplay
                 r.SetPropertyBlock(calm);
                 inland++;
             }
-            Debug.Log($"[WaterSurface] {swapped} water surfaces now use {water.name} ({inland} calm inland)");
+            if (swapped > 0) Debug.Log($"[WaterSurface] {swapped} water surfaces now use {water.name} ({inland} calm inland)");
         }
     }
 }

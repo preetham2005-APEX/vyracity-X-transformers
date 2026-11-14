@@ -28,6 +28,10 @@ namespace VeyraCity.Gameplay
         sealed class Saved { public Material M; public float Wear, Patch, PatchScale, Macro; public Texture Detail; public Vector2 DetailScale; }
 
         readonly List<MeshFilter> pending = new List<MeshFilter>();
+        readonly List<Vector3> pendingCentre = new List<Vector3>();   // BUG-170: world centre cached when queued
+        readonly Dictionary<Material, bool> roadMaterial = new Dictionary<Material, bool>();   // BUG-170: no shader.name per slot
+        readonly List<MeshRenderer> cellRenderers = new List<MeshRenderer>();
+        public static int MeshesSkippedBaked { get; private set; }
         readonly List<Saved> saved = new List<Saved>();
         Job job;
         float pickTimer;
@@ -46,9 +50,9 @@ namespace VeyraCity.Gameplay
 
         void OnCellLoaded(string cell, UnityEngine.SceneManagement.Scene scene)
         {
-            var list = new List<MeshRenderer>();
-            foreach (var go in scene.GetRootGameObjects()) list.AddRange(go.GetComponentsInChildren<MeshRenderer>(true));
-            ScanRenderers(list);
+            cellRenderers.Clear();
+            foreach (var go in scene.GetRootGameObjects()) cellRenderers.AddRange(go.GetComponentsInChildren<MeshRenderer>(true));
+            ScanRenderers(cellRenderers);
         }
 
         void ScanRenderers(IEnumerable<MeshRenderer> renderers)
@@ -62,14 +66,24 @@ namespace VeyraCity.Gameplay
                 bool road = false;
                 foreach (var m in mr.sharedMaterials)
                 {
-                    if (m == null || m.shader == null || m.shader.name != "Veyra/Road" || !(m.name.Contains("Asphalt") || m.name.Contains("Concrete_Deck"))) continue;
+                    if (m == null) continue;
+                    if (!roadMaterial.TryGetValue(m, out bool isRoad))
+                    {
+                        isRoad = m.shader != null && m.shader.name == "Veyra/Road" && (m.name.Contains("Asphalt") || m.name.Contains("Concrete_Deck"));
+                        roadMaterial[m] = isRoad;
+                    }
+                    if (!isRoad) continue;
                     road = true;
                     mats.Add(m);
                 }
                 if (!road) continue;
                 var mf = mr.GetComponent<MeshFilter>();
                 if (mf == null || mf.sharedMesh == null || !mf.sharedMesh.isReadable || !seen.Add(mf.sharedMesh)) continue;
+                // BUG-170: the world's RoadRenderBuilder bakes the lane UV1 into its road meshes; only meshes without it need the
+                // runtime pass (GetVertices + nearest-road per vertex + SetUVs on 10-30k-vertex chunks were the 8-13 ms frames)
+                if (mf.sharedMesh.HasVertexAttribute(UnityEngine.Rendering.VertexAttribute.TexCoord1)) { MeshesSkippedBaked++; continue; }
                 pending.Add(mf);
+                pendingCentre.Add(mf.transform.TransformPoint(mf.sharedMesh.bounds.center));
             }
             var tex = PatchTexture();
             foreach (var m in mats)
@@ -87,7 +101,7 @@ namespace VeyraCity.Gameplay
                 // tells whether runtime material changes reach the road renderers at all
                 m.SetFloat("_MacroVariation", 0.3f);
             }
-            Debug.Log($"[RoadWear] +{pending.Count - before} asphalt meshes ({pending.Count} pending), {configured.Count} materials");
+            Debug.Log($"[RoadWear] +{pending.Count - before} asphalt meshes need the runtime UV1 bake ({pending.Count} pending), {MeshesSkippedBaked} skipped (UV1 baked by RoadRenderBuilder), {configured.Count} materials");
         }
 
         void OnDestroy()
@@ -122,15 +136,14 @@ namespace VeyraCity.Gameplay
                     float bestD = 900f * 900f;
                     for (int i = 0; i < pending.Count; i++)
                     {
-                        var mf = pending[i];
-                        if (mf == null) continue;
-                        float d = (mf.transform.TransformPoint(mf.sharedMesh.bounds.center) - p).sqrMagnitude;
-                        if (d < bestD) { bestD = d; best = i; }
+                        float d = (pendingCentre[i] - p).sqrMagnitude;
+                        if (d < bestD && pending[i] != null) { bestD = d; best = i; }
                     }
                     if (best >= 0)
                     {
                         var mf = pending[best];
                         pending.RemoveAt(best);
+                        pendingCentre.RemoveAt(best);
                         var mesh = mf.sharedMesh;
                         mesh.GetVertices(verts);
                         uv1.Clear();
