@@ -227,6 +227,9 @@ out stationary traffic on 6 segments (BUG-154). Evidence: `Logs/D2_BUG170/summar
 | Vehicle D2 | BUG-154 autopilot braking for kinematic traffic, BUG-061 lane centre, BUG-152 overhang lift (staged); real-site drive-off/on; then handling/weight transfer telemetry, BUG-028 AI spread, nitro moment, crash hit-stop/part detachment hooks |
 | foliage-peds | Foliage wind/translucency/impostors, vegetation kit placement (67,482 placements, 22 prototypes), real pedestrians; EditMode 104/104 |
 | Other group (`e3b346b8`) | Lamp kit swap, guardrails/medians, COL_ surface parser (targeted steps, never the full city build — BUG-045); 11 landmark hero assets |
-| Unowned | Audio (blocked: needs user OK for licensed downloads); Addressables (CLAUDE.md lists it, manifest lacks it); garage interiors and handling-course cones (need art); BUG-130 Sable Falls data gap; final Phase E release sign-off once all of the above land |
+| audio (new, `local_558fa0fe`) | Recorded engine/tyre/wind/impact/nitro layers replacing the `VehicleAudio` synth; CC0/CC-BY only, licence files in `ArtSource/Downloads` |
+| Unowned | Addressables (CLAUDE.md lists it, manifest lacks it); garage interiors and handling-course cones (need art); BUG-130 Sable Falls data gap; final Phase E release sign-off once all of the above land |
 
-**User actions:** power plan off Silent before the final sign-off; OK or refuse licensed audio/character downloads; BUG-066 (5 CC-BY real-brand rebadges); revoke the old Sketchfab token (SEC-003); Unity CLI update 1.0.0-beta.13 → 1.0.0.
+**User decision 2026-11-14:** licensed CC0/CC-BY downloads approved for audio and character models (never NC/SA/ND/Standard or game rips; licence file per download).
+
+**User actions:** power plan off Silent before the final sign-off; BUG-066 (5 CC-BY real-brand rebadges); revoke the old Sketchfab token (SEC-003); Unity CLI update 1.0.0-beta.13 → 1.0.0.
