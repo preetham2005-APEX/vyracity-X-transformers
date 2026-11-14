@@ -58,6 +58,12 @@ namespace VeyraCity.EditorTools
                         case "airfield": log.Append(AirfieldBuilder.Run()); break;
                         case "meadow": log.Append(MeadowPass.Run()); break;
                         case "lampfill": log.Append(LampFill.Run()); break;
+                        case "shoulders": log.Append(ShoulderSurface.Run()); break;
+                        case "edgesteps": log.Append(ShoulderStepValidator.Run()); break;
+                        case "drivable": log.Append(DrivableValidator.Run("Logs/Shoulders")); break;
+                        case "lodaudit": log.Append(LodChunkAudit.Run()); break;
+                        case "terrainsurface": log.Append(TerrainSurfaceRules.Run()); break;
+                        case "roaddecals": log.Append(RoadDecalBuilder.Run()); break;
                         case "profparse": { int pa = Array.IndexOf(args, "-veyraProf"); log.Append(ProfileParse.Run(pa >= 0 ? args[pa + 1] : "Logs/ITER/prof.raw")); break; }
                         case "lmaudit":   // iteration 23: what stands on every registry landmark point (renderers within 25 m)
                         {

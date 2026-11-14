@@ -93,8 +93,8 @@
   "name": "VC_Drain_Inlet_Kerb",
   "issues": [],
   "meshes": {
-   "COL_concrete_VC_Drain_Inlet_Kerb_Kerb": {
-    "tris": 20,
+   "COL_dry_asphalt_VC_Drain_Inlet_Kerb_Gutter": {
+    "tris": 12,
     "ngons": 0,
     "non_manifold": 0,
     "loose_verts": 0,
@@ -106,8 +106,8 @@
      "VC_Collision"
     ]
    },
-   "COL_dry_asphalt_VC_Drain_Inlet_Kerb_Gutter": {
-    "tris": 12,
+   "COL_kerb_VC_Drain_Inlet_Kerb_Kerb": {
+    "tris": 20,
     "ngons": 0,
     "non_manifold": 0,
     "loose_verts": 0,
@@ -375,7 +375,7 @@
     ]
    },
    "VC_Guardrail_WBeam_4m_LOD0": {
-    "tris": 184,
+    "tris": 164,
     "ngons": 0,
     "non_manifold": 0,
     "loose_verts": 0,
@@ -477,8 +477,8 @@
   "name": "VC_Kerb_Corner_90",
   "issues": [],
   "meshes": {
-   "COL_concrete_VC_Kerb_Corner_90_Kerb": {
-    "tris": 80,
+   "COL_dry_asphalt_VC_Kerb_Corner_90_Gutter": {
+    "tris": 52,
     "ngons": 0,
     "non_manifold": 0,
     "loose_verts": 0,
@@ -490,8 +490,8 @@
      "VC_Collision"
     ]
    },
-   "COL_dry_asphalt_VC_Kerb_Corner_90_Gutter": {
-    "tris": 52,
+   "COL_kerb_VC_Kerb_Corner_90_Kerb": {
+    "tris": 80,
     "ngons": 0,
     "non_manifold": 0,
     "loose_verts": 0,
@@ -535,8 +535,8 @@
   "name": "VC_Kerb_DriveApron_4m",
   "issues": [],
   "meshes": {
-   "COL_concrete_VC_Kerb_DriveApron_4m_Kerb": {
-    "tris": 44,
+   "COL_dry_asphalt_VC_Kerb_DriveApron_4m_Gutter": {
+    "tris": 28,
     "ngons": 0,
     "non_manifold": 0,
     "loose_verts": 0,
@@ -548,8 +548,8 @@
      "VC_Collision"
     ]
    },
-   "COL_dry_asphalt_VC_Kerb_DriveApron_4m_Gutter": {
-    "tris": 28,
+   "COL_kerb_VC_Kerb_DriveApron_4m_Kerb": {
+    "tris": 44,
     "ngons": 0,
     "non_manifold": 0,
     "loose_verts": 0,
@@ -593,8 +593,8 @@
   "name": "VC_Kerb_Straight_4m",
   "issues": [],
   "meshes": {
-   "COL_concrete_VC_Kerb_Straight_4m_Kerb": {
-    "tris": 20,
+   "COL_dry_asphalt_VC_Kerb_Straight_4m_Gutter": {
+    "tris": 12,
     "ngons": 0,
     "non_manifold": 0,
     "loose_verts": 0,
@@ -606,8 +606,8 @@
      "VC_Collision"
     ]
    },
-   "COL_dry_asphalt_VC_Kerb_Straight_4m_Gutter": {
-    "tris": 12,
+   "COL_kerb_VC_Kerb_Straight_4m_Kerb": {
+    "tris": 20,
     "ngons": 0,
     "non_manifold": 0,
     "loose_verts": 0,

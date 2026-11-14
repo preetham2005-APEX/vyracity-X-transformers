@@ -46,20 +46,6 @@
    "name": "VC_ExpansionJoint_Strip_4m",
    "issues": [],
    "meshes": {
-    "COL_concrete_VC_ExpansionJoint_Strip_4m": {
-     "tris": 12,
-     "ngons": 0,
-     "non_manifold": 0,
-     "loose_verts": 0,
-     "degenerate": 0,
-     "open_shells": 0,
-     "inverted_shells": 0,
-     "uv": true,
-     "max_z": 0.0,
-     "materials": [
-      "VC_Collision"
-     ]
-    },
     "VC_ExpansionJoint_Strip_4m_LOD0": {
      "tris": 40,
      "ngons": 0,
@@ -95,7 +81,7 @@
    "name": "VC_Manhole_Round_A",
    "issues": [],
    "meshes": {
-    "COL_concrete_VC_Manhole_Round_A": {
+    "COL_metal_VC_Manhole_Round_A": {
      "tris": 72,
      "ngons": 0,
      "non_manifold": 0,
@@ -143,7 +129,7 @@
    "name": "VC_Manhole_Round_B",
    "issues": [],
    "meshes": {
-    "COL_concrete_VC_Manhole_Round_B": {
+    "COL_metal_VC_Manhole_Round_B": {
      "tris": 72,
      "ngons": 0,
      "non_manifold": 0,
@@ -191,7 +177,7 @@
    "name": "VC_StormDrain_Grate_Road",
    "issues": [],
    "meshes": {
-    "COL_concrete_VC_StormDrain_Grate_Road": {
+    "COL_metal_VC_StormDrain_Grate_Road": {
      "tris": 12,
      "ngons": 0,
      "non_manifold": 0,
@@ -241,7 +227,7 @@
    "name": "VC_UtilityCover_Square",
    "issues": [],
    "meshes": {
-    "COL_concrete_VC_UtilityCover_Square": {
+    "COL_metal_VC_UtilityCover_Square": {
      "tris": 12,
      "ngons": 0,
      "non_manifold": 0,

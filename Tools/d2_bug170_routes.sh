@@ -7,7 +7,7 @@
 set -u
 cd /e/VeyraCity || exit 1
 export TEMP=E:/Temp/VeyraCity TMP=E:/Temp/VeyraCity
-OUT=Logs/D2_BUG170
+OUT=${D2_OUT:-Logs/D2_BUG170}
 mkdir -p "$OUT"
 busy() { tasklist 2>/dev/null | grep -qiE "^VeyraCity\.exe" && return 0; powershell -NoProfile -Command "@(Get-CimInstance Win32_Process -Filter \"Name='Unity.exe'\" | Where-Object { \$_.CommandLine -match 'VeyraCity' }).Count" | grep -qv '^0'; }
 if busy; then echo "another Unity editor or VeyraCity player is running: not starting (quiet machine needed)"; exit 3; fi
@@ -31,9 +31,14 @@ run() { # <route> <tag> [extra args]
   grep -E "\[AutoTest\] segment" "$D/player.log" | sed 's/^.*segment/  segment/' | cut -c1-220
   grep -E "physics steps per frame" "$D/player.log" | sed 's/^.*physics/  physics/'
 }
-run R_SMOKE new;              run R_SMOKE legacy -veyraD2Legacy
-run R_BRIDGES legacy -veyraD2Legacy; run R_BRIDGES new
-run R_DOWNTOWN_NIGHT new;     run R_DOWNTOWN_NIGHT legacy -veyraD2Legacy
-run R_SMOKE hz50 -veyraFixedHz 50
-run R_SMOKE hz120 -veyraFixedHz 120
+if [ "${D2_NEW_ONLY:-0}" = "1" ]; then
+  # after fdd2014c the -veyraD2Legacy switch is gone: current behaviour only
+  run R_SMOKE new; run R_BRIDGES new; run R_DOWNTOWN_NIGHT new
+else
+  run R_SMOKE new;              run R_SMOKE legacy -veyraD2Legacy
+  run R_BRIDGES legacy -veyraD2Legacy; run R_BRIDGES new
+  run R_DOWNTOWN_NIGHT new;     run R_DOWNTOWN_NIGHT legacy -veyraD2Legacy
+  run R_SMOKE hz50 -veyraFixedHz 50
+  run R_SMOKE hz120 -veyraFixedHz 120
+fi
 python -I Tools/d2_bug170_summary.py "$OUT" | tee "$OUT/summary.txt"

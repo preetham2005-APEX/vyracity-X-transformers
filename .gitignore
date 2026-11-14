@@ -90,4 +90,6 @@ Assets/_Veyra/World/Generated/TerrainBackup~/
 # (159 MB of the 248 MB), so they are not worth versioning.
 /ArtSource/Blender/*/review/
 /ArtSource/Blender/*/preview/
-/ArtSource/Blender/**/__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo

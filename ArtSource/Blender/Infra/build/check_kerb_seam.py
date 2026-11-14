@@ -47,7 +47,7 @@ def main():
         pan = [o for o in bpy.data.objects
                if o.type == "MESH" and o.name.startswith("COL_dry_asphalt_")]
         kerb = [o for o in bpy.data.objects
-                if o.type == "MESH" and o.name.startswith("COL_concrete_")]
+                if o.type == "MESH" and o.name.startswith("COL_kerb_")]
         if not (pan and kerb):
             continue
         pairs = seam_pairs(pan[0], kerb[0])

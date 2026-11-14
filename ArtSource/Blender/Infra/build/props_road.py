@@ -96,9 +96,9 @@ def build_kerb_straight_4m():
     cols = [MeshBuilder().add(sweep(kerb_collision_pan(), secs), COLMAT)
             .build("COL_dry_asphalt_%s_Gutter" % name),
             MeshBuilder().add(sweep(kerb_collision_kerb(), secs), COLMAT)
-            .build("COL_concrete_%s_Kerb" % name)]
+            .build("COL_kerb_%s_Kerb" % name)]
     return dict(name=name, lods=lods, collision=cols,
-                collision_type="COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb",
+                collision_type="COL (non-convex MeshCollider) x2: dry_asphalt gutter + kerb face/top",
                 pivot="start of the piece, at the road edge of the gutter pan, z = 0 = road surface",
                 notes="4.00 m module; 150 mm upstand + 25 mm chamfer + 450 mm gutter pan. Runs toward "
                       "Unity +Z, kerb rises toward Unity +X. Surfaces: Kerb (face/top), Asphalt (pan).")
@@ -120,9 +120,9 @@ def build_kerb_corner_90():
     cols = [MeshBuilder().add(sweep(kerb_collision_pan(), secs), COLMAT)
             .build("COL_dry_asphalt_%s_Gutter" % name),
             MeshBuilder().add(sweep(kerb_collision_kerb(), secs), COLMAT)
-            .build("COL_concrete_%s_Kerb" % name)]
+            .build("COL_kerb_%s_Kerb" % name)]
     return dict(name=name, lods=lods, collision=cols,
-                collision_type="COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb",
+                collision_type="COL (non-convex MeshCollider) x2: dry_asphalt gutter + kerb face/top",
                 pivot="start of the piece (same datum as VC_Kerb_Straight_4m)",
                 notes="90 deg kerb return, 3.00 m face radius, turning toward Unity +X (footway on the "
                       "inside). The left-hand return is this piece mirrored on X.")
@@ -142,9 +142,9 @@ def build_kerb_drive_apron():
     cols = [MeshBuilder().add(sweep_profiles([kerb_collision_pan() for _ in ts], ys), COLMAT)
             .build("COL_dry_asphalt_%s_Gutter" % name),
             MeshBuilder().add(sweep_profiles([kerb_collision_kerb(t) for t in ts], ys), COLMAT)
-            .build("COL_concrete_%s_Kerb" % name)]
+            .build("COL_kerb_%s_Kerb" % name)]
     return dict(name=name, lods=lods, collision=cols,
-                collision_type="COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb",
+                collision_type="COL (non-convex MeshCollider) x2: dry_asphalt gutter + kerb face/top",
                 pivot="start of the piece (same datum as VC_Kerb_Straight_4m)",
                 notes="4.00 m dropped-kerb driveway apron: 0.80 m flare down, 2.40 m dropped crossing "
                       "(30 mm upstand), 0.80 m flare up. Tiles between straight kerb modules.")
@@ -191,9 +191,9 @@ def build_drain_inlet():
     cols = [MeshBuilder().add(sweep(kerb_collision_pan(), secs), COLMAT)
             .build("COL_dry_asphalt_%s_Gutter" % name),
             MeshBuilder().add(sweep(kerb_collision_kerb(), secs), COLMAT)
-            .build("COL_concrete_%s_Kerb" % name)]
+            .build("COL_kerb_%s_Kerb" % name)]
     return dict(name=name, lods=lods, collision=cols,
-                collision_type="COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb "
+                collision_type="COL (non-convex MeshCollider) x2: dry_asphalt gutter + kerb face/top "
                                 "(the gutter solid closes the sump)",
                 pivot="start of the piece (same datum as VC_Kerb_Straight_4m)",
                 notes="1.20 m combination inlet: 0.90 m kerb throat (140 mm clear under a cast lintel) "
@@ -256,9 +256,10 @@ def build_guardrail_4m():
             _guard_post(mb, 0.0, d)
             mb.add(box((0.200, 0.200, 0.360), (-0.100, 0.0, 0.55)), STEEL_GALV)
         if d == 0:
+            # ONE splice bolt, at the module START only. The module pitch is exactly 4.00 m, so a
+            # bolt at the far end would land in the same place as the next module's start bolt and
+            # z-fight with it at every joint in a run. One bolt per module = one bolt per joint.
             mb.add(prism((0.030, 0.0, 0.55), (-0.012, 0.0, 0.55), 0.021, sides=6), STEEL_GALV)
-            mb.add(prism((0.030, -length, 0.55), (-0.012, -length, 0.55), 0.021, sides=6),
-                   STEEL_GALV)
         lods.append(mb.build("%s_LOD%d" % (name, d)))
     mb = MeshBuilder()
     mb.add(box((0.130, length, 0.620), (0.030, -length * 0.5, 0.430)), COLMAT)
@@ -268,7 +269,11 @@ def build_guardrail_4m():
                 pivot="start of the piece, post centreline, ground level (z = 0), rail back plane (x = 0)",
                 notes="4.00 m post-and-rail module, rail centre 550 mm, 1.85 m C-section post at the "
                       "module start. The rail face looks toward Unity -X (the carriageway); the module "
-                      "runs toward Unity +Z.")
+                      "runs toward Unity +Z. PITCH IS EXACTLY 4.00 m: the rail spans y = 0 to -4.00. "
+                      "The post, blockout and splice bolt straddle the start plane and reach 0.10 m "
+                      "BACK past it, which is deliberate - in a run that puts the splice post over the "
+                      "joint between two rails, as a real W-beam does. So the bounding length is "
+                      "4.12 m but the placement pitch is 4.00 m; do not space them by the bbox.")
 
 
 def build_guardrail_end():

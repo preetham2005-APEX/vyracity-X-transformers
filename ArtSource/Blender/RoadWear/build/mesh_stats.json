@@ -6,7 +6,7 @@
    272
   ],
   "collision_tris": 72,
-  "collision": "COL_concrete_VC_Manhole_Round_A",
+  "collision": "COL_metal_VC_Manhole_Round_A",
   "collision_type": "COL (non-convex MeshCollider)",
   "collision_top_m": 0.01,
   "pivot": "centre of the cover at the ROAD SURFACE (z = 0); the casting sits -0.062 m deep",
@@ -28,7 +28,7 @@
    344
   ],
   "collision_tris": 72,
-  "collision": "COL_concrete_VC_Manhole_Round_B",
+  "collision": "COL_metal_VC_Manhole_Round_B",
   "collision_type": "COL (non-convex MeshCollider)",
   "collision_top_m": 0.01,
   "pivot": "centre of the cover at the ROAD SURFACE (z = 0); the casting sits -0.062 m deep",
@@ -50,7 +50,7 @@
    108
   ],
   "collision_tris": 12,
-  "collision": "COL_concrete_VC_UtilityCover_Square",
+  "collision": "COL_metal_VC_UtilityCover_Square",
   "collision_type": "COL (non-convex MeshCollider)",
   "collision_top_m": 0.01,
   "pivot": "centre of the cover at the ROAD SURFACE (z = 0)",
@@ -72,7 +72,7 @@
    96
   ],
   "collision_tris": 12,
-  "collision": "COL_concrete_VC_StormDrain_Grate_Road",
+  "collision": "COL_metal_VC_StormDrain_Grate_Road",
   "collision_type": "COL (non-convex MeshCollider)",
   "collision_top_m": 0.006,
   "pivot": "centre of the grate at the ROAD SURFACE (z = 0)",
@@ -94,14 +94,13 @@
    40,
    12
   ],
-  "collision_tris": 12,
-  "collision": "COL_concrete_VC_ExpansionJoint_Strip_4m",
-  "collision_type": "COL (non-convex MeshCollider)",
+  "collision_tris": 0,
+  "collision": null,
+  "collision_type": "none - deliberately; see notes",
   "collision_top_m": 0.0,
   "pivot": "start of the piece, joint centreline, z = 0 = road surface",
-  "notes": "4.00 m transverse/longitudinal joint strip, 0.30 m wide: a 52 mm groove with a sealant bead whose top sits 2 mm below the road. The collider is dead flat (zero step), so the joint is visual only for the vehicle.",
+  "notes": "4.00 m transverse/longitudinal joint strip, 0.30 m wide: a 52 mm groove with a sealant bead whose top sits 2 mm below the road. Ships with NO collider: its top face would be exactly coplanar with the road collider and put the wheel raycast in a tie. The road beneath carries surface and height.",
   "materials": [
-   "VC_Collision",
    "VC_Concrete_Struct",
    "VC_Joint_Sealant"
   ],

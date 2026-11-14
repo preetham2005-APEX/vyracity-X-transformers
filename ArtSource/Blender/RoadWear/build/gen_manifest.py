@@ -128,8 +128,10 @@ which fails the build if any collider rises more than 0.05 m above the road plan
 |---|---|---|---|---|---|---|---|""")
 for m in mesh:
     t = m["tris"]
-    w("| `%s` | %d | %d (%d%%) | %s (%d tris) | %s | **+%.0f mm** | %s | %s |"
-      % (m["name"], t[0], t[1], round(100.0 * t[1] / t[0]), m["collision"], m["collision_tris"],
+    col = ("%s (%d tris)" % (m["collision"], m["collision_tris"]) if m["collision"]
+           else "**none, deliberately**")
+    w("| `%s` | %d | %d (%d%%) | %s | %s | **+%.0f mm** | %s | %s |"
+      % (m["name"], t[0], t[1], round(100.0 * t[1] / t[0]), col,
          m["collision_type"].split(" (")[0], m["collision_top_m"] * 1000,
          " x ".join("%.2f" % d for d in m["dims_lod0"]), m["pivot"].split(";")[0]))
 

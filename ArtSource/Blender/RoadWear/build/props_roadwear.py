@@ -27,10 +27,14 @@ from vc_infra_lib import MeshBuilder, box, prism, sections_along_y, sweep   # no
 vc_infra_lib.MATERIALS.setdefault(
     "VC_Joint_Sealant", dict(base=(0.022, 0.021, 0.021), metallic=0.0, roughness=0.42))
 
-# Surface token for cast-iron castings. There is no metal.asset in Data/Surfaces yet and the new
-# import parser warns on an unmatched token, so these take the nearest hard surface for now. When
-# metal.asset lands this is the ONLY line that changes, and the MANIFEST lists what it re-points.
-CASTING_SURFACE = "concrete"   # TODO -> "metal" when Data/Surfaces/metal.asset exists
+# Surface token for cast-iron castings. These are MEASURED to stand 6-10 mm proud of the road with
+# ZERO coplanar area (build/check_coplanar.py), so they are not in a raycast tie with the road
+# collider underneath: the nearest hit wins and the tyre genuinely is on metal.
+# Docs/SURFACE_CONVENTION.md's coplanar hazard applies to FLUSH colliders, which these are not.
+# CONDITIONAL: this holds only while they are placed with the pivot at road level, as documented.
+# If they are ever sunk so their tops finish flush with the asphalt, they become coplanar and must
+# go back to dry_asphalt.
+CASTING_SURFACE = "metal"
 
 IRON = "VC_Iron_Cast"
 STEEL_DARK = "VC_Steel_Dark"
@@ -264,15 +268,18 @@ def build_expansion_joint():
         if d == 0:
             mb.add(box((0.050, length, 0.016), (0.0, -length * 0.5, -0.010)), SEALANT)
         lods.append(mb.build("%s_LOD%d" % (name, d)))
-    mb = MeshBuilder()
-    mb.add(sweep(flat, sections_along_y([0.0, -length])), COLMAT)
-    col = mb.build("COL_concrete_%s" % name)
-    return dict(name=name, lods=lods, collision=col,
-                collision_type="COL (non-convex MeshCollider)",
+    # NO COLLIDER, deliberately. Its top face is 1.200 m2 lying at exactly z = 0, which is
+    # exactly coplanar with the road collider beneath it, so a wheel raycast would tie between
+    # the two (Docs/SURFACE_CONVENTION.md). The road already carries both the surface and the
+    # height, and a 52 mm sealant groove changes no grip, so a second collider buys nothing and
+    # costs an ambiguity. Render geometry only.
+    return dict(name=name, lods=lods, collision=None,
+                collision_type="none - deliberately; see notes",
                 pivot="start of the piece, joint centreline, z = 0 = road surface",
                 notes="4.00 m transverse/longitudinal joint strip, 0.30 m wide: a 52 mm groove with "
-                      "a sealant bead whose top sits 2 mm below the road. The collider is dead flat "
-                      "(zero step), so the joint is visual only for the vehicle.")
+                      "a sealant bead whose top sits 2 mm below the road. Ships with NO collider: "
+                      "its top face would be exactly coplanar with the road collider and put the "
+                      "wheel raycast in a tie. The road beneath carries surface and height.")
 
 
 BUILDERS = [build_manhole_round_a, build_manhole_round_b, build_utility_cover_square,

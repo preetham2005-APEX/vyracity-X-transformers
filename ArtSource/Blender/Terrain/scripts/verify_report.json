@@ -295,10 +295,10 @@
   "materials": [
    "M_Veyra_Rock"
   ],
-  "min_z": -0.1491,
+  "min_z": -0.1446,
   "pivot_offset": [
-   0.17,
-   0.002
+   -0.007,
+   0.011
   ],
   "collision_tris": 36
  },
@@ -330,10 +330,10 @@
   "materials": [
    "M_Veyra_Rock"
   ],
-  "min_z": -0.1505,
+  "min_z": -0.159,
   "pivot_offset": [
-   -0.121,
-   -0.125
+   -0.023,
+   -0.085
   ],
   "collision_tris": 36
  },
@@ -365,10 +365,10 @@
   "materials": [
    "M_Veyra_Rock"
   ],
-  "min_z": -0.082,
+  "min_z": -0.0834,
   "pivot_offset": [
-   0.081,
-   0.027
+   -0.034,
+   0.01
   ],
   "collision_tris": 20
  },
@@ -400,10 +400,10 @@
   "materials": [
    "M_Veyra_Rock"
   ],
-  "min_z": -0.0942,
+  "min_z": -0.0826,
   "pivot_offset": [
-   0.03,
-   -0.031
+   -0.125,
+   -0.035
   ],
   "collision_tris": 20
  },
@@ -435,10 +435,10 @@
   "materials": [
    "M_Veyra_Rock"
   ],
-  "min_z": -0.0365,
+  "min_z": -0.034,
   "pivot_offset": [
-   -0.003,
-   -0.013
+   -0.031,
+   0.023
   ],
   "collision_tris": 20
  },
@@ -470,10 +470,10 @@
   "materials": [
    "M_Veyra_Rock"
   ],
-  "min_z": -0.0322,
+  "min_z": -0.0375,
   "pivot_offset": [
-   0.001,
-   0.025
+   0.037,
+   -0.009
   ],
   "collision_tris": 20
  },
@@ -498,7 +498,7 @@
   ],
   "ucx": [],
   "col": [
-   "COL_concrete_VC_Rock_CutFace_8m"
+   "COL_rock_VC_Rock_CutFace_8m"
   ],
   "issues": [],
   "root_rot_z": 180.0,

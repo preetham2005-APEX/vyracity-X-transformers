@@ -1,0 +1,120 @@
+{
+ "tile": 512,
+ "grid": 4,
+ "views": [
+  "front: Blender -Y = Unity +Z side, image right = Unity -X",
+  "side: Blender +X = Unity -X side, image right = Unity -Z"
+ ],
+ "trees": [
+  {
+   "model": "VC_Tree_Broadleaf",
+   "size": 10.7761,
+   "height": 10.4623,
+   "halfWidth": 5.0724,
+   "tiles": [
+    {
+     "view": 0,
+     "u0": 0.0,
+     "v0": 0.0,
+     "u1": 0.25,
+     "v1": 0.25
+    },
+    {
+     "view": 1,
+     "u0": 0.25,
+     "v0": 0.0,
+     "u1": 0.5,
+     "v1": 0.25
+    }
+   ]
+  },
+  {
+   "model": "VC_Tree_Broadleaf2",
+   "size": 11.582,
+   "height": 11.2447,
+   "halfWidth": 4.1386,
+   "tiles": [
+    {
+     "view": 0,
+     "u0": 0.5,
+     "v0": 0.0,
+     "u1": 0.75,
+     "v1": 0.25
+    },
+    {
+     "view": 1,
+     "u0": 0.75,
+     "v0": 0.0,
+     "u1": 1.0,
+     "v1": 0.25
+    }
+   ]
+  },
+  {
+   "model": "VC_Tree_Pine",
+   "size": 14.626,
+   "height": 14.2,
+   "halfWidth": 3.8917,
+   "tiles": [
+    {
+     "view": 0,
+     "u0": 0.0,
+     "v0": 0.25,
+     "u1": 0.25,
+     "v1": 0.5
+    },
+    {
+     "view": 1,
+     "u0": 0.25,
+     "v0": 0.25,
+     "u1": 0.5,
+     "v1": 0.5
+    }
+   ]
+  },
+  {
+   "model": "VC_Tree_Palm",
+   "size": 11.8575,
+   "height": 11.5121,
+   "halfWidth": 4.7995,
+   "tiles": [
+    {
+     "view": 0,
+     "u0": 0.5,
+     "v0": 0.25,
+     "u1": 0.75,
+     "v1": 0.5
+    },
+    {
+     "view": 1,
+     "u0": 0.75,
+     "v0": 0.25,
+     "u1": 1.0,
+     "v1": 0.5
+    }
+   ]
+  },
+  {
+   "model": "VC_Tree_Bush",
+   "size": 3.658,
+   "height": 2.1361,
+   "halfWidth": 1.7757,
+   "tiles": [
+    {
+     "view": 0,
+     "u0": 0.0,
+     "v0": 0.5,
+     "u1": 0.25,
+     "v1": 0.75
+    },
+    {
+     "view": 1,
+     "u0": 0.25,
+     "v0": 0.5,
+     "u1": 0.5,
+     "v1": 0.75
+    }
+   ]
+  }
+ ]
+}

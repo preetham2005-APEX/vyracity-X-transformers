@@ -6,8 +6,8 @@
    16
   ],
   "collision_tris": 32,
-  "collision": "COL_dry_asphalt_VC_Kerb_Straight_4m_Gutter + COL_concrete_VC_Kerb_Straight_4m_Kerb",
-  "collision_type": "COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb",
+  "collision": "COL_dry_asphalt_VC_Kerb_Straight_4m_Gutter + COL_kerb_VC_Kerb_Straight_4m_Kerb",
+  "collision_type": "COL (non-convex MeshCollider) x2: dry_asphalt gutter + kerb face/top",
   "pivot": "start of the piece, at the road edge of the gutter pan, z = 0 = road surface",
   "notes": "4.00 m module; 150 mm upstand + 25 mm chamfer + 450 mm gutter pan. Runs toward Unity +Z, kerb rises toward Unity +X. Surfaces: Kerb (face/top), Asphalt (pan).",
   "materials": [
@@ -27,8 +27,8 @@
    46
   ],
   "collision_tris": 132,
-  "collision": "COL_dry_asphalt_VC_Kerb_Corner_90_Gutter + COL_concrete_VC_Kerb_Corner_90_Kerb",
-  "collision_type": "COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb",
+  "collision": "COL_dry_asphalt_VC_Kerb_Corner_90_Gutter + COL_kerb_VC_Kerb_Corner_90_Kerb",
+  "collision_type": "COL (non-convex MeshCollider) x2: dry_asphalt gutter + kerb face/top",
   "pivot": "start of the piece (same datum as VC_Kerb_Straight_4m)",
   "notes": "90 deg kerb return, 3.00 m face radius, turning toward Unity +X (footway on the inside). The left-hand return is this piece mirrored on X.",
   "materials": [
@@ -48,8 +48,8 @@
    36
   ],
   "collision_tris": 72,
-  "collision": "COL_dry_asphalt_VC_Kerb_DriveApron_4m_Gutter + COL_concrete_VC_Kerb_DriveApron_4m_Kerb",
-  "collision_type": "COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb",
+  "collision": "COL_dry_asphalt_VC_Kerb_DriveApron_4m_Gutter + COL_kerb_VC_Kerb_DriveApron_4m_Kerb",
+  "collision_type": "COL (non-convex MeshCollider) x2: dry_asphalt gutter + kerb face/top",
   "pivot": "start of the piece (same datum as VC_Kerb_Straight_4m)",
   "notes": "4.00 m dropped-kerb driveway apron: 0.80 m flare down, 2.40 m dropped crossing (30 mm upstand), 0.80 m flare up. Tiles between straight kerb modules.",
   "materials": [
@@ -69,8 +69,8 @@
    128
   ],
   "collision_tris": 32,
-  "collision": "COL_dry_asphalt_VC_Drain_Inlet_Kerb_Gutter + COL_concrete_VC_Drain_Inlet_Kerb_Kerb",
-  "collision_type": "COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb (the gutter solid closes the sump)",
+  "collision": "COL_dry_asphalt_VC_Drain_Inlet_Kerb_Gutter + COL_kerb_VC_Drain_Inlet_Kerb_Kerb",
+  "collision_type": "COL (non-convex MeshCollider) x2: dry_asphalt gutter + kerb face/top (the gutter solid closes the sump)",
   "pivot": "start of the piece (same datum as VC_Kerb_Straight_4m)",
   "notes": "1.20 m combination inlet: 0.90 m kerb throat (140 mm clear under a cast lintel) over a 0.90 x 0.42 m sump with a 7-bar cast grate. Collision closes the sump so wheels cannot drop in.",
   "materials": [
@@ -87,7 +87,7 @@
  {
   "name": "VC_Guardrail_WBeam_4m",
   "tris": [
-   184,
+   164,
    60,
    24
   ],
@@ -95,14 +95,14 @@
   "collision": "UBX_VC_Guardrail_WBeam_4m",
   "collision_type": "UBX (BoxCollider)",
   "pivot": "start of the piece, post centreline, ground level (z = 0), rail back plane (x = 0)",
-  "notes": "4.00 m post-and-rail module, rail centre 550 mm, 1.85 m C-section post at the module start. The rail face looks toward Unity -X (the carriageway); the module runs toward Unity +Z.",
+  "notes": "4.00 m post-and-rail module, rail centre 550 mm, 1.85 m C-section post at the module start. The rail face looks toward Unity -X (the carriageway); the module runs toward Unity +Z. PITCH IS EXACTLY 4.00 m: the rail spans y = 0 to -4.00. The post, blockout and splice bolt straddle the start plane and reach 0.10 m BACK past it, which is deliberate - in a run that puts the splice post over the joint between two rails, as a real W-beam does. So the bounding length is 4.12 m but the placement pitch is 4.00 m; do not space them by the bbox.",
   "materials": [
    "VC_Collision",
    "VC_Steel_Galv"
   ],
   "dims_lod0": [
    0.358,
-   4.118,
+   4.1,
    1.85
   ]
  },

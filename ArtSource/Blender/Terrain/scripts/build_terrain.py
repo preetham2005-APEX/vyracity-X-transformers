@@ -34,7 +34,7 @@ ROCKS = [
      ("ucx_multi", lambda: R.outcrop_colliders("A"))),
     ("VC_Rock_Outcrop_B", "Outcrop", lambda l: R.outcrop("B", l),
      ("ucx_multi", lambda: R.outcrop_colliders("B"))),
-    ("VC_Rock_CutFace_8m", "CutFace", R.cut_face, ("col", R.cut_face_collider, "COL_concrete_")),
+    ("VC_Rock_CutFace_8m", "CutFace", R.cut_face, ("col", R.cut_face_collider, "COL_rock_")),
     ("VC_Rock_ScreePatch", "Scree", R.scree, ("col", R.scree_collider, "COL_gravel_")),
     ("VC_Rock_ShoreGroup", "Shore", lambda l: R.shore_group(l),
      ("ucx_multi", lambda: R.shore_colliders())),

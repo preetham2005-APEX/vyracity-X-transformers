@@ -46,15 +46,15 @@ on the way in.
 
 | Asset (FBX) | district | size x/y/z m | LOD0 | LOD1 | LOD2 | collision | material |
 |---|---|---|---|---|---|---|---|
-| `VC_Rock_Boulder_S_Angular` | D4, D8, D2 | 0.60 x 0.58 x 0.46 | 100 | 42 | 20 | UCX_VC_Rock_Boulder_S_Angular (20 tris) | M_Veyra_Rock |
-| `VC_Rock_Boulder_S_Rounded` | D8, D2 | 0.67 x 0.61 x 0.40 | 100 | 42 | 20 | UCX_VC_Rock_Boulder_S_Rounded (20 tris) | M_Veyra_Rock |
-| `VC_Rock_Boulder_M_Angular` | D4, D8 | 1.57 x 1.34 x 1.03 | 168 | 64 | 20 | UCX_VC_Rock_Boulder_M_Angular (20 tris) | M_Veyra_Rock |
-| `VC_Rock_Boulder_M_Rounded` | D8, D2 | 1.62 x 1.36 x 1.18 | 168 | 64 | 20 | UCX_VC_Rock_Boulder_M_Rounded (20 tris) | M_Veyra_Rock |
-| `VC_Rock_Boulder_L_Angular` | D4 | 2.86 x 2.53 x 1.86 | 288 | 100 | 36 | UCX_VC_Rock_Boulder_L_Angular (36 tris) | M_Veyra_Rock |
-| `VC_Rock_Boulder_L_Rounded` | D8, D2 | 3.26 x 2.92 x 1.88 | 288 | 100 | 36 | UCX_VC_Rock_Boulder_L_Rounded (36 tris) | M_Veyra_Rock |
+| `VC_Rock_Boulder_S_Angular` | D4, D8, D2 | 0.66 x 0.58 x 0.42 | 100 | 42 | 20 | UCX_VC_Rock_Boulder_S_Angular (20 tris) | M_Veyra_Rock |
+| `VC_Rock_Boulder_S_Rounded` | D8, D2 | 0.66 x 0.65 x 0.47 | 100 | 42 | 20 | UCX_VC_Rock_Boulder_S_Rounded (20 tris) | M_Veyra_Rock |
+| `VC_Rock_Boulder_M_Angular` | D4, D8 | 1.56 x 1.45 x 1.04 | 168 | 64 | 20 | UCX_VC_Rock_Boulder_M_Angular (20 tris) | M_Veyra_Rock |
+| `VC_Rock_Boulder_M_Rounded` | D8, D2 | 1.54 x 1.52 x 1.03 | 168 | 64 | 20 | UCX_VC_Rock_Boulder_M_Rounded (20 tris) | M_Veyra_Rock |
+| `VC_Rock_Boulder_L_Angular` | D4 | 3.01 x 2.53 x 1.81 | 288 | 100 | 36 | UCX_VC_Rock_Boulder_L_Angular (36 tris) | M_Veyra_Rock |
+| `VC_Rock_Boulder_L_Rounded` | D8, D2 | 3.22 x 2.69 x 1.99 | 288 | 100 | 36 | UCX_VC_Rock_Boulder_L_Rounded (36 tris) | M_Veyra_Rock |
 | `VC_Rock_Outcrop_A` | D4, D8 | 5.68 x 5.02 x 1.11 | 840 | 320 | 100 | 5 x UCX_ (100 tris) | M_Veyra_Rock |
 | `VC_Rock_Outcrop_B` | D4 | 9.10 x 5.79 x 1.94 | 2016 | 700 | 252 | 7 x UCX_ (252 tris) | M_Veyra_Rock |
-| `VC_Rock_CutFace_8m` | D4, D8 road cuts | 8.00 x 1.78 x 4.20 | 736 | 256 | 48 | COL_concrete_VC_Rock_CutFace_8m (80 tris) | M_Veyra_Rock |
+| `VC_Rock_CutFace_8m` | D4, D8 road cuts | 8.00 x 1.78 x 4.20 | 736 | 256 | 48 | COL_rock_VC_Rock_CutFace_8m (80 tris) | M_Veyra_Rock |
 | `VC_Rock_ScreePatch` | D4, D8 | 4.55 x 4.50 x 0.20 | 1172 | 230 | 6 | COL_gravel_VC_Rock_ScreePatch (36 tris) | M_Veyra_Rock |
 | `VC_Rock_ShoreGroup` | D2 shoreline | 4.11 x 3.58 x 0.61 | 1008 | 384 | 120 | 6 x UCX_ (120 tris) | M_Veyra_Rock |
 | `VC_Log_Fallen_A` | D8 | 6.62 x 0.97 x 1.05 | 202 | 102 | 20 | UCX_VC_Log_Fallen_A (36 tris) | M_Veyra_Bark |
@@ -80,7 +80,7 @@ exactly the fracture edges that make it read as rock.
 |---|---|---|
 | `UCX_<name>` convex | boulders, logs | A boulder is convex enough that a hull is the right shape, and it is the cheapest thing PhysX can test. |
 | `UCX_<name>_01..n` | outcrops, shore group | One hull **per block**. A single hull over a cluster would fill the gaps between blocks that you can see straight through. `VeyraModelPostprocessor` already walks every `UCX_` node, so numbered parts need no code change. |
-| `COL_concrete_<name>` non-convex | road-cut panel | A leaning wall is not convex; a hull would bulge out over the carriageway. |
+| `COL_rock_<name>` non-convex | road-cut panel | A leaning wall is not convex; a hull would bulge out over the carriageway. |
 | `COL_gravel_<name>` non-convex | scree patch | Drive-over. The mound rim sits at exactly z = 0, so there is no step where it meets the terrain (CLAUDE.md: no vertical step over 0.05 m between adjacent collider surfaces). The verify pass measures this on the imported mesh and fails above 0.05 m. |
 | none | impostors | An impostor is a render swap. The real tree keeps its own trunk collider; giving the impostor one too would double it up. |
 
@@ -91,15 +91,19 @@ inside what the wheel raycast tolerates, and colliding them would cost far more 
 
 This kit found, and the Unity session has since made final, the convention these names follow.
 `VeyraModelPostprocessor.MakeMeshCollider` used to map `COL_Ground*` to `grass` and everything else
-to `dry_asphalt`, which meant only 2 of the 6 `SurfaceDefinition` assets that exist were reachable
-from an imported model at all. Since wheel grip, tyre FX and surface audio all read
-`SurfaceDefinition`, that is a correctness bug, not a nicety: it is why a cast-iron manhole cover
-currently behaves and sounds like asphalt.
+to `dry_asphalt`, which meant only 2 of the 6 `SurfaceDefinition` assets that existed were
+reachable from an imported model at all. Since wheel grip, tyre FX and surface audio all read
+`SurfaceDefinition`, that was a correctness bug, not a nicety: it is why a cast-iron manhole cover
+behaved and sounded like asphalt.
+
+`Data/Surfaces` has since grown to twelve assets and all eight surfaces CLAUDE.md names are backed
+by a real one.
 
 The convention now is **`COL_<surface>_<name>`**, surface token lowercase, matching a
 `Data/Surfaces` asset filename:
 
-- Valid today: `concrete`, `dirt`, `dry_asphalt`, `grass`, `gravel`, `wet_asphalt`.
+- Valid today: `cobblestone`, `concrete`, `dirt`, `dry_asphalt`, `grass`, `gravel`, `kerb`,
+  `metal`, `paving`, `rock`, `sand`, `wet_asphalt`.
 - `dry_asphalt` has an underscore in it; the parser matches longest-first against known asset
   names rather than splitting naively, so `COL_dry_asphalt_Something` is correct and needs no
   workaround.
@@ -107,12 +111,30 @@ The convention now is **`COL_<surface>_<name>`**, surface token lowercase, match
 - An unmatched token falls back to `dry_asphalt` **and logs an import warning** - silent fallback
   is what hid this in the first place.
 
-In this kit: the scree patch is `COL_gravel_VC_Rock_ScreePatch`, and the road-cut panel is
-`COL_concrete_VC_Rock_CutFace_8m`. Concrete is the nearest available match for a hard mineral face
-rather than a true one - there is no `rock` surface asset, and this kit does not invent surface
-tokens that have no asset behind them, because under the new parser every such name would warn on
-every import. A `rock` surface is the right answer whenever someone adds one; until then concrete
-gives the correct hard-surface behaviour for scraping along a cut face.
+In this kit: the scree patch is `COL_gravel_VC_Rock_ScreePatch` and the road-cut panel is
+`COL_rock_VC_Rock_CutFace_8m`.
+
+The cut face shipped briefly as `COL_concrete_`, because no `rock` surface existed yet and this kit
+does not invent tokens with nothing behind them: an unmatched token falls back to `dry_asphalt` and
+warns on every import, so a speculative `COL_rock_` would have produced warning noise across every
+model in the project until the asset arrived - by which time the warning would have been ignored.
+An honest stand-in, flagged, beat being early. The real surface now exists and the stand-in is gone.
+
+**The scree patch is one collider, all `gravel`, deliberately.** It was asked whether the drive-over
+rim at z = 0 should carry a different surface from the patch body, since the rim is what a tyre
+contacts at speed. It should not, for three reasons measured off the geometry:
+
+- The mound profile is `0.10 * (1 - (r/2.25)^2)^1.3`, so the outer 0.25 m of radius is under 5 mm
+  high. There is no rim zone to stand on - it is a feather edge.
+- At 60 km/h a wheel crosses a 0.5 m annulus in about 30 ms, under two frames at 60 Hz. A surface
+  change that brief reads as a glitch rather than as detail.
+- At the rim the collider is exactly coplanar with the terrain **by design** - that is what keeps
+  the step at zero - so the wheel raycast is already ambiguous between scree and ground there.
+  A third surface zone would stack a second flicker boundary on an existing one, and surface
+  flicker is audible before it is visible.
+
+If graded surface response is wanted for scree, the place to get it is a larger asset: a 10 m spill
+with a genuinely loose centre and a thin outer scatter, not a subdivision of a 4.5 m patch.
 
 ## Far-tree impostors (BUG-117)
 

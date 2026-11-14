@@ -136,11 +136,11 @@ which fails the build if any collider rises more than 0.05 m above the road plan
 
 | FBX / .blend | LOD0 | LOD1 (% of LOD0) | Collision | Type | Collider top above road | Size (m) | Pivot |
 |---|---|---|---|---|---|---|---|
-| `VC_Manhole_Round_A` | 648 | 272 (42%) | COL_concrete_VC_Manhole_Round_A (72 tris) | COL | **+10 mm** | 0.80 x 0.80 x 0.08 | centre of the cover at the ROAD SURFACE (z = 0) |
-| `VC_Manhole_Round_B` | 732 | 344 (47%) | COL_concrete_VC_Manhole_Round_B (72 tris) | COL | **+10 mm** | 0.80 x 0.80 x 0.09 | centre of the cover at the ROAD SURFACE (z = 0) |
-| `VC_UtilityCover_Square` | 276 | 108 (39%) | COL_concrete_VC_UtilityCover_Square (12 tris) | COL | **+10 mm** | 0.76 x 0.76 x 0.07 | centre of the cover at the ROAD SURFACE (z = 0) |
-| `VC_StormDrain_Grate_Road` | 168 | 96 (57%) | COL_concrete_VC_StormDrain_Grate_Road (12 tris) | COL | **+6 mm** | 0.72 x 0.72 x 0.10 | centre of the grate at the ROAD SURFACE (z = 0) |
-| `VC_ExpansionJoint_Strip_4m` | 40 | 12 (30%) | COL_concrete_VC_ExpansionJoint_Strip_4m (12 tris) | COL | **+0 mm** | 0.30 x 4.00 x 0.05 | start of the piece, joint centreline, z = 0 = road surface |
+| `VC_Manhole_Round_A` | 648 | 272 (42%) | COL_metal_VC_Manhole_Round_A (72 tris) | COL | **+10 mm** | 0.80 x 0.80 x 0.08 | centre of the cover at the ROAD SURFACE (z = 0) |
+| `VC_Manhole_Round_B` | 732 | 344 (47%) | COL_metal_VC_Manhole_Round_B (72 tris) | COL | **+10 mm** | 0.80 x 0.80 x 0.09 | centre of the cover at the ROAD SURFACE (z = 0) |
+| `VC_UtilityCover_Square` | 276 | 108 (39%) | COL_metal_VC_UtilityCover_Square (12 tris) | COL | **+10 mm** | 0.76 x 0.76 x 0.07 | centre of the cover at the ROAD SURFACE (z = 0) |
+| `VC_StormDrain_Grate_Road` | 168 | 96 (57%) | COL_metal_VC_StormDrain_Grate_Road (12 tris) | COL | **+6 mm** | 0.72 x 0.72 x 0.10 | centre of the grate at the ROAD SURFACE (z = 0) |
+| `VC_ExpansionJoint_Strip_4m` | 40 | 12 (30%) | **none, deliberately** | none - deliberately; see notes | **+0 mm** | 0.30 x 4.00 x 0.05 | start of the piece, joint centreline, z = 0 = road surface |
 
 ### Per-mesh notes
 
@@ -148,7 +148,7 @@ which fails the build if any collider rises more than 0.05 m above the road plan
 - **`VC_Manhole_Round_B`** - 0.62 m round cast cover in a 0.80 m frame, 16 radial ribs inside a perimeter ring with a centre boss and one lift slot. Same flush profile as pattern A, so the two read as different castings in the same frame. Materials: VC_Iron_Cast.
 - **`VC_UtilityCover_Square`** - 0.60 m square utility access cover in a 0.72 m frame, chequer studs and two lift slots. Cover top +10 mm, frame top +6 mm. Materials: VC_Iron_Cast.
 - **`VC_StormDrain_Grate_Road`** - 0.58 m in-carriageway storm grate in a 0.70 m frame: 7 bars recessed 10 mm under the frame top, two cross ribs, a sump floor 90 mm down. The collider is a single flush plate so wheels roll over the bars instead of dropping in. Materials: VC_Concrete_Struct, VC_Iron_Cast.
-- **`VC_ExpansionJoint_Strip_4m`** - 4.00 m transverse/longitudinal joint strip, 0.30 m wide: a 52 mm groove with a sealant bead whose top sits 2 mm below the road. The collider is dead flat (zero step), so the joint is visual only for the vehicle. Materials: VC_Concrete_Struct, VC_Joint_Sealant.
+- **`VC_ExpansionJoint_Strip_4m`** - 4.00 m transverse/longitudinal joint strip, 0.30 m wide: a 52 mm groove with a sealant bead whose top sits 2 mm below the road. Ships with NO collider: its top face would be exactly coplanar with the road collider and put the wheel raycast in a tie. The road beneath carries surface and height. Materials: VC_Concrete_Struct, VC_Joint_Sealant.
 
 Every prop here is under 2 m, so it ships LOD0 + LOD1 per the CLAUDE.md small-prop rule.
 

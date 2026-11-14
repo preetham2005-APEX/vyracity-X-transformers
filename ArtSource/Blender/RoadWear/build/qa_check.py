@@ -32,9 +32,14 @@ TEX = os.path.join(ROOT, "textures")
 EXPORT = os.path.join(ROOT, "export")
 COL_PREFIXES = ("COL_", "UCX_", "UBX_")
 MAX_STEP = 0.05
+# Props that deliberately ship no collider. A drive-over collider whose top face is exactly
+# coplanar with the road would put the wheel raycast in a tie with the road collider, and the
+# road already carries both the surface and the height (Docs/SURFACE_CONVENTION.md).
+NO_COLLIDER = {"VC_ExpansionJoint_Strip_4m"}
 # Project convention (VeyraModelPostprocessor): COL_<surface>_<name>, surface matching a
 # Data/Surfaces asset filename, longest-first so dry_asphalt is not split on its underscore.
-SURFACES = ("dry_asphalt", "wet_asphalt", "concrete", "gravel", "grass", "dirt")
+SURFACES = ("cobblestone", "concrete", "dirt", "dry_asphalt", "grass", "gravel", "kerb",
+            "metal", "paving", "rock", "sand", "wet_asphalt")
 
 
 def collision_name_issue(c, name):
@@ -271,7 +276,7 @@ def check_blend(path):
         msg = collision_name_issue(c, name)
         if msg:
             issues.append(msg)
-    if not cols:
+    if not cols and name not in NO_COLLIDER:
         issues.append("no collision mesh (every prop here is driven over)")
     return dict(name=name, issues=issues, meshes=meshes)
 

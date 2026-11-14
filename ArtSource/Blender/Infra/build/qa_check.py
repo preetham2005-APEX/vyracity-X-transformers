@@ -18,7 +18,8 @@ EXPORT = os.path.join(INFRA, "export")
 COL_PREFIXES = ("COL_", "UCX_", "UBX_")
 # Project convention (VeyraModelPostprocessor): COL_<surface>_<name>, surface matching a
 # Data/Surfaces asset filename, longest-first so dry_asphalt is not split on its underscore.
-SURFACES = ("dry_asphalt", "wet_asphalt", "concrete", "gravel", "grass", "dirt")
+SURFACES = ("cobblestone", "concrete", "dirt", "dry_asphalt", "grass", "gravel", "kerb",
+            "metal", "paving", "rock", "sand", "wet_asphalt")
 
 
 def collision_name_issue(c, name):

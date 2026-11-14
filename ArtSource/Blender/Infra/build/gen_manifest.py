@@ -106,7 +106,31 @@ body += """
    a dedicated Gutter `SurfaceDefinition`; the face and top want Kerb. The collision meshes are
    single-material, so the split has to happen on the render mesh or by splitting `COL_` if wheel
    surface response needs it.
-8. **Left-hand kerb returns** are `VC_Kerb_Corner_90` mirrored on X. A mirrored instance flips
+8. **PLACEMENT FACTS THAT PER-PROP DATA DOES NOT SHOW.** A tiling module's correctness is a
+   property of the RUN, not of the prop, and nothing in the self-check can see it:
+   - **The guardrail is HANDED.** Rail face toward Unity -X when the module runs +Z, post on +X
+     behind it. For the opposite road edge, rotate 180 deg about Y and step backwards along the
+     tangent. Never mirror with a negative scale: it flips the normals.
+   - **Guardrail pitch is exactly 4.00 m**, not the 4.12 m bounding length. The rail spans
+     y = 0 to -4.00; the post, blockout and splice bolt reach 0.10 m back past the start plane so
+     that in a run the splice post lands over the joint between two rails, as a real W-beam does.
+   - **Every guardrail run wants `VC_Guardrail_WBeam_End` at both ends.** Departure end: same
+     orientation as the modules. Approach end: rotated 180 deg about Y so the flare points away
+     from oncoming traffic.
+   - **The Jersey barrier pivots at BASE CENTRE, not the start of the piece** - the one exception
+     in this set, following CLAUDE.md's rule for barriers rather than for road modules. Offset the
+     first instance by +1.50 m along the tangent before stepping 3.00 m, or every median overhangs
+     its start by half a module.
+   - **`VC_Barrier_Jersey_EndTaper` takes the SAME yaw rule as the guardrail terminals**, and is
+     base-centre like the barrier. Derived from the source: its full-height section is at
+     Blender +Y, which is Unity **-Z**, and it tapers toward +Z. So at the **+Z (far) end of a
+     run it is placed UNROTATED** - full height toward the run, tapering away - and at the
+     **-Z (near) end it is turned 180 deg about Y**. (An earlier revision of this file said it
+     needed the turn at the +Z end. That was backwards and is corrected here.)
+   - Kerb, corner, apron and drain inlet need none of this: start-of-piece pivots, flat butt
+     profiles, no protruding hardware, tiling at exactly 4.00 / 4.00 / 1.20 m.
+
+9. **Left-hand kerb returns** are `VC_Kerb_Corner_90` mirrored on X. A mirrored instance flips
    normals in Unity unless the importer handles it; ask for a dedicated `_L` variant if that bites.
 """
 

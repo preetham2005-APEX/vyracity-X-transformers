@@ -33,11 +33,11 @@ by the scripts in `build/`.
 
 | FBX / .blend | LOD0 | LOD1 (% of LOD0) | LOD2 (% of LOD0) | Collision | Type | Pivot | LOD0 size (B x,y,z m) |
 |---|---|---|---|---|---|---|---|
-| `VC_Kerb_Straight_4m` | 32 | 16 (50%) | - (prop < 2 m / module: LOD0+LOD1) | COL_dry_asphalt_VC_Kerb_Straight_4m_Gutter + COL_concrete_VC_Kerb_Straight_4m_Kerb (32 tris) | COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb | start of the piece, at the road edge of the gutter pan, z = 0 = road surface | 0.90 x 4.00 x 0.49 |
-| `VC_Kerb_Corner_90` | 158 | 46 (29%) | - (prop < 2 m / module: LOD0+LOD1) | COL_dry_asphalt_VC_Kerb_Corner_90_Gutter + COL_concrete_VC_Kerb_Corner_90_Kerb (132 tris) | COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb | start of the piece (same datum as VC_Kerb_Straight_4m) | 3.45 x 3.45 x 0.49 |
-| `VC_Kerb_DriveApron_4m` | 68 | 36 (53%) | - (prop < 2 m / module: LOD0+LOD1) | COL_dry_asphalt_VC_Kerb_DriveApron_4m_Gutter + COL_concrete_VC_Kerb_DriveApron_4m_Kerb (72 tris) | COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb | start of the piece (same datum as VC_Kerb_Straight_4m) | 0.90 x 4.00 x 0.49 |
-| `VC_Drain_Inlet_Kerb` | 240 | 128 (53%) | - (prop < 2 m / module: LOD0+LOD1) | COL_dry_asphalt_VC_Drain_Inlet_Kerb_Gutter + COL_concrete_VC_Drain_Inlet_Kerb_Kerb (32 tris) | COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb (the gutter solid closes the sump) | start of the piece (same datum as VC_Kerb_Straight_4m) | 0.90 x 1.20 x 0.49 |
-| `VC_Guardrail_WBeam_4m` | 184 | 60 (33%) | 24 (13%) | UBX_VC_Guardrail_WBeam_4m (12 tris) | UBX (BoxCollider) | start of the piece, post centreline, ground level (z = 0), rail back plane (x = 0) | 0.36 x 4.12 x 1.85 |
+| `VC_Kerb_Straight_4m` | 32 | 16 (50%) | - (prop < 2 m / module: LOD0+LOD1) | COL_dry_asphalt_VC_Kerb_Straight_4m_Gutter + COL_kerb_VC_Kerb_Straight_4m_Kerb (32 tris) | COL (non-convex MeshCollider) x2: dry_asphalt gutter + kerb face/top | start of the piece, at the road edge of the gutter pan, z = 0 = road surface | 0.90 x 4.00 x 0.49 |
+| `VC_Kerb_Corner_90` | 158 | 46 (29%) | - (prop < 2 m / module: LOD0+LOD1) | COL_dry_asphalt_VC_Kerb_Corner_90_Gutter + COL_kerb_VC_Kerb_Corner_90_Kerb (132 tris) | COL (non-convex MeshCollider) x2: dry_asphalt gutter + kerb face/top | start of the piece (same datum as VC_Kerb_Straight_4m) | 3.45 x 3.45 x 0.49 |
+| `VC_Kerb_DriveApron_4m` | 68 | 36 (53%) | - (prop < 2 m / module: LOD0+LOD1) | COL_dry_asphalt_VC_Kerb_DriveApron_4m_Gutter + COL_kerb_VC_Kerb_DriveApron_4m_Kerb (72 tris) | COL (non-convex MeshCollider) x2: dry_asphalt gutter + kerb face/top | start of the piece (same datum as VC_Kerb_Straight_4m) | 0.90 x 4.00 x 0.49 |
+| `VC_Drain_Inlet_Kerb` | 240 | 128 (53%) | - (prop < 2 m / module: LOD0+LOD1) | COL_dry_asphalt_VC_Drain_Inlet_Kerb_Gutter + COL_kerb_VC_Drain_Inlet_Kerb_Kerb (32 tris) | COL (non-convex MeshCollider) x2: dry_asphalt gutter + kerb face/top (the gutter solid closes the sump) | start of the piece (same datum as VC_Kerb_Straight_4m) | 0.90 x 1.20 x 0.49 |
+| `VC_Guardrail_WBeam_4m` | 164 | 60 (37%) | 24 (15%) | UBX_VC_Guardrail_WBeam_4m (12 tris) | UBX (BoxCollider) | start of the piece, post centreline, ground level (z = 0), rail back plane (x = 0) | 0.36 x 4.10 x 1.85 |
 | `VC_Guardrail_WBeam_End` | 252 | 104 (41%) | 36 (14%) | UCX_VC_Guardrail_WBeam_End (12 tris) | UCX (convex MeshCollider) | start of the piece (mates with VC_Guardrail_WBeam_4m), ground level | 0.87 x 4.20 x 1.65 |
 | `VC_Barrier_Jersey_3m` | 76 | 28 (37%) | - (prop < 2 m / module: LOD0+LOD1) | UCX_VC_Barrier_Jersey_3m (28 tris) | UCX (convex MeshCollider) | base centre (centre of the 3.00 m length, cross-section centre, z = 0) | 0.61 x 3.00 x 0.81 |
 | `VC_Barrier_Jersey_EndTaper` | 76 | 28 (37%) | - (prop < 2 m / module: LOD0+LOD1) | UCX_VC_Barrier_Jersey_EndTaper (28 tris) | UCX (convex MeshCollider) | base centre (centre of the 3.00 m length, cross-section centre, z = 0) | 0.61 x 3.00 x 0.81 |
@@ -57,28 +57,28 @@ by the scripts in `build/`.
 ### `VC_Kerb_Straight_4m`
 
 - **Pivot:** start of the piece, at the road edge of the gutter pan, z = 0 = road surface
-- **Collision:** COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb
+- **Collision:** COL (non-convex MeshCollider) x2: dry_asphalt gutter + kerb face/top
 - **Materials:** VC_Concrete_Kerb
 - 4.00 m module; 150 mm upstand + 25 mm chamfer + 450 mm gutter pan. Runs toward Unity +Z, kerb rises toward Unity +X. Surfaces: Kerb (face/top), Asphalt (pan).
 
 ### `VC_Kerb_Corner_90`
 
 - **Pivot:** start of the piece (same datum as VC_Kerb_Straight_4m)
-- **Collision:** COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb
+- **Collision:** COL (non-convex MeshCollider) x2: dry_asphalt gutter + kerb face/top
 - **Materials:** VC_Concrete_Kerb
 - 90 deg kerb return, 3.00 m face radius, turning toward Unity +X (footway on the inside). The left-hand return is this piece mirrored on X.
 
 ### `VC_Kerb_DriveApron_4m`
 
 - **Pivot:** start of the piece (same datum as VC_Kerb_Straight_4m)
-- **Collision:** COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb
+- **Collision:** COL (non-convex MeshCollider) x2: dry_asphalt gutter + kerb face/top
 - **Materials:** VC_Concrete_Kerb
 - 4.00 m dropped-kerb driveway apron: 0.80 m flare down, 2.40 m dropped crossing (30 mm upstand), 0.80 m flare up. Tiles between straight kerb modules.
 
 ### `VC_Drain_Inlet_Kerb`
 
 - **Pivot:** start of the piece (same datum as VC_Kerb_Straight_4m)
-- **Collision:** COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb (the gutter solid closes the sump)
+- **Collision:** COL (non-convex MeshCollider) x2: dry_asphalt gutter + kerb face/top (the gutter solid closes the sump)
 - **Materials:** VC_Concrete_Kerb, VC_Iron_Cast
 - 1.20 m combination inlet: 0.90 m kerb throat (140 mm clear under a cast lintel) over a 0.90 x 0.42 m sump with a 7-bar cast grate. Collision closes the sump so wheels cannot drop in.
 
@@ -87,7 +87,7 @@ by the scripts in `build/`.
 - **Pivot:** start of the piece, post centreline, ground level (z = 0), rail back plane (x = 0)
 - **Collision:** UBX (BoxCollider)
 - **Materials:** VC_Steel_Galv
-- 4.00 m post-and-rail module, rail centre 550 mm, 1.85 m C-section post at the module start. The rail face looks toward Unity -X (the carriageway); the module runs toward Unity +Z.
+- 4.00 m post-and-rail module, rail centre 550 mm, 1.85 m C-section post at the module start. The rail face looks toward Unity -X (the carriageway); the module runs toward Unity +Z. PITCH IS EXACTLY 4.00 m: the rail spans y = 0 to -4.00. The post, blockout and splice bolt straddle the start plane and reach 0.10 m BACK past it, which is deliberate - in a run that puts the splice post over the joint between two rails, as a real W-beam does. So the bounding length is 4.12 m but the placement pitch is 4.00 m; do not space them by the bbox.
 
 ### `VC_Guardrail_WBeam_End`
 
@@ -217,5 +217,29 @@ by the scripts in `build/`.
    a dedicated Gutter `SurfaceDefinition`; the face and top want Kerb. The collision meshes are
    single-material, so the split has to happen on the render mesh or by splitting `COL_` if wheel
    surface response needs it.
-8. **Left-hand kerb returns** are `VC_Kerb_Corner_90` mirrored on X. A mirrored instance flips
+8. **PLACEMENT FACTS THAT PER-PROP DATA DOES NOT SHOW.** A tiling module's correctness is a
+   property of the RUN, not of the prop, and nothing in the self-check can see it:
+   - **The guardrail is HANDED.** Rail face toward Unity -X when the module runs +Z, post on +X
+     behind it. For the opposite road edge, rotate 180 deg about Y and step backwards along the
+     tangent. Never mirror with a negative scale: it flips the normals.
+   - **Guardrail pitch is exactly 4.00 m**, not the 4.12 m bounding length. The rail spans
+     y = 0 to -4.00; the post, blockout and splice bolt reach 0.10 m back past the start plane so
+     that in a run the splice post lands over the joint between two rails, as a real W-beam does.
+   - **Every guardrail run wants `VC_Guardrail_WBeam_End` at both ends.** Departure end: same
+     orientation as the modules. Approach end: rotated 180 deg about Y so the flare points away
+     from oncoming traffic.
+   - **The Jersey barrier pivots at BASE CENTRE, not the start of the piece** - the one exception
+     in this set, following CLAUDE.md's rule for barriers rather than for road modules. Offset the
+     first instance by +1.50 m along the tangent before stepping 3.00 m, or every median overhangs
+     its start by half a module.
+   - **`VC_Barrier_Jersey_EndTaper` takes the SAME yaw rule as the guardrail terminals**, and is
+     base-centre like the barrier. Derived from the source: its full-height section is at
+     Blender +Y, which is Unity **-Z**, and it tapers toward +Z. So at the **+Z (far) end of a
+     run it is placed UNROTATED** - full height toward the run, tapering away - and at the
+     **-Z (near) end it is turned 180 deg about Y**. (An earlier revision of this file said it
+     needed the turn at the +Z end. That was backwards and is corrected here.)
+   - Kerb, corner, apron and drain inlet need none of this: start-of-piece pivots, flat butt
+     profiles, no protruding hardware, tiling at exactly 4.00 / 4.00 / 1.20 m.
+
+9. **Left-hand kerb returns** are `VC_Kerb_Corner_90` mirrored on X. A mirrored instance flips
    normals in Unity unless the importer handles it; ask for a dedicated `_L` variant if that bites.
