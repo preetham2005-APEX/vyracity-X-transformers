@@ -111,6 +111,24 @@ with no gap for the sphere to drop into.
 Note the 0.25 m failure originally recorded was **not the wheel** — it was the car's front
 overhang striking the step first (BUG-152).
 
+### A kerb climb changes surface partway up — that is intended
+
+The kit's kerb pieces carry **two** colliders, not one: `COL_dry_asphalt_*_Gutter` from 0 to
+0.450 m out, then `COL_kerb_*_Kerb` beyond it. A car crossing at an angle is therefore on
+`dry_asphalt` for the gutter pan and switches to `kerb` partway up the climb. **This is correct
+and deliberate** — it is the same split that makes a kerb face concrete and its gutter asphalt —
+but it looks like a surface-flicker bug if you meet it without knowing, which is exactly the
+symptom this document warns about elsewhere. The difference is that this is a *lateral* handover
+between two colliders at different heights, not a *vertical* tie between two coplanar ones.
+
+### CLAUDE.md's 0.05 m rule is about the junction, not the rise
+
+A kerb face is ~150 mm tall and the total upstand ~172 mm. That does **not** violate the rule
+that no vertical step above 0.05 m may exist between adjacent collider surfaces. That rule
+governs the **junction between two colliders** — which here measures 0.000000 m — not a single
+collider surface rising, which is what a kerb is for. A naive reading flags every kerb in the
+city and wastes a day.
+
 ## Is it actually flush? Measure before assuming
 
 I asserted that the RoadWear castings were flush and therefore must not take `metal`. **That was
