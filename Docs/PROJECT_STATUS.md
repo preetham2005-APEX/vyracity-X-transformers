@@ -176,3 +176,20 @@ D3/D4/D8 vegetation.
 StreetTrees 225.1 ms, StreetFurniture 205.3, ParkedCars 166.5, Pedestrians 93.3 in the spawn frame, each
 averaging < 0.2 ms; worst frame 2,037 ms (StreetTrees + GC); cruise p99 63.2 ms with 21 frames > 50 ms.
 The fix is time-slicing the spawn, not cutting content.
+
+## Realism pass — workstream split (coordinator, 2026-11-14)
+
+Brief: `Docs/OPUS_55_MASTER_PROMPT.md`. Spot-checked in code before assigning: `VehicleController.cs:823` one `RaycastNonAlloc` per wheel; `CityBuilder.cs:565` tags all terrain `db.Grass`; terrain layers are `ProcTextures.Plain`; `Assets/_Veyra/Settings/VC_URP_PC_High.asset` render scale 0.9; `VC_Renderer_PC_High` SSAO Samples 1 / NormalSamples 1; no `DecalRendererFeature`/`DecalProjector`; the manifest has no Shader Graph, VFX Graph, Addressables, Burst, Mathematics, Collections, Terrain Tools, Recorder or Memory Profiler.
+
+| Brief item | Owner session | Status |
+|---|---|---|
+| A world side: shoulder collider, splat surface tagging, BUG-001/026/027/049–052/065, Validate Drivable ≥ 99.5 % | World | Queued after BUG-170 |
+| BUG-170 spawner time-slicing (before any new content), R_BRIDGES hitches; BUG-037/038 LODs and chunking | World | R_SMOKE fixed in `42421af3` (Dev: p99 88 → 25 ms, 0 hitches); R_BRIDGES open |
+| E: PBR terrain, facade depth, kerbside density, decal content; packages Burst/Mathematics/Collections/Terrain Tools/Recorder/Memory Profiler | World | Pending |
+| A vehicle side: SphereCast wheel + step probe, body collider, stuck recovery, Kerb/Cobblestone/Metal/Sand/Rock/Paving surfaces, DynamicsManager; B handling + AI (BUG-061/028); C/D nitro and crash gameplay | Vehicle D2 | BUG-170 release slot first |
+| F: render scale 1.0, SSAO, Decal Renderer Feature, APV + sky occlusion, noon sky, neon night; D: Shader Graph + VFX Graph, six-way smoke, nitro/crash VFX | Lighting D1 | BUG-170 probe A/B slot first |
+| Foliage wind/translucency/impostors (on `ArtSource/Blender/Vegetation/`), real pedestrians | foliage-peds (new) | Started, staging offline |
+| Audio (recorded engine, impacts, nitro) | — | **Blocked: needs user OK for licensed downloads** |
+| Addressables (CLAUDE.md lists it, manifest lacks it) | — | Doc/manifest mismatch reported to the user |
+
+Unity lock queue: external A8 build → World (profile parse) → D2 → Lighting → others on request. One Editor at a time; staged code stays outside `Assets/` until its owner holds the lock.
