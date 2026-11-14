@@ -77,6 +77,18 @@ sweep distances tie exactly as a ray would, so the hazard is unchanged.
 Its one refinement: **"flush" needs a tolerance under a sphere sweep**, not an exact zero. The
 +/-0.5 mm band used by `RoadWear/build/check_coplanar.py` is the right line.
 
+**And a constraint on kerb-like colliders.** A car is meant to mount a kerb: `DriveOffOnTests`
+covers steps of 0.15, 0.20 and 0.25 m, and checks that the normal the sphere actually reports at
+each is above the wall cutoff. The cutoff is `VehicleController.MinGroundNormalY = 0.35f` —
+"hits whose normal is steeper than this are walls, not ground: never climbed". So **a kerb,
+apron or verge edge a car should be able to mount must not present a face steeper than that**,
+or the wheel treats it as a wall and refuses to climb. A vertical kerb face with a hard top arris
+is the shape most likely to trip it; a chamfer or a slight radius at the top is what keeps the
+sweep's reported normal above the cutoff.
+
+Verified in `VehicleController.cs:61-63, 845` and `Tests/EditMode/DriveOffOnTests.cs:24, 79-82`,
+not relayed.
+
 ## Is it actually flush? Measure before assuming
 
 I asserted that the RoadWear castings were flush and therefore must not take `metal`. **That was
