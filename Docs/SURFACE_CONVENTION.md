@@ -63,6 +63,31 @@ Graded scree response belongs in a larger asset — a 10 m spill with a loose ce
 outer scatter, where each zone is metres wide and a wheel spends real time in it. Subdividing a
 4.5 m patch buys nothing and risks the flicker.
 
+## The live instance: flush castings must NOT become `metal`
+
+Raised by the vegetation session after the hazard above was written, and it is not hypothetical.
+
+**A manhole cover sitting flush in an asphalt road is the exact case.** Its `COL_` collider is
+coplanar with the road collider, so the wheel raycast ties between them. Today that is silent
+only because the RoadWear castings are mapped to `concrete` behind the `CASTING_SURFACE`
+constant — wrong, but *consistently* wrong, and close enough to asphalt that nobody hears it.
+
+**Moving them to `metal` now that the asset exists is what makes it audible.** A tyre crossing
+the cover would flip between `metal` and `dry_asphalt` grip and audio, several times a second,
+at every manhole in the city. The "fix" would ship the defect.
+
+Resolution, for any flush drive-over casting — manhole, utility cover, storm grate, joint strip:
+
+1. **Preferred: no collider at all.** The road collider underneath already carries the surface
+   and the correct height. A decorative cover that is flush by definition does not need its own
+   drivable collider, and without one there is no tie.
+2. **Otherwise: match the road.** Keep it on `dry_asphalt`, the same answer as the ground, so
+   the tie stays silent.
+
+`metal` is still the right surface for castings that stand **proud** of the road, or that sit in
+a surface a wheel does not cross. The asset is not wasted; it is the flush case that cannot use
+it.
+
 ## Still a stand-in
 
 `VC_Fac_*`, `VC_Steel_Dark` and friends are materials, not surfaces — see
