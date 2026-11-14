@@ -234,3 +234,7 @@ out stationary traffic on 6 segments (BUG-154). Evidence: `Logs/D2_BUG170/summar
 **User decision 2026-11-14:** licensed CC0/CC-BY downloads approved for audio and character models (never NC/SA/ND/Standard or game rips; licence file per download).
 
 **User actions:** power plan off Silent before the final sign-off; BUG-066 (5 CC-BY real-brand rebadges); revoke the old Sketchfab token (SEC-003); Unity CLI update 1.0.0-beta.13 → 1.0.0.
+
+### 2026-11-15 00:10 — history rewrite and queue
+
+`e700bac8` (2026-11-14 23:24) committed the whole working tree (8,982 files, including in-flight staged work from several sessions, unverified) and moved large scenes to Git LFS, which **rewrote history: every commit hash quoted above this note before 23:24 has changed** (e.g. probe A/B `e58bede5` → `6264fedd`, render quality `396ea4b5` → `eccac89c`, VFX Graph `76a927df` → `e9478255`). Look commits up by message; the pre-rewrite objects stay in the reflog. World's slot was cut off by an app quit at ~23:00 before it committed; its shoulder/terrain/decal tools are now in HEAD but their effect on the scene is unverified. Unity lock queue: Lighting (APV spike, noon sky, crown cove, VFX check) → World (re-run) → D2 → foliage-peds → other group → audio → final Phase E sign-off.
