@@ -63,37 +63,40 @@ Graded scree response belongs in a larger asset — a 10 m spill with a loose ce
 outer scatter, where each zone is metres wide and a wheel spends real time in it. Subdividing a
 4.5 m patch buys nothing and risks the flicker.
 
-## The live instance: flush castings must NOT become `metal`
+## Is it actually flush? Measure before assuming
 
-Raised by the vegetation session after the hazard above was written, and it is not hypothetical.
+I asserted that the RoadWear castings were flush and therefore must not take `metal`. **That was
+wrong, and the infra session corrected it with measurements.** From its manifest:
 
-**A manhole cover sitting flush in an asphalt road is the exact case.** Its `COL_` collider is
-coplanar with the road collider, so the wheel raycast ties between them. Today that is silent
-only because the RoadWear castings are mapped to `concrete` behind the `CASTING_SURFACE`
-constant — wrong, but *consistently* wrong, and close enough to asphalt that nobody hears it.
+| Casting | Stands proud |
+|---|---|
+| `VC_Manhole_Round_A` / `_B` | **+10 mm** (frame +6 mm, rim tapers to the road plane) |
+| `VC_UtilityCover_Square` | **+10 mm** |
+| `VC_StormDrain_Grate_Road` | **+6 mm** |
 
-**Moving them to `metal` now that the asset exists is what makes it audible.** A tyre crossing
-the cover would flip between `metal` and `dry_asphalt` grip and audio, several times a second,
-at every manhole in the city. The "fix" would ship the defect.
+A collider 6–10 mm above the road plane is **not** coplanar with it, so there is no raycast tie
+and no flicker. `metal` is correct for all four, and they now use it.
 
-Resolution, for any flush drive-over casting — manhole, utility cover, storm grate, joint strip:
+The expansion joint strip genuinely is flush, and it ships with **no collider** — the road
+underneath carries surface and height, which is the right treatment for that case.
 
-1. **Preferred: no collider at all.** The road collider underneath already carries the surface
-   and the correct height. A decorative cover that is flush by definition does not need its own
-   drivable collider, and without one there is no tie.
-2. **Otherwise: match the road.** Keep it on `dry_asphalt`, the same answer as the ground, so
-   the tie stays silent.
+**The rule, stated properly:** the hazard is coplanarity, not category. A casting is not "a
+flush thing" by virtue of being a casting. Before giving a drive-over collider a surface that
+differs from the ground beneath it, **check its actual height above the road**:
 
-`metal` is still the right surface for castings that stand **proud** of the road, or that sit in
-a surface a wheel does not cross. The asset is not wasted; it is the flush case that cannot use
-it.
+- **Coplanar (0 mm):** no own collider, or match the ground's surface. The tie is real.
+- **Proud by a few mm or more:** its own collider and its own true surface. The raycast has an
+  unambiguous winner.
+
+A millimetre figure settles it; an assumption about what kind of object it is does not. I had
+the hazard right and the instance wrong, which is the easier half to get right.
 
 ## Still a stand-in
 
-`VC_Fac_*`, `VC_Steel_Dark` and friends are materials, not surfaces — see
+`VC_Fac_*`, `VC_Steel_Dark` and friends are materials, not surfaces - see
 `Docs/MATERIAL_REGISTER.md`.
 
-The RoadWear castings sit on `concrete` behind a named `CASTING_SURFACE` constant, chosen while
-no `metal` asset existed. **`metal` now exists, and they still should not move to it** — see the
-section above. They are flush, so the right change is to drop their drivable collider rather
-than to re-point it. The constant stays as the record of intent either way.
+No surface stand-ins remain. The RoadWear castings were on `concrete` behind a named
+`CASTING_SURFACE` constant while no `metal` asset existed; `metal` exists now, they measure
+6-10 mm proud, and they use it. Kerb colliders moved to the new `kerb` surface with the seam
+still at 0.000000 m.
