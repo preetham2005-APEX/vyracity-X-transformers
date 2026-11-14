@@ -91,7 +91,9 @@ it.
 ## Still a stand-in
 
 `VC_Fac_*`, `VC_Steel_Dark` and friends are materials, not surfaces — see
-`Docs/MATERIAL_REGISTER.md`. The only surface stand-in left is anything still named
-`COL_concrete_*` that is really metal; the RoadWear castings were deliberately placed on
-`concrete` behind a named `CASTING_SURFACE` constant while no `metal` asset existed. That asset
-now exists, so those can move.
+`Docs/MATERIAL_REGISTER.md`.
+
+The RoadWear castings sit on `concrete` behind a named `CASTING_SURFACE` constant, chosen while
+no `metal` asset existed. **`metal` now exists, and they still should not move to it** — see the
+section above. They are flush, so the right change is to drop their drivable collider rather
+than to re-point it. The constant stays as the record of intent either way.
