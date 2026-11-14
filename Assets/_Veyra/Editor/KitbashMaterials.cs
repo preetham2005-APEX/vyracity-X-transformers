@@ -50,14 +50,33 @@ namespace VeyraCity.EditorTools
             string path = $"{dir}/M_KB_{Safe(mat)}.mat";
             m = AssetDatabase.LoadAssetAtPath<Material>(path);
             if (m != null) { Reused++; cache[key] = m; return m; }
-            m = new Material(Shader.Find("Universal Render Pipeline/Lit")) { name = "M_KB_" + Safe(mat) };   // Editor code: allowed
             string texDir = $"{TexRoot}/{source}";
             string bc = Find(texDir, mat, "baseColor"), mr = Find(texDir, mat, "metallicRoughness"), nm = Find(texDir, mat, "normal"), em = Find(texDir, mat, "emissive");
             bool glass = mat.ToLowerInvariant().Contains("glass");
+            // Glazing gets Veyra/KitGlass so the kit's buildings light up at night. On plain URP/Lit they have no
+            // emission at all, which is why assembling the city from the kit turned downtown dark: the lit-window
+            // work in VC_FacadeSurface only ever reached the shell buildings. KitGlass draws no window grid - the
+            // kit's mullions are real geometry - and lights each panel per floor and per bay from world position.
+            m = new Material(Shader.Find(glass ? "Veyra/KitGlass" : "Universal Render Pipeline/Lit")) { name = "M_KB_" + Safe(mat) };   // Editor code: allowed
+            if (glass)
+            {
+                m.SetColor("_GlassColor", new Color(0.10f, 0.13f, 0.17f));
+                m.SetFloat("_GlassSmoothness", 0.90f);
+                m.SetFloat("_KitFloorHeight", 3.6f);
+                m.SetFloat("_KitBayWidth", 3.0f);   // half-bay: a full 6 m bay lit as one panel reads as a block of light, not a window
+                m.SetFloat("_LitFractionMin", 0.25f);
+                m.SetFloat("_LitFractionMax", 0.7f);
+                m.SetFloat("_WindowEmission", 1.7f);
+                // towers and offices dim after 23:00; houses and low-rise do not
+                m.SetFloat("_Office", source.Contains("Downtown") || source.Contains("Midrise") ? 1f : 0f);
+                m.SetFloat("_Seed", Mathf.Abs(source.GetHashCode() % 997));
+            }
             if (bc != null) { Import(bc, false, true); m.SetTexture("_BaseMap", AssetDatabase.LoadAssetAtPath<Texture2D>(bc)); }
             else { NoTexture++; m.SetColor("_BaseColor", glass ? new Color(0.18f, 0.22f, 0.26f) : new Color(0.55f, 0.53f, 0.5f)); }
             m.SetFloat("_Smoothness", glass ? 0.9f : 0.35f);
-            if (mr != null)
+            // Veyra/KitGlass declares none of the URP/Lit map keywords below, so a glass material must not pick them
+            // up: an enabled keyword a shader does not declare is dead weight on the material and a variant hazard.
+            if (!glass && mr != null)
             {
                 string packed = PackMetallic(mr, dir, mat);
                 if (packed != null)
@@ -68,8 +87,8 @@ namespace VeyraCity.EditorTools
                     m.SetFloat("_Smoothness", 1f);
                 }
             }
-            if (nm != null) { Import(nm, true, false); m.SetTexture("_BumpMap", AssetDatabase.LoadAssetAtPath<Texture2D>(nm)); m.EnableKeyword("_NORMALMAP"); }
-            if (em != null)
+            if (!glass && nm != null) { Import(nm, true, false); m.SetTexture("_BumpMap", AssetDatabase.LoadAssetAtPath<Texture2D>(nm)); m.EnableKeyword("_NORMALMAP"); }
+            if (!glass && em != null)
             {
                 Import(em, false, true);
                 m.SetTexture("_EmissionMap", AssetDatabase.LoadAssetAtPath<Texture2D>(em));

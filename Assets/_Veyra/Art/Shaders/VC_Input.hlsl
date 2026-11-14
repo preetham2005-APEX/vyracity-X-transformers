@@ -48,6 +48,11 @@ CBUFFER_START(UnityPerMaterial)
     half _Grime;
     half _Seed;
 
+    // Kit glass (Veyra/KitGlass): the authored building kit carries its piers, mullions and floor bands as real
+    // geometry, so its glazing is lit per floor and per bay from world position instead of from a UV window grid.
+    half _KitFloorHeight;   // metres per floor
+    half _KitBayWidth;      // metres per structural bay
+
     // Neon / emissive (Veyra/Neon)
     half4 _NeonColor;
     half _NeonIntensity;    // HDR multiplier at night (2.5–8)

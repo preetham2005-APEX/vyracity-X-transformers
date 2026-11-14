@@ -11323,3 +11323,1925 @@ MonoBehaviour:
     - Edifs_Cristal
     Excluded: 1
     Note: possible likeness of a real-world landmark tower (Veyra City is fictional)
+  - Id: VC_Alp_ChaletA
+    Prefab: {fileID: 919132149155446097, guid: 51b5ab67491d4594aa6feb285a6cc5af, type: 3}
+    Source: Veyra_Original_Alpine
+    Footprint: {x: 12, y: 10}
+    Height: 8.02
+    FloorHeight: 3.4
+    Styles:
+    - Alpine
+    Districts:
+    - D4
+    LicenceId: VC-ORIGINAL
+    Triangles: bc0300009c020000b0000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Al_Timber
+    - VC_Al_Stone
+    - VC_Al_Roof
+    - VC_Al_Glass
+    - VC_Al_Trim
+    - VC_Al_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Alp_ChaletB
+    Prefab: {fileID: 919132149155446097, guid: 89140d2e11c8d754eadaa39d4eaa6ca9, type: 3}
+    Source: Veyra_Original_Alpine
+    Footprint: {x: 12, y: 10}
+    Height: 8
+    FloorHeight: 3.4
+    Styles:
+    - Alpine
+    Districts:
+    - D4
+    LicenceId: VC-ORIGINAL
+    Triangles: 440300003c02000098000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Al_Timber
+    - VC_Al_Stone
+    - VC_Al_Roof
+    - VC_Al_Glass
+    - VC_Al_Trim
+    - VC_Al_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Alp_ChaletC
+    Prefab: {fileID: 919132149155446097, guid: 25d639611acfbd541b35af029d94bf28, type: 3}
+    Source: Veyra_Original_Alpine
+    Footprint: {x: 12, y: 10}
+    Height: 8
+    FloorHeight: 3.4
+    Styles:
+    - Alpine
+    Districts:
+    - D4
+    LicenceId: VC-ORIGINAL
+    Triangles: 080200007801000074000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Al_Timber
+    - VC_Al_Stone
+    - VC_Al_Roof
+    - VC_Al_Glass
+    - VC_Al_Trim
+    - VC_Al_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Alp_Workshop
+    Prefab: {fileID: 919132149155446097, guid: cebe97224b156d8478f8aa6b63b52cb5, type: 3}
+    Source: Veyra_Original_Alpine
+    Footprint: {x: 42, y: 24}
+    Height: 8.5
+    FloorHeight: 3.4
+    Styles:
+    - Alpine
+    Districts:
+    - D4
+    LicenceId: VC-ORIGINAL
+    Triangles: a8020000a001000098000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Al_Timber
+    - VC_Al_Stone
+    - VC_Al_Roof
+    - VC_Al_Glass
+    - VC_Al_Trim
+    - VC_Al_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Avi_Grandstand
+    Prefab: {fileID: 919132149155446097, guid: dc555a2468a101c4cb0fe23d2b9a61c3, type: 3}
+    Source: Veyra_Original_Aviation
+    Footprint: {x: 18, y: 150}
+    Height: 14
+    FloorHeight: 3.4
+    Styles:
+    - Aviation
+    Districts:
+    - D7
+    LicenceId: VC-ORIGINAL
+    Triangles: 00010000d000000034000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Av_Clad
+    - VC_Av_Roof
+    - VC_Av_Glass
+    - VC_Av_Metal
+    - VC_Av_Concrete
+    Excluded: 1
+    Note: oversize
+  - Id: VC_Avi_HangarArch
+    Prefab: {fileID: 919132149155446097, guid: 157a1f18b9587924995100139b8fa21d, type: 3}
+    Source: Veyra_Original_Aviation
+    Footprint: {x: 62, y: 74}
+    Height: 18.5
+    FloorHeight: 3.4
+    Styles:
+    - Aviation
+    Districts:
+    - D7
+    LicenceId: VC-ORIGINAL
+    Triangles: 30010000ec00000050000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Av_Clad
+    - VC_Av_Roof
+    - VC_Av_Glass
+    - VC_Av_Metal
+    - VC_Av_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Avi_HangarMonitor
+    Prefab: {fileID: 919132149155446097, guid: 05d1f2f049594404a89844cfa900b6ef, type: 3}
+    Source: Veyra_Original_Aviation
+    Footprint: {x: 62, y: 74}
+    Height: 17.7
+    FloorHeight: 3.4
+    Styles:
+    - Aviation
+    Districts:
+    - D7
+    LicenceId: VC-ORIGINAL
+    Triangles: 140200007801000058000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Av_Clad
+    - VC_Av_Roof
+    - VC_Av_Glass
+    - VC_Av_Metal
+    - VC_Av_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Avi_Terminal
+    Prefab: {fileID: 919132149155446097, guid: 212e7f3c10c63b645aacec95e71f4def, type: 3}
+    Source: Veyra_Original_Aviation
+    Footprint: {x: 130, y: 36}
+    Height: 14.15
+    FloorHeight: 3.4
+    Styles:
+    - Aviation
+    Districts:
+    - D7
+    LicenceId: VC-ORIGINAL
+    Triangles: c8010000800100009c000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Av_Clad
+    - VC_Av_Roof
+    - VC_Av_Glass
+    - VC_Av_Metal
+    - VC_Av_Concrete
+    Excluded: 1
+    Note: oversize
+  - Id: VC_Coast_ClubA
+    Prefab: {fileID: 919132149155446097, guid: f24494ef874a0254fa2234153de180a3, type: 3}
+    Source: Veyra_Original_Coast
+    Footprint: {x: 24, y: 12}
+    Height: 6.8
+    FloorHeight: 3.4
+    Styles:
+    - CoastalStucco
+    Districts:
+    - D2
+    LicenceId: VC-ORIGINAL
+    Triangles: e80200002802000090000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Cs_Stucco
+    - VC_Cs_RoofTile
+    - VC_Cs_Trim
+    - VC_Cs_Glass
+    - VC_Cs_Wood
+    - VC_Cs_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Coast_ClubB
+    Prefab: {fileID: 919132149155446097, guid: db396fda3783c1544bbb6828bb15a6c9, type: 3}
+    Source: Veyra_Original_Coast
+    Footprint: {x: 24, y: 12}
+    Height: 10.29
+    FloorHeight: 3.4
+    Styles:
+    - CoastalStucco
+    Districts:
+    - D2
+    LicenceId: VC-ORIGINAL
+    Triangles: 100500006c030000d8000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Cs_Stucco
+    - VC_Cs_RoofTile
+    - VC_Cs_Trim
+    - VC_Cs_Glass
+    - VC_Cs_Wood
+    - VC_Cs_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Coast_Marina
+    Prefab: {fileID: 919132149155446097, guid: 8fc4ea1af083b2b449b81e8d82b9bf10, type: 3}
+    Source: Veyra_Original_Coast
+    Footprint: {x: 33, y: 20}
+    Height: 7.6
+    FloorHeight: 3.4
+    Styles:
+    - CoastalStucco
+    Districts:
+    - D2
+    LicenceId: VC-ORIGINAL
+    Triangles: f8030000cc02000098000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Cs_Stucco
+    - VC_Cs_RoofTile
+    - VC_Cs_Trim
+    - VC_Cs_Glass
+    - VC_Cs_Wood
+    - VC_Cs_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Coast_VillaA
+    Prefab: {fileID: 919132149155446097, guid: 72fa4d15b57e9174fa103d75eb57d006, type: 3}
+    Source: Veyra_Original_Coast
+    Footprint: {x: 20, y: 15}
+    Height: 9.6
+    FloorHeight: 3.4
+    Styles:
+    - CoastalStucco
+    Districts:
+    - D2
+    LicenceId: VC-ORIGINAL
+    Triangles: 54050000380300008c000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Cs_Stucco
+    - VC_Cs_RoofTile
+    - VC_Cs_Trim
+    - VC_Cs_Glass
+    - VC_Cs_Wood
+    - VC_Cs_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Coast_VillaB
+    Prefab: {fileID: 919132149155446097, guid: 04ca03da50a2bc3498938d0bf1b856ab, type: 3}
+    Source: Veyra_Original_Coast
+    Footprint: {x: 20, y: 15}
+    Height: 9.69
+    FloorHeight: 3.4
+    Styles:
+    - CoastalStucco
+    Districts:
+    - D2
+    LicenceId: VC-ORIGINAL
+    Triangles: 3c030000b802000014010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Cs_Stucco
+    - VC_Cs_RoofTile
+    - VC_Cs_Trim
+    - VC_Cs_Glass
+    - VC_Cs_Wood
+    - VC_Cs_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Coast_VillaC
+    Prefab: {fileID: 919132149155446097, guid: 513860012a52b1947bb1e5ec9881594c, type: 3}
+    Source: Veyra_Original_Coast
+    Footprint: {x: 20, y: 15}
+    Height: 9.62
+    FloorHeight: 3.4
+    Styles:
+    - CoastalStucco
+    Districts:
+    - D2
+    LicenceId: VC-ORIGINAL
+    Triangles: ac040000e4020000c8000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Cs_Stucco
+    - VC_Cs_RoofTile
+    - VC_Cs_Trim
+    - VC_Cs_Glass
+    - VC_Cs_Wood
+    - VC_Cs_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Coast_VillaD
+    Prefab: {fileID: 919132149155446097, guid: b4608e68e8a274241a231dfde24b9137, type: 3}
+    Source: Veyra_Original_Coast
+    Footprint: {x: 20, y: 15}
+    Height: 6.4
+    FloorHeight: 3.4
+    Styles:
+    - CoastalStucco
+    Districts:
+    - D2
+    LicenceId: VC-ORIGINAL
+    Triangles: 14030000e801000080000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Cs_Stucco
+    - VC_Cs_RoofTile
+    - VC_Cs_Trim
+    - VC_Cs_Glass
+    - VC_Cs_Wood
+    - VC_Cs_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Coast_VillaE
+    Prefab: {fileID: 919132149155446097, guid: d70eaa9b457fa8a45a86d0b86a4c2191, type: 3}
+    Source: Veyra_Original_Coast
+    Footprint: {x: 20, y: 15}
+    Height: 7.88
+    FloorHeight: 3.4
+    Styles:
+    - CoastalStucco
+    Districts:
+    - D2
+    LicenceId: VC-ORIGINAL
+    Triangles: 8c03000060020000c8000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Cs_Stucco
+    - VC_Cs_RoofTile
+    - VC_Cs_Trim
+    - VC_Cs_Glass
+    - VC_Cs_Wood
+    - VC_Cs_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Block117100
+    Prefab: {fileID: 919132149155446097, guid: aea2c8fdb5d6acd4988016a625e28d7b, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 117, y: 117}
+    Height: 101.2
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: 00090000ec040000cc000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Block11762
+    Prefab: {fileID: 919132149155446097, guid: 91b9891cc7749b64685bc4c8bed8f202, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 117, y: 117}
+    Height: 63.2
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: 00090000ec040000cc000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Deco120
+    Prefab: {fileID: 919132149155446097, guid: 11573ae6052901c47abe1b4f418701d5, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 54, y: 54}
+    Height: 124.7
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: a0090000bc05000084010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Deco175
+    Prefab: {fileID: 919132149155446097, guid: c8531f9ac09e6dc4f96df62a654f2c31, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 54, y: 54}
+    Height: 179.7
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: a0090000bc05000084010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Deco240
+    Prefab: {fileID: 919132149155446097, guid: 2be73b0de905b1f4896cd6fc7fa2aa0f, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 54, y: 54}
+    Height: 244.7
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: a0090000bc05000084010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Glass130
+    Prefab: {fileID: 919132149155446097, guid: 561caacaa0ba81846a237c06e0ee7f6a, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 55, y: 56}
+    Height: 137.1
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: 440500004003000000010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Glass190
+    Prefab: {fileID: 919132149155446097, guid: 4b488e535c1cc294693487659031edce, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 55, y: 56}
+    Height: 197.1
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: 440500004003000000010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Glass28
+    Prefab: {fileID: 919132149155446097, guid: db32776eee055724faa29758c254ae60, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 55, y: 56}
+    Height: 28.7
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: 0405000000030000c0000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Glass42
+    Prefab: {fileID: 919132149155446097, guid: ef2d76bd89cfeae46a028060bb0e63ac, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 55, y: 56}
+    Height: 42.7
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: 0405000000030000c0000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Glass62
+    Prefab: {fileID: 919132149155446097, guid: 0c6a62c2135cb924fa973a642644f74b, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 55, y: 56}
+    Height: 63.1
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: 1c05000018030000d8000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Glass90
+    Prefab: {fileID: 919132149155446097, guid: e4ba3efc67c84c441ba14f8c6e9cc6f0, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 55, y: 56}
+    Height: 91.1
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: 2805000024030000e4000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Slab115110
+    Prefab: {fileID: 919132149155446097, guid: 678e7338f54037549910012d4fae9a8f, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 54, y: 115}
+    Height: 111.2
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: d8060000e4030000cc000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Slab115200
+    Prefab: {fileID: 919132149155446097, guid: 6db592859c0639742baec8c0e2a63f56, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 54, y: 115}
+    Height: 201.2
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: d8060000e4030000cc000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Slab11550
+    Prefab: {fileID: 919132149155446097, guid: b2e264bc0e7b48444839394b010ea615, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 54, y: 115}
+    Height: 51.2
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: d8060000e4030000cc000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Slab80170
+    Prefab: {fileID: 919132149155446097, guid: 98c74b18a4fc89f48bcaf761860645f9, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 54, y: 80}
+    Height: 171.2
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: a005000054030000cc000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Slab8070
+    Prefab: {fileID: 919132149155446097, guid: 73307187b6440b94f8da1dc8e2b46d11, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 54, y: 80}
+    Height: 71.2
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: a005000054030000cc000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Thin31130
+    Prefab: {fileID: 919132149155446097, guid: 77019be7ad5af9a43be527de0042529c, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 31, y: 60}
+    Height: 137.1
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: 84040000c802000000010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Thin31150
+    Prefab: {fileID: 919132149155446097, guid: ad5a950e87d2bc946940cca5557ba95e, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 31, y: 117}
+    Height: 157.1
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: 94060000e803000000010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Thin3134
+    Prefab: {fileID: 919132149155446097, guid: 3efda8aafdd01344887dab4436bbf58f, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 31, y: 60}
+    Height: 34.7
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: 4404000088020000c0000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Thin3170
+    Prefab: {fileID: 919132149155446097, guid: c76cd9da1bf99d84d9be85400dd445d7, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 31, y: 60}
+    Height: 71.1
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: 5c040000a0020000d8000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Tower_Thin3180l
+    Prefab: {fileID: 919132149155446097, guid: 86f289f911ac23f459c71171fc9e8e3e, type: 3}
+    Source: Veyra_Original_Downtown
+    Footprint: {x: 31, y: 117}
+    Height: 81.1
+    FloorHeight: 4
+    Styles:
+    - GlassModern
+    - ArtDeco
+    Districts:
+    - D1
+    LicenceId: VC-ORIGINAL
+    Triangles: 6c060000c0030000d8000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Twr_Glass
+    - VC_Twr_Spandrel
+    - VC_Twr_Stone
+    - VC_Twr_Concrete
+    - VC_Twr_Metal
+    Excluded: 0
+    Note: 
+  - Id: VC_Ind_ShedBarrel
+    Prefab: {fileID: 919132149155446097, guid: d967a31e93327644f8531a3aeb7612a9, type: 3}
+    Source: Veyra_Original_Ironport
+    Footprint: {x: 64, y: 40}
+    Height: 16.82
+    FloorHeight: 3.4
+    Styles:
+    - Industrial
+    Districts:
+    - D3
+    - D7
+    LicenceId: VC-ORIGINAL
+    Triangles: 98010000b80000002c000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_In_Clad
+    - VC_In_Roof
+    - VC_In_Glass
+    - VC_In_Metal
+    - VC_In_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Ind_ShedFlat
+    Prefab: {fileID: 919132149155446097, guid: f04a6477a3f463f42915a757a073eb3c, type: 3}
+    Source: Veyra_Original_Ironport
+    Footprint: {x: 64, y: 40}
+    Height: 10.92
+    FloorHeight: 3.4
+    Styles:
+    - Industrial
+    Districts:
+    - D3
+    - D7
+    LicenceId: VC-ORIGINAL
+    Triangles: a80200004401000084000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_In_Clad
+    - VC_In_Roof
+    - VC_In_Glass
+    - VC_In_Metal
+    - VC_In_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Ind_ShedMonitor
+    Prefab: {fileID: 919132149155446097, guid: 39e552fb8397fad4b88e25a6d5d57c2f, type: 3}
+    Source: Veyra_Original_Ironport
+    Footprint: {x: 90, y: 50}
+    Height: 15.9
+    FloorHeight: 3.4
+    Styles:
+    - Industrial
+    Districts:
+    - D3
+    - D7
+    LicenceId: VC-ORIGINAL
+    Triangles: 980200001801000034000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_In_Clad
+    - VC_In_Roof
+    - VC_In_Glass
+    - VC_In_Metal
+    - VC_In_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Ind_ShedRail
+    Prefab: {fileID: 919132149155446097, guid: 584af1838dc4c184fa24f5bd987e9bac, type: 3}
+    Source: Veyra_Original_Ironport
+    Footprint: {x: 120, y: 24}
+    Height: 16.3
+    FloorHeight: 3.4
+    Styles:
+    - Industrial
+    Districts:
+    - D3
+    - D7
+    LicenceId: VC-ORIGINAL
+    Triangles: 780100007801000040000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_In_Clad
+    - VC_In_Roof
+    - VC_In_Glass
+    - VC_In_Metal
+    - VC_In_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Ind_ShedRailLow
+    Prefab: {fileID: 919132149155446097, guid: cc9e83cd3a44c9a438c277098f8ab0bb, type: 3}
+    Source: Veyra_Original_Ironport
+    Footprint: {x: 120, y: 24}
+    Height: 10.8
+    FloorHeight: 3.4
+    Styles:
+    - Industrial
+    Districts:
+    - D3
+    - D7
+    LicenceId: VC-ORIGINAL
+    Triangles: 780100007801000040000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_In_Clad
+    - VC_In_Roof
+    - VC_In_Glass
+    - VC_In_Metal
+    - VC_In_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Ind_ShedSawtooth
+    Prefab: {fileID: 919132149155446097, guid: 4e1ef8f8ce6ce354da54c2d34a467c0a, type: 3}
+    Source: Veyra_Original_Ironport
+    Footprint: {x: 90, y: 50}
+    Height: 17.5
+    FloorHeight: 3.4
+    Styles:
+    - Industrial
+    Districts:
+    - D3
+    - D7
+    LicenceId: VC-ORIGINAL
+    Triangles: 94020000380100003c000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_In_Clad
+    - VC_In_Roof
+    - VC_In_Glass
+    - VC_In_Metal
+    - VC_In_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Ind_ProcessColumn
+    Prefab: {fileID: 919132149155446097, guid: 1682c18ab62c41d4287dc78cb96bbd5b, type: 3}
+    Source: Veyra_Original_IronportTanks
+    Footprint: {x: 8, y: 8}
+    Height: 52.1
+    FloorHeight: 3.4
+    Styles:
+    - IndustrialRefinery
+    Districts:
+    - D3
+    LicenceId: VC-ORIGINAL
+    Triangles: 42020000da00000046000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_In_TankShell
+    - VC_In_Metal
+    - VC_In_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Ind_TankCone
+    Prefab: {fileID: 919132149155446097, guid: 1bf2f237c89c3d94c9ededa929e1a6d1, type: 3}
+    Source: Veyra_Original_IronportTanks
+    Footprint: {x: 34, y: 34}
+    Height: 19.1
+    FloorHeight: 3.4
+    Styles:
+    - IndustrialTank
+    Districts:
+    - D3
+    LicenceId: VC-ORIGINAL
+    Triangles: fc030000580200006c000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_In_TankShell
+    - VC_In_Metal
+    - VC_In_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Ind_TankDome
+    Prefab: {fileID: 919132149155446097, guid: 5d49bdd04ebb6274f84ba0976f4eb9fb, type: 3}
+    Source: Veyra_Original_IronportTanks
+    Footprint: {x: 34, y: 34}
+    Height: 14.55
+    FloorHeight: 3.4
+    Styles:
+    - IndustrialTank
+    Districts:
+    - D3
+    LicenceId: VC-ORIGINAL
+    Triangles: 22040000720200007e000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_In_TankShell
+    - VC_In_Metal
+    - VC_In_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Town_TerraceA
+    Prefab: {fileID: 919132149155446097, guid: 53fe604c2f9a6f842937c24d08ac8dbc, type: 3}
+    Source: Veyra_Original_MarketTown
+    Footprint: {x: 12, y: 12}
+    Height: 7.9
+    FloorHeight: 3.4
+    Styles:
+    - MarketTownBrick
+    Districts:
+    - D8
+    LicenceId: VC-ORIGINAL
+    Triangles: ac020000d4010000a8000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Mt_Brick
+    - VC_Mt_Roof
+    - VC_Mt_Trim
+    - VC_Mt_Glass
+    - VC_Mt_Render
+    - VC_Mt_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Town_TerraceB
+    Prefab: {fileID: 919132149155446097, guid: 787776c20f503f84e81c026ca6033bba, type: 3}
+    Source: Veyra_Original_MarketTown
+    Footprint: {x: 12, y: 12}
+    Height: 8.88
+    FloorHeight: 3.4
+    Styles:
+    - MarketTownBrick
+    Districts:
+    - D8
+    LicenceId: VC-ORIGINAL
+    Triangles: 9c0300004c020000a8000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Mt_Brick
+    - VC_Mt_Roof
+    - VC_Mt_Trim
+    - VC_Mt_Glass
+    - VC_Mt_Render
+    - VC_Mt_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Town_TerraceC
+    Prefab: {fileID: 919132149155446097, guid: ddc0024efaf247a468b3cd0ec4d7a308, type: 3}
+    Source: Veyra_Original_MarketTown
+    Footprint: {x: 12, y: 12}
+    Height: 9.62
+    FloorHeight: 3.4
+    Styles:
+    - MarketTownBrick
+    Districts:
+    - D8
+    LicenceId: VC-ORIGINAL
+    Triangles: 240200006401000068000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Mt_Brick
+    - VC_Mt_Roof
+    - VC_Mt_Trim
+    - VC_Mt_Glass
+    - VC_Mt_Render
+    - VC_Mt_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Town_TerraceD
+    Prefab: {fileID: 919132149155446097, guid: 9c5e01e1ca5863249b1937bb97cf1697, type: 3}
+    Source: Veyra_Original_MarketTown
+    Footprint: {x: 12, y: 12}
+    Height: 6.82
+    FloorHeight: 3.4
+    Styles:
+    - MarketTownBrick
+    Districts:
+    - D8
+    LicenceId: VC-ORIGINAL
+    Triangles: 38030000e801000080000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Mt_Brick
+    - VC_Mt_Roof
+    - VC_Mt_Trim
+    - VC_Mt_Glass
+    - VC_Mt_Render
+    - VC_Mt_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Town_TerraceE
+    Prefab: {fileID: 919132149155446097, guid: c80461e44c9f82a42a14edc9f1762864, type: 3}
+    Source: Veyra_Original_MarketTown
+    Footprint: {x: 12, y: 12}
+    Height: 8.11
+    FloorHeight: 3.4
+    Styles:
+    - MarketTownBrick
+    Districts:
+    - D8
+    LicenceId: VC-ORIGINAL
+    Triangles: c4020000e0010000b4000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Mt_Render
+    - VC_Mt_Roof
+    - VC_Mt_Trim
+    - VC_Mt_Glass
+    - VC_Mt_Brick
+    - VC_Mt_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Mid_Mid34A
+    Prefab: {fileID: 919132149155446097, guid: 323e8eb6b7bf8e14bbab68c1755e5f87, type: 3}
+    Source: Veyra_Original_Midrise
+    Footprint: {x: 34, y: 18}
+    Height: 18.68
+    FloorHeight: 3.4
+    Styles:
+    - ResidentialMidrise
+    Districts:
+    - D1
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: 700200009801000090000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Mr_Panel
+    - VC_Mr_Glass
+    - VC_Mr_Metal
+    - VC_Mr_Concrete
+    - VC_Mr_Brick
+    Excluded: 0
+    Note: 
+  - Id: VC_Mid_Mid34B
+    Prefab: {fileID: 919132149155446097, guid: fb68f031d28b96a4b83d0a2a6820de81, type: 3}
+    Source: Veyra_Original_Midrise
+    Footprint: {x: 34, y: 18}
+    Height: 18.68
+    FloorHeight: 3.4
+    Styles:
+    - ResidentialMidrise
+    Districts:
+    - D1
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: 4c0200009801000090000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Mr_Brick
+    - VC_Mr_Glass
+    - VC_Mr_Metal
+    - VC_Mr_Concrete
+    - VC_Mr_Panel
+    Excluded: 0
+    Note: 
+  - Id: VC_Mid_Mid34C
+    Prefab: {fileID: 919132149155446097, guid: 6db8101148c24cb47913798ba683e335, type: 3}
+    Source: Veyra_Original_Midrise
+    Footprint: {x: 34, y: 18}
+    Height: 15.68
+    FloorHeight: 3.4
+    Styles:
+    - ResidentialMidrise
+    Districts:
+    - D1
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: 4c0200008c01000090000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Mr_Brick
+    - VC_Mr_Glass
+    - VC_Mr_Metal
+    - VC_Mr_Concrete
+    - VC_Mr_Panel
+    Excluded: 0
+    Note: 
+  - Id: VC_Mid_Mid3830
+    Prefab: {fileID: 919132149155446097, guid: f3b19a764f948d343a1aae145222b83f, type: 3}
+    Source: Veyra_Original_Midrise
+    Footprint: {x: 38, y: 24}
+    Height: 31.68
+    FloorHeight: 3.4
+    Styles:
+    - ResidentialMidrise
+    Districts:
+    - D1
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: 30030000e001000090000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Mr_Panel
+    - VC_Mr_Glass
+    - VC_Mr_Metal
+    - VC_Mr_Concrete
+    - VC_Mr_Brick
+    Excluded: 0
+    Note: 
+  - Id: VC_Mid_Mid3845
+    Prefab: {fileID: 919132149155446097, guid: a6b7aba0a06358d4e8409a5c8600807b, type: 3}
+    Source: Veyra_Original_Midrise
+    Footprint: {x: 38, y: 24}
+    Height: 46.68
+    FloorHeight: 3.4
+    Styles:
+    - ResidentialMidrise
+    Districts:
+    - D1
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: 540300001c02000090000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Mr_Panel
+    - VC_Mr_Glass
+    - VC_Mr_Metal
+    - VC_Mr_Concrete
+    - VC_Mr_Brick
+    Excluded: 0
+    Note: 
+  - Id: VC_Mid_Mid3860
+    Prefab: {fileID: 919132149155446097, guid: 61c02899564e6434bbfa898f8f3e473b, type: 3}
+    Source: Veyra_Original_Midrise
+    Footprint: {x: 38, y: 24}
+    Height: 61.68
+    FloorHeight: 3.4
+    Styles:
+    - ResidentialMidrise
+    Districts:
+    - D1
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: 740400004c02000090000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Mr_Brick
+    - VC_Mr_Glass
+    - VC_Mr_Metal
+    - VC_Mr_Concrete
+    - VC_Mr_Panel
+    Excluded: 0
+    Note: 
+  - Id: VC_Mid_Mid3875
+    Prefab: {fileID: 919132149155446097, guid: 3e4d21fa5e34840429999a2a81eec94a, type: 3}
+    Source: Veyra_Original_Midrise
+    Footprint: {x: 38, y: 24}
+    Height: 76.68
+    FloorHeight: 3.4
+    Styles:
+    - ResidentialMidrise
+    Districts:
+    - D1
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: 2c0400008802000090000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Mr_Panel
+    - VC_Mr_Glass
+    - VC_Mr_Metal
+    - VC_Mr_Concrete
+    - VC_Mr_Brick
+    Excluded: 0
+    Note: 
+  - Id: VC_Neon_Brick30
+    Prefab: {fileID: 919132149155446097, guid: 5b451c57a5828ab44b4f72302d850ecd, type: 3}
+    Source: Veyra_Original_NeonMile
+    Footprint: {x: 57, y: 57}
+    Height: 30
+    FloorHeight: 3.4
+    Styles:
+    - BrickIndustrial
+    Districts:
+    - D6
+    LicenceId: VC-ORIGINAL
+    Triangles: c80400002403000074010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Nm_Brick
+    - VC_Nm_Glass
+    - VC_Nm_Metal
+    - VC_Nm_Concrete
+    - VC_Nm_Shutter
+    - VC_Neon_Emissive
+    Excluded: 0
+    Note: 
+  - Id: VC_Neon_Brick33l
+    Prefab: {fileID: 919132149155446097, guid: c1b9424ae3ae92e4294abdaa9d8a4e26, type: 3}
+    Source: Veyra_Original_NeonMile
+    Footprint: {x: 56, y: 105}
+    Height: 33
+    FloorHeight: 3.4
+    Styles:
+    - BrickIndustrial
+    Districts:
+    - D6
+    LicenceId: VC-ORIGINAL
+    Triangles: f4050000b403000074010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Nm_Brick
+    - VC_Nm_Glass
+    - VC_Nm_Metal
+    - VC_Nm_Concrete
+    - VC_Nm_Shutter
+    - VC_Neon_Emissive
+    Excluded: 0
+    Note: 
+  - Id: VC_Neon_Brick42
+    Prefab: {fileID: 919132149155446097, guid: dcb7d82b86a663449b95018dddfb4e03, type: 3}
+    Source: Veyra_Original_NeonMile
+    Footprint: {x: 57, y: 57}
+    Height: 42
+    FloorHeight: 3.4
+    Styles:
+    - BrickIndustrial
+    Districts:
+    - D6
+    LicenceId: VC-ORIGINAL
+    Triangles: ec0400003003000074010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Nm_Brick
+    - VC_Nm_Glass
+    - VC_Nm_Metal
+    - VC_Nm_Concrete
+    - VC_Nm_Shutter
+    - VC_Neon_Emissive
+    Excluded: 0
+    Note: 
+  - Id: VC_Neon_Brick62
+    Prefab: {fileID: 919132149155446097, guid: b5d694b0c17e1314c9a7b9a75ea3cad7, type: 3}
+    Source: Veyra_Original_NeonMile
+    Footprint: {x: 57, y: 57}
+    Height: 62
+    FloorHeight: 3.4
+    Styles:
+    - BrickIndustrial
+    Districts:
+    - D6
+    LicenceId: VC-ORIGINAL
+    Triangles: 340500005403000074010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Nm_Brick
+    - VC_Nm_Glass
+    - VC_Nm_Metal
+    - VC_Nm_Concrete
+    - VC_Nm_Shutter
+    - VC_Neon_Emissive
+    Excluded: 0
+    Note: 
+  - Id: VC_Neon_Brick62l
+    Prefab: {fileID: 919132149155446097, guid: e8d7c4704eab80c46a45f9619fbdfa0a, type: 3}
+    Source: Veyra_Original_NeonMile
+    Footprint: {x: 56, y: 105}
+    Height: 62
+    FloorHeight: 3.4
+    Styles:
+    - BrickIndustrial
+    Districts:
+    - D6
+    LicenceId: VC-ORIGINAL
+    Triangles: 54060000e403000074010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Nm_Brick
+    - VC_Nm_Glass
+    - VC_Nm_Metal
+    - VC_Nm_Concrete
+    - VC_Nm_Shutter
+    - VC_Neon_Emissive
+    Excluded: 0
+    Note: 
+  - Id: VC_Neon_Low14l
+    Prefab: {fileID: 919132149155446097, guid: 45d959d6c06775e4f8285d46c7a73e12, type: 3}
+    Source: Veyra_Original_NeonMile
+    Footprint: {x: 57, y: 112}
+    Height: 14
+    FloorHeight: 3.4
+    Styles:
+    - ModernLowrise
+    Districts:
+    - D6
+    LicenceId: VC-ORIGINAL
+    Triangles: ec0400005403000098010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Nm_Panel
+    - VC_Nm_Glass
+    - VC_Nm_Metal
+    - VC_Nm_Concrete
+    - VC_Nm_Shutter
+    - VC_Neon_Emissive
+    Excluded: 0
+    Note: 
+  - Id: VC_Neon_Low16
+    Prefab: {fileID: 919132149155446097, guid: 9bbbf5f0e921cbd4783dbd32dfd7a188, type: 3}
+    Source: Veyra_Original_NeonMile
+    Footprint: {x: 58, y: 58}
+    Height: 16
+    FloorHeight: 3.4
+    Styles:
+    - ModernLowrise
+    Districts:
+    - D6
+    LicenceId: VC-ORIGINAL
+    Triangles: 14040000dc02000098010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Nm_Panel
+    - VC_Nm_Glass
+    - VC_Nm_Metal
+    - VC_Nm_Concrete
+    - VC_Nm_Shutter
+    - VC_Neon_Emissive
+    Excluded: 0
+    Note: 
+  - Id: VC_Neon_Low18l
+    Prefab: {fileID: 919132149155446097, guid: fa15aa34fa0cc744eac1fbcdbff41cc3, type: 3}
+    Source: Veyra_Original_NeonMile
+    Footprint: {x: 57, y: 112}
+    Height: 18
+    FloorHeight: 3.4
+    Styles:
+    - ModernLowrise
+    Districts:
+    - D6
+    LicenceId: VC-ORIGINAL
+    Triangles: ec0400005403000098010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Nm_Panel
+    - VC_Nm_Glass
+    - VC_Nm_Metal
+    - VC_Nm_Concrete
+    - VC_Nm_Shutter
+    - VC_Neon_Emissive
+    Excluded: 0
+    Note: 
+  - Id: VC_Neon_Low21
+    Prefab: {fileID: 919132149155446097, guid: 8b65ecc8330c59f49b9edaa7eb55759b, type: 3}
+    Source: Veyra_Original_NeonMile
+    Footprint: {x: 58, y: 58}
+    Height: 21
+    FloorHeight: 3.4
+    Styles:
+    - ModernLowrise
+    Districts:
+    - D6
+    LicenceId: VC-ORIGINAL
+    Triangles: 20040000dc02000098010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Nm_Panel
+    - VC_Nm_Glass
+    - VC_Nm_Metal
+    - VC_Nm_Concrete
+    - VC_Nm_Shutter
+    - VC_Neon_Emissive
+    Excluded: 0
+    Note: 
+  - Id: VC_Ret_RetailBigbox
+    Prefab: {fileID: 919132149155446097, guid: df87b82ace6a6eb4e8d0692e26d71121, type: 3}
+    Source: Veyra_Original_Retail
+    Footprint: {x: 120, y: 60}
+    Height: 11.46
+    FloorHeight: 3.4
+    Styles:
+    - SuburbanRetail
+    Districts:
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: 240200004401000078000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Rt_Panel
+    - VC_Rt_Glass
+    - VC_Rt_Metal
+    - VC_Rt_Concrete
+    - VC_Rt_Brick
+    Excluded: 0
+    Note: 
+  - Id: VC_Ret_RetailSmall
+    Prefab: {fileID: 919132149155446097, guid: 01dd292843193804ab6343325064130b, type: 3}
+    Source: Veyra_Original_Retail
+    Footprint: {x: 24, y: 14}
+    Height: 6.2
+    FloorHeight: 3.4
+    Styles:
+    - SuburbanRetail
+    Districts:
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: c0000000a800000078000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Rt_Panel
+    - VC_Rt_Glass
+    - VC_Rt_Metal
+    - VC_Rt_Concrete
+    - VC_Rt_Brick
+    Excluded: 0
+    Note: 
+  - Id: VC_Ret_RetailStrip
+    Prefab: {fileID: 919132149155446097, guid: 615ad98e119bef04896c266512463880, type: 3}
+    Source: Veyra_Original_Retail
+    Footprint: {x: 40, y: 30}
+    Height: 7.72
+    FloorHeight: 3.4
+    Styles:
+    - SuburbanRetail
+    Districts:
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: 680100003801000078000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Rt_Panel
+    - VC_Rt_Glass
+    - VC_Rt_Metal
+    - VC_Rt_Concrete
+    - VC_Rt_Brick
+    Excluded: 0
+    Note: 
+  - Id: VC_Ret_GasStation
+    Prefab: {fileID: 919132149155446097, guid: a0cbce96709f94d4da4ec199b6746aec, type: 3}
+    Source: Veyra_Original_Roadside
+    Footprint: {x: 26, y: 16}
+    Height: 6.64
+    FloorHeight: 3.4
+    Styles:
+    - Roadside
+    Districts:
+    - D4
+    LicenceId: VC-ORIGINAL
+    Triangles: d0000000a800000060000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Rt_Panel
+    - VC_Rt_Glass
+    - VC_Rt_Metal
+    - VC_Rt_Concrete
+    - VC_Rt_Brick
+    Excluded: 0
+    Note: 
+  - Id: VC_Rur_BarnBig
+    Prefab: {fileID: 919132149155446097, guid: 7d71cbde4fa348645a929ebc0b3264ca, type: 3}
+    Source: Veyra_Original_Rural
+    Footprint: {x: 64, y: 30}
+    Height: 10.85
+    FloorHeight: 3.4
+    Styles:
+    - Rural
+    Districts:
+    - D8
+    LicenceId: VC-ORIGINAL
+    Triangles: 7c0100000401000068000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Ru_Board
+    - VC_Ru_Roof
+    - VC_Ru_Metal
+    - VC_Ru_Glass
+    - VC_Ru_Trim
+    - VC_Ru_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Rur_BarnGambrel
+    Prefab: {fileID: 919132149155446097, guid: 51a8bc6633feb034d87acfc61b2a9732, type: 3}
+    Source: Veyra_Original_Rural
+    Footprint: {x: 26, y: 14}
+    Height: 9.7
+    FloorHeight: 3.4
+    Styles:
+    - Rural
+    Districts:
+    - D8
+    LicenceId: VC-ORIGINAL
+    Triangles: 800100000801000048000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Ru_Board
+    - VC_Ru_Roof
+    - VC_Ru_Metal
+    - VC_Ru_Glass
+    - VC_Ru_Trim
+    - VC_Ru_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Rur_BarnLeanto
+    Prefab: {fileID: 919132149155446097, guid: 50e147a3865de0749bd059ae442f7136, type: 3}
+    Source: Veyra_Original_Rural
+    Footprint: {x: 26, y: 14}
+    Height: 8.4
+    FloorHeight: 3.4
+    Styles:
+    - Rural
+    Districts:
+    - D8
+    LicenceId: VC-ORIGINAL
+    Triangles: 700100001001000038000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Ru_Board
+    - VC_Ru_Roof
+    - VC_Ru_Metal
+    - VC_Ru_Glass
+    - VC_Ru_Trim
+    - VC_Ru_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Rur_FarmhouseA
+    Prefab: {fileID: 919132149155446097, guid: b17598a5a1872a749a31bc20018ca738, type: 3}
+    Source: Veyra_Original_Rural
+    Footprint: {x: 12, y: 10}
+    Height: 7.02
+    FloorHeight: 3.4
+    Styles:
+    - Rural
+    Districts:
+    - D8
+    LicenceId: VC-ORIGINAL
+    Triangles: 84020000c401000080000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Ru_Board
+    - VC_Ru_Roof
+    - VC_Ru_Metal
+    - VC_Ru_Glass
+    - VC_Ru_Trim
+    - VC_Ru_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Rur_FarmhouseB
+    Prefab: {fileID: 919132149155446097, guid: 7ccadf524f4a2cb4ea820778ec69a8ed, type: 3}
+    Source: Veyra_Original_Rural
+    Footprint: {x: 12, y: 10}
+    Height: 7.02
+    FloorHeight: 3.4
+    Styles:
+    - Rural
+    Districts:
+    - D8
+    LicenceId: VC-ORIGINAL
+    Triangles: 3c020000940100008c000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Ru_Board
+    - VC_Ru_Roof
+    - VC_Ru_Metal
+    - VC_Ru_Glass
+    - VC_Ru_Trim
+    - VC_Ru_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Rur_Mill
+    Prefab: {fileID: 919132149155446097, guid: 337cf2a19537e4c4699fb80c887bdc9f, type: 3}
+    Source: Veyra_Original_Rural
+    Footprint: {x: 32, y: 18}
+    Height: 11
+    FloorHeight: 3.4
+    Styles:
+    - Rural
+    Districts:
+    - D8
+    LicenceId: VC-ORIGINAL
+    Triangles: b8030000080200004c000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Ru_Board
+    - VC_Ru_Roof
+    - VC_Ru_Metal
+    - VC_Ru_Glass
+    - VC_Ru_Trim
+    - VC_Ru_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_Rur_Silo
+    Prefab: {fileID: 919132149155446097, guid: f5fdb65d1110e5345863266e18fe9a79, type: 3}
+    Source: Veyra_Original_Rural
+    Footprint: {x: 7, y: 7}
+    Height: 16.55
+    FloorHeight: 3.4
+    Styles:
+    - Rural
+    Districts:
+    - D8
+    LicenceId: VC-ORIGINAL
+    Triangles: 2c0200003c01000070000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Ru_Board
+    - VC_Ru_Roof
+    - VC_Ru_Metal
+    - VC_Ru_Glass
+    - VC_Ru_Trim
+    - VC_Ru_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_House_DormerCottage
+    Prefab: {fileID: 919132149155446097, guid: 9b1934258a5dc6648b8be4ffce86798b, type: 3}
+    Source: Veyra_Original_Suburban
+    Footprint: {x: 14, y: 11}
+    Height: 7.27
+    FloorHeight: 3.4
+    Styles:
+    - Suburban
+    Districts:
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: 540300004c0200008c000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Wall_StuccoWarm
+    - VC_Roof_Tile
+    - VC_Trim_Paint
+    - VC_Glass_Window
+    - VC_Door_Wood
+    - VC_Wall_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_House_Duplex
+    Prefab: {fileID: 919132149155446097, guid: ae64020843fca2d46adacb8f18dd500f, type: 3}
+    Source: Veyra_Original_Suburban
+    Footprint: {x: 14, y: 11}
+    Height: 7.3
+    FloorHeight: 3.4
+    Styles:
+    - Suburban
+    Districts:
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: 480400003802000064000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Wall_Brick
+    - VC_Roof_Shingle
+    - VC_Trim_Paint
+    - VC_Glass_Window
+    - VC_Door_Wood
+    - VC_Wall_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_House_FlatParapet
+    Prefab: {fileID: 919132149155446097, guid: 9f987eb83bd136042bdd756d99ba5af6, type: 3}
+    Source: Veyra_Original_Suburban
+    Footprint: {x: 14, y: 11}
+    Height: 7.14
+    FloorHeight: 3.4
+    Styles:
+    - Suburban
+    Districts:
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: f40200004c020000c0000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Wall_Stucco
+    - VC_Roof_Tile
+    - VC_Trim_Paint
+    - VC_Glass_Window
+    - VC_Door_Wood
+    - VC_Wall_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_House_GablePorch
+    Prefab: {fileID: 919132149155446097, guid: 6bebbf3ca79217341a35b2a114408680, type: 3}
+    Source: Veyra_Original_Suburban
+    Footprint: {x: 14, y: 11}
+    Height: 7.27
+    FloorHeight: 3.4
+    Styles:
+    - Suburban
+    Districts:
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: a0040000c00200008c000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Wall_Stucco
+    - VC_Roof_Tile
+    - VC_Trim_Paint
+    - VC_Glass_Window
+    - VC_Door_Wood
+    - VC_Wall_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_House_GarageCommunity
+    Prefab: {fileID: 919132149155446097, guid: 0c1f1bdf76ccb8c48912d5e547d91b17, type: 3}
+    Source: Veyra_Original_Suburban
+    Footprint: {x: 40, y: 22}
+    Height: 7.08
+    FloorHeight: 3.4
+    Styles:
+    - Suburban
+    Districts:
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: c003000010020000b0010000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Wall_Board
+    - VC_Roof_Shingle
+    - VC_Trim_Paint
+    - VC_Glass_Window
+    - VC_Door_Wood
+    - VC_Wall_Concrete
+    - VC_Metal_Garage
+    Excluded: 0
+    Note: 
+  - Id: VC_House_GarageFront
+    Prefab: {fileID: 919132149155446097, guid: 9cab188566736dc449aa55eff8854b11, type: 3}
+    Source: Veyra_Original_Suburban
+    Footprint: {x: 14, y: 11}
+    Height: 7.2
+    FloorHeight: 3.4
+    Styles:
+    - Suburban
+    Districts:
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: 8803000038020000b8000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Wall_StuccoWarm
+    - VC_Roof_Tile
+    - VC_Trim_Paint
+    - VC_Glass_Window
+    - VC_Door_Wood
+    - VC_Wall_Concrete
+    - VC_Metal_Garage
+    Excluded: 0
+    Note: 
+  - Id: VC_House_GarageSmall
+    Prefab: {fileID: 919132149155446097, guid: 164f6d54783297748ad72c7890ba83df, type: 3}
+    Source: Veyra_Original_Suburban
+    Footprint: {x: 8.6, y: 7.5}
+    Height: 6.1
+    FloorHeight: 3.4
+    Styles:
+    - Suburban
+    Districts:
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: 40010000ec0000008c000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Wall_Board
+    - VC_Roof_Shingle
+    - VC_Trim_Paint
+    - VC_Glass_Window
+    - VC_Door_Wood
+    - VC_Wall_Concrete
+    - VC_Metal_Garage
+    Excluded: 0
+    Note: 
+  - Id: VC_House_HipBay
+    Prefab: {fileID: 919132149155446097, guid: e14ed397236637b419ccaf2b8c7a43da, type: 3}
+    Source: Veyra_Original_Suburban
+    Footprint: {x: 14, y: 11}
+    Height: 7.27
+    FloorHeight: 3.4
+    Styles:
+    - Suburban
+    Districts:
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: 5804000090020000c8000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Wall_Brick
+    - VC_Roof_Shingle
+    - VC_Trim_Paint
+    - VC_Glass_Window
+    - VC_Door_Wood
+    - VC_Wall_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_House_RanchCarport
+    Prefab: {fileID: 919132149155446097, guid: be3bc2e1adca3ff4fb6ab7a3178d9e7d, type: 3}
+    Source: Veyra_Original_Suburban
+    Footprint: {x: 14, y: 11}
+    Height: 7.12
+    FloorHeight: 3.4
+    Styles:
+    - Suburban
+    Districts:
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: 68020000a8010000b0000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Wall_Board
+    - VC_Roof_Shingle
+    - VC_Trim_Paint
+    - VC_Glass_Window
+    - VC_Door_Wood
+    - VC_Wall_Concrete
+    Excluded: 0
+    Note: 
+  - Id: VC_House_SplitLevel
+    Prefab: {fileID: 919132149155446097, guid: f3d8b3711e72af6498192fce6b77f0c4, type: 3}
+    Source: Veyra_Original_Suburban
+    Footprint: {x: 14, y: 11}
+    Height: 7.2
+    FloorHeight: 3.4
+    Styles:
+    - Suburban
+    Districts:
+    - D5
+    LicenceId: VC-ORIGINAL
+    Triangles: 080400005802000084000000i
+    Collider: UBX
+    SourceMaterials:
+    - VC_Wall_Board
+    - VC_Roof_Shingle
+    - VC_Trim_Paint
+    - VC_Glass_Window
+    - VC_Door_Wood
+    - VC_Wall_Concrete
+    Excluded: 0
+    Note: 
