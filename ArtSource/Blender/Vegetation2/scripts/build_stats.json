@@ -1,0 +1,1343 @@
+{
+ "VC_Tree_Spruce_Alpine": {
+  "blend": "Alpine",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Tree_Spruce_Alpine_LOD0",
+    "tris": 2096,
+    "verts": 4192,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Tree_Spruce_Alpine_LOD1",
+    "tris": 876,
+    "verts": 1752,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Tree_Spruce_Alpine_LOD2",
+    "tris": 4,
+    "verts": 8,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   }
+  },
+  "collision": "UCX_VC_Tree_Spruce_Alpine",
+  "collision_tris": 24,
+  "size_m": [
+   5.41,
+   4.685,
+   18.0
+  ],
+  "base_centre_offset": [
+   -0.1114,
+   0.04,
+   0.0
+  ],
+  "fbx": "VC_Tree_Spruce_Alpine.fbx"
+ },
+ "VC_Tree_Fir_Alpine": {
+  "blend": "Alpine",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Tree_Fir_Alpine_LOD0",
+    "tris": 1808,
+    "verts": 3616,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Tree_Fir_Alpine_LOD1",
+    "tris": 732,
+    "verts": 1464,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Tree_Fir_Alpine_LOD2",
+    "tris": 4,
+    "verts": 8,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   }
+  },
+  "collision": "UCX_VC_Tree_Fir_Alpine",
+  "collision_tris": 24,
+  "size_m": [
+   8.201,
+   8.272,
+   13.0
+  ],
+  "base_centre_offset": [
+   -0.0047,
+   0.213,
+   0.0
+  ],
+  "fbx": "VC_Tree_Fir_Alpine.fbx"
+ },
+ "VC_Tree_Snag_Weathered": {
+  "blend": "Alpine",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Tree_Snag_Weathered_LOD0",
+    "tris": 239,
+    "verts": 531,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Tree_Snag_Weathered_LOD1",
+    "tris": 105,
+    "verts": 235,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Tree_Snag_Weathered_LOD2",
+    "tris": 20,
+    "verts": 44,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark"
+    ]
+   }
+  },
+  "collision": "UCX_VC_Tree_Snag_Weathered",
+  "collision_tris": 24,
+  "size_m": [
+   2.184,
+   1.866,
+   9.214
+  ],
+  "base_centre_offset": [
+   0.0368,
+   0.2817,
+   -0.0106
+  ],
+  "fbx": "VC_Tree_Snag_Weathered.fbx"
+ },
+ "VC_Shrub_MountainScrub": {
+  "blend": "Alpine",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Shrub_MountainScrub_LOD0",
+    "tris": 146,
+    "verts": 292,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Shrub_MountainScrub_LOD1",
+    "tris": 48,
+    "verts": 96,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Shrub_MountainScrub_LOD2",
+    "tris": 4,
+    "verts": 8,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   }
+  },
+  "collision": null,
+  "collision_tris": 0,
+  "size_m": [
+   1.851,
+   1.854,
+   1.063
+  ],
+  "base_centre_offset": [
+   -0.027,
+   0.0479,
+   -0.0159
+  ],
+  "fbx": "VC_Shrub_MountainScrub.fbx"
+ },
+ "VC_Shrub_RockLedgeTuft": {
+  "blend": "Alpine",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Shrub_RockLedgeTuft_LOD0",
+    "tris": 60,
+    "verts": 120,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Shrub_RockLedgeTuft_LOD1",
+    "tris": 24,
+    "verts": 48,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Shrub_RockLedgeTuft_LOD2",
+    "tris": 4,
+    "verts": 8,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   }
+  },
+  "collision": null,
+  "collision_tris": 0,
+  "size_m": [
+   0.856,
+   0.845,
+   0.681
+  ],
+  "base_centre_offset": [
+   0.0289,
+   -0.039,
+   0.0
+  ],
+  "fbx": "VC_Shrub_RockLedgeTuft.fbx"
+ },
+ "VC_Tree_Redwood_22m": {
+  "blend": "Redwood",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Tree_Redwood_22m_LOD0",
+    "tris": 1764,
+    "verts": 3528,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Tree_Redwood_22m_LOD1",
+    "tris": 624,
+    "verts": 1248,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Tree_Redwood_22m_LOD2",
+    "tris": 6,
+    "verts": 12,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   }
+  },
+  "collision": "UCX_VC_Tree_Redwood_22m",
+  "collision_tris": 24,
+  "size_m": [
+   8.656,
+   7.955,
+   22.0
+  ],
+  "base_centre_offset": [
+   -0.0954,
+   0.2101,
+   0.0
+  ],
+  "fbx": "VC_Tree_Redwood_22m.fbx"
+ },
+ "VC_Tree_Redwood_34m": {
+  "blend": "Redwood",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Tree_Redwood_34m_LOD0",
+    "tris": 2068,
+    "verts": 4136,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Tree_Redwood_34m_LOD1",
+    "tris": 732,
+    "verts": 1464,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Tree_Redwood_34m_LOD2",
+    "tris": 6,
+    "verts": 12,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   }
+  },
+  "collision": "UCX_VC_Tree_Redwood_34m",
+  "collision_tris": 24,
+  "size_m": [
+   12.168,
+   11.817,
+   34.0
+  ],
+  "base_centre_offset": [
+   -0.2051,
+   -0.2957,
+   0.0
+  ],
+  "fbx": "VC_Tree_Redwood_34m.fbx"
+ },
+ "VC_Tree_Redwood_46m": {
+  "blend": "Redwood",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Tree_Redwood_46m_LOD0",
+    "tris": 2372,
+    "verts": 4744,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Tree_Redwood_46m_LOD1",
+    "tris": 900,
+    "verts": 1800,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Tree_Redwood_46m_LOD2",
+    "tris": 6,
+    "verts": 12,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   }
+  },
+  "collision": "UCX_VC_Tree_Redwood_46m",
+  "collision_tris": 24,
+  "size_m": [
+   16.153,
+   15.853,
+   46.0
+  ],
+  "base_centre_offset": [
+   -0.3461,
+   0.2114,
+   0.0
+  ],
+  "fbx": "VC_Tree_Redwood_46m.fbx"
+ },
+ "VC_Weed_ConcreteCrack": {
+  "blend": "Industrial",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Weed_ConcreteCrack_LOD0",
+    "tris": 36,
+    "verts": 72,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Weed_ConcreteCrack_LOD1",
+    "tris": 16,
+    "verts": 32,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Weed_ConcreteCrack_LOD2",
+    "tris": 4,
+    "verts": 8,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   }
+  },
+  "collision": null,
+  "collision_tris": 0,
+  "size_m": [
+   0.676,
+   0.799,
+   0.521
+  ],
+  "base_centre_offset": [
+   -0.0443,
+   -0.0459,
+   0.0
+  ],
+  "fbx": "VC_Weed_ConcreteCrack.fbx"
+ },
+ "VC_Weed_FenceLine": {
+  "blend": "Industrial",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Weed_FenceLine_LOD0",
+    "tris": 92,
+    "verts": 184,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Weed_FenceLine_LOD1",
+    "tris": 38,
+    "verts": 76,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Weed_FenceLine_LOD2",
+    "tris": 4,
+    "verts": 8,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   }
+  },
+  "collision": null,
+  "collision_tris": 0,
+  "size_m": [
+   1.414,
+   1.457,
+   1.223
+  ],
+  "base_centre_offset": [
+   -0.0077,
+   -0.0244,
+   0.0
+  ],
+  "fbx": "VC_Weed_FenceLine.fbx"
+ },
+ "VC_Tree_VolunteerSapling": {
+  "blend": "Industrial",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Tree_VolunteerSapling_LOD0",
+    "tris": 216,
+    "verts": 432,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Tree_VolunteerSapling_LOD1",
+    "tris": 88,
+    "verts": 176,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Tree_VolunteerSapling_LOD2",
+    "tris": 4,
+    "verts": 8,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   }
+  },
+  "collision": "UCX_VC_Tree_VolunteerSapling",
+  "collision_tris": 24,
+  "size_m": [
+   2.801,
+   2.537,
+   4.177
+  ],
+  "base_centre_offset": [
+   -0.0356,
+   0.0657,
+   -0.0044
+  ],
+  "fbx": "VC_Tree_VolunteerSapling.fbx"
+ },
+ "VC_Grass_DeadClump": {
+  "blend": "Industrial",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Grass_DeadClump_LOD0",
+    "tris": 68,
+    "verts": 136,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Grass_DeadClump_LOD1",
+    "tris": 28,
+    "verts": 56,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Grass_DeadClump_LOD2",
+    "tris": 4,
+    "verts": 8,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   }
+  },
+  "collision": null,
+  "collision_tris": 0,
+  "size_m": [
+   1.096,
+   1.078,
+   0.838
+  ],
+  "base_centre_offset": [
+   -0.0266,
+   0.0361,
+   0.0
+  ],
+  "fbx": "VC_Grass_DeadClump.fbx"
+ },
+ "VC_Ground_GrassTuft_S": {
+  "blend": "Ground",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Ground_GrassTuft_S_LOD0",
+    "tris": 12,
+    "verts": 24,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Ground_GrassTuft_S_LOD1",
+    "tris": 6,
+    "verts": 12,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Ground_GrassTuft_S_LOD2",
+    "tris": 2,
+    "verts": 4,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   }
+  },
+  "collision": null,
+  "collision_tris": 0,
+  "size_m": [
+   0.478,
+   0.637,
+   0.564
+  ],
+  "base_centre_offset": [
+   0.0491,
+   -0.0108,
+   0.0
+  ],
+  "fbx": "VC_Ground_GrassTuft_S.fbx"
+ },
+ "VC_Ground_GrassPatch_M": {
+  "blend": "Ground",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Ground_GrassPatch_M_LOD0",
+    "tris": 28,
+    "verts": 56,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Ground_GrassPatch_M_LOD1",
+    "tris": 12,
+    "verts": 24,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Ground_GrassPatch_M_LOD2",
+    "tris": 2,
+    "verts": 4,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   }
+  },
+  "collision": null,
+  "collision_tris": 0,
+  "size_m": [
+   1.0,
+   1.221,
+   0.734
+  ],
+  "base_centre_offset": [
+   0.0,
+   0.0127,
+   0.0
+  ],
+  "fbx": "VC_Ground_GrassPatch_M.fbx"
+ },
+ "VC_Ground_WeedPatch_M": {
+  "blend": "Ground",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Ground_WeedPatch_M_LOD0",
+    "tris": 28,
+    "verts": 56,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Ground_WeedPatch_M_LOD1",
+    "tris": 12,
+    "verts": 24,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Ground_WeedPatch_M_LOD2",
+    "tris": 2,
+    "verts": 4,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   }
+  },
+  "collision": null,
+  "collision_tris": 0,
+  "size_m": [
+   1.084,
+   1.081,
+   0.818
+  ],
+  "base_centre_offset": [
+   0.0306,
+   0.067,
+   0.0
+  ],
+  "fbx": "VC_Ground_WeedPatch_M.fbx"
+ },
+ "VC_Ground_DryPatch_L": {
+  "blend": "Ground",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Ground_DryPatch_L_LOD0",
+    "tris": 44,
+    "verts": 88,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Ground_DryPatch_L_LOD1",
+    "tris": 18,
+    "verts": 36,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Ground_DryPatch_L_LOD2",
+    "tris": 2,
+    "verts": 4,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark",
+     "M_Veyra_Foliage_B"
+    ]
+   }
+  },
+  "collision": null,
+  "collision_tris": 0,
+  "size_m": [
+   1.7,
+   1.682,
+   0.764
+  ],
+  "base_centre_offset": [
+   0.0,
+   -0.0427,
+   0.0
+  ],
+  "fbx": "VC_Ground_DryPatch_L.fbx"
+ }
+}

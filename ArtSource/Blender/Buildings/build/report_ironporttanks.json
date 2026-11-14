@@ -1,0 +1,344 @@
+[
+ {
+  "key": "process_column",
+  "name": "VC_Ind_ProcessColumn",
+  "set": "ironporttanks",
+  "family": "process_column",
+  "style_kit": [
+   "IndustrialRefinery"
+  ],
+  "districts": [
+   "D3"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Ind_ProcessColumn.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Ind_ProcessColumn.fbx",
+  "footprint_m": [
+   8.0,
+   8.0
+  ],
+  "height_m": 52.1,
+  "design_height_m": 52.0,
+  "bbox_m": [
+   11.0,
+   15.1,
+   52.1
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Ind_ProcessColumn_LOD0",
+    "tris": 578,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_TankShell",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_ProcessColumn_LOD1",
+    "tris": 218,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_TankShell",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_ProcessColumn_LOD2",
+    "tris": 70,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_TankShell",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Ind_ProcessColumn"
+  ],
+  "slots": [
+   "VC_In_TankShell",
+   "VC_In_Metal",
+   "VC_In_Concrete"
+  ]
+ },
+ {
+  "key": "tank_cone",
+  "name": "VC_Ind_TankCone",
+  "set": "ironporttanks",
+  "family": "tank_cone",
+  "style_kit": [
+   "IndustrialTank"
+  ],
+  "districts": [
+   "D3"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Ind_TankCone.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Ind_TankCone.fbx",
+  "footprint_m": [
+   34.0,
+   34.0
+  ],
+  "height_m": 19.1,
+  "design_height_m": 16.0,
+  "bbox_m": [
+   35.95,
+   36.1,
+   19.1
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Ind_TankCone_LOD0",
+    "tris": 1020,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_TankShell",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_TankCone_LOD1",
+    "tris": 600,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_TankShell",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_TankCone_LOD2",
+    "tris": 108,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_TankShell",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Ind_TankCone"
+  ],
+  "slots": [
+   "VC_In_TankShell",
+   "VC_In_Metal",
+   "VC_In_Concrete"
+  ]
+ },
+ {
+  "key": "tank_dome",
+  "name": "VC_Ind_TankDome",
+  "set": "ironporttanks",
+  "family": "tank_dome",
+  "style_kit": [
+   "IndustrialTank"
+  ],
+  "districts": [
+   "D3"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Ind_TankDome.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Ind_TankDome.fbx",
+  "footprint_m": [
+   34.0,
+   34.0
+  ],
+  "height_m": 14.55,
+  "design_height_m": 12.5,
+  "bbox_m": [
+   35.95,
+   36.1,
+   14.55
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Ind_TankDome_LOD0",
+    "tris": 1058,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_TankShell",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_TankDome_LOD1",
+    "tris": 626,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_TankShell",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_TankDome_LOD2",
+    "tris": 126,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_TankShell",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Ind_TankDome"
+  ],
+  "slots": [
+   "VC_In_TankShell",
+   "VC_In_Metal",
+   "VC_In_Concrete"
+  ]
+ }
+]

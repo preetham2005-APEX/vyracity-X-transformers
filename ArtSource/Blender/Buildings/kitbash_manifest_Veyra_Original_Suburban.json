@@ -1,0 +1,396 @@
+{
+ "source": "Veyra_Original_Suburban",
+ "original": true,
+ "generator": "ArtSource/Blender/Buildings/build/",
+ "pieces": [
+  {
+   "name": "VC_House_DormerCottage",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Suburban/VC_House_DormerCottage.fbx",
+   "type": "Building",
+   "footprint_m": [
+    14.0,
+    11.0
+   ],
+   "height_m": 7.27,
+   "triangles": [
+    852,
+    588,
+    140
+   ],
+   "collision": [
+    "UBX_VC_House_DormerCottage"
+   ],
+   "materials": [
+    {
+     "source": "VC_Wall_StuccoWarm"
+    },
+    {
+     "source": "VC_Roof_Tile"
+    },
+    {
+     "source": "VC_Trim_Paint"
+    },
+    {
+     "source": "VC_Glass_Window"
+    },
+    {
+     "source": "VC_Door_Wood"
+    },
+    {
+     "source": "VC_Wall_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_House_Duplex",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Suburban/VC_House_Duplex.fbx",
+   "type": "Building",
+   "footprint_m": [
+    14.0,
+    11.0
+   ],
+   "height_m": 7.3,
+   "triangles": [
+    1096,
+    568,
+    100
+   ],
+   "collision": [
+    "UBX_VC_House_Duplex"
+   ],
+   "materials": [
+    {
+     "source": "VC_Wall_Brick"
+    },
+    {
+     "source": "VC_Roof_Shingle"
+    },
+    {
+     "source": "VC_Trim_Paint"
+    },
+    {
+     "source": "VC_Glass_Window"
+    },
+    {
+     "source": "VC_Door_Wood"
+    },
+    {
+     "source": "VC_Wall_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_House_FlatParapet",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Suburban/VC_House_FlatParapet.fbx",
+   "type": "Building",
+   "footprint_m": [
+    14.0,
+    11.0
+   ],
+   "height_m": 7.14,
+   "triangles": [
+    756,
+    588,
+    192
+   ],
+   "collision": [
+    "UBX_VC_House_FlatParapet"
+   ],
+   "materials": [
+    {
+     "source": "VC_Wall_Stucco"
+    },
+    {
+     "source": "VC_Roof_Tile"
+    },
+    {
+     "source": "VC_Trim_Paint"
+    },
+    {
+     "source": "VC_Glass_Window"
+    },
+    {
+     "source": "VC_Door_Wood"
+    },
+    {
+     "source": "VC_Wall_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_House_GablePorch",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Suburban/VC_House_GablePorch.fbx",
+   "type": "Building",
+   "footprint_m": [
+    14.0,
+    11.0
+   ],
+   "height_m": 7.27,
+   "triangles": [
+    1184,
+    704,
+    140
+   ],
+   "collision": [
+    "UBX_VC_House_GablePorch"
+   ],
+   "materials": [
+    {
+     "source": "VC_Wall_Stucco"
+    },
+    {
+     "source": "VC_Roof_Tile"
+    },
+    {
+     "source": "VC_Trim_Paint"
+    },
+    {
+     "source": "VC_Glass_Window"
+    },
+    {
+     "source": "VC_Door_Wood"
+    },
+    {
+     "source": "VC_Wall_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_House_GarageCommunity",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Suburban/VC_House_GarageCommunity.fbx",
+   "type": "Building",
+   "footprint_m": [
+    40.0,
+    22.0
+   ],
+   "height_m": 7.08,
+   "triangles": [
+    960,
+    528,
+    432
+   ],
+   "collision": [
+    "UBX_VC_House_GarageCommunity"
+   ],
+   "materials": [
+    {
+     "source": "VC_Wall_Board"
+    },
+    {
+     "source": "VC_Roof_Shingle"
+    },
+    {
+     "source": "VC_Trim_Paint"
+    },
+    {
+     "source": "VC_Glass_Window"
+    },
+    {
+     "source": "VC_Door_Wood"
+    },
+    {
+     "source": "VC_Wall_Concrete"
+    },
+    {
+     "source": "VC_Metal_Garage"
+    }
+   ]
+  },
+  {
+   "name": "VC_House_GarageFront",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Suburban/VC_House_GarageFront.fbx",
+   "type": "Building",
+   "footprint_m": [
+    14.0,
+    11.0
+   ],
+   "height_m": 7.2,
+   "triangles": [
+    904,
+    568,
+    184
+   ],
+   "collision": [
+    "UBX_VC_House_GarageFront"
+   ],
+   "materials": [
+    {
+     "source": "VC_Wall_StuccoWarm"
+    },
+    {
+     "source": "VC_Roof_Tile"
+    },
+    {
+     "source": "VC_Trim_Paint"
+    },
+    {
+     "source": "VC_Glass_Window"
+    },
+    {
+     "source": "VC_Door_Wood"
+    },
+    {
+     "source": "VC_Wall_Concrete"
+    },
+    {
+     "source": "VC_Metal_Garage"
+    }
+   ]
+  },
+  {
+   "name": "VC_House_GarageSmall",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Suburban/VC_House_GarageSmall.fbx",
+   "type": "Building",
+   "footprint_m": [
+    8.6,
+    7.5
+   ],
+   "height_m": 6.1,
+   "triangles": [
+    320,
+    236,
+    140
+   ],
+   "collision": [
+    "UBX_VC_House_GarageSmall"
+   ],
+   "materials": [
+    {
+     "source": "VC_Wall_Board"
+    },
+    {
+     "source": "VC_Roof_Shingle"
+    },
+    {
+     "source": "VC_Trim_Paint"
+    },
+    {
+     "source": "VC_Glass_Window"
+    },
+    {
+     "source": "VC_Door_Wood"
+    },
+    {
+     "source": "VC_Wall_Concrete"
+    },
+    {
+     "source": "VC_Metal_Garage"
+    }
+   ]
+  },
+  {
+   "name": "VC_House_HipBay",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Suburban/VC_House_HipBay.fbx",
+   "type": "Building",
+   "footprint_m": [
+    14.0,
+    11.0
+   ],
+   "height_m": 7.27,
+   "triangles": [
+    1112,
+    656,
+    200
+   ],
+   "collision": [
+    "UBX_VC_House_HipBay"
+   ],
+   "materials": [
+    {
+     "source": "VC_Wall_Brick"
+    },
+    {
+     "source": "VC_Roof_Shingle"
+    },
+    {
+     "source": "VC_Trim_Paint"
+    },
+    {
+     "source": "VC_Glass_Window"
+    },
+    {
+     "source": "VC_Door_Wood"
+    },
+    {
+     "source": "VC_Wall_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_House_RanchCarport",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Suburban/VC_House_RanchCarport.fbx",
+   "type": "Building",
+   "footprint_m": [
+    14.0,
+    11.0
+   ],
+   "height_m": 7.12,
+   "triangles": [
+    616,
+    424,
+    176
+   ],
+   "collision": [
+    "UBX_VC_House_RanchCarport"
+   ],
+   "materials": [
+    {
+     "source": "VC_Wall_Board"
+    },
+    {
+     "source": "VC_Roof_Shingle"
+    },
+    {
+     "source": "VC_Trim_Paint"
+    },
+    {
+     "source": "VC_Glass_Window"
+    },
+    {
+     "source": "VC_Door_Wood"
+    },
+    {
+     "source": "VC_Wall_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_House_SplitLevel",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Suburban/VC_House_SplitLevel.fbx",
+   "type": "Building",
+   "footprint_m": [
+    14.0,
+    11.0
+   ],
+   "height_m": 7.2,
+   "triangles": [
+    1032,
+    600,
+    132
+   ],
+   "collision": [
+    "UBX_VC_House_SplitLevel"
+   ],
+   "materials": [
+    {
+     "source": "VC_Wall_Board"
+    },
+    {
+     "source": "VC_Roof_Shingle"
+    },
+    {
+     "source": "VC_Trim_Paint"
+    },
+    {
+     "source": "VC_Glass_Window"
+    },
+    {
+     "source": "VC_Door_Wood"
+    },
+    {
+     "source": "VC_Wall_Concrete"
+    }
+   ]
+  }
+ ]
+}

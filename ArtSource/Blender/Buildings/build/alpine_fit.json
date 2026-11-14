@@ -1,0 +1,16 @@
+{
+ "fit": 25,
+ "total": 25,
+ "models": 4,
+ "usage": {
+  "VC_Alp_Workshop": 1,
+  "VC_Alp_ChaletB": 13,
+  "VC_Alp_ChaletA": 11
+ },
+ "stretch_median": 0.05882352941176472,
+ "stretch_p90": 0.10847880299251877,
+ "stretch_max": 0.11375000000000002,
+ "unfit": [],
+ "misfits": [],
+ "district_p95_long_side_m": 12.0
+}

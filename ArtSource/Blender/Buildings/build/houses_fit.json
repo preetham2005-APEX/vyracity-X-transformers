@@ -1,0 +1,20 @@
+{
+ "fit": 1923,
+ "total": 1923,
+ "models": 10,
+ "usage": {
+  "VC_House_GarageSmall": 1,
+  "VC_House_RanchCarport": 880,
+  "VC_House_Duplex": 913,
+  "VC_House_DormerCottage": 47,
+  "VC_House_FlatParapet": 34,
+  "VC_House_GarageFront": 47,
+  "VC_House_GarageCommunity": 1
+ },
+ "stretch_median": 0.07123287671232892,
+ "stretch_p90": 0.1446629213483146,
+ "stretch_max": 0.2962539015776712,
+ "unfit": [],
+ "misfits": [],
+ "district_p95_long_side_m": 14.0
+}

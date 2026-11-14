@@ -1,0 +1,1705 @@
+{
+ "VC_Rock_Boulder_S_Angular": {
+  "group": "Boulder",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Rock_Boulder_S_Angular_LOD0",
+    "tris": 100,
+    "verts": 220,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Rock_Boulder_S_Angular_LOD1",
+    "tris": 42,
+    "verts": 98,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Rock_Boulder_S_Angular_LOD2",
+    "tris": 20,
+    "verts": 50,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   }
+  },
+  "collision": [
+   "UCX_VC_Rock_Boulder_S_Angular"
+  ],
+  "collision_tris": 20,
+  "size_m": [
+   0.598,
+   0.579,
+   0.457
+  ],
+  "min_z": -0.0365,
+  "xy_centre": [
+   0.003,
+   0.006
+  ],
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "fbx": "VC_Rock_Boulder_S_Angular.fbx"
+ },
+ "VC_Rock_Boulder_S_Rounded": {
+  "group": "Boulder",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Rock_Boulder_S_Rounded_LOD0",
+    "tris": 100,
+    "verts": 220,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Rock_Boulder_S_Rounded_LOD1",
+    "tris": 42,
+    "verts": 98,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Rock_Boulder_S_Rounded_LOD2",
+    "tris": 20,
+    "verts": 50,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   }
+  },
+  "collision": [
+   "UCX_VC_Rock_Boulder_S_Rounded"
+  ],
+  "collision_tris": 20,
+  "size_m": [
+   0.668,
+   0.61,
+   0.402
+  ],
+  "min_z": -0.0322,
+  "xy_centre": [
+   -0.001,
+   -0.025
+  ],
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "fbx": "VC_Rock_Boulder_S_Rounded.fbx"
+ },
+ "VC_Rock_Boulder_M_Angular": {
+  "group": "Boulder",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Rock_Boulder_M_Angular_LOD0",
+    "tris": 168,
+    "verts": 360,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Rock_Boulder_M_Angular_LOD1",
+    "tris": 64,
+    "verts": 144,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Rock_Boulder_M_Angular_LOD2",
+    "tris": 20,
+    "verts": 50,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   }
+  },
+  "collision": [
+   "UCX_VC_Rock_Boulder_M_Angular"
+  ],
+  "collision_tris": 20,
+  "size_m": [
+   1.57,
+   1.345,
+   1.026
+  ],
+  "min_z": -0.082,
+  "xy_centre": [
+   -0.077,
+   -0.027
+  ],
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "fbx": "VC_Rock_Boulder_M_Angular.fbx"
+ },
+ "VC_Rock_Boulder_M_Rounded": {
+  "group": "Boulder",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Rock_Boulder_M_Rounded_LOD0",
+    "tris": 168,
+    "verts": 360,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Rock_Boulder_M_Rounded_LOD1",
+    "tris": 64,
+    "verts": 144,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Rock_Boulder_M_Rounded_LOD2",
+    "tris": 20,
+    "verts": 50,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   }
+  },
+  "collision": [
+   "UCX_VC_Rock_Boulder_M_Rounded"
+  ],
+  "collision_tris": 20,
+  "size_m": [
+   1.62,
+   1.357,
+   1.177
+  ],
+  "min_z": -0.0942,
+  "xy_centre": [
+   -0.023,
+   0.033
+  ],
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "fbx": "VC_Rock_Boulder_M_Rounded.fbx"
+ },
+ "VC_Rock_Boulder_L_Angular": {
+  "group": "Boulder",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Rock_Boulder_L_Angular_LOD0",
+    "tris": 288,
+    "verts": 608,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Rock_Boulder_L_Angular_LOD1",
+    "tris": 100,
+    "verts": 220,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Rock_Boulder_L_Angular_LOD2",
+    "tris": 36,
+    "verts": 84,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   }
+  },
+  "collision": [
+   "UCX_VC_Rock_Boulder_L_Angular"
+  ],
+  "collision_tris": 36,
+  "size_m": [
+   2.862,
+   2.53,
+   1.863
+  ],
+  "min_z": -0.1491,
+  "xy_centre": [
+   -0.163,
+   -0.002
+  ],
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "fbx": "VC_Rock_Boulder_L_Angular.fbx"
+ },
+ "VC_Rock_Boulder_L_Rounded": {
+  "group": "Boulder",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Rock_Boulder_L_Rounded_LOD0",
+    "tris": 288,
+    "verts": 608,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Rock_Boulder_L_Rounded_LOD1",
+    "tris": 100,
+    "verts": 220,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Rock_Boulder_L_Rounded_LOD2",
+    "tris": 36,
+    "verts": 84,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   }
+  },
+  "collision": [
+   "UCX_VC_Rock_Boulder_L_Rounded"
+  ],
+  "collision_tris": 36,
+  "size_m": [
+   3.262,
+   2.92,
+   1.881
+  ],
+  "min_z": -0.1505,
+  "xy_centre": [
+   0.121,
+   0.125
+  ],
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "fbx": "VC_Rock_Boulder_L_Rounded.fbx"
+ },
+ "VC_Rock_Outcrop_A": {
+  "group": "Outcrop",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Rock_Outcrop_A_LOD0",
+    "tris": 840,
+    "verts": 1800,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Rock_Outcrop_A_LOD1",
+    "tris": 320,
+    "verts": 720,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Rock_Outcrop_A_LOD2",
+    "tris": 100,
+    "verts": 250,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   }
+  },
+  "collision": [
+   "UCX_VC_Rock_Outcrop_A_01",
+   "UCX_VC_Rock_Outcrop_A_02",
+   "UCX_VC_Rock_Outcrop_A_03",
+   "UCX_VC_Rock_Outcrop_A_04",
+   "UCX_VC_Rock_Outcrop_A_05"
+  ],
+  "collision_tris": 100,
+  "size_m": [
+   5.684,
+   5.016,
+   1.108
+  ],
+  "min_z": -0.6697,
+  "xy_centre": [
+   0.073,
+   0.119
+  ],
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "fbx": "VC_Rock_Outcrop_A.fbx"
+ },
+ "VC_Rock_Outcrop_B": {
+  "group": "Outcrop",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Rock_Outcrop_B_LOD0",
+    "tris": 2016,
+    "verts": 4256,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Rock_Outcrop_B_LOD1",
+    "tris": 700,
+    "verts": 1540,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Rock_Outcrop_B_LOD2",
+    "tris": 252,
+    "verts": 588,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   }
+  },
+  "collision": [
+   "UCX_VC_Rock_Outcrop_B_01",
+   "UCX_VC_Rock_Outcrop_B_02",
+   "UCX_VC_Rock_Outcrop_B_03",
+   "UCX_VC_Rock_Outcrop_B_04",
+   "UCX_VC_Rock_Outcrop_B_05",
+   "UCX_VC_Rock_Outcrop_B_06",
+   "UCX_VC_Rock_Outcrop_B_07"
+  ],
+  "collision_tris": 252,
+  "size_m": [
+   9.098,
+   5.788,
+   1.937
+  ],
+  "min_z": -1.0686,
+  "xy_centre": [
+   -0.499,
+   -0.046
+  ],
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "fbx": "VC_Rock_Outcrop_B.fbx"
+ },
+ "VC_Rock_CutFace_8m": {
+  "group": "CutFace",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Rock_CutFace_8m_LOD0",
+    "tris": 736,
+    "verts": 1472,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Rock_CutFace_8m_LOD1",
+    "tris": 256,
+    "verts": 512,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Rock_CutFace_8m_LOD2",
+    "tris": 48,
+    "verts": 96,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   }
+  },
+  "collision": [
+   "COL_concrete_VC_Rock_CutFace_8m"
+  ],
+  "collision_tris": 80,
+  "size_m": [
+   8.0,
+   1.779,
+   4.2
+  ],
+  "min_z": 0.0,
+  "xy_centre": [
+   0.0,
+   -0.108
+  ],
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "fbx": "VC_Rock_CutFace_8m.fbx"
+ },
+ "VC_Rock_ScreePatch": {
+  "group": "Scree",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Rock_ScreePatch_LOD0",
+    "tris": 1172,
+    "verts": 2724,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Rock_ScreePatch_LOD1",
+    "tris": 230,
+    "verts": 570,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Rock_ScreePatch_LOD2",
+    "tris": 6,
+    "verts": 18,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   }
+  },
+  "collision": [
+   "COL_gravel_VC_Rock_ScreePatch"
+  ],
+  "collision_tris": 36,
+  "size_m": [
+   4.549,
+   4.5,
+   0.202
+  ],
+  "min_z": -0.0229,
+  "xy_centre": [
+   -0.078,
+   0.094
+  ],
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "fbx": "VC_Rock_ScreePatch.fbx"
+ },
+ "VC_Rock_ShoreGroup": {
+  "group": "Shore",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Rock_ShoreGroup_LOD0",
+    "tris": 1008,
+    "verts": 2160,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Rock_ShoreGroup_LOD1",
+    "tris": 384,
+    "verts": 864,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Rock_ShoreGroup_LOD2",
+    "tris": 120,
+    "verts": 300,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Rock"
+    ]
+   }
+  },
+  "collision": [
+   "UCX_VC_Rock_ShoreGroup_01",
+   "UCX_VC_Rock_ShoreGroup_02",
+   "UCX_VC_Rock_ShoreGroup_03",
+   "UCX_VC_Rock_ShoreGroup_04",
+   "UCX_VC_Rock_ShoreGroup_05",
+   "UCX_VC_Rock_ShoreGroup_06"
+  ],
+  "collision_tris": 120,
+  "size_m": [
+   4.113,
+   3.575,
+   0.612
+  ],
+  "min_z": -0.1836,
+  "xy_centre": [
+   -0.207,
+   -0.432
+  ],
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "fbx": "VC_Rock_ShoreGroup.fbx"
+ },
+ "VC_Log_Fallen_A": {
+  "group": "Log",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Log_Fallen_A_LOD0",
+    "tris": 202,
+    "verts": 438,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Log_Fallen_A_LOD1",
+    "tris": 102,
+    "verts": 226,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Log_Fallen_A_LOD2",
+    "tris": 20,
+    "verts": 44,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark"
+    ]
+   }
+  },
+  "collision": [
+   "UCX_VC_Log_Fallen_A"
+  ],
+  "collision_tris": 36,
+  "size_m": [
+   6.617,
+   0.967,
+   1.052
+  ],
+  "min_z": 0.0233,
+  "xy_centre": [
+   -0.178,
+   0.145
+  ],
+  "materials": [
+   "M_Veyra_Bark"
+  ],
+  "fbx": "VC_Log_Fallen_A.fbx"
+ },
+ "VC_Log_Fallen_B": {
+  "group": "Log",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Log_Fallen_B_LOD0",
+    "tris": 184,
+    "verts": 396,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Log_Fallen_B_LOD1",
+    "tris": 90,
+    "verts": 198,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Log_Fallen_B_LOD2",
+    "tris": 20,
+    "verts": 44,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Bark"
+    ]
+   }
+  },
+  "collision": [
+   "UCX_VC_Log_Fallen_B"
+  ],
+  "collision_tris": 36,
+  "size_m": [
+   3.962,
+   0.873,
+   1.004
+  ],
+  "min_z": 0.0203,
+  "xy_centre": [
+   -0.01,
+   0.177
+  ],
+  "materials": [
+   "M_Veyra_Bark"
+  ],
+  "fbx": "VC_Log_Fallen_B.fbx"
+ },
+ "VC_Impostor_Redwood_46m": {
+  "group": "Impostor",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Impostor_Redwood_46m_LOD0",
+    "tris": 6,
+    "verts": 12,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Impostor_Redwood_46m_LOD1",
+    "tris": 2,
+    "verts": 4,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Impostor_Redwood_46m_LOD2",
+    "tris": 2,
+    "verts": 4,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   }
+  },
+  "collision": [],
+  "collision_tris": 0,
+  "size_m": [
+   15.77,
+   15.77,
+   46.451
+  ],
+  "min_z": -0.4554,
+  "xy_centre": [
+   0.0,
+   0.0
+  ],
+  "materials": [
+   "M_Veyra_Impostor"
+  ],
+  "fbx": "VC_Impostor_Redwood_46m.fbx",
+  "impostor": {
+   "height_m": 46.45,
+   "tree_height_m": 45.54,
+   "tile_px": 1024,
+   "d_texel_min_m": 56.6,
+   "d_switch_m": 160.9,
+   "screen_height_switch": 0.25,
+   "margin": 2.84,
+   "texel_floor_binds": false,
+   "role": "forest"
+  }
+ },
+ "VC_Impostor_Broadleaf_Spreading": {
+  "group": "Impostor",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Impostor_Broadleaf_Spreading_LOD0",
+    "tris": 6,
+    "verts": 12,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Impostor_Broadleaf_Spreading_LOD1",
+    "tris": 2,
+    "verts": 4,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Impostor_Broadleaf_Spreading_LOD2",
+    "tris": 2,
+    "verts": 4,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   }
+  },
+  "collision": [],
+  "collision_tris": 0,
+  "size_m": [
+   10.524,
+   10.524,
+   9.662
+  ],
+  "min_z": -0.1049,
+  "xy_centre": [
+   0.0,
+   0.0
+  ],
+  "materials": [
+   "M_Veyra_Impostor"
+  ],
+  "fbx": "VC_Impostor_Broadleaf_Spreading.fbx",
+  "impostor": {
+   "height_m": 9.66,
+   "tree_height_m": 9.45,
+   "tile_px": 512,
+   "d_texel_min_m": 23.5,
+   "d_switch_m": 76.1,
+   "screen_height_switch": 0.11,
+   "margin": 3.23,
+   "texel_floor_binds": false,
+   "role": "street"
+  }
+ },
+ "VC_Impostor_Pine_Tall": {
+  "group": "Impostor",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Impostor_Pine_Tall_LOD0",
+    "tris": 6,
+    "verts": 12,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Impostor_Pine_Tall_LOD1",
+    "tris": 2,
+    "verts": 4,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Impostor_Pine_Tall_LOD2",
+    "tris": 2,
+    "verts": 4,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   }
+  },
+  "collision": [],
+  "collision_tris": 0,
+  "size_m": [
+   6.466,
+   6.466,
+   12.865
+  ],
+  "min_z": -0.1274,
+  "xy_centre": [
+   0.0,
+   0.0
+  ],
+  "materials": [
+   "M_Veyra_Impostor"
+  ],
+  "fbx": "VC_Impostor_Pine_Tall.fbx",
+  "impostor": {
+   "height_m": 12.86,
+   "tree_height_m": 12.61,
+   "tile_px": 512,
+   "d_texel_min_m": 31.3,
+   "d_switch_m": 44.6,
+   "screen_height_switch": 0.25,
+   "margin": 1.42,
+   "texel_floor_binds": false,
+   "role": "forest"
+  }
+ },
+ "VC_Impostor_Palm_Royal_16m": {
+  "group": "Impostor",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Impostor_Palm_Royal_16m_LOD0",
+    "tris": 6,
+    "verts": 12,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Impostor_Palm_Royal_16m_LOD1",
+    "tris": 2,
+    "verts": 4,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Impostor_Palm_Royal_16m_LOD2",
+    "tris": 2,
+    "verts": 4,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   }
+  },
+  "collision": [],
+  "collision_tris": 0,
+  "size_m": [
+   9.606,
+   9.606,
+   17.955
+  ],
+  "min_z": -0.1789,
+  "xy_centre": [
+   0.0,
+   0.0
+  ],
+  "materials": [
+   "M_Veyra_Impostor"
+  ],
+  "fbx": "VC_Impostor_Palm_Royal_16m.fbx",
+  "impostor": {
+   "height_m": 17.95,
+   "tree_height_m": 17.6,
+   "tile_px": 512,
+   "d_texel_min_m": 43.7,
+   "d_switch_m": 141.4,
+   "screen_height_switch": 0.11,
+   "margin": 3.23,
+   "texel_floor_binds": false,
+   "role": "street"
+  }
+ },
+ "VC_Impostor_Spruce_Alpine": {
+  "group": "Impostor",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Impostor_Spruce_Alpine_LOD0",
+    "tris": 6,
+    "verts": 12,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Impostor_Spruce_Alpine_LOD1",
+    "tris": 2,
+    "verts": 4,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Impostor_Spruce_Alpine_LOD2",
+    "tris": 2,
+    "verts": 4,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   }
+  },
+  "collision": [],
+  "collision_tris": 0,
+  "size_m": [
+   4.86,
+   4.86,
+   18.085
+  ],
+  "min_z": -0.1773,
+  "xy_centre": [
+   0.0,
+   0.0
+  ],
+  "materials": [
+   "M_Veyra_Impostor"
+  ],
+  "fbx": "VC_Impostor_Spruce_Alpine.fbx",
+  "impostor": {
+   "height_m": 18.08,
+   "tree_height_m": 17.73,
+   "tile_px": 512,
+   "d_texel_min_m": 44.0,
+   "d_switch_m": 62.6,
+   "screen_height_switch": 0.25,
+   "margin": 1.42,
+   "texel_floor_binds": false,
+   "role": "forest"
+  }
+ },
+ "VC_Impostor_Palm_Fan_Tall": {
+  "group": "Impostor",
+  "lods": {
+   "LOD0": {
+    "object": "VC_Impostor_Palm_Fan_Tall_LOD0",
+    "tris": 6,
+    "verts": 12,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   },
+   "LOD1": {
+    "object": "VC_Impostor_Palm_Fan_Tall_LOD1",
+    "tris": 2,
+    "verts": 4,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   },
+   "LOD2": {
+    "object": "VC_Impostor_Palm_Fan_Tall_LOD2",
+    "tris": 2,
+    "verts": 4,
+    "zero_area_faces": 0,
+    "loose_verts": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "has_custom_normals": true,
+    "materials": [
+     "M_Veyra_Impostor"
+    ]
+   }
+  },
+  "collision": [],
+  "collision_tris": 0,
+  "size_m": [
+   5.345,
+   5.345,
+   5.668
+  ],
+  "min_z": -0.0555,
+  "xy_centre": [
+   0.0,
+   0.0
+  ],
+  "materials": [
+   "M_Veyra_Impostor"
+  ],
+  "fbx": "VC_Impostor_Palm_Fan_Tall.fbx",
+  "impostor": {
+   "height_m": 5.67,
+   "tree_height_m": 5.56,
+   "tile_px": 256,
+   "d_texel_min_m": 27.6,
+   "d_switch_m": 44.6,
+   "screen_height_switch": 0.11,
+   "margin": 1.62,
+   "texel_floor_binds": false,
+   "role": "street"
+  }
+ }
+}

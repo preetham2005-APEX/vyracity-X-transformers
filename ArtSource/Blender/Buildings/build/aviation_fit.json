@@ -1,0 +1,16 @@
+{
+ "fit": 8,
+ "total": 8,
+ "models": 4,
+ "usage": {
+  "VC_Avi_Terminal": 1,
+  "VC_Avi_Grandstand": 1,
+  "VC_Avi_HangarMonitor": 6
+ },
+ "stretch_median": 0.039548022598870025,
+ "stretch_p90": 0.15194346289752647,
+ "stretch_max": 0.15194346289752647,
+ "unfit": [],
+ "misfits": [],
+ "district_p95_long_side_m": 150.0
+}

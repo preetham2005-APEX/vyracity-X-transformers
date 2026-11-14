@@ -1,0 +1,14 @@
+{
+ "fit": 1,
+ "total": 1,
+ "models": 1,
+ "usage": {
+  "VC_Ret_GasStation": 1
+ },
+ "stretch_median": 0.09638554216867468,
+ "stretch_p90": 0.09638554216867468,
+ "stretch_max": 0.09638554216867468,
+ "unfit": [],
+ "misfits": [],
+ "district_p95_long_side_m": 26.0
+}

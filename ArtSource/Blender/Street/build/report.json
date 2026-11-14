@@ -1,0 +1,1646 @@
+[
+ {
+  "key": "hydrant",
+  "name": "VC_Hydrant",
+  "note": "0.78 m. Second colour variant: material VC_Hydrant_Yellow (same mesh).",
+  "blend": "ArtSource/Blender/Street/VC_Hydrant.blend",
+  "fbx": "ArtSource/Blender/Street/export/VC_Hydrant.fbx",
+  "size_m": [
+   0.35,
+   0.355,
+   0.775
+  ],
+  "base_z": 0.0,
+  "pivot_world": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "xy_center_offset": [
+   0.0,
+   -0.0025
+  ],
+  "uv": true,
+  "lod_ratios": [
+   1.0,
+   0.4
+  ],
+  "lods": [
+   {
+    "object": "VC_Hydrant_LOD0",
+    "tris": 260,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Hydrant_Red"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Hydrant_LOD1",
+    "tris": 102,
+    "ngons": 0,
+    "non_manifold_edges": 4,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Hydrant_Red"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   {
+    "name": "UBX_VC_Hydrant",
+    "tris": 12
+   }
+  ],
+  "slots": [
+   "VC_Hydrant_Red"
+  ]
+ },
+ {
+  "key": "parkingmeter",
+  "name": "VC_ParkingMeter",
+  "note": "1.34 m, single head on post. Display glass = slot 1.",
+  "blend": "ArtSource/Blender/Street/VC_ParkingMeter.blend",
+  "fbx": "ArtSource/Blender/Street/export/VC_ParkingMeter.fbx",
+  "size_m": [
+   0.19,
+   0.19,
+   1.335
+  ],
+  "base_z": 0.0,
+  "pivot_world": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "xy_center_offset": [
+   0.0,
+   0.0
+  ],
+  "uv": true,
+  "lod_ratios": [
+   1.0,
+   0.692
+  ],
+  "lods": [
+   {
+    "object": "VC_ParkingMeter_LOD0",
+    "tris": 104,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Slate",
+     "VC_Glass_Clear"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_ParkingMeter_LOD1",
+    "tris": 68,
+    "ngons": 0,
+    "non_manifold_edges": 8,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Slate",
+     "VC_Glass_Clear"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   {
+    "name": "UBX_VC_ParkingMeter",
+    "tris": 12
+   }
+  ],
+  "slots": [
+   "VC_Paint_Slate",
+   "VC_Glass_Clear"
+  ]
+ },
+ {
+  "key": "trashcan_civic",
+  "name": "VC_TrashCan_Civic",
+  "note": "1.03 m civic/park litter bin with rain hood.",
+  "blend": "ArtSource/Blender/Street/VC_TrashCan_Civic.blend",
+  "fbx": "ArtSource/Blender/Street/export/VC_TrashCan_Civic.fbx",
+  "size_m": [
+   0.66,
+   0.66,
+   1.03
+  ],
+  "base_z": 0.0,
+  "pivot_world": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "xy_center_offset": [
+   0.0,
+   0.0
+  ],
+  "uv": true,
+  "lod_ratios": [
+   1.0,
+   0.4
+  ],
+  "lods": [
+   {
+    "object": "VC_TrashCan_Civic_LOD0",
+    "tris": 240,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Civic_Green"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_TrashCan_Civic_LOD1",
+    "tris": 96,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Civic_Green"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   {
+    "name": "UCX_VC_TrashCan_Civic",
+    "tris": 28
+   }
+  ],
+  "slots": [
+   "VC_Paint_Civic_Green"
+  ]
+ },
+ {
+  "key": "dumpster",
+  "name": "VC_Dumpster",
+  "note": "1.84 x 1.28 x 1.15 m commercial wheeled dumpster, sloped twin-leaf lid.",
+  "blend": "ArtSource/Blender/Street/VC_Dumpster.blend",
+  "fbx": "ArtSource/Blender/Street/export/VC_Dumpster.fbx",
+  "size_m": [
+   1.86,
+   1.33,
+   1.188
+  ],
+  "base_z": 0.0,
+  "pivot_world": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "xy_center_offset": [
+   0.0,
+   0.0
+  ],
+  "uv": true,
+  "lod_ratios": [
+   1.0,
+   0.4
+  ],
+  "lods": [
+   {
+    "object": "VC_Dumpster_LOD0",
+    "tris": 264,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Civic_Blue"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Dumpster_LOD1",
+    "tris": 90,
+    "ngons": 0,
+    "non_manifold_edges": 28,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 2,
+    "slots": [
+     "VC_Paint_Civic_Blue"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   {
+    "name": "UBX_VC_Dumpster",
+    "tris": 12
+   }
+  ],
+  "slots": [
+   "VC_Paint_Civic_Blue"
+  ]
+ },
+ {
+  "key": "postbox",
+  "name": "VC_PostBox",
+  "note": "1.25 m pillar post box, slot and collection door on the front (-Y).",
+  "blend": "ArtSource/Blender/Street/VC_PostBox.blend",
+  "fbx": "ArtSource/Blender/Street/export/VC_PostBox.fbx",
+  "size_m": [
+   0.56,
+   0.49,
+   1.25
+  ],
+  "base_z": 0.0,
+  "pivot_world": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "xy_center_offset": [
+   0.0,
+   -0.0147
+  ],
+  "uv": true,
+  "lod_ratios": [
+   1.0,
+   0.783
+  ],
+  "lods": [
+   {
+    "object": "VC_PostBox_LOD0",
+    "tris": 92,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Civic_Green"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_PostBox_LOD1",
+    "tris": 70,
+    "ngons": 0,
+    "non_manifold_edges": 4,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Civic_Green"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   {
+    "name": "UBX_VC_PostBox",
+    "tris": 12
+   }
+  ],
+  "slots": [
+   "VC_Paint_Civic_Green"
+  ]
+ },
+ {
+  "key": "newsbox",
+  "name": "VC_NewsBox",
+  "note": "1.10 m newspaper vending box. Window glass = slot 1.",
+  "blend": "ArtSource/Blender/Street/VC_NewsBox.blend",
+  "fbx": "ArtSource/Blender/Street/export/VC_NewsBox.fbx",
+  "size_m": [
+   0.44,
+   0.436,
+   1.1
+  ],
+  "base_z": 0.0,
+  "pivot_world": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "xy_center_offset": [
+   0.0,
+   -0.0178
+  ],
+  "uv": true,
+  "lod_ratios": [
+   1.0,
+   0.486
+  ],
+  "lods": [
+   {
+    "object": "VC_NewsBox_LOD0",
+    "tris": 148,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Orange",
+     "VC_Glass_Clear"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_NewsBox_LOD1",
+    "tris": 70,
+    "ngons": 0,
+    "non_manifold_edges": 4,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Orange",
+     "VC_Glass_Clear"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   {
+    "name": "UBX_VC_NewsBox",
+    "tris": 12
+   }
+  ],
+  "slots": [
+   "VC_Paint_Orange",
+   "VC_Glass_Clear"
+  ]
+ },
+ {
+  "key": "busshelter",
+  "name": "VC_BusShelter",
+  "note": "4.16 x 1.76 x 2.50 m. Open side faces -Y (Unity +Z). Poster frame is BLANK (slot 3), both faces.",
+  "blend": "ArtSource/Blender/Street/VC_BusShelter.blend",
+  "fbx": "ArtSource/Blender/Street/export/VC_BusShelter.fbx",
+  "size_m": [
+   4.16,
+   1.76,
+   2.495
+  ],
+  "base_z": 0.0,
+  "pivot_world": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "xy_center_offset": [
+   0.0,
+   -0.0
+  ],
+  "uv": true,
+  "lod_ratios": [
+   1.0,
+   0.4,
+   0.209
+  ],
+  "lods": [
+   {
+    "object": "VC_BusShelter_LOD0",
+    "tris": 268,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Glass_Clear",
+     "VC_Wood_Slat",
+     "VC_Poster_Blank"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_BusShelter_LOD1",
+    "tris": 84,
+    "ngons": 0,
+    "non_manifold_edges": 44,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Glass_Clear",
+     "VC_Wood_Slat",
+     "VC_Poster_Blank"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_BusShelter_LOD2",
+    "tris": 36,
+    "ngons": 0,
+    "non_manifold_edges": 40,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 6,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Glass_Clear",
+     "VC_Wood_Slat",
+     "VC_Poster_Blank"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   {
+    "name": "UBX_VC_BusShelter_Post1",
+    "tris": 12
+   },
+   {
+    "name": "UBX_VC_BusShelter_Post2",
+    "tris": 12
+   },
+   {
+    "name": "UBX_VC_BusShelter_Post3",
+    "tris": 12
+   },
+   {
+    "name": "UBX_VC_BusShelter_Post4",
+    "tris": 12
+   },
+   {
+    "name": "UBX_VC_BusShelter_Rear",
+    "tris": 12
+   },
+   {
+    "name": "UBX_VC_BusShelter_Left",
+    "tris": 12
+   },
+   {
+    "name": "UBX_VC_BusShelter_Poster",
+    "tris": 12
+   },
+   {
+    "name": "UBX_VC_BusShelter_Bench",
+    "tris": 12
+   },
+   {
+    "name": "UBX_VC_BusShelter_Roof",
+    "tris": 12
+   }
+  ],
+  "slots": [
+   "VC_Paint_Alu_Grey",
+   "VC_Glass_Clear",
+   "VC_Wood_Slat",
+   "VC_Poster_Blank"
+  ]
+ },
+ {
+  "key": "lamp_cobra_single",
+  "name": "VC_Lamp_Cobra_Single",
+  "note": "8.52 m pole, arm reaches 2.46 m toward -Y. Lens = slot 1 (VC_Lamp_Emissive).",
+  "blend": "ArtSource/Blender/Street/VC_Lamp_Cobra_Single.blend",
+  "fbx": "ArtSource/Blender/Street/export/VC_Lamp_Cobra_Single.fbx",
+  "size_m": [
+   0.428,
+   3.085,
+   9.367
+  ],
+  "base_z": 0.0,
+  "pivot_world": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "xy_center_offset": [
+   0.0,
+   -1.3175
+  ],
+  "uv": true,
+  "lod_ratios": [
+   1.0,
+   0.4,
+   0.255
+  ],
+  "lods": [
+   {
+    "object": "VC_Lamp_Cobra_Single_LOD0",
+    "tris": 220,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Lamp_Cobra_Single_LOD1",
+    "tris": 84,
+    "ngons": 0,
+    "non_manifold_edges": 8,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Lamp_Cobra_Single_LOD2",
+    "tris": 52,
+    "ngons": 0,
+    "non_manifold_edges": 8,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   {
+    "name": "UCX_VC_Lamp_Cobra_Single",
+    "tris": 28
+   },
+   {
+    "name": "UBX_VC_Lamp_Cobra_Single_Shaft",
+    "tris": 12
+   }
+  ],
+  "slots": [
+   "VC_Paint_Alu_Grey",
+   "VC_Lamp_Emissive"
+  ]
+ },
+ {
+  "key": "lamp_cobra_twin",
+  "name": "VC_Lamp_Cobra_Twin",
+  "note": "8.52 m pole, two opposed arms (\u00b1Y). Lenses = slot 1 (VC_Lamp_Emissive).",
+  "blend": "ArtSource/Blender/Street/VC_Lamp_Cobra_Twin.blend",
+  "fbx": "ArtSource/Blender/Street/export/VC_Lamp_Cobra_Twin.fbx",
+  "size_m": [
+   0.428,
+   5.72,
+   9.367
+  ],
+  "base_z": 0.0,
+  "pivot_world": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "xy_center_offset": [
+   0.0,
+   0.0
+  ],
+  "uv": true,
+  "lod_ratios": [
+   1.0,
+   0.4,
+   0.175
+  ],
+  "lods": [
+   {
+    "object": "VC_Lamp_Cobra_Twin_LOD0",
+    "tris": 320,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Lamp_Cobra_Twin_LOD1",
+    "tris": 122,
+    "ngons": 0,
+    "non_manifold_edges": 12,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Lamp_Cobra_Twin_LOD2",
+    "tris": 48,
+    "ngons": 0,
+    "non_manifold_edges": 16,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   {
+    "name": "UCX_VC_Lamp_Cobra_Twin",
+    "tris": 28
+   },
+   {
+    "name": "UBX_VC_Lamp_Cobra_Twin_Shaft",
+    "tris": 12
+   }
+  ],
+  "slots": [
+   "VC_Paint_Alu_Grey",
+   "VC_Lamp_Emissive"
+  ]
+ },
+ {
+  "key": "lamp_boulevard_twin",
+  "name": "VC_Lamp_Boulevard_Twin",
+  "note": "6.28 m modern twin-arm boulevard lamp. Lenses = slot 1 (VC_Lamp_Emissive).",
+  "blend": "ArtSource/Blender/Street/VC_Lamp_Boulevard_Twin.blend",
+  "fbx": "ArtSource/Blender/Street/export/VC_Lamp_Boulevard_Twin.fbx",
+  "size_m": [
+   0.361,
+   4.3,
+   6.698
+  ],
+  "base_z": 0.0,
+  "pivot_world": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "xy_center_offset": [
+   0.0,
+   0.0
+  ],
+  "uv": true,
+  "lod_ratios": [
+   1.0,
+   0.4,
+   0.246
+  ],
+  "lods": [
+   {
+    "object": "VC_Lamp_Boulevard_Twin_LOD0",
+    "tris": 228,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive",
+     "VC_Concrete_Plinth"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Lamp_Boulevard_Twin_LOD1",
+    "tris": 80,
+    "ngons": 0,
+    "non_manifold_edges": 20,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive",
+     "VC_Concrete_Plinth"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Lamp_Boulevard_Twin_LOD2",
+    "tris": 48,
+    "ngons": 0,
+    "non_manifold_edges": 16,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive",
+     "VC_Concrete_Plinth"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   {
+    "name": "UCX_VC_Lamp_Boulevard_Twin",
+    "tris": 28
+   },
+   {
+    "name": "UBX_VC_Lamp_Boulevard_Twin_Shaft",
+    "tris": 12
+   }
+  ],
+  "slots": [
+   "VC_Paint_Alu_Grey",
+   "VC_Lamp_Emissive",
+   "VC_Concrete_Plinth"
+  ]
+ },
+ {
+  "key": "lamp_ornate_single",
+  "name": "VC_Lamp_Ornate_Single",
+  "note": "5.01 m post-top cast-iron lantern standard. Glass cage = slot 1 (VC_Lamp_Emissive).",
+  "blend": "ArtSource/Blender/Street/VC_Lamp_Ornate_Single.blend",
+  "fbx": "ArtSource/Blender/Street/export/VC_Lamp_Ornate_Single.fbx",
+  "size_m": [
+   0.6,
+   0.6,
+   5.005
+  ],
+  "base_z": 0.0,
+  "pivot_world": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "xy_center_offset": [
+   0.0,
+   0.0
+  ],
+  "uv": true,
+  "lod_ratios": [
+   1.0,
+   0.4,
+   0.152
+  ],
+  "lods": [
+   {
+    "object": "VC_Lamp_Ornate_Single_LOD0",
+    "tris": 368,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Iron_Painted",
+     "VC_Lamp_Emissive"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Lamp_Ornate_Single_LOD1",
+    "tris": 146,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 2,
+    "slots": [
+     "VC_Iron_Painted",
+     "VC_Lamp_Emissive"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Lamp_Ornate_Single_LOD2",
+    "tris": 54,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 4,
+    "slots": [
+     "VC_Iron_Painted",
+     "VC_Lamp_Emissive"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   {
+    "name": "UCX_VC_Lamp_Ornate_Single",
+    "tris": 28
+   },
+   {
+    "name": "UBX_VC_Lamp_Ornate_Single_Shaft",
+    "tris": 12
+   }
+  ],
+  "slots": [
+   "VC_Iron_Painted",
+   "VC_Lamp_Emissive"
+  ]
+ },
+ {
+  "key": "lamp_ornate_twin",
+  "name": "VC_Lamp_Ornate_Twin",
+  "note": "5.09 m twin-lantern cast-iron standard, lanterns at x = \u00b10.80 m. Glass cages = slot 1 (VC_Lamp_Emissive).",
+  "blend": "ArtSource/Blender/Street/VC_Lamp_Ornate_Twin.blend",
+  "fbx": "ArtSource/Blender/Street/export/VC_Lamp_Ornate_Twin.fbx",
+  "size_m": [
+   2.03,
+   0.6,
+   5.085
+  ],
+  "base_z": 0.0,
+  "pivot_world": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "xy_center_offset": [
+   0.0,
+   0.0
+  ],
+  "uv": true,
+  "lod_ratios": [
+   1.0,
+   0.4,
+   0.1
+  ],
+  "lods": [
+   {
+    "object": "VC_Lamp_Ornate_Twin_LOD0",
+    "tris": 616,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Iron_Painted",
+     "VC_Lamp_Emissive"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Lamp_Ornate_Twin_LOD1",
+    "tris": 246,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 2,
+    "slots": [
+     "VC_Iron_Painted",
+     "VC_Lamp_Emissive"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Lamp_Ornate_Twin_LOD2",
+    "tris": 60,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 14,
+    "slots": [
+     "VC_Iron_Painted",
+     "VC_Lamp_Emissive"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   {
+    "name": "UCX_VC_Lamp_Ornate_Twin",
+    "tris": 28
+   },
+   {
+    "name": "UBX_VC_Lamp_Ornate_Twin_Shaft",
+    "tris": 12
+   }
+  ],
+  "slots": [
+   "VC_Iron_Painted",
+   "VC_Lamp_Emissive"
+  ]
+ },
+ {
+  "key": "signblade",
+  "name": "VC_SignBlade",
+  "note": "2.95 m street-name blade sign, two crossed BLANK plates (slot 1).",
+  "blend": "ArtSource/Blender/Street/VC_SignBlade.blend",
+  "fbx": "ArtSource/Blender/Street/export/VC_SignBlade.fbx",
+  "size_m": [
+   1.1,
+   1.1,
+   2.945
+  ],
+  "base_z": 0.0,
+  "pivot_world": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "xy_center_offset": [
+   0.0,
+   0.0
+  ],
+  "uv": true,
+  "lod_ratios": [
+   1.0,
+   0.6,
+   0.467
+  ],
+  "lods": [
+   {
+    "object": "VC_SignBlade_LOD0",
+    "tris": 120,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Steel_Dark",
+     "VC_Sign_BlankFace"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_SignBlade_LOD1",
+    "tris": 68,
+    "ngons": 0,
+    "non_manifold_edges": 8,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Steel_Dark",
+     "VC_Sign_BlankFace"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_SignBlade_LOD2",
+    "tris": 52,
+    "ngons": 0,
+    "non_manifold_edges": 8,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Steel_Dark",
+     "VC_Sign_BlankFace"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   {
+    "name": "UBX_VC_SignBlade",
+    "tris": 12
+   }
+  ],
+  "slots": [
+   "VC_Steel_Dark",
+   "VC_Sign_BlankFace"
+  ]
+ },
+ {
+  "key": "signspeed",
+  "name": "VC_SignSpeedLimit",
+  "note": "2.36 m slim post, 0.66 m BLANK circular plate (slot 1) facing -Y.",
+  "blend": "ArtSource/Blender/Street/VC_SignSpeedLimit.blend",
+  "fbx": "ArtSource/Blender/Street/export/VC_SignSpeedLimit.fbx",
+  "size_m": [
+   0.66,
+   0.17,
+   2.36
+  ],
+  "base_z": 0.0,
+  "pivot_world": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "xy_center_offset": [
+   0.0,
+   0.0
+  ],
+  "uv": true,
+  "lod_ratios": [
+   1.0,
+   0.643,
+   0.5
+  ],
+  "lods": [
+   {
+    "object": "VC_SignSpeedLimit_LOD0",
+    "tris": 112,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Steel_Dark",
+     "VC_Sign_BlankFace"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_SignSpeedLimit_LOD1",
+    "tris": 72,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Steel_Dark",
+     "VC_Sign_BlankFace"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_SignSpeedLimit_LOD2",
+    "tris": 56,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Steel_Dark",
+     "VC_Sign_BlankFace"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   {
+    "name": "UBX_VC_SignSpeedLimit",
+    "tris": 12
+   }
+  ],
+  "slots": [
+   "VC_Steel_Dark",
+   "VC_Sign_BlankFace"
+  ]
+ },
+ {
+  "key": "bollard",
+  "name": "VC_Bollard",
+  "note": "1.02 m traffic bollard, reflective band = slot 1.",
+  "blend": "ArtSource/Blender/Street/VC_Bollard.blend",
+  "fbx": "ArtSource/Blender/Street/export/VC_Bollard.fbx",
+  "size_m": [
+   0.257,
+   0.27,
+   1.02
+  ],
+  "base_z": 0.0,
+  "pivot_world": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "xy_center_offset": [
+   0.0,
+   0.0
+  ],
+  "uv": true,
+  "lod_ratios": [
+   1.0,
+   0.4
+  ],
+  "lods": [
+   {
+    "object": "VC_Bollard_LOD0",
+    "tris": 180,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Slate",
+     "VC_Retro_White"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Bollard_LOD1",
+    "tris": 72,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Slate",
+     "VC_Retro_White"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   {
+    "name": "UCX_VC_Bollard",
+    "tris": 28
+   }
+  ],
+  "slots": [
+   "VC_Paint_Slate",
+   "VC_Retro_White"
+  ]
+ },
+ {
+  "key": "barrel",
+  "name": "VC_Barrel_Construction",
+  "note": "0.90 m construction barrel, two reflective bands = slot 1.",
+  "blend": "ArtSource/Blender/Street/VC_Barrel_Construction.blend",
+  "fbx": "ArtSource/Blender/Street/export/VC_Barrel_Construction.fbx",
+  "size_m": [
+   0.56,
+   0.56,
+   0.9
+  ],
+  "base_z": 0.0,
+  "pivot_world": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "xy_center_offset": [
+   0.0,
+   0.0
+  ],
+  "uv": true,
+  "lod_ratios": [
+   1.0,
+   0.462
+  ],
+  "lods": [
+   {
+    "object": "VC_Barrel_Construction_LOD0",
+    "tris": 156,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Orange",
+     "VC_Retro_White"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Barrel_Construction_LOD1",
+    "tris": 70,
+    "ngons": 0,
+    "non_manifold_edges": 4,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "flipped_faces": 0,
+    "slots": [
+     "VC_Paint_Orange",
+     "VC_Retro_White"
+    ],
+    "has_uv": true,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   {
+    "name": "UCX_VC_Barrel_Construction",
+    "tris": 28
+   }
+  ],
+  "slots": [
+   "VC_Paint_Orange",
+   "VC_Retro_White"
+  ]
+ }
+]

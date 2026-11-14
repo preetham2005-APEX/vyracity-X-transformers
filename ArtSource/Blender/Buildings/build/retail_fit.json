@@ -1,0 +1,16 @@
+{
+ "fit": 3,
+ "total": 3,
+ "models": 3,
+ "usage": {
+  "VC_Ret_RetailStrip": 1,
+  "VC_Ret_RetailBigbox": 1,
+  "VC_Ret_RetailSmall": 1
+ },
+ "stretch_median": 0.1273996509598605,
+ "stretch_p90": 0.19354838709677424,
+ "stretch_max": 0.19354838709677424,
+ "unfit": [],
+ "misfits": [],
+ "district_p95_long_side_m": 120.0
+}

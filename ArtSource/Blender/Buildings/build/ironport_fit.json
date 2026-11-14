@@ -1,0 +1,17 @@
+{
+ "fit": 41,
+ "total": 41,
+ "models": 6,
+ "usage": {
+  "VC_Ind_ShedSawtooth": 2,
+  "VC_Ind_ShedMonitor": 13,
+  "VC_Ind_ShedFlat": 21,
+  "VC_Ind_ShedRailLow": 5
+ },
+ "stretch_median": 0.055860805860805884,
+ "stretch_p90": 0.17685185185185182,
+ "stretch_max": 0.25740740740740753,
+ "unfit": [],
+ "misfits": [],
+ "district_p95_long_side_m": 120.0
+}

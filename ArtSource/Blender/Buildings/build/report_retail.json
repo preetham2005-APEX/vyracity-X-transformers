@@ -1,0 +1,368 @@
+[
+ {
+  "key": "retail_strip",
+  "name": "VC_Ret_RetailStrip",
+  "set": "retail",
+  "family": "retail_strip",
+  "style_kit": [
+   "SuburbanRetail"
+  ],
+  "districts": [
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Ret_RetailStrip.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Ret_RetailStrip.fbx",
+  "footprint_m": [
+   40.0,
+   30.0
+  ],
+  "height_m": 7.72,
+  "design_height_m": 7.0,
+  "bbox_m": [
+   41.1,
+   32.9,
+   7.72
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Ret_RetailStrip_LOD0",
+    "tris": 360,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Rt_Panel",
+     "VC_Rt_Glass",
+     "VC_Rt_Metal",
+     "VC_Rt_Concrete",
+     "VC_Rt_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ret_RetailStrip_LOD1",
+    "tris": 312,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Rt_Panel",
+     "VC_Rt_Glass",
+     "VC_Rt_Metal",
+     "VC_Rt_Concrete",
+     "VC_Rt_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ret_RetailStrip_LOD2",
+    "tris": 120,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Rt_Panel",
+     "VC_Rt_Glass",
+     "VC_Rt_Metal",
+     "VC_Rt_Concrete",
+     "VC_Rt_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Ret_RetailStrip"
+  ],
+  "slots": [
+   "VC_Rt_Panel",
+   "VC_Rt_Glass",
+   "VC_Rt_Metal",
+   "VC_Rt_Concrete",
+   "VC_Rt_Brick"
+  ]
+ },
+ {
+  "key": "retail_bigbox",
+  "name": "VC_Ret_RetailBigbox",
+  "set": "retail",
+  "family": "retail_bigbox",
+  "style_kit": [
+   "SuburbanRetail"
+  ],
+  "districts": [
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Ret_RetailBigbox.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Ret_RetailBigbox.fbx",
+  "footprint_m": [
+   120.0,
+   60.0
+  ],
+  "height_m": 11.46,
+  "design_height_m": 10.7,
+  "bbox_m": [
+   120.12,
+   63.7,
+   11.46
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Ret_RetailBigbox_LOD0",
+    "tris": 548,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Rt_Panel",
+     "VC_Rt_Glass",
+     "VC_Rt_Metal",
+     "VC_Rt_Concrete",
+     "VC_Rt_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ret_RetailBigbox_LOD1",
+    "tris": 324,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Rt_Panel",
+     "VC_Rt_Glass",
+     "VC_Rt_Metal",
+     "VC_Rt_Concrete",
+     "VC_Rt_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ret_RetailBigbox_LOD2",
+    "tris": 120,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Rt_Panel",
+     "VC_Rt_Glass",
+     "VC_Rt_Metal",
+     "VC_Rt_Concrete",
+     "VC_Rt_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Ret_RetailBigbox"
+  ],
+  "slots": [
+   "VC_Rt_Panel",
+   "VC_Rt_Glass",
+   "VC_Rt_Metal",
+   "VC_Rt_Concrete",
+   "VC_Rt_Brick"
+  ]
+ },
+ {
+  "key": "retail_small",
+  "name": "VC_Ret_RetailSmall",
+  "set": "retail",
+  "family": "retail_small",
+  "style_kit": [
+   "SuburbanRetail"
+  ],
+  "districts": [
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Ret_RetailSmall.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Ret_RetailSmall.fbx",
+  "footprint_m": [
+   24.0,
+   14.0
+  ],
+  "height_m": 6.2,
+  "design_height_m": 6.2,
+  "bbox_m": [
+   24.12,
+   15.65,
+   6.2
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Ret_RetailSmall_LOD0",
+    "tris": 192,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Rt_Panel",
+     "VC_Rt_Glass",
+     "VC_Rt_Metal",
+     "VC_Rt_Concrete",
+     "VC_Rt_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ret_RetailSmall_LOD1",
+    "tris": 168,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Rt_Panel",
+     "VC_Rt_Glass",
+     "VC_Rt_Metal",
+     "VC_Rt_Concrete",
+     "VC_Rt_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ret_RetailSmall_LOD2",
+    "tris": 120,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Rt_Panel",
+     "VC_Rt_Glass",
+     "VC_Rt_Metal",
+     "VC_Rt_Concrete",
+     "VC_Rt_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Ret_RetailSmall"
+  ],
+  "slots": [
+   "VC_Rt_Panel",
+   "VC_Rt_Glass",
+   "VC_Rt_Metal",
+   "VC_Rt_Concrete",
+   "VC_Rt_Brick"
+  ]
+ }
+]

@@ -1,0 +1,58 @@
+{
+ "fit": 231,
+ "total": 232,
+ "models": 21,
+ "usage": {
+  "VC_Tower_Glass42": 44,
+  "VC_Tower_Slab8070": 16,
+  "VC_Tower_Slab11550": 11,
+  "VC_Tower_Glass28": 30,
+  "VC_Tower_Glass62": 28,
+  "VC_Tower_Glass90": 25,
+  "VC_Tower_Slab115110": 11,
+  "VC_Tower_Block117100": 4,
+  "VC_Tower_Block11762": 2,
+  "VC_Tower_Glass130": 8,
+  "VC_Tower_Deco120": 17,
+  "VC_Tower_Glass190": 5,
+  "VC_Tower_Deco175": 8,
+  "VC_Tower_Thin31130": 3,
+  "VC_Tower_Thin3180l": 1,
+  "VC_Tower_Slab80170": 8,
+  "VC_Tower_Thin31150": 1,
+  "VC_Tower_Thin3170": 4,
+  "VC_Tower_Thin3134": 3,
+  "VC_Tower_Deco240": 2
+ },
+ "stretch_median": 0.09540771938992076,
+ "stretch_p90": 0.17222765650720062,
+ "stretch_max": 0.4114588500045193,
+ "unfit": [
+  [
+   52.0,
+   168.3,
+   117.1
+  ]
+ ],
+ "misfits": [
+  {
+   "id": "BLD-00181",
+   "name": "",
+   "kind": "office",
+   "typology": "T1",
+   "footprint_m": [
+    52.0,
+    168.3
+   ],
+   "height_m": 117.1,
+   "aspect": 3.23,
+   "chunk": "Chunk_E4_11",
+   "failed": [
+    "width"
+   ],
+   "closest_model": "VC_Tower_Slab115110",
+   "cause": "data outlier: 168 m long, far beyond the district's p95 of 118 m"
+  }
+ ],
+ "district_p95_long_side_m": 117.8
+}

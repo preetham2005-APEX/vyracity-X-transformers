@@ -1,0 +1,742 @@
+{
+ "source": "Veyra_Original_Downtown",
+ "original": true,
+ "generator": "ArtSource/Blender/Buildings/build/",
+ "pieces": [
+  {
+   "name": "VC_Tower_Block117100",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Block117100.fbx",
+   "type": "Building",
+   "footprint_m": [
+    117.0,
+    117.0
+   ],
+   "height_m": 101.2,
+   "triangles": [
+    2304,
+    1260,
+    204
+   ],
+   "collision": [
+    "UBX_VC_Tower_Block117100"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Block11762",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Block11762.fbx",
+   "type": "Building",
+   "footprint_m": [
+    117.0,
+    117.0
+   ],
+   "height_m": 63.2,
+   "triangles": [
+    2304,
+    1260,
+    204
+   ],
+   "collision": [
+    "UBX_VC_Tower_Block11762"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Deco120",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Deco120.fbx",
+   "type": "Building",
+   "footprint_m": [
+    54.0,
+    54.0
+   ],
+   "height_m": 124.7,
+   "triangles": [
+    2464,
+    1468,
+    388
+   ],
+   "collision": [
+    "UBX_VC_Tower_Deco120"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Deco175",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Deco175.fbx",
+   "type": "Building",
+   "footprint_m": [
+    54.0,
+    54.0
+   ],
+   "height_m": 179.7,
+   "triangles": [
+    2464,
+    1468,
+    388
+   ],
+   "collision": [
+    "UBX_VC_Tower_Deco175"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Deco240",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Deco240.fbx",
+   "type": "Building",
+   "footprint_m": [
+    54.0,
+    54.0
+   ],
+   "height_m": 244.7,
+   "triangles": [
+    2464,
+    1468,
+    388
+   ],
+   "collision": [
+    "UBX_VC_Tower_Deco240"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Glass130",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Glass130.fbx",
+   "type": "Building",
+   "footprint_m": [
+    55.0,
+    56.0
+   ],
+   "height_m": 137.1,
+   "triangles": [
+    1348,
+    832,
+    256
+   ],
+   "collision": [
+    "UBX_VC_Tower_Glass130"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Glass190",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Glass190.fbx",
+   "type": "Building",
+   "footprint_m": [
+    55.0,
+    56.0
+   ],
+   "height_m": 197.1,
+   "triangles": [
+    1348,
+    832,
+    256
+   ],
+   "collision": [
+    "UBX_VC_Tower_Glass190"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Glass28",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Glass28.fbx",
+   "type": "Building",
+   "footprint_m": [
+    55.0,
+    56.0
+   ],
+   "height_m": 28.7,
+   "triangles": [
+    1284,
+    768,
+    192
+   ],
+   "collision": [
+    "UBX_VC_Tower_Glass28"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Glass42",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Glass42.fbx",
+   "type": "Building",
+   "footprint_m": [
+    55.0,
+    56.0
+   ],
+   "height_m": 42.7,
+   "triangles": [
+    1284,
+    768,
+    192
+   ],
+   "collision": [
+    "UBX_VC_Tower_Glass42"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Glass62",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Glass62.fbx",
+   "type": "Building",
+   "footprint_m": [
+    55.0,
+    56.0
+   ],
+   "height_m": 63.1,
+   "triangles": [
+    1308,
+    792,
+    216
+   ],
+   "collision": [
+    "UBX_VC_Tower_Glass62"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Glass90",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Glass90.fbx",
+   "type": "Building",
+   "footprint_m": [
+    55.0,
+    56.0
+   ],
+   "height_m": 91.1,
+   "triangles": [
+    1320,
+    804,
+    228
+   ],
+   "collision": [
+    "UBX_VC_Tower_Glass90"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Slab115110",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Slab115110.fbx",
+   "type": "Building",
+   "footprint_m": [
+    54.0,
+    115.0
+   ],
+   "height_m": 111.2,
+   "triangles": [
+    1752,
+    996,
+    204
+   ],
+   "collision": [
+    "UBX_VC_Tower_Slab115110"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Slab115200",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Slab115200.fbx",
+   "type": "Building",
+   "footprint_m": [
+    54.0,
+    115.0
+   ],
+   "height_m": 201.2,
+   "triangles": [
+    1752,
+    996,
+    204
+   ],
+   "collision": [
+    "UBX_VC_Tower_Slab115200"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Slab11550",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Slab11550.fbx",
+   "type": "Building",
+   "footprint_m": [
+    54.0,
+    115.0
+   ],
+   "height_m": 51.2,
+   "triangles": [
+    1752,
+    996,
+    204
+   ],
+   "collision": [
+    "UBX_VC_Tower_Slab11550"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Slab80170",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Slab80170.fbx",
+   "type": "Building",
+   "footprint_m": [
+    54.0,
+    80.0
+   ],
+   "height_m": 171.2,
+   "triangles": [
+    1440,
+    852,
+    204
+   ],
+   "collision": [
+    "UBX_VC_Tower_Slab80170"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Slab8070",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Slab8070.fbx",
+   "type": "Building",
+   "footprint_m": [
+    54.0,
+    80.0
+   ],
+   "height_m": 71.2,
+   "triangles": [
+    1440,
+    852,
+    204
+   ],
+   "collision": [
+    "UBX_VC_Tower_Slab8070"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Thin31130",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Thin31130.fbx",
+   "type": "Building",
+   "footprint_m": [
+    31.0,
+    60.0
+   ],
+   "height_m": 137.1,
+   "triangles": [
+    1156,
+    712,
+    256
+   ],
+   "collision": [
+    "UBX_VC_Tower_Thin31130"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Thin31150",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Thin31150.fbx",
+   "type": "Building",
+   "footprint_m": [
+    31.0,
+    117.0
+   ],
+   "height_m": 157.1,
+   "triangles": [
+    1684,
+    1000,
+    256
+   ],
+   "collision": [
+    "UBX_VC_Tower_Thin31150"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Thin3134",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Thin3134.fbx",
+   "type": "Building",
+   "footprint_m": [
+    31.0,
+    60.0
+   ],
+   "height_m": 34.7,
+   "triangles": [
+    1092,
+    648,
+    192
+   ],
+   "collision": [
+    "UBX_VC_Tower_Thin3134"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Thin3170",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Thin3170.fbx",
+   "type": "Building",
+   "footprint_m": [
+    31.0,
+    60.0
+   ],
+   "height_m": 71.1,
+   "triangles": [
+    1116,
+    672,
+    216
+   ],
+   "collision": [
+    "UBX_VC_Tower_Thin3170"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  },
+  {
+   "name": "VC_Tower_Thin3180l",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Downtown/VC_Tower_Thin3180l.fbx",
+   "type": "Building",
+   "footprint_m": [
+    31.0,
+    117.0
+   ],
+   "height_m": 81.1,
+   "triangles": [
+    1644,
+    960,
+    216
+   ],
+   "collision": [
+    "UBX_VC_Tower_Thin3180l"
+   ],
+   "materials": [
+    {
+     "source": "VC_Twr_Glass"
+    },
+    {
+     "source": "VC_Twr_Spandrel"
+    },
+    {
+     "source": "VC_Twr_Stone"
+    },
+    {
+     "source": "VC_Twr_Concrete"
+    },
+    {
+     "source": "VC_Twr_Metal"
+    }
+   ]
+  }
+ ]
+}

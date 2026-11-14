@@ -1,0 +1,740 @@
+[
+ {
+  "key": "shed_sawtooth",
+  "name": "VC_Ind_ShedSawtooth",
+  "set": "ironport",
+  "family": "shed_sawtooth",
+  "style_kit": [
+   "Industrial"
+  ],
+  "districts": [
+   "D3",
+   "D7"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Ind_ShedSawtooth.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Ind_ShedSawtooth.fbx",
+  "footprint_m": [
+   90.0,
+   50.0
+  ],
+  "height_m": 17.5,
+  "design_height_m": 12.5,
+  "bbox_m": [
+   90.1,
+   50.75,
+   17.5
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Ind_ShedSawtooth_LOD0",
+    "tris": 660,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 23,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_ShedSawtooth_LOD1",
+    "tris": 312,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 23,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_ShedSawtooth_LOD2",
+    "tris": 60,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 9,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Ind_ShedSawtooth"
+  ],
+  "slots": [
+   "VC_In_Clad",
+   "VC_In_Roof",
+   "VC_In_Glass",
+   "VC_In_Metal",
+   "VC_In_Concrete"
+  ]
+ },
+ {
+  "key": "shed_monitor",
+  "name": "VC_Ind_ShedMonitor",
+  "set": "ironport",
+  "family": "shed_monitor",
+  "style_kit": [
+   "Industrial"
+  ],
+  "districts": [
+   "D3",
+   "D7"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Ind_ShedMonitor.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Ind_ShedMonitor.fbx",
+  "footprint_m": [
+   90.0,
+   50.0
+  ],
+  "height_m": 15.9,
+  "design_height_m": 12.5,
+  "bbox_m": [
+   90.1,
+   50.75,
+   15.9
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Ind_ShedMonitor_LOD0",
+    "tris": 664,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_ShedMonitor_LOD1",
+    "tris": 280,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_ShedMonitor_LOD2",
+    "tris": 52,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Ind_ShedMonitor"
+  ],
+  "slots": [
+   "VC_In_Clad",
+   "VC_In_Roof",
+   "VC_In_Glass",
+   "VC_In_Metal",
+   "VC_In_Concrete"
+  ]
+ },
+ {
+  "key": "shed_barrel",
+  "name": "VC_Ind_ShedBarrel",
+  "set": "ironport",
+  "family": "shed_barrel",
+  "style_kit": [
+   "Industrial"
+  ],
+  "districts": [
+   "D3",
+   "D7"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Ind_ShedBarrel.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Ind_ShedBarrel.fbx",
+  "footprint_m": [
+   64.0,
+   40.0
+  ],
+  "height_m": 16.82,
+  "design_height_m": 12.0,
+  "bbox_m": [
+   64.1,
+   40.75,
+   16.82
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Ind_ShedBarrel_LOD0",
+    "tris": 408,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_ShedBarrel_LOD1",
+    "tris": 184,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_ShedBarrel_LOD2",
+    "tris": 44,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Ind_ShedBarrel"
+  ],
+  "slots": [
+   "VC_In_Clad",
+   "VC_In_Roof",
+   "VC_In_Glass",
+   "VC_In_Metal",
+   "VC_In_Concrete"
+  ]
+ },
+ {
+  "key": "shed_flat",
+  "name": "VC_Ind_ShedFlat",
+  "set": "ironport",
+  "family": "shed_flat",
+  "style_kit": [
+   "Industrial"
+  ],
+  "districts": [
+   "D3",
+   "D7"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Ind_ShedFlat.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Ind_ShedFlat.fbx",
+  "footprint_m": [
+   64.0,
+   40.0
+  ],
+  "height_m": 10.92,
+  "design_height_m": 9.0,
+  "bbox_m": [
+   64.12,
+   40.75,
+   10.92
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Ind_ShedFlat_LOD0",
+    "tris": 680,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_ShedFlat_LOD1",
+    "tris": 324,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_ShedFlat_LOD2",
+    "tris": 132,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Ind_ShedFlat"
+  ],
+  "slots": [
+   "VC_In_Clad",
+   "VC_In_Roof",
+   "VC_In_Glass",
+   "VC_In_Metal",
+   "VC_In_Concrete"
+  ]
+ },
+ {
+  "key": "shed_rail",
+  "name": "VC_Ind_ShedRail",
+  "set": "ironport",
+  "family": "shed_rail",
+  "style_kit": [
+   "Industrial"
+  ],
+  "districts": [
+   "D3",
+   "D7"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Ind_ShedRail.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Ind_ShedRail.fbx",
+  "footprint_m": [
+   120.0,
+   24.0
+  ],
+  "height_m": 16.3,
+  "design_height_m": 13.0,
+  "bbox_m": [
+   120.0,
+   24.16,
+   16.3
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Ind_ShedRail_LOD0",
+    "tris": 376,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_ShedRail_LOD1",
+    "tris": 376,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_ShedRail_LOD2",
+    "tris": 64,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Ind_ShedRail"
+  ],
+  "slots": [
+   "VC_In_Clad",
+   "VC_In_Roof",
+   "VC_In_Glass",
+   "VC_In_Metal",
+   "VC_In_Concrete"
+  ]
+ },
+ {
+  "key": "shed_rail_low",
+  "name": "VC_Ind_ShedRailLow",
+  "set": "ironport",
+  "family": "shed_rail_low",
+  "style_kit": [
+   "Industrial"
+  ],
+  "districts": [
+   "D3",
+   "D7"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Ind_ShedRailLow.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Ind_ShedRailLow.fbx",
+  "footprint_m": [
+   120.0,
+   24.0
+  ],
+  "height_m": 10.8,
+  "design_height_m": 7.5,
+  "bbox_m": [
+   120.0,
+   24.16,
+   10.8
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Ind_ShedRailLow_LOD0",
+    "tris": 376,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_ShedRailLow_LOD1",
+    "tris": 376,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ind_ShedRailLow_LOD2",
+    "tris": 64,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_In_Clad",
+     "VC_In_Roof",
+     "VC_In_Glass",
+     "VC_In_Metal",
+     "VC_In_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Ind_ShedRailLow"
+  ],
+  "slots": [
+   "VC_In_Clad",
+   "VC_In_Roof",
+   "VC_In_Glass",
+   "VC_In_Metal",
+   "VC_In_Concrete"
+  ]
+ }
+]

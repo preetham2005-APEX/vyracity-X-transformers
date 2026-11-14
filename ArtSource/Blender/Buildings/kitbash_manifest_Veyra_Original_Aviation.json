@@ -1,0 +1,147 @@
+{
+ "source": "Veyra_Original_Aviation",
+ "original": true,
+ "generator": "ArtSource/Blender/Buildings/build/",
+ "pieces": [
+  {
+   "name": "VC_Avi_Grandstand",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Aviation/VC_Avi_Grandstand.fbx",
+   "type": "Building",
+   "footprint_m": [
+    18.0,
+    150.0
+   ],
+   "height_m": 14.0,
+   "triangles": [
+    256,
+    208,
+    52
+   ],
+   "collision": [
+    "UBX_VC_Avi_Grandstand"
+   ],
+   "materials": [
+    {
+     "source": "VC_Av_Clad"
+    },
+    {
+     "source": "VC_Av_Roof"
+    },
+    {
+     "source": "VC_Av_Glass"
+    },
+    {
+     "source": "VC_Av_Metal"
+    },
+    {
+     "source": "VC_Av_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Avi_HangarArch",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Aviation/VC_Avi_HangarArch.fbx",
+   "type": "Building",
+   "footprint_m": [
+    62.0,
+    74.0
+   ],
+   "height_m": 18.5,
+   "triangles": [
+    304,
+    236,
+    80
+   ],
+   "collision": [
+    "UBX_VC_Avi_HangarArch"
+   ],
+   "materials": [
+    {
+     "source": "VC_Av_Clad"
+    },
+    {
+     "source": "VC_Av_Roof"
+    },
+    {
+     "source": "VC_Av_Glass"
+    },
+    {
+     "source": "VC_Av_Metal"
+    },
+    {
+     "source": "VC_Av_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Avi_HangarMonitor",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Aviation/VC_Avi_HangarMonitor.fbx",
+   "type": "Building",
+   "footprint_m": [
+    62.0,
+    74.0
+   ],
+   "height_m": 17.7,
+   "triangles": [
+    532,
+    376,
+    88
+   ],
+   "collision": [
+    "UBX_VC_Avi_HangarMonitor"
+   ],
+   "materials": [
+    {
+     "source": "VC_Av_Clad"
+    },
+    {
+     "source": "VC_Av_Roof"
+    },
+    {
+     "source": "VC_Av_Glass"
+    },
+    {
+     "source": "VC_Av_Metal"
+    },
+    {
+     "source": "VC_Av_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Avi_Terminal",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Aviation/VC_Avi_Terminal.fbx",
+   "type": "Building",
+   "footprint_m": [
+    130.0,
+    36.0
+   ],
+   "height_m": 14.15,
+   "triangles": [
+    456,
+    384,
+    156
+   ],
+   "collision": [
+    "UBX_VC_Avi_Terminal"
+   ],
+   "materials": [
+    {
+     "source": "VC_Av_Clad"
+    },
+    {
+     "source": "VC_Av_Roof"
+    },
+    {
+     "source": "VC_Av_Glass"
+    },
+    {
+     "source": "VC_Av_Metal"
+    },
+    {
+     "source": "VC_Av_Concrete"
+    }
+   ]
+  }
+ ]
+}

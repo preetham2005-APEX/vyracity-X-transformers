@@ -1,0 +1,217 @@
+{
+ "source": "Veyra_Original_Ironport",
+ "original": true,
+ "generator": "ArtSource/Blender/Buildings/build/",
+ "pieces": [
+  {
+   "name": "VC_Ind_ShedBarrel",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Ironport/VC_Ind_ShedBarrel.fbx",
+   "type": "Building",
+   "footprint_m": [
+    64.0,
+    40.0
+   ],
+   "height_m": 16.82,
+   "triangles": [
+    408,
+    184,
+    44
+   ],
+   "collision": [
+    "UBX_VC_Ind_ShedBarrel"
+   ],
+   "materials": [
+    {
+     "source": "VC_In_Clad"
+    },
+    {
+     "source": "VC_In_Roof"
+    },
+    {
+     "source": "VC_In_Glass"
+    },
+    {
+     "source": "VC_In_Metal"
+    },
+    {
+     "source": "VC_In_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Ind_ShedFlat",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Ironport/VC_Ind_ShedFlat.fbx",
+   "type": "Building",
+   "footprint_m": [
+    64.0,
+    40.0
+   ],
+   "height_m": 10.92,
+   "triangles": [
+    680,
+    324,
+    132
+   ],
+   "collision": [
+    "UBX_VC_Ind_ShedFlat"
+   ],
+   "materials": [
+    {
+     "source": "VC_In_Clad"
+    },
+    {
+     "source": "VC_In_Roof"
+    },
+    {
+     "source": "VC_In_Glass"
+    },
+    {
+     "source": "VC_In_Metal"
+    },
+    {
+     "source": "VC_In_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Ind_ShedMonitor",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Ironport/VC_Ind_ShedMonitor.fbx",
+   "type": "Building",
+   "footprint_m": [
+    90.0,
+    50.0
+   ],
+   "height_m": 15.9,
+   "triangles": [
+    664,
+    280,
+    52
+   ],
+   "collision": [
+    "UBX_VC_Ind_ShedMonitor"
+   ],
+   "materials": [
+    {
+     "source": "VC_In_Clad"
+    },
+    {
+     "source": "VC_In_Roof"
+    },
+    {
+     "source": "VC_In_Glass"
+    },
+    {
+     "source": "VC_In_Metal"
+    },
+    {
+     "source": "VC_In_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Ind_ShedRail",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Ironport/VC_Ind_ShedRail.fbx",
+   "type": "Building",
+   "footprint_m": [
+    120.0,
+    24.0
+   ],
+   "height_m": 16.3,
+   "triangles": [
+    376,
+    376,
+    64
+   ],
+   "collision": [
+    "UBX_VC_Ind_ShedRail"
+   ],
+   "materials": [
+    {
+     "source": "VC_In_Clad"
+    },
+    {
+     "source": "VC_In_Roof"
+    },
+    {
+     "source": "VC_In_Glass"
+    },
+    {
+     "source": "VC_In_Metal"
+    },
+    {
+     "source": "VC_In_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Ind_ShedRailLow",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Ironport/VC_Ind_ShedRailLow.fbx",
+   "type": "Building",
+   "footprint_m": [
+    120.0,
+    24.0
+   ],
+   "height_m": 10.8,
+   "triangles": [
+    376,
+    376,
+    64
+   ],
+   "collision": [
+    "UBX_VC_Ind_ShedRailLow"
+   ],
+   "materials": [
+    {
+     "source": "VC_In_Clad"
+    },
+    {
+     "source": "VC_In_Roof"
+    },
+    {
+     "source": "VC_In_Glass"
+    },
+    {
+     "source": "VC_In_Metal"
+    },
+    {
+     "source": "VC_In_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Ind_ShedSawtooth",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Ironport/VC_Ind_ShedSawtooth.fbx",
+   "type": "Building",
+   "footprint_m": [
+    90.0,
+    50.0
+   ],
+   "height_m": 17.5,
+   "triangles": [
+    660,
+    312,
+    60
+   ],
+   "collision": [
+    "UBX_VC_Ind_ShedSawtooth"
+   ],
+   "materials": [
+    {
+     "source": "VC_In_Clad"
+    },
+    {
+     "source": "VC_In_Roof"
+    },
+    {
+     "source": "VC_In_Glass"
+    },
+    {
+     "source": "VC_In_Metal"
+    },
+    {
+     "source": "VC_In_Concrete"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,2468 @@
+[
+ {
+  "file": "VC_Fac_AFrame.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "UBX_VC_Fac_AFrame",
+    "tris": 12,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": false,
+    "slots": [],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": true
+   },
+   {
+    "name": "VC_Fac_AFrame_LOD0",
+    "tris": 72,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_AFrame_LOD1",
+    "tris": 72,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -0.37,
+   -0.2783,
+   -0.0
+  ],
+  "bbox_max": [
+   0.37,
+   0.2783,
+   1.09
+  ]
+ },
+ {
+  "file": "VC_Fac_AwningBox.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "VC_Fac_AwningBox_LOD0",
+    "tris": 60,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_AwningBox_LOD1",
+    "tris": 60,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Fac_AwningBox_LOD2",
+    "tris": 24,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -1.54,
+   -0.0,
+   3.3
+  ],
+  "bbox_max": [
+   1.54,
+   1.17,
+   4.1
+  ]
+ },
+ {
+  "file": "VC_Fac_AwningFabric.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "VC_Fac_AwningFabric_LOD0",
+    "tris": 72,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_AwningFabric_LOD1",
+    "tris": 68,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Fac_AwningFabric_LOD2",
+    "tris": 40,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -1.5,
+   -0.01,
+   2.87
+  ],
+  "bbox_max": [
+   1.5,
+   1.455,
+   3.83
+  ]
+ },
+ {
+  "file": "VC_Fac_CorniceBand.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "VC_Fac_CorniceBand_LOD0",
+    "tris": 36,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_CorniceBand_LOD1",
+    "tris": 36,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Fac_CorniceBand_LOD2",
+    "tris": 24,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -3.0,
+   -0.0,
+   0.0
+  ],
+  "bbox_max": [
+   3.0,
+   0.345,
+   0.66
+  ]
+ },
+ {
+  "file": "VC_Fac_CrownFin.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "VC_Fac_CrownFin_LOD0",
+    "tris": 48,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_CrownFin_LOD1",
+    "tris": 48,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Fac_CrownFin_LOD2",
+    "tris": 24,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -0.43,
+   -0.0,
+   0.0
+  ],
+  "bbox_max": [
+   0.43,
+   0.58,
+   3.58
+  ]
+ },
+ {
+  "file": "VC_Fac_CrownSetback.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "VC_Fac_CrownSetback_LOD0",
+    "tris": 72,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_CrownSetback_LOD1",
+    "tris": 72,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Fac_CrownSetback_LOD2",
+    "tris": 48,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -3.0,
+   -0.3,
+   0.0
+  ],
+  "bbox_max": [
+   3.0,
+   0.66,
+   2.3
+  ]
+ },
+ {
+  "file": "VC_Fac_DisplayPlinth.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "UBX_VC_Fac_DisplayPlinth",
+    "tris": 12,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": false,
+    "slots": [],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": true
+   },
+   {
+    "name": "VC_Fac_DisplayPlinth_LOD0",
+    "tris": 48,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_DisplayPlinth_LOD1",
+    "tris": 48,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -0.86,
+   -0.46,
+   -0.0
+  ],
+  "bbox_max": [
+   0.86,
+   0.46,
+   0.85
+  ]
+ },
+ {
+  "file": "VC_Fac_EntryRecess.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "UBX_VC_Fac_EntryRecess",
+    "tris": 12,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": false,
+    "slots": [],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": true
+   },
+   {
+    "name": "VC_Fac_EntryRecess_LOD0",
+    "tris": 132,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_EntryRecess_LOD1",
+    "tris": 132,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Fac_EntryRecess_LOD2",
+    "tris": 96,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -1.5,
+   -0.05,
+   0.0
+  ],
+  "bbox_max": [
+   1.5,
+   1.1,
+   3.46
+  ]
+ },
+ {
+  "file": "VC_Fac_GrilleClosed.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "UBX_VC_Fac_GrilleClosed",
+    "tris": 12,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": false,
+    "slots": [],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": true
+   },
+   {
+    "name": "VC_Fac_GrilleClosed_LOD0",
+    "tris": 168,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_GrilleClosed_LOD1",
+    "tris": 108,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Fac_GrilleClosed_LOD2",
+    "tris": 48,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -1.5,
+   -0.0,
+   0.0
+  ],
+  "bbox_max": [
+   1.5,
+   0.3,
+   3.39
+  ]
+ },
+ {
+  "file": "VC_Fac_GrilleOpen.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "UBX_VC_Fac_GrilleOpen",
+    "tris": 12,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": false,
+    "slots": [],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": true
+   },
+   {
+    "name": "VC_Fac_GrilleOpen_LOD0",
+    "tris": 84,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_GrilleOpen_LOD1",
+    "tris": 76,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Fac_GrilleOpen_LOD2",
+    "tris": 64,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -1.5,
+   -0.04,
+   0.0
+  ],
+  "bbox_max": [
+   1.5,
+   0.36,
+   3.31
+  ]
+ },
+ {
+  "file": "VC_Fac_Shopfront3m.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "UBX_VC_Fac_Shopfront3m",
+    "tris": 12,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": false,
+    "slots": [],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": true
+   },
+   {
+    "name": "VC_Fac_Shopfront3m_LOD0",
+    "tris": 108,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_Shopfront3m_LOD1",
+    "tris": 96,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Fac_Shopfront3m_LOD2",
+    "tris": 84,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -1.5,
+   -0.0,
+   0.0
+  ],
+  "bbox_max": [
+   1.5,
+   0.22,
+   3.46
+  ]
+ },
+ {
+  "file": "VC_Fac_Shopfront6m.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "UBX_VC_Fac_Shopfront6m",
+    "tris": 12,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": false,
+    "slots": [],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": true
+   },
+   {
+    "name": "VC_Fac_Shopfront6m_LOD0",
+    "tris": 132,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_Shopfront6m_LOD1",
+    "tris": 120,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Fac_Shopfront6m_LOD2",
+    "tris": 84,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -3.0,
+   -0.0,
+   0.0
+  ],
+  "bbox_max": [
+   3.0,
+   0.22,
+   3.46
+  ]
+ },
+ {
+  "file": "VC_Fac_SignFascia.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "VC_Fac_SignFascia_LOD0",
+    "tris": 48,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_SignFascia_LOD1",
+    "tris": 48,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Fac_SignFascia_LOD2",
+    "tris": 24,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -1.5,
+   -0.01,
+   3.515
+  ],
+  "bbox_max": [
+   1.5,
+   0.19,
+   4.26
+  ]
+ },
+ {
+  "file": "VC_Fac_SignProjecting.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "VC_Fac_SignProjecting_LOD0",
+    "tris": 84,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_SignProjecting_LOD1",
+    "tris": 84,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Fac_SignProjecting_LOD2",
+    "tris": 72,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "note": "3 LODs on a sub-2 m prop (CLAUDE.md allows 2)",
+  "bbox_min": [
+   -0.1,
+   0.02,
+   3.455
+  ],
+  "bbox_max": [
+   0.1,
+   1.425,
+   4.405
+  ]
+ },
+ {
+  "file": "VC_Fac_SillBand.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "VC_Fac_SillBand_LOD0",
+    "tris": 24,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_SillBand_LOD1",
+    "tris": 24,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Fac_SillBand_LOD2",
+    "tris": 12,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -3.0,
+   -0.0,
+   0.0
+  ],
+  "bbox_max": [
+   3.0,
+   0.19,
+   0.16
+  ]
+ },
+ {
+  "file": "VC_Fac_SlabBand.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "VC_Fac_SlabBand_LOD0",
+    "tris": 36,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_SlabBand_LOD1",
+    "tris": 36,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Fac_SlabBand_LOD2",
+    "tris": 12,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -3.0,
+   -0.0,
+   0.0
+  ],
+  "bbox_max": [
+   3.0,
+   0.27,
+   0.42
+  ]
+ },
+ {
+  "file": "VC_Fac_WindowRevealBand.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "VC_Fac_WindowRevealBand_LOD0",
+    "tris": 132,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_WindowRevealBand_LOD1",
+    "tris": 120,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Fac_WindowRevealBand_LOD2",
+    "tris": 84,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -1.55,
+   -0.0,
+   0.0
+  ],
+  "bbox_max": [
+   1.55,
+   0.34,
+   1.45
+  ]
+ },
+ {
+  "file": "VC_Fac_WindowRevealSingle.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "VC_Fac_WindowRevealSingle_LOD0",
+    "tris": 108,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_WindowRevealSingle_LOD1",
+    "tris": 96,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -0.8,
+   -0.0,
+   0.0
+  ],
+  "bbox_max": [
+   0.8,
+   0.34,
+   1.6
+  ]
+ },
+ {
+  "file": "VC_Fac_WindowRevealStorey.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "VC_Fac_WindowRevealStorey_LOD0",
+    "tris": 120,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Fac_WindowRevealStorey_LOD1",
+    "tris": 108,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Fac_WindowRevealStorey_LOD2",
+    "tris": 84,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -0.8,
+   -0.0,
+   0.0
+  ],
+  "bbox_max": [
+   0.8,
+   0.34,
+   3.3
+  ]
+ },
+ {
+  "file": "VC_Roof_AntennaCluster.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "VC_Roof_AntennaCluster_LOD0",
+    "tris": 132,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Roof_AntennaCluster_LOD1",
+    "tris": 108,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Roof_AntennaCluster_LOD2",
+    "tris": 56,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -0.55,
+   -0.37,
+   -0.0
+  ],
+  "bbox_max": [
+   0.55,
+   0.26,
+   3.6
+  ]
+ },
+ {
+  "file": "VC_Roof_DuctRun.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "UBX_VC_Roof_DuctRun",
+    "tris": 12,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": false,
+    "slots": [],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": true
+   },
+   {
+    "name": "VC_Roof_DuctRun_LOD0",
+    "tris": 84,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Roof_DuctRun_LOD1",
+    "tris": 84,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Roof_DuctRun_LOD2",
+    "tris": 72,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -0.36,
+   -2.0,
+   -0.0
+  ],
+  "bbox_max": [
+   0.36,
+   2.0,
+   1.38
+  ]
+ },
+ {
+  "file": "VC_Roof_FanCowl.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "UBX_VC_Roof_FanCowl",
+    "tris": 12,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": false,
+    "slots": [],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": true
+   },
+   {
+    "name": "VC_Roof_FanCowl_LOD0",
+    "tris": 188,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Roof_FanCowl_LOD1",
+    "tris": 156,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -0.5,
+   -0.5,
+   -0.0
+  ],
+  "bbox_max": [
+   0.5,
+   0.5,
+   1.04
+  ]
+ },
+ {
+  "file": "VC_Roof_HvacLarge.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "UBX_VC_Roof_HvacLarge",
+    "tris": 12,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": false,
+    "slots": [],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": true
+   },
+   {
+    "name": "VC_Roof_HvacLarge_LOD0",
+    "tris": 132,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Roof_HvacLarge_LOD1",
+    "tris": 116,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Roof_HvacLarge_LOD2",
+    "tris": 80,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -1.38,
+   -0.88,
+   -0.0
+  ],
+  "bbox_max": [
+   1.38,
+   0.88,
+   2.06
+  ]
+ },
+ {
+  "file": "VC_Roof_HvacSmall.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "UBX_VC_Roof_HvacSmall",
+    "tris": 12,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": false,
+    "slots": [],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": true
+   },
+   {
+    "name": "VC_Roof_HvacSmall_LOD0",
+    "tris": 84,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Roof_HvacSmall_LOD1",
+    "tris": 76,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -0.675,
+   -0.58,
+   -0.0
+  ],
+  "bbox_max": [
+   0.675,
+   0.525,
+   0.94
+  ]
+ },
+ {
+  "file": "VC_Roof_ParapetCap.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "VC_Roof_ParapetCap_LOD0",
+    "tris": 40,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Roof_ParapetCap_LOD1",
+    "tris": 40,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Roof_ParapetCap_LOD2",
+    "tris": 28,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -1.5,
+   -0.3,
+   -0.0
+  ],
+  "bbox_max": [
+   1.5,
+   0.3,
+   0.44
+  ]
+ },
+ {
+  "file": "VC_Roof_RoofHatch.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "VC_Roof_RoofHatch_LOD0",
+    "tris": 48,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Roof_RoofHatch_LOD1",
+    "tris": 48,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -0.58,
+   -0.565,
+   -0.0
+  ],
+  "bbox_max": [
+   0.58,
+   0.48,
+   1.0534
+  ]
+ },
+ {
+  "file": "VC_Roof_StairOverrun.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "UBX_VC_Roof_StairOverrun",
+    "tris": 12,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": false,
+    "slots": [],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": true
+   },
+   {
+    "name": "VC_Roof_StairOverrun_LOD0",
+    "tris": 48,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Roof_StairOverrun_LOD1",
+    "tris": 48,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Roof_StairOverrun_LOD2",
+    "tris": 24,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -1.68,
+   -1.38,
+   -0.0
+  ],
+  "bbox_max": [
+   1.68,
+   1.38,
+   2.69
+  ]
+ },
+ {
+  "file": "VC_Roof_WaterTank.fbx",
+  "problems": [],
+  "meshes": [
+   {
+    "name": "UCX_VC_Roof_WaterTank",
+    "tris": 28,
+    "ngons": 2,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": false,
+    "slots": [],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": true
+   },
+   {
+    "name": "VC_Roof_WaterTank_LOD0",
+    "tris": 352,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false,
+    "flipped": 0
+   },
+   {
+    "name": "VC_Roof_WaterTank_LOD1",
+    "tris": 236,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   },
+   {
+    "name": "VC_Roof_WaterTank_LOD2",
+    "tris": 116,
+    "ngons": 0,
+    "degenerate": 0,
+    "loose_verts": 0,
+    "uv": true,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "collision": false
+   }
+  ],
+  "bbox_min": [
+   -1.38,
+   -1.1,
+   -0.0
+  ],
+  "bbox_max": [
+   1.1,
+   1.1,
+   3.76
+  ]
+ }
+]

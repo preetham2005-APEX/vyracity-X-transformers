@@ -1,0 +1,632 @@
+[
+ {
+  "key": "terrace_a",
+  "name": "VC_Town_TerraceA",
+  "set": "town",
+  "family": "terrace_a",
+  "style_kit": [
+   "MarketTownBrick"
+  ],
+  "districts": [
+   "D8"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Town_TerraceA.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Town_TerraceA.fbx",
+  "footprint_m": [
+   12.0,
+   12.0
+  ],
+  "height_m": 7.9,
+  "design_height_m": 7.6,
+  "bbox_m": [
+   12.55,
+   12.37,
+   7.9
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Town_TerraceA_LOD0",
+    "tris": 684,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mt_Brick",
+     "VC_Mt_Roof",
+     "VC_Mt_Trim",
+     "VC_Mt_Glass",
+     "VC_Mt_Render",
+     "VC_Mt_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Town_TerraceA_LOD1",
+    "tris": 468,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mt_Brick",
+     "VC_Mt_Roof",
+     "VC_Mt_Trim",
+     "VC_Mt_Glass",
+     "VC_Mt_Render",
+     "VC_Mt_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Town_TerraceA_LOD2",
+    "tris": 168,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mt_Brick",
+     "VC_Mt_Roof",
+     "VC_Mt_Trim",
+     "VC_Mt_Glass",
+     "VC_Mt_Render",
+     "VC_Mt_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Town_TerraceA"
+  ],
+  "slots": [
+   "VC_Mt_Brick",
+   "VC_Mt_Roof",
+   "VC_Mt_Trim",
+   "VC_Mt_Glass",
+   "VC_Mt_Render",
+   "VC_Mt_Concrete"
+  ]
+ },
+ {
+  "key": "terrace_b",
+  "name": "VC_Town_TerraceB",
+  "set": "town",
+  "family": "terrace_b",
+  "style_kit": [
+   "MarketTownBrick"
+  ],
+  "districts": [
+   "D8"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Town_TerraceB.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Town_TerraceB.fbx",
+  "footprint_m": [
+   12.0,
+   12.0
+  ],
+  "height_m": 8.88,
+  "design_height_m": 8.6,
+  "bbox_m": [
+   12.55,
+   12.37,
+   8.88
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Town_TerraceB_LOD0",
+    "tris": 924,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mt_Brick",
+     "VC_Mt_Roof",
+     "VC_Mt_Trim",
+     "VC_Mt_Glass",
+     "VC_Mt_Render",
+     "VC_Mt_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Town_TerraceB_LOD1",
+    "tris": 588,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mt_Brick",
+     "VC_Mt_Roof",
+     "VC_Mt_Trim",
+     "VC_Mt_Glass",
+     "VC_Mt_Render",
+     "VC_Mt_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Town_TerraceB_LOD2",
+    "tris": 168,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mt_Brick",
+     "VC_Mt_Roof",
+     "VC_Mt_Trim",
+     "VC_Mt_Glass",
+     "VC_Mt_Render",
+     "VC_Mt_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Town_TerraceB"
+  ],
+  "slots": [
+   "VC_Mt_Brick",
+   "VC_Mt_Roof",
+   "VC_Mt_Trim",
+   "VC_Mt_Glass",
+   "VC_Mt_Render",
+   "VC_Mt_Concrete"
+  ]
+ },
+ {
+  "key": "terrace_c",
+  "name": "VC_Town_TerraceC",
+  "set": "town",
+  "family": "terrace_c",
+  "style_kit": [
+   "MarketTownBrick"
+  ],
+  "districts": [
+   "D8"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Town_TerraceC.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Town_TerraceC.fbx",
+  "footprint_m": [
+   12.0,
+   12.0
+  ],
+  "height_m": 9.62,
+  "design_height_m": 9.6,
+  "bbox_m": [
+   12.7,
+   12.7,
+   9.62
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Town_TerraceC_LOD0",
+    "tris": 548,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mt_Brick",
+     "VC_Mt_Roof",
+     "VC_Mt_Trim",
+     "VC_Mt_Glass",
+     "VC_Mt_Render",
+     "VC_Mt_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Town_TerraceC_LOD1",
+    "tris": 356,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mt_Brick",
+     "VC_Mt_Roof",
+     "VC_Mt_Trim",
+     "VC_Mt_Glass",
+     "VC_Mt_Render",
+     "VC_Mt_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Town_TerraceC_LOD2",
+    "tris": 104,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mt_Brick",
+     "VC_Mt_Roof",
+     "VC_Mt_Trim",
+     "VC_Mt_Glass",
+     "VC_Mt_Render",
+     "VC_Mt_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Town_TerraceC"
+  ],
+  "slots": [
+   "VC_Mt_Brick",
+   "VC_Mt_Roof",
+   "VC_Mt_Trim",
+   "VC_Mt_Glass",
+   "VC_Mt_Render",
+   "VC_Mt_Concrete"
+  ]
+ },
+ {
+  "key": "terrace_d",
+  "name": "VC_Town_TerraceD",
+  "set": "town",
+  "family": "terrace_d",
+  "style_kit": [
+   "MarketTownBrick"
+  ],
+  "districts": [
+   "D8"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Town_TerraceD.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Town_TerraceD.fbx",
+  "footprint_m": [
+   12.0,
+   12.0
+  ],
+  "height_m": 6.82,
+  "design_height_m": 6.8,
+  "bbox_m": [
+   12.8,
+   12.8,
+   6.82
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Town_TerraceD_LOD0",
+    "tris": 824,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mt_Brick",
+     "VC_Mt_Roof",
+     "VC_Mt_Trim",
+     "VC_Mt_Glass",
+     "VC_Mt_Render",
+     "VC_Mt_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Town_TerraceD_LOD1",
+    "tris": 488,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mt_Brick",
+     "VC_Mt_Roof",
+     "VC_Mt_Trim",
+     "VC_Mt_Glass",
+     "VC_Mt_Render",
+     "VC_Mt_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Town_TerraceD_LOD2",
+    "tris": 128,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mt_Brick",
+     "VC_Mt_Roof",
+     "VC_Mt_Trim",
+     "VC_Mt_Glass",
+     "VC_Mt_Render",
+     "VC_Mt_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Town_TerraceD"
+  ],
+  "slots": [
+   "VC_Mt_Brick",
+   "VC_Mt_Roof",
+   "VC_Mt_Trim",
+   "VC_Mt_Glass",
+   "VC_Mt_Render",
+   "VC_Mt_Concrete"
+  ]
+ },
+ {
+  "key": "terrace_e",
+  "name": "VC_Town_TerraceE",
+  "set": "town",
+  "family": "terrace_e",
+  "style_kit": [
+   "MarketTownBrick"
+  ],
+  "districts": [
+   "D8"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Town_TerraceE.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Town_TerraceE.fbx",
+  "footprint_m": [
+   12.0,
+   12.0
+  ],
+  "height_m": 8.11,
+  "design_height_m": 7.8,
+  "bbox_m": [
+   12.55,
+   13.6,
+   8.11
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Town_TerraceE_LOD0",
+    "tris": 708,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mt_Render",
+     "VC_Mt_Roof",
+     "VC_Mt_Trim",
+     "VC_Mt_Glass",
+     "VC_Mt_Brick",
+     "VC_Mt_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Town_TerraceE_LOD1",
+    "tris": 480,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mt_Render",
+     "VC_Mt_Roof",
+     "VC_Mt_Trim",
+     "VC_Mt_Glass",
+     "VC_Mt_Brick",
+     "VC_Mt_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Town_TerraceE_LOD2",
+    "tris": 180,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mt_Render",
+     "VC_Mt_Roof",
+     "VC_Mt_Trim",
+     "VC_Mt_Glass",
+     "VC_Mt_Brick",
+     "VC_Mt_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Town_TerraceE"
+  ],
+  "slots": [
+   "VC_Mt_Render",
+   "VC_Mt_Roof",
+   "VC_Mt_Trim",
+   "VC_Mt_Glass",
+   "VC_Mt_Brick",
+   "VC_Mt_Concrete"
+  ]
+ }
+]

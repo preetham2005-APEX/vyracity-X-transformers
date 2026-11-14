@@ -1,0 +1,18 @@
+{
+ "fit": 25,
+ "total": 25,
+ "models": 7,
+ "usage": {
+  "VC_Rur_BarnBig": 1,
+  "VC_Rur_BarnLeanto": 1,
+  "VC_Rur_Mill": 8,
+  "VC_Rur_FarmhouseA": 7,
+  "VC_Rur_Silo": 8
+ },
+ "stretch_median": 0.0332326283987916,
+ "stretch_p90": 0.03743315508021383,
+ "stretch_max": 0.03743315508021383,
+ "unfit": [],
+ "misfits": [],
+ "district_p95_long_side_m": 32.0
+}

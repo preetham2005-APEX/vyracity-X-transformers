@@ -1,0 +1,311 @@
+{
+ "source": "Veyra_Original_Coast",
+ "original": true,
+ "generator": "ArtSource/Blender/Buildings/build/",
+ "pieces": [
+  {
+   "name": "VC_Coast_ClubA",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Coast/VC_Coast_ClubA.fbx",
+   "type": "Building",
+   "footprint_m": [
+    24.0,
+    12.0
+   ],
+   "height_m": 6.8,
+   "triangles": [
+    744,
+    552,
+    144
+   ],
+   "collision": [
+    "UBX_VC_Coast_ClubA"
+   ],
+   "materials": [
+    {
+     "source": "VC_Cs_Stucco"
+    },
+    {
+     "source": "VC_Cs_RoofTile"
+    },
+    {
+     "source": "VC_Cs_Trim"
+    },
+    {
+     "source": "VC_Cs_Glass"
+    },
+    {
+     "source": "VC_Cs_Wood"
+    },
+    {
+     "source": "VC_Cs_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Coast_ClubB",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Coast/VC_Coast_ClubB.fbx",
+   "type": "Building",
+   "footprint_m": [
+    24.0,
+    12.0
+   ],
+   "height_m": 10.29,
+   "triangles": [
+    1296,
+    876,
+    216
+   ],
+   "collision": [
+    "UBX_VC_Coast_ClubB"
+   ],
+   "materials": [
+    {
+     "source": "VC_Cs_Stucco"
+    },
+    {
+     "source": "VC_Cs_RoofTile"
+    },
+    {
+     "source": "VC_Cs_Trim"
+    },
+    {
+     "source": "VC_Cs_Glass"
+    },
+    {
+     "source": "VC_Cs_Wood"
+    },
+    {
+     "source": "VC_Cs_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Coast_Marina",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Coast/VC_Coast_Marina.fbx",
+   "type": "Building",
+   "footprint_m": [
+    33.0,
+    20.0
+   ],
+   "height_m": 7.6,
+   "triangles": [
+    1016,
+    716,
+    152
+   ],
+   "collision": [
+    "UBX_VC_Coast_Marina"
+   ],
+   "materials": [
+    {
+     "source": "VC_Cs_Stucco"
+    },
+    {
+     "source": "VC_Cs_RoofTile"
+    },
+    {
+     "source": "VC_Cs_Trim"
+    },
+    {
+     "source": "VC_Cs_Glass"
+    },
+    {
+     "source": "VC_Cs_Wood"
+    },
+    {
+     "source": "VC_Cs_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Coast_VillaA",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Coast/VC_Coast_VillaA.fbx",
+   "type": "Building",
+   "footprint_m": [
+    20.0,
+    15.0
+   ],
+   "height_m": 9.6,
+   "triangles": [
+    1364,
+    824,
+    140
+   ],
+   "collision": [
+    "UBX_VC_Coast_VillaA"
+   ],
+   "materials": [
+    {
+     "source": "VC_Cs_Stucco"
+    },
+    {
+     "source": "VC_Cs_RoofTile"
+    },
+    {
+     "source": "VC_Cs_Trim"
+    },
+    {
+     "source": "VC_Cs_Glass"
+    },
+    {
+     "source": "VC_Cs_Wood"
+    },
+    {
+     "source": "VC_Cs_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Coast_VillaB",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Coast/VC_Coast_VillaB.fbx",
+   "type": "Building",
+   "footprint_m": [
+    20.0,
+    15.0
+   ],
+   "height_m": 9.69,
+   "triangles": [
+    828,
+    696,
+    276
+   ],
+   "collision": [
+    "UBX_VC_Coast_VillaB"
+   ],
+   "materials": [
+    {
+     "source": "VC_Cs_Stucco"
+    },
+    {
+     "source": "VC_Cs_RoofTile"
+    },
+    {
+     "source": "VC_Cs_Trim"
+    },
+    {
+     "source": "VC_Cs_Glass"
+    },
+    {
+     "source": "VC_Cs_Wood"
+    },
+    {
+     "source": "VC_Cs_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Coast_VillaC",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Coast/VC_Coast_VillaC.fbx",
+   "type": "Building",
+   "footprint_m": [
+    20.0,
+    15.0
+   ],
+   "height_m": 9.62,
+   "triangles": [
+    1196,
+    740,
+    200
+   ],
+   "collision": [
+    "UBX_VC_Coast_VillaC"
+   ],
+   "materials": [
+    {
+     "source": "VC_Cs_Stucco"
+    },
+    {
+     "source": "VC_Cs_RoofTile"
+    },
+    {
+     "source": "VC_Cs_Trim"
+    },
+    {
+     "source": "VC_Cs_Glass"
+    },
+    {
+     "source": "VC_Cs_Wood"
+    },
+    {
+     "source": "VC_Cs_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Coast_VillaD",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Coast/VC_Coast_VillaD.fbx",
+   "type": "Building",
+   "footprint_m": [
+    20.0,
+    15.0
+   ],
+   "height_m": 6.4,
+   "triangles": [
+    788,
+    488,
+    128
+   ],
+   "collision": [
+    "UBX_VC_Coast_VillaD"
+   ],
+   "materials": [
+    {
+     "source": "VC_Cs_Stucco"
+    },
+    {
+     "source": "VC_Cs_RoofTile"
+    },
+    {
+     "source": "VC_Cs_Trim"
+    },
+    {
+     "source": "VC_Cs_Glass"
+    },
+    {
+     "source": "VC_Cs_Wood"
+    },
+    {
+     "source": "VC_Cs_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Coast_VillaE",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Coast/VC_Coast_VillaE.fbx",
+   "type": "Building",
+   "footprint_m": [
+    20.0,
+    15.0
+   ],
+   "height_m": 7.88,
+   "triangles": [
+    908,
+    608,
+    200
+   ],
+   "collision": [
+    "UBX_VC_Coast_VillaE"
+   ],
+   "materials": [
+    {
+     "source": "VC_Cs_Stucco"
+    },
+    {
+     "source": "VC_Cs_RoofTile"
+    },
+    {
+     "source": "VC_Cs_Trim"
+    },
+    {
+     "source": "VC_Cs_Glass"
+    },
+    {
+     "source": "VC_Cs_Wood"
+    },
+    {
+     "source": "VC_Cs_Concrete"
+    }
+   ]
+  }
+ ]
+}

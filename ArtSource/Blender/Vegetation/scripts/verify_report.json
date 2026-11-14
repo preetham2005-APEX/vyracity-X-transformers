@@ -1,0 +1,628 @@
+[
+ {
+  "asset": "VC_Hedge_Box_2m",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Hedge_Box_2m_LOD0",
+    "tris": 168,
+    "normal_bias_deg": 37.9,
+    "materials": 2
+   },
+   {
+    "name": "VC_Hedge_Box_2m_LOD1",
+    "tris": 56,
+    "normal_bias_deg": 40.7,
+    "materials": 2
+   },
+   {
+    "name": "VC_Hedge_Box_2m_LOD2",
+    "tris": 10,
+    "normal_bias_deg": 12.5,
+    "materials": 2
+   }
+  ],
+  "collider": "UBX_VC_Hedge_Box_2m",
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.0287,
+  "xy_centre": [
+   0.02,
+   0.012
+  ],
+  "collider_tris": 12
+ },
+ {
+  "asset": "VC_Hedge_Box_2m_Tall",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Hedge_Box_2m_Tall_LOD0",
+    "tris": 292,
+    "normal_bias_deg": 33.9,
+    "materials": 2
+   },
+   {
+    "name": "VC_Hedge_Box_2m_Tall_LOD1",
+    "tris": 102,
+    "normal_bias_deg": 37.8,
+    "materials": 2
+   },
+   {
+    "name": "VC_Hedge_Box_2m_Tall_LOD2",
+    "tris": 10,
+    "normal_bias_deg": 12.5,
+    "materials": 2
+   }
+  ],
+  "collider": "UBX_VC_Hedge_Box_2m_Tall",
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.0282,
+  "xy_centre": [
+   -0.05,
+   -0.006
+  ],
+  "collider_tris": 12
+ },
+ {
+  "asset": "VC_Hedge_Box_Corner",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Hedge_Box_Corner_LOD0",
+    "tris": 204,
+    "normal_bias_deg": 36.3,
+    "materials": 2
+   },
+   {
+    "name": "VC_Hedge_Box_Corner_LOD1",
+    "tris": 70,
+    "normal_bias_deg": 36.5,
+    "materials": 2
+   },
+   {
+    "name": "VC_Hedge_Box_Corner_LOD2",
+    "tris": 20,
+    "normal_bias_deg": 12.5,
+    "materials": 2
+   }
+  ],
+  "collider": "UBX_VC_Hedge_Box_Corner",
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.0306,
+  "xy_centre": [
+   0.013,
+   -0.006
+  ],
+  "collider_tris": 12
+ },
+ {
+  "asset": "VC_Palm_Fan_Short",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Palm_Fan_Short_LOD0",
+    "tris": 224,
+    "normal_bias_deg": 35.0,
+    "materials": 2
+   },
+   {
+    "name": "VC_Palm_Fan_Short_LOD1",
+    "tris": 87,
+    "normal_bias_deg": 39.7,
+    "materials": 2
+   },
+   {
+    "name": "VC_Palm_Fan_Short_LOD2",
+    "tris": 6,
+    "normal_bias_deg": 0.0,
+    "materials": 2
+   }
+  ],
+  "collider": "UCX_VC_Palm_Fan_Short",
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.0,
+  "xy_centre": [
+   -0.011,
+   0.015
+  ],
+  "collider_tris": 24
+ },
+ {
+  "asset": "VC_Palm_Fan_Tall",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Palm_Fan_Tall_LOD0",
+    "tris": 224,
+    "normal_bias_deg": 32.7,
+    "materials": 2
+   },
+   {
+    "name": "VC_Palm_Fan_Tall_LOD1",
+    "tris": 87,
+    "normal_bias_deg": 39.8,
+    "materials": 2
+   },
+   {
+    "name": "VC_Palm_Fan_Tall_LOD2",
+    "tris": 6,
+    "normal_bias_deg": 0.0,
+    "materials": 2
+   }
+  ],
+  "collider": "UCX_VC_Palm_Fan_Tall",
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.0,
+  "xy_centre": [
+   -0.044,
+   0.12
+  ],
+  "collider_tris": 24
+ },
+ {
+  "asset": "VC_Palm_Royal_12m",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Palm_Royal_12m_LOD0",
+    "tris": 498,
+    "normal_bias_deg": 33.0,
+    "materials": 2
+   },
+   {
+    "name": "VC_Palm_Royal_12m_LOD1",
+    "tris": 162,
+    "normal_bias_deg": 23.2,
+    "materials": 2
+   },
+   {
+    "name": "VC_Palm_Royal_12m_LOD2",
+    "tris": 6,
+    "normal_bias_deg": 0.0,
+    "materials": 2
+   }
+  ],
+  "collider": "UCX_VC_Palm_Royal_12m",
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.0018,
+  "xy_centre": [
+   0.322,
+   0.004
+  ],
+  "collider_tris": 36
+ },
+ {
+  "asset": "VC_Palm_Royal_16m",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Palm_Royal_16m_LOD0",
+    "tris": 570,
+    "normal_bias_deg": 32.8,
+    "materials": 2
+   },
+   {
+    "name": "VC_Palm_Royal_16m_LOD1",
+    "tris": 186,
+    "normal_bias_deg": 21.9,
+    "materials": 2
+   },
+   {
+    "name": "VC_Palm_Royal_16m_LOD2",
+    "tris": 6,
+    "normal_bias_deg": 0.0,
+    "materials": 2
+   }
+  ],
+  "collider": "UCX_VC_Palm_Royal_16m",
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.0028,
+  "xy_centre": [
+   0.54,
+   0.132
+  ],
+  "collider_tris": 36
+ },
+ {
+  "asset": "VC_Palm_Royal_8m",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Palm_Royal_8m_LOD0",
+    "tris": 426,
+    "normal_bias_deg": 32.7,
+    "materials": 2
+   },
+   {
+    "name": "VC_Palm_Royal_8m_LOD1",
+    "tris": 138,
+    "normal_bias_deg": 24.9,
+    "materials": 2
+   },
+   {
+    "name": "VC_Palm_Royal_8m_LOD2",
+    "tris": 6,
+    "normal_bias_deg": 0.0,
+    "materials": 2
+   }
+  ],
+  "collider": "UCX_VC_Palm_Royal_8m",
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.0028,
+  "xy_centre": [
+   0.301,
+   0.043
+  ],
+  "collider_tris": 36
+ },
+ {
+  "asset": "VC_Shrub_DryScrub",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Shrub_DryScrub_LOD0",
+    "tris": 152,
+    "normal_bias_deg": 24.4,
+    "materials": 2
+   },
+   {
+    "name": "VC_Shrub_DryScrub_LOD1",
+    "tris": 52,
+    "normal_bias_deg": 25.6,
+    "materials": 2
+   },
+   {
+    "name": "VC_Shrub_DryScrub_LOD2",
+    "tris": 4,
+    "normal_bias_deg": null,
+    "materials": 2
+   }
+  ],
+  "collider": null,
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.013,
+  "xy_centre": [
+   0.036,
+   0.068
+  ]
+ },
+ {
+  "asset": "VC_Shrub_GreenBush",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Shrub_GreenBush_LOD0",
+    "tris": 154,
+    "normal_bias_deg": 23.7,
+    "materials": 2
+   },
+   {
+    "name": "VC_Shrub_GreenBush_LOD1",
+    "tris": 62,
+    "normal_bias_deg": 20.1,
+    "materials": 2
+   },
+   {
+    "name": "VC_Shrub_GreenBush_LOD2",
+    "tris": 4,
+    "normal_bias_deg": null,
+    "materials": 2
+   }
+  ],
+  "collider": null,
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.0206,
+  "xy_centre": [
+   -0.016,
+   0.01
+  ]
+ },
+ {
+  "asset": "VC_Shrub_VergeTuft",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Shrub_VergeTuft_LOD0",
+    "tris": 80,
+    "normal_bias_deg": 25.5,
+    "materials": 2
+   },
+   {
+    "name": "VC_Shrub_VergeTuft_LOD1",
+    "tris": 32,
+    "normal_bias_deg": 35.3,
+    "materials": 2
+   },
+   {
+    "name": "VC_Shrub_VergeTuft_LOD2",
+    "tris": 4,
+    "normal_bias_deg": null,
+    "materials": 2
+   }
+  ],
+  "collider": null,
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.0,
+  "xy_centre": [
+   0.006,
+   -0.026
+  ]
+ },
+ {
+  "asset": "VC_Tree_Broadleaf_Spreading",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Tree_Broadleaf_Spreading_LOD0",
+    "tris": 1472,
+    "normal_bias_deg": 21.5,
+    "materials": 2
+   },
+   {
+    "name": "VC_Tree_Broadleaf_Spreading_LOD1",
+    "tris": 572,
+    "normal_bias_deg": 21.3,
+    "materials": 2
+   },
+   {
+    "name": "VC_Tree_Broadleaf_Spreading_LOD2",
+    "tris": 6,
+    "normal_bias_deg": null,
+    "materials": 2
+   }
+  ],
+  "collider": "UCX_VC_Tree_Broadleaf_Spreading",
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.0,
+  "xy_centre": [
+   -0.224,
+   0.303
+  ],
+  "collider_tris": 24
+ },
+ {
+  "asset": "VC_Tree_Broadleaf_Upright",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Tree_Broadleaf_Upright_LOD0",
+    "tris": 1512,
+    "normal_bias_deg": 20.8,
+    "materials": 2
+   },
+   {
+    "name": "VC_Tree_Broadleaf_Upright_LOD1",
+    "tris": 588,
+    "normal_bias_deg": 21.1,
+    "materials": 2
+   },
+   {
+    "name": "VC_Tree_Broadleaf_Upright_LOD2",
+    "tris": 6,
+    "normal_bias_deg": null,
+    "materials": 2
+   }
+  ],
+  "collider": "UCX_VC_Tree_Broadleaf_Upright",
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.0,
+  "xy_centre": [
+   -0.127,
+   0.042
+  ],
+  "collider_tris": 24
+ },
+ {
+  "asset": "VC_Tree_Cypress_6m",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Tree_Cypress_6m_LOD0",
+    "tris": 494,
+    "normal_bias_deg": 24.6,
+    "materials": 2
+   },
+   {
+    "name": "VC_Tree_Cypress_6m_LOD1",
+    "tris": 200,
+    "normal_bias_deg": 24.4,
+    "materials": 2
+   },
+   {
+    "name": "VC_Tree_Cypress_6m_LOD2",
+    "tris": 4,
+    "normal_bias_deg": null,
+    "materials": 2
+   }
+  ],
+  "collider": "UCX_VC_Tree_Cypress_6m",
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.0,
+  "xy_centre": [
+   0.021,
+   0.005
+  ],
+  "collider_tris": 24
+ },
+ {
+  "asset": "VC_Tree_Cypress_9m",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Tree_Cypress_9m_LOD0",
+    "tris": 494,
+    "normal_bias_deg": 24.6,
+    "materials": 2
+   },
+   {
+    "name": "VC_Tree_Cypress_9m_LOD1",
+    "tris": 200,
+    "normal_bias_deg": 24.3,
+    "materials": 2
+   },
+   {
+    "name": "VC_Tree_Cypress_9m_LOD2",
+    "tris": 4,
+    "normal_bias_deg": null,
+    "materials": 2
+   }
+  ],
+  "collider": "UCX_VC_Tree_Cypress_9m",
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.0,
+  "xy_centre": [
+   0.005,
+   0.018
+  ],
+  "collider_tris": 24
+ },
+ {
+  "asset": "VC_Tree_Pine_Tall",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Tree_Pine_Tall_LOD0",
+    "tris": 1552,
+    "normal_bias_deg": 52.0,
+    "materials": 2
+   },
+   {
+    "name": "VC_Tree_Pine_Tall_LOD1",
+    "tris": 636,
+    "normal_bias_deg": 52.0,
+    "materials": 2
+   },
+   {
+    "name": "VC_Tree_Pine_Tall_LOD2",
+    "tris": 4,
+    "normal_bias_deg": null,
+    "materials": 2
+   }
+  ],
+  "collider": "UCX_VC_Tree_Pine_Tall",
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.0013,
+  "xy_centre": [
+   -0.088,
+   0.069
+  ],
+  "collider_tris": 24
+ },
+ {
+  "asset": "VC_Tree_Pine_Umbrella",
+  "roots": 1,
+  "root_rot_y": -0.0,
+  "lods": [
+   {
+    "name": "VC_Tree_Pine_Umbrella_LOD0",
+    "tris": 1216,
+    "normal_bias_deg": 54.0,
+    "materials": 2
+   },
+   {
+    "name": "VC_Tree_Pine_Umbrella_LOD1",
+    "tris": 468,
+    "normal_bias_deg": 52.9,
+    "materials": 2
+   },
+   {
+    "name": "VC_Tree_Pine_Umbrella_LOD2",
+    "tris": 4,
+    "normal_bias_deg": null,
+    "materials": 2
+   }
+  ],
+  "collider": "UCX_VC_Tree_Pine_Umbrella",
+  "issues": [],
+  "materials": [
+   "M_Veyra_Bark",
+   "M_Veyra_Foliage"
+  ],
+  "base_z": -0.0046,
+  "xy_centre": [
+   -0.068,
+   -0.334
+  ],
+  "collider_tris": 24
+ }
+]

@@ -1,0 +1,71 @@
+{
+ "fit": 114,
+ "total": 116,
+ "models": 9,
+ "usage": {
+  "VC_Neon_Low21": 20,
+  "VC_Neon_Brick30": 30,
+  "VC_Neon_Brick42": 27,
+  "VC_Neon_Brick33l": 10,
+  "VC_Neon_Low16": 12,
+  "VC_Neon_Low18l": 6,
+  "VC_Neon_Low14l": 3,
+  "VC_Neon_Brick62": 2,
+  "VC_Neon_Brick62l": 4
+ },
+ "stretch_median": 0.08304264506415415,
+ "stretch_p90": 0.17386719431810438,
+ "stretch_max": 0.2707245136723059,
+ "unfit": [
+  [
+   56.9,
+   222.4,
+   60.9
+  ],
+  [
+   54.5,
+   223.8,
+   14.4
+  ]
+ ],
+ "misfits": [
+  {
+   "id": "BLD-00388",
+   "name": "",
+   "kind": "midrise",
+   "typology": "",
+   "footprint_m": [
+    56.9,
+    222.4
+   ],
+   "height_m": 60.9,
+   "aspect": 3.91,
+   "chunk": "Chunk_F5_23",
+   "failed": [
+    "depth"
+   ],
+   "closest_model": "VC_Neon_Brick62",
+   "cause": "data outlier: 222 m long, far beyond the district's p95 of 123 m"
+  },
+  {
+   "id": "BLD-00403",
+   "name": "",
+   "kind": "lowrise",
+   "typology": "",
+   "footprint_m": [
+    54.5,
+    223.8
+   ],
+   "height_m": 14.4,
+   "aspect": 4.11,
+   "chunk": "Chunk_F5_33",
+   "failed": [
+    "depth",
+    "width"
+   ],
+   "closest_model": "VC_Neon_Low14l",
+   "cause": "data outlier: 224 m long, far beyond the district's p95 of 123 m"
+  }
+ ],
+ "district_p95_long_side_m": 123.1
+}

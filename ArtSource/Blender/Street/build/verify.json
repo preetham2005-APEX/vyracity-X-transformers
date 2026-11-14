@@ -1,0 +1,2281 @@
+[
+ {
+  "file": "VC_Barrel_Construction.fbx",
+  "objects": [
+   "UCX_VC_Barrel_Construction",
+   "VC_Barrel_Construction",
+   "VC_Barrel_Construction_LOD0",
+   "VC_Barrel_Construction_LOD1"
+  ],
+  "roots": [
+   {
+    "name": "VC_Barrel_Construction",
+    "type": "EMPTY",
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot_deg": [
+     1.57,
+     -0.0,
+     3.14
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "meshes": [
+   {
+    "name": "UCX_VC_Barrel_Construction",
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.29,
+     0.29
+    ],
+    "z_range": [
+     -0.0,
+     0.9
+    ],
+    "x_range": [
+     -0.29,
+     0.29
+    ]
+   },
+   {
+    "name": "VC_Barrel_Construction_LOD0",
+    "tris": 156,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Orange",
+     "VC_Retro_White"
+    ],
+    "y_range": [
+     -0.28,
+     0.28
+    ],
+    "z_range": [
+     -0.0,
+     0.9
+    ],
+    "x_range": [
+     -0.28,
+     0.28
+    ]
+   },
+   {
+    "name": "VC_Barrel_Construction_LOD1",
+    "tris": 70,
+    "ngons": 0,
+    "non_manifold_edges": 4,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Orange",
+     "VC_Retro_White"
+    ],
+    "y_range": [
+     -0.28,
+     0.28
+    ],
+    "z_range": [
+     0.015,
+     0.8925
+    ],
+    "x_range": [
+     -0.2884,
+     0.2884
+    ]
+   }
+  ],
+  "problems": [],
+  "bbox_min": [
+   -0.29,
+   -0.29,
+   -0.0
+  ],
+  "bbox_max": [
+   0.29,
+   0.29,
+   0.9
+  ]
+ },
+ {
+  "file": "VC_Bollard.fbx",
+  "objects": [
+   "UCX_VC_Bollard",
+   "VC_Bollard",
+   "VC_Bollard_LOD0",
+   "VC_Bollard_LOD1"
+  ],
+  "roots": [
+   {
+    "name": "VC_Bollard",
+    "type": "EMPTY",
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot_deg": [
+     1.57,
+     -0.0,
+     3.14
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "meshes": [
+   {
+    "name": "UCX_VC_Bollard",
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.135,
+     0.135
+    ],
+    "z_range": [
+     -0.0,
+     1.02
+    ],
+    "x_range": [
+     -0.135,
+     0.135
+    ]
+   },
+   {
+    "name": "VC_Bollard_LOD0",
+    "tris": 180,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Slate",
+     "VC_Retro_White"
+    ],
+    "y_range": [
+     -0.135,
+     0.135
+    ],
+    "z_range": [
+     -0.0,
+     1.02
+    ],
+    "x_range": [
+     -0.1284,
+     0.1284
+    ]
+   },
+   {
+    "name": "VC_Bollard_LOD1",
+    "tris": 72,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Slate",
+     "VC_Retro_White"
+    ],
+    "y_range": [
+     -0.1308,
+     0.1307
+    ],
+    "z_range": [
+     0.0003,
+     1.0239
+    ],
+    "x_range": [
+     -0.1424,
+     0.1152
+    ]
+   }
+  ],
+  "problems": [],
+  "bbox_min": [
+   -0.1424,
+   -0.135,
+   -0.0
+  ],
+  "bbox_max": [
+   0.135,
+   0.135,
+   1.0239
+  ]
+ },
+ {
+  "file": "VC_BusShelter.fbx",
+  "objects": [
+   "UBX_VC_BusShelter_Bench",
+   "UBX_VC_BusShelter_Left",
+   "UBX_VC_BusShelter_Post1",
+   "UBX_VC_BusShelter_Post2",
+   "UBX_VC_BusShelter_Post3",
+   "UBX_VC_BusShelter_Post4",
+   "UBX_VC_BusShelter_Poster",
+   "UBX_VC_BusShelter_Rear",
+   "UBX_VC_BusShelter_Roof",
+   "VC_BusShelter",
+   "VC_BusShelter_LOD0",
+   "VC_BusShelter_LOD1",
+   "VC_BusShelter_LOD2"
+  ],
+  "roots": [
+   {
+    "name": "VC_BusShelter",
+    "type": "EMPTY",
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot_deg": [
+     1.57,
+     -0.0,
+     3.14
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "meshes": [
+   {
+    "name": "UBX_VC_BusShelter_Bench",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.65,
+     -0.19
+    ],
+    "z_range": [
+     -0.0,
+     0.52
+    ],
+    "x_range": [
+     -1.28,
+     1.28
+    ]
+   },
+   {
+    "name": "UBX_VC_BusShelter_Left",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.65,
+     0.65
+    ],
+    "z_range": [
+     0.4,
+     2.35
+    ],
+    "x_range": [
+     1.855,
+     1.945
+    ]
+   },
+   {
+    "name": "UBX_VC_BusShelter_Post1",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     0.635,
+     0.765
+    ],
+    "z_range": [
+     0.0,
+     2.4
+    ],
+    "x_range": [
+     1.835,
+     1.965
+    ]
+   },
+   {
+    "name": "UBX_VC_BusShelter_Post2",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.765,
+     -0.635
+    ],
+    "z_range": [
+     -0.0,
+     2.4
+    ],
+    "x_range": [
+     1.835,
+     1.965
+    ]
+   },
+   {
+    "name": "UBX_VC_BusShelter_Post3",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     0.635,
+     0.765
+    ],
+    "z_range": [
+     0.0,
+     2.4
+    ],
+    "x_range": [
+     -1.965,
+     -1.835
+    ]
+   },
+   {
+    "name": "UBX_VC_BusShelter_Post4",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.765,
+     -0.635
+    ],
+    "z_range": [
+     -0.0,
+     2.4
+    ],
+    "x_range": [
+     -1.965,
+     -1.835
+    ]
+   },
+   {
+    "name": "UBX_VC_BusShelter_Poster",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.61,
+     0.61
+    ],
+    "z_range": [
+     0.4,
+     2.35
+    ],
+    "x_range": [
+     -1.95,
+     -1.85
+    ]
+   },
+   {
+    "name": "UBX_VC_BusShelter_Rear",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.745,
+     -0.655
+    ],
+    "z_range": [
+     0.4,
+     2.35
+    ],
+    "x_range": [
+     -1.86,
+     1.86
+    ]
+   },
+   {
+    "name": "UBX_VC_BusShelter_Roof",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.88,
+     0.88
+    ],
+    "z_range": [
+     2.4,
+     2.65
+    ],
+    "x_range": [
+     -2.08,
+     2.08
+    ]
+   },
+   {
+    "name": "VC_BusShelter_LOD0",
+    "tris": 268,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Glass_Clear",
+     "VC_Wood_Slat",
+     "VC_Poster_Blank"
+    ],
+    "y_range": [
+     -0.88,
+     0.88
+    ],
+    "z_range": [
+     -0.0,
+     2.495
+    ],
+    "x_range": [
+     -2.08,
+     2.08
+    ]
+   },
+   {
+    "name": "VC_BusShelter_LOD1",
+    "tris": 84,
+    "ngons": 0,
+    "non_manifold_edges": 44,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Glass_Clear",
+     "VC_Wood_Slat",
+     "VC_Poster_Blank"
+    ],
+    "y_range": [
+     -0.88,
+     0.88
+    ],
+    "z_range": [
+     -0.0,
+     2.495
+    ],
+    "x_range": [
+     -2.08,
+     2.08
+    ]
+   },
+   {
+    "name": "VC_BusShelter_LOD2",
+    "tris": 30,
+    "ngons": 0,
+    "non_manifold_edges": 58,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Glass_Clear",
+     "VC_Wood_Slat",
+     "VC_Poster_Blank"
+    ],
+    "y_range": [
+     -0.88,
+     0.88
+    ],
+    "z_range": [
+     -0.0,
+     2.495
+    ],
+    "x_range": [
+     -2.08,
+     2.08
+    ]
+   }
+  ],
+  "problems": [],
+  "bbox_min": [
+   -2.08,
+   -0.88,
+   -0.0
+  ],
+  "bbox_max": [
+   2.08,
+   0.88,
+   2.65
+  ]
+ },
+ {
+  "file": "VC_Dumpster.fbx",
+  "objects": [
+   "UBX_VC_Dumpster",
+   "VC_Dumpster",
+   "VC_Dumpster_LOD0",
+   "VC_Dumpster_LOD1"
+  ],
+  "roots": [
+   {
+    "name": "VC_Dumpster",
+    "type": "EMPTY",
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot_deg": [
+     1.57,
+     -0.0,
+     3.14
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "meshes": [
+   {
+    "name": "UBX_VC_Dumpster",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.64,
+     0.64
+    ],
+    "z_range": [
+     -0.0,
+     1.15
+    ],
+    "x_range": [
+     -0.93,
+     0.93
+    ]
+   },
+   {
+    "name": "VC_Dumpster_LOD0",
+    "tris": 264,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Civic_Blue"
+    ],
+    "y_range": [
+     -0.665,
+     0.665
+    ],
+    "z_range": [
+     -0.0,
+     1.1882
+    ],
+    "x_range": [
+     -0.93,
+     0.93
+    ]
+   },
+   {
+    "name": "VC_Dumpster_LOD1",
+    "tris": 89,
+    "ngons": 0,
+    "non_manifold_edges": 31,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Civic_Blue"
+    ],
+    "y_range": [
+     -0.665,
+     0.665
+    ],
+    "z_range": [
+     0.0003,
+     1.1717
+    ],
+    "x_range": [
+     -0.93,
+     0.93
+    ]
+   }
+  ],
+  "problems": [],
+  "bbox_min": [
+   -0.93,
+   -0.665,
+   -0.0
+  ],
+  "bbox_max": [
+   0.93,
+   0.665,
+   1.1882
+  ]
+ },
+ {
+  "file": "VC_Hydrant.fbx",
+  "objects": [
+   "UBX_VC_Hydrant",
+   "VC_Hydrant",
+   "VC_Hydrant_LOD0",
+   "VC_Hydrant_LOD1"
+  ],
+  "roots": [
+   {
+    "name": "VC_Hydrant",
+    "type": "EMPTY",
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot_deg": [
+     1.57,
+     -0.0,
+     3.14
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "meshes": [
+   {
+    "name": "UBX_VC_Hydrant",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.15,
+     0.15
+    ],
+    "z_range": [
+     -0.0,
+     0.78
+    ],
+    "x_range": [
+     -0.15,
+     0.15
+    ]
+   },
+   {
+    "name": "VC_Hydrant_LOD0",
+    "tris": 260,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Hydrant_Red"
+    ],
+    "y_range": [
+     -0.175,
+     0.18
+    ],
+    "z_range": [
+     -0.0,
+     0.775
+    ],
+    "x_range": [
+     -0.175,
+     0.175
+    ]
+   },
+   {
+    "name": "VC_Hydrant_LOD1",
+    "tris": 102,
+    "ngons": 0,
+    "non_manifold_edges": 4,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Hydrant_Red"
+    ],
+    "y_range": [
+     -0.1653,
+     0.1803
+    ],
+    "z_range": [
+     0.0,
+     0.76
+    ],
+    "x_range": [
+     -0.1755,
+     0.1748
+    ]
+   }
+  ],
+  "problems": [],
+  "bbox_min": [
+   -0.1755,
+   -0.175,
+   -0.0
+  ],
+  "bbox_max": [
+   0.175,
+   0.1803,
+   0.78
+  ]
+ },
+ {
+  "file": "VC_Lamp_Boulevard_Twin.fbx",
+  "objects": [
+   "UBX_VC_Lamp_Boulevard_Twin_Shaft",
+   "UCX_VC_Lamp_Boulevard_Twin",
+   "VC_Lamp_Boulevard_Twin",
+   "VC_Lamp_Boulevard_Twin_LOD0",
+   "VC_Lamp_Boulevard_Twin_LOD1",
+   "VC_Lamp_Boulevard_Twin_LOD2"
+  ],
+  "roots": [
+   {
+    "name": "VC_Lamp_Boulevard_Twin",
+    "type": "EMPTY",
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot_deg": [
+     1.57,
+     -0.0,
+     3.14
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "meshes": [
+   {
+    "name": "UBX_VC_Lamp_Boulevard_Twin_Shaft",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.09,
+     0.09
+    ],
+    "z_range": [
+     -0.0,
+     6.28
+    ],
+    "x_range": [
+     -0.09,
+     0.09
+    ]
+   },
+   {
+    "name": "UCX_VC_Lamp_Boulevard_Twin",
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.19,
+     0.19
+    ],
+    "z_range": [
+     -0.0,
+     0.32
+    ],
+    "x_range": [
+     -0.19,
+     0.19
+    ]
+   },
+   {
+    "name": "VC_Lamp_Boulevard_Twin_LOD0",
+    "tris": 228,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive",
+     "VC_Concrete_Plinth"
+    ],
+    "y_range": [
+     -2.15,
+     2.15
+    ],
+    "z_range": [
+     -0.0,
+     6.6975
+    ],
+    "x_range": [
+     -0.1807,
+     0.1807
+    ]
+   },
+   {
+    "name": "VC_Lamp_Boulevard_Twin_LOD1",
+    "tris": 80,
+    "ngons": 0,
+    "non_manifold_edges": 20,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive",
+     "VC_Concrete_Plinth"
+    ],
+    "y_range": [
+     -2.1377,
+     2.1377
+    ],
+    "z_range": [
+     -0.0,
+     6.6816
+    ],
+    "x_range": [
+     -0.1808,
+     0.1809
+    ]
+   },
+   {
+    "name": "VC_Lamp_Boulevard_Twin_LOD2",
+    "tris": 47,
+    "ngons": 0,
+    "non_manifold_edges": 19,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive",
+     "VC_Concrete_Plinth"
+    ],
+    "y_range": [
+     -2.1377,
+     2.1377
+    ],
+    "z_range": [
+     0.0002,
+     6.6816
+    ],
+    "x_range": [
+     -0.1808,
+     0.1809
+    ]
+   }
+  ],
+  "problems": [],
+  "bbox_min": [
+   -0.19,
+   -2.15,
+   -0.0
+  ],
+  "bbox_max": [
+   0.19,
+   2.15,
+   6.6975
+  ]
+ },
+ {
+  "file": "VC_Lamp_Cobra_Single.fbx",
+  "objects": [
+   "UBX_VC_Lamp_Cobra_Single_Shaft",
+   "UCX_VC_Lamp_Cobra_Single",
+   "VC_Lamp_Cobra_Single",
+   "VC_Lamp_Cobra_Single_LOD0",
+   "VC_Lamp_Cobra_Single_LOD1",
+   "VC_Lamp_Cobra_Single_LOD2"
+  ],
+  "roots": [
+   {
+    "name": "VC_Lamp_Cobra_Single",
+    "type": "EMPTY",
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot_deg": [
+     1.57,
+     -0.0,
+     3.14
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "meshes": [
+   {
+    "name": "UBX_VC_Lamp_Cobra_Single_Shaft",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.1,
+     0.1
+    ],
+    "z_range": [
+     -0.0,
+     8.52
+    ],
+    "x_range": [
+     -0.1,
+     0.1
+    ]
+   },
+   {
+    "name": "UCX_VC_Lamp_Cobra_Single",
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.145,
+     0.145
+    ],
+    "z_range": [
+     -0.0,
+     1.2
+    ],
+    "x_range": [
+     -0.145,
+     0.145
+    ]
+   },
+   {
+    "name": "VC_Lamp_Cobra_Single_LOD0",
+    "tris": 220,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive"
+    ],
+    "y_range": [
+     -0.225,
+     2.86
+    ],
+    "z_range": [
+     -0.0,
+     9.3668
+    ],
+    "x_range": [
+     -0.214,
+     0.214
+    ]
+   },
+   {
+    "name": "VC_Lamp_Cobra_Single_LOD1",
+    "tris": 84,
+    "ngons": 0,
+    "non_manifold_edges": 8,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive"
+    ],
+    "y_range": [
+     -0.2253,
+     2.86
+    ],
+    "z_range": [
+     0.0,
+     9.3557
+    ],
+    "x_range": [
+     -0.2323,
+     0.214
+    ]
+   },
+   {
+    "name": "VC_Lamp_Cobra_Single_LOD2",
+    "tris": 51,
+    "ngons": 0,
+    "non_manifold_edges": 11,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive"
+    ],
+    "y_range": [
+     -0.2226,
+     2.8413
+    ],
+    "z_range": [
+     0.001,
+     9.3557
+    ],
+    "x_range": [
+     -0.2148,
+     0.2274
+    ]
+   }
+  ],
+  "problems": [],
+  "bbox_min": [
+   -0.2323,
+   -0.2253,
+   -0.0
+  ],
+  "bbox_max": [
+   0.2274,
+   2.86,
+   9.3668
+  ]
+ },
+ {
+  "file": "VC_Lamp_Cobra_Twin.fbx",
+  "objects": [
+   "UBX_VC_Lamp_Cobra_Twin_Shaft",
+   "UCX_VC_Lamp_Cobra_Twin",
+   "VC_Lamp_Cobra_Twin",
+   "VC_Lamp_Cobra_Twin_LOD0",
+   "VC_Lamp_Cobra_Twin_LOD1",
+   "VC_Lamp_Cobra_Twin_LOD2"
+  ],
+  "roots": [
+   {
+    "name": "VC_Lamp_Cobra_Twin",
+    "type": "EMPTY",
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot_deg": [
+     1.57,
+     -0.0,
+     3.14
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "meshes": [
+   {
+    "name": "UBX_VC_Lamp_Cobra_Twin_Shaft",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.1,
+     0.1
+    ],
+    "z_range": [
+     -0.0,
+     8.52
+    ],
+    "x_range": [
+     -0.1,
+     0.1
+    ]
+   },
+   {
+    "name": "UCX_VC_Lamp_Cobra_Twin",
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.145,
+     0.145
+    ],
+    "z_range": [
+     -0.0,
+     1.2
+    ],
+    "x_range": [
+     -0.145,
+     0.145
+    ]
+   },
+   {
+    "name": "VC_Lamp_Cobra_Twin_LOD0",
+    "tris": 320,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive"
+    ],
+    "y_range": [
+     -2.86,
+     2.86
+    ],
+    "z_range": [
+     -0.0,
+     9.3668
+    ],
+    "x_range": [
+     -0.214,
+     0.214
+    ]
+   },
+   {
+    "name": "VC_Lamp_Cobra_Twin_LOD1",
+    "tris": 122,
+    "ngons": 0,
+    "non_manifold_edges": 12,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive"
+    ],
+    "y_range": [
+     -2.86,
+     2.86
+    ],
+    "z_range": [
+     0.0,
+     9.3557
+    ],
+    "x_range": [
+     -0.2323,
+     0.214
+    ]
+   },
+   {
+    "name": "VC_Lamp_Cobra_Twin_LOD2",
+    "tris": 47,
+    "ngons": 0,
+    "non_manifold_edges": 19,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Alu_Grey",
+     "VC_Lamp_Emissive"
+    ],
+    "y_range": [
+     -2.8413,
+     2.8413
+    ],
+    "z_range": [
+     0.0237,
+     9.31
+    ],
+    "x_range": [
+     -0.2148,
+     0.2274
+    ]
+   }
+  ],
+  "problems": [],
+  "bbox_min": [
+   -0.2323,
+   -2.86,
+   -0.0
+  ],
+  "bbox_max": [
+   0.2274,
+   2.86,
+   9.3668
+  ]
+ },
+ {
+  "file": "VC_Lamp_Ornate_Single.fbx",
+  "objects": [
+   "UBX_VC_Lamp_Ornate_Single_Shaft",
+   "UCX_VC_Lamp_Ornate_Single",
+   "VC_Lamp_Ornate_Single",
+   "VC_Lamp_Ornate_Single_LOD0",
+   "VC_Lamp_Ornate_Single_LOD1",
+   "VC_Lamp_Ornate_Single_LOD2"
+  ],
+  "roots": [
+   {
+    "name": "VC_Lamp_Ornate_Single",
+    "type": "EMPTY",
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot_deg": [
+     1.57,
+     -0.0,
+     3.14
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "meshes": [
+   {
+    "name": "UBX_VC_Lamp_Ornate_Single_Shaft",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.11,
+     0.11
+    ],
+    "z_range": [
+     -0.0,
+     4.12
+    ],
+    "x_range": [
+     -0.11,
+     0.11
+    ]
+   },
+   {
+    "name": "UCX_VC_Lamp_Ornate_Single",
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.3,
+     0.3
+    ],
+    "z_range": [
+     -0.0,
+     0.46
+    ],
+    "x_range": [
+     -0.3,
+     0.3
+    ]
+   },
+   {
+    "name": "VC_Lamp_Ornate_Single_LOD0",
+    "tris": 368,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Iron_Painted",
+     "VC_Lamp_Emissive"
+    ],
+    "y_range": [
+     -0.3,
+     0.3
+    ],
+    "z_range": [
+     -0.0,
+     5.005
+    ],
+    "x_range": [
+     -0.3,
+     0.3
+    ]
+   },
+   {
+    "name": "VC_Lamp_Ornate_Single_LOD1",
+    "tris": 145,
+    "ngons": 0,
+    "non_manifold_edges": 3,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Iron_Painted",
+     "VC_Lamp_Emissive"
+    ],
+    "y_range": [
+     -0.288,
+     0.288
+    ],
+    "z_range": [
+     -0.0,
+     5.0075
+    ],
+    "x_range": [
+     -0.3,
+     0.3
+    ]
+   },
+   {
+    "name": "VC_Lamp_Ornate_Single_LOD2",
+    "tris": 51,
+    "ngons": 0,
+    "non_manifold_edges": 9,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Iron_Painted",
+     "VC_Lamp_Emissive"
+    ],
+    "y_range": [
+     -0.2836,
+     0.2836
+    ],
+    "z_range": [
+     0.0333,
+     5.0075
+    ],
+    "x_range": [
+     -0.2856,
+     0.2856
+    ]
+   }
+  ],
+  "problems": [],
+  "bbox_min": [
+   -0.3,
+   -0.3,
+   -0.0
+  ],
+  "bbox_max": [
+   0.3,
+   0.3,
+   5.0075
+  ]
+ },
+ {
+  "file": "VC_Lamp_Ornate_Twin.fbx",
+  "objects": [
+   "UBX_VC_Lamp_Ornate_Twin_Shaft",
+   "UCX_VC_Lamp_Ornate_Twin",
+   "VC_Lamp_Ornate_Twin",
+   "VC_Lamp_Ornate_Twin_LOD0",
+   "VC_Lamp_Ornate_Twin_LOD1",
+   "VC_Lamp_Ornate_Twin_LOD2"
+  ],
+  "roots": [
+   {
+    "name": "VC_Lamp_Ornate_Twin",
+    "type": "EMPTY",
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot_deg": [
+     1.57,
+     -0.0,
+     3.14
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "meshes": [
+   {
+    "name": "UBX_VC_Lamp_Ornate_Twin_Shaft",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.11,
+     0.11
+    ],
+    "z_range": [
+     -0.0,
+     3.92
+    ],
+    "x_range": [
+     -0.11,
+     0.11
+    ]
+   },
+   {
+    "name": "UCX_VC_Lamp_Ornate_Twin",
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.3,
+     0.3
+    ],
+    "z_range": [
+     -0.0,
+     0.46
+    ],
+    "x_range": [
+     -0.3,
+     0.3
+    ]
+   },
+   {
+    "name": "VC_Lamp_Ornate_Twin_LOD0",
+    "tris": 616,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Iron_Painted",
+     "VC_Lamp_Emissive"
+    ],
+    "y_range": [
+     -0.3,
+     0.3
+    ],
+    "z_range": [
+     -0.0,
+     5.085
+    ],
+    "x_range": [
+     -1.015,
+     1.015
+    ]
+   },
+   {
+    "name": "VC_Lamp_Ornate_Twin_LOD1",
+    "tris": 244,
+    "ngons": 0,
+    "non_manifold_edges": 6,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Iron_Painted",
+     "VC_Lamp_Emissive"
+    ],
+    "y_range": [
+     -0.3,
+     0.288
+    ],
+    "z_range": [
+     -0.0,
+     5.0875
+    ],
+    "x_range": [
+     -1.015,
+     1.015
+    ]
+   },
+   {
+    "name": "VC_Lamp_Ornate_Twin_LOD2",
+    "tris": 46,
+    "ngons": 0,
+    "non_manifold_edges": 42,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Iron_Painted",
+     "VC_Lamp_Emissive"
+    ],
+    "y_range": [
+     -0.2836,
+     0.2836
+    ],
+    "z_range": [
+     0.0333,
+     5.0875
+    ],
+    "x_range": [
+     -0.9783,
+     0.9783
+    ]
+   }
+  ],
+  "problems": [],
+  "bbox_min": [
+   -1.015,
+   -0.3,
+   -0.0
+  ],
+  "bbox_max": [
+   1.015,
+   0.3,
+   5.0875
+  ]
+ },
+ {
+  "file": "VC_NewsBox.fbx",
+  "objects": [
+   "UBX_VC_NewsBox",
+   "VC_NewsBox",
+   "VC_NewsBox_LOD0",
+   "VC_NewsBox_LOD1"
+  ],
+  "roots": [
+   {
+    "name": "VC_NewsBox",
+    "type": "EMPTY",
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot_deg": [
+     1.57,
+     -0.0,
+     3.14
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "meshes": [
+   {
+    "name": "UBX_VC_NewsBox",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.2,
+     0.2
+    ],
+    "z_range": [
+     -0.0,
+     1.1
+    ],
+    "x_range": [
+     -0.22,
+     0.22
+    ]
+   },
+   {
+    "name": "VC_NewsBox_LOD0",
+    "tris": 148,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Orange",
+     "VC_Glass_Clear"
+    ],
+    "y_range": [
+     -0.2,
+     0.2356
+    ],
+    "z_range": [
+     -0.0,
+     1.1
+    ],
+    "x_range": [
+     -0.22,
+     0.22
+    ]
+   },
+   {
+    "name": "VC_NewsBox_LOD1",
+    "tris": 70,
+    "ngons": 0,
+    "non_manifold_edges": 4,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Orange",
+     "VC_Glass_Clear"
+    ],
+    "y_range": [
+     -0.2,
+     0.2285
+    ],
+    "z_range": [
+     0.0,
+     1.1
+    ],
+    "x_range": [
+     -0.22,
+     0.22
+    ]
+   }
+  ],
+  "problems": [],
+  "bbox_min": [
+   -0.22,
+   -0.2,
+   -0.0
+  ],
+  "bbox_max": [
+   0.22,
+   0.2356,
+   1.1
+  ]
+ },
+ {
+  "file": "VC_ParkingMeter.fbx",
+  "objects": [
+   "UBX_VC_ParkingMeter",
+   "VC_ParkingMeter",
+   "VC_ParkingMeter_LOD0",
+   "VC_ParkingMeter_LOD1"
+  ],
+  "roots": [
+   {
+    "name": "VC_ParkingMeter",
+    "type": "EMPTY",
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot_deg": [
+     1.57,
+     -0.0,
+     3.14
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "meshes": [
+   {
+    "name": "UBX_VC_ParkingMeter",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.08,
+     0.08
+    ],
+    "z_range": [
+     -0.0,
+     1.335
+    ],
+    "x_range": [
+     -0.095,
+     0.095
+    ]
+   },
+   {
+    "name": "VC_ParkingMeter_LOD0",
+    "tris": 104,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Slate",
+     "VC_Glass_Clear"
+    ],
+    "y_range": [
+     -0.095,
+     0.095
+    ],
+    "z_range": [
+     -0.0,
+     1.335
+    ],
+    "x_range": [
+     -0.095,
+     0.095
+    ]
+   },
+   {
+    "name": "VC_ParkingMeter_LOD1",
+    "tris": 68,
+    "ngons": 0,
+    "non_manifold_edges": 8,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Slate",
+     "VC_Glass_Clear"
+    ],
+    "y_range": [
+     -0.095,
+     0.095
+    ],
+    "z_range": [
+     -0.0,
+     1.335
+    ],
+    "x_range": [
+     -0.095,
+     0.095
+    ]
+   }
+  ],
+  "problems": [],
+  "bbox_min": [
+   -0.095,
+   -0.095,
+   -0.0
+  ],
+  "bbox_max": [
+   0.095,
+   0.095,
+   1.335
+  ]
+ },
+ {
+  "file": "VC_PostBox.fbx",
+  "objects": [
+   "UBX_VC_PostBox",
+   "VC_PostBox",
+   "VC_PostBox_LOD0",
+   "VC_PostBox_LOD1"
+  ],
+  "roots": [
+   {
+    "name": "VC_PostBox",
+    "type": "EMPTY",
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot_deg": [
+     1.57,
+     -0.0,
+     3.14
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "meshes": [
+   {
+    "name": "UBX_VC_PostBox",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.23,
+     0.23
+    ],
+    "z_range": [
+     -0.0,
+     1.25
+    ],
+    "x_range": [
+     -0.28,
+     0.28
+    ]
+   },
+   {
+    "name": "VC_PostBox_LOD0",
+    "tris": 92,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Civic_Green"
+    ],
+    "y_range": [
+     -0.23,
+     0.2595
+    ],
+    "z_range": [
+     -0.0,
+     1.25
+    ],
+    "x_range": [
+     -0.28,
+     0.28
+    ]
+   },
+   {
+    "name": "VC_PostBox_LOD1",
+    "tris": 70,
+    "ngons": 0,
+    "non_manifold_edges": 4,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Civic_Green"
+    ],
+    "y_range": [
+     -0.23,
+     0.2595
+    ],
+    "z_range": [
+     -0.0,
+     1.25
+    ],
+    "x_range": [
+     -0.28,
+     0.28
+    ]
+   }
+  ],
+  "problems": [],
+  "bbox_min": [
+   -0.28,
+   -0.23,
+   -0.0
+  ],
+  "bbox_max": [
+   0.28,
+   0.2595,
+   1.25
+  ]
+ },
+ {
+  "file": "VC_SignBlade.fbx",
+  "objects": [
+   "UBX_VC_SignBlade",
+   "VC_SignBlade",
+   "VC_SignBlade_LOD0",
+   "VC_SignBlade_LOD1",
+   "VC_SignBlade_LOD2"
+  ],
+  "roots": [
+   {
+    "name": "VC_SignBlade",
+    "type": "EMPTY",
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot_deg": [
+     1.57,
+     -0.0,
+     3.14
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "meshes": [
+   {
+    "name": "UBX_VC_SignBlade",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.07,
+     0.07
+    ],
+    "z_range": [
+     -0.0,
+     2.62
+    ],
+    "x_range": [
+     -0.07,
+     0.07
+    ]
+   },
+   {
+    "name": "VC_SignBlade_LOD0",
+    "tris": 120,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Steel_Dark",
+     "VC_Sign_BlankFace"
+    ],
+    "y_range": [
+     -0.55,
+     0.55
+    ],
+    "z_range": [
+     -0.0,
+     2.945
+    ],
+    "x_range": [
+     -0.55,
+     0.55
+    ]
+   },
+   {
+    "name": "VC_SignBlade_LOD1",
+    "tris": 68,
+    "ngons": 0,
+    "non_manifold_edges": 8,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Steel_Dark",
+     "VC_Sign_BlankFace"
+    ],
+    "y_range": [
+     -0.55,
+     0.55
+    ],
+    "z_range": [
+     -0.0,
+     2.9459
+    ],
+    "x_range": [
+     -0.55,
+     0.55
+    ]
+   },
+   {
+    "name": "VC_SignBlade_LOD2",
+    "tris": 52,
+    "ngons": 0,
+    "non_manifold_edges": 8,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Steel_Dark",
+     "VC_Sign_BlankFace"
+    ],
+    "y_range": [
+     -0.55,
+     0.55
+    ],
+    "z_range": [
+     0.0002,
+     2.9459
+    ],
+    "x_range": [
+     -0.55,
+     0.55
+    ]
+   }
+  ],
+  "problems": [],
+  "bbox_min": [
+   -0.55,
+   -0.55,
+   -0.0
+  ],
+  "bbox_max": [
+   0.55,
+   0.55,
+   2.9459
+  ]
+ },
+ {
+  "file": "VC_SignSpeedLimit.fbx",
+  "objects": [
+   "UBX_VC_SignSpeedLimit",
+   "VC_SignSpeedLimit",
+   "VC_SignSpeedLimit_LOD0",
+   "VC_SignSpeedLimit_LOD1",
+   "VC_SignSpeedLimit_LOD2"
+  ],
+  "roots": [
+   {
+    "name": "VC_SignSpeedLimit",
+    "type": "EMPTY",
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot_deg": [
+     1.57,
+     -0.0,
+     3.14
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "meshes": [
+   {
+    "name": "UBX_VC_SignSpeedLimit",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.06,
+     0.06
+    ],
+    "z_range": [
+     -0.0,
+     2.1
+    ],
+    "x_range": [
+     -0.06,
+     0.06
+    ]
+   },
+   {
+    "name": "VC_SignSpeedLimit_LOD0",
+    "tris": 112,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Steel_Dark",
+     "VC_Sign_BlankFace"
+    ],
+    "y_range": [
+     -0.085,
+     0.085
+    ],
+    "z_range": [
+     -0.0,
+     2.36
+    ],
+    "x_range": [
+     -0.33,
+     0.33
+    ]
+   },
+   {
+    "name": "VC_SignSpeedLimit_LOD1",
+    "tris": 72,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Steel_Dark",
+     "VC_Sign_BlankFace"
+    ],
+    "y_range": [
+     -0.085,
+     0.085
+    ],
+    "z_range": [
+     -0.0,
+     2.36
+    ],
+    "x_range": [
+     -0.33,
+     0.33
+    ]
+   },
+   {
+    "name": "VC_SignSpeedLimit_LOD2",
+    "tris": 56,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Steel_Dark",
+     "VC_Sign_BlankFace"
+    ],
+    "y_range": [
+     -0.0846,
+     0.0846
+    ],
+    "z_range": [
+     0.0003,
+     2.36
+    ],
+    "x_range": [
+     -0.33,
+     0.33
+    ]
+   }
+  ],
+  "problems": [],
+  "bbox_min": [
+   -0.33,
+   -0.085,
+   -0.0
+  ],
+  "bbox_max": [
+   0.33,
+   0.085,
+   2.36
+  ]
+ },
+ {
+  "file": "VC_TrashCan_Civic.fbx",
+  "objects": [
+   "UCX_VC_TrashCan_Civic",
+   "VC_TrashCan_Civic",
+   "VC_TrashCan_Civic_LOD0",
+   "VC_TrashCan_Civic_LOD1"
+  ],
+  "roots": [
+   {
+    "name": "VC_TrashCan_Civic",
+    "type": "EMPTY",
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot_deg": [
+     1.57,
+     -0.0,
+     3.14
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "meshes": [
+   {
+    "name": "UCX_VC_TrashCan_Civic",
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": false,
+    "slots": [],
+    "y_range": [
+     -0.325,
+     0.325
+    ],
+    "z_range": [
+     -0.0,
+     1.03
+    ],
+    "x_range": [
+     -0.325,
+     0.325
+    ]
+   },
+   {
+    "name": "VC_TrashCan_Civic_LOD0",
+    "tris": 240,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Civic_Green"
+    ],
+    "y_range": [
+     -0.33,
+     0.33
+    ],
+    "z_range": [
+     -0.0,
+     1.03
+    ],
+    "x_range": [
+     -0.33,
+     0.33
+    ]
+   },
+   {
+    "name": "VC_TrashCan_Civic_LOD1",
+    "tris": 96,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "flipped": 0,
+    "uv": true,
+    "slots": [
+     "VC_Paint_Civic_Green"
+    ],
+    "y_range": [
+     -0.3229,
+     0.3459
+    ],
+    "z_range": [
+     0.0083,
+     1.0334
+    ],
+    "x_range": [
+     -0.3494,
+     0.3221
+    ]
+   }
+  ],
+  "problems": [],
+  "bbox_min": [
+   -0.3494,
+   -0.33,
+   -0.0
+  ],
+  "bbox_max": [
+   0.33,
+   0.3459,
+   1.0334
+  ]
+ }
+]

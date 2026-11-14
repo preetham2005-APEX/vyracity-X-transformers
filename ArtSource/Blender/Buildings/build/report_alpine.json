@@ -1,0 +1,506 @@
+[
+ {
+  "key": "chalet_a",
+  "name": "VC_Alp_ChaletA",
+  "set": "alpine",
+  "family": "chalet_a",
+  "style_kit": [
+   "Alpine"
+  ],
+  "districts": [
+   "D4"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Alp_ChaletA.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Alp_ChaletA.fbx",
+  "footprint_m": [
+   12.0,
+   10.0
+  ],
+  "height_m": 8.02,
+  "design_height_m": 8.0,
+  "bbox_m": [
+   14.34,
+   12.67,
+   8.02
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Alp_ChaletA_LOD0",
+    "tris": 956,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Al_Timber",
+     "VC_Al_Stone",
+     "VC_Al_Roof",
+     "VC_Al_Glass",
+     "VC_Al_Trim",
+     "VC_Al_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Alp_ChaletA_LOD1",
+    "tris": 668,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Al_Timber",
+     "VC_Al_Stone",
+     "VC_Al_Roof",
+     "VC_Al_Glass",
+     "VC_Al_Trim",
+     "VC_Al_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Alp_ChaletA_LOD2",
+    "tris": 176,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Al_Timber",
+     "VC_Al_Stone",
+     "VC_Al_Roof",
+     "VC_Al_Glass",
+     "VC_Al_Trim",
+     "VC_Al_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Alp_ChaletA"
+  ],
+  "slots": [
+   "VC_Al_Timber",
+   "VC_Al_Stone",
+   "VC_Al_Roof",
+   "VC_Al_Glass",
+   "VC_Al_Trim",
+   "VC_Al_Concrete"
+  ]
+ },
+ {
+  "key": "chalet_b",
+  "name": "VC_Alp_ChaletB",
+  "set": "alpine",
+  "family": "chalet_b",
+  "style_kit": [
+   "Alpine"
+  ],
+  "districts": [
+   "D4"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Alp_ChaletB.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Alp_ChaletB.fbx",
+  "footprint_m": [
+   12.0,
+   10.0
+  ],
+  "height_m": 8.0,
+  "design_height_m": 8.0,
+  "bbox_m": [
+   14.62,
+   12.44,
+   8.0
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Alp_ChaletB_LOD0",
+    "tris": 836,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Al_Timber",
+     "VC_Al_Stone",
+     "VC_Al_Roof",
+     "VC_Al_Glass",
+     "VC_Al_Trim",
+     "VC_Al_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Alp_ChaletB_LOD1",
+    "tris": 572,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Al_Timber",
+     "VC_Al_Stone",
+     "VC_Al_Roof",
+     "VC_Al_Glass",
+     "VC_Al_Trim",
+     "VC_Al_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Alp_ChaletB_LOD2",
+    "tris": 152,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Al_Timber",
+     "VC_Al_Stone",
+     "VC_Al_Roof",
+     "VC_Al_Glass",
+     "VC_Al_Trim",
+     "VC_Al_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Alp_ChaletB"
+  ],
+  "slots": [
+   "VC_Al_Timber",
+   "VC_Al_Stone",
+   "VC_Al_Roof",
+   "VC_Al_Glass",
+   "VC_Al_Trim",
+   "VC_Al_Concrete"
+  ]
+ },
+ {
+  "key": "chalet_c",
+  "name": "VC_Alp_ChaletC",
+  "set": "alpine",
+  "family": "chalet_c",
+  "style_kit": [
+   "Alpine"
+  ],
+  "districts": [
+   "D4"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Alp_ChaletC.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Alp_ChaletC.fbx",
+  "footprint_m": [
+   12.0,
+   10.0
+  ],
+  "height_m": 8.0,
+  "design_height_m": 8.0,
+  "bbox_m": [
+   14.24,
+   12.24,
+   8.0
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Alp_ChaletC_LOD0",
+    "tris": 520,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Al_Timber",
+     "VC_Al_Stone",
+     "VC_Al_Roof",
+     "VC_Al_Glass",
+     "VC_Al_Trim",
+     "VC_Al_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Alp_ChaletC_LOD1",
+    "tris": 376,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Al_Timber",
+     "VC_Al_Stone",
+     "VC_Al_Roof",
+     "VC_Al_Glass",
+     "VC_Al_Trim",
+     "VC_Al_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Alp_ChaletC_LOD2",
+    "tris": 116,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Al_Timber",
+     "VC_Al_Stone",
+     "VC_Al_Roof",
+     "VC_Al_Glass",
+     "VC_Al_Trim",
+     "VC_Al_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Alp_ChaletC"
+  ],
+  "slots": [
+   "VC_Al_Timber",
+   "VC_Al_Stone",
+   "VC_Al_Roof",
+   "VC_Al_Glass",
+   "VC_Al_Trim",
+   "VC_Al_Concrete"
+  ]
+ },
+ {
+  "key": "workshop",
+  "name": "VC_Alp_Workshop",
+  "set": "alpine",
+  "family": "workshop",
+  "style_kit": [
+   "Alpine"
+  ],
+  "districts": [
+   "D4"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Alp_Workshop.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Alp_Workshop.fbx",
+  "footprint_m": [
+   42.0,
+   24.0
+  ],
+  "height_m": 8.5,
+  "design_height_m": 8.5,
+  "bbox_m": [
+   44.14,
+   26.14,
+   8.5
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Alp_Workshop_LOD0",
+    "tris": 680,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Al_Timber",
+     "VC_Al_Stone",
+     "VC_Al_Roof",
+     "VC_Al_Glass",
+     "VC_Al_Trim",
+     "VC_Al_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Alp_Workshop_LOD1",
+    "tris": 416,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Al_Timber",
+     "VC_Al_Stone",
+     "VC_Al_Roof",
+     "VC_Al_Glass",
+     "VC_Al_Trim",
+     "VC_Al_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Alp_Workshop_LOD2",
+    "tris": 152,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Al_Timber",
+     "VC_Al_Stone",
+     "VC_Al_Roof",
+     "VC_Al_Glass",
+     "VC_Al_Trim",
+     "VC_Al_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Alp_Workshop"
+  ],
+  "slots": [
+   "VC_Al_Timber",
+   "VC_Al_Stone",
+   "VC_Al_Roof",
+   "VC_Al_Glass",
+   "VC_Al_Trim",
+   "VC_Al_Concrete"
+  ]
+ }
+]

@@ -1,0 +1,349 @@
+{
+ "source": "Veyra_Original_NeonMile",
+ "original": true,
+ "generator": "ArtSource/Blender/Buildings/build/",
+ "pieces": [
+  {
+   "name": "VC_Neon_Brick30",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_NeonMile/VC_Neon_Brick30.fbx",
+   "type": "Building",
+   "footprint_m": [
+    57.0,
+    57.0
+   ],
+   "height_m": 30.0,
+   "triangles": [
+    1224,
+    804,
+    372
+   ],
+   "collision": [
+    "UBX_VC_Neon_Brick30"
+   ],
+   "materials": [
+    {
+     "source": "VC_Nm_Brick"
+    },
+    {
+     "source": "VC_Nm_Glass"
+    },
+    {
+     "source": "VC_Nm_Metal"
+    },
+    {
+     "source": "VC_Nm_Concrete"
+    },
+    {
+     "source": "VC_Nm_Shutter"
+    },
+    {
+     "source": "VC_Neon_Emissive"
+    }
+   ]
+  },
+  {
+   "name": "VC_Neon_Brick33l",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_NeonMile/VC_Neon_Brick33l.fbx",
+   "type": "Building",
+   "footprint_m": [
+    56.0,
+    105.0
+   ],
+   "height_m": 33.0,
+   "triangles": [
+    1524,
+    948,
+    372
+   ],
+   "collision": [
+    "UBX_VC_Neon_Brick33l"
+   ],
+   "materials": [
+    {
+     "source": "VC_Nm_Brick"
+    },
+    {
+     "source": "VC_Nm_Glass"
+    },
+    {
+     "source": "VC_Nm_Metal"
+    },
+    {
+     "source": "VC_Nm_Concrete"
+    },
+    {
+     "source": "VC_Nm_Shutter"
+    },
+    {
+     "source": "VC_Neon_Emissive"
+    }
+   ]
+  },
+  {
+   "name": "VC_Neon_Brick42",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_NeonMile/VC_Neon_Brick42.fbx",
+   "type": "Building",
+   "footprint_m": [
+    57.0,
+    57.0
+   ],
+   "height_m": 42.0,
+   "triangles": [
+    1260,
+    816,
+    372
+   ],
+   "collision": [
+    "UBX_VC_Neon_Brick42"
+   ],
+   "materials": [
+    {
+     "source": "VC_Nm_Brick"
+    },
+    {
+     "source": "VC_Nm_Glass"
+    },
+    {
+     "source": "VC_Nm_Metal"
+    },
+    {
+     "source": "VC_Nm_Concrete"
+    },
+    {
+     "source": "VC_Nm_Shutter"
+    },
+    {
+     "source": "VC_Neon_Emissive"
+    }
+   ]
+  },
+  {
+   "name": "VC_Neon_Brick62",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_NeonMile/VC_Neon_Brick62.fbx",
+   "type": "Building",
+   "footprint_m": [
+    57.0,
+    57.0
+   ],
+   "height_m": 62.0,
+   "triangles": [
+    1332,
+    852,
+    372
+   ],
+   "collision": [
+    "UBX_VC_Neon_Brick62"
+   ],
+   "materials": [
+    {
+     "source": "VC_Nm_Brick"
+    },
+    {
+     "source": "VC_Nm_Glass"
+    },
+    {
+     "source": "VC_Nm_Metal"
+    },
+    {
+     "source": "VC_Nm_Concrete"
+    },
+    {
+     "source": "VC_Nm_Shutter"
+    },
+    {
+     "source": "VC_Neon_Emissive"
+    }
+   ]
+  },
+  {
+   "name": "VC_Neon_Brick62l",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_NeonMile/VC_Neon_Brick62l.fbx",
+   "type": "Building",
+   "footprint_m": [
+    56.0,
+    105.0
+   ],
+   "height_m": 62.0,
+   "triangles": [
+    1620,
+    996,
+    372
+   ],
+   "collision": [
+    "UBX_VC_Neon_Brick62l"
+   ],
+   "materials": [
+    {
+     "source": "VC_Nm_Brick"
+    },
+    {
+     "source": "VC_Nm_Glass"
+    },
+    {
+     "source": "VC_Nm_Metal"
+    },
+    {
+     "source": "VC_Nm_Concrete"
+    },
+    {
+     "source": "VC_Nm_Shutter"
+    },
+    {
+     "source": "VC_Neon_Emissive"
+    }
+   ]
+  },
+  {
+   "name": "VC_Neon_Low14l",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_NeonMile/VC_Neon_Low14l.fbx",
+   "type": "Building",
+   "footprint_m": [
+    57.0,
+    112.0
+   ],
+   "height_m": 14.0,
+   "triangles": [
+    1260,
+    852,
+    408
+   ],
+   "collision": [
+    "UBX_VC_Neon_Low14l"
+   ],
+   "materials": [
+    {
+     "source": "VC_Nm_Panel"
+    },
+    {
+     "source": "VC_Nm_Glass"
+    },
+    {
+     "source": "VC_Nm_Metal"
+    },
+    {
+     "source": "VC_Nm_Concrete"
+    },
+    {
+     "source": "VC_Nm_Shutter"
+    },
+    {
+     "source": "VC_Neon_Emissive"
+    }
+   ]
+  },
+  {
+   "name": "VC_Neon_Low16",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_NeonMile/VC_Neon_Low16.fbx",
+   "type": "Building",
+   "footprint_m": [
+    58.0,
+    58.0
+   ],
+   "height_m": 16.0,
+   "triangles": [
+    1044,
+    732,
+    408
+   ],
+   "collision": [
+    "UBX_VC_Neon_Low16"
+   ],
+   "materials": [
+    {
+     "source": "VC_Nm_Panel"
+    },
+    {
+     "source": "VC_Nm_Glass"
+    },
+    {
+     "source": "VC_Nm_Metal"
+    },
+    {
+     "source": "VC_Nm_Concrete"
+    },
+    {
+     "source": "VC_Nm_Shutter"
+    },
+    {
+     "source": "VC_Neon_Emissive"
+    }
+   ]
+  },
+  {
+   "name": "VC_Neon_Low18l",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_NeonMile/VC_Neon_Low18l.fbx",
+   "type": "Building",
+   "footprint_m": [
+    57.0,
+    112.0
+   ],
+   "height_m": 18.0,
+   "triangles": [
+    1260,
+    852,
+    408
+   ],
+   "collision": [
+    "UBX_VC_Neon_Low18l"
+   ],
+   "materials": [
+    {
+     "source": "VC_Nm_Panel"
+    },
+    {
+     "source": "VC_Nm_Glass"
+    },
+    {
+     "source": "VC_Nm_Metal"
+    },
+    {
+     "source": "VC_Nm_Concrete"
+    },
+    {
+     "source": "VC_Nm_Shutter"
+    },
+    {
+     "source": "VC_Neon_Emissive"
+    }
+   ]
+  },
+  {
+   "name": "VC_Neon_Low21",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_NeonMile/VC_Neon_Low21.fbx",
+   "type": "Building",
+   "footprint_m": [
+    58.0,
+    58.0
+   ],
+   "height_m": 21.0,
+   "triangles": [
+    1056,
+    732,
+    408
+   ],
+   "collision": [
+    "UBX_VC_Neon_Low21"
+   ],
+   "materials": [
+    {
+     "source": "VC_Nm_Panel"
+    },
+    {
+     "source": "VC_Nm_Glass"
+    },
+    {
+     "source": "VC_Nm_Metal"
+    },
+    {
+     "source": "VC_Nm_Concrete"
+    },
+    {
+     "source": "VC_Nm_Shutter"
+    },
+    {
+     "source": "VC_Neon_Emissive"
+    }
+   ]
+  }
+ ]
+}

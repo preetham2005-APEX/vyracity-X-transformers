@@ -1,0 +1,16 @@
+{
+ "fit": 83,
+ "total": 83,
+ "models": 3,
+ "usage": {
+  "VC_Ind_TankDome": 60,
+  "VC_Ind_TankCone": 20,
+  "VC_Ind_ProcessColumn": 3
+ },
+ "stretch_median": 0.09965635738831602,
+ "stretch_p90": 0.19175991050010333,
+ "stretch_max": 0.2926689576174113,
+ "unfit": [],
+ "misfits": [],
+ "district_p95_long_side_m": 42.8
+}

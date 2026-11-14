@@ -1,0 +1,863 @@
+[
+ {
+  "key": "mid34_a",
+  "name": "VC_Mid_Mid34A",
+  "set": "midrise",
+  "family": "mid34_a",
+  "style_kit": [
+   "ResidentialMidrise"
+  ],
+  "districts": [
+   "D1",
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Mid_Mid34A.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Mid_Mid34A.fbx",
+  "footprint_m": [
+   34.0,
+   18.0
+  ],
+  "height_m": 18.68,
+  "design_height_m": 17.0,
+  "bbox_m": [
+   34.8,
+   20.02,
+   18.68
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Mid_Mid34A_LOD0",
+    "tris": 624,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Panel",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Mid_Mid34A_LOD1",
+    "tris": 408,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Panel",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Mid_Mid34A_LOD2",
+    "tris": 144,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Panel",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Mid_Mid34A"
+  ],
+  "slots": [
+   "VC_Mr_Panel",
+   "VC_Mr_Glass",
+   "VC_Mr_Metal",
+   "VC_Mr_Concrete",
+   "VC_Mr_Brick"
+  ]
+ },
+ {
+  "key": "mid34_b",
+  "name": "VC_Mid_Mid34B",
+  "set": "midrise",
+  "family": "mid34_b",
+  "style_kit": [
+   "ResidentialMidrise"
+  ],
+  "districts": [
+   "D1",
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Mid_Mid34B.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Mid_Mid34B.fbx",
+  "footprint_m": [
+   34.0,
+   18.0
+  ],
+  "height_m": 18.68,
+  "design_height_m": 17.0,
+  "bbox_m": [
+   34.8,
+   19.8,
+   18.68
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Mid_Mid34B_LOD0",
+    "tris": 588,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Brick",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Panel"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Mid_Mid34B_LOD1",
+    "tris": 408,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Brick",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Panel"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Mid_Mid34B_LOD2",
+    "tris": 144,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Brick",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Panel"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Mid_Mid34B"
+  ],
+  "slots": [
+   "VC_Mr_Brick",
+   "VC_Mr_Glass",
+   "VC_Mr_Metal",
+   "VC_Mr_Concrete",
+   "VC_Mr_Panel"
+  ]
+ },
+ {
+  "key": "mid34_c",
+  "name": "VC_Mid_Mid34C",
+  "set": "midrise",
+  "family": "mid34_c",
+  "style_kit": [
+   "ResidentialMidrise"
+  ],
+  "districts": [
+   "D1",
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Mid_Mid34C.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Mid_Mid34C.fbx",
+  "footprint_m": [
+   34.0,
+   18.0
+  ],
+  "height_m": 15.68,
+  "design_height_m": 14.0,
+  "bbox_m": [
+   34.8,
+   20.02,
+   15.68
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Mid_Mid34C_LOD0",
+    "tris": 588,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Brick",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Panel"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Mid_Mid34C_LOD1",
+    "tris": 396,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Brick",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Panel"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Mid_Mid34C_LOD2",
+    "tris": 144,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Brick",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Panel"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Mid_Mid34C"
+  ],
+  "slots": [
+   "VC_Mr_Brick",
+   "VC_Mr_Glass",
+   "VC_Mr_Metal",
+   "VC_Mr_Concrete",
+   "VC_Mr_Panel"
+  ]
+ },
+ {
+  "key": "mid38_30",
+  "name": "VC_Mid_Mid3830",
+  "set": "midrise",
+  "family": "mid38_30",
+  "style_kit": [
+   "ResidentialMidrise"
+  ],
+  "districts": [
+   "D1",
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Mid_Mid3830.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Mid_Mid3830.fbx",
+  "footprint_m": [
+   38.0,
+   24.0
+  ],
+  "height_m": 31.68,
+  "design_height_m": 30.0,
+  "bbox_m": [
+   38.8,
+   26.02,
+   31.68
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Mid_Mid3830_LOD0",
+    "tris": 816,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Panel",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Mid_Mid3830_LOD1",
+    "tris": 480,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Panel",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Mid_Mid3830_LOD2",
+    "tris": 144,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Panel",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Mid_Mid3830"
+  ],
+  "slots": [
+   "VC_Mr_Panel",
+   "VC_Mr_Glass",
+   "VC_Mr_Metal",
+   "VC_Mr_Concrete",
+   "VC_Mr_Brick"
+  ]
+ },
+ {
+  "key": "mid38_45",
+  "name": "VC_Mid_Mid3845",
+  "set": "midrise",
+  "family": "mid38_45",
+  "style_kit": [
+   "ResidentialMidrise"
+  ],
+  "districts": [
+   "D1",
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Mid_Mid3845.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Mid_Mid3845.fbx",
+  "footprint_m": [
+   38.0,
+   24.0
+  ],
+  "height_m": 46.68,
+  "design_height_m": 45.0,
+  "bbox_m": [
+   38.8,
+   25.8,
+   46.68
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Mid_Mid3845_LOD0",
+    "tris": 852,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Panel",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Mid_Mid3845_LOD1",
+    "tris": 540,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Panel",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Mid_Mid3845_LOD2",
+    "tris": 144,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Panel",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Mid_Mid3845"
+  ],
+  "slots": [
+   "VC_Mr_Panel",
+   "VC_Mr_Glass",
+   "VC_Mr_Metal",
+   "VC_Mr_Concrete",
+   "VC_Mr_Brick"
+  ]
+ },
+ {
+  "key": "mid38_60",
+  "name": "VC_Mid_Mid3860",
+  "set": "midrise",
+  "family": "mid38_60",
+  "style_kit": [
+   "ResidentialMidrise"
+  ],
+  "districts": [
+   "D1",
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Mid_Mid3860.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Mid_Mid3860.fbx",
+  "footprint_m": [
+   38.0,
+   24.0
+  ],
+  "height_m": 61.68,
+  "design_height_m": 60.0,
+  "bbox_m": [
+   38.8,
+   26.02,
+   61.68
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Mid_Mid3860_LOD0",
+    "tris": 1140,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Brick",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Panel"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Mid_Mid3860_LOD1",
+    "tris": 588,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Brick",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Panel"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Mid_Mid3860_LOD2",
+    "tris": 144,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Brick",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Panel"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Mid_Mid3860"
+  ],
+  "slots": [
+   "VC_Mr_Brick",
+   "VC_Mr_Glass",
+   "VC_Mr_Metal",
+   "VC_Mr_Concrete",
+   "VC_Mr_Panel"
+  ]
+ },
+ {
+  "key": "mid38_75",
+  "name": "VC_Mid_Mid3875",
+  "set": "midrise",
+  "family": "mid38_75",
+  "style_kit": [
+   "ResidentialMidrise"
+  ],
+  "districts": [
+   "D1",
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Mid_Mid3875.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Mid_Mid3875.fbx",
+  "footprint_m": [
+   38.0,
+   24.0
+  ],
+  "height_m": 76.68,
+  "design_height_m": 75.0,
+  "bbox_m": [
+   38.8,
+   25.8,
+   76.68
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Mid_Mid3875_LOD0",
+    "tris": 1068,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Panel",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Mid_Mid3875_LOD1",
+    "tris": 648,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Panel",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Mid_Mid3875_LOD2",
+    "tris": 144,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Mr_Panel",
+     "VC_Mr_Glass",
+     "VC_Mr_Metal",
+     "VC_Mr_Concrete",
+     "VC_Mr_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Mid_Mid3875"
+  ],
+  "slots": [
+   "VC_Mr_Panel",
+   "VC_Mr_Glass",
+   "VC_Mr_Metal",
+   "VC_Mr_Concrete",
+   "VC_Mr_Brick"
+  ]
+ }
+]

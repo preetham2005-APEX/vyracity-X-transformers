@@ -1,0 +1,197 @@
+{
+ "source": "Veyra_Original_MarketTown",
+ "original": true,
+ "generator": "ArtSource/Blender/Buildings/build/",
+ "pieces": [
+  {
+   "name": "VC_Town_TerraceA",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_MarketTown/VC_Town_TerraceA.fbx",
+   "type": "Building",
+   "footprint_m": [
+    12.0,
+    12.0
+   ],
+   "height_m": 7.9,
+   "triangles": [
+    684,
+    468,
+    168
+   ],
+   "collision": [
+    "UBX_VC_Town_TerraceA"
+   ],
+   "materials": [
+    {
+     "source": "VC_Mt_Brick"
+    },
+    {
+     "source": "VC_Mt_Roof"
+    },
+    {
+     "source": "VC_Mt_Trim"
+    },
+    {
+     "source": "VC_Mt_Glass"
+    },
+    {
+     "source": "VC_Mt_Render"
+    },
+    {
+     "source": "VC_Mt_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Town_TerraceB",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_MarketTown/VC_Town_TerraceB.fbx",
+   "type": "Building",
+   "footprint_m": [
+    12.0,
+    12.0
+   ],
+   "height_m": 8.88,
+   "triangles": [
+    924,
+    588,
+    168
+   ],
+   "collision": [
+    "UBX_VC_Town_TerraceB"
+   ],
+   "materials": [
+    {
+     "source": "VC_Mt_Brick"
+    },
+    {
+     "source": "VC_Mt_Roof"
+    },
+    {
+     "source": "VC_Mt_Trim"
+    },
+    {
+     "source": "VC_Mt_Glass"
+    },
+    {
+     "source": "VC_Mt_Render"
+    },
+    {
+     "source": "VC_Mt_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Town_TerraceC",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_MarketTown/VC_Town_TerraceC.fbx",
+   "type": "Building",
+   "footprint_m": [
+    12.0,
+    12.0
+   ],
+   "height_m": 9.62,
+   "triangles": [
+    548,
+    356,
+    104
+   ],
+   "collision": [
+    "UBX_VC_Town_TerraceC"
+   ],
+   "materials": [
+    {
+     "source": "VC_Mt_Brick"
+    },
+    {
+     "source": "VC_Mt_Roof"
+    },
+    {
+     "source": "VC_Mt_Trim"
+    },
+    {
+     "source": "VC_Mt_Glass"
+    },
+    {
+     "source": "VC_Mt_Render"
+    },
+    {
+     "source": "VC_Mt_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Town_TerraceD",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_MarketTown/VC_Town_TerraceD.fbx",
+   "type": "Building",
+   "footprint_m": [
+    12.0,
+    12.0
+   ],
+   "height_m": 6.82,
+   "triangles": [
+    824,
+    488,
+    128
+   ],
+   "collision": [
+    "UBX_VC_Town_TerraceD"
+   ],
+   "materials": [
+    {
+     "source": "VC_Mt_Brick"
+    },
+    {
+     "source": "VC_Mt_Roof"
+    },
+    {
+     "source": "VC_Mt_Trim"
+    },
+    {
+     "source": "VC_Mt_Glass"
+    },
+    {
+     "source": "VC_Mt_Render"
+    },
+    {
+     "source": "VC_Mt_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Town_TerraceE",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_MarketTown/VC_Town_TerraceE.fbx",
+   "type": "Building",
+   "footprint_m": [
+    12.0,
+    12.0
+   ],
+   "height_m": 8.11,
+   "triangles": [
+    708,
+    480,
+    180
+   ],
+   "collision": [
+    "UBX_VC_Town_TerraceE"
+   ],
+   "materials": [
+    {
+     "source": "VC_Mt_Render"
+    },
+    {
+     "source": "VC_Mt_Roof"
+    },
+    {
+     "source": "VC_Mt_Trim"
+    },
+    {
+     "source": "VC_Mt_Glass"
+    },
+    {
+     "source": "VC_Mt_Brick"
+    },
+    {
+     "source": "VC_Mt_Concrete"
+    }
+   ]
+  }
+ ]
+}

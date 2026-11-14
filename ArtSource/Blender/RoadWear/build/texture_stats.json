@@ -1,0 +1,1068 @@
+{
+ "atlases": [
+  {
+   "name": "T_RW_TyreTrack",
+   "size": 2048,
+   "cell_px": 1024,
+   "cell_m": [
+    4.0,
+    4.0
+   ],
+   "cells": [
+    {
+     "cell": "twin_track_straight",
+     "index": 0,
+     "uv_rect": [
+      0.0,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      0,
+      1024,
+      1024
+     ],
+     "alpha_max": 0.782,
+     "height_mm": [
+      -0.75,
+      -0.0
+     ],
+     "smoothness": [
+      0.25,
+      0.399
+     ]
+    },
+    {
+     "cell": "braking_scuff",
+     "index": 1,
+     "uv_rect": [
+      0.5,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      1024,
+      0,
+      1024,
+      1024
+     ],
+     "alpha_max": 0.706,
+     "height_mm": [
+      0.0,
+      0.3
+     ],
+     "smoothness": [
+      0.25,
+      0.324
+     ]
+    },
+    {
+     "cell": "turn_scuff",
+     "index": 2,
+     "uv_rect": [
+      0.0,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      1024,
+      1024,
+      1024
+     ],
+     "alpha_max": 0.631,
+     "height_mm": [
+      0.0,
+      0.0
+     ],
+     "smoothness": [
+      0.25,
+      0.367
+     ]
+    },
+    {
+     "cell": "junction_polish",
+     "index": 3,
+     "uv_rect": [
+      0.5,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      1024,
+      1024,
+      1024,
+      1024
+     ],
+     "alpha_max": 0.455,
+     "height_mm": [
+      0.0,
+      0.0
+     ],
+     "smoothness": [
+      0.261,
+      0.411
+     ]
+    }
+   ],
+   "bytes": {
+    "BC": 847964,
+    "N": 84023,
+    "MS": 299340
+   }
+  },
+  {
+   "name": "T_RW_Crack",
+   "size": 2048,
+   "cell_px": 1024,
+   "cell_m": [
+    3.0,
+    3.0
+   ],
+   "cells": [
+    {
+     "cell": "alligator_dense",
+     "index": 0,
+     "uv_rect": [
+      0.0,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      0,
+      1024,
+      1024
+     ],
+     "alpha_max": 0.962,
+     "height_mm": [
+      -9.62,
+      -0.0
+     ],
+     "smoothness": [
+      0.115,
+      0.25
+     ]
+    },
+    {
+     "cell": "alligator_sparse",
+     "index": 1,
+     "uv_rect": [
+      0.5,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      1024,
+      0,
+      1024,
+      1024
+     ],
+     "alpha_max": 0.895,
+     "height_mm": [
+      -7.16,
+      -0.0
+     ],
+     "smoothness": [
+      0.143,
+      0.25
+     ]
+    },
+    {
+     "cell": "longitudinal_branching",
+     "index": 2,
+     "uv_rect": [
+      0.0,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      1024,
+      1024,
+      1024
+     ],
+     "alpha_max": 0.949,
+     "height_mm": [
+      -12.34,
+      -0.0
+     ],
+     "smoothness": [
+      0.108,
+      0.25
+     ]
+    },
+    {
+     "cell": "sealed_crack",
+     "index": 3,
+     "uv_rect": [
+      0.5,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      1024,
+      1024,
+      1024,
+      1024
+     ],
+     "alpha_max": 0.959,
+     "height_mm": [
+      0.0,
+      3.95
+     ],
+     "smoothness": [
+      0.25,
+      0.538
+     ]
+    }
+   ],
+   "bytes": {
+    "BC": 533185,
+    "N": 1043525,
+    "MS": 963692
+   }
+  },
+  {
+   "name": "T_RW_LaneWear",
+   "size": 2048,
+   "cell_px": 1024,
+   "cell_m": [
+    1.0,
+    4.0
+   ],
+   "cells": [
+    {
+     "cell": "white_edge_line_worn",
+     "index": 0,
+     "uv_rect": [
+      0.0,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      0,
+      1024,
+      1024
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      0.0,
+      1.5
+     ],
+     "smoothness": [
+      0.25,
+      0.37
+     ]
+    },
+    {
+     "cell": "white_lane_dash_scuffed",
+     "index": 1,
+     "uv_rect": [
+      0.5,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      1024,
+      0,
+      1024,
+      1024
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      0.0,
+      1.5
+     ],
+     "smoothness": [
+      0.25,
+      0.35
+     ]
+    },
+    {
+     "cell": "yellow_double_centre_worn",
+     "index": 2,
+     "uv_rect": [
+      0.0,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      1024,
+      1024,
+      1024
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      0.0,
+      1.5
+     ],
+     "smoothness": [
+      0.25,
+      0.35
+     ]
+    },
+    {
+     "cell": "white_heavy_worn",
+     "index": 3,
+     "uv_rect": [
+      0.5,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      1024,
+      1024,
+      1024,
+      1024
+     ],
+     "alpha_max": 0.962,
+     "height_mm": [
+      0.0,
+      1.01
+     ],
+     "smoothness": [
+      0.25,
+      0.308
+     ]
+    }
+   ],
+   "bytes": {
+    "BC": 773172,
+    "N": 141264,
+    "MS": 143529
+   }
+  },
+  {
+   "name": "T_RW_Oil",
+   "size": 1024,
+   "cell_px": 512,
+   "cell_m": [
+    2.0,
+    2.0
+   ],
+   "cells": [
+    {
+     "cell": "pooled_stain",
+     "index": 0,
+     "uv_rect": [
+      0.0,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      0,
+      512,
+      512
+     ],
+     "alpha_max": 0.988,
+     "height_mm": [
+      -0.4,
+      -0.0
+     ],
+     "smoothness": [
+      0.17,
+      0.658
+     ]
+    },
+    {
+     "cell": "drip_cluster",
+     "index": 1,
+     "uv_rect": [
+      0.5,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      512,
+      0,
+      512,
+      512
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      0.0,
+      0.0
+     ],
+     "smoothness": [
+      0.25,
+      0.63
+     ]
+    },
+    {
+     "cell": "smeared_trail",
+     "index": 2,
+     "uv_rect": [
+      0.0,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      512,
+      512,
+      512
+     ],
+     "alpha_max": 0.85,
+     "height_mm": [
+      0.0,
+      0.0
+     ],
+     "smoothness": [
+      0.25,
+      0.581
+     ]
+    },
+    {
+     "cell": "fresh_spill",
+     "index": 3,
+     "uv_rect": [
+      0.5,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      512,
+      512,
+      512,
+      512
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      -0.6,
+      -0.0
+     ],
+     "smoothness": [
+      0.25,
+      0.83
+     ]
+    }
+   ],
+   "bytes": {
+    "BC": 307209,
+    "N": 9447,
+    "MS": 137209
+   }
+  },
+  {
+   "name": "T_RW_Patch",
+   "size": 1024,
+   "cell_px": 512,
+   "cell_m": [
+    3.0,
+    3.0
+   ],
+   "cells": [
+    {
+     "cell": "rectangular_patch",
+     "index": 0,
+     "uv_rect": [
+      0.0,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      0,
+      512,
+      512
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      0.0,
+      5.7
+     ],
+     "smoothness": [
+      0.25,
+      0.51
+     ]
+    },
+    {
+     "cell": "trench_patch",
+     "index": 1,
+     "uv_rect": [
+      0.5,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      512,
+      0,
+      512,
+      512
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      -3.0,
+      2.5
+     ],
+     "smoothness": [
+      0.25,
+      0.43
+     ]
+    },
+    {
+     "cell": "pothole_fill",
+     "index": 2,
+     "uv_rect": [
+      0.0,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      512,
+      512,
+      512
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      0.0,
+      5.62
+     ],
+     "smoothness": [
+      0.19,
+      0.408
+     ]
+    },
+    {
+     "cell": "skin_seal",
+     "index": 3,
+     "uv_rect": [
+      0.5,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      512,
+      512,
+      512,
+      512
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      0.0,
+      4.7
+     ],
+     "smoothness": [
+      0.25,
+      0.58
+     ]
+    }
+   ],
+   "bytes": {
+    "BC": 378084,
+    "N": 169576,
+    "MS": 288463
+   }
+  },
+  {
+   "name": "T_RW_Grime",
+   "size": 1024,
+   "cell_px": 512,
+   "cell_m": [
+    2.0,
+    2.0
+   ],
+   "cells": [
+    {
+     "cell": "kerb_gradient",
+     "index": 0,
+     "uv_rect": [
+      0.0,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      0,
+      512,
+      512
+     ],
+     "alpha_max": 0.756,
+     "height_mm": [
+      0.0,
+      0.0
+     ],
+     "smoothness": [
+      0.146,
+      0.25
+     ]
+    },
+    {
+     "cell": "gutter_silt",
+     "index": 1,
+     "uv_rect": [
+      0.5,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      512,
+      0,
+      512,
+      512
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      0.0,
+      1.5
+     ],
+     "smoothness": [
+      0.11,
+      0.25
+     ]
+    },
+    {
+     "cell": "shade_blotch",
+     "index": 2,
+     "uv_rect": [
+      0.0,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      512,
+      512,
+      512
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      0.0,
+      0.0
+     ],
+     "smoothness": [
+      0.12,
+      0.25
+     ]
+    },
+    {
+     "cell": "debris_line",
+     "index": 3,
+     "uv_rect": [
+      0.5,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      512,
+      512,
+      512,
+      512
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      0.0,
+      2.2
+     ],
+     "smoothness": [
+      0.15,
+      0.25
+     ]
+    }
+   ],
+   "bytes": {
+    "BC": 403768,
+    "N": 65014,
+    "MS": 211975
+   }
+  },
+  {
+   "name": "T_RW_Markings",
+   "size": 2048,
+   "cell_px": 1024,
+   "cell_m": [
+    4.0,
+    4.0
+   ],
+   "cells": [
+    {
+     "cell": "crosswalk_block",
+     "index": 0,
+     "uv_rect": [
+      0.0,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      0,
+      1024,
+      1024
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      0.0,
+      1.5
+     ],
+     "smoothness": [
+      0.25,
+      0.37
+     ]
+    },
+    {
+     "cell": "arrow_straight",
+     "index": 1,
+     "uv_rect": [
+      0.5,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      1024,
+      0,
+      1024,
+      1024
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      0.0,
+      1.5
+     ],
+     "smoothness": [
+      0.25,
+      0.37
+     ]
+    },
+    {
+     "cell": "arrow_turn_right",
+     "index": 2,
+     "uv_rect": [
+      0.0,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      1024,
+      1024,
+      1024
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      0.0,
+      1.5
+     ],
+     "smoothness": [
+      0.25,
+      0.37
+     ]
+    },
+    {
+     "cell": "stop_bar",
+     "index": 3,
+     "uv_rect": [
+      0.5,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      1024,
+      1024,
+      1024,
+      1024
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      0.0,
+      1.5
+     ],
+     "smoothness": [
+      0.25,
+      0.37
+     ]
+    }
+   ],
+   "bytes": {
+    "BC": 671720,
+    "N": 114582,
+    "MS": 169056
+   }
+  },
+  {
+   "name": "T_RW_Puddle",
+   "size": 2048,
+   "cell_px": 1024,
+   "cell_m": [
+    4.0,
+    4.0
+   ],
+   "cells": [
+    {
+     "cell": "sheet_puddle",
+     "index": 0,
+     "uv_rect": [
+      0.0,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      0,
+      1024,
+      1024
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      -0.27,
+      0.2
+     ],
+     "smoothness": [
+      0.25,
+      0.958
+     ]
+    },
+    {
+     "cell": "gutter_puddle",
+     "index": 1,
+     "uv_rect": [
+      0.5,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      1024,
+      0,
+      1024,
+      1024
+     ],
+     "alpha_max": 0.948,
+     "height_mm": [
+      -0.25,
+      0.26
+     ],
+     "smoothness": [
+      0.25,
+      0.85
+     ]
+    },
+    {
+     "cell": "drying_ring",
+     "index": 2,
+     "uv_rect": [
+      0.0,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      1024,
+      1024,
+      1024
+     ],
+     "alpha_max": 0.99,
+     "height_mm": [
+      -0.07,
+      0.18
+     ],
+     "smoothness": [
+      0.25,
+      0.815
+     ]
+    },
+    {
+     "cell": "damp_patch",
+     "index": 3,
+     "uv_rect": [
+      0.5,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      1024,
+      1024,
+      1024,
+      1024
+     ],
+     "alpha_max": 0.717,
+     "height_mm": [
+      0.0,
+      0.0
+     ],
+     "smoothness": [
+      0.252,
+      0.537
+     ]
+    }
+   ],
+   "bytes": {
+    "BC": 908534,
+    "N": 82822,
+    "MS": 557172
+   }
+  },
+  {
+   "name": "T_RW_Contact",
+   "size": 1024,
+   "cell_px": 512,
+   "cell_m": [
+    2.0,
+    2.0
+   ],
+   "cells": [
+    {
+     "cell": "prop_base_ring",
+     "index": 0,
+     "uv_rect": [
+      0.0,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      0,
+      512,
+      512
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      0.0,
+      1.45
+     ],
+     "smoothness": [
+      0.14,
+      0.25
+     ]
+    },
+    {
+     "cell": "footway_kerb_line",
+     "index": 1,
+     "uv_rect": [
+      0.5,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      512,
+      0,
+      512,
+      512
+     ],
+     "alpha_max": 0.956,
+     "height_mm": [
+      -1.2,
+      0.28
+     ],
+     "smoothness": [
+      0.12,
+      0.2
+     ]
+    },
+    {
+     "cell": "wall_base_splash",
+     "index": 2,
+     "uv_rect": [
+      0.0,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      0,
+      512,
+      512,
+      512
+     ],
+     "alpha_max": 1.0,
+     "height_mm": [
+      0.0,
+      0.0
+     ],
+     "smoothness": [
+      0.13,
+      0.2
+     ]
+    },
+    {
+     "cell": "drip_run",
+     "index": 3,
+     "uv_rect": [
+      0.5,
+      0.0,
+      0.5,
+      0.5
+     ],
+     "px_rect": [
+      512,
+      512,
+      512,
+      512
+     ],
+     "alpha_max": 0.84,
+     "height_mm": [
+      0.0,
+      0.0
+     ],
+     "smoothness": [
+      0.2,
+      0.293
+     ]
+    }
+   ],
+   "bytes": {
+    "BC": 244886,
+    "N": 17080,
+    "MS": 143806
+   }
+  }
+ ],
+ "tiling": [
+  {
+   "name": "T_SW_Concrete_Panel",
+   "size": 2048,
+   "tile_m": 4.8,
+   "bytes": {
+    "BC": 1592665,
+    "N": 1999048,
+    "MS": 623867
+   },
+   "height_mm": [
+    -14.1,
+    0.57
+   ],
+   "smoothness": [
+    0.036,
+    0.225
+   ]
+  }
+ ]
+}

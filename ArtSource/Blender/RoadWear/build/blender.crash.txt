@@ -1,0 +1,21 @@
+
+# backtrace
+Exception Record:
+
+ExceptionCode         : EXCEPTION_ACCESS_VIOLATION (0xc0000005)
+Exception Address     : 0x00007FFE204D28A0
+Exception Module      : VCRUNTIME140.dll
+Exception Flags       : 0x00000000
+Exception Parameters  : 0x2
+	Parameters[0] (action)  : 0x0000000000000001 (write)
+	Parameters[1] (address) : 0x0000000000000020
+
+
+Stack trace:
+VCRUNTIME140.dll    :0x00007FFE204D2770  memset
+blender.exe         :0x00007FF600BB3320  Symbols not available
+
+
+Loaded Modules :
+
+# Python backtrace

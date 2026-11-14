@@ -1,0 +1,1010 @@
+[
+ {
+  "key": "villa_a",
+  "name": "VC_Coast_VillaA",
+  "set": "coast",
+  "family": "villa_a",
+  "style_kit": [
+   "CoastalStucco"
+  ],
+  "districts": [
+   "D2"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Coast_VillaA.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Coast_VillaA.fbx",
+  "footprint_m": [
+   20.0,
+   15.0
+  ],
+  "height_m": 9.6,
+  "design_height_m": 9.6,
+  "bbox_m": [
+   21.5,
+   18.4,
+   9.6
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Coast_VillaA_LOD0",
+    "tris": 1364,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Coast_VillaA_LOD1",
+    "tris": 824,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Coast_VillaA_LOD2",
+    "tris": 140,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Coast_VillaA"
+  ],
+  "slots": [
+   "VC_Cs_Stucco",
+   "VC_Cs_RoofTile",
+   "VC_Cs_Trim",
+   "VC_Cs_Glass",
+   "VC_Cs_Wood",
+   "VC_Cs_Concrete"
+  ]
+ },
+ {
+  "key": "villa_b",
+  "name": "VC_Coast_VillaB",
+  "set": "coast",
+  "family": "villa_b",
+  "style_kit": [
+   "CoastalStucco"
+  ],
+  "districts": [
+   "D2"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Coast_VillaB.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Coast_VillaB.fbx",
+  "footprint_m": [
+   20.0,
+   15.0
+  ],
+  "height_m": 9.69,
+  "design_height_m": 9.6,
+  "bbox_m": [
+   20.12,
+   18.06,
+   9.69
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Coast_VillaB_LOD0",
+    "tris": 828,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Coast_VillaB_LOD1",
+    "tris": 696,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Coast_VillaB_LOD2",
+    "tris": 276,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Coast_VillaB"
+  ],
+  "slots": [
+   "VC_Cs_Stucco",
+   "VC_Cs_RoofTile",
+   "VC_Cs_Trim",
+   "VC_Cs_Glass",
+   "VC_Cs_Wood",
+   "VC_Cs_Concrete"
+  ]
+ },
+ {
+  "key": "villa_c",
+  "name": "VC_Coast_VillaC",
+  "set": "coast",
+  "family": "villa_c",
+  "style_kit": [
+   "CoastalStucco"
+  ],
+  "districts": [
+   "D2"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Coast_VillaC.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Coast_VillaC.fbx",
+  "footprint_m": [
+   20.0,
+   15.0
+  ],
+  "height_m": 9.62,
+  "design_height_m": 9.6,
+  "bbox_m": [
+   23.4,
+   16.6,
+   9.62
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Coast_VillaC_LOD0",
+    "tris": 1196,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Coast_VillaC_LOD1",
+    "tris": 740,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Coast_VillaC_LOD2",
+    "tris": 200,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Coast_VillaC"
+  ],
+  "slots": [
+   "VC_Cs_Stucco",
+   "VC_Cs_RoofTile",
+   "VC_Cs_Trim",
+   "VC_Cs_Glass",
+   "VC_Cs_Wood",
+   "VC_Cs_Concrete"
+  ]
+ },
+ {
+  "key": "villa_d",
+  "name": "VC_Coast_VillaD",
+  "set": "coast",
+  "family": "villa_d",
+  "style_kit": [
+   "CoastalStucco"
+  ],
+  "districts": [
+   "D2"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Coast_VillaD.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Coast_VillaD.fbx",
+  "footprint_m": [
+   20.0,
+   15.0
+  ],
+  "height_m": 6.4,
+  "design_height_m": 6.4,
+  "bbox_m": [
+   21.9,
+   19.15,
+   6.4
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Coast_VillaD_LOD0",
+    "tris": 788,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Coast_VillaD_LOD1",
+    "tris": 488,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Coast_VillaD_LOD2",
+    "tris": 128,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Coast_VillaD"
+  ],
+  "slots": [
+   "VC_Cs_Stucco",
+   "VC_Cs_RoofTile",
+   "VC_Cs_Trim",
+   "VC_Cs_Glass",
+   "VC_Cs_Wood",
+   "VC_Cs_Concrete"
+  ]
+ },
+ {
+  "key": "villa_e",
+  "name": "VC_Coast_VillaE",
+  "set": "coast",
+  "family": "villa_e",
+  "style_kit": [
+   "CoastalStucco"
+  ],
+  "districts": [
+   "D2"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Coast_VillaE.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Coast_VillaE.fbx",
+  "footprint_m": [
+   20.0,
+   15.0
+  ],
+  "height_m": 7.88,
+  "design_height_m": 7.8,
+  "bbox_m": [
+   20.63,
+   17.95,
+   7.88
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Coast_VillaE_LOD0",
+    "tris": 908,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Coast_VillaE_LOD1",
+    "tris": 608,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Coast_VillaE_LOD2",
+    "tris": 200,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Coast_VillaE"
+  ],
+  "slots": [
+   "VC_Cs_Stucco",
+   "VC_Cs_RoofTile",
+   "VC_Cs_Trim",
+   "VC_Cs_Glass",
+   "VC_Cs_Wood",
+   "VC_Cs_Concrete"
+  ]
+ },
+ {
+  "key": "club_a",
+  "name": "VC_Coast_ClubA",
+  "set": "coast",
+  "family": "club_a",
+  "style_kit": [
+   "CoastalStucco"
+  ],
+  "districts": [
+   "D2"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Coast_ClubA.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Coast_ClubA.fbx",
+  "footprint_m": [
+   24.0,
+   12.0
+  ],
+  "height_m": 6.8,
+  "design_height_m": 7.0,
+  "bbox_m": [
+   27.0,
+   16.8,
+   6.8
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Coast_ClubA_LOD0",
+    "tris": 744,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Coast_ClubA_LOD1",
+    "tris": 552,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Coast_ClubA_LOD2",
+    "tris": 144,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Coast_ClubA"
+  ],
+  "slots": [
+   "VC_Cs_Stucco",
+   "VC_Cs_RoofTile",
+   "VC_Cs_Trim",
+   "VC_Cs_Glass",
+   "VC_Cs_Wood",
+   "VC_Cs_Concrete"
+  ]
+ },
+ {
+  "key": "club_b",
+  "name": "VC_Coast_ClubB",
+  "set": "coast",
+  "family": "club_b",
+  "style_kit": [
+   "CoastalStucco"
+  ],
+  "districts": [
+   "D2"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Coast_ClubB.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Coast_ClubB.fbx",
+  "footprint_m": [
+   24.0,
+   12.0
+  ],
+  "height_m": 10.29,
+  "design_height_m": 10.2,
+  "bbox_m": [
+   25.6,
+   14.68,
+   10.29
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Coast_ClubB_LOD0",
+    "tris": 1296,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Coast_ClubB_LOD1",
+    "tris": 876,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Coast_ClubB_LOD2",
+    "tris": 216,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Coast_ClubB"
+  ],
+  "slots": [
+   "VC_Cs_Stucco",
+   "VC_Cs_RoofTile",
+   "VC_Cs_Trim",
+   "VC_Cs_Glass",
+   "VC_Cs_Wood",
+   "VC_Cs_Concrete"
+  ]
+ },
+ {
+  "key": "marina",
+  "name": "VC_Coast_Marina",
+  "set": "coast",
+  "family": "marina",
+  "style_kit": [
+   "CoastalStucco"
+  ],
+  "districts": [
+   "D2"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Coast_Marina.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Coast_Marina.fbx",
+  "footprint_m": [
+   33.0,
+   20.0
+  ],
+  "height_m": 7.6,
+  "design_height_m": 7.6,
+  "bbox_m": [
+   37.0,
+   26.0,
+   7.6
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Coast_Marina_LOD0",
+    "tris": 1016,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Coast_Marina_LOD1",
+    "tris": 716,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Coast_Marina_LOD2",
+    "tris": 152,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Cs_Stucco",
+     "VC_Cs_RoofTile",
+     "VC_Cs_Trim",
+     "VC_Cs_Glass",
+     "VC_Cs_Wood",
+     "VC_Cs_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Coast_Marina"
+  ],
+  "slots": [
+   "VC_Cs_Stucco",
+   "VC_Cs_RoofTile",
+   "VC_Cs_Trim",
+   "VC_Cs_Glass",
+   "VC_Cs_Wood",
+   "VC_Cs_Concrete"
+  ]
+ }
+]

@@ -1,0 +1,674 @@
+[
+ {
+  "asset": "VC_Impostor_Broadleaf_Spreading",
+  "lods": [
+   {
+    "name": "VC_Impostor_Broadleaf_Spreading_LOD0",
+    "tris": 6,
+    "materials": 1
+   },
+   {
+    "name": "VC_Impostor_Broadleaf_Spreading_LOD1",
+    "tris": 2,
+    "materials": 1
+   },
+   {
+    "name": "VC_Impostor_Broadleaf_Spreading_LOD2",
+    "tris": 2,
+    "materials": 1
+   }
+  ],
+  "ucx": [],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Impostor"
+  ],
+  "min_z": -0.105,
+  "pivot_offset": [
+   0.0,
+   -0.0
+  ],
+  "collision_tris": 0
+ },
+ {
+  "asset": "VC_Impostor_Palm_Fan_Tall",
+  "lods": [
+   {
+    "name": "VC_Impostor_Palm_Fan_Tall_LOD0",
+    "tris": 6,
+    "materials": 1
+   },
+   {
+    "name": "VC_Impostor_Palm_Fan_Tall_LOD1",
+    "tris": 2,
+    "materials": 1
+   },
+   {
+    "name": "VC_Impostor_Palm_Fan_Tall_LOD2",
+    "tris": 2,
+    "materials": 1
+   }
+  ],
+  "ucx": [],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Impostor"
+  ],
+  "min_z": -0.0556,
+  "pivot_offset": [
+   0.0,
+   -0.0
+  ],
+  "collision_tris": 0
+ },
+ {
+  "asset": "VC_Impostor_Palm_Royal_16m",
+  "lods": [
+   {
+    "name": "VC_Impostor_Palm_Royal_16m_LOD0",
+    "tris": 6,
+    "materials": 1
+   },
+   {
+    "name": "VC_Impostor_Palm_Royal_16m_LOD1",
+    "tris": 2,
+    "materials": 1
+   },
+   {
+    "name": "VC_Impostor_Palm_Royal_16m_LOD2",
+    "tris": 2,
+    "materials": 1
+   }
+  ],
+  "ucx": [],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Impostor"
+  ],
+  "min_z": -0.1789,
+  "pivot_offset": [
+   0.0,
+   -0.0
+  ],
+  "collision_tris": 0
+ },
+ {
+  "asset": "VC_Impostor_Pine_Tall",
+  "lods": [
+   {
+    "name": "VC_Impostor_Pine_Tall_LOD0",
+    "tris": 6,
+    "materials": 1
+   },
+   {
+    "name": "VC_Impostor_Pine_Tall_LOD1",
+    "tris": 2,
+    "materials": 1
+   },
+   {
+    "name": "VC_Impostor_Pine_Tall_LOD2",
+    "tris": 2,
+    "materials": 1
+   }
+  ],
+  "ucx": [],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Impostor"
+  ],
+  "min_z": -0.1274,
+  "pivot_offset": [
+   0.0,
+   -0.0
+  ],
+  "collision_tris": 0
+ },
+ {
+  "asset": "VC_Impostor_Redwood_46m",
+  "lods": [
+   {
+    "name": "VC_Impostor_Redwood_46m_LOD0",
+    "tris": 6,
+    "materials": 1
+   },
+   {
+    "name": "VC_Impostor_Redwood_46m_LOD1",
+    "tris": 2,
+    "materials": 1
+   },
+   {
+    "name": "VC_Impostor_Redwood_46m_LOD2",
+    "tris": 2,
+    "materials": 1
+   }
+  ],
+  "ucx": [],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Impostor"
+  ],
+  "min_z": -0.4554,
+  "pivot_offset": [
+   0.0,
+   -0.0
+  ],
+  "collision_tris": 0
+ },
+ {
+  "asset": "VC_Impostor_Spruce_Alpine",
+  "lods": [
+   {
+    "name": "VC_Impostor_Spruce_Alpine_LOD0",
+    "tris": 6,
+    "materials": 1
+   },
+   {
+    "name": "VC_Impostor_Spruce_Alpine_LOD1",
+    "tris": 2,
+    "materials": 1
+   },
+   {
+    "name": "VC_Impostor_Spruce_Alpine_LOD2",
+    "tris": 2,
+    "materials": 1
+   }
+  ],
+  "ucx": [],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Impostor"
+  ],
+  "min_z": -0.1773,
+  "pivot_offset": [
+   0.0,
+   -0.0
+  ],
+  "collision_tris": 0
+ },
+ {
+  "asset": "VC_Log_Fallen_A",
+  "lods": [
+   {
+    "name": "VC_Log_Fallen_A_LOD0",
+    "tris": 202,
+    "materials": 1
+   },
+   {
+    "name": "VC_Log_Fallen_A_LOD1",
+    "tris": 102,
+    "materials": 1
+   },
+   {
+    "name": "VC_Log_Fallen_A_LOD2",
+    "tris": 20,
+    "materials": 1
+   }
+  ],
+  "ucx": [
+   "UCX_VC_Log_Fallen_A"
+  ],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Bark"
+  ],
+  "min_z": 0.0399,
+  "pivot_offset": [
+   0.009,
+   -0.146
+  ],
+  "collision_tris": 36
+ },
+ {
+  "asset": "VC_Log_Fallen_B",
+  "lods": [
+   {
+    "name": "VC_Log_Fallen_B_LOD0",
+    "tris": 184,
+    "materials": 1
+   },
+   {
+    "name": "VC_Log_Fallen_B_LOD1",
+    "tris": 90,
+    "materials": 1
+   },
+   {
+    "name": "VC_Log_Fallen_B_LOD2",
+    "tris": 20,
+    "materials": 1
+   }
+  ],
+  "ucx": [
+   "UCX_VC_Log_Fallen_B"
+  ],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Bark"
+  ],
+  "min_z": 0.0285,
+  "pivot_offset": [
+   0.005,
+   -0.058
+  ],
+  "collision_tris": 36
+ },
+ {
+  "asset": "VC_Rock_Boulder_L_Angular",
+  "lods": [
+   {
+    "name": "VC_Rock_Boulder_L_Angular_LOD0",
+    "tris": 288,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_Boulder_L_Angular_LOD1",
+    "tris": 100,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_Boulder_L_Angular_LOD2",
+    "tris": 36,
+    "materials": 1
+   }
+  ],
+  "ucx": [
+   "UCX_VC_Rock_Boulder_L_Angular"
+  ],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "min_z": -0.1491,
+  "pivot_offset": [
+   0.17,
+   0.002
+  ],
+  "collision_tris": 36
+ },
+ {
+  "asset": "VC_Rock_Boulder_L_Rounded",
+  "lods": [
+   {
+    "name": "VC_Rock_Boulder_L_Rounded_LOD0",
+    "tris": 288,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_Boulder_L_Rounded_LOD1",
+    "tris": 100,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_Boulder_L_Rounded_LOD2",
+    "tris": 36,
+    "materials": 1
+   }
+  ],
+  "ucx": [
+   "UCX_VC_Rock_Boulder_L_Rounded"
+  ],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "min_z": -0.1505,
+  "pivot_offset": [
+   -0.121,
+   -0.125
+  ],
+  "collision_tris": 36
+ },
+ {
+  "asset": "VC_Rock_Boulder_M_Angular",
+  "lods": [
+   {
+    "name": "VC_Rock_Boulder_M_Angular_LOD0",
+    "tris": 168,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_Boulder_M_Angular_LOD1",
+    "tris": 64,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_Boulder_M_Angular_LOD2",
+    "tris": 20,
+    "materials": 1
+   }
+  ],
+  "ucx": [
+   "UCX_VC_Rock_Boulder_M_Angular"
+  ],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "min_z": -0.082,
+  "pivot_offset": [
+   0.081,
+   0.027
+  ],
+  "collision_tris": 20
+ },
+ {
+  "asset": "VC_Rock_Boulder_M_Rounded",
+  "lods": [
+   {
+    "name": "VC_Rock_Boulder_M_Rounded_LOD0",
+    "tris": 168,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_Boulder_M_Rounded_LOD1",
+    "tris": 64,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_Boulder_M_Rounded_LOD2",
+    "tris": 20,
+    "materials": 1
+   }
+  ],
+  "ucx": [
+   "UCX_VC_Rock_Boulder_M_Rounded"
+  ],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "min_z": -0.0942,
+  "pivot_offset": [
+   0.03,
+   -0.031
+  ],
+  "collision_tris": 20
+ },
+ {
+  "asset": "VC_Rock_Boulder_S_Angular",
+  "lods": [
+   {
+    "name": "VC_Rock_Boulder_S_Angular_LOD0",
+    "tris": 100,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_Boulder_S_Angular_LOD1",
+    "tris": 42,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_Boulder_S_Angular_LOD2",
+    "tris": 20,
+    "materials": 1
+   }
+  ],
+  "ucx": [
+   "UCX_VC_Rock_Boulder_S_Angular"
+  ],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "min_z": -0.0365,
+  "pivot_offset": [
+   -0.003,
+   -0.013
+  ],
+  "collision_tris": 20
+ },
+ {
+  "asset": "VC_Rock_Boulder_S_Rounded",
+  "lods": [
+   {
+    "name": "VC_Rock_Boulder_S_Rounded_LOD0",
+    "tris": 100,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_Boulder_S_Rounded_LOD1",
+    "tris": 42,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_Boulder_S_Rounded_LOD2",
+    "tris": 20,
+    "materials": 1
+   }
+  ],
+  "ucx": [
+   "UCX_VC_Rock_Boulder_S_Rounded"
+  ],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "min_z": -0.0322,
+  "pivot_offset": [
+   0.001,
+   0.025
+  ],
+  "collision_tris": 20
+ },
+ {
+  "asset": "VC_Rock_CutFace_8m",
+  "lods": [
+   {
+    "name": "VC_Rock_CutFace_8m_LOD0",
+    "tris": 736,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_CutFace_8m_LOD1",
+    "tris": 256,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_CutFace_8m_LOD2",
+    "tris": 48,
+    "materials": 1
+   }
+  ],
+  "ucx": [],
+  "col": [
+   "COL_concrete_VC_Rock_CutFace_8m"
+  ],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "min_z": -0.0,
+  "pivot_offset": [
+   0.0,
+   0.108
+  ],
+  "col_boundary_m": 0.0,
+  "col_mode": "wall",
+  "collision_tris": 80
+ },
+ {
+  "asset": "VC_Rock_Outcrop_A",
+  "lods": [
+   {
+    "name": "VC_Rock_Outcrop_A_LOD0",
+    "tris": 840,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_Outcrop_A_LOD1",
+    "tris": 320,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_Outcrop_A_LOD2",
+    "tris": 100,
+    "materials": 1
+   }
+  ],
+  "ucx": [
+   "UCX_VC_Rock_Outcrop_A_01",
+   "UCX_VC_Rock_Outcrop_A_02",
+   "UCX_VC_Rock_Outcrop_A_03",
+   "UCX_VC_Rock_Outcrop_A_04",
+   "UCX_VC_Rock_Outcrop_A_05"
+  ],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "min_z": -0.6697,
+  "pivot_offset": [
+   -0.073,
+   -0.119
+  ],
+  "collision_tris": 100
+ },
+ {
+  "asset": "VC_Rock_Outcrop_B",
+  "lods": [
+   {
+    "name": "VC_Rock_Outcrop_B_LOD0",
+    "tris": 2016,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_Outcrop_B_LOD1",
+    "tris": 700,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_Outcrop_B_LOD2",
+    "tris": 252,
+    "materials": 1
+   }
+  ],
+  "ucx": [
+   "UCX_VC_Rock_Outcrop_B_01",
+   "UCX_VC_Rock_Outcrop_B_02",
+   "UCX_VC_Rock_Outcrop_B_03",
+   "UCX_VC_Rock_Outcrop_B_04",
+   "UCX_VC_Rock_Outcrop_B_05",
+   "UCX_VC_Rock_Outcrop_B_06",
+   "UCX_VC_Rock_Outcrop_B_07"
+  ],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "min_z": -1.0686,
+  "pivot_offset": [
+   0.499,
+   0.046
+  ],
+  "collision_tris": 252
+ },
+ {
+  "asset": "VC_Rock_ScreePatch",
+  "lods": [
+   {
+    "name": "VC_Rock_ScreePatch_LOD0",
+    "tris": 1172,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_ScreePatch_LOD1",
+    "tris": 230,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_ScreePatch_LOD2",
+    "tris": 6,
+    "materials": 1
+   }
+  ],
+  "ucx": [],
+  "col": [
+   "COL_gravel_VC_Rock_ScreePatch"
+  ],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "min_z": -0.0229,
+  "pivot_offset": [
+   0.078,
+   -0.094
+  ],
+  "col_boundary_m": 0.0,
+  "col_mode": "ground",
+  "collision_tris": 36
+ },
+ {
+  "asset": "VC_Rock_ShoreGroup",
+  "lods": [
+   {
+    "name": "VC_Rock_ShoreGroup_LOD0",
+    "tris": 1008,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_ShoreGroup_LOD1",
+    "tris": 384,
+    "materials": 1
+   },
+   {
+    "name": "VC_Rock_ShoreGroup_LOD2",
+    "tris": 120,
+    "materials": 1
+   }
+  ],
+  "ucx": [
+   "UCX_VC_Rock_ShoreGroup_01",
+   "UCX_VC_Rock_ShoreGroup_02",
+   "UCX_VC_Rock_ShoreGroup_03",
+   "UCX_VC_Rock_ShoreGroup_04",
+   "UCX_VC_Rock_ShoreGroup_05",
+   "UCX_VC_Rock_ShoreGroup_06"
+  ],
+  "col": [],
+  "issues": [],
+  "root_rot_z": 180.0,
+  "materials": [
+   "M_Veyra_Rock"
+  ],
+  "min_z": -0.1836,
+  "pivot_offset": [
+   0.218,
+   0.432
+  ],
+  "collision_tris": 120
+ }
+]

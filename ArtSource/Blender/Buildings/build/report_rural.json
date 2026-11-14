@@ -1,0 +1,884 @@
+[
+ {
+  "key": "barn_gambrel",
+  "name": "VC_Rur_BarnGambrel",
+  "set": "rural",
+  "family": "barn_gambrel",
+  "style_kit": [
+   "Rural"
+  ],
+  "districts": [
+   "D8"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Rur_BarnGambrel.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Rur_BarnGambrel.fbx",
+  "footprint_m": [
+   26.0,
+   14.0
+  ],
+  "height_m": 9.7,
+  "design_height_m": 9.0,
+  "bbox_m": [
+   26.8,
+   15.0,
+   9.7
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Rur_BarnGambrel_LOD0",
+    "tris": 384,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Rur_BarnGambrel_LOD1",
+    "tris": 264,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Rur_BarnGambrel_LOD2",
+    "tris": 72,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Rur_BarnGambrel"
+  ],
+  "slots": [
+   "VC_Ru_Board",
+   "VC_Ru_Roof",
+   "VC_Ru_Metal",
+   "VC_Ru_Glass",
+   "VC_Ru_Trim",
+   "VC_Ru_Concrete"
+  ]
+ },
+ {
+  "key": "barn_leanto",
+  "name": "VC_Rur_BarnLeanto",
+  "set": "rural",
+  "family": "barn_leanto",
+  "style_kit": [
+   "Rural"
+  ],
+  "districts": [
+   "D8"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Rur_BarnLeanto.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Rur_BarnLeanto.fbx",
+  "footprint_m": [
+   26.0,
+   14.0
+  ],
+  "height_m": 8.4,
+  "design_height_m": 8.4,
+  "bbox_m": [
+   27.2,
+   18.1,
+   8.4
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Rur_BarnLeanto_LOD0",
+    "tris": 368,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Rur_BarnLeanto_LOD1",
+    "tris": 272,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Rur_BarnLeanto_LOD2",
+    "tris": 56,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Rur_BarnLeanto"
+  ],
+  "slots": [
+   "VC_Ru_Board",
+   "VC_Ru_Roof",
+   "VC_Ru_Metal",
+   "VC_Ru_Glass",
+   "VC_Ru_Trim",
+   "VC_Ru_Concrete"
+  ]
+ },
+ {
+  "key": "farmhouse_b",
+  "name": "VC_Rur_FarmhouseB",
+  "set": "rural",
+  "family": "farmhouse_b",
+  "style_kit": [
+   "Rural"
+  ],
+  "districts": [
+   "D8"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Rur_FarmhouseB.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Rur_FarmhouseB.fbx",
+  "footprint_m": [
+   12.0,
+   10.0
+  ],
+  "height_m": 7.02,
+  "design_height_m": 7.0,
+  "bbox_m": [
+   13.3,
+   11.65,
+   7.02
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Rur_FarmhouseB_LOD0",
+    "tris": 572,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Rur_FarmhouseB_LOD1",
+    "tris": 404,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Rur_FarmhouseB_LOD2",
+    "tris": 140,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Rur_FarmhouseB"
+  ],
+  "slots": [
+   "VC_Ru_Board",
+   "VC_Ru_Roof",
+   "VC_Ru_Metal",
+   "VC_Ru_Glass",
+   "VC_Ru_Trim",
+   "VC_Ru_Concrete"
+  ]
+ },
+ {
+  "key": "silo",
+  "name": "VC_Rur_Silo",
+  "set": "rural",
+  "family": "silo",
+  "style_kit": [
+   "Rural"
+  ],
+  "districts": [
+   "D8"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Rur_Silo.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Rur_Silo.fbx",
+  "footprint_m": [
+   7.0,
+   7.0
+  ],
+  "height_m": 16.55,
+  "design_height_m": 16.0,
+  "bbox_m": [
+   7.86,
+   8.35,
+   16.55
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Rur_Silo_LOD0",
+    "tris": 556,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Rur_Silo_LOD1",
+    "tris": 316,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Rur_Silo_LOD2",
+    "tris": 112,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Rur_Silo"
+  ],
+  "slots": [
+   "VC_Ru_Board",
+   "VC_Ru_Roof",
+   "VC_Ru_Metal",
+   "VC_Ru_Glass",
+   "VC_Ru_Trim",
+   "VC_Ru_Concrete"
+  ]
+ },
+ {
+  "key": "barn_big",
+  "name": "VC_Rur_BarnBig",
+  "set": "rural",
+  "family": "barn_big",
+  "style_kit": [
+   "Rural"
+  ],
+  "districts": [
+   "D8"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Rur_BarnBig.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Rur_BarnBig.fbx",
+  "footprint_m": [
+   64.0,
+   30.0
+  ],
+  "height_m": 10.85,
+  "design_height_m": 10.5,
+  "bbox_m": [
+   65.6,
+   31.6,
+   10.85
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Rur_BarnBig_LOD0",
+    "tris": 380,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Rur_BarnBig_LOD1",
+    "tris": 260,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Rur_BarnBig_LOD2",
+    "tris": 104,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Rur_BarnBig"
+  ],
+  "slots": [
+   "VC_Ru_Board",
+   "VC_Ru_Roof",
+   "VC_Ru_Metal",
+   "VC_Ru_Glass",
+   "VC_Ru_Trim",
+   "VC_Ru_Concrete"
+  ]
+ },
+ {
+  "key": "mill",
+  "name": "VC_Rur_Mill",
+  "set": "rural",
+  "family": "mill",
+  "style_kit": [
+   "Rural"
+  ],
+  "districts": [
+   "D8"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Rur_Mill.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Rur_Mill.fbx",
+  "footprint_m": [
+   32.0,
+   18.0
+  ],
+  "height_m": 11.0,
+  "design_height_m": 11.0,
+  "bbox_m": [
+   33.1,
+   19.1,
+   11.0
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Rur_Mill_LOD0",
+    "tris": 952,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Rur_Mill_LOD1",
+    "tris": 520,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Rur_Mill_LOD2",
+    "tris": 76,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Rur_Mill"
+  ],
+  "slots": [
+   "VC_Ru_Board",
+   "VC_Ru_Roof",
+   "VC_Ru_Metal",
+   "VC_Ru_Glass",
+   "VC_Ru_Trim",
+   "VC_Ru_Concrete"
+  ]
+ },
+ {
+  "key": "farmhouse_a",
+  "name": "VC_Rur_FarmhouseA",
+  "set": "rural",
+  "family": "farmhouse_a",
+  "style_kit": [
+   "Rural"
+  ],
+  "districts": [
+   "D8"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Rur_FarmhouseA.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Rur_FarmhouseA.fbx",
+  "footprint_m": [
+   12.0,
+   10.0
+  ],
+  "height_m": 7.02,
+  "design_height_m": 7.0,
+  "bbox_m": [
+   13.2,
+   11.85,
+   7.02
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Rur_FarmhouseA_LOD0",
+    "tris": 644,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Rur_FarmhouseA_LOD1",
+    "tris": 452,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Rur_FarmhouseA_LOD2",
+    "tris": 128,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Ru_Board",
+     "VC_Ru_Roof",
+     "VC_Ru_Metal",
+     "VC_Ru_Glass",
+     "VC_Ru_Trim",
+     "VC_Ru_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Rur_FarmhouseA"
+  ],
+  "slots": [
+   "VC_Ru_Board",
+   "VC_Ru_Roof",
+   "VC_Ru_Metal",
+   "VC_Ru_Glass",
+   "VC_Ru_Trim",
+   "VC_Ru_Concrete"
+  ]
+ }
+]

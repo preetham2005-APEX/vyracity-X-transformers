@@ -1,0 +1,3130 @@
+[
+ {
+  "key": "window_reveal_single",
+  "name": "VC_Fac_WindowRevealSingle",
+  "part": 0,
+  "pivot": "wall face, centred, z = 0 at the opening sill",
+  "anchor": "window",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_WindowRevealSingle.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_WindowRevealSingle.fbx",
+  "size_m": [
+   1.6,
+   0.34,
+   1.6
+  ],
+  "mount_z_m": 0.0,
+  "levels": 2,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_WindowRevealSingle_LOD0",
+    "tris": 108,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_WindowRevealSingle_LOD1",
+    "tris": 96,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [],
+  "collision_type": null,
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "window_reveal_band",
+  "name": "VC_Fac_WindowRevealBand",
+  "part": 0,
+  "pivot": "wall face, centred, z = 0 at the opening sill",
+  "anchor": "window",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_WindowRevealBand.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_WindowRevealBand.fbx",
+  "size_m": [
+   3.1,
+   0.34,
+   1.45
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_WindowRevealBand_LOD0",
+    "tris": 132,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_WindowRevealBand_LOD1",
+    "tris": 120,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_WindowRevealBand_LOD2",
+    "tris": 84,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [],
+  "collision_type": null,
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "window_reveal_storey",
+  "name": "VC_Fac_WindowRevealStorey",
+  "part": 0,
+  "pivot": "wall face, centred, z = 0 at the opening sill",
+  "anchor": "window",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_WindowRevealStorey.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_WindowRevealStorey.fbx",
+  "size_m": [
+   1.6,
+   0.34,
+   3.3
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_WindowRevealStorey_LOD0",
+    "tris": 120,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_WindowRevealStorey_LOD1",
+    "tris": 108,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_WindowRevealStorey_LOD2",
+    "tris": 84,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [],
+  "collision_type": null,
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "slab_band",
+  "name": "VC_Fac_SlabBand",
+  "part": 0,
+  "pivot": "wall face, centred, z = 0 at the band soffit",
+  "anchor": "band",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_SlabBand.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_SlabBand.fbx",
+  "size_m": [
+   6.0,
+   0.27,
+   0.42
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_SlabBand_LOD0",
+    "tris": 36,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_SlabBand_LOD1",
+    "tris": 36,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_SlabBand_LOD2",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [],
+  "collision_type": null,
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "cornice_band",
+  "name": "VC_Fac_CorniceBand",
+  "part": 0,
+  "pivot": "wall face, centred, z = 0 at the band soffit",
+  "anchor": "band",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_CorniceBand.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_CorniceBand.fbx",
+  "size_m": [
+   6.0,
+   0.345,
+   0.66
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_CorniceBand_LOD0",
+    "tris": 36,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_CorniceBand_LOD1",
+    "tris": 36,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_CorniceBand_LOD2",
+    "tris": 24,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [],
+  "collision_type": null,
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "sill_band",
+  "name": "VC_Fac_SillBand",
+  "part": 0,
+  "pivot": "wall face, centred, z = 0 at the band soffit",
+  "anchor": "band",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_SillBand.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_SillBand.fbx",
+  "size_m": [
+   6.0,
+   0.19,
+   0.16
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_SillBand_LOD0",
+    "tris": 24,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_SillBand_LOD1",
+    "tris": 24,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_SillBand_LOD2",
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [],
+  "collision_type": null,
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "crown_setback",
+  "name": "VC_Fac_CrownSetback",
+  "part": 0,
+  "pivot": "wall face, centred, z = 0 at the band soffit",
+  "anchor": "band",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_CrownSetback.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_CrownSetback.fbx",
+  "size_m": [
+   6.0,
+   0.96,
+   2.3
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_CrownSetback_LOD0",
+    "tris": 72,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_CrownSetback_LOD1",
+    "tris": 72,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_CrownSetback_LOD2",
+    "tris": 48,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [],
+  "collision_type": null,
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "crown_fin",
+  "name": "VC_Fac_CrownFin",
+  "part": 0,
+  "pivot": "wall face, centred, z = 0 at the band soffit",
+  "anchor": "band",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_CrownFin.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_CrownFin.fbx",
+  "size_m": [
+   0.86,
+   0.58,
+   3.58
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_CrownFin_LOD0",
+    "tris": 48,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_CrownFin_LOD1",
+    "tris": 48,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_CrownFin_LOD2",
+    "tris": 24,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [],
+  "collision_type": null,
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "entry_recess",
+  "name": "VC_Fac_EntryRecess",
+  "part": 1,
+  "pivot": "wall face, centred, z = 0 at ground",
+  "anchor": "wall",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_EntryRecess.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_EntryRecess.fbx",
+  "size_m": [
+   3.0,
+   1.15,
+   3.46
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_EntryRecess_LOD0",
+    "tris": 132,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_EntryRecess_LOD1",
+    "tris": 132,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_EntryRecess_LOD2",
+    "tris": 96,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Fac_EntryRecess"
+  ],
+  "collision_type": "UBX",
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "shopfront_3m",
+  "name": "VC_Fac_Shopfront3m",
+  "part": 1,
+  "pivot": "wall face, centred, z = 0 at ground",
+  "anchor": "wall",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_Shopfront3m.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_Shopfront3m.fbx",
+  "size_m": [
+   3.0,
+   0.22,
+   3.46
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_Shopfront3m_LOD0",
+    "tris": 108,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_Shopfront3m_LOD1",
+    "tris": 96,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_Shopfront3m_LOD2",
+    "tris": 84,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Fac_Shopfront3m"
+  ],
+  "collision_type": "UBX",
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "shopfront_6m",
+  "name": "VC_Fac_Shopfront6m",
+  "part": 1,
+  "pivot": "wall face, centred, z = 0 at ground",
+  "anchor": "wall",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_Shopfront6m.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_Shopfront6m.fbx",
+  "size_m": [
+   6.0,
+   0.22,
+   3.46
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_Shopfront6m_LOD0",
+    "tris": 132,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_Shopfront6m_LOD1",
+    "tris": 120,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_Shopfront6m_LOD2",
+    "tris": 84,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Fac_Shopfront6m"
+  ],
+  "collision_type": "UBX",
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "grille_closed",
+  "name": "VC_Fac_GrilleClosed",
+  "part": 1,
+  "pivot": "wall face, centred, z = 0 at ground",
+  "anchor": "wall",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_GrilleClosed.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_GrilleClosed.fbx",
+  "size_m": [
+   3.0,
+   0.3,
+   3.39
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_GrilleClosed_LOD0",
+    "tris": 168,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_GrilleClosed_LOD1",
+    "tris": 108,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_GrilleClosed_LOD2",
+    "tris": 48,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Fac_GrilleClosed"
+  ],
+  "collision_type": "UBX",
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "grille_open",
+  "name": "VC_Fac_GrilleOpen",
+  "part": 1,
+  "pivot": "wall face, centred, z = 0 at ground",
+  "anchor": "wall",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_GrilleOpen.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_GrilleOpen.fbx",
+  "size_m": [
+   3.0,
+   0.4,
+   3.31
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_GrilleOpen_LOD0",
+    "tris": 84,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_GrilleOpen_LOD1",
+    "tris": 76,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_GrilleOpen_LOD2",
+    "tris": 64,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Fac_GrilleOpen"
+  ],
+  "collision_type": "UBX",
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "awning_fabric",
+  "name": "VC_Fac_AwningFabric",
+  "part": 1,
+  "pivot": "wall face, centred, z = 0 at ground",
+  "anchor": "wall",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_AwningFabric.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_AwningFabric.fbx",
+  "size_m": [
+   3.0,
+   1.465,
+   0.96
+  ],
+  "mount_z_m": 2.87,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_AwningFabric_LOD0",
+    "tris": 72,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_AwningFabric_LOD1",
+    "tris": 68,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_AwningFabric_LOD2",
+    "tris": 40,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [],
+  "collision_type": null,
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "awning_box",
+  "name": "VC_Fac_AwningBox",
+  "part": 1,
+  "pivot": "wall face, centred, z = 0 at ground",
+  "anchor": "wall",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_AwningBox.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_AwningBox.fbx",
+  "size_m": [
+   3.08,
+   1.17,
+   0.8
+  ],
+  "mount_z_m": 3.3,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_AwningBox_LOD0",
+    "tris": 60,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_AwningBox_LOD1",
+    "tris": 60,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_AwningBox_LOD2",
+    "tris": 24,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [],
+  "collision_type": null,
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "sign_projecting",
+  "name": "VC_Fac_SignProjecting",
+  "part": 1,
+  "pivot": "wall face, centred, z = 0 at ground",
+  "anchor": "wall",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_SignProjecting.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_SignProjecting.fbx",
+  "size_m": [
+   0.2,
+   1.405,
+   0.95
+  ],
+  "mount_z_m": 3.455,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_SignProjecting_LOD0",
+    "tris": 84,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_SignProjecting_LOD1",
+    "tris": 84,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_SignProjecting_LOD2",
+    "tris": 72,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [],
+  "collision_type": null,
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "sign_fascia",
+  "name": "VC_Fac_SignFascia",
+  "part": 1,
+  "pivot": "wall face, centred, z = 0 at ground",
+  "anchor": "wall",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_SignFascia.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_SignFascia.fbx",
+  "size_m": [
+   3.0,
+   0.2,
+   0.745
+  ],
+  "mount_z_m": 3.515,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_SignFascia_LOD0",
+    "tris": 48,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_SignFascia_LOD1",
+    "tris": 48,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_SignFascia_LOD2",
+    "tris": 24,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [],
+  "collision_type": null,
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "a_frame",
+  "name": "VC_Fac_AFrame",
+  "part": 1,
+  "pivot": "base centre, z = 0",
+  "anchor": "ground",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_AFrame.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_AFrame.fbx",
+  "size_m": [
+   0.74,
+   0.557,
+   1.09
+  ],
+  "mount_z_m": 0.0,
+  "levels": 2,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_AFrame_LOD0",
+    "tris": 72,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_AFrame_LOD1",
+    "tris": 72,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Fac_AFrame"
+  ],
+  "collision_type": "UBX",
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "display_plinth",
+  "name": "VC_Fac_DisplayPlinth",
+  "part": 1,
+  "pivot": "base centre, z = 0",
+  "anchor": "ground",
+  "blend": "ArtSource/Blender/Facade/VC_Fac_DisplayPlinth.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Fac_DisplayPlinth.fbx",
+  "size_m": [
+   1.72,
+   0.92,
+   0.85
+  ],
+  "mount_z_m": 0.0,
+  "levels": 2,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Fac_DisplayPlinth_LOD0",
+    "tris": 48,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Fac_DisplayPlinth_LOD1",
+    "tris": 48,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Fac_DisplayPlinth"
+  ],
+  "collision_type": "UBX",
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "hvac_small",
+  "name": "VC_Roof_HvacSmall",
+  "part": 2,
+  "pivot": "base centre, z = 0",
+  "anchor": "ground",
+  "blend": "ArtSource/Blender/Facade/VC_Roof_HvacSmall.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Roof_HvacSmall.fbx",
+  "size_m": [
+   1.35,
+   1.105,
+   0.94
+  ],
+  "mount_z_m": 0.0,
+  "levels": 2,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Roof_HvacSmall_LOD0",
+    "tris": 84,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Roof_HvacSmall_LOD1",
+    "tris": 76,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Roof_HvacSmall"
+  ],
+  "collision_type": "UBX",
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "hvac_large",
+  "name": "VC_Roof_HvacLarge",
+  "part": 2,
+  "pivot": "base centre, z = 0",
+  "anchor": "ground",
+  "blend": "ArtSource/Blender/Facade/VC_Roof_HvacLarge.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Roof_HvacLarge.fbx",
+  "size_m": [
+   2.76,
+   1.76,
+   2.06
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Roof_HvacLarge_LOD0",
+    "tris": 132,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Roof_HvacLarge_LOD1",
+    "tris": 116,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Roof_HvacLarge_LOD2",
+    "tris": 80,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Roof_HvacLarge"
+  ],
+  "collision_type": "UBX",
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "fan_cowl",
+  "name": "VC_Roof_FanCowl",
+  "part": 2,
+  "pivot": "base centre, z = 0",
+  "anchor": "ground",
+  "blend": "ArtSource/Blender/Facade/VC_Roof_FanCowl.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Roof_FanCowl.fbx",
+  "size_m": [
+   1.0,
+   1.0,
+   1.04
+  ],
+  "mount_z_m": 0.0,
+  "levels": 2,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Roof_FanCowl_LOD0",
+    "tris": 188,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Roof_FanCowl_LOD1",
+    "tris": 156,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Roof_FanCowl"
+  ],
+  "collision_type": "UBX",
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "duct_run",
+  "name": "VC_Roof_DuctRun",
+  "part": 2,
+  "pivot": "base centre, z = 0",
+  "anchor": "ground",
+  "blend": "ArtSource/Blender/Facade/VC_Roof_DuctRun.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Roof_DuctRun.fbx",
+  "size_m": [
+   0.72,
+   4.0,
+   1.38
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Roof_DuctRun_LOD0",
+    "tris": 84,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Roof_DuctRun_LOD1",
+    "tris": 84,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Roof_DuctRun_LOD2",
+    "tris": 72,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Roof_DuctRun"
+  ],
+  "collision_type": "UBX",
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "water_tank",
+  "name": "VC_Roof_WaterTank",
+  "part": 2,
+  "pivot": "base centre, z = 0",
+  "anchor": "ground",
+  "blend": "ArtSource/Blender/Facade/VC_Roof_WaterTank.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Roof_WaterTank.fbx",
+  "size_m": [
+   2.48,
+   2.2,
+   3.76
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Roof_WaterTank_LOD0",
+    "tris": 352,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Roof_WaterTank_LOD1",
+    "tris": 236,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Roof_WaterTank_LOD2",
+    "tris": 116,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UCX_VC_Roof_WaterTank"
+  ],
+  "collision_type": "UCX",
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "stair_overrun",
+  "name": "VC_Roof_StairOverrun",
+  "part": 2,
+  "pivot": "base centre, z = 0",
+  "anchor": "ground",
+  "blend": "ArtSource/Blender/Facade/VC_Roof_StairOverrun.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Roof_StairOverrun.fbx",
+  "size_m": [
+   3.36,
+   2.76,
+   2.69
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Roof_StairOverrun_LOD0",
+    "tris": 48,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Roof_StairOverrun_LOD1",
+    "tris": 48,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Roof_StairOverrun_LOD2",
+    "tris": 24,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Roof_StairOverrun"
+  ],
+  "collision_type": "UBX",
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "parapet_cap",
+  "name": "VC_Roof_ParapetCap",
+  "part": 2,
+  "pivot": "wall face, centred, z = 0 at the band soffit",
+  "anchor": "band",
+  "blend": "ArtSource/Blender/Facade/VC_Roof_ParapetCap.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Roof_ParapetCap.fbx",
+  "size_m": [
+   3.0,
+   0.6,
+   0.44
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Roof_ParapetCap_LOD0",
+    "tris": 40,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Roof_ParapetCap_LOD1",
+    "tris": 40,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Roof_ParapetCap_LOD2",
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [],
+  "collision_type": null,
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "antenna_cluster",
+  "name": "VC_Roof_AntennaCluster",
+  "part": 2,
+  "pivot": "base centre, z = 0",
+  "anchor": "ground",
+  "blend": "ArtSource/Blender/Facade/VC_Roof_AntennaCluster.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Roof_AntennaCluster.fbx",
+  "size_m": [
+   1.1,
+   0.63,
+   3.6
+  ],
+  "mount_z_m": 0.0,
+  "levels": 3,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Roof_AntennaCluster_LOD0",
+    "tris": 132,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Roof_AntennaCluster_LOD1",
+    "tris": 108,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Roof_AntennaCluster_LOD2",
+    "tris": 56,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [],
+  "collision_type": null,
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ },
+ {
+  "key": "roof_hatch",
+  "name": "VC_Roof_RoofHatch",
+  "part": 2,
+  "pivot": "base centre, z = 0",
+  "anchor": "ground",
+  "blend": "ArtSource/Blender/Facade/VC_Roof_RoofHatch.blend",
+  "fbx": "ArtSource/Blender/Facade/export/VC_Roof_RoofHatch.fbx",
+  "size_m": [
+   1.16,
+   1.045,
+   1.053
+  ],
+  "mount_z_m": 0.0,
+  "levels": 2,
+  "uv": true,
+  "lods": [
+   {
+    "object": "VC_Roof_RoofHatch_LOD0",
+    "tris": 48,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Roof_RoofHatch_LOD1",
+    "tris": 48,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Fac_Metal",
+     "VC_Fac_Glass",
+     "VC_Fac_Panel",
+     "VC_Fac_Fabric",
+     "VC_Fac_Blank",
+     "VC_Fac_Concrete",
+     "VC_Fac_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [],
+  "collision_type": null,
+  "slots": [
+   "VC_Fac_Metal",
+   "VC_Fac_Glass",
+   "VC_Fac_Panel",
+   "VC_Fac_Fabric",
+   "VC_Fac_Blank",
+   "VC_Fac_Concrete",
+   "VC_Fac_Emissive"
+  ]
+ }
+]

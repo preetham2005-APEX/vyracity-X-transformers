@@ -1,0 +1,124 @@
+[
+ {
+  "key": "gas_station",
+  "name": "VC_Ret_GasStation",
+  "set": "roadside",
+  "family": "gas_station",
+  "style_kit": [
+   "Roadside"
+  ],
+  "districts": [
+   "D4"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Ret_GasStation.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Ret_GasStation.fbx",
+  "footprint_m": [
+   26.0,
+   16.0
+  ],
+  "height_m": 6.64,
+  "design_height_m": 6.6,
+  "bbox_m": [
+   26.7,
+   17.5,
+   6.64
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Ret_GasStation_LOD0",
+    "tris": 208,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Rt_Panel",
+     "VC_Rt_Glass",
+     "VC_Rt_Metal",
+     "VC_Rt_Concrete",
+     "VC_Rt_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ret_GasStation_LOD1",
+    "tris": 168,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Rt_Panel",
+     "VC_Rt_Glass",
+     "VC_Rt_Metal",
+     "VC_Rt_Concrete",
+     "VC_Rt_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Ret_GasStation_LOD2",
+    "tris": 96,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Rt_Panel",
+     "VC_Rt_Glass",
+     "VC_Rt_Metal",
+     "VC_Rt_Concrete",
+     "VC_Rt_Brick"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Ret_GasStation"
+  ],
+  "slots": [
+   "VC_Rt_Panel",
+   "VC_Rt_Glass",
+   "VC_Rt_Metal",
+   "VC_Rt_Concrete",
+   "VC_Rt_Brick"
+  ]
+ }
+]

@@ -1,0 +1,490 @@
+[
+ {
+  "key": "hangar_arch",
+  "name": "VC_Avi_HangarArch",
+  "set": "aviation",
+  "family": "hangar_arch",
+  "style_kit": [
+   "Aviation"
+  ],
+  "districts": [
+   "D7"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Avi_HangarArch.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Avi_HangarArch.fbx",
+  "footprint_m": [
+   62.0,
+   74.0
+  ],
+  "height_m": 18.5,
+  "design_height_m": 18.5,
+  "bbox_m": [
+   62.0,
+   74.05,
+   18.5
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Avi_HangarArch_LOD0",
+    "tris": 304,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Av_Clad",
+     "VC_Av_Roof",
+     "VC_Av_Glass",
+     "VC_Av_Metal",
+     "VC_Av_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Avi_HangarArch_LOD1",
+    "tris": 236,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Av_Clad",
+     "VC_Av_Roof",
+     "VC_Av_Glass",
+     "VC_Av_Metal",
+     "VC_Av_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Avi_HangarArch_LOD2",
+    "tris": 80,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Av_Clad",
+     "VC_Av_Roof",
+     "VC_Av_Glass",
+     "VC_Av_Metal",
+     "VC_Av_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Avi_HangarArch"
+  ],
+  "slots": [
+   "VC_Av_Clad",
+   "VC_Av_Roof",
+   "VC_Av_Glass",
+   "VC_Av_Metal",
+   "VC_Av_Concrete"
+  ]
+ },
+ {
+  "key": "hangar_monitor",
+  "name": "VC_Avi_HangarMonitor",
+  "set": "aviation",
+  "family": "hangar_monitor",
+  "style_kit": [
+   "Aviation"
+  ],
+  "districts": [
+   "D7"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Avi_HangarMonitor.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Avi_HangarMonitor.fbx",
+  "footprint_m": [
+   62.0,
+   74.0
+  ],
+  "height_m": 17.7,
+  "design_height_m": 17.7,
+  "bbox_m": [
+   62.0,
+   74.0,
+   17.7
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Avi_HangarMonitor_LOD0",
+    "tris": 532,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Av_Clad",
+     "VC_Av_Roof",
+     "VC_Av_Glass",
+     "VC_Av_Metal",
+     "VC_Av_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Avi_HangarMonitor_LOD1",
+    "tris": 376,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Av_Clad",
+     "VC_Av_Roof",
+     "VC_Av_Glass",
+     "VC_Av_Metal",
+     "VC_Av_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Avi_HangarMonitor_LOD2",
+    "tris": 88,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Av_Clad",
+     "VC_Av_Roof",
+     "VC_Av_Glass",
+     "VC_Av_Metal",
+     "VC_Av_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Avi_HangarMonitor"
+  ],
+  "slots": [
+   "VC_Av_Clad",
+   "VC_Av_Roof",
+   "VC_Av_Glass",
+   "VC_Av_Metal",
+   "VC_Av_Concrete"
+  ]
+ },
+ {
+  "key": "grandstand",
+  "name": "VC_Avi_Grandstand",
+  "set": "aviation",
+  "family": "grandstand",
+  "style_kit": [
+   "Aviation"
+  ],
+  "districts": [
+   "D7"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Avi_Grandstand.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Avi_Grandstand.fbx",
+  "footprint_m": [
+   18.0,
+   150.0
+  ],
+  "height_m": 14.0,
+  "design_height_m": 14.0,
+  "bbox_m": [
+   152.0,
+   18.0,
+   14.0
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Avi_Grandstand_LOD0",
+    "tris": 256,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Av_Clad",
+     "VC_Av_Roof",
+     "VC_Av_Glass",
+     "VC_Av_Metal",
+     "VC_Av_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Avi_Grandstand_LOD1",
+    "tris": 208,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Av_Clad",
+     "VC_Av_Roof",
+     "VC_Av_Glass",
+     "VC_Av_Metal",
+     "VC_Av_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Avi_Grandstand_LOD2",
+    "tris": 52,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Av_Clad",
+     "VC_Av_Roof",
+     "VC_Av_Glass",
+     "VC_Av_Metal",
+     "VC_Av_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Avi_Grandstand"
+  ],
+  "slots": [
+   "VC_Av_Clad",
+   "VC_Av_Roof",
+   "VC_Av_Glass",
+   "VC_Av_Metal",
+   "VC_Av_Concrete"
+  ]
+ },
+ {
+  "key": "terminal",
+  "name": "VC_Avi_Terminal",
+  "set": "aviation",
+  "family": "terminal",
+  "style_kit": [
+   "Aviation"
+  ],
+  "districts": [
+   "D7"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Avi_Terminal.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Avi_Terminal.fbx",
+  "footprint_m": [
+   130.0,
+   36.0
+  ],
+  "height_m": 14.15,
+  "design_height_m": 14.0,
+  "bbox_m": [
+   132.0,
+   41.1,
+   14.15
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Avi_Terminal_LOD0",
+    "tris": 456,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Av_Clad",
+     "VC_Av_Roof",
+     "VC_Av_Glass",
+     "VC_Av_Metal",
+     "VC_Av_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Avi_Terminal_LOD1",
+    "tris": 384,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Av_Clad",
+     "VC_Av_Roof",
+     "VC_Av_Glass",
+     "VC_Av_Metal",
+     "VC_Av_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Avi_Terminal_LOD2",
+    "tris": 156,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Av_Clad",
+     "VC_Av_Roof",
+     "VC_Av_Glass",
+     "VC_Av_Metal",
+     "VC_Av_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Avi_Terminal"
+  ],
+  "slots": [
+   "VC_Av_Clad",
+   "VC_Av_Roof",
+   "VC_Av_Glass",
+   "VC_Av_Metal",
+   "VC_Av_Concrete"
+  ]
+ }
+]

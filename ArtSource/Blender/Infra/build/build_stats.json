@@ -1,0 +1,396 @@
+[
+ {
+  "name": "VC_Kerb_Straight_4m",
+  "tris": [
+   32,
+   16
+  ],
+  "collision_tris": 32,
+  "collision": "COL_dry_asphalt_VC_Kerb_Straight_4m_Gutter + COL_concrete_VC_Kerb_Straight_4m_Kerb",
+  "collision_type": "COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb",
+  "pivot": "start of the piece, at the road edge of the gutter pan, z = 0 = road surface",
+  "notes": "4.00 m module; 150 mm upstand + 25 mm chamfer + 450 mm gutter pan. Runs toward Unity +Z, kerb rises toward Unity +X. Surfaces: Kerb (face/top), Asphalt (pan).",
+  "materials": [
+   "VC_Collision",
+   "VC_Concrete_Kerb"
+  ],
+  "dims_lod0": [
+   0.9,
+   4.0,
+   0.492
+  ]
+ },
+ {
+  "name": "VC_Kerb_Corner_90",
+  "tris": [
+   158,
+   46
+  ],
+  "collision_tris": 132,
+  "collision": "COL_dry_asphalt_VC_Kerb_Corner_90_Gutter + COL_concrete_VC_Kerb_Corner_90_Kerb",
+  "collision_type": "COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb",
+  "pivot": "start of the piece (same datum as VC_Kerb_Straight_4m)",
+  "notes": "90 deg kerb return, 3.00 m face radius, turning toward Unity +X (footway on the inside). The left-hand return is this piece mirrored on X.",
+  "materials": [
+   "VC_Collision",
+   "VC_Concrete_Kerb"
+  ],
+  "dims_lod0": [
+   3.45,
+   3.45,
+   0.492
+  ]
+ },
+ {
+  "name": "VC_Kerb_DriveApron_4m",
+  "tris": [
+   68,
+   36
+  ],
+  "collision_tris": 72,
+  "collision": "COL_dry_asphalt_VC_Kerb_DriveApron_4m_Gutter + COL_concrete_VC_Kerb_DriveApron_4m_Kerb",
+  "collision_type": "COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb",
+  "pivot": "start of the piece (same datum as VC_Kerb_Straight_4m)",
+  "notes": "4.00 m dropped-kerb driveway apron: 0.80 m flare down, 2.40 m dropped crossing (30 mm upstand), 0.80 m flare up. Tiles between straight kerb modules.",
+  "materials": [
+   "VC_Collision",
+   "VC_Concrete_Kerb"
+  ],
+  "dims_lod0": [
+   0.9,
+   4.0,
+   0.492
+  ]
+ },
+ {
+  "name": "VC_Drain_Inlet_Kerb",
+  "tris": [
+   240,
+   128
+  ],
+  "collision_tris": 32,
+  "collision": "COL_dry_asphalt_VC_Drain_Inlet_Kerb_Gutter + COL_concrete_VC_Drain_Inlet_Kerb_Kerb",
+  "collision_type": "COL (non-convex MeshCollider) x2: dry_asphalt gutter + concrete kerb (the gutter solid closes the sump)",
+  "pivot": "start of the piece (same datum as VC_Kerb_Straight_4m)",
+  "notes": "1.20 m combination inlet: 0.90 m kerb throat (140 mm clear under a cast lintel) over a 0.90 x 0.42 m sump with a 7-bar cast grate. Collision closes the sump so wheels cannot drop in.",
+  "materials": [
+   "VC_Collision",
+   "VC_Concrete_Kerb",
+   "VC_Iron_Cast"
+  ],
+  "dims_lod0": [
+   0.9,
+   1.2,
+   0.492
+  ]
+ },
+ {
+  "name": "VC_Guardrail_WBeam_4m",
+  "tris": [
+   184,
+   60,
+   24
+  ],
+  "collision_tris": 12,
+  "collision": "UBX_VC_Guardrail_WBeam_4m",
+  "collision_type": "UBX (BoxCollider)",
+  "pivot": "start of the piece, post centreline, ground level (z = 0), rail back plane (x = 0)",
+  "notes": "4.00 m post-and-rail module, rail centre 550 mm, 1.85 m C-section post at the module start. The rail face looks toward Unity -X (the carriageway); the module runs toward Unity +Z.",
+  "materials": [
+   "VC_Collision",
+   "VC_Steel_Galv"
+  ],
+  "dims_lod0": [
+   0.358,
+   4.118,
+   1.85
+  ]
+ },
+ {
+  "name": "VC_Guardrail_WBeam_End",
+  "tris": [
+   252,
+   104,
+   36
+  ],
+  "collision_tris": 12,
+  "collision": "UCX_VC_Guardrail_WBeam_End",
+  "collision_type": "UCX (convex MeshCollider)",
+  "pivot": "start of the piece (mates with VC_Guardrail_WBeam_4m), ground level",
+  "notes": "4.00 m flared end terminal: the rail drops 550 -> 200 mm and flares 0.60 m away from the carriageway into an impact head and ground anchor.",
+  "materials": [
+   "VC_Collision",
+   "VC_Steel_Galv"
+  ],
+  "dims_lod0": [
+   0.873,
+   4.195,
+   1.65
+  ]
+ },
+ {
+  "name": "VC_Barrier_Jersey_3m",
+  "tris": [
+   76,
+   28
+  ],
+  "collision_tris": 28,
+  "collision": "UCX_VC_Barrier_Jersey_3m",
+  "collision_type": "UCX (convex MeshCollider)",
+  "pivot": "base centre (centre of the 3.00 m length, cross-section centre, z = 0)",
+  "notes": "3.00 m NJ-type module, 815 mm high, 610 mm base, 156 mm top; the end 50 mm is inset 15 mm for the lap joint, so modules read as separate castings.",
+  "materials": [
+   "VC_Collision",
+   "VC_Concrete_Barrier"
+  ],
+  "dims_lod0": [
+   0.61,
+   3.0,
+   0.815
+  ]
+ },
+ {
+  "name": "VC_Barrier_Jersey_EndTaper",
+  "tris": [
+   76,
+   28
+  ],
+  "collision_tris": 28,
+  "collision": "UCX_VC_Barrier_Jersey_EndTaper",
+  "collision_type": "UCX (convex MeshCollider)",
+  "pivot": "base centre (centre of the 3.00 m length, cross-section centre, z = 0)",
+  "notes": "3.00 m tapered end: 815 -> 360 mm over the run, same NJ profile truncated. The full-height end (Blender +Y, Unity -Z) mates with VC_Barrier_Jersey_3m.",
+  "materials": [
+   "VC_Collision",
+   "VC_Concrete_Barrier"
+  ],
+  "dims_lod0": [
+   0.61,
+   3.0,
+   0.815
+  ]
+ },
+ {
+  "name": "VC_Gantry_Truss_12m",
+  "tris": [
+   1760,
+   704,
+   120
+  ],
+  "collision_tris": 0,
+  "collision": null,
+  "collision_type": "none (overhead)",
+  "pivot": "start of the span, bottom-chord plane, truss centreline (x = y = z = 0)",
+  "notes": "12 m box-truss span, 0.90 m wide x 1.25 m deep, 110 mm chords. The span reaches toward Unity +X; set the pivot at the leg-top level (legs are 7.60 m, giving 6.35 m clear under a 4.80 x 2.40 m panel hung from the rails).",
+  "materials": [
+   "VC_Steel_Galv"
+  ],
+  "dims_lod0": [
+   12.06,
+   1.01,
+   1.407
+  ]
+ },
+ {
+  "name": "VC_Gantry_Truss_20m",
+  "tris": [
+   2760,
+   1064,
+   156
+  ],
+  "collision_tris": 0,
+  "collision": null,
+  "collision_type": "none (overhead)",
+  "pivot": "start of the span, bottom-chord plane, truss centreline (x = y = z = 0)",
+  "notes": "20 m box-truss span, 0.90 m wide x 1.25 m deep, 110 mm chords. The span reaches toward Unity +X; set the pivot at the leg-top level (legs are 7.60 m, giving 6.35 m clear under a 4.80 x 2.40 m panel hung from the rails).",
+  "materials": [
+   "VC_Steel_Galv"
+  ],
+  "dims_lod0": [
+   20.06,
+   1.01,
+   1.407
+  ]
+ },
+ {
+  "name": "VC_Gantry_Leg_Lattice",
+  "tris": [
+   1256,
+   488,
+   120
+  ],
+  "collision_tris": 12,
+  "collision": "UBX_VC_Gantry_Leg_Lattice",
+  "collision_type": "UBX (BoxCollider)",
+  "pivot": "base centre, z = 0 at the top of the foundation",
+  "notes": "7.60 m laced steel upright, 0.55 m square, 0.90 m base plate with four anchor bolts. Pairs with either gantry span.",
+  "materials": [
+   "VC_Collision",
+   "VC_Steel_Galv"
+  ],
+  "dims_lod0": [
+   0.9,
+   0.9,
+   7.64
+  ]
+ },
+ {
+  "name": "VC_Gantry_Leg_Concrete",
+  "tris": [
+   96,
+   48,
+   24
+  ],
+  "collision_tris": 12,
+  "collision": "UBX_VC_Gantry_Leg_Concrete",
+  "collision_type": "UBX (BoxCollider)",
+  "pivot": "base centre, z = 0 at the top of the foundation",
+  "notes": "7.60 m tapered concrete upright (0.85 x 0.65 m at the plinth, 0.65 x 0.55 m at the capital) with lift-joint steps and a steel bearing plate at 7.84 m.",
+  "materials": [
+   "VC_Collision",
+   "VC_Concrete_Struct",
+   "VC_Steel_Galv"
+  ],
+  "dims_lod0": [
+   1.05,
+   0.85,
+   7.86
+  ]
+ },
+ {
+  "name": "VC_SignPanel_Blank_4800x2400",
+  "tris": [
+   84,
+   36,
+   12
+  ],
+  "collision_tris": 0,
+  "collision": null,
+  "collision_type": "none (overhead)",
+  "pivot": "TOP centre of the panel face - the panel hangs from the gantry rails, so the pivot is the hanger line, not the base centre (deliberate deviation)",
+  "notes": "4.80 x 2.40 m BLANK panel, 40 mm face, rear stiffeners and hanger brackets. No text or symbol geometry: Veyra's own signage is applied on the Unity side. The face looks toward Unity +Z.",
+  "materials": [
+   "VC_Sign_BlankFace",
+   "VC_Steel_Galv"
+  ],
+  "dims_lod0": [
+   4.8,
+   0.17,
+   2.4
+  ]
+ },
+ {
+  "name": "VC_SignPanel_Blank_2400x1500",
+  "tris": [
+   84,
+   36,
+   12
+  ],
+  "collision_tris": 0,
+  "collision": null,
+  "collision_type": "none (overhead)",
+  "pivot": "TOP centre of the panel face - the panel hangs from the gantry rails, so the pivot is the hanger line, not the base centre (deliberate deviation)",
+  "notes": "2.40 x 1.50 m BLANK panel, 40 mm face, rear stiffeners and hanger brackets. No text or symbol geometry: Veyra's own signage is applied on the Unity side. The face looks toward Unity +Z.",
+  "materials": [
+   "VC_Sign_BlankFace",
+   "VC_Steel_Galv"
+  ],
+  "dims_lod0": [
+   2.4,
+   0.17,
+   1.5
+  ]
+ },
+ {
+  "name": "VC_SignalMast_Cantilever",
+  "tris": [
+   280,
+   88,
+   24
+  ],
+  "collision_tris": 28,
+  "collision": "UCX_VC_SignalMast_Cantilever",
+  "collision_type": "UCX (convex MeshCollider)",
+  "pivot": "base centre of the upright, z = 0 at the top of the foundation",
+  "notes": "7.00 m tapered upright (320 -> 240 mm) with a 5.50 m cantilever arm rising from 6.40 to 6.75 m. The arm reaches toward Unity +X; heads hang below it.",
+  "materials": [
+   "VC_Collision",
+   "VC_Steel_Dark",
+   "VC_Steel_Galv"
+  ],
+  "dims_lod0": [
+   5.766,
+   0.52,
+   7.0
+  ]
+ },
+ {
+  "name": "VC_Signal_Head_3",
+  "tris": [
+   240,
+   96
+  ],
+  "collision_tris": 0,
+  "collision": null,
+  "collision_type": "none (overhead)",
+  "pivot": "TOP centre of the mounting bracket - the head hangs from a mast arm, so the pivot is the mount point, not the base centre (deliberate deviation)",
+  "notes": "3-head housing, 1.16 m body + backplate, 300 mm lenses with visors. Lenses face Unity +Z (toward oncoming traffic). Under 2 m, so LOD0 + LOD1 only.",
+  "materials": [
+   "VC_Signal_Lens",
+   "VC_Steel_Dark"
+  ],
+  "dims_lod0": [
+   0.7,
+   0.517,
+   1.44
+  ]
+ },
+ {
+  "name": "VC_UtilityPole_Timber",
+  "tris": [
+   456,
+   152,
+   24
+  ],
+  "collision_tris": 28,
+  "collision": "UCX_VC_UtilityPole_Timber",
+  "collision_type": "UCX (convex MeshCollider)",
+  "pivot": "base centre at the ground line (z = 0); the butt continues to -0.10 m",
+  "notes": "11.00 m timber distribution pole, 290 -> 190 mm, one 2.45 m crossarm at 10.20 m with four pin insulators, a three-spool secondary rack at 8.95 m and pole steps. NO cables - the catenary is generated procedurally in Unity. Crossarm axis runs along Unity X.",
+  "materials": [
+   "VC_Collision",
+   "VC_Porcelain",
+   "VC_Steel_Galv",
+   "VC_Timber_Pole"
+  ],
+  "dims_lod0": [
+   2.45,
+   0.515,
+   11.1
+  ]
+ },
+ {
+  "name": "VC_UtilityPole_Transmission",
+  "tris": [
+   660,
+   188,
+   36
+  ],
+  "collision_tris": 28,
+  "collision": "UCX_VC_UtilityPole_Transmission",
+  "collision_type": "UCX (convex MeshCollider)",
+  "pivot": "base centre at the ground line (z = 0); the butt continues to -0.10 m",
+  "notes": "14.50 m timber transmission-style pole, 350 -> 210 mm, 3.00 m upper arm at 13.60 m (three insulators) and 2.45 m lower arm at 12.30 m (four), plus an earth-wire spike. NO cables.",
+  "materials": [
+   "VC_Collision",
+   "VC_Porcelain",
+   "VC_Steel_Galv",
+   "VC_Timber_Pole"
+  ],
+  "dims_lod0": [
+   3.0,
+   0.35,
+   15.05
+  ]
+ }
+]

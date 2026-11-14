@@ -1,0 +1,1145 @@
+[
+ {
+  "key": "brick_30",
+  "name": "VC_Neon_Brick30",
+  "set": "D6Neon",
+  "family": "brick_block",
+  "style_kit": [
+   "BrickIndustrial"
+  ],
+  "districts": [
+   "D6"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Neon_Brick30.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Neon_Brick30.fbx",
+  "footprint_m": [
+   57.0,
+   57.0
+  ],
+  "height_m": 30.0,
+  "design_height_m": 30.0,
+  "bbox_m": [
+   57.9,
+   59.28,
+   30.0
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Neon_Brick30_LOD0",
+    "tris": 1224,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Brick",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Brick30_LOD1",
+    "tris": 804,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Brick",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Brick30_LOD2",
+    "tris": 372,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Brick",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Neon_Brick30"
+  ],
+  "slots": [
+   "VC_Nm_Brick",
+   "VC_Nm_Glass",
+   "VC_Nm_Metal",
+   "VC_Nm_Concrete",
+   "VC_Nm_Shutter",
+   "VC_Neon_Emissive"
+  ],
+  "emissive_slot": "VC_Neon_Emissive"
+ },
+ {
+  "key": "brick_42",
+  "name": "VC_Neon_Brick42",
+  "set": "D6Neon",
+  "family": "brick_block",
+  "style_kit": [
+   "BrickIndustrial"
+  ],
+  "districts": [
+   "D6"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Neon_Brick42.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Neon_Brick42.fbx",
+  "footprint_m": [
+   57.0,
+   57.0
+  ],
+  "height_m": 42.0,
+  "design_height_m": 42.0,
+  "bbox_m": [
+   57.9,
+   59.28,
+   42.0
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Neon_Brick42_LOD0",
+    "tris": 1260,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Brick",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Brick42_LOD1",
+    "tris": 816,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Brick",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Brick42_LOD2",
+    "tris": 372,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Brick",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Neon_Brick42"
+  ],
+  "slots": [
+   "VC_Nm_Brick",
+   "VC_Nm_Glass",
+   "VC_Nm_Metal",
+   "VC_Nm_Concrete",
+   "VC_Nm_Shutter",
+   "VC_Neon_Emissive"
+  ],
+  "emissive_slot": "VC_Neon_Emissive"
+ },
+ {
+  "key": "brick_62",
+  "name": "VC_Neon_Brick62",
+  "set": "D6Neon",
+  "family": "brick_block",
+  "style_kit": [
+   "BrickIndustrial"
+  ],
+  "districts": [
+   "D6"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Neon_Brick62.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Neon_Brick62.fbx",
+  "footprint_m": [
+   57.0,
+   57.0
+  ],
+  "height_m": 62.0,
+  "design_height_m": 62.0,
+  "bbox_m": [
+   57.9,
+   59.28,
+   62.0
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Neon_Brick62_LOD0",
+    "tris": 1332,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Brick",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Brick62_LOD1",
+    "tris": 852,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Brick",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Brick62_LOD2",
+    "tris": 372,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Brick",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Neon_Brick62"
+  ],
+  "slots": [
+   "VC_Nm_Brick",
+   "VC_Nm_Glass",
+   "VC_Nm_Metal",
+   "VC_Nm_Concrete",
+   "VC_Nm_Shutter",
+   "VC_Neon_Emissive"
+  ],
+  "emissive_slot": "VC_Neon_Emissive"
+ },
+ {
+  "key": "brick_33L",
+  "name": "VC_Neon_Brick33l",
+  "set": "D6Neon",
+  "family": "brick_block",
+  "style_kit": [
+   "BrickIndustrial"
+  ],
+  "districts": [
+   "D6"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Neon_Brick33l.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Neon_Brick33l.fbx",
+  "footprint_m": [
+   56.0,
+   105.0
+  ],
+  "height_m": 33.0,
+  "design_height_m": 33.0,
+  "bbox_m": [
+   56.9,
+   107.28,
+   33.0
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Neon_Brick33l_LOD0",
+    "tris": 1524,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Brick",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Brick33l_LOD1",
+    "tris": 948,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Brick",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Brick33l_LOD2",
+    "tris": 372,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Brick",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Neon_Brick33l"
+  ],
+  "slots": [
+   "VC_Nm_Brick",
+   "VC_Nm_Glass",
+   "VC_Nm_Metal",
+   "VC_Nm_Concrete",
+   "VC_Nm_Shutter",
+   "VC_Neon_Emissive"
+  ],
+  "emissive_slot": "VC_Neon_Emissive"
+ },
+ {
+  "key": "low_16",
+  "name": "VC_Neon_Low16",
+  "set": "D6Neon",
+  "family": "modern_block",
+  "style_kit": [
+   "ModernLowrise"
+  ],
+  "districts": [
+   "D6"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Neon_Low16.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Neon_Low16.fbx",
+  "footprint_m": [
+   58.0,
+   58.0
+  ],
+  "height_m": 16.0,
+  "design_height_m": 16.0,
+  "bbox_m": [
+   58.9,
+   60.28,
+   16.0
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Neon_Low16_LOD0",
+    "tris": 1044,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Panel",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Low16_LOD1",
+    "tris": 732,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Panel",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Low16_LOD2",
+    "tris": 408,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Panel",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Neon_Low16"
+  ],
+  "slots": [
+   "VC_Nm_Panel",
+   "VC_Nm_Glass",
+   "VC_Nm_Metal",
+   "VC_Nm_Concrete",
+   "VC_Nm_Shutter",
+   "VC_Neon_Emissive"
+  ],
+  "emissive_slot": "VC_Neon_Emissive"
+ },
+ {
+  "key": "low_21",
+  "name": "VC_Neon_Low21",
+  "set": "D6Neon",
+  "family": "modern_block",
+  "style_kit": [
+   "ModernLowrise"
+  ],
+  "districts": [
+   "D6"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Neon_Low21.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Neon_Low21.fbx",
+  "footprint_m": [
+   58.0,
+   58.0
+  ],
+  "height_m": 21.0,
+  "design_height_m": 21.0,
+  "bbox_m": [
+   58.9,
+   60.28,
+   21.0
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Neon_Low21_LOD0",
+    "tris": 1056,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Panel",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Low21_LOD1",
+    "tris": 732,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Panel",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Low21_LOD2",
+    "tris": 408,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Panel",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Neon_Low21"
+  ],
+  "slots": [
+   "VC_Nm_Panel",
+   "VC_Nm_Glass",
+   "VC_Nm_Metal",
+   "VC_Nm_Concrete",
+   "VC_Nm_Shutter",
+   "VC_Neon_Emissive"
+  ],
+  "emissive_slot": "VC_Neon_Emissive"
+ },
+ {
+  "key": "low_18L",
+  "name": "VC_Neon_Low18l",
+  "set": "D6Neon",
+  "family": "modern_block",
+  "style_kit": [
+   "ModernLowrise"
+  ],
+  "districts": [
+   "D6"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Neon_Low18l.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Neon_Low18l.fbx",
+  "footprint_m": [
+   57.0,
+   112.0
+  ],
+  "height_m": 18.0,
+  "design_height_m": 18.0,
+  "bbox_m": [
+   57.9,
+   114.28,
+   18.0
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Neon_Low18l_LOD0",
+    "tris": 1260,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Panel",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Low18l_LOD1",
+    "tris": 852,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Panel",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Low18l_LOD2",
+    "tris": 408,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Panel",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Neon_Low18l"
+  ],
+  "slots": [
+   "VC_Nm_Panel",
+   "VC_Nm_Glass",
+   "VC_Nm_Metal",
+   "VC_Nm_Concrete",
+   "VC_Nm_Shutter",
+   "VC_Neon_Emissive"
+  ],
+  "emissive_slot": "VC_Neon_Emissive"
+ },
+ {
+  "key": "brick_62L",
+  "name": "VC_Neon_Brick62l",
+  "set": "D6Neon",
+  "family": "brick_block",
+  "style_kit": [
+   "BrickIndustrial"
+  ],
+  "districts": [
+   "D6"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Neon_Brick62l.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Neon_Brick62l.fbx",
+  "footprint_m": [
+   56.0,
+   105.0
+  ],
+  "height_m": 62.0,
+  "design_height_m": 62.0,
+  "bbox_m": [
+   56.9,
+   107.28,
+   62.0
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Neon_Brick62l_LOD0",
+    "tris": 1620,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Brick",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Brick62l_LOD1",
+    "tris": 996,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Brick",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Brick62l_LOD2",
+    "tris": 372,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Brick",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Neon_Brick62l"
+  ],
+  "slots": [
+   "VC_Nm_Brick",
+   "VC_Nm_Glass",
+   "VC_Nm_Metal",
+   "VC_Nm_Concrete",
+   "VC_Nm_Shutter",
+   "VC_Neon_Emissive"
+  ],
+  "emissive_slot": "VC_Neon_Emissive"
+ },
+ {
+  "key": "low_14L",
+  "name": "VC_Neon_Low14l",
+  "set": "D6Neon",
+  "family": "modern_block",
+  "style_kit": [
+   "ModernLowrise"
+  ],
+  "districts": [
+   "D6"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_Neon_Low14l.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Neon_Low14l.fbx",
+  "footprint_m": [
+   57.0,
+   112.0
+  ],
+  "height_m": 14.0,
+  "design_height_m": 14.0,
+  "bbox_m": [
+   57.9,
+   114.28,
+   14.0
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Neon_Low14l_LOD0",
+    "tris": 1260,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Panel",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Low14l_LOD1",
+    "tris": 852,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Panel",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Neon_Low14l_LOD2",
+    "tris": 408,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Nm_Panel",
+     "VC_Nm_Glass",
+     "VC_Nm_Metal",
+     "VC_Nm_Concrete",
+     "VC_Nm_Shutter",
+     "VC_Neon_Emissive"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Neon_Low14l"
+  ],
+  "slots": [
+   "VC_Nm_Panel",
+   "VC_Nm_Glass",
+   "VC_Nm_Metal",
+   "VC_Nm_Concrete",
+   "VC_Nm_Shutter",
+   "VC_Neon_Emissive"
+  ],
+  "emissive_slot": "VC_Neon_Emissive"
+ }
+]

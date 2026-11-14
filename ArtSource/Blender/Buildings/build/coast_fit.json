@@ -1,0 +1,19 @@
+{
+ "fit": 81,
+ "total": 81,
+ "models": 8,
+ "usage": {
+  "VC_Coast_Marina": 3,
+  "VC_Coast_VillaA": 24,
+  "VC_Coast_ClubA": 12,
+  "VC_Coast_VillaB": 20,
+  "VC_Coast_VillaE": 21,
+  "VC_Coast_VillaD": 1
+ },
+ "stretch_median": 0.05263157894736836,
+ "stretch_p90": 0.2647058823529411,
+ "stretch_max": 0.2647058823529411,
+ "unfit": [],
+ "misfits": [],
+ "district_p95_long_side_m": 24.0
+}

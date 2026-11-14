@@ -1,0 +1,289 @@
+{
+ "textures": [
+  {
+   "name": "T_RW_TyreTrack",
+   "issues": []
+  },
+  {
+   "name": "T_RW_Crack",
+   "issues": []
+  },
+  {
+   "name": "T_RW_LaneWear",
+   "issues": []
+  },
+  {
+   "name": "T_RW_Oil",
+   "issues": []
+  },
+  {
+   "name": "T_RW_Patch",
+   "issues": []
+  },
+  {
+   "name": "T_RW_Grime",
+   "issues": []
+  },
+  {
+   "name": "T_RW_Markings",
+   "issues": []
+  },
+  {
+   "name": "T_RW_Puddle",
+   "issues": []
+  },
+  {
+   "name": "T_RW_Contact",
+   "issues": []
+  },
+  {
+   "name": "T_SW_Concrete_Panel",
+   "issues": []
+  }
+ ],
+ "meshes": [
+  {
+   "name": "VC_ExpansionJoint_Strip_4m",
+   "issues": [],
+   "meshes": {
+    "COL_concrete_VC_ExpansionJoint_Strip_4m": {
+     "tris": 12,
+     "ngons": 0,
+     "non_manifold": 0,
+     "loose_verts": 0,
+     "degenerate": 0,
+     "open_shells": 0,
+     "inverted_shells": 0,
+     "uv": true,
+     "max_z": 0.0,
+     "materials": [
+      "VC_Collision"
+     ]
+    },
+    "VC_ExpansionJoint_Strip_4m_LOD0": {
+     "tris": 40,
+     "ngons": 0,
+     "non_manifold": 0,
+     "loose_verts": 0,
+     "degenerate": 0,
+     "open_shells": 0,
+     "inverted_shells": 0,
+     "uv": true,
+     "max_z": 0.0,
+     "materials": [
+      "VC_Concrete_Struct",
+      "VC_Joint_Sealant"
+     ]
+    },
+    "VC_ExpansionJoint_Strip_4m_LOD1": {
+     "tris": 12,
+     "ngons": 0,
+     "non_manifold": 0,
+     "loose_verts": 0,
+     "degenerate": 0,
+     "open_shells": 0,
+     "inverted_shells": 0,
+     "uv": true,
+     "max_z": 0.0,
+     "materials": [
+      "VC_Concrete_Struct"
+     ]
+    }
+   }
+  },
+  {
+   "name": "VC_Manhole_Round_A",
+   "issues": [],
+   "meshes": {
+    "COL_concrete_VC_Manhole_Round_A": {
+     "tris": 72,
+     "ngons": 0,
+     "non_manifold": 0,
+     "loose_verts": 0,
+     "degenerate": 0,
+     "open_shells": 0,
+     "inverted_shells": 0,
+     "uv": true,
+     "max_z": 0.009999999776482582,
+     "materials": [
+      "VC_Collision"
+     ]
+    },
+    "VC_Manhole_Round_A_LOD0": {
+     "tris": 648,
+     "ngons": 0,
+     "non_manifold": 0,
+     "loose_verts": 0,
+     "degenerate": 0,
+     "open_shells": 0,
+     "inverted_shells": 0,
+     "uv": true,
+     "max_z": 0.01600000075995922,
+     "materials": [
+      "VC_Iron_Cast"
+     ]
+    },
+    "VC_Manhole_Round_A_LOD1": {
+     "tris": 272,
+     "ngons": 0,
+     "non_manifold": 0,
+     "loose_verts": 0,
+     "degenerate": 0,
+     "open_shells": 0,
+     "inverted_shells": 0,
+     "uv": true,
+     "max_z": 0.014999999664723873,
+     "materials": [
+      "VC_Iron_Cast"
+     ]
+    }
+   }
+  },
+  {
+   "name": "VC_Manhole_Round_B",
+   "issues": [],
+   "meshes": {
+    "COL_concrete_VC_Manhole_Round_B": {
+     "tris": 72,
+     "ngons": 0,
+     "non_manifold": 0,
+     "loose_verts": 0,
+     "degenerate": 0,
+     "open_shells": 0,
+     "inverted_shells": 0,
+     "uv": true,
+     "max_z": 0.009999999776482582,
+     "materials": [
+      "VC_Collision"
+     ]
+    },
+    "VC_Manhole_Round_B_LOD0": {
+     "tris": 732,
+     "ngons": 0,
+     "non_manifold": 0,
+     "loose_verts": 0,
+     "degenerate": 0,
+     "open_shells": 0,
+     "inverted_shells": 0,
+     "uv": true,
+     "max_z": 0.023813709616661072,
+     "materials": [
+      "VC_Iron_Cast"
+     ]
+    },
+    "VC_Manhole_Round_B_LOD1": {
+     "tris": 344,
+     "ngons": 0,
+     "non_manifold": 0,
+     "loose_verts": 0,
+     "degenerate": 0,
+     "open_shells": 0,
+     "inverted_shells": 0,
+     "uv": true,
+     "max_z": 0.023813709616661072,
+     "materials": [
+      "VC_Iron_Cast"
+     ]
+    }
+   }
+  },
+  {
+   "name": "VC_StormDrain_Grate_Road",
+   "issues": [],
+   "meshes": {
+    "COL_concrete_VC_StormDrain_Grate_Road": {
+     "tris": 12,
+     "ngons": 0,
+     "non_manifold": 0,
+     "loose_verts": 0,
+     "degenerate": 0,
+     "open_shells": 0,
+     "inverted_shells": 0,
+     "uv": true,
+     "max_z": 0.006000000052154064,
+     "materials": [
+      "VC_Collision"
+     ]
+    },
+    "VC_StormDrain_Grate_Road_LOD0": {
+     "tris": 168,
+     "ngons": 0,
+     "non_manifold": 0,
+     "loose_verts": 0,
+     "degenerate": 0,
+     "open_shells": 0,
+     "inverted_shells": 0,
+     "uv": true,
+     "max_z": 0.006000000052154064,
+     "materials": [
+      "VC_Iron_Cast",
+      "VC_Concrete_Struct"
+     ]
+    },
+    "VC_StormDrain_Grate_Road_LOD1": {
+     "tris": 96,
+     "ngons": 0,
+     "non_manifold": 0,
+     "loose_verts": 0,
+     "degenerate": 0,
+     "open_shells": 0,
+     "inverted_shells": 0,
+     "uv": true,
+     "max_z": 0.006000000052154064,
+     "materials": [
+      "VC_Iron_Cast",
+      "VC_Concrete_Struct"
+     ]
+    }
+   }
+  },
+  {
+   "name": "VC_UtilityCover_Square",
+   "issues": [],
+   "meshes": {
+    "COL_concrete_VC_UtilityCover_Square": {
+     "tris": 12,
+     "ngons": 0,
+     "non_manifold": 0,
+     "loose_verts": 0,
+     "degenerate": 0,
+     "open_shells": 0,
+     "inverted_shells": 0,
+     "uv": true,
+     "max_z": 0.009999999776482582,
+     "materials": [
+      "VC_Collision"
+     ]
+    },
+    "VC_UtilityCover_Square_LOD0": {
+     "tris": 276,
+     "ngons": 0,
+     "non_manifold": 0,
+     "loose_verts": 0,
+     "degenerate": 0,
+     "open_shells": 0,
+     "inverted_shells": 0,
+     "uv": true,
+     "max_z": 0.014999999664723873,
+     "materials": [
+      "VC_Iron_Cast"
+     ]
+    },
+    "VC_UtilityCover_Square_LOD1": {
+     "tris": 108,
+     "ngons": 0,
+     "non_manifold": 0,
+     "loose_verts": 0,
+     "degenerate": 0,
+     "open_shells": 0,
+     "inverted_shells": 0,
+     "uv": true,
+     "max_z": 0.014999999664723873,
+     "materials": [
+      "VC_Iron_Cast"
+     ]
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "fit": 65,
+ "total": 65,
+ "models": 5,
+ "usage": {
+  "VC_Town_TerraceB": 10,
+  "VC_Town_TerraceE": 9,
+  "VC_Town_TerraceD": 29,
+  "VC_Town_TerraceA": 11,
+  "VC_Town_TerraceC": 6
+ },
+ "stretch_median": 0.03164556962025311,
+ "stretch_p90": 0.06304985337243407,
+ "stretch_max": 0.09530791788856308,
+ "unfit": [],
+ "misfits": [],
+ "district_p95_long_side_m": 12.0
+}

@@ -1,0 +1,2585 @@
+[
+ {
+  "key": "glass_28",
+  "name": "VC_Tower_Glass28",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "tower_glass",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Glass28.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Glass28.fbx",
+  "footprint_m": [
+   55.0,
+   56.0
+  ],
+  "height_m": 28.7,
+  "design_height_m": 28.0,
+  "bbox_m": [
+   56.1,
+   58.68,
+   28.7
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Glass28_LOD0",
+    "tris": 1284,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Glass28_LOD1",
+    "tris": 768,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Glass28_LOD2",
+    "tris": 192,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Glass28"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "glass_42",
+  "name": "VC_Tower_Glass42",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "tower_glass",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Glass42.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Glass42.fbx",
+  "footprint_m": [
+   55.0,
+   56.0
+  ],
+  "height_m": 42.7,
+  "design_height_m": 42.0,
+  "bbox_m": [
+   56.1,
+   58.68,
+   42.7
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Glass42_LOD0",
+    "tris": 1284,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Glass42_LOD1",
+    "tris": 768,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Glass42_LOD2",
+    "tris": 192,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Glass42"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "glass_62",
+  "name": "VC_Tower_Glass62",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "tower_glass",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Glass62.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Glass62.fbx",
+  "footprint_m": [
+   55.0,
+   56.0
+  ],
+  "height_m": 63.1,
+  "design_height_m": 62.0,
+  "bbox_m": [
+   56.1,
+   58.68,
+   63.1
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Glass62_LOD0",
+    "tris": 1308,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Glass62_LOD1",
+    "tris": 792,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Glass62_LOD2",
+    "tris": 216,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Glass62"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "glass_90",
+  "name": "VC_Tower_Glass90",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "tower_glass",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Glass90.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Glass90.fbx",
+  "footprint_m": [
+   55.0,
+   56.0
+  ],
+  "height_m": 91.1,
+  "design_height_m": 90.0,
+  "bbox_m": [
+   56.1,
+   58.68,
+   91.1
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Glass90_LOD0",
+    "tris": 1320,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Glass90_LOD1",
+    "tris": 804,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Glass90_LOD2",
+    "tris": 228,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Glass90"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "glass_130",
+  "name": "VC_Tower_Glass130",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "tower_glass",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Glass130.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Glass130.fbx",
+  "footprint_m": [
+   55.0,
+   56.0
+  ],
+  "height_m": 137.1,
+  "design_height_m": 130.0,
+  "bbox_m": [
+   56.1,
+   58.68,
+   137.1
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Glass130_LOD0",
+    "tris": 1348,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Glass130_LOD1",
+    "tris": 832,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Glass130_LOD2",
+    "tris": 256,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Glass130"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "glass_190",
+  "name": "VC_Tower_Glass190",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "tower_glass",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Glass190.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Glass190.fbx",
+  "footprint_m": [
+   55.0,
+   56.0
+  ],
+  "height_m": 197.1,
+  "design_height_m": 190.0,
+  "bbox_m": [
+   56.1,
+   58.68,
+   197.1
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Glass190_LOD0",
+    "tris": 1348,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Glass190_LOD1",
+    "tris": 832,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Glass190_LOD2",
+    "tris": 256,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Glass190"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "deco_120",
+  "name": "VC_Tower_Deco120",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "tower_deco",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Deco120.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Deco120.fbx",
+  "footprint_m": [
+   54.0,
+   54.0
+  ],
+  "height_m": 124.7,
+  "design_height_m": 120.0,
+  "bbox_m": [
+   55.1,
+   56.8,
+   124.7
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Deco120_LOD0",
+    "tris": 2464,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Deco120_LOD1",
+    "tris": 1468,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Deco120_LOD2",
+    "tris": 388,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Deco120"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "deco_175",
+  "name": "VC_Tower_Deco175",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "tower_deco",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Deco175.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Deco175.fbx",
+  "footprint_m": [
+   54.0,
+   54.0
+  ],
+  "height_m": 179.7,
+  "design_height_m": 175.0,
+  "bbox_m": [
+   55.1,
+   56.8,
+   179.7
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Deco175_LOD0",
+    "tris": 2464,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Deco175_LOD1",
+    "tris": 1468,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Deco175_LOD2",
+    "tris": 388,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Deco175"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "deco_240",
+  "name": "VC_Tower_Deco240",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "tower_deco",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Deco240.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Deco240.fbx",
+  "footprint_m": [
+   54.0,
+   54.0
+  ],
+  "height_m": 244.7,
+  "design_height_m": 240.0,
+  "bbox_m": [
+   55.1,
+   56.8,
+   244.7
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Deco240_LOD0",
+    "tris": 2464,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Deco240_LOD1",
+    "tris": 1468,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Deco240_LOD2",
+    "tris": 388,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Deco240"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "slab115_50",
+  "name": "VC_Tower_Slab11550",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "block_slab",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Slab11550.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Slab11550.fbx",
+  "footprint_m": [
+   54.0,
+   115.0
+  ],
+  "height_m": 51.2,
+  "design_height_m": 50.0,
+  "bbox_m": [
+   55.1,
+   117.67,
+   51.2
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Slab11550_LOD0",
+    "tris": 1752,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Slab11550_LOD1",
+    "tris": 996,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Slab11550_LOD2",
+    "tris": 204,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Slab11550"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "slab115_110",
+  "name": "VC_Tower_Slab115110",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "block_slab",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Slab115110.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Slab115110.fbx",
+  "footprint_m": [
+   54.0,
+   115.0
+  ],
+  "height_m": 111.2,
+  "design_height_m": 110.0,
+  "bbox_m": [
+   55.1,
+   117.67,
+   111.2
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Slab115110_LOD0",
+    "tris": 1752,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Slab115110_LOD1",
+    "tris": 996,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Slab115110_LOD2",
+    "tris": 204,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Slab115110"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "slab80_70",
+  "name": "VC_Tower_Slab8070",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "block_slab",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Slab8070.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Slab8070.fbx",
+  "footprint_m": [
+   54.0,
+   80.0
+  ],
+  "height_m": 71.2,
+  "design_height_m": 70.0,
+  "bbox_m": [
+   55.1,
+   82.67,
+   71.2
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Slab8070_LOD0",
+    "tris": 1440,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Slab8070_LOD1",
+    "tris": 852,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Slab8070_LOD2",
+    "tris": 204,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Slab8070"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "block117_100",
+  "name": "VC_Tower_Block117100",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "block_slab",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Block117100.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Block117100.fbx",
+  "footprint_m": [
+   117.0,
+   117.0
+  ],
+  "height_m": 101.2,
+  "design_height_m": 100.0,
+  "bbox_m": [
+   118.1,
+   119.67,
+   101.2
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Block117100_LOD0",
+    "tris": 2304,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Block117100_LOD1",
+    "tris": 1260,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Block117100_LOD2",
+    "tris": 204,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Block117100"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "thin31_70",
+  "name": "VC_Tower_Thin3170",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "tower_glass",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Thin3170.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Thin3170.fbx",
+  "footprint_m": [
+   31.0,
+   60.0
+  ],
+  "height_m": 71.1,
+  "design_height_m": 70.0,
+  "bbox_m": [
+   32.1,
+   62.68,
+   71.1
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Thin3170_LOD0",
+    "tris": 1116,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Thin3170_LOD1",
+    "tris": 672,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Thin3170_LOD2",
+    "tris": 216,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Thin3170"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "thin31_150",
+  "name": "VC_Tower_Thin31150",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "tower_glass",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Thin31150.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Thin31150.fbx",
+  "footprint_m": [
+   31.0,
+   117.0
+  ],
+  "height_m": 157.1,
+  "design_height_m": 150.0,
+  "bbox_m": [
+   32.1,
+   119.68,
+   157.1
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Thin31150_LOD0",
+    "tris": 1684,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Thin31150_LOD1",
+    "tris": 1000,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Thin31150_LOD2",
+    "tris": 256,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Thin31150"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "thin31_34",
+  "name": "VC_Tower_Thin3134",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "tower_glass",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Thin3134.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Thin3134.fbx",
+  "footprint_m": [
+   31.0,
+   60.0
+  ],
+  "height_m": 34.7,
+  "design_height_m": 34.0,
+  "bbox_m": [
+   32.1,
+   62.68,
+   34.7
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Thin3134_LOD0",
+    "tris": 1092,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Thin3134_LOD1",
+    "tris": 648,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Thin3134_LOD2",
+    "tris": 192,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Thin3134"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "thin31_130",
+  "name": "VC_Tower_Thin31130",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "tower_glass",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Thin31130.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Thin31130.fbx",
+  "footprint_m": [
+   31.0,
+   60.0
+  ],
+  "height_m": 137.1,
+  "design_height_m": 130.0,
+  "bbox_m": [
+   32.1,
+   62.68,
+   137.1
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Thin31130_LOD0",
+    "tris": 1156,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Thin31130_LOD1",
+    "tris": 712,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Thin31130_LOD2",
+    "tris": 256,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Thin31130"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "thin31_80l",
+  "name": "VC_Tower_Thin3180l",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "tower_glass",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Thin3180l.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Thin3180l.fbx",
+  "footprint_m": [
+   31.0,
+   117.0
+  ],
+  "height_m": 81.1,
+  "design_height_m": 80.0,
+  "bbox_m": [
+   32.1,
+   119.68,
+   81.1
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Thin3180l_LOD0",
+    "tris": 1644,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Thin3180l_LOD1",
+    "tris": 960,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Thin3180l_LOD2",
+    "tris": 216,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Thin3180l"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "slab115_200",
+  "name": "VC_Tower_Slab115200",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "block_slab",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Slab115200.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Slab115200.fbx",
+  "footprint_m": [
+   54.0,
+   115.0
+  ],
+  "height_m": 201.2,
+  "design_height_m": 200.0,
+  "bbox_m": [
+   55.1,
+   117.67,
+   201.2
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Slab115200_LOD0",
+    "tris": 1752,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Slab115200_LOD1",
+    "tris": 996,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Slab115200_LOD2",
+    "tris": 204,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Slab115200"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "slab80_170",
+  "name": "VC_Tower_Slab80170",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "block_slab",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Slab80170.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Slab80170.fbx",
+  "footprint_m": [
+   54.0,
+   80.0
+  ],
+  "height_m": 171.2,
+  "design_height_m": 170.0,
+  "bbox_m": [
+   55.1,
+   82.67,
+   171.2
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Slab80170_LOD0",
+    "tris": 1440,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Slab80170_LOD1",
+    "tris": 852,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Slab80170_LOD2",
+    "tris": 204,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Slab80170"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ },
+ {
+  "key": "block117_62",
+  "name": "VC_Tower_Block11762",
+  "set": "D1Tower",
+  "style_kit": [
+   "GlassModern",
+   "ArtDeco"
+  ],
+  "districts": [
+   "D1"
+  ],
+  "family": "block_slab",
+  "blend": "ArtSource/Blender/Buildings/VC_Tower_Block11762.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_Tower_Block11762.fbx",
+  "footprint_m": [
+   117.0,
+   117.0
+  ],
+  "height_m": 63.2,
+  "design_height_m": 62.0,
+  "bbox_m": [
+   118.1,
+   119.67,
+   63.2
+  ],
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_Tower_Block11762_LOD0",
+    "tris": 2304,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Block11762_LOD1",
+    "tris": 1260,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_Tower_Block11762_LOD2",
+    "tris": 204,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Twr_Glass",
+     "VC_Twr_Spandrel",
+     "VC_Twr_Stone",
+     "VC_Twr_Concrete",
+     "VC_Twr_Metal"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_Tower_Block11762"
+  ],
+  "slots": [
+   "VC_Twr_Glass",
+   "VC_Twr_Spandrel",
+   "VC_Twr_Stone",
+   "VC_Twr_Concrete",
+   "VC_Twr_Metal"
+  ]
+ }
+]

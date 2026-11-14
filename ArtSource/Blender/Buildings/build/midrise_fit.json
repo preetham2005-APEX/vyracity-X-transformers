@@ -1,0 +1,19 @@
+{
+ "fit": 87,
+ "total": 87,
+ "models": 7,
+ "usage": {
+  "VC_Mid_Mid3845": 17,
+  "VC_Mid_Mid3875": 5,
+  "VC_Mid_Mid3860": 10,
+  "VC_Mid_Mid3830": 8,
+  "VC_Mid_Mid34C": 40,
+  "VC_Mid_Mid34A": 7
+ },
+ "stretch_median": 0.06696428571428581,
+ "stretch_p90": 0.1815025252525253,
+ "stretch_max": 0.22576530612244894,
+ "unfit": [],
+ "misfits": [],
+ "district_p95_long_side_m": 38.0
+}

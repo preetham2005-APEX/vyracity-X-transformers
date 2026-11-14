@@ -1,0 +1,114 @@
+[
+ {
+  "name": "VC_Manhole_Round_A",
+  "tris": [
+   648,
+   272
+  ],
+  "collision_tris": 72,
+  "collision": "COL_concrete_VC_Manhole_Round_A",
+  "collision_type": "COL (non-convex MeshCollider)",
+  "collision_top_m": 0.01,
+  "pivot": "centre of the cover at the ROAD SURFACE (z = 0); the casting sits -0.062 m deep",
+  "notes": "0.62 m round cast cover in a 0.80 m frame, concentric-ring pattern with a centre boss and two lift slots. Cover top +10 mm, frame top +6 mm, rim tapers to the road plane.",
+  "materials": [
+   "VC_Collision",
+   "VC_Iron_Cast"
+  ],
+  "dims_lod0": [
+   0.8,
+   0.8,
+   0.078
+  ]
+ },
+ {
+  "name": "VC_Manhole_Round_B",
+  "tris": [
+   732,
+   344
+  ],
+  "collision_tris": 72,
+  "collision": "COL_concrete_VC_Manhole_Round_B",
+  "collision_type": "COL (non-convex MeshCollider)",
+  "collision_top_m": 0.01,
+  "pivot": "centre of the cover at the ROAD SURFACE (z = 0); the casting sits -0.062 m deep",
+  "notes": "0.62 m round cast cover in a 0.80 m frame, 16 radial ribs inside a perimeter ring with a centre boss and one lift slot. Same flush profile as pattern A, so the two read as different castings in the same frame.",
+  "materials": [
+   "VC_Collision",
+   "VC_Iron_Cast"
+  ],
+  "dims_lod0": [
+   0.8,
+   0.8,
+   0.086
+  ]
+ },
+ {
+  "name": "VC_UtilityCover_Square",
+  "tris": [
+   276,
+   108
+  ],
+  "collision_tris": 12,
+  "collision": "COL_concrete_VC_UtilityCover_Square",
+  "collision_type": "COL (non-convex MeshCollider)",
+  "collision_top_m": 0.01,
+  "pivot": "centre of the cover at the ROAD SURFACE (z = 0)",
+  "notes": "0.60 m square utility access cover in a 0.72 m frame, chequer studs and two lift slots. Cover top +10 mm, frame top +6 mm.",
+  "materials": [
+   "VC_Collision",
+   "VC_Iron_Cast"
+  ],
+  "dims_lod0": [
+   0.76,
+   0.76,
+   0.075
+  ]
+ },
+ {
+  "name": "VC_StormDrain_Grate_Road",
+  "tris": [
+   168,
+   96
+  ],
+  "collision_tris": 12,
+  "collision": "COL_concrete_VC_StormDrain_Grate_Road",
+  "collision_type": "COL (non-convex MeshCollider)",
+  "collision_top_m": 0.006,
+  "pivot": "centre of the grate at the ROAD SURFACE (z = 0)",
+  "notes": "0.58 m in-carriageway storm grate in a 0.70 m frame: 7 bars recessed 10 mm under the frame top, two cross ribs, a sump floor 90 mm down. The collider is a single flush plate so wheels roll over the bars instead of dropping in.",
+  "materials": [
+   "VC_Collision",
+   "VC_Concrete_Struct",
+   "VC_Iron_Cast"
+  ],
+  "dims_lod0": [
+   0.72,
+   0.72,
+   0.102
+  ]
+ },
+ {
+  "name": "VC_ExpansionJoint_Strip_4m",
+  "tris": [
+   40,
+   12
+  ],
+  "collision_tris": 12,
+  "collision": "COL_concrete_VC_ExpansionJoint_Strip_4m",
+  "collision_type": "COL (non-convex MeshCollider)",
+  "collision_top_m": 0.0,
+  "pivot": "start of the piece, joint centreline, z = 0 = road surface",
+  "notes": "4.00 m transverse/longitudinal joint strip, 0.30 m wide: a 52 mm groove with a sealant bead whose top sits 2 mm below the road. The collider is dead flat (zero step), so the joint is visual only for the vehicle.",
+  "materials": [
+   "VC_Collision",
+   "VC_Concrete_Struct",
+   "VC_Joint_Sealant"
+  ],
+  "dims_lod0": [
+   0.3,
+   4.0,
+   0.05
+  ]
+ }
+]

@@ -1,0 +1,273 @@
+{
+ "source": "Veyra_Original_Rural",
+ "original": true,
+ "generator": "ArtSource/Blender/Buildings/build/",
+ "pieces": [
+  {
+   "name": "VC_Rur_BarnBig",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Rural/VC_Rur_BarnBig.fbx",
+   "type": "Building",
+   "footprint_m": [
+    64.0,
+    30.0
+   ],
+   "height_m": 10.85,
+   "triangles": [
+    380,
+    260,
+    104
+   ],
+   "collision": [
+    "UBX_VC_Rur_BarnBig"
+   ],
+   "materials": [
+    {
+     "source": "VC_Ru_Board"
+    },
+    {
+     "source": "VC_Ru_Roof"
+    },
+    {
+     "source": "VC_Ru_Metal"
+    },
+    {
+     "source": "VC_Ru_Glass"
+    },
+    {
+     "source": "VC_Ru_Trim"
+    },
+    {
+     "source": "VC_Ru_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Rur_BarnGambrel",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Rural/VC_Rur_BarnGambrel.fbx",
+   "type": "Building",
+   "footprint_m": [
+    26.0,
+    14.0
+   ],
+   "height_m": 9.7,
+   "triangles": [
+    384,
+    264,
+    72
+   ],
+   "collision": [
+    "UBX_VC_Rur_BarnGambrel"
+   ],
+   "materials": [
+    {
+     "source": "VC_Ru_Board"
+    },
+    {
+     "source": "VC_Ru_Roof"
+    },
+    {
+     "source": "VC_Ru_Metal"
+    },
+    {
+     "source": "VC_Ru_Glass"
+    },
+    {
+     "source": "VC_Ru_Trim"
+    },
+    {
+     "source": "VC_Ru_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Rur_BarnLeanto",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Rural/VC_Rur_BarnLeanto.fbx",
+   "type": "Building",
+   "footprint_m": [
+    26.0,
+    14.0
+   ],
+   "height_m": 8.4,
+   "triangles": [
+    368,
+    272,
+    56
+   ],
+   "collision": [
+    "UBX_VC_Rur_BarnLeanto"
+   ],
+   "materials": [
+    {
+     "source": "VC_Ru_Board"
+    },
+    {
+     "source": "VC_Ru_Roof"
+    },
+    {
+     "source": "VC_Ru_Metal"
+    },
+    {
+     "source": "VC_Ru_Glass"
+    },
+    {
+     "source": "VC_Ru_Trim"
+    },
+    {
+     "source": "VC_Ru_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Rur_FarmhouseA",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Rural/VC_Rur_FarmhouseA.fbx",
+   "type": "Building",
+   "footprint_m": [
+    12.0,
+    10.0
+   ],
+   "height_m": 7.02,
+   "triangles": [
+    644,
+    452,
+    128
+   ],
+   "collision": [
+    "UBX_VC_Rur_FarmhouseA"
+   ],
+   "materials": [
+    {
+     "source": "VC_Ru_Board"
+    },
+    {
+     "source": "VC_Ru_Roof"
+    },
+    {
+     "source": "VC_Ru_Metal"
+    },
+    {
+     "source": "VC_Ru_Glass"
+    },
+    {
+     "source": "VC_Ru_Trim"
+    },
+    {
+     "source": "VC_Ru_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Rur_FarmhouseB",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Rural/VC_Rur_FarmhouseB.fbx",
+   "type": "Building",
+   "footprint_m": [
+    12.0,
+    10.0
+   ],
+   "height_m": 7.02,
+   "triangles": [
+    572,
+    404,
+    140
+   ],
+   "collision": [
+    "UBX_VC_Rur_FarmhouseB"
+   ],
+   "materials": [
+    {
+     "source": "VC_Ru_Board"
+    },
+    {
+     "source": "VC_Ru_Roof"
+    },
+    {
+     "source": "VC_Ru_Metal"
+    },
+    {
+     "source": "VC_Ru_Glass"
+    },
+    {
+     "source": "VC_Ru_Trim"
+    },
+    {
+     "source": "VC_Ru_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Rur_Mill",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Rural/VC_Rur_Mill.fbx",
+   "type": "Building",
+   "footprint_m": [
+    32.0,
+    18.0
+   ],
+   "height_m": 11.0,
+   "triangles": [
+    952,
+    520,
+    76
+   ],
+   "collision": [
+    "UBX_VC_Rur_Mill"
+   ],
+   "materials": [
+    {
+     "source": "VC_Ru_Board"
+    },
+    {
+     "source": "VC_Ru_Roof"
+    },
+    {
+     "source": "VC_Ru_Metal"
+    },
+    {
+     "source": "VC_Ru_Glass"
+    },
+    {
+     "source": "VC_Ru_Trim"
+    },
+    {
+     "source": "VC_Ru_Concrete"
+    }
+   ]
+  },
+  {
+   "name": "VC_Rur_Silo",
+   "file": "Assets/_Veyra/Art/Models/Kitbash/Veyra_Original_Rural/VC_Rur_Silo.fbx",
+   "type": "Building",
+   "footprint_m": [
+    7.0,
+    7.0
+   ],
+   "height_m": 16.55,
+   "triangles": [
+    556,
+    316,
+    112
+   ],
+   "collision": [
+    "UBX_VC_Rur_Silo"
+   ],
+   "materials": [
+    {
+     "source": "VC_Ru_Board"
+    },
+    {
+     "source": "VC_Ru_Roof"
+    },
+    {
+     "source": "VC_Ru_Metal"
+    },
+    {
+     "source": "VC_Ru_Glass"
+    },
+    {
+     "source": "VC_Ru_Trim"
+    },
+    {
+     "source": "VC_Ru_Concrete"
+    }
+   ]
+  }
+ ]
+}

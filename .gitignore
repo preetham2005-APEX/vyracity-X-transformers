@@ -83,3 +83,11 @@ Assets/_Veyra/World/Generated/TerrainBackup~/
 /Assets/_Veyra/Scenes/VeyraCity_Main.unity.meta
 /Assets/_Veyra/World/Generated/HLOD/
 /Assets/_Veyra/World/Generated/HLOD.meta
+
+# ArtSource/Blender (2026-11-14): sources are tracked, regenerable QA output is not.
+# The .blend, .fbx, textures, generators and manifests ARE the work and go in.
+# review/ and preview/ are multi-angle QA sheets rebuilt by each kit's own review.py
+# (159 MB of the 248 MB), so they are not worth versioning.
+/ArtSource/Blender/*/review/
+/ArtSource/Blender/*/preview/
+/ArtSource/Blender/**/__pycache__/

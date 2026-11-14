@@ -1,0 +1,1264 @@
+[
+ {
+  "key": "gable_porch",
+  "name": "VC_House_GablePorch",
+  "set": "Suburban",
+  "style_kit": [
+   "Suburban"
+  ],
+  "districts": [
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_House_GablePorch.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_House_GablePorch.fbx",
+  "footprint_m": [
+   14.0,
+   11.0
+  ],
+  "bbox_m": [
+   15.2,
+   12.2,
+   7.27
+  ],
+  "height_m": 7.27,
+  "target_height_m": 7.2,
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_House_GablePorch_LOD0",
+    "tris": 1184,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Stucco",
+     "VC_Roof_Tile",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_GablePorch_LOD1",
+    "tris": 704,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Stucco",
+     "VC_Roof_Tile",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_GablePorch_LOD2",
+    "tris": 140,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Stucco",
+     "VC_Roof_Tile",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_House_GablePorch"
+  ],
+  "slots": [
+   "VC_Wall_Stucco",
+   "VC_Roof_Tile",
+   "VC_Trim_Paint",
+   "VC_Glass_Window",
+   "VC_Door_Wood",
+   "VC_Wall_Concrete"
+  ]
+ },
+ {
+  "key": "hip_bay",
+  "name": "VC_House_HipBay",
+  "set": "Suburban",
+  "style_kit": [
+   "Suburban"
+  ],
+  "districts": [
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_House_HipBay.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_House_HipBay.fbx",
+  "footprint_m": [
+   14.0,
+   11.0
+  ],
+  "bbox_m": [
+   15.1,
+   12.55,
+   7.27
+  ],
+  "height_m": 7.27,
+  "target_height_m": 7.2,
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_House_HipBay_LOD0",
+    "tris": 1112,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Brick",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_HipBay_LOD1",
+    "tris": 656,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Brick",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_HipBay_LOD2",
+    "tris": 200,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Brick",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_House_HipBay"
+  ],
+  "slots": [
+   "VC_Wall_Brick",
+   "VC_Roof_Shingle",
+   "VC_Trim_Paint",
+   "VC_Glass_Window",
+   "VC_Door_Wood",
+   "VC_Wall_Concrete"
+  ]
+ },
+ {
+  "key": "garage_front",
+  "name": "VC_House_GarageFront",
+  "set": "Suburban",
+  "style_kit": [
+   "Suburban"
+  ],
+  "districts": [
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_House_GarageFront.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_House_GarageFront.fbx",
+  "footprint_m": [
+   14.0,
+   11.0
+  ],
+  "bbox_m": [
+   14.95,
+   12.7,
+   7.2
+  ],
+  "height_m": 7.2,
+  "target_height_m": 7.2,
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_House_GarageFront_LOD0",
+    "tris": 904,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_StuccoWarm",
+     "VC_Roof_Tile",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete",
+     "VC_Metal_Garage"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_GarageFront_LOD1",
+    "tris": 568,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_StuccoWarm",
+     "VC_Roof_Tile",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete",
+     "VC_Metal_Garage"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_GarageFront_LOD2",
+    "tris": 184,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_StuccoWarm",
+     "VC_Roof_Tile",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete",
+     "VC_Metal_Garage"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_House_GarageFront"
+  ],
+  "slots": [
+   "VC_Wall_StuccoWarm",
+   "VC_Roof_Tile",
+   "VC_Trim_Paint",
+   "VC_Glass_Window",
+   "VC_Door_Wood",
+   "VC_Wall_Concrete",
+   "VC_Metal_Garage"
+  ]
+ },
+ {
+  "key": "split_level",
+  "name": "VC_House_SplitLevel",
+  "set": "Suburban",
+  "style_kit": [
+   "Suburban"
+  ],
+  "districts": [
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_House_SplitLevel.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_House_SplitLevel.fbx",
+  "footprint_m": [
+   14.0,
+   11.0
+  ],
+  "bbox_m": [
+   14.8,
+   12.5,
+   7.2
+  ],
+  "height_m": 7.2,
+  "target_height_m": 7.2,
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_House_SplitLevel_LOD0",
+    "tris": 1032,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Board",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_SplitLevel_LOD1",
+    "tris": 600,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Board",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_SplitLevel_LOD2",
+    "tris": 132,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Board",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_House_SplitLevel"
+  ],
+  "slots": [
+   "VC_Wall_Board",
+   "VC_Roof_Shingle",
+   "VC_Trim_Paint",
+   "VC_Glass_Window",
+   "VC_Door_Wood",
+   "VC_Wall_Concrete"
+  ]
+ },
+ {
+  "key": "flat_parapet",
+  "name": "VC_House_FlatParapet",
+  "set": "Suburban",
+  "style_kit": [
+   "Suburban"
+  ],
+  "districts": [
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_House_FlatParapet.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_House_FlatParapet.fbx",
+  "footprint_m": [
+   14.0,
+   11.0
+  ],
+  "bbox_m": [
+   14.12,
+   12.66,
+   7.14
+  ],
+  "height_m": 7.14,
+  "target_height_m": 7.2,
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_House_FlatParapet_LOD0",
+    "tris": 756,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Stucco",
+     "VC_Roof_Tile",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_FlatParapet_LOD1",
+    "tris": 588,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Stucco",
+     "VC_Roof_Tile",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_FlatParapet_LOD2",
+    "tris": 192,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Stucco",
+     "VC_Roof_Tile",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_House_FlatParapet"
+  ],
+  "slots": [
+   "VC_Wall_Stucco",
+   "VC_Roof_Tile",
+   "VC_Trim_Paint",
+   "VC_Glass_Window",
+   "VC_Door_Wood",
+   "VC_Wall_Concrete"
+  ]
+ },
+ {
+  "key": "dormer_cottage",
+  "name": "VC_House_DormerCottage",
+  "set": "Suburban",
+  "style_kit": [
+   "Suburban"
+  ],
+  "districts": [
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_House_DormerCottage.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_House_DormerCottage.fbx",
+  "footprint_m": [
+   14.0,
+   11.0
+  ],
+  "bbox_m": [
+   15.3,
+   12.3,
+   7.27
+  ],
+  "height_m": 7.27,
+  "target_height_m": 7.2,
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_House_DormerCottage_LOD0",
+    "tris": 852,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_StuccoWarm",
+     "VC_Roof_Tile",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_DormerCottage_LOD1",
+    "tris": 588,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_StuccoWarm",
+     "VC_Roof_Tile",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_DormerCottage_LOD2",
+    "tris": 140,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_StuccoWarm",
+     "VC_Roof_Tile",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_House_DormerCottage"
+  ],
+  "slots": [
+   "VC_Wall_StuccoWarm",
+   "VC_Roof_Tile",
+   "VC_Trim_Paint",
+   "VC_Glass_Window",
+   "VC_Door_Wood",
+   "VC_Wall_Concrete"
+  ]
+ },
+ {
+  "key": "duplex",
+  "name": "VC_House_Duplex",
+  "set": "Suburban",
+  "style_kit": [
+   "Suburban"
+  ],
+  "districts": [
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_House_Duplex.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_House_Duplex.fbx",
+  "footprint_m": [
+   14.0,
+   11.0
+  ],
+  "bbox_m": [
+   14.8,
+   12.4,
+   7.3
+  ],
+  "height_m": 7.3,
+  "target_height_m": 7.2,
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_House_Duplex_LOD0",
+    "tris": 1096,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Brick",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_Duplex_LOD1",
+    "tris": 568,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Brick",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_Duplex_LOD2",
+    "tris": 100,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Brick",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_House_Duplex"
+  ],
+  "slots": [
+   "VC_Wall_Brick",
+   "VC_Roof_Shingle",
+   "VC_Trim_Paint",
+   "VC_Glass_Window",
+   "VC_Door_Wood",
+   "VC_Wall_Concrete"
+  ]
+ },
+ {
+  "key": "ranch_carport",
+  "name": "VC_House_RanchCarport",
+  "set": "Suburban",
+  "style_kit": [
+   "Suburban"
+  ],
+  "districts": [
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_House_RanchCarport.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_House_RanchCarport.fbx",
+  "footprint_m": [
+   14.0,
+   11.0
+  ],
+  "bbox_m": [
+   15.6,
+   12.6,
+   7.12
+  ],
+  "height_m": 7.12,
+  "target_height_m": 7.05,
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_House_RanchCarport_LOD0",
+    "tris": 616,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Board",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_RanchCarport_LOD1",
+    "tris": 424,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Board",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_RanchCarport_LOD2",
+    "tris": 176,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Board",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_House_RanchCarport"
+  ],
+  "slots": [
+   "VC_Wall_Board",
+   "VC_Roof_Shingle",
+   "VC_Trim_Paint",
+   "VC_Glass_Window",
+   "VC_Door_Wood",
+   "VC_Wall_Concrete"
+  ]
+ },
+ {
+  "key": "garage_community",
+  "name": "VC_House_GarageCommunity",
+  "set": "Suburban",
+  "style_kit": [
+   "Suburban"
+  ],
+  "districts": [
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_House_GarageCommunity.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_House_GarageCommunity.fbx",
+  "footprint_m": [
+   40.0,
+   22.0
+  ],
+  "bbox_m": [
+   40.75,
+   22.19,
+   7.08
+  ],
+  "height_m": 7.08,
+  "target_height_m": 7.0,
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_House_GarageCommunity_LOD0",
+    "tris": 960,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Board",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete",
+     "VC_Metal_Garage"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_GarageCommunity_LOD1",
+    "tris": 528,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Board",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete",
+     "VC_Metal_Garage"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_GarageCommunity_LOD2",
+    "tris": 432,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Board",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete",
+     "VC_Metal_Garage"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_House_GarageCommunity"
+  ],
+  "slots": [
+   "VC_Wall_Board",
+   "VC_Roof_Shingle",
+   "VC_Trim_Paint",
+   "VC_Glass_Window",
+   "VC_Door_Wood",
+   "VC_Wall_Concrete",
+   "VC_Metal_Garage"
+  ]
+ },
+ {
+  "key": "garage_small",
+  "name": "VC_House_GarageSmall",
+  "set": "Suburban",
+  "style_kit": [
+   "Suburban"
+  ],
+  "districts": [
+   "D5"
+  ],
+  "blend": "ArtSource/Blender/Buildings/VC_House_GarageSmall.blend",
+  "fbx": "ArtSource/Blender/Buildings/export/VC_House_GarageSmall.fbx",
+  "footprint_m": [
+   8.6,
+   7.5
+  ],
+  "bbox_m": [
+   9.5,
+   8.4,
+   6.1
+  ],
+  "height_m": 6.1,
+  "target_height_m": 6.1,
+  "base_z": 0.0,
+  "uv": true,
+  "lod_mode": "authored",
+  "lod_ratios": null,
+  "lods": [
+   {
+    "object": "VC_House_GarageSmall_LOD0",
+    "tris": 320,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Board",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete",
+     "VC_Metal_Garage"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_GarageSmall_LOD1",
+    "tris": 236,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Board",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete",
+     "VC_Metal_Garage"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "object": "VC_House_GarageSmall_LOD2",
+    "tris": 140,
+    "ngons": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_verts": 0,
+    "slots": [
+     "VC_Wall_Board",
+     "VC_Roof_Shingle",
+     "VC_Trim_Paint",
+     "VC_Glass_Window",
+     "VC_Door_Wood",
+     "VC_Wall_Concrete",
+     "VC_Metal_Garage"
+    ],
+    "has_uv": true,
+    "flipped_faces": 0,
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "rotation": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "collision": [
+   "UBX_VC_House_GarageSmall"
+  ],
+  "slots": [
+   "VC_Wall_Board",
+   "VC_Roof_Shingle",
+   "VC_Trim_Paint",
+   "VC_Glass_Window",
+   "VC_Door_Wood",
+   "VC_Wall_Concrete",
+   "VC_Metal_Garage"
+  ]
+ }
+]

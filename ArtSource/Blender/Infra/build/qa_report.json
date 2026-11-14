@@ -1,0 +1,961 @@
+[
+ {
+  "name": "VC_Barrier_Jersey_3m",
+  "issues": [],
+  "meshes": {
+   "UCX_VC_Barrier_Jersey_3m": {
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "VC_Barrier_Jersey_3m_LOD0": {
+    "tris": 76,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Concrete_Barrier"
+    ]
+   },
+   "VC_Barrier_Jersey_3m_LOD1": {
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Concrete_Barrier"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_Barrier_Jersey_EndTaper",
+  "issues": [],
+  "meshes": {
+   "UCX_VC_Barrier_Jersey_EndTaper": {
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "VC_Barrier_Jersey_EndTaper_LOD0": {
+    "tris": 76,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Concrete_Barrier"
+    ]
+   },
+   "VC_Barrier_Jersey_EndTaper_LOD1": {
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Concrete_Barrier"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_Drain_Inlet_Kerb",
+  "issues": [],
+  "meshes": {
+   "COL_concrete_VC_Drain_Inlet_Kerb_Kerb": {
+    "tris": 20,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "COL_dry_asphalt_VC_Drain_Inlet_Kerb_Gutter": {
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "VC_Drain_Inlet_Kerb_LOD0": {
+    "tris": 240,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Concrete_Kerb",
+     "VC_Iron_Cast"
+    ]
+   },
+   "VC_Drain_Inlet_Kerb_LOD1": {
+    "tris": 128,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Concrete_Kerb",
+     "VC_Iron_Cast"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_Gantry_Leg_Concrete",
+  "issues": [],
+  "meshes": {
+   "UBX_VC_Gantry_Leg_Concrete": {
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "VC_Gantry_Leg_Concrete_LOD0": {
+    "tris": 96,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Concrete_Struct",
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_Gantry_Leg_Concrete_LOD1": {
+    "tris": 48,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Concrete_Struct",
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_Gantry_Leg_Concrete_LOD2": {
+    "tris": 24,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Concrete_Struct"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_Gantry_Leg_Lattice",
+  "issues": [],
+  "meshes": {
+   "UBX_VC_Gantry_Leg_Lattice": {
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "VC_Gantry_Leg_Lattice_LOD0": {
+    "tris": 1256,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_Gantry_Leg_Lattice_LOD1": {
+    "tris": 488,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_Gantry_Leg_Lattice_LOD2": {
+    "tris": 120,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Galv"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_Gantry_Truss_12m",
+  "issues": [],
+  "meshes": {
+   "VC_Gantry_Truss_12m_LOD0": {
+    "tris": 1760,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_Gantry_Truss_12m_LOD1": {
+    "tris": 704,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_Gantry_Truss_12m_LOD2": {
+    "tris": 120,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Galv"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_Gantry_Truss_20m",
+  "issues": [],
+  "meshes": {
+   "VC_Gantry_Truss_20m_LOD0": {
+    "tris": 2760,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_Gantry_Truss_20m_LOD1": {
+    "tris": 1064,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_Gantry_Truss_20m_LOD2": {
+    "tris": 156,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Galv"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_Guardrail_WBeam_4m",
+  "issues": [],
+  "meshes": {
+   "UBX_VC_Guardrail_WBeam_4m": {
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "VC_Guardrail_WBeam_4m_LOD0": {
+    "tris": 184,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_Guardrail_WBeam_4m_LOD1": {
+    "tris": 60,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_Guardrail_WBeam_4m_LOD2": {
+    "tris": 24,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Galv"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_Guardrail_WBeam_End",
+  "issues": [],
+  "meshes": {
+   "UCX_VC_Guardrail_WBeam_End": {
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "VC_Guardrail_WBeam_End_LOD0": {
+    "tris": 252,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_Guardrail_WBeam_End_LOD1": {
+    "tris": 104,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_Guardrail_WBeam_End_LOD2": {
+    "tris": 36,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Galv"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_Kerb_Corner_90",
+  "issues": [],
+  "meshes": {
+   "COL_concrete_VC_Kerb_Corner_90_Kerb": {
+    "tris": 80,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "COL_dry_asphalt_VC_Kerb_Corner_90_Gutter": {
+    "tris": 52,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "VC_Kerb_Corner_90_LOD0": {
+    "tris": 158,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Concrete_Kerb"
+    ]
+   },
+   "VC_Kerb_Corner_90_LOD1": {
+    "tris": 46,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Concrete_Kerb"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_Kerb_DriveApron_4m",
+  "issues": [],
+  "meshes": {
+   "COL_concrete_VC_Kerb_DriveApron_4m_Kerb": {
+    "tris": 44,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "COL_dry_asphalt_VC_Kerb_DriveApron_4m_Gutter": {
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "VC_Kerb_DriveApron_4m_LOD0": {
+    "tris": 68,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Concrete_Kerb"
+    ]
+   },
+   "VC_Kerb_DriveApron_4m_LOD1": {
+    "tris": 36,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Concrete_Kerb"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_Kerb_Straight_4m",
+  "issues": [],
+  "meshes": {
+   "COL_concrete_VC_Kerb_Straight_4m_Kerb": {
+    "tris": 20,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "COL_dry_asphalt_VC_Kerb_Straight_4m_Gutter": {
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "VC_Kerb_Straight_4m_LOD0": {
+    "tris": 32,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Concrete_Kerb"
+    ]
+   },
+   "VC_Kerb_Straight_4m_LOD1": {
+    "tris": 16,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Concrete_Kerb"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_SignPanel_Blank_2400x1500",
+  "issues": [],
+  "meshes": {
+   "VC_SignPanel_Blank_2400x1500_LOD0": {
+    "tris": 84,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Sign_BlankFace",
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_SignPanel_Blank_2400x1500_LOD1": {
+    "tris": 36,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Sign_BlankFace",
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_SignPanel_Blank_2400x1500_LOD2": {
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Sign_BlankFace"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_SignPanel_Blank_4800x2400",
+  "issues": [],
+  "meshes": {
+   "VC_SignPanel_Blank_4800x2400_LOD0": {
+    "tris": 84,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Sign_BlankFace",
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_SignPanel_Blank_4800x2400_LOD1": {
+    "tris": 36,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Sign_BlankFace",
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_SignPanel_Blank_4800x2400_LOD2": {
+    "tris": 12,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Sign_BlankFace"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_SignalMast_Cantilever",
+  "issues": [],
+  "meshes": {
+   "UCX_VC_SignalMast_Cantilever": {
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "VC_SignalMast_Cantilever_LOD0": {
+    "tris": 280,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Dark",
+     "VC_Steel_Galv"
+    ]
+   },
+   "VC_SignalMast_Cantilever_LOD1": {
+    "tris": 88,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Dark"
+    ]
+   },
+   "VC_SignalMast_Cantilever_LOD2": {
+    "tris": 24,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Dark"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_Signal_Head_3",
+  "issues": [],
+  "meshes": {
+   "VC_Signal_Head_3_LOD0": {
+    "tris": 240,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Dark",
+     "VC_Signal_Lens"
+    ]
+   },
+   "VC_Signal_Head_3_LOD1": {
+    "tris": 96,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Steel_Dark",
+     "VC_Signal_Lens"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_UtilityPole_Timber",
+  "issues": [],
+  "meshes": {
+   "UCX_VC_UtilityPole_Timber": {
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "VC_UtilityPole_Timber_LOD0": {
+    "tris": 456,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Timber_Pole",
+     "VC_Steel_Galv",
+     "VC_Porcelain"
+    ]
+   },
+   "VC_UtilityPole_Timber_LOD1": {
+    "tris": 152,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Timber_Pole",
+     "VC_Steel_Galv",
+     "VC_Porcelain"
+    ]
+   },
+   "VC_UtilityPole_Timber_LOD2": {
+    "tris": 24,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Timber_Pole"
+    ]
+   }
+  }
+ },
+ {
+  "name": "VC_UtilityPole_Transmission",
+  "issues": [],
+  "meshes": {
+   "UCX_VC_UtilityPole_Transmission": {
+    "tris": 28,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Collision"
+    ]
+   },
+   "VC_UtilityPole_Transmission_LOD0": {
+    "tris": 660,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Timber_Pole",
+     "VC_Steel_Galv",
+     "VC_Porcelain"
+    ]
+   },
+   "VC_UtilityPole_Transmission_LOD1": {
+    "tris": 188,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Timber_Pole",
+     "VC_Steel_Galv",
+     "VC_Porcelain"
+    ]
+   },
+   "VC_UtilityPole_Transmission_LOD2": {
+    "tris": 36,
+    "ngons": 0,
+    "non_manifold": 0,
+    "loose_verts": 0,
+    "degenerate": 0,
+    "open_shells": 0,
+    "inverted_shells": 0,
+    "uv": true,
+    "materials": [
+     "VC_Timber_Pole"
+    ]
+   }
+  }
+ }
+]
